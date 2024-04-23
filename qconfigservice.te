@@ -1,0 +1,6 @@
+allow vendor_qconfigservice servicemanager:binder { call transfer };
+allow vendor_qconfigservice servicemanager:fd *;
+init_daemon_domain(vendor_qconfigservice)
+hal_server_domain(vendor_qconfigservice, vendor_hal_qconfig)
+type vendor_qconfigservice, domain;
+type vendor_qconfigservice_exec, exec_type, file_type, vendor_file_type;

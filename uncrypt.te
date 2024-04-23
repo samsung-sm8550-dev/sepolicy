@@ -1,0 +1,23 @@
+allow uncrypt self:capability { dac_override dac_read_search };
+allow uncrypt self:capability sys_rawio;
+allow uncrypt self:cap_userns { dac_override dac_read_search };
+allow uncrypt self:cap_userns sys_rawio;
+allow uncrypt cache_file:dir search;
+allow uncrypt cache_recovery_file:dir rw_dir_perms;
+allow uncrypt cache_recovery_file:file create_file_perms;
+allow uncrypt ota_package_file:dir r_dir_perms;
+allow uncrypt ota_package_file:file rw_file_perms;
+allow uncrypt misc_block_device:blk_file w_file_perms;
+allow uncrypt block_device:dir r_dir_perms;
+allow uncrypt userdata_block_device:blk_file w_file_perms;
+allow uncrypt proc_bootconfig:file r_file_perms;
+allow uncrypt proc_cmdline:file r_file_perms;
+allow uncrypt gsi_metadata_file_type:dir search;
+allow uncrypt metadata_file:dir search;
+allow uncrypt gsi_public_metadata_file:file r_file_perms;
+r_dir_file(uncrypt, shell_data_file)
+r_dir_file(uncrypt, rootfs)
+r_dir_file(uncrypt, sysfs_dt_firmware_android)
+unix_socket_connect(uncrypt, uncrypt, uncrypt)
+type uncrypt, domain, mlstrustedsubject;
+type uncrypt_exec, exec_type, file_type, system_file_type;

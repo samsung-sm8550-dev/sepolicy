@@ -1,0 +1,1 @@
+type dalvik_dynamic_config_prop, dalvik_config_prop_type, property_type, system_property_type, system_public_property_type;

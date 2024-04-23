@@ -1,0 +1,1 @@
+neverallow { hal_rebootescrow_client -halclientdomain } domain:process fork;

@@ -1,0 +1,44 @@
+allow vendor_shsusrd vendor_proc_shs:file rw_file_perms;
+allow vendor_shsusrd vendor_proc_shs:dir r_dir_perms;
+allow vendor_shsusrd self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_shsusrd self:capability2 block_suspend;
+allow vendor_shsusrd self:cap2_userns block_suspend;
+allow vendor_shsusrd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_shsusrd self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow vendor_shsusrd self:udp_socket create_socket_perms;
+allow vendor_shsusrd self:capability { kill net_admin net_raw };
+allow vendor_shsusrd self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_readpriv nlmsg_write };
+allow vendor_shsusrd sysfs_net:dir r_dir_perms;
+allow vendor_shsusrd sysfs_net:file rw_file_perms;
+allow vendor_shsusrd vendor_sysfs_data:file r_file_perms;
+allow vendor_shsusrd proc_net:file rw_file_perms;
+allow vendor_shsusrd sysfs_wake_lock:file rw_file_perms;
+allow vendor_shsusrd system_suspend_server:binder { call transfer };
+allow vendor_shsusrd system_suspend_server:fd *;
+allow vendor_shsusrd system_suspend_hwservice:hwservice_manager find;
+allow vendor_shsusrd hidl_manager_hwservice:hwservice_manager find;
+allow vendor_shsusrd hal_system_suspend_service:service_manager find;
+allow vendor_shsusrd vendor_shsusr_data_file:dir rw_dir_perms;
+allow vendor_shsusrd vendor_shsusr_data_file:file create_file_perms;
+allow vendor_shsusrd vendor_ipa_vendor_data_file:dir r_dir_perms;
+allow vendor_shsusrd vendor_ipa_vendor_data_file:file rw_file_perms;
+allow vendor_shsusrd vendor_netmgrd_socket:dir r_dir_perms;
+allow vendor_shsusrd vendor_netmgrd_socket:sock_file { getattr read write };
+allow vendor_shsusrd vendor_shsusrd_socket:dir w_dir_perms;
+allow vendor_shsusrd vendor_shsusrd_socket:sock_file create_file_perms;
+allow vendor_shsusrd vendor_sysfs_rmnet:dir r_dir_perms;
+allow vendor_shsusrd vendor_sysfs_rmnet:file r_file_perms;
+dontaudit vendor_shsusrd kernel:system module_request;
+dontaudit vendor_shsusrd self:system module_request;
+allowxperm vendor_shsusrd self:ioctl udp_socket 0x89fd;
+domain_auto_trans(vendor_shsusrd, netutils_wrapper_exec, netutils_wrapper)
+init_daemon_domain(vendor_shsusrd)
+unix_socket_connect(vendor_shsusrd, vendor_netmgrd, vendor_netmgrd)
+get_prop(vendor_shsusrd, hwservicemanager_prop)
+get_prop(vendor_shsusrd, vendor_mpctl_prop)
+binder_use(vendor_shsusrd)
+hwbinder_use(vendor_shsusrd)
+net_domain(vendor_shsusrd)
+hal_client_domain(vendor_shsusrd, vendor_hal_perf)
+type vendor_shsusrd, domain;
+type vendor_shsusrd_exec, exec_type, file_type, vendor_file_type;

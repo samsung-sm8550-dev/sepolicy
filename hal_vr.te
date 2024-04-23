@@ -1,0 +1,15 @@
+expandtypeattribute(hal_vr)
+expandtypeattribute(hal_vr_client)
+expandtypeattribute(hal_vr_server)
+allow hal_vr_client hal_vr_server:binder { call transfer };
+allow hal_vr_client hal_vr_server:binder transfer;
+allow hal_vr_client hal_vr_server:fd *;
+allow hal_vr_server hal_vr_client:binder transfer;
+allow hal_vr_server hal_vr_client:binder { call transfer };
+allow hal_vr_server hal_vr_client:fd *;
+init_daemon_domain(hal_vr_default)
+hal_server_domain(hal_vr_default, hal_vr)
+hal_attribute_hwservice(hal_vr, hal_vr_hwservice)
+type hal_vr_default, domain;
+type hal_vr_default_exec, exec_type, file_type, vendor_file_type;
+type hal_vr_hwservice, hwservice_manager_type, protected_hwservice;

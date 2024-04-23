@@ -1,0 +1,1 @@
+allow { domain -app_zygote -mediaextractor -hal_configstore_default -mediacodec } vendor-qti-testscripts:unix_stream_socket { getattr getopt read shutdown write };

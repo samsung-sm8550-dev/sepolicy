@@ -1,0 +1,17 @@
+expandtypeattribute(hal_tv_hdmi_earc)
+expandtypeattribute(hal_tv_hdmi_earc_client)
+expandtypeattribute(hal_tv_hdmi_earc_server)
+allow hal_tv_hdmi_earc_client hal_tv_hdmi_earc_server:binder { call transfer };
+allow hal_tv_hdmi_earc_client hal_tv_hdmi_earc_server:binder transfer;
+allow hal_tv_hdmi_earc_client hal_tv_hdmi_earc_server:fd *;
+allow hal_tv_hdmi_earc_server hal_tv_hdmi_earc_client:binder transfer;
+allow hal_tv_hdmi_earc_server hal_tv_hdmi_earc_client:binder { call transfer };
+allow hal_tv_hdmi_earc_server hal_tv_hdmi_earc_client:fd *;
+allow hal_tv_hdmi_earc_server su:tcp_socket { accept getopt read write };
+init_daemon_domain(hal_tv_hdmi_earc_default)
+binder_use(hal_tv_hdmi_earc_client)
+binder_use(hal_tv_hdmi_earc_server)
+hal_server_domain(hal_tv_hdmi_earc_default, hal_tv_hdmi_earc)
+hal_attribute_service(hal_tv_hdmi_earc, hal_tv_hdmi_earc_service)
+type hal_tv_hdmi_earc_default, domain;
+type hal_tv_hdmi_earc_default_exec, exec_type, file_type, vendor_file_type;

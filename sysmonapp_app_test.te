@@ -1,0 +1,9 @@
+allow vendor_sysmonapp_app_test vendor_sysmonapp_app_test_userfaultfd:anon_inode { create ioctl read };
+allow vendor_sysmonapp_app_test app_api_service:service_manager find;
+allow vendor_sysmonapp_app_test cameraserver_service:service_manager find;
+allow vendor_sysmonapp_app_test mediaserver_service:service_manager find;
+allow vendor_sysmonapp_app_test vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_sysmonapp_app_test vendor_xdsp_device:chr_file r_file_perms;
+type_transition vendor_sysmonapp_app_test vendor_sysmonapp_app_test:anon_inode vendor_sysmonapp_app_test_userfaultfd "[userfaultfd]";
+app_domain(vendor_sysmonapp_app_test)
+type vendor_sysmonapp_app_test, domain;

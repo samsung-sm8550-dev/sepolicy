@@ -1,0 +1,4 @@
+attribute vendor_sigmahal;
+attribute vendor_sigmahal_server;
+attribute vendor_sigmahal_client;
+type vendor_sigmahal_hwservice, hwservice_manager_type, protected_hwservice;

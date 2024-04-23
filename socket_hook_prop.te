@@ -1,0 +1,2 @@
+system_restricted_prop(socket_hook_prop)
+system_vendor_config_prop(vendor_socket_hook_prop)

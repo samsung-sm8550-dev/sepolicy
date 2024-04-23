@@ -1,0 +1,1 @@
+neverallow { domain -aoncameraservice_app } aoncameraservice_app_userfaultfd:anon_inode *;

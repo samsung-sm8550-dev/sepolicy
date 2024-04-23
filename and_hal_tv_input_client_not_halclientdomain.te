@@ -1,0 +1,1 @@
+neverallow { hal_tv_input_client -halclientdomain } domain:process fork;

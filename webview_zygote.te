@@ -1,0 +1,2 @@
+type webview_zygote, domain;
+type webview_zygote_exec, exec_type, file_type;

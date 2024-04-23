@@ -1,0 +1,60 @@
+expandtypeattribute(hal_wifi)
+expandtypeattribute(hal_wifi_client)
+expandtypeattribute(hal_wifi_server)
+allow hal_wifi_server dumpstate:fifo_file write;
+allow hal_wifi_server dumpstate:fd *;
+allow hal_wifi_server hal_wifi_client:binder transfer;
+allow hal_wifi_server hal_wifi_client:binder { call transfer };
+allow hal_wifi_server hal_wifi_client:fd *;
+allow hal_wifi_server su:tcp_socket { accept getopt read write };
+allow hal_wifi_server tombstone_wifi_data_file:dir rw_dir_perms;
+allow hal_wifi_server tombstone_wifi_data_file:file create_file_perms;
+allow hal_wifi_server vendor_tombstone_data_file:dir rw_dir_perms;
+allow hal_wifi_server vendor_tombstone_data_file:file create_file_perms;
+allow hal_wifi_client hal_wifi_server:binder { call transfer };
+allow hal_wifi_client hal_wifi_server:binder transfer;
+allow hal_wifi_client hal_wifi_server:fd *;
+allow hal_wifi self:udp_socket create_socket_perms;
+allow hal_wifi self:capability { net_admin net_raw };
+allow hal_wifi self:cap_userns { net_admin net_raw };
+allow hal_wifi self:netlink_socket create_socket_perms_no_ioctl;
+allow hal_wifi self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow hal_wifi sysfs_wlan_fwpath:file w_file_perms;
+allow hal_wifi proc_modules:file { getattr open read };
+allow hal_wifi dumpstate:fifo_file write;
+allow hal_wifi proc_net:file write;
+allow hal_wifi vendor_wlan_device:chr_file rw_file_perms;
+allow hal_wifi_default vendor_location_socket:dir rw_dir_perms;
+allow hal_wifi_default vendor_location_socket:lnk_file create_file_perms;
+allow hal_wifi_default vendor_location_socket:sock_file create_file_perms;
+allow hal_wifi_default vendor_location:unix_dgram_socket sendto;
+allow hal_wifi_default vendor_location_lowi_server:unix_dgram_socket sendto;
+allow hal_wifi_default vendor_location_xtwifi_client:unix_dgram_socket sendto;
+allow hal_wifi_default vendor_wifihal_socket:dir rw_dir_perms;
+allow hal_wifi_default vendor_wifihal_socket:sock_file create_file_perms;
+allow hal_wifi_default self:capability sys_module;
+allow hal_wifi_default vendor_tombstone_data_file:dir search;
+dontaudit hal_wifi_default vendor_location_slim_daemon:unix_dgram_socket sendto;
+dontaudit hal_wifi_default persist_vendor_debug_wifi_prop:file { getattr ioctl lock map open read watch watch_reads };
+allowxperm hal_wifi self:ioctl udp_socket { 0x8914 0x8924 0x8946 };
+allowxperm hal_wifi_default self:ioctl udp_socket { range 0x89a0 0x89a3 };
+init_daemon_domain(hal_wifi_default)
+r_dir_file(hal_wifi, proc_net_type)
+r_dir_file(hal_wifi, sysfs_type)
+r_dir_file(hal_wifi_default, vendor_proc_wifi_dbg)
+unix_socket_connect(hal_wifi, property, vendor_location)
+unix_socket_connect(hal_wifi, property, vendor_location_lowi_server)
+unix_socket_connect(hal_wifi, vendor_location, init)
+unix_socket_connect(hal_wifi, vendor_location, vendor_location)
+unix_socket_connect(hal_wifi, vendor_location, vendor_location_lowi_server)
+get_prop(hal_wifi, persist_vendor_debug_wifi_prop)
+set_prop(hal_wifi_server, wifi_hal_prop)
+set_prop(hal_wifi, wifi_prop)
+set_prop(hal_wifi_default, vendor_wifi_version)
+binder_use(hal_wifi_server)
+hal_server_domain(hal_wifi_default, hal_wifi)
+hal_attribute_service(hal_wifi, hal_wifi_service)
+hal_attribute_hwservice(hal_wifi, hal_wifi_hwservice)
+type hal_wifi_default, domain;
+type hal_wifi_default_exec, exec_type, file_type, vendor_file_type;
+type hal_wifi_hwservice, hwservice_manager_type, protected_hwservice;

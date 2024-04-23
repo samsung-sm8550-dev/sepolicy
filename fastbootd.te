@@ -1,0 +1,2 @@
+neverallow fastbootd data_file_type:file no_x_file_perms;
+type fastbootd, domain;

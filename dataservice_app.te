@@ -1,0 +1,13 @@
+allow vendor_dataservice_app vendor_sysfs_data:file r_file_perms;
+allow vendor_dataservice_app vendor_hal_slmadapter_hwservice:hwservice_manager find;
+get_prop(vendor_dataservice_app, vendor_cnd_prop)
+get_prop(vendor_dataservice_app, vendor_slm_prop)
+get_prop(vendor_dataservice_app, vendor_mwqem_prop)
+get_prop(vendor_dataservice_app, vendor_persist_rcs_qti_prop)
+hal_client_domain(vendor_dataservice_app, vendor_hal_perf)
+hal_client_domain(vendor_dataservice_app, vendor_hal_dpmapiservice_qti)
+hal_client_domain(vendor_dataservice_app, vendor_hal_imsfactory)
+hal_client_domain(vendor_dataservice_app, vendor_hal_datafactory_qti)
+hal_client_domain(vendor_dataservice_app, vendor_hal_mwqemadapter_qti)
+hal_client_domain(vendor_dataservice_app, vendor_hal_dcservice_qti)
+type vendor_dataservice_app, domain;

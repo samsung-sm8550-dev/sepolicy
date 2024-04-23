@@ -1,0 +1,1 @@
+neverallow { domain -flipendo } flipendo_userfaultfd:anon_inode *;

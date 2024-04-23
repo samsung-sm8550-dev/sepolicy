@@ -1,0 +1,17 @@
+expandtypeattribute(hal_lowpan)
+expandtypeattribute(hal_lowpan_client)
+expandtypeattribute(hal_lowpan_server)
+allow hal_lowpan_client hal_lowpan_server:binder { call transfer };
+allow hal_lowpan_client hal_lowpan_server:binder transfer;
+allow hal_lowpan_client hal_lowpan_server:fd *;
+allow hal_lowpan_server hal_lowpan_client:binder transfer;
+allow hal_lowpan_server hal_lowpan_client:binder { call transfer };
+allow hal_lowpan_server hal_lowpan_client:fd *;
+allow hal_lowpan_server lowpan_device:chr_file rw_file_perms;
+init_daemon_domain(hal_lowpan_default)
+set_prop(hal_lowpan_server, lowpan_prop)
+hal_server_domain(hal_lowpan_default, hal_lowpan)
+hal_attribute_hwservice(hal_lowpan, hal_lowpan_hwservice)
+type hal_lowpan_default, domain;
+type hal_lowpan_default_exec, exec_type, file_type, vendor_file_type;
+type hal_lowpan_hwservice, hwservice_manager_type, protected_hwservice;

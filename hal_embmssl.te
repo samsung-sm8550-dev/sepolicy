@@ -1,0 +1,24 @@
+allow vendor_hal_embmssl_qti self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_hal_embmssl_qti self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_hal_embmssl_qti self:tipc_socket create_socket_perms_no_ioctl;
+allow vendor_hal_embmssl_qti vendor_netmgrd_socket:dir search;
+allow vendor_hal_embmssl_client vendor_hal_embmssl_server:binder { call transfer };
+allow vendor_hal_embmssl_client vendor_hal_embmssl_server:binder transfer;
+allow vendor_hal_embmssl_client vendor_hal_embmssl_server:fd *;
+allow vendor_hal_embmssl_client vendor_hal_embmsslaidl_service:service_manager find;
+allow vendor_hal_embmssl_server vendor_hal_embmssl_client:binder transfer;
+allow vendor_hal_embmssl_server vendor_hal_embmssl_client:binder { call transfer };
+allow vendor_hal_embmssl_server vendor_hal_embmssl_client:fd *;
+allow vendor_hal_embmssl_server su:tcp_socket { accept getopt read write };
+attribute vendor_hal_embmssl;
+attribute vendor_hal_embmssl_client;
+attribute vendor_hal_embmssl_server;
+init_daemon_domain(vendor_hal_embmssl_qti)
+unix_socket_connect(vendor_hal_embmssl_qti, vendor_netmgrd, vendor_time_daemon)
+unix_socket_connect(vendor_hal_embmssl_qti, vendor_netmgrd, vendor_netmgrd)
+binder_use(vendor_hal_embmssl_qti)
+hal_server_domain(vendor_hal_embmssl_qti, vendor_hal_embmssl)
+add_service(vendor_hal_embmssl_server, vendor_hal_embmsslaidl_service)
+type vendor_hal_embmssl_qti, domain;
+type vendor_hal_embmssl_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_embmssl_hwservice, hwservice_manager_type, protected_hwservice;

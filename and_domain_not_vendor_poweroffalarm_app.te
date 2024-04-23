@@ -1,0 +1,1 @@
+neverallow { domain -vendor_poweroffalarm_app } vendor_poweroffalarm_app_userfaultfd:anon_inode *;

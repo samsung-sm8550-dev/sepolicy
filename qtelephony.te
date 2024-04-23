@@ -1,0 +1,17 @@
+allow vendor_qtelephony vendor_atfwd:binder transfer;
+allow vendor_qtelephony vendor_hal_imsrtp:binder transfer;
+allow vendor_qtelephony vendor_hal_imsrtp:binder { call transfer };
+allow vendor_qtelephony vendor_hal_imsrtp:fd *;
+allow vendor_qtelephony vendor_hal_imsrtp_hwservice:hwservice_manager find;
+allow vendor_qtelephony vendor_hal_datafactory_hwservice:hwservice_manager find;
+allow vendor_qtelephony vendor_cnd:binder { call transfer };
+allow vendor_qtelephony vendor_cnd:fd *;
+dontaudit vendor_qtelephony default_android_service:service_manager find;
+get_prop(vendor_qtelephony, vendor_radio_prop)
+get_prop(vendor_qtelephony, vendor_ims_prop)
+get_prop(vendor_qtelephony, vendor_persist_camera_prop)
+get_prop(vendor_qtelephony, vendor_audio_prop)
+get_prop(vendor_qtelephony, vendor_video_prop)
+hal_client_domain(vendor_qtelephony, vendor_hal_perf)
+hal_client_domain(vendor_qtelephony, vendor_hal_datafactory_qti)
+type vendor_qtelephony, domain;

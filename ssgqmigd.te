@@ -1,0 +1,4 @@
+allow vendor_ssgqmigd self:qipcrtr_socket create_socket_perms_no_ioctl;
+init_daemon_domain(vendor_ssgqmigd)
+type vendor_ssgqmigd, domain, mlstrustedsubject;
+type vendor_ssgqmigd_exec, exec_type, file_type, vendor_file_type;

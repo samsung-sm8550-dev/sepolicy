@@ -1,0 +1,1 @@
+neverallow { hal_usb_gadget_server -halserverdomain } domain:process fork;

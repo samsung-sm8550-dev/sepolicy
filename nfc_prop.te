@@ -1,0 +1,2 @@
+type nfc_prop, core_property_type, property_type, system_property_type, system_public_property_type;
+vendor_internal_prop(vendor_nfc_prop)

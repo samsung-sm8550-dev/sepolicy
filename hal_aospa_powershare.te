@@ -1,0 +1,19 @@
+expandtypeattribute(hal_aospa_powershare)
+expandtypeattribute(hal_aospa_powershare_client)
+expandtypeattribute(hal_aospa_powershare_server)
+allow hal_aospa_powershare_client hal_aospa_powershare_server:binder { call transfer };
+allow hal_aospa_powershare_client hal_aospa_powershare_server:fd *;
+allow hal_aospa_powershare_client hal_aospa_powershare_service:service_manager find;
+allow hal_aospa_powershare_server hal_aospa_powershare_client:binder transfer;
+allow hal_aospa_powershare_server su:tcp_socket { accept getopt read write };
+allow hal_aospa_powershare_server servicemanager:binder { call transfer };
+allow hal_aospa_powershare_server servicemanager:fd *;
+allow hal_aospa_powershare platform_app:binder { call transfer };
+allow hal_aospa_powershare platform_app:fd *;
+allow hal_aospa_powershare_default sysfs_powershare:file rw_file_perms;
+init_daemon_domain(hal_aospa_powershare_default)
+binder_use(hal_aospa_powershare_default)
+hal_server_domain(hal_aospa_powershare_default, hal_aospa_powershare)
+add_service(hal_aospa_powershare_server, hal_aospa_powershare_service)
+type hal_aospa_powershare_default, domain;
+type hal_aospa_powershare_default_exec, exec_type, file_type, vendor_file_type;

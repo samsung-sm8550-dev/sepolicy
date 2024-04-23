@@ -1,0 +1,2 @@
+type vold_prepare_subdirs, coredomain, domain;
+type vold_prepare_subdirs_exec, exec_type, file_type, system_file_type;

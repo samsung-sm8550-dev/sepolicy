@@ -1,0 +1,98 @@
+neverallow netd dev_type:blk_file { read write };
+neverallow netd domain:process ptrace;
+neverallow netd system_file:file write;
+neverallow netd system_file:dir write;
+neverallow netd system_file:lnk_file write;
+neverallow netd system_file:chr_file write;
+neverallow netd system_file:blk_file write;
+neverallow netd system_file:sock_file write;
+neverallow netd system_file:fifo_file write;
+neverallow netd app_data_file_type:file write;
+neverallow netd app_data_file_type:dir write;
+neverallow netd app_data_file_type:lnk_file write;
+neverallow netd app_data_file_type:chr_file write;
+neverallow netd app_data_file_type:blk_file write;
+neverallow netd app_data_file_type:sock_file write;
+neverallow netd app_data_file_type:fifo_file write;
+neverallow netd system_data_file:file write;
+neverallow netd system_data_file:dir write;
+neverallow netd system_data_file:lnk_file write;
+neverallow netd system_data_file:chr_file write;
+neverallow netd system_data_file:blk_file write;
+neverallow netd system_data_file:sock_file write;
+neverallow netd system_data_file:fifo_file write;
+neverallow netd proc_net:dir no_w_dir_perms;
+neverallow netd sysfs_net:dir no_w_dir_perms;
+neverallow netd self:capability sys_admin;
+allow netd dumpstate:binder transfer;
+allow netd dumpstate:fifo_file { getattr write };
+allow netd system_server:fd *;
+allow netd system_server:binder call;
+allow netd self:capability { kill net_admin net_raw };
+allow netd self:capability { chown dac_override dac_read_search };
+allow netd self:capability fowner;
+allow netd self:cap_userns { kill net_admin net_raw };
+allow netd self:cap_userns { chown dac_override dac_read_search };
+allow netd self:cap_userns fowner;
+allow netd self:tun_socket create;
+allow netd self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow netd self:netlink_route_socket nlmsg_write;
+allow netd self:netlink_nflog_socket create_socket_perms_no_ioctl;
+allow netd self:netlink_socket create_socket_perms_no_ioctl;
+allow netd self:netlink_tcpdiag_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_write };
+allow netd self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow netd self:netlink_netfilter_socket create_socket_perms_no_ioctl;
+allow netd self:netlink_xfrm_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_write };
+allow netd tun_device:chr_file rw_file_perms;
+allow netd shell_exec:file rx_file_perms;
+allow netd system_file:file x_file_perms;
+allow netd system_file:file lock;
+allow netd devpts:chr_file rw_file_perms;
+allow netd proc_qtaguid_ctrl:file rw_file_perms;
+allow netd qtaguid_device:chr_file r_file_perms;
+allow netd proc_net_type:file rw_file_perms;
+allow netd sysfs:dir r_dir_perms;
+allow netd sysfs_net:file w_file_perms;
+allow netd sysfs_usb:file write;
+allow netd net_data_file:file create_file_perms;
+allow netd net_data_file:dir rw_dir_perms;
+allow netd dnsmasq:process signal;
+allow netd su:tcp_socket { accept getopt read write };
+allow netd permission_service:service_manager find;
+allow netd netd_listener_service:service_manager find;
+allow netd netdomain:tcp_socket { getattr getopt read setattr setopt write };
+allow netd netdomain:udp_socket { getattr getopt read setattr setopt write };
+allow netd netdomain:rawip_socket { getattr getopt read setattr setopt write };
+allow netd netdomain:tun_socket { getattr getopt read setattr setopt write };
+allow netd netdomain:icmp_socket { getattr getopt read setattr setopt write };
+allow netd netdomain:fd *;
+allow netd vendor_netmgrd:binder transfer;
+allow netd vendor_qnicornd:binder transfer;
+dontaudit netd self:capability fsetid;
+dontaudit netd self:capability sys_admin;
+dontaudit netd self:capability sys_module;
+dontaudit netd self:cap_userns fsetid;
+dontaudit netd system_file:dir write;
+dontaudit netd proc_net:dir write;
+dontaudit netd sysfs_net:dir write;
+dontaudit netd kernel:system module_request;
+dontaudit netd appdomain:unix_stream_socket { read write };
+allowxperm netd self:ioctl udp_socket { 0x6900 0x6902 };
+allowxperm netd self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
+allowxperm netd self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
+allowxperm netd tun_device:ioctl chr_file { 0x54ca 0x54d2 };
+r_dir_file(netd, cgroup)
+r_dir_file(netd, proc_net_type)
+r_dir_file(netd, sysfs_net)
+r_dir_file(netd, cgroup_v2)
+unix_socket_connect(netd, mdnsd, mdnsd)
+binder_use(netd)
+hwbinder_use(netd)
+net_domain(netd)
+add_service(netd, netd_service)
+add_service(netd, dnsresolver_service)
+add_service(netd, mdns_service)
+add_service(netd, system_net_netd_service)
+add_hwservice(netd, system_net_netd_hwservice)
+type netd, domain, mlstrustedsubject;
+type netd_exec, exec_type, file_type, system_file_type;

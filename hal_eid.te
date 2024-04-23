@@ -1,0 +1,22 @@
+allow vendor_hal_eid_qti tee_device:chr_file rw_file_perms;
+allow vendor_hal_eid_qti ion_device:chr_file r_file_perms;
+allow vendor_hal_eid_client vendor_hal_eid_server:binder { call transfer };
+allow vendor_hal_eid_client vendor_hal_eid_server:binder transfer;
+allow vendor_hal_eid_client vendor_hal_eid_server:fd *;
+allow vendor_hal_eid_server vendor_hal_eid_client:binder transfer;
+allow vendor_hal_eid_server vendor_hal_eid_client:binder { call transfer };
+allow vendor_hal_eid_server vendor_hal_eid_client:fd *;
+attribute vendor_hal_eid;
+attribute vendor_hal_eid_client;
+attribute vendor_hal_eid_server;
+init_daemon_domain(vendor_hal_eid_qti)
+r_dir_file(vendor_hal_eid_qti, firmware_file)
+get_prop(vendor_hal_eid_qti, vendor_tee_listener_prop)
+hal_server_domain(vendor_hal_eid_qti, vendor_hal_eid)
+hal_client_domain(vendor_hal_eid_qti, hal_graphics_composer)
+hal_client_domain(vendor_hal_eid_qti, vendor_hal_trustedui)
+hal_client_domain(vendor_hal_eid_qti, vendor_hal_qteeconnector)
+hal_attribute_hwservice(vendor_hal_eid, vendor_hal_eid_hwservice)
+type vendor_hal_eid_qti, domain;
+type vendor_hal_eid_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_eid_hwservice, hwservice_manager_type, protected_hwservice;

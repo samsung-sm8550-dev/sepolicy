@@ -1,0 +1,7 @@
+allow gmscore_app update_engine:binder transfer;
+dontaudit gmscore_app vendor_hal_qspmhal_default:binder call;
+dontaudit gmscore_app vendor_hal_qspmhal_hwservice:hwservice_manager find;
+dontaudit gmscore_app firmware_file:filesystem getattr;
+dontaudit gmscore_app bt_firmware_file:filesystem getattr;
+unix_socket_connect(gmscore_app, vendor_dpmtcm, vendor_dpmd)
+type gmscore_app, domain;

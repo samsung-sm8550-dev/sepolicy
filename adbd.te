@@ -1,0 +1,6 @@
+allow adbd shell_test_data_file:dir create_dir_perms;
+allow adbd shell_test_data_file:file create_file_perms;
+allow adbd shell_test_data_file:lnk_file create_file_perms;
+unix_socket_connect(adbd, vendor_qdcmsocket, vendor_qdcm-ss)
+type adbd, domain;
+type adbd_exec, exec_type, file_type, system_file_type;

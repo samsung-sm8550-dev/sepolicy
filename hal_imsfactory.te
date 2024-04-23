@@ -1,0 +1,13 @@
+allow vendor_hal_imsfactory_client vendor_hal_imsfactory_server:binder { call transfer };
+allow vendor_hal_imsfactory_client vendor_hal_imsfactory_server:binder transfer;
+allow vendor_hal_imsfactory_client vendor_hal_imsfactory_server:fd *;
+allow vendor_hal_imsfactory_server vendor_hal_imsfactory_client:binder transfer;
+allow vendor_hal_imsfactory_server vendor_hal_imsfactory_client:binder { call transfer };
+allow vendor_hal_imsfactory_server vendor_hal_imsfactory_client:fd *;
+attribute vendor_hal_imsfactory;
+attribute vendor_hal_imsfactory_client;
+attribute vendor_hal_imsfactory_server;
+hal_attribute_hwservice(vendor_hal_imsfactory, vendor_hal_imsfactory_hwservice)
+hal_attribute_hwservice(vendor_hal_imsfactory, vendor_hal_imsrcsd_hwservice)
+hal_attribute_hwservice(vendor_hal_imsfactory, vendor_hal_imscallinfo_hwservice)
+type vendor_hal_imsfactory_hwservice, hwservice_manager_type, protected_hwservice;

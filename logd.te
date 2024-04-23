@@ -1,0 +1,65 @@
+neverallow logd dev_type:blk_file { read write };
+neverallow logd domain:process ptrace;
+neverallow logd system_file:file write;
+neverallow logd system_file:dir write;
+neverallow logd system_file:lnk_file write;
+neverallow logd system_file:chr_file write;
+neverallow logd system_file:blk_file write;
+neverallow logd system_file:sock_file write;
+neverallow logd system_file:fifo_file write;
+neverallow logd system_data_file:file write;
+neverallow logd system_data_file:dir write;
+neverallow logd system_data_file:lnk_file write;
+neverallow logd system_data_file:chr_file write;
+neverallow logd system_data_file:blk_file write;
+neverallow logd system_data_file:sock_file write;
+neverallow logd system_data_file:fifo_file write;
+neverallow logd packages_list_file:file write;
+neverallow logd packages_list_file:dir write;
+neverallow logd packages_list_file:lnk_file write;
+neverallow logd packages_list_file:chr_file write;
+neverallow logd packages_list_file:blk_file write;
+neverallow logd packages_list_file:sock_file write;
+neverallow logd packages_list_file:fifo_file write;
+neverallow logd app_data_file:file write;
+neverallow logd app_data_file:dir write;
+neverallow logd app_data_file:lnk_file write;
+neverallow logd app_data_file:chr_file write;
+neverallow logd app_data_file:blk_file write;
+neverallow logd app_data_file:sock_file write;
+neverallow logd app_data_file:fifo_file write;
+neverallow logd privapp_data_file:file write;
+neverallow logd privapp_data_file:dir write;
+neverallow logd privapp_data_file:lnk_file write;
+neverallow logd privapp_data_file:chr_file write;
+neverallow logd privapp_data_file:blk_file write;
+neverallow logd privapp_data_file:sock_file write;
+neverallow logd privapp_data_file:fifo_file write;
+allow logd self:capability { audit_control setgid setpcap setuid sys_nice };
+allow logd self:cap_userns { audit_control setgid setpcap setuid sys_nice };
+allow logd self:capability2 syslog;
+allow logd self:cap2_userns syslog;
+allow logd self:netlink_audit_socket { create_socket_perms_no_ioctl nlmsg_write };
+allow logd kernel:system syslog_read;
+allow logd kernel:system syslog_mod;
+allow logd kmsg_device:chr_file { getattr w_file_perms };
+allow logd system_data_file:file r_file_perms;
+allow logd system_data_file:lnk_file r_file_perms;
+allow logd packages_list_file:file r_file_perms;
+allow logd pstorefs:dir search;
+allow logd pstorefs:file r_file_perms;
+allow logd misc_logd_file:dir r_dir_perms;
+allow logd misc_logd_file:file rw_file_perms;
+allow logd runtime_event_log_tags_file:file rw_file_perms;
+allow logd runtime_event_log_tags_file:file r_file_perms;
+r_dir_file(logd, cgroup)
+r_dir_file(logd, cgroup_v2)
+r_dir_file(logd, proc_kmsg)
+r_dir_file(logd, proc_meminfo)
+r_dir_file(logd, domain)
+unix_socket_connect(logd, logd, logd)
+unix_socket_connect(logd, logd, init)
+unix_socket_connect(logd, property, logd)
+set_prop(logd, logd_prop)
+type logd, domain, mlstrustedsubject;
+type logd_exec, exec_type, file_type, system_file_type;

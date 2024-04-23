@@ -1,0 +1,1 @@
+neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -hal_lineage_health_client -hal_lineage_health_server } hal_lineage_health_service:service_manager find;

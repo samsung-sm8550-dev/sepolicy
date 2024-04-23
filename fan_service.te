@@ -1,0 +1,5 @@
+allow vendor_fan_service vendor_shell_exec:file rx_file_perms;
+allow vendor_fan_service sysfs_thermal:file rw_file_perms;
+init_daemon_domain(vendor_fan_service)
+type vendor_fan_service, domain;
+type vendor_fan_service_exec, exec_type, file_type, vendor_file_type;

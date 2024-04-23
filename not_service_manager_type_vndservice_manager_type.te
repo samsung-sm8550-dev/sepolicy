@@ -1,0 +1,1 @@
+neverallow domain ~{ service_manager_type vndservice_manager_type }:service_manager { add find };

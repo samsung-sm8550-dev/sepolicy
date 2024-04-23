@@ -1,0 +1,2 @@
+get_prop(vendor_qcc_netstat_app, vendor_qcc_prop)
+type vendor_qcc_netstat_app, domain;

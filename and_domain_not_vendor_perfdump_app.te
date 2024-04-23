@@ -1,0 +1,1 @@
+neverallow { domain -vendor_perfdump_app } vendor_perfdump_app_userfaultfd:anon_inode *;

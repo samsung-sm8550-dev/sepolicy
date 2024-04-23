@@ -1,0 +1,16 @@
+allow vendor_hal_pasrmanager_qti sysfs:dir r_dir_perms;
+allow vendor_hal_pasrmanager_qti vendor_sysfs_system_memory:file rw_file_perms;
+allow vendor_hal_pasrmanager_qti vendor_sysfs_system_memory:dir r_dir_perms;
+allow vendor_hal_pasrmanager_client vendor_hal_pasrmanager_server:binder { call transfer };
+allow vendor_hal_pasrmanager_client vendor_hal_pasrmanager_server:fd *;
+allow vendor_hal_pasrmanager_client vendor_hal_pasrmanager_hwservice:hwservice_manager find;
+allow vendor_hal_pasrmanager_server vendor_hal_pasrmanager_client:binder transfer;
+attribute vendor_hal_pasrmanager;
+attribute vendor_hal_pasrmanager_client;
+attribute vendor_hal_pasrmanager_server;
+init_daemon_domain(vendor_hal_pasrmanager_qti)
+hal_server_domain(vendor_hal_pasrmanager_qti, vendor_hal_pasrmanager)
+add_hwservice(vendor_hal_pasrmanager_server, vendor_hal_pasrmanager_hwservice)
+type vendor_hal_pasrmanager_qti, domain;
+type vendor_hal_pasrmanager_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_pasrmanager_hwservice, hwservice_manager_type, protected_hwservice;

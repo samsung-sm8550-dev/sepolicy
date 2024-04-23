@@ -1,0 +1,20 @@
+allow vendor_qesdsect vendor_hal_qesdhal_client:binder { call transfer };
+allow vendor_qesdsect vendor_hal_qesdhal_client:fd *;
+allow vendor_qesdsect vendor_qesdk_service:service_manager find;
+allow vendor_qesdsect tee_device:chr_file rw_file_perms;
+allow vendor_qesdsect su:fifo_file append;
+allow vendor_qesdsect anr_data_file:file append;
+allow vendor_qesdsect dumpstate:fd *;
+allow vendor_qesdsect dumpstate:fifo_file { append write };
+allow vendor_qesdsect incidentd:fd *;
+allow vendor_qesdsect incidentd:fifo_file { append write };
+allow vendor_qesdsect system_server:fifo_file { append write };
+allow vendor_qesdsect tombstoned:fd *;
+allow vendor_qesdsect tombstone_data_file:file append;
+init_daemon_domain(vendor_qesdsect)
+unix_socket_connect(vendor_qesdsect, tombstoned_crash, tombstoned)
+get_prop(vendor_qesdsect, boot_status_prop)
+binder_use(vendor_qesdsect)
+hal_client_domain(vendor_qesdsect, hal_allocator)
+type vendor_qesdsect, domain;
+type vendor_qesdsect_exec, exec_type, file_type, vendor_file_type;

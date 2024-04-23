@@ -1,0 +1,1 @@
+neverallow { hal_oemlock_client -halclientdomain } domain:process fork;

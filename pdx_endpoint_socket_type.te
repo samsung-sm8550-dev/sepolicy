@@ -1,0 +1,2 @@
+expandtypeattribute(pdx_endpoint_socket_type)
+attribute pdx_endpoint_socket_type;

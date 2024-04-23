@@ -1,0 +1,16 @@
+allow vtloopback_app vtloopback_app_userfaultfd:anon_inode { create ioctl read };
+allow vtloopback_app vendor_diag_device:chr_file rw_file_perms;
+allow vtloopback_app vendor_hal_imsrtp:binder { call transfer };
+allow vtloopback_app vendor_hal_imsrtp:fd *;
+allow vtloopback_app vendor_hal_imsrtp_hwservice:hwservice_manager find;
+allow vtloopback_app cameraserver_service:service_manager find;
+allow vtloopback_app mediaserver_service:service_manager find;
+allow vtloopback_app app_api_service:service_manager find;
+allow vtloopback_app activity_service:service_manager find;
+type_transition vtloopback_app vtloopback_app:anon_inode vtloopback_app_userfaultfd "[userfaultfd]";
+r_dir_file(vtloopback_app, vendor_sysfs_diag)
+get_prop(vtloopback_app, vendor_ims_prop)
+app_domain(vtloopback_app)
+net_domain(vtloopback_app)
+hal_client_domain(vtloopback_app, vendor_hal_diaghal)
+type vtloopback_app, domain;

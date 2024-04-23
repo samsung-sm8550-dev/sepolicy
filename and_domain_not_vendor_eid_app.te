@@ -1,0 +1,1 @@
+neverallow { domain -vendor_eid_app } vendor_eid_app_userfaultfd:anon_inode *;

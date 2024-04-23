@@ -1,0 +1,12 @@
+allow aoncameraservice_app aoncameraservice_app_userfaultfd:anon_inode { create ioctl read };
+allow aoncameraservice_app vendor_diag_device:chr_file rw_file_perms;
+allow aoncameraservice_app hal_camera:binder { call transfer };
+allow aoncameraservice_app hal_camera:fd *;
+allow aoncameraservice_app cameraserver_service:service_manager find;
+allow aoncameraservice_app app_api_service:service_manager find;
+allow aoncameraservice_app activity_service:service_manager find;
+permissive aoncameraservice_app;
+type_transition aoncameraservice_app aoncameraservice_app:anon_inode aoncameraservice_app_userfaultfd "[userfaultfd]";
+r_dir_file(aoncameraservice_app, vendor_sysfs_diag)
+app_domain(aoncameraservice_app)
+type aoncameraservice_app, domain;

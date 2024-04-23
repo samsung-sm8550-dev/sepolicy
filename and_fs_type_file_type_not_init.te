@@ -1,0 +1,2 @@
+neverallow vendor_init { fs_type file_type -init_exec }:file entrypoint;
+neverallow init { fs_type file_type -init_exec }:file entrypoint;

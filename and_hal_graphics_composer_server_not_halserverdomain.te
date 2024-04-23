@@ -1,0 +1,1 @@
+neverallow { hal_graphics_composer_server -halserverdomain } domain:process fork;

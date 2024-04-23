@@ -1,0 +1,1 @@
+neverallow netd { appdomain -network_stack -su }:binder call;

@@ -1,0 +1,43 @@
+allow vendor_location_xtra_daemon vendor_location:process sigchld;
+allow vendor_location_xtra_daemon vendor_location:fd *;
+allow vendor_location_xtra_daemon vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_xtra_daemon vendor_location:unix_stream_socket { connectto read write };
+allow vendor_location_xtra_daemon su:tcp_socket { accept getopt read write };
+allow vendor_location_xtra_daemon su:fifo_file append;
+allow vendor_location_xtra_daemon vendor_location_data_file:dir create_dir_perms;
+allow vendor_location_xtra_daemon vendor_location_data_file:file create_file_perms;
+allow vendor_location_xtra_daemon vendor_location_socket:lnk_file { getattr open read };
+allow vendor_location_xtra_daemon vendor_location_socket:sock_file create_file_perms;
+allow vendor_location_xtra_daemon vendor_location_socket:dir rw_dir_perms;
+allow vendor_location_xtra_daemon vendor_hal_gnss_qti:unix_dgram_socket sendto;
+allow vendor_location_xtra_daemon system_server:binder { call transfer };
+allow vendor_location_xtra_daemon system_server:binder transfer;
+allow vendor_location_xtra_daemon system_server:fd *;
+allow vendor_location_xtra_daemon system_server:fifo_file { append write };
+allow vendor_location_xtra_daemon vendor_qms:binder { call transfer };
+allow vendor_location_xtra_daemon vendor_qms:binder transfer;
+allow vendor_location_xtra_daemon vendor_qms:fd *;
+allow vendor_location_xtra_daemon self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_location_xtra_daemon vendor_qtrsdkservice_service:service_manager find;
+allow vendor_location_xtra_daemon vendor_qcc_trd_2:binder { call transfer };
+allow vendor_location_xtra_daemon vendor_qcc_trd_2:binder transfer;
+allow vendor_location_xtra_daemon vendor_qcc_trd_2:fd *;
+allow vendor_location_xtra_daemon anr_data_file:file append;
+allow vendor_location_xtra_daemon dumpstate:fd *;
+allow vendor_location_xtra_daemon dumpstate:fifo_file { append write };
+allow vendor_location_xtra_daemon incidentd:fd *;
+allow vendor_location_xtra_daemon incidentd:fifo_file { append write };
+allow vendor_location_xtra_daemon tombstoned:fd *;
+allow vendor_location_xtra_daemon tombstone_data_file:file append;
+unix_socket_connect(vendor_location_xtra_daemon, tombstoned_crash, tombstoned)
+get_prop(vendor_location_xtra_daemon, hwservicemanager_prop)
+get_prop(vendor_location_xtra_daemon, vendor_qcc_prop)
+hwbinder_use(vendor_location_xtra_daemon)
+vndbinder_use(vendor_location_xtra_daemon)
+net_domain(vendor_location_xtra_daemon)
+hal_client_domain(vendor_location_xtra_daemon, vendor_qccsyshal)
+hal_client_domain(vendor_location_xtra_daemon, vendor_hal_datafactory_qti)
+hal_client_domain(vendor_location_xtra_daemon, vendor_hal_cacertservice_qti)
+add_service(vendor_location_xtra_daemon, vendor_xtra_service)
+type vendor_location_xtra_daemon, domain;
+type vendor_location_xtra_daemon_exec, exec_type, file_type, vendor_file_type;

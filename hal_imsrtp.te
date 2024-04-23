@@ -1,0 +1,38 @@
+allow vendor_hal_imsrtp self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_hal_imsrtp self:capability net_bind_service;
+allow vendor_hal_imsrtp vendor_qce_device:chr_file rw_file_perms;
+allow vendor_hal_imsrtp ion_device:chr_file r_file_perms;
+allow vendor_hal_imsrtp vendor_sysfs_data:file r_file_perms;
+allow vendor_hal_imsrtp vendor_qtelephony:binder { call transfer };
+allow vendor_hal_imsrtp vendor_qtelephony:binder transfer;
+allow vendor_hal_imsrtp vendor_qtelephony:fd *;
+allow vendor_hal_imsrtp su:fifo_file append;
+allow vendor_hal_imsrtp anr_data_file:file append;
+allow vendor_hal_imsrtp dumpstate:fd *;
+allow vendor_hal_imsrtp dumpstate:fifo_file { append write };
+allow vendor_hal_imsrtp incidentd:fd *;
+allow vendor_hal_imsrtp incidentd:fifo_file { append write };
+allow vendor_hal_imsrtp system_server:fifo_file { append write };
+allow vendor_hal_imsrtp tombstoned:fd *;
+allow vendor_hal_imsrtp tombstone_data_file:file append;
+allow vendor_hal_imsrtp vtloopback_app:binder transfer;
+dontaudit vendor_hal_imsrtp vendor_diag_device:chr_file { append getattr ioctl lock map open read watch watch_reads write };
+init_daemon_domain(vendor_hal_imsrtp)
+r_dir_file(vendor_hal_imsrtp, vendor_sysfs_diag)
+unix_socket_connect(vendor_hal_imsrtp, vendor_ims_service, vendor_ims_service)
+unix_socket_connect(vendor_hal_imsrtp, vendor_ims_service, logd)
+unix_socket_connect(vendor_hal_imsrtp, vendor_ims_service, tombstoned)
+unix_socket_connect(vendor_hal_imsrtp, logdr, vendor_ims_service)
+unix_socket_connect(vendor_hal_imsrtp, logdr, logd)
+unix_socket_connect(vendor_hal_imsrtp, logdr, tombstoned)
+unix_socket_connect(vendor_hal_imsrtp, tombstoned_crash, vendor_ims_service)
+unix_socket_connect(vendor_hal_imsrtp, tombstoned_crash, logd)
+unix_socket_connect(vendor_hal_imsrtp, tombstoned_crash, tombstoned)
+get_prop(vendor_hal_imsrtp, hwservicemanager_prop)
+get_prop(vendor_hal_imsrtp, vendor_ims_prop)
+hwbinder_use(vendor_hal_imsrtp)
+net_domain(vendor_hal_imsrtp)
+add_hwservice(vendor_hal_imsrtp, vendor_hal_imsrtp_hwservice)
+type vendor_hal_imsrtp, domain;
+type vendor_hal_imsrtp_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_imsrtp_hwservice, hwservice_manager_type, protected_hwservice;

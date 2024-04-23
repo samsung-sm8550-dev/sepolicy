@@ -1,0 +1,9 @@
+expandtypeattribute(hal_allocator)
+expandtypeattribute(hal_allocator_client)
+expandtypeattribute(hal_allocator_server)
+allow hal_allocator_client hal_allocator_server:binder { call transfer };
+allow hal_allocator_client hal_allocator_server:fd *;
+allow hal_allocator_client hidl_memory_hwservice:hwservice_manager find;
+allow hal_allocator_client same_process_hal_file:file { execute getattr map open read };
+allow hal_allocator_server hal_allocator_client:binder transfer;
+hal_attribute_hwservice(hal_allocator, hidl_allocator_hwservice)

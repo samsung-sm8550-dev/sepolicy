@@ -1,0 +1,7 @@
+allow vendor_init-qcom-crashdata-sh vendor_shell_exec:file rx_file_perms;
+allow vendor_init-qcom-crashdata-sh vendor_toolbox_exec:file rx_file_perms;
+init_daemon_domain(vendor_init-qcom-crashdata-sh)
+set_prop(vendor_init-qcom-crashdata-sh, vendor_crash_cnt_prop)
+set_prop(vendor_init-qcom-crashdata-sh, vendor_crash_detect_prop)
+type vendor_init-qcom-crashdata-sh, domain;
+type vendor_init-qcom-crashdata-sh_exec, exec_type, file_type, vendor_file_type;

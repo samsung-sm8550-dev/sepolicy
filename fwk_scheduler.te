@@ -1,0 +1,1 @@
+type fwk_scheduler_hwservice, coredomain_hwservice, hwservice_manager_type, protected_hwservice;

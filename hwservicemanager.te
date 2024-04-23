@@ -1,0 +1,15 @@
+neverallow hwservicemanager binder_device:chr_file no_rw_file_perms;
+neverallow hwservicemanager vndbinder_device:chr_file no_rw_file_perms;
+allow hwservicemanager self:binder set_context_mgr;
+allow hwservicemanager self:netlink_selinux_socket { accept append bind connect create getattr getopt listen lock name_bind read recvfrom relabelfrom relabelto sendto setattr setopt shutdown write };
+allow hwservicemanager system_file:dir r_dir_perms;
+allow hwservicemanager hwservice_contexts_file:file r_file_perms;
+allow hwservicemanager selinuxfs:file w_file_perms;
+allow hwservicemanager kernel:security compute_av;
+allow hwservicemanager lmkd:binder transfer;
+allow hwservicemanager lmkd:dir search;
+allow hwservicemanager lmkd:file { open read };
+allow hwservicemanager lmkd:process getattr;
+r_dir_file(hwservicemanager, selinuxfs)
+type hwservicemanager, domain, mlstrustedsubject;
+type hwservicemanager_exec, exec_type, file_type, system_file_type;

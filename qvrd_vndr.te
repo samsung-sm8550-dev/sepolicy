@@ -1,0 +1,77 @@
+allow vendor_qvrd_vndr vendor_hal_qvrservice_qti_socket_client:unix_stream_socket { getopt read setopt shutdown write };
+allow vendor_qvrd_vndr vendor_hal_qvrservice_qti_socket_fd_use_client:process setsched;
+allow vendor_qvrd_vndr system_server:binder { call transfer };
+allow vendor_qvrd_vndr system_server:binder transfer;
+allow vendor_qvrd_vndr system_server:fd *;
+allow vendor_qvrd_vndr system_server:fifo_file { append write };
+allow vendor_qvrd_vndr vendor_qvrd_vndr_data_file:dir create_dir_perms;
+allow vendor_qvrd_vndr vendor_qvrd_vndr_data_file:file create_file_perms;
+allow vendor_qvrd_vndr vendor_qvrd_vndr_socket:sock_file rw_file_perms;
+allow vendor_qvrd_vndr self:socket create_socket_perms_no_ioctl;
+allow vendor_qvrd_vndr self:capability sys_nice;
+allow vendor_qvrd_vndr dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_qvrd_vndr vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_qvrd_vndr graphics_device:dir r_dir_perms;
+allow vendor_qvrd_vndr graphics_device:chr_file rw_file_perms;
+allow vendor_qvrd_vndr vendor_sysfs_graphics:file rw_file_perms;
+allow vendor_qvrd_vndr su:process setsched;
+allow vendor_qvrd_vndr su:fifo_file append;
+allow vendor_qvrd_vndr appdomain:process setsched;
+allow vendor_qvrd_vndr device:dir r_dir_perms;
+allow vendor_qvrd_vndr gpu_device:chr_file r_file_perms;
+allow vendor_qvrd_vndr sensors_device:chr_file r_file_perms;
+allow vendor_qvrd_vndr video_device:chr_file r_file_perms;
+allow vendor_qvrd_vndr video_device:chr_file w_file_perms;
+allow vendor_qvrd_vndr fwk_sensor_hwservice:hwservice_manager find;
+allow vendor_qvrd_vndr vendor_sysfs_qvr_external_sensor:dir r_dir_perms;
+allow vendor_qvrd_vndr vendor_sysfs_qvr_external_sensor:file rw_file_perms;
+allow vendor_qvrd_vndr vendor_qvr_external_sensor_device:chr_file rw_file_perms;
+allow vendor_qvrd_vndr vendor_sysfs_usb_node:dir r_dir_perms;
+allow vendor_qvrd_vndr vendor_sysfs_usb_node:file rw_file_perms;
+allow vendor_qvrd_vndr vendor_qvr_hidraw_device:chr_file rw_file_perms;
+allow vendor_qvrd_vndr usb_device:dir r_dir_perms;
+allow vendor_qvrd_vndr usb_device:chr_file rw_file_perms;
+allow vendor_qvrd_vndr anr_data_file:file append;
+allow vendor_qvrd_vndr dumpstate:fd *;
+allow vendor_qvrd_vndr dumpstate:fifo_file { append write };
+allow vendor_qvrd_vndr dumpstate:binder transfer;
+allow vendor_qvrd_vndr incidentd:fd *;
+allow vendor_qvrd_vndr incidentd:fifo_file { append write };
+allow vendor_qvrd_vndr tombstoned:fd *;
+allow vendor_qvrd_vndr tombstone_data_file:file append;
+allow vendor_qvrd_vndr proc_uptime:file r_file_perms;
+allow vendor_qvrd_vndr sysfs_net:dir r_dir_perms;
+allow vendor_qvrd_vndr sysfs_net:file r_file_perms;
+allow vendor_qvrd_vndr wpa_data_file:dir { add_name remove_name search write };
+allow vendor_qvrd_vndr wpa_data_file:sock_file { create setattr unlink };
+allow vendor_qvrd_vndr hal_wifi_hostapd_default:unix_dgram_socket sendto;
+allow vendor_qvrd_vndr hostapd_data_file:dir search;
+allow vendor_qvrd_vndr hostapd_data_file:sock_file write;
+allow vendor_qvrd_vndr vendor_wifi_vendor_data_file:dir search;
+allow vendor_qvrd_vndr vendor_xdsp_device:chr_file r_file_perms;
+dontaudit vendor_qvrd_vndr vendor_xdsp_device:chr_file { getattr ioctl lock map open read watch watch_reads };
+init_daemon_domain(vendor_qvrd_vndr)
+r_dir_file(vendor_qvrd_vndr, vendor_sysfs_kgsl)
+r_dir_file(vendor_qvrd_vndr, vendor_sysfs_battery_supply)
+unix_socket_connect(vendor_qvrd_vndr, tombstoned_crash, tombstoned)
+unix_socket_connect(vendor_qvrd_vndr, tombstoned_crash, logd)
+unix_socket_connect(vendor_qvrd_vndr, logdr, tombstoned)
+unix_socket_connect(vendor_qvrd_vndr, logdr, logd)
+get_prop(vendor_qvrd_vndr, vendor_qvr_prop)
+get_prop(vendor_qvrd_vndr, vendor_sxr_prop)
+get_prop(vendor_qvrd_vndr, vendor_qvrd_prop)
+get_prop(vendor_qvrd_vndr, vendor_qvr_persist_prop)
+get_prop(vendor_qvrd_vndr, vendor_qvrd_persist_prop)
+get_prop(vendor_qvrd_vndr, vendor_adsprpc_prop)
+get_prop(vendor_qvrd_vndr, vendor_mpctl_prop)
+binder_service(vendor_qvrd_vndr)
+binder_use(vendor_qvrd_vndr)
+hal_server_domain(vendor_qvrd_vndr, vendor_hal_qvrservice_qti)
+hal_client_domain(vendor_qvrd_vndr, hal_audio)
+hal_client_domain(vendor_qvrd_vndr, hal_graphics_allocator)
+hal_client_domain(vendor_qvrd_vndr, hal_graphics_composer)
+hal_client_domain(vendor_qvrd_vndr, hal_sensors)
+hal_client_domain(vendor_qvrd_vndr, hal_thermal)
+hal_client_domain(vendor_qvrd_vndr, vendor_hal_perf)
+type vendor_qvrd_vndr, domain, mlstrustedsubject;
+type vendor_qvrd_vndr_exec, exec_type, file_type, vendor_file_type;

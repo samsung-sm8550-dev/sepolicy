@@ -1,0 +1,1 @@
+neverallow { domain -vendor_qms_app } vendor_qms_app_userfaultfd:anon_inode *;

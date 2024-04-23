@@ -1,0 +1,2 @@
+allow incidentd statsd:binder transfer;
+type incidentd, domain;

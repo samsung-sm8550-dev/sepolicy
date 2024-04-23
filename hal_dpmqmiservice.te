@@ -1,0 +1,10 @@
+allow vendor_hal_dpmqmiservice_qti_client vendor_hal_dpmqmiservice_qti_server:binder { call transfer };
+allow vendor_hal_dpmqmiservice_qti_client vendor_hal_dpmqmiservice_qti_server:binder transfer;
+allow vendor_hal_dpmqmiservice_qti_client vendor_hal_dpmqmiservice_qti_server:fd *;
+allow vendor_hal_dpmqmiservice_qti_server vendor_hal_dpmqmiservice_qti_client:binder transfer;
+allow vendor_hal_dpmqmiservice_qti_server vendor_hal_dpmqmiservice_qti_client:binder { call transfer };
+allow vendor_hal_dpmqmiservice_qti_server vendor_hal_dpmqmiservice_qti_client:fd *;
+attribute vendor_hal_dpmqmiservice_qti;
+attribute vendor_hal_dpmqmiservice_qti_client;
+attribute vendor_hal_dpmqmiservice_qti_server;
+hal_attribute_hwservice(vendor_hal_dpmqmiservice_qti, vendor_hal_dpmqmi_hwservice)

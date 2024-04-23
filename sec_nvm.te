@@ -1,0 +1,21 @@
+allow vendor_sec_nvm ion_device:chr_file rw_file_perms;
+allow vendor_sec_nvm vendor_skp_device:chr_file rw_file_perms;
+allow vendor_sec_nvm mnt_vendor_file:dir search;
+allow vendor_sec_nvm vendor_persist_secnvm_file:dir rw_dir_perms;
+allow vendor_sec_nvm vendor_persist_secnvm_file:file create_file_perms;
+allow vendor_sec_nvm vendor_sysfs_scsi_host:file rw_file_perms;
+allow vendor_sec_nvm vendor_dmabuf_sp_hlos_heap_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_vm_hlos_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_vm_cp_spss_sp_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_vm_cp_spss_sp_shared_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_vm_cp_spss_hlos_shared_device:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_membuf_dev:chr_file r_file_perms;
+allow vendor_sec_nvm vendor_spcom_device:chr_file rw_file_perms;
+allow vendor_sec_nvm vendor_sp_ssr_device:chr_file rw_file_perms;
+allow vendor_sec_nvm vendor_sec_nvm_device:chr_file rw_file_perms;
+allow vendor_sec_nvm vendor_spss_utils_device:chr_file rw_file_perms;
+init_daemon_domain(vendor_sec_nvm)
+set_prop(vendor_sec_nvm, vendor_spcomlib_prop)
+type vendor_sec_nvm, domain;
+type vendor_sec_nvm_exec, exec_type, file_type, vendor_file_type;

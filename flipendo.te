@@ -1,0 +1,13 @@
+allow flipendo flipendo_userfaultfd:anon_inode { create ioctl read };
+allow flipendo fwk_stats_service:service_manager find;
+allow flipendo gpuservice:binder { call transfer };
+allow flipendo gpuservice:fd *;
+allow flipendo app_api_service:service_manager find;
+allow flipendo color_display_service:service_manager find;
+dontaudit flipendo vendor_hwservice_type:hwservice_manager find;
+type_transition flipendo flipendo:anon_inode flipendo_userfaultfd "[userfaultfd]";
+binder_use(flipendo)
+app_domain(flipendo)
+hal_client_domain(flipendo, hal_power)
+hal_client_domain(flipendo, vendor_hal_perf)
+type flipendo, coredomain, domain;

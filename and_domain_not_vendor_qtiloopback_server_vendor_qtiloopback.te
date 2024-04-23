@@ -1,0 +1,1 @@
+neverallow { domain -vendor_qtiloopback_server -vendor_qtiloopback_client } vendor_qtiloopback_hwservice:hwservice_manager find;

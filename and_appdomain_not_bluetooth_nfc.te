@@ -1,0 +1,7 @@
+neverallow { appdomain -bluetooth -nfc } sysfs:file write;
+neverallow { appdomain -bluetooth -nfc } sysfs:dir write;
+neverallow { appdomain -bluetooth -nfc } sysfs:lnk_file write;
+neverallow { appdomain -bluetooth -nfc } sysfs:chr_file write;
+neverallow { appdomain -bluetooth -nfc } sysfs:blk_file write;
+neverallow { appdomain -bluetooth -nfc } sysfs:sock_file write;
+neverallow { appdomain -bluetooth -nfc } sysfs:fifo_file write;

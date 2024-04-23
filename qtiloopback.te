@@ -1,0 +1,13 @@
+allow vendor_qtiloopback_client vendor_qtiloopback_server:binder { call transfer };
+allow vendor_qtiloopback_client vendor_qtiloopback_server:binder transfer;
+allow vendor_qtiloopback_client vendor_qtiloopback_server:fd *;
+allow vendor_qtiloopback_client vendor_qtiloopback_hwservice:hwservice_manager find;
+allow vendor_qtiloopback_server vendor_qtiloopback_client:binder transfer;
+allow vendor_qtiloopback_server vendor_qtiloopback_client:binder { call transfer };
+allow vendor_qtiloopback_server vendor_qtiloopback_client:fd *;
+attribute vendor_qtiloopback;
+attribute vendor_qtiloopback_server;
+attribute vendor_qtiloopback_client;
+vndbinder_use(vendor_qtiloopback)
+add_hwservice(vendor_qtiloopback_server, vendor_qtiloopback_hwservice)
+type vendor_qtiloopback_hwservice, hwservice_manager_type, protected_hwservice;

@@ -1,0 +1,10 @@
+allow vendor_mlid self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_mlid vendor_location_socket:sock_file create_file_perms;
+allow vendor_mlid vendor_location_socket:dir rw_dir_perms;
+allow vendor_mlid vendor_location_socket:lnk_file read;
+allow vendor_mlid vendor_location_lowi_server:unix_dgram_socket sendto;
+allow vendor_mlid vendor_hal_gnss_qti:unix_dgram_socket sendto;
+init_daemon_domain(vendor_mlid)
+unix_socket_connect(vendor_mlid, vendor_location, vendor_location_lowi_server)
+type vendor_mlid, domain, mlstrustedsubject;
+type vendor_mlid_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,25 @@
+allow gatekeeperd ion_device:chr_file r_file_perms;
+allow gatekeeperd system_file:dir r_dir_perms;
+allow gatekeeperd su:tcp_socket { accept getopt read write };
+allow gatekeeperd apc_service:service_manager find;
+allow gatekeeperd keystore_service:service_manager find;
+allow gatekeeperd legacykeystore_service:service_manager find;
+allow gatekeeperd keystore:binder { call transfer };
+allow gatekeeperd keystore:binder transfer;
+allow gatekeeperd keystore:fd *;
+allow gatekeeperd keystore:keystore_key add_auth;
+allow gatekeeperd keystore:keystore2 add_auth;
+allow gatekeeperd authorization_service:service_manager find;
+allow gatekeeperd system_server:binder call;
+allow gatekeeperd permission_service:service_manager find;
+allow gatekeeperd gatekeeper_data_file:dir rw_dir_perms;
+allow gatekeeperd gatekeeper_data_file:file create_file_perms;
+allow gatekeeperd hardware_properties_service:service_manager find;
+r_dir_file(gatekeeperd, cgroup)
+r_dir_file(gatekeeperd, cgroup_v2)
+binder_service(gatekeeperd)
+binder_use(gatekeeperd)
+hal_client_domain(gatekeeperd, hal_gatekeeper)
+add_service(gatekeeperd, gatekeeper_service)
+type gatekeeperd, domain;
+type gatekeeperd_exec, exec_type, file_type, system_file_type;

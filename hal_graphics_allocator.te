@@ -1,0 +1,42 @@
+expandtypeattribute(hal_graphics_allocator)
+expandtypeattribute(hal_graphics_allocator_client)
+expandtypeattribute(hal_graphics_allocator_server)
+allow hal_graphics_allocator_server dumpstate:fifo_file write;
+allow hal_graphics_allocator_server dumpstate:fd *;
+allow hal_graphics_allocator_server hal_graphics_allocator_client:binder transfer;
+allow hal_graphics_allocator_server su:tcp_socket { accept getopt read write };
+allow hal_graphics_allocator_server servicemanager:binder { call transfer };
+allow hal_graphics_allocator_server servicemanager:fd *;
+allow hal_graphics_allocator_client hal_graphics_allocator_server:binder { call transfer };
+allow hal_graphics_allocator_client hal_graphics_allocator_server:fd *;
+allow hal_graphics_allocator_client hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_graphics_allocator_client same_process_hal_file:file { execute getattr map open read };
+allow hal_graphics_allocator_client servicemanager:binder { call transfer };
+allow hal_graphics_allocator_client servicemanager:fd *;
+allow hal_graphics_allocator gpu_device:chr_file rw_file_perms;
+allow hal_graphics_allocator gpu_device:dir r_dir_perms;
+allow hal_graphics_allocator ion_device:chr_file r_file_perms;
+allow hal_graphics_allocator dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_graphics_allocator dmabuf_system_secure_heap_device:chr_file r_file_perms;
+allow hal_graphics_allocator self:capability sys_nice;
+allow hal_graphics_allocator self:cap_userns sys_nice;
+allow hal_graphics_allocator_default hal_graphics_allocator_default_tmpfs:file { getattr map read write };
+allow hal_graphics_allocator_default vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_dmabuf_secure_pixel:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_dmabuf_display_heap_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_dmabuf_secure_cdsp_heap_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_membuf_dev:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_vm_cp_camera_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_vm_cp_camera_preview_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_vm_cp_sec_display_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_vm_cp_cdsp_device:chr_file r_file_perms;
+allow hal_graphics_allocator_default vendor_dmabuf_demura_heap_device:chr_file r_file_perms;
+dontaudit hal_graphics_allocator_default unlabeled:dir search;
+type_transition hal_graphics_allocator_default tmpfs:file hal_graphics_allocator_default_tmpfs;
+init_daemon_domain(hal_graphics_allocator_default)
+hal_server_domain(hal_graphics_allocator_default, hal_graphics_allocator)
+hal_attribute_service(hal_graphics_allocator, hal_graphics_allocator_service)
+hal_attribute_hwservice(hal_graphics_allocator, hal_graphics_allocator_hwservice)
+type hal_graphics_allocator_default, domain;
+type hal_graphics_allocator_default_exec, exec_type, file_type, vendor_file_type;
+type hal_graphics_allocator_hwservice, hwservice_manager_type;

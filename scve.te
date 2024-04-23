@@ -1,0 +1,11 @@
+allow vendor_scve ion_device:chr_file rw_file_perms;
+allow vendor_scve gpu_device:chr_file rw_file_perms;
+allow vendor_scve sdcard_type:dir rw_dir_perms;
+allow vendor_scve sdcard_type:file create_file_perms;
+allow vendor_scve vendor_qdsp_device:chr_file rw_file_perms;
+allow vendor_scve vendor_dsp_device:chr_file rw_file_perms;
+init_daemon_domain(vendor_scve)
+r_dir_file(vendor_scve, adsprpcd_file)
+hal_server_domain(vendor_scve, vendor_hal_scve)
+type vendor_scve, domain;
+type vendor_scve_exec, exec_type, file_type, vendor_file_type;

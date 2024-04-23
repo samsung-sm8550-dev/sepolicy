@@ -1,0 +1,3 @@
+unix_socket_connect(network_stack, vendor_dpmtcm, vendor_dpmd)
+hal_client_domain(network_stack, vendor_hal_perf)
+type network_stack, domain;

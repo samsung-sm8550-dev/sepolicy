@@ -1,0 +1,6 @@
+allow wificfrsvc servicemanager:binder { call transfer };
+allow wificfrsvc servicemanager:fd *;
+init_daemon_domain(wificfrsvc)
+hal_server_domain(wificfrsvc, hal_wificfr)
+type wificfrsvc, domain;
+type wificfrsvc_exec, exec_type, file_type, vendor_file_type;

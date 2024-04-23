@@ -1,0 +1,1 @@
+neverallow { domain -vendor_tzas_app } vendor_tzas_app_userfaultfd:anon_inode *;

@@ -1,0 +1,3 @@
+allow system_net_netd_service servicemanager:binder { call transfer };
+allow system_net_netd_service servicemanager:fd *;
+type system_net_netd_service, service_manager_type;

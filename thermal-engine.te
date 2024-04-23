@@ -1,0 +1,45 @@
+allow vendor_thermal-engine sysfs:dir r_dir_perms;
+allow vendor_thermal-engine self:capability { fsetid sys_boot };
+allow vendor_thermal-engine self:socket create_socket_perms;
+allow vendor_thermal-engine self:qipcrtr_socket create_socket_perms;
+allow vendor_thermal-engine self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow vendor_thermal-engine self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_thermal-engine vendor_thermal_socket:dir w_dir_perms;
+allow vendor_thermal-engine vendor_thermal_socket:sock_file create_file_perms;
+allow vendor_thermal-engine socket_device:dir w_dir_perms;
+allow vendor_thermal-engine sysfs_thermal:file w_file_perms;
+allow vendor_thermal-engine sysfs_devices_system_cpu:file rw_file_perms;
+allow vendor_thermal-engine vendor_qmuxd_socket:dir create_dir_perms;
+allow vendor_thermal-engine vendor_qmuxd_socket:sock_file { create getattr read setattr unlink write };
+allow vendor_thermal-engine uio_device:chr_file rw_file_perms;
+allow vendor_thermal-engine vendor_diag_device:chr_file rw_file_perms;
+allow vendor_thermal-engine vendor_sysfs_kgsl:dir r_dir_perms;
+allow vendor_thermal-engine vendor_sysfs_kgsl:file rw_file_perms;
+allow vendor_thermal-engine vendor_sysfs_kgsl:lnk_file r_file_perms;
+allow vendor_thermal-engine vendor_sysfs_data:file r_file_perms;
+allow vendor_thermal-engine vendor_sysfs_battery_supply:dir r_dir_perms;
+allow vendor_thermal-engine vendor_sysfs_battery_supply:file rw_file_perms;
+allow vendor_thermal-engine vendor_sysfs_battery_supply:lnk_file r_file_perms;
+allow vendor_thermal-engine vendor_sysfs_graphics:dir r_dir_perms;
+allow vendor_thermal-engine vendor_sysfs_graphics:file rw_file_perms;
+allow vendor_thermal-engine vendor_sysfs_graphics:lnk_file r_file_perms;
+allow vendor_thermal-engine vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_thermal-engine ion_device:chr_file r_file_perms;
+allow vendor_thermal-engine block_device:dir r_dir_perms;
+allow vendor_thermal-engine vendor_limits_block_device:blk_file rw_file_perms;
+allowxperm vendor_thermal-engine self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_thermal-engine self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+init_daemon_domain(vendor_thermal-engine)
+r_dir_file(vendor_thermal-engine, sysfs_thermal)
+r_dir_file(vendor_thermal-engine, vendor_sysfs_diag)
+r_dir_file(vendor_thermal-engine, sysfs_leds)
+r_dir_file(vendor_thermal-engine, sysfs_uio)
+r_dir_file(vendor_thermal-engine, vendor_sysfs_uio_file)
+r_dir_file(vendor_thermal-engine, adsprpcd_file)
+r_dir_file(vendor_thermal-engine, vendor_sysfs_devfreq)
+unix_socket_connect(vendor_thermal-engine, vendor_qmuxd, vendor_qmuxd)
+unix_socket_connect(vendor_thermal-engine, vendor_qmuxd, init)
+unix_socket_connect(vendor_thermal-engine, property, vendor_qmuxd)
+set_prop(vendor_thermal-engine, powerctl_prop)
+type vendor_thermal-engine, domain;
+type vendor_thermal-engine_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,4 @@
+init_daemon_domain(vendor_wigighalsvc)
+hal_server_domain(vendor_wigighalsvc, vendor_hal_wigig)
+type vendor_wigighalsvc, domain;
+type vendor_wigighalsvc_exec, exec_type, file_type, vendor_file_type;

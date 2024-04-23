@@ -1,0 +1,24 @@
+allow vendor_vppservice servicemanager:binder { call transfer };
+allow vendor_vppservice servicemanager:fd *;
+allow vendor_vppservice vendor_vpp_data_file:dir create_dir_perms;
+allow vendor_vppservice vendor_vpp_data_file:file create_file_perms;
+allow vendor_vppservice mnt_vendor_file:dir search;
+allow vendor_vppservice video_device:chr_file rw_file_perms;
+allow vendor_vppservice vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_vppservice gpu_device:chr_file rw_file_perms;
+allow vendor_vppservice vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_vppservice dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_vppservice vendor_membuf_dev:chr_file r_file_perms;
+allow vendor_vppservice vendor_vm_cp_pixel_device:chr_file r_file_perms;
+allow vendor_vppservice ion_device:chr_file rw_file_perms;
+dontaudit vendor_vppservice vendor_xdsp_device:chr_file { ioctl open read };
+init_daemon_domain(vendor_vppservice)
+r_dir_file(vendor_vppservice, adsprpcd_file)
+r_dir_file(vendor_vppservice, firmware_file)
+r_dir_file(vendor_vppservice, vendor_persist_vpp_file)
+get_prop(vendor_vppservice, vendor_adsprpc_prop)
+hal_server_domain(vendor_vppservice, vendor_hal_vpp)
+hal_client_domain(vendor_vppservice, hal_graphics_allocator)
+hal_client_domain(vendor_vppservice, vendor_hal_capabilityconfigstore_qti)
+type vendor_vppservice, domain;
+type vendor_vppservice_exec, exec_type, file_type, vendor_file_type;

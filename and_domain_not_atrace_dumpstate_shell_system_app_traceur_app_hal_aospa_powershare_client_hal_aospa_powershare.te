@@ -1,0 +1,1 @@
+neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -hal_aospa_powershare_client -hal_aospa_powershare_server } hal_aospa_powershare_service:service_manager find;

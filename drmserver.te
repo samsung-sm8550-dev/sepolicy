@@ -1,0 +1,49 @@
+allow drmserver system_server:binder { call transfer };
+allow drmserver system_server:fd *;
+allow drmserver appdomain:binder { call transfer };
+allow drmserver appdomain:fd *;
+allow drmserver mediametrics:binder { call transfer };
+allow drmserver mediametrics:fd *;
+allow drmserver mediaserver:binder { call transfer };
+allow drmserver mediaserver:fd *;
+allow drmserver mediaserver:dir search;
+allow drmserver mediaserver:file { open read };
+allow drmserver mediaserver:process getattr;
+allow drmserver sdcard_type:dir search;
+allow drmserver sdcard_type:file { getattr map read write };
+allow drmserver fuse:dir search;
+allow drmserver fuse:file { getattr map read write };
+allow drmserver drm_data_file:dir create_dir_perms;
+allow drmserver drm_data_file:file create_file_perms;
+allow drmserver app_data_file:file { getattr map read write };
+allow drmserver privapp_data_file:file { getattr map read write };
+allow drmserver apk_data_file:dir rw_dir_perms;
+allow drmserver apk_data_file:sock_file unlink;
+allow drmserver apk_data_file:file { getattr map read };
+allow drmserver drmserver_socket:sock_file create_file_perms;
+allow drmserver asec_apk_file:file { getattr map read };
+allow drmserver ringtone_file:file { getattr map read };
+allow drmserver radio_data_file:file { getattr map read };
+allow drmserver oemfs:dir search;
+allow drmserver oemfs:file r_file_perms;
+allow drmserver vendor_overlay_file:file { map read };
+allow drmserver su:tcp_socket { accept getopt read write };
+allow drmserver permission_service:service_manager find;
+allow drmserver mediametrics_service:service_manager find;
+allow drmserver selinuxfs:file w_file_perms;
+allow drmserver kernel:security compute_av;
+allow drmserver self:netlink_selinux_socket { accept append bind connect create getattr getopt listen lock name_bind read recvfrom relabelfrom relabelto sendto setattr setopt shutdown write };
+auditallow drmserver apk_data_file:dir { add_name write };
+auditallow drmserver drmserver_socket:sock_file create;
+r_dir_file(drmserver, efs_file)
+r_dir_file(drmserver, media_rw_data_file)
+r_dir_file(drmserver, selinuxfs)
+r_dir_file(drmserver, cgroup)
+r_dir_file(drmserver, cgroup_v2)
+r_dir_file(drmserver, system_file)
+binder_service(drmserver)
+binder_use(drmserver)
+net_domain(drmserver)
+add_service(drmserver, drmserver_service)
+type drmserver, domain, mlstrustedsubject;
+type drmserver_exec, exec_type, file_type, system_file_type;

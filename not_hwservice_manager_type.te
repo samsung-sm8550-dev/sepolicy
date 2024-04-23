@@ -1,0 +1,1 @@
+neverallow domain ~hwservice_manager_type:hwservice_manager { add find };

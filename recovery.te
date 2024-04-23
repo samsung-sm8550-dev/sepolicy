@@ -1,0 +1,3 @@
+allow recovery vendor_sysfs_scsi_host:dir search;
+set_prop(recovery, boottime_prop)
+type recovery, domain;

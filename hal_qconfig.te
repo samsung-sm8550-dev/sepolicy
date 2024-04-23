@@ -1,0 +1,14 @@
+allow vendor_hal_qconfig_client vendor_hal_qconfig_service:service_manager find;
+allow vendor_hal_qconfig_client vendor_hal_qconfig_server:binder { call transfer };
+allow vendor_hal_qconfig_client vendor_hal_qconfig_server:binder transfer;
+allow vendor_hal_qconfig_client vendor_hal_qconfig_server:fd *;
+allow vendor_hal_qconfig_server su:tcp_socket { accept getopt read write };
+allow vendor_hal_qconfig_server vendor_hal_qconfig_client:binder transfer;
+allow vendor_hal_qconfig_server vendor_hal_qconfig_client:binder { call transfer };
+allow vendor_hal_qconfig_server vendor_hal_qconfig_client:fd *;
+attribute vendor_hal_qconfig;
+attribute vendor_hal_qconfig_client;
+attribute vendor_hal_qconfig_server;
+add_service(vendor_hal_qconfig_server, vendor_hal_qconfig_service)
+hal_attribute_hwservice(vendor_hal_qconfig, vendor_hal_qconfig_hwservice)
+type vendor_hal_qconfig_hwservice, hwservice_manager_type, protected_hwservice;

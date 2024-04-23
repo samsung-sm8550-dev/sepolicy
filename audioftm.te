@@ -1,0 +1,16 @@
+allow vendor_audioftm vendor_audioftm_exec:file { entrypoint rx_file_perms };
+allow vendor_audioftm vendor_mmi:process sigchld;
+allow vendor_audioftm vendor_proc_audiod:file r_file_perms;
+allow vendor_audioftm vendor_proc_audiod:dir search;
+allow vendor_audioftm proc_asound:dir search;
+allow vendor_audioftm proc_asound:file r_file_perms;
+allow vendor_audioftm devpts:chr_file rw_file_perms;
+allow vendor_audioftm vendor_audio_data_file:dir create_dir_perms;
+allow vendor_audioftm vendor_audio_data_file:file create_file_perms;
+allow vendor_audioftm audio_device:dir r_dir_perms;
+allow vendor_audioftm audio_device:chr_file rw_file_perms;
+allow vendor_audioftm vendor_sysfs_sndcard:file rw_file_perms;
+init_daemon_domain(vendor_audioftm)
+hal_client_domain(vendor_audioftm, hal_audio)
+type vendor_audioftm, domain;
+type vendor_audioftm_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,15 @@
+allow vendor_hal_atfwd_client vendor_hal_atfwd_server:binder { call transfer };
+allow vendor_hal_atfwd_client vendor_hal_atfwd_server:binder transfer;
+allow vendor_hal_atfwd_client vendor_hal_atfwd_server:fd *;
+allow vendor_hal_atfwd_client vendor_hal_atfwd_service:service_manager find;
+allow vendor_hal_atfwd_server vendor_hal_atfwd_client:binder transfer;
+allow vendor_hal_atfwd_server vendor_hal_atfwd_client:binder { call transfer };
+allow vendor_hal_atfwd_server vendor_hal_atfwd_client:fd *;
+allow vendor_hal_atfwd_server su:tcp_socket { accept getopt read write };
+allow vendor_hal_atfwd_server servicemanager:binder { call transfer };
+allow vendor_hal_atfwd_server servicemanager:fd *;
+attribute vendor_hal_atfwd;
+attribute vendor_hal_atfwd_server;
+attribute vendor_hal_atfwd_client;
+add_service(vendor_hal_atfwd_server, vendor_hal_atfwd_service)
+type vendor_hal_atfwd_hwservice, coredomain_hwservice, hwservice_manager_type, protected_hwservice;

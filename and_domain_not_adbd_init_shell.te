@@ -1,0 +1,8 @@
+neverallow { domain -adbd -init -shell } shell_test_data_file:file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:lnk_file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:chr_file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:blk_file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:sock_file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:sock_file *;
+neverallow { domain -adbd -init -shell } shell_test_data_file:fifo_file no_w_file_perms;
+neverallow { domain -adbd -init -shell } shell_test_data_file:dir no_w_dir_perms;

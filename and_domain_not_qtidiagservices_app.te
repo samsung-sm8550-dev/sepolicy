@@ -1,0 +1,1 @@
+neverallow { domain -qtidiagservices_app } qtidiagservices_app_userfaultfd:anon_inode *;

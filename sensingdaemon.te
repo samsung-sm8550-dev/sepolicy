@@ -1,0 +1,7 @@
+allow vendor_sensingdaemon self:unix_stream_socket { accept listen read write };
+allow vendor_sensingdaemon self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_sensingdaemon vendor_sensing_vendor_data_file:dir rw_dir_perms;
+allow vendor_sensingdaemon vendor_sensing_vendor_data_file:file create_file_perms;
+init_daemon_domain(vendor_sensingdaemon)
+type vendor_sensingdaemon, domain;
+type vendor_sensingdaemon_exec, exec_type, file_type, vendor_file_type;

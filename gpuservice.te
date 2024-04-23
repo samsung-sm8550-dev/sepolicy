@@ -1,0 +1,9 @@
+allow gpuservice statsd:binder transfer;
+allow gpuservice flipendo:binder transfer;
+allow gpuservice bluetooth:binder transfer;
+allow gpuservice vendor_libsochelpertest_app:binder transfer;
+allow gpuservice vendor_snapcam_app:binder transfer;
+allow gpuservice vendor_location_app_test:binder transfer;
+allow gpuservice vendor_sys_seccam2_app:binder transfer;
+get_prop(gpuservice, graphics_config_prop)
+type gpuservice, domain;

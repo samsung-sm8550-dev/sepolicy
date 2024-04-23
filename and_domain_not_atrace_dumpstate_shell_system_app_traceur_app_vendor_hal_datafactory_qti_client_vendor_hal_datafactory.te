@@ -1,0 +1,1 @@
+neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -vendor_hal_datafactory_qti_client -vendor_hal_datafactory_qti_server } vendor_hal_factory_aidlservice:service_manager find;

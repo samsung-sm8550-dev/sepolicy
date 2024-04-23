@@ -1,0 +1,28 @@
+expandtypeattribute(hal_dumpstate)
+expandtypeattribute(hal_dumpstate_client)
+expandtypeattribute(hal_dumpstate_server)
+allow hal_dumpstate_server dumpstate:fifo_file write;
+allow hal_dumpstate_server dumpstate:fd *;
+allow hal_dumpstate_server hal_dumpstate_client:binder transfer;
+allow hal_dumpstate_server hal_dumpstate_client:binder { call transfer };
+allow hal_dumpstate_server hal_dumpstate_client:fd *;
+allow hal_dumpstate_server su:tcp_socket { accept getopt read write };
+allow hal_dumpstate_server servicemanager:binder { call transfer };
+allow hal_dumpstate_server servicemanager:fd *;
+allow hal_dumpstate_client hal_dumpstate_server:binder { call transfer };
+allow hal_dumpstate_client hal_dumpstate_server:binder transfer;
+allow hal_dumpstate_client hal_dumpstate_server:fd *;
+allow hal_dumpstate shell_data_file:file write;
+allow hal_dumpstate proc_interrupts:file r_file_perms;
+allow hal_dumpstate_default debugfs:dir { open read };
+allow hal_dumpstate_default dumpstate:binder transfer;
+init_daemon_domain(hal_dumpstate_default)
+r_dir_file(hal_dumpstate, fscklogs)
+set_prop(hal_dumpstate_server, hal_dumpstate_config_prop)
+binder_use(hal_dumpstate_default)
+hal_server_domain(hal_dumpstate_default, hal_dumpstate)
+hal_attribute_service(hal_dumpstate, hal_dumpstate_service)
+hal_attribute_hwservice(hal_dumpstate, hal_dumpstate_hwservice)
+type hal_dumpstate_default, domain;
+type hal_dumpstate_default_exec, exec_type, file_type, vendor_file_type;
+type hal_dumpstate_hwservice, hwservice_manager_type, protected_hwservice;

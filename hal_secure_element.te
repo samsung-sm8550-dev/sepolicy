@@ -1,0 +1,28 @@
+expandtypeattribute(hal_secure_element)
+expandtypeattribute(hal_secure_element_client)
+expandtypeattribute(hal_secure_element_server)
+allow hal_secure_element_client hal_secure_element_server:binder { call transfer };
+allow hal_secure_element_client hal_secure_element_server:binder transfer;
+allow hal_secure_element_client hal_secure_element_server:fd *;
+allow hal_secure_element_server hal_secure_element_client:binder transfer;
+allow hal_secure_element_server hal_secure_element_client:binder { call transfer };
+allow hal_secure_element_server hal_secure_element_client:fd *;
+allow hal_secure_element_server su:tcp_socket { accept getopt read write };
+allow hal_secure_element_default secure_element_device:chr_file rw_file_perms;
+allow hal_secure_element_default vendor_secure_element_vendor_data_file:dir rw_dir_perms;
+allow hal_secure_element_default vendor_secure_element_vendor_data_file:file create_file_perms;
+allow hal_secure_element_default tee_device:chr_file rw_file_perms;
+allow hal_secure_element_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_secure_element_default)
+unix_socket_connect(hal_secure_element_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_secure_element_default, vendor_ese_prop)
+get_prop(hal_secure_element_default, vendor_nfc_nq_prop)
+binder_use(hal_secure_element_server)
+hal_server_domain(hal_secure_element_default, hal_secure_element)
+hal_client_domain(hal_secure_element_default, vendor_hal_qteeconnector)
+hal_client_domain(hal_secure_element_default, vendor_hal_esepowermanager)
+hal_attribute_service(hal_secure_element, hal_secure_element_service)
+hal_attribute_hwservice(hal_secure_element, hal_secure_element_hwservice)
+type hal_secure_element_default, domain;
+type hal_secure_element_default_exec, exec_type, file_type, vendor_file_type;
+type hal_secure_element_hwservice, hwservice_manager_type, protected_hwservice;

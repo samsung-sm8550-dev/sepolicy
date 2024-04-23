@@ -1,0 +1,5 @@
+allow vendor_cta_app vendor_cta_app_userfaultfd:anon_inode { create ioctl read };
+permissive vendor_cta_app;
+type_transition vendor_cta_app vendor_cta_app:anon_inode vendor_cta_app_userfaultfd "[userfaultfd]";
+app_domain(vendor_cta_app)
+type vendor_cta_app, domain;

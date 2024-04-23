@@ -1,0 +1,2 @@
+type rild_socket, file_type;
+type vendor_rild_socket, file_type;

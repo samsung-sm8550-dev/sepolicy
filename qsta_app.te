@@ -1,0 +1,20 @@
+allow vendor_qsta_app vendor_qsta_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_qsta_app app_api_service:service_manager find;
+allow vendor_qsta_app audioserver_service:service_manager find;
+allow vendor_qsta_app mediaserver_service:service_manager find;
+allow vendor_qsta_app mediametrics_service:service_manager find;
+allow vendor_qsta_app surfaceflinger_service:service_manager find;
+allow vendor_qsta_app vendor_diag_device:chr_file { ioctl open read write };
+allow vendor_qsta_app mnt_vendor_file:dir r_dir_perms;
+allow vendor_qsta_app system_app_data_file:dir create_dir_perms;
+allow vendor_qsta_app system_app_data_file:file create_file_perms;
+dontaudit vendor_qsta_app gpu_service:service_manager find;
+dontaudit vendor_qsta_app gpuservice:binder call;
+dontaudit vendor_qsta_app vendor_hal_qspmhal_hwservice:hwservice_manager find;
+dontaudit vendor_qsta_app default_prop:file read;
+type_transition vendor_qsta_app vendor_qsta_app:anon_inode vendor_qsta_app_userfaultfd "[userfaultfd]";
+r_dir_file(vendor_qsta_app, vendor_persist_sensors_file)
+get_prop(vendor_qsta_app, vendor_sensors_prop)
+app_domain(vendor_qsta_app)
+hal_client_domain(vendor_qsta_app, vendor_hal_perf)
+type vendor_qsta_app, domain;

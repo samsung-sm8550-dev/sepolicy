@@ -1,0 +1,79 @@
+expandtypeattribute(hal_bluetooth)
+expandtypeattribute(hal_bluetooth_client)
+expandtypeattribute(hal_bluetooth_server)
+allow hal_bluetooth_server dumpstate:fifo_file write;
+allow hal_bluetooth_server dumpstate:fd *;
+allow hal_bluetooth_server hal_bluetooth_client:binder transfer;
+allow hal_bluetooth_server hal_bluetooth_client:binder { call transfer };
+allow hal_bluetooth_server hal_bluetooth_client:fd *;
+allow hal_bluetooth_server servicemanager:binder { call transfer };
+allow hal_bluetooth_server servicemanager:fd *;
+allow hal_bluetooth_server su:tcp_socket { accept getopt read write };
+allow hal_bluetooth_client hal_bluetooth_server:binder { call transfer };
+allow hal_bluetooth_client hal_bluetooth_server:binder transfer;
+allow hal_bluetooth_client hal_bluetooth_server:fd *;
+allow hal_bluetooth sysfs_wake_lock:file rw_file_perms;
+allow hal_bluetooth self:capability2 block_suspend;
+allow hal_bluetooth self:capability2 wake_alarm;
+allow hal_bluetooth self:cap2_userns block_suspend;
+allow hal_bluetooth self:cap2_userns wake_alarm;
+allow hal_bluetooth self:capability net_admin;
+allow hal_bluetooth self:capability sys_nice;
+allow hal_bluetooth self:cap_userns net_admin;
+allow hal_bluetooth self:cap_userns sys_nice;
+allow hal_bluetooth system_suspend_server:binder { call transfer };
+allow hal_bluetooth system_suspend_server:fd *;
+allow hal_bluetooth system_suspend_hwservice:hwservice_manager find;
+allow hal_bluetooth hidl_manager_hwservice:hwservice_manager find;
+allow hal_bluetooth hal_system_suspend_service:service_manager find;
+allow hal_bluetooth servicemanager:fd *;
+allow hal_bluetooth uhid_device:chr_file rw_file_perms;
+allow hal_bluetooth hci_attach_dev:chr_file rw_file_perms;
+allow hal_bluetooth sysfs_bluetooth_writable:file rw_file_perms;
+allow hal_bluetooth proc_bluetooth_writable:file rw_file_perms;
+allow hal_bluetooth fwk_scheduler_hwservice:hwservice_manager find;
+allow hal_bluetooth system_server:binder call;
+allow hal_bluetooth vendor_diag_device:chr_file rw_file_perms;
+allow hal_bluetooth_default bt_device:chr_file { open read write };
+allow hal_bluetooth_default self:bluetooth_socket { bind create read write };
+allow hal_bluetooth_default self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow hal_bluetooth_default self:socket create_socket_perms_no_ioctl;
+allow hal_bluetooth_default vendor_bt_device:chr_file rw_file_perms;
+allow hal_bluetooth_default vendor_persist_bluetooth_file:dir rw_dir_perms;
+allow hal_bluetooth_default vendor_persist_bluetooth_file:file create_file_perms;
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:file create_file_perms;
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:dir create_dir_perms;
+allow hal_bluetooth_default proc_sysrq:file rw_file_perms;
+allow hal_bluetooth_default vendor_bt_data_file:dir ra_dir_perms;
+allow hal_bluetooth_default vendor_bt_data_file:file create_file_perms;
+allow hal_bluetooth_default vendor_debugfs_bt_tracing:dir r_dir_perms;
+allow hal_bluetooth_default vendor_debugfs_bt_tracing:file r_file_perms;
+allow hal_bluetooth_default debugfs_tracing_instances:dir search;
+allow hal_bluetooth_default dumpstate:binder transfer;
+allow hal_bluetooth_default vendor_fm_radio_device:chr_file r_file_perms;
+init_daemon_domain(hal_bluetooth_default)
+r_dir_file(hal_bluetooth, bluetooth_efs_file)
+r_dir_file(hal_bluetooth, sysfs_type)
+r_dir_file(hal_bluetooth, vendor_sysfs_diag)
+r_dir_file(hal_bluetooth_default, bt_firmware_file)
+r_dir_file(hal_bluetooth_default, mnt_vendor_file)
+unix_socket_connect(hal_bluetooth_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_bluetooth, hwservicemanager_prop)
+get_prop(hal_bluetooth_default, vendor_soc_id_prop)
+set_prop(hal_bluetooth, bluetooth_a2dp_offload_prop)
+set_prop(hal_bluetooth, bluetooth_audio_hal_prop)
+set_prop(hal_bluetooth, bluetooth_prop)
+set_prop(hal_bluetooth, exported_bluetooth_prop)
+set_prop(hal_bluetooth, vendor_bluetooth_prop)
+binder_use(hal_bluetooth)
+hwbinder_use(hal_bluetooth)
+hal_server_domain(hal_bluetooth_default, hal_bluetooth)
+hal_server_domain(hal_bluetooth_default, vendor_hal_btconfigstore)
+hal_server_domain(hal_bluetooth_default, vendor_hal_fm)
+hal_attribute_service(hal_bluetooth, hal_bluetooth_service)
+hal_attribute_service(hal_bluetooth, vendor_hal_bttpi_service)
+hal_attribute_service(hal_bluetooth, vendor_hal_xpanprovider_service)
+hal_attribute_hwservice(hal_bluetooth, hal_bluetooth_hwservice)
+type hal_bluetooth_default, domain;
+type hal_bluetooth_default_exec, exec_type, file_type, vendor_file_type;
+type hal_bluetooth_hwservice, hwservice_manager_type, protected_hwservice;

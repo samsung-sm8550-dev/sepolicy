@@ -1,0 +1,2 @@
+hal_client_domain(untrusted_app_30, vendor_hal_dspmanager)
+type untrusted_app_30, domain;

@@ -1,0 +1,1 @@
+neverallow { domain -crash_dump -llkd } logd:process ptrace;

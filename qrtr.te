@@ -1,0 +1,9 @@
+allow vendor_qrtr self:socket create_socket_perms;
+allow vendor_qrtr self:qipcrtr_socket create_socket_perms;
+allow vendor_qrtr self:capability net_bind_service;
+allow vendor_qrtr devpts:chr_file rw_file_perms;
+allowxperm vendor_qrtr self:ioctl socket 0x5411;
+allowxperm vendor_qrtr self:ioctl qipcrtr_socket 0x5411;
+init_daemon_domain(vendor_qrtr)
+type vendor_qrtr, domain;
+type vendor_qrtr_exec, exec_type, file_type, vendor_file_type;

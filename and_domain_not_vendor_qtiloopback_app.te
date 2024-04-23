@@ -1,0 +1,1 @@
+neverallow { domain -vendor_qtiloopback_app } vendor_qtiloopback_app_userfaultfd:anon_inode *;

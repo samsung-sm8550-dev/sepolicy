@@ -1,0 +1,17 @@
+expandtypeattribute(hal_tv_hdmi_connection)
+expandtypeattribute(hal_tv_hdmi_connection_client)
+expandtypeattribute(hal_tv_hdmi_connection_server)
+allow hal_tv_hdmi_connection_client hal_tv_hdmi_connection_server:binder { call transfer };
+allow hal_tv_hdmi_connection_client hal_tv_hdmi_connection_server:binder transfer;
+allow hal_tv_hdmi_connection_client hal_tv_hdmi_connection_server:fd *;
+allow hal_tv_hdmi_connection_server hal_tv_hdmi_connection_client:binder transfer;
+allow hal_tv_hdmi_connection_server hal_tv_hdmi_connection_client:binder { call transfer };
+allow hal_tv_hdmi_connection_server hal_tv_hdmi_connection_client:fd *;
+allow hal_tv_hdmi_connection_server su:tcp_socket { accept getopt read write };
+init_daemon_domain(hal_tv_hdmi_connection_default)
+binder_use(hal_tv_hdmi_connection_client)
+binder_use(hal_tv_hdmi_connection_server)
+hal_server_domain(hal_tv_hdmi_connection_default, hal_tv_hdmi_connection)
+hal_attribute_service(hal_tv_hdmi_connection, hal_tv_hdmi_connection_service)
+type hal_tv_hdmi_connection_default, domain;
+type hal_tv_hdmi_connection_default_exec, exec_type, file_type, vendor_file_type;

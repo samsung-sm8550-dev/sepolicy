@@ -1,0 +1,11 @@
+allow charger self:capability2 wake_alarm;
+allow charger vendor_sysfs_battery_supply:file w_file_perms;
+allow charger vendor_sysfs_usb_supply:file w_file_perms;
+dontaudit charger device:dir { getattr ioctl lock open read search watch watch_reads };
+dontaudit charger self:capability sys_admin;
+r_dir_file(charger, vendor_sysfs_battery_supply)
+r_dir_file(charger, vendor_sysfs_usb_supply)
+get_prop(charger, vendor_display_prop)
+hal_client_domain(charger, hal_health)
+type charger, charger_type, domain;
+type charger_exec, exec_type, file_type, system_file_type;

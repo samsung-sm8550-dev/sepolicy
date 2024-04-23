@@ -1,0 +1,4 @@
+init_daemon_domain(hal_radio_config_default)
+hal_server_domain(hal_radio_config_default, hal_telephony)
+type hal_radio_config_default, domain;
+type hal_radio_config_default_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,9 @@
+allow vdc devpts:chr_file rw_file_perms;
+allow vdc kmsg_device:chr_file { getattr w_file_perms };
+allow vdc vold:binder { call transfer };
+allow vdc vold:fd *;
+allow vdc vold_service:service_manager find;
+dontaudit vdc self:capability kill;
+binder_use(vdc)
+type vdc, domain;
+type vdc_exec, exec_type, file_type, system_file_type;

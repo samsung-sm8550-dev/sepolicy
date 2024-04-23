@@ -1,0 +1,2 @@
+allow vendor_spunvm_file self:filesystem associate;
+type vendor_spunvm_file, file_type, vendor_spunvm_file_type;

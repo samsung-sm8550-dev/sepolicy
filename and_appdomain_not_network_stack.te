@@ -1,0 +1,7 @@
+neverallow { appdomain -network_stack } domain:netlink_tcpdiag_socket *;
+neverallow { appdomain -network_stack } domain:netlink_nflog_socket *;
+neverallow { appdomain -network_stack } domain:netlink_xfrm_socket *;
+neverallow { appdomain -network_stack } domain:netlink_audit_socket *;
+neverallow { appdomain -network_stack } domain:netlink_dnrt_socket *;
+neverallow { appdomain -network_stack } domain:netlink_kobject_uevent_socket { append write };
+neverallow { appdomain -network_stack } netd:binder call;

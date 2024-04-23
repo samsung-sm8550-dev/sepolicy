@@ -1,0 +1,35 @@
+allow vendor_rfs_access self:capability { chown net_bind_service setgid setpcap setuid };
+allow vendor_rfs_access self:capability2 block_suspend;
+allow vendor_rfs_access self:cap2_userns block_suspend;
+allow vendor_rfs_access self:socket create_socket_perms_no_ioctl;
+allow vendor_rfs_access self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_rfs_access sysfs_wake_lock:file rw_file_perms;
+allow vendor_rfs_access system_suspend_server:binder { call transfer };
+allow vendor_rfs_access system_suspend_server:fd *;
+allow vendor_rfs_access system_suspend_hwservice:hwservice_manager find;
+allow vendor_rfs_access hidl_manager_hwservice:hwservice_manager find;
+allow vendor_rfs_access hal_system_suspend_service:service_manager find;
+allow vendor_rfs_access vendor_firmware_data_file:dir r_dir_perms;
+allow vendor_rfs_access vendor_firmware_data_file:file r_file_perms;
+allow vendor_rfs_access mnt_vendor_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_file:dir search;
+allow vendor_rfs_access vendor_persist_rfs_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_file:file create_file_perms;
+allow vendor_rfs_access vendor_persist_rfs_shared_hlos_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_shared_hlos_file:file create_file_perms;
+allow vendor_rfs_access vendor_tombstone_data_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_tombstone_data_file:file create_file_perms;
+allow vendor_rfs_access kmsg_device:chr_file w_file_perms;
+allow vendor_rfs_access vendor_pddump_data_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_pddump_data_file:file create_file_perms;
+dontaudit vendor_rfs_access self:capability { dac_override dac_read_search };
+type_transition vendor_rfs_access mnt_vendor_file:dir vendor_persist_rfs_file;
+type_transition vendor_rfs_access mnt_vendor_file:dir vendor_persist_rfs_shared_hlos_file "hlos_rfs";
+type_transition vendor_rfs_access mnt_vendor_file:file vendor_persist_rfs_file;
+init_daemon_domain(vendor_rfs_access)
+r_dir_file(vendor_rfs_access, firmware_file)
+get_prop(vendor_rfs_access, hwservicemanager_prop)
+binder_use(vendor_rfs_access)
+hwbinder_use(vendor_rfs_access)
+type vendor_rfs_access, domain;
+type vendor_rfs_access_exec, exec_type, file_type, vendor_file_type;

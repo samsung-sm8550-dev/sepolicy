@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate -installd -system_server } installd_service:service_manager find;

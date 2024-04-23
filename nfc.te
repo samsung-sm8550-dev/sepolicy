@@ -1,0 +1,5 @@
+allow nfc vendor_hal_nxpnfc_service:service_manager find;
+get_prop(nfc, vendor_nfc_nq_prop)
+hal_attribute(nfc)
+hal_client_domain(nfc, vendor_hal_perf)
+type nfc, domain;

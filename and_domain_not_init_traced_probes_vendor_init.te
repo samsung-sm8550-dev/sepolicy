@@ -1,0 +1,1 @@
+neverallow { domain -init -traced_probes -vendor_init } debugfs_tracing_printk_formats:file *;

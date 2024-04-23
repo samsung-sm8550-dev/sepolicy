@@ -1,0 +1,5 @@
+init_daemon_domain(vendor_pasrknob)
+get_prop(vendor_pasrknob, vendor_pasr_prop)
+hal_client_domain(vendor_pasrknob, vendor_hal_mem_pasrmanager)
+type vendor_pasrknob, domain;
+type vendor_pasrknob_exec, exec_type, file_type, vendor_file_type;

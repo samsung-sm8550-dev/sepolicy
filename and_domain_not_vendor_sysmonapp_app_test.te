@@ -1,0 +1,1 @@
+neverallow { domain -vendor_sysmonapp_app_test } vendor_sysmonapp_app_test_userfaultfd:anon_inode *;

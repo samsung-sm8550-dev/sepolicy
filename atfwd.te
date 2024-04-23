@@ -1,0 +1,32 @@
+allow vendor_atfwd self:socket create_socket_perms;
+allow vendor_atfwd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_atfwd system_app:binder { call transfer };
+allow vendor_atfwd system_app:fd *;
+allow vendor_atfwd radio:binder { call transfer };
+allow vendor_atfwd radio:fd *;
+allow vendor_atfwd radio_service:service_manager find;
+allow vendor_atfwd su:fifo_file append;
+allow vendor_atfwd anr_data_file:file append;
+allow vendor_atfwd dumpstate:fd *;
+allow vendor_atfwd dumpstate:fifo_file { append write };
+allow vendor_atfwd incidentd:fd *;
+allow vendor_atfwd incidentd:fifo_file { append write };
+allow vendor_atfwd system_server:fifo_file { append write };
+allow vendor_atfwd tombstoned:fd *;
+allow vendor_atfwd tombstone_data_file:file append;
+allow vendor_atfwd vendor_qtelephony:binder { call transfer };
+allow vendor_atfwd vendor_qtelephony:fd *;
+allow vendor_atfwd vendor_hal_atfwd_hwservice:hwservice_manager find;
+allowxperm vendor_atfwd self:ioctl socket { range 0xc300 0xc305 };
+init_daemon_domain(vendor_atfwd)
+r_dir_file(vendor_atfwd, vendor_sysfs_data)
+unix_socket_connect(vendor_atfwd, property, tombstoned)
+unix_socket_connect(vendor_atfwd, tombstoned_crash, init)
+unix_socket_connect(vendor_atfwd, tombstoned_crash, tombstoned)
+get_prop(vendor_atfwd, hwservicemanager_prop)
+set_prop(vendor_atfwd, vendor_radio_prop)
+binder_use(vendor_atfwd)
+hwbinder_use(vendor_atfwd)
+hal_server_domain(vendor_atfwd, vendor_hal_atfwd)
+type vendor_atfwd, domain;
+type vendor_atfwd_exec, exec_type, file_type, vendor_file_type;

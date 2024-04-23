@@ -1,0 +1,13 @@
+allow vendor_port-bridge vendor_diag_device:chr_file rw_file_perms;
+allow vendor_port-bridge vendor_port-bridge:netlink_kobject_uevent_socket { bind create read };
+allow vendor_port-bridge vendor_at_device:chr_file rw_file_perms;
+allow vendor_port-bridge vendor_mhi_device:chr_file rw_file_perms;
+allow vendor_port-bridge vendor_sysfs_data:file r_file_perms;
+allow vendor_port-bridge vendor_port_bridge_data_file:file create_file_perms;
+allow vendor_port-bridge vendor_port_bridge_data_file:dir w_dir_perms;
+allow vendor_port-bridge vendor_port-bridge_socket:dir w_dir_perms;
+allow vendor_port-bridge vendor_port-bridge_socket:sock_file create_file_perms;
+init_daemon_domain(vendor_port-bridge)
+r_dir_file(vendor_port-bridge, vendor_sysfs_diag)
+type vendor_port-bridge, domain;
+type vendor_port-bridge_exec, exec_type, file_type, vendor_file_type;

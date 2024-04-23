@@ -1,0 +1,2 @@
+type bt_device, dev_type;
+type vendor_bt_device, dev_type;

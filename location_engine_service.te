@@ -1,0 +1,14 @@
+allow vendor_location_engine_service vendor_location:process sigchld;
+allow vendor_location_engine_service vendor_location:fd *;
+allow vendor_location_engine_service vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_engine_service tee_device:chr_file rw_file_perms;
+allow vendor_location_engine_service vendor_location_data_file:dir create_dir_perms;
+allow vendor_location_engine_service vendor_location_data_file:file create_file_perms;
+allow vendor_location_engine_service vendor_location_socket:lnk_file r_file_perms;
+allow vendor_location_engine_service vendor_location_socket:sock_file create_file_perms;
+allow vendor_location_engine_service vendor_location_socket:dir rw_dir_perms;
+allow vendor_location_engine_service vendor_hal_gnss_qti:unix_dgram_socket sendto;
+allow vendor_location_engine_service self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_location_engine_service system_server:binder transfer;
+type vendor_location_engine_service, domain;
+type vendor_location_engine_service_exec, exec_type, file_type, vendor_file_type;

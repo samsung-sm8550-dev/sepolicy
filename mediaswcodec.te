@@ -1,0 +1,27 @@
+neverallow mediaswcodec fs_type:file execute_no_trans;
+neverallow mediaswcodec file_type:file execute_no_trans;
+neverallow mediaswcodec domain:tcp_socket *;
+neverallow mediaswcodec domain:udp_socket *;
+neverallow mediaswcodec domain:rawip_socket *;
+allow mediaswcodec dumpstate:binder transfer;
+allow mediaswcodec dumpstate:fd *;
+allow mediaswcodec dumpstate:fifo_file { append write };
+allow mediaswcodec su:fifo_file append;
+allow mediaswcodec anr_data_file:file append;
+allow mediaswcodec incidentd:fd *;
+allow mediaswcodec incidentd:fifo_file { append write };
+allow mediaswcodec system_server:fifo_file { append write };
+allow mediaswcodec tombstoned:fd *;
+allow mediaswcodec tombstone_data_file:file append;
+allow mediaswcodec dmabuf_system_heap_device:chr_file r_file_perms;
+allow mediaswcodec dmabuf_system_secure_heap_device:chr_file r_file_perms;
+allow mediaswcodec gpu_device:chr_file rw_file_perms;
+allow mediaswcodec gpu_device:dir r_dir_perms;
+unix_socket_connect(mediaswcodec, tombstoned_crash, tombstoned)
+hal_server_domain(mediaswcodec, hal_codec2)
+hal_client_domain(mediaswcodec, hal_allocator)
+hal_client_domain(mediaswcodec, hal_codec2)
+hal_client_domain(mediaswcodec, hal_graphics_allocator)
+hal_client_domain(mediaswcodec, hal_omx)
+type mediaswcodec, domain;
+type mediaswcodec_exec, exec_type, file_type, system_file_type;

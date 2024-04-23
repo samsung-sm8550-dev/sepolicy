@@ -1,0 +1,1 @@
+neverallow { domain -vendor_powermodule_app } vendor_powermodule_app_userfaultfd:anon_inode *;

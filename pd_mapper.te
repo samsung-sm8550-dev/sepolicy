@@ -1,0 +1,13 @@
+allow vendor_pd_mapper self:capability { net_bind_service setgid setpcap setuid };
+allow vendor_pd_mapper self:socket create_socket_perms;
+allow vendor_pd_mapper self:qipcrtr_socket create_socket_perms;
+allow vendor_pd_mapper firmware_file:dir r_dir_perms;
+allow vendor_pd_mapper firmware_file:file r_file_perms;
+allow vendor_pd_mapper vendor_sysfs_data:file r_file_perms;
+allow vendor_pd_mapper kmsg_device:chr_file { getattr open write };
+allowxperm vendor_pd_mapper self:ioctl socket 0xc304;
+allowxperm vendor_pd_mapper self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+init_daemon_domain(vendor_pd_mapper)
+get_prop(vendor_pd_mapper, vendor_pd_locater_dbg_prop)
+type vendor_pd_mapper, domain;
+type vendor_pd_mapper_exec, exec_type, file_type, vendor_file_type;

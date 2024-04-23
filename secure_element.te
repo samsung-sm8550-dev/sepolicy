@@ -1,0 +1,5 @@
+allow secure_element vendor_hal_keymint_strongbox:binder transfer;
+allow secure_element vendor_hal_weaver_default:binder transfer;
+hal_attribute(secure_element)
+hal_client_domain(secure_element, vendor_hal_perf)
+type secure_element, domain;

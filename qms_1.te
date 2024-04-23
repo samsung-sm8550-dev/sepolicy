@@ -1,0 +1,35 @@
+neverallow vendor_qms_1 self:capability *;
+neverallow vendor_qms_1 self:capability2 *;
+neverallow vendor_qms_1 self:cap_userns *;
+neverallow vendor_qms_1 self:cap2_userns *;
+allow vendor_qms_1 vendor_qms:fd *;
+allow vendor_qms_1 vendor_qms:unix_dgram_socket write;
+allow vendor_qms_1 vendor_qms:unix_stream_socket { read write };
+allow vendor_qms_1 vendor_qms_exec:file execute_no_trans;
+allow vendor_qms_1 self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qms_1 self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_qms_1 vendor_hal_qesdhal_default:file read;
+allow vendor_qms_1 vendor_hal_qesdhal_default:lnk_file read;
+allow vendor_qms_1 vendor_hal_qesdhal_default:dir search;
+allow vendor_qms_1 vendor_qesd_one_socket:dir r_dir_perms;
+allow vendor_qms_1 su:fifo_file append;
+allow vendor_qms_1 anr_data_file:file append;
+allow vendor_qms_1 dumpstate:fd *;
+allow vendor_qms_1 dumpstate:fifo_file { append write };
+allow vendor_qms_1 incidentd:fd *;
+allow vendor_qms_1 incidentd:fifo_file { append write };
+allow vendor_qms_1 system_server:fifo_file { append write };
+allow vendor_qms_1 tombstoned:fd *;
+allow vendor_qms_1 tombstone_data_file:file append;
+unix_socket_connect(vendor_qms_1, vendor_qesd, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qms_1, vendor_qesd, vendor_hal_qesdonehal_default)
+unix_socket_connect(vendor_qms_1, vendor_qesd, tombstoned)
+unix_socket_connect(vendor_qms_1, vendor_qesd_one, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qms_1, vendor_qesd_one, vendor_hal_qesdonehal_default)
+unix_socket_connect(vendor_qms_1, vendor_qesd_one, tombstoned)
+unix_socket_connect(vendor_qms_1, tombstoned_crash, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qms_1, tombstoned_crash, vendor_hal_qesdonehal_default)
+unix_socket_connect(vendor_qms_1, tombstoned_crash, tombstoned)
+get_prop(vendor_qms_1, vendor_qesdk_one_prop)
+get_prop(vendor_qms_1, vendor_qms_prop)
+type vendor_qms_1, domain;

@@ -1,0 +1,56 @@
+expandtypeattribute(hal_neuralnetworks)
+expandtypeattribute(hal_neuralnetworks_client)
+expandtypeattribute(hal_neuralnetworks_server)
+allow hal_neuralnetworks_server dumpstate:fifo_file write;
+allow hal_neuralnetworks_server dumpstate:fd *;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder transfer;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder { call transfer };
+allow hal_neuralnetworks_server hal_neuralnetworks_client:fd *;
+allow hal_neuralnetworks_server app_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server privapp_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server shell_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server ion_device:chr_file r_file_perms;
+allow hal_neuralnetworks_server storage_file:file { getattr map read };
+allow hal_neuralnetworks_server apk_data_file:file { getattr map read };
+allow hal_neuralnetworks_server su:tcp_socket { accept getopt read write };
+allow hal_neuralnetworks_server servicemanager:fd *;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder { call transfer };
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder transfer;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:fd *;
+allow hal_neuralnetworks hidl_memory_hwservice:hwservice_manager find;
+allow hal_neuralnetworks hal_allocator:fd *;
+allow hal_neuralnetworks hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_neuralnetworks hal_graphics_allocator:fd *;
+allow hal_neuralnetworks gpu_device:chr_file rw_file_perms;
+allow hal_neuralnetworks gpu_device:dir r_dir_perms;
+allow vendor_hal_neuralnetworks_default fwk_sensor_hwservice:hwservice_manager find;
+allow vendor_hal_neuralnetworks_default vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_hal_neuralnetworks_default vendor_qdsp_device:chr_file { ioctl read };
+allow vendor_hal_neuralnetworks_default vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_hal_neuralnetworks_default ion_device:chr_file r_file_perms;
+allow vendor_hal_neuralnetworks_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_hal_neuralnetworks_default app_data_file:file { getattr map read };
+allow vendor_hal_neuralnetworks_default shell_data_file:file { getattr map read };
+allow vendor_hal_neuralnetworks_default vendor_hal_neuralnetworks_data_file:dir create_dir_perms;
+allow vendor_hal_neuralnetworks_default vendor_hal_neuralnetworks_data_file:file create_file_perms;
+allow vendor_hal_neuralnetworks_default vendor_hal_neuralnetworks_data_file:fifo_file create_file_perms;
+allow vendor_hal_neuralnetworks_default gpu_device:chr_file rw_file_perms;
+allow vendor_hal_neuralnetworks_default vendor_npu_device:chr_file r_file_perms;
+dontaudit vendor_hal_neuralnetworks_default vendor_xdsp_device:chr_file { getattr map open read };
+dontaudit vendor_hal_neuralnetworks_default vendor_qdsp_device:chr_file open;
+init_daemon_domain(vendor_hal_neuralnetworks_default)
+r_dir_file(vendor_hal_neuralnetworks_default, adsprpcd_file)
+get_prop(hal_neuralnetworks_client, nnapi_ext_deny_product_prop)
+get_prop(hal_neuralnetworks_client, device_config_nnapi_native_prop)
+get_prop(vendor_hal_neuralnetworks_default, vendor_adsprpc_prop)
+binder_use(hal_neuralnetworks_server)
+hal_server_domain(vendor_hal_neuralnetworks_default, hal_neuralnetworks)
+hal_client_domain(vendor_hal_neuralnetworks_default, hal_allocator)
+hal_client_domain(vendor_hal_neuralnetworks_default, hal_graphics_allocator)
+hal_client_domain(vendor_hal_neuralnetworks_default, vendor_hal_dspmanager)
+hal_client_domain(vendor_hal_neuralnetworks_default, vendor_hal_perf)
+hal_attribute_service(hal_neuralnetworks, hal_neuralnetworks_service)
+hal_attribute_hwservice(hal_neuralnetworks, hal_neuralnetworks_hwservice)
+type vendor_hal_neuralnetworks_default, domain;
+type vendor_hal_neuralnetworks_default_exec, exec_type, file_type, vendor_file_type;
+type hal_neuralnetworks_hwservice, hwservice_manager_type;

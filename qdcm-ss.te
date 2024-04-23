@@ -1,0 +1,11 @@
+allow vendor_qdcm-ss vendor_qdisplay_service:service_manager find;
+allow vendor_qdcm-ss vendor_display_vendor_data_file:dir rw_dir_perms;
+allow vendor_qdcm-ss vendor_display_vendor_data_file:file create_file_perms;
+allow vendor_qdcm-ss vendor_persist_display_file:dir rw_dir_perms;
+allow vendor_qdcm-ss vendor_persist_display_file:file create_file_perms;
+allow vendor_qdcm-ss mnt_vendor_file:dir search;
+init_daemon_domain(vendor_qdcm-ss)
+vndbinder_use(vendor_qdcm-ss)
+hal_client_domain(vendor_qdcm-ss, hal_graphics_composer)
+type vendor_qdcm-ss, domain;
+type vendor_qdcm-ss_exec, exec_type, file_type, vendor_file_type;

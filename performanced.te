@@ -1,0 +1,24 @@
+allow performanced system_server:binder { call transfer };
+allow performanced system_server:fd *;
+allow performanced permission_service:service_manager find;
+allow performanced pdx_performance_client_endpoint_socket_type:unix_stream_socket { accept append getattr getopt listen lock read setattr setopt shutdown write };
+allow performanced self:process setsockcreate;
+allow performanced self:capability { setgid setuid sys_nice };
+allow performanced self:cap_userns { setgid setuid sys_nice };
+allow performanced pdx_performance_client_channel_socket_type:unix_stream_socket create_stream_socket_perms;
+allow performanced appdomain:process setsched;
+allow performanced bufferhubd:process setsched;
+allow performanced kernel:process setsched;
+allow performanced surfaceflinger:process setsched;
+dontaudit performanced domain:dir read;
+dontaudit performanced domain:dir open;
+dontaudit performanced domain:file { getattr open read };
+r_dir_file(performanced, appdomain)
+r_dir_file(performanced, bufferhubd)
+r_dir_file(performanced, kernel)
+r_dir_file(performanced, surfaceflinger)
+r_dir_file(performanced, cgroup)
+r_dir_file(performanced, cgroup_v2)
+binder_use(performanced)
+type performanced, domain, mlstrustedsubject, pdx_performance_client_server_type;
+type performanced_exec, exec_type, file_type, system_file_type;

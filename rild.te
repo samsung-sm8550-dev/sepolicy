@@ -1,0 +1,66 @@
+allow rild vendor_per_mgr:binder transfer;
+allow rild vendor_per_mgr:binder { call transfer };
+allow rild vendor_per_mgr:fd *;
+allow rild vendor_netmgrd_socket:dir search;
+allow rild vendor_file:file { execute_no_trans ioctl lock };
+allow rild self:tipc_socket create_socket_perms_no_ioctl;
+allow rild self:socket ioctl;
+allow rild self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow rild vendor_per_mgr_service:service_manager find;
+allow rild vendor_radio_vendor_data_file:dir rw_dir_perms;
+allow rild vendor_radio_vendor_data_file:file create_file_perms;
+allow rild vendor_diag_device:chr_file rw_file_perms;
+allow rild vendor_qmuxd_socket:dir w_dir_perms;
+allow rild vendor_qmuxd_socket:sock_file create_file_perms;
+allow rild vendor_rild_socket:dir w_dir_perms;
+allow rild vendor_rild_socket:sock_file create_file_perms;
+allow rild su:fifo_file append;
+allow rild anr_data_file:file append;
+allow rild dumpstate:fd *;
+allow rild dumpstate:fifo_file { append write };
+allow rild dumpstate:binder transfer;
+allow rild incidentd:fd *;
+allow rild incidentd:fifo_file { append write };
+allow rild system_server:fifo_file { append write };
+allow rild tombstoned:fd *;
+allow rild tombstone_data_file:file append;
+dontaudit rild vendor_diag_device:chr_file { append getattr ioctl lock map open read watch watch_reads write };
+dontaudit rild vendor_pd_locater_dbg_prop:file { getattr ioctl lock map open read watch watch_reads };
+allowxperm rild self:ioctl socket { range 0xc300 0xc305 };
+init_daemon_domain(rild)
+r_dir_file(rild, vendor_mbn_data_file)
+unix_socket_connect(rild, vendor_netmgrd, vendor_netmgrd)
+unix_socket_connect(rild, vendor_netmgrd, vendor_time_daemon)
+unix_socket_connect(rild, vendor_netmgrd, vendor_ssgtzd)
+unix_socket_connect(rild, vendor_netmgrd, tombstoned)
+unix_socket_connect(rild, vendor_netmgrd, init)
+unix_socket_connect(rild, vendor_ssgtzd, vendor_netmgrd)
+unix_socket_connect(rild, vendor_ssgtzd, vendor_time_daemon)
+unix_socket_connect(rild, vendor_ssgtzd, vendor_ssgtzd)
+unix_socket_connect(rild, vendor_ssgtzd, tombstoned)
+unix_socket_connect(rild, vendor_ssgtzd, init)
+unix_socket_connect(rild, tombstoned_crash, vendor_netmgrd)
+unix_socket_connect(rild, tombstoned_crash, vendor_time_daemon)
+unix_socket_connect(rild, tombstoned_crash, vendor_ssgtzd)
+unix_socket_connect(rild, tombstoned_crash, tombstoned)
+unix_socket_connect(rild, tombstoned_crash, init)
+unix_socket_connect(rild, property, vendor_netmgrd)
+unix_socket_connect(rild, property, vendor_time_daemon)
+unix_socket_connect(rild, property, vendor_ssgtzd)
+unix_socket_connect(rild, property, tombstoned)
+get_prop(rild, vendor_pd_locater_dbg_prop)
+get_prop(rild, radio_control_prop)
+get_prop(rild, vendor_dataqdp_prop)
+get_prop(rild, vendor_qc_aon_prop)
+get_prop(rild, vendor_persist_rcs_qti_prop)
+set_prop(rild, vendor_xlat_prop)
+binder_service(rild)
+vndbinder_use(rild)
+net_domain(rild)
+hal_server_domain(rild, hal_secure_element)
+hal_server_domain(rild, hal_telephony)
+hal_server_domain(rild, vendor_hal_dataconnection_qti)
+hal_server_domain(rild, vendor_hal_iwlanservice_qti)
+hal_client_domain(rild, vendor_hal_imsfactory)
+type rild, domain;
+type rild_exec, exec_type, file_type, vendor_file_type;

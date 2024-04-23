@@ -1,0 +1,52 @@
+expandtypeattribute(hal_bootctl)
+expandtypeattribute(hal_bootctl_client)
+expandtypeattribute(hal_bootctl_server)
+allow hal_bootctl_client hal_bootctl_server:binder { call transfer };
+allow hal_bootctl_client hal_bootctl_server:binder transfer;
+allow hal_bootctl_client hal_bootctl_server:fd *;
+allow hal_bootctl_server hal_bootctl_client:binder transfer;
+allow hal_bootctl_server hal_bootctl_client:binder { call transfer };
+allow hal_bootctl_server hal_bootctl_client:fd *;
+allow hal_bootctl_server proc_bootconfig:file r_file_perms;
+allow hal_bootctl_server su:tcp_socket { accept getopt read write };
+allow hal_bootctl_server misc_block_device:blk_file rw_file_perms;
+allow hal_bootctl_server self:capability sys_rawio;
+allow hal_bootctl_default proc_cmdline:file r_file_perms;
+allow hal_bootctl_default sysfs_dt_firmware_android:dir search;
+allow hal_bootctl_default sysfs_dt_firmware_android:file r_file_perms;
+allow hal_bootctl_default gsi_metadata_file_type:dir search;
+allow hal_bootctl_default metadata_file:dir search;
+allow hal_bootctl_default gsi_public_metadata_file:file r_file_perms;
+allow hal_bootctl_default proc_bootconfig:file r_file_perms;
+allow hal_bootctl_default block_device:dir search;
+allow hal_bootctl_default misc_block_device:blk_file rw_file_perms;
+allow hal_bootctl_default kmsg_device:chr_file open;
+allow hal_bootctl_default kmsg_device:chr_file write;
+allow hal_bootctl_default vendor_uefi_block_device:blk_file getattr;
+allow hal_bootctl_default vendor_sysfs_scsi_host:dir search;
+allow hal_bootctl block_device:dir r_dir_perms;
+allow hal_bootctl device:dir r_dir_perms;
+allow hal_bootctl vendor_gpt_block_device:blk_file rw_file_perms;
+allow hal_bootctl root_block_device:blk_file rw_file_perms;
+allow hal_bootctl boot_block_device:blk_file rw_file_perms;
+allow hal_bootctl vendor_ab_block_device:blk_file getattr;
+allow hal_bootctl vendor_xbl_block_device:blk_file getattr;
+allow hal_bootctl vendor_xbl_block_device:blk_file rw_file_perms;
+allow hal_bootctl vendor_modem_block_device:blk_file getattr;
+allow hal_bootctl system_block_device:blk_file getattr;
+allow hal_bootctl vendor_custom_ab_block_device:blk_file getattr;
+allow hal_bootctl recovery_block_device:blk_file getattr;
+allow hal_bootctl vendor_mdtp_device:blk_file getattr;
+allow hal_bootctl vendor_sg_device:chr_file rw_file_perms;
+allow hal_bootctl vendor_bsg_device:chr_file rw_file_perms;
+allow hal_bootctl vendor_sysfs_scsi_target:dir r_dir_perms;
+allow hal_bootctl sysfs_dt_firmware_android:dir r_dir_perms;
+dontaudit hal_bootctl self:capability sys_rawio;
+init_daemon_domain(hal_bootctl_default)
+binder_use(hal_bootctl_server)
+hal_server_domain(hal_bootctl_default, hal_bootctl)
+hal_attribute_service(hal_bootctl, hal_bootctl_service)
+hal_attribute_hwservice(hal_bootctl, hal_bootctl_hwservice)
+type hal_bootctl_default, domain;
+type hal_bootctl_default_exec, exec_type, file_type, vendor_file_type;
+type hal_bootctl_hwservice, hwservice_manager_type, protected_hwservice;

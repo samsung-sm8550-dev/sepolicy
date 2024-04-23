@@ -1,0 +1,9 @@
+allow netdomain self:tcp_socket create_stream_socket_perms;
+allow netdomain self:udp_socket create_socket_perms;
+allow netdomain self:rawip_socket create_socket_perms;
+allow netdomain self:icmp_socket create_socket_perms;
+allow netdomain self:netlink_route_socket { append connect create getattr getopt lock nlmsg_read read setattr setopt shutdown write };
+allow netdomain port_type:tcp_socket name_connect;
+attribute netdomain;
+unix_socket_connect(netdomain, dnsproxyd, netd)
+unix_socket_connect(netdomain, fwmarkd, netd)

@@ -1,0 +1,38 @@
+allow system_app vendor_atfwd:binder transfer;
+allow system_app vendor_elabel_data_file:dir r_dir_perms;
+allow system_app vendor_elabel_data_file:file r_file_perms;
+allow system_app update_engine:binder transfer;
+allow system_app update_engine:binder { call transfer };
+allow system_app update_engine:fd *;
+allow system_app vendor_esepmdaemon:binder transfer;
+allow system_app vendor_fidotest:binder transfer;
+allow system_app vendor_fidotest:binder { call transfer };
+allow system_app vendor_fidotest:fd *;
+allow system_app sensors_device:chr_file getattr;
+allow system_app socket_device:dir read;
+allow system_app self:socket create_socket_perms_no_ioctl;
+allow system_app vendor_diag_device:chr_file rw_file_perms;
+allow system_app vendor_sysfs_qdss_dev:dir r_dir_perms;
+allow system_app vendor_sysfs_qdss_dev:file rw_file_perms;
+allow system_app vendor_qdss_device:chr_file rw_file_perms;
+allow system_app sysfs_zram:dir r_dir_perms;
+allow system_app sysfs_zram:file r_file_perms;
+dontaudit system_app vendor_diag_device:chr_file { append getattr ioctl lock map open read watch watch_reads write };
+r_dir_file(system_app, vendor_sysfs_diag)
+get_prop(system_app, vendor_radio_prop)
+set_prop(system_app, nfc_prop)
+set_prop(system_app, radio_control_prop)
+hal_client_domain(system_app, hal_allocator)
+hal_client_domain(system_app, hal_light)
+hal_client_domain(system_app, vendor_hal_hbtp)
+hal_client_domain(system_app, vendor_hal_qdutils_disp)
+hal_client_domain(system_app, vendor_hal_display_color)
+hal_client_domain(system_app, vendor_hal_capabilityconfigstore_qti)
+hal_client_domain(system_app, vendor_hal_diaghal)
+hal_client_domain(system_app, vendor_hal_perf)
+hal_client_domain(system_app, vendor_hal_qspmhal)
+hal_client_domain(system_app, vendor_hal_soter)
+hal_client_domain(system_app, vendor_hal_sensorscalibrate_qti)
+hal_client_domain(system_app, vendor_hal_pasrmanager)
+hal_client_domain(system_app, vendor_hal_factory_qti)
+type system_app, domain;

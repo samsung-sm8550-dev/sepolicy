@@ -1,0 +1,14 @@
+allow vendor_hal_qccvndhal_client vendor_hal_qccvndhal_server:binder { call transfer };
+allow vendor_hal_qccvndhal_client vendor_hal_qccvndhal_server:binder transfer;
+allow vendor_hal_qccvndhal_client vendor_hal_qccvndhal_server:fd *;
+allow vendor_hal_qccvndhal_client vendor_hal_qccvndhal_service:service_manager find;
+allow vendor_hal_qccvndhal_server vendor_hal_qccvndhal_client:binder transfer;
+allow vendor_hal_qccvndhal_server vendor_hal_qccvndhal_client:binder { call transfer };
+allow vendor_hal_qccvndhal_server vendor_hal_qccvndhal_client:fd *;
+allow vendor_hal_qccvndhal_server su:tcp_socket { accept getopt read write };
+attribute vendor_hal_qccvndhal;
+attribute vendor_hal_qccvndhal_client;
+attribute vendor_hal_qccvndhal_server;
+add_service(vendor_hal_qccvndhal_server, vendor_hal_qccvndhal_service)
+hal_attribute_hwservice(vendor_hal_qccvndhal, vendor_hal_qccvndhal_hwservice)
+type vendor_hal_qccvndhal_hwservice, hwservice_manager_type, protected_hwservice;

@@ -1,0 +1,15 @@
+allow vendor_time_daemon vendor_smem_log_device:chr_file rw_file_perms;
+allow vendor_time_daemon rtc_device:chr_file r_file_perms;
+allow vendor_time_daemon vendor_time_data_file:file create_file_perms;
+allow vendor_time_daemon vendor_time_data_file:dir w_dir_perms;
+allow vendor_time_daemon self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_time_daemon self:capability sys_time;
+allow vendor_time_daemon vendor_persist_time_file:file create_file_perms;
+allow vendor_time_daemon vendor_persist_time_file:dir w_dir_perms;
+allow vendor_time_daemon mnt_vendor_file:dir search;
+allow vendor_time_daemon vendor_sysfs_mhi:file r_file_perms;
+allow vendor_time_daemon vendor_sysfs_data:file r_file_perms;
+init_daemon_domain(vendor_time_daemon)
+get_prop(vendor_time_daemon, vendor_time_service_prop)
+type vendor_time_daemon, domain, mlstrustedsubject;
+type vendor_time_daemon_exec, exec_type, file_type, vendor_file_type;

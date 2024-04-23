@@ -1,0 +1,26 @@
+allow vendor_hal_qseecom_default ion_device:chr_file rw_file_perms;
+allow vendor_hal_qseecom_default tee_device:chr_file rw_file_perms;
+allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_hal_qseecom_client vendor_hal_qseecom_server:binder { call transfer };
+allow vendor_hal_qseecom_client vendor_hal_qseecom_server:binder transfer;
+allow vendor_hal_qseecom_client vendor_hal_qseecom_server:fd *;
+allow vendor_hal_qseecom_client vendor_hal_qseecom_service:service_manager find;
+allow vendor_hal_qseecom_server vendor_hal_qseecom_client:binder transfer;
+allow vendor_hal_qseecom_server vendor_hal_qseecom_client:binder { call transfer };
+allow vendor_hal_qseecom_server vendor_hal_qseecom_client:fd *;
+allow vendor_hal_qseecom_server su:tcp_socket { accept getopt read write };
+allow vendor_hal_qseecom_server servicemanager:binder { call transfer };
+allow vendor_hal_qseecom_server servicemanager:fd *;
+attribute vendor_hal_qseecom;
+attribute vendor_hal_qseecom_client;
+attribute vendor_hal_qseecom_server;
+init_daemon_domain(vendor_hal_qseecom_default)
+r_dir_file(vendor_hal_qseecom_default, firmware_file)
+hal_server_domain(vendor_hal_qseecom_default, vendor_hal_qseecom)
+hal_client_domain(vendor_hal_qseecom_default, hal_allocator)
+add_service(vendor_hal_qseecom_server, vendor_hal_qseecom_service)
+hal_attribute_hwservice(vendor_hal_qseecom, vendor_hal_qseecom_hwservice)
+type vendor_hal_qseecom_default, domain;
+type vendor_hal_qseecom_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_qseecom_hwservice, hwservice_manager_type, protected_hwservice;

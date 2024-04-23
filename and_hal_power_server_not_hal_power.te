@@ -1,0 +1,1 @@
+neverallow { hal_power_server -hal_power } domain:process fork;

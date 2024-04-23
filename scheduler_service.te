@@ -1,0 +1,2 @@
+attribute scheduler_service_server;
+add_hwservice(scheduler_service_server, fwk_scheduler_hwservice)

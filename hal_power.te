@@ -1,0 +1,26 @@
+expandtypeattribute(hal_power)
+expandtypeattribute(hal_power_client)
+expandtypeattribute(hal_power_server)
+allow hal_power_server dumpstate:fifo_file write;
+allow hal_power_server dumpstate:fd *;
+allow hal_power_server hal_power_client:binder transfer;
+allow hal_power_server hal_power_client:binder { call transfer };
+allow hal_power_server hal_power_client:fd *;
+allow hal_power_server su:tcp_socket { accept getopt read write };
+allow hal_power_server servicemanager:binder { call transfer };
+allow hal_power_server servicemanager:fd *;
+allow hal_power_client hal_power_server:binder { call transfer };
+allow hal_power_client hal_power_server:binder transfer;
+allow hal_power_client hal_power_server:fd *;
+allow hal_power_client servicemanager:binder { call transfer };
+allow hal_power_client servicemanager:fd *;
+allow hal_power_default vendor_hbtp_kernel_sysfs:file rw_file_perms;
+allow hal_power_default dumpstate:binder transfer;
+init_daemon_domain(hal_power_default)
+hal_server_domain(hal_power_default, hal_power)
+hal_client_domain(hal_power_default, vendor_hal_perf)
+hal_attribute_service(hal_power, hal_power_service)
+hal_attribute_hwservice(hal_power, hal_power_hwservice)
+type hal_power_default, domain;
+type hal_power_default_exec, exec_type, file_type, vendor_file_type;
+type hal_power_hwservice, hwservice_manager_type, protected_hwservice;

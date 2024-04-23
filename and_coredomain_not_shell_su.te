@@ -1,0 +1,2 @@
+neverallow { coredomain -shell -su } vndservice_manager_type:service_manager *;
+neverallow { coredomain -shell -su } vndservicemanager:binder *;

@@ -1,0 +1,1 @@
+neverallow { domain -vendor_dualsta_app } vendor_dualsta_app_userfaultfd:anon_inode *;

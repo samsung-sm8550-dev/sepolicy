@@ -1,0 +1,6 @@
+allow remote_provisioning_service_server keystore:binder transfer;
+allow remote_provisioning_service_server su:tcp_socket { accept getopt read write };
+attribute remote_provisioning_service_server;
+binder_use(remote_provisioning_service_server)
+add_service(remote_provisioning_service_server, remote_provisioning_service)
+type remote_provisioning_service, service_manager_type, system_server_service;

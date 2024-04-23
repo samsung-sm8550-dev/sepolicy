@@ -1,0 +1,7 @@
+neverallow { domain -init -recovery } unlabeled:file create;
+neverallow { domain -init -recovery } unlabeled:dir create;
+neverallow { domain -init -recovery } unlabeled:lnk_file create;
+neverallow { domain -init -recovery } unlabeled:chr_file create;
+neverallow { domain -init -recovery } unlabeled:blk_file create;
+neverallow { domain -init -recovery } unlabeled:sock_file create;
+neverallow { domain -init -recovery } unlabeled:fifo_file create;

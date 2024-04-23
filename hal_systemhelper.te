@@ -1,0 +1,4 @@
+attribute vendor_hal_systemhelper;
+attribute vendor_hal_systemhelper_client;
+attribute vendor_hal_systemhelper_server;
+type vendor_hal_systemhelper_hwservice, coredomain_hwservice, hwservice_manager_type, protected_hwservice;

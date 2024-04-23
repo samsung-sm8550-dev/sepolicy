@@ -1,0 +1,1 @@
+neverallow { hal_drm_server -halserverdomain } domain:process fork;

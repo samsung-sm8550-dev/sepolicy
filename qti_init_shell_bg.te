@@ -1,0 +1,10 @@
+allow vendor_qti_init_shell_bg vendor_qti_init_shell_bg_exec:file { entrypoint rx_file_perms };
+allow vendor_qti_init_shell_bg vendor_toolbox_exec:file rx_file_perms;
+allow vendor_qti_init_shell_bg vendor_sysfs_boot_adsp:file { getattr w_file_perms };
+allow vendor_qti_init_shell_bg vendor_sysfs_boot_cdsp:file { getattr w_file_perms };
+allow vendor_qti_init_shell_bg vendor_sysfs_boot_cvp:file { getattr w_file_perms };
+allow vendor_qti_init_shell_bg vendor_sysfs_slpi:dir search;
+allow vendor_qti_init_shell_bg vendor_sysfs_slpi:file { getattr w_file_perms };
+init_daemon_domain(vendor_qti_init_shell_bg)
+type vendor_qti_init_shell_bg, domain;
+type vendor_qti_init_shell_bg_exec, exec_type, file_type, vendor_file_type;

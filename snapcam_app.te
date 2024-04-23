@@ -1,0 +1,19 @@
+allow vendor_snapcam_app vendor_snapcam_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_snapcam_app cameraserver_service:service_manager find;
+allow vendor_snapcam_app nfc_service:service_manager find;
+allow vendor_snapcam_app gpuservice:binder { call transfer };
+allow vendor_snapcam_app gpuservice:fd *;
+allow vendor_snapcam_app app_api_service:service_manager find;
+allow vendor_snapcam_app vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_snapcam_app audioserver_service:service_manager find;
+allow vendor_snapcam_app mediaextractor_service:service_manager find;
+allow vendor_snapcam_app mediametrics_service:service_manager find;
+allow vendor_snapcam_app mediaserver_service:service_manager find;
+dontaudit vendor_snapcam_app default_prop:file read;
+type_transition vendor_snapcam_app vendor_snapcam_app:anon_inode vendor_snapcam_app_userfaultfd "[userfaultfd]";
+get_prop(vendor_snapcam_app, vendor_persist_camera_prop)
+get_prop(vendor_snapcam_app, camera_config_prop)
+set_prop(vendor_snapcam_app, vendor_camera_prop)
+app_domain(vendor_snapcam_app)
+hal_client_domain(vendor_snapcam_app, vendor_hal_perf)
+type vendor_snapcam_app, domain;

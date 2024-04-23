@@ -1,0 +1,1 @@
+neverallow { domain -vendor_libsochelpertest_app } vendor_libsochelpertest_app_userfaultfd:anon_inode *;

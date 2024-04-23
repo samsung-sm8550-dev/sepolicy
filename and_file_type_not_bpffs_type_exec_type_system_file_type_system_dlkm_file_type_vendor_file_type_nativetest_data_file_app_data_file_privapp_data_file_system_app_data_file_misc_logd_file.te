@@ -1,0 +1,1 @@
+allow init { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -nativetest_data_file -app_data_file -privapp_data_file -system_app_data_file -misc_logd_file }:dir { create getattr ioctl open read search setattr };

@@ -1,0 +1,16 @@
+allow vendor_qtiloopback_native system_file:dir r_dir_perms;
+allow vendor_qtiloopback_native vendor_netmgrd_socket:dir r_dir_perms;
+allow vendor_qtiloopback_native vendor_netmgrd_socket:sock_file { getattr read write };
+allow vendor_qtiloopback_native self:netlink_socket create_socket_perms_no_ioctl;
+allow vendor_qtiloopback_native self:netlink_route_socket create_socket_perms_no_ioctl;
+allow vendor_qtiloopback_native self:netlink_route_socket nlmsg_read;
+allow vendor_qtiloopback_native self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_qtiloopback_native self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qtiloopback_native self:udp_socket { create ioctl };
+allow vendor_qtiloopback_native vendor_sysfs_diag:dir search;
+init_daemon_domain(vendor_qtiloopback_native)
+unix_socket_connect(vendor_qtiloopback_native, vendor_netmgrd, vendor_netmgrd)
+get_prop(vendor_qtiloopback_native, hwservicemanager_prop)
+hwbinder_use(vendor_qtiloopback_native)
+type vendor_qtiloopback_native, domain, vendor_halserverdomain, vendor_qtiloopback, vendor_qtiloopback_server;
+type vendor_qtiloopback_native_exec, exec_type, file_type, vendor_file_type;
