@@ -1,1 +1,0 @@
-neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -vendor_hal_qconfig_client -vendor_hal_qconfig_server } vendor_hal_qconfig_service:service_manager find;

@@ -1,1 +1,0 @@
-neverallow { domain -prng_seeder -shell -ueventd } hw_random_device:chr_file *;

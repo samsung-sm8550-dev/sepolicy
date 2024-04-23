@@ -1,0 +1,17 @@
+allow hal_sbtvd_client hal_sbtvd_server:binder { call transfer };
+allow hal_sbtvd_client hal_sbtvd_server:binder transfer;
+allow hal_sbtvd_client hal_sbtvd_server:fd *;
+allow hal_sbtvd_client hal_sbtvd_hwservice:hwservice_manager find;
+allow hal_sbtvd_server hal_sbtvd_client:binder transfer;
+allow hal_sbtvd_server hal_sbtvd_client:binder { call transfer };
+allow hal_sbtvd_server hal_sbtvd_client:fd *;
+allow hal_sbtvd hidl_memory_hwservice:hwservice_manager find;
+allow hal_sbtvd_default mmb_device:chr_file rw_file_perms;
+allow hal_sbtvd_default oneseg_mw:binder transfer;
+init_daemon_domain(hal_sbtvd_default)
+hal_server_domain(hal_sbtvd_default, hal_sbtvd)
+hal_client_domain(hal_sbtvd_default, hal_allocator)
+add_hwservice(hal_sbtvd_server, hal_sbtvd_hwservice)
+type hal_sbtvd_default, domain, mlstrustedsubject;
+type hal_sbtvd_default_exec, exec_type, file_type, vendor_file_type;
+type hal_sbtvd_hwservice, hwservice_manager_type;

@@ -1,0 +1,9 @@
+allow kapd block_device:dir r_dir_perms;
+allow kapd kmsg_device:chr_file rw_file_perms;
+allow kapd knox_kap_device:chr_file rw_file_perms;
+allow kapd root_block_device:blk_file rw_file_perms;
+allow kapd sec_efs_file:dir r_dir_perms;
+allow kapd sec_efs_file:file r_file_perms;
+allow kapd vendor_rpmb_device:blk_file rw_file_perms;
+type kapd, coredomain, domain;
+type kapd_exec, exec_type, file_type, system_file_type;

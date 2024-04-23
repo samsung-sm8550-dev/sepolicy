@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate -iorapd -system_server } iorapd_service:service_manager find;

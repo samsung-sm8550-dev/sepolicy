@@ -1,6 +1,5 @@
 allow vendor_esepmdaemon system_app:binder { call transfer };
 allow vendor_esepmdaemon system_app:fd *;
-allow vendor_esepmdaemon su:tcp_socket { accept getopt read write };
 allow vendor_esepmdaemon nfc_device:chr_file rw_file_perms;
 allow vendor_esepmdaemon ion_device:chr_file r_file_perms;
 allow vendor_esepmdaemon tee_device:chr_file rw_file_perms;

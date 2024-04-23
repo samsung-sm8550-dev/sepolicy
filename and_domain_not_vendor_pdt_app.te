@@ -1,1 +1,0 @@
-neverallow { domain -vendor_pdt_app } vendor_pdt_app_userfaultfd:anon_inode *;

@@ -1,2 +1,0 @@
-neverallow { domain -crash_dump } apexd:process ptrace;
-neverallow { domain -crash_dump } keystore:process ptrace;

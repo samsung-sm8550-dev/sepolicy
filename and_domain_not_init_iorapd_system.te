@@ -1,0 +1,1 @@
+neverallow { domain -init -iorapd -system_server } iorapd_data_file:dir *;

@@ -5,7 +5,7 @@ allow hal_can_socketcan self:can_socket { bind create ioctl read setopt write };
 allow hal_can_socketcan hidl_manager_hwservice:hwservice_manager find;
 allow hal_can_socketcan sysfs:dir r_dir_perms;
 allow hal_can_socketcan usb_serial_device:chr_file { ioctl open read write };
-allowxperm hal_can_socketcan self:ioctl udp_socket { range 0x8913 0x8914 0x8933 };
+allowxperm hal_can_socketcan self:ioctl udp_socket 0x8933;
 allowxperm hal_can_socketcan self:ioctl can_socket { range 0x8913 0x8914 };
 allowxperm hal_can_socketcan usb_serial_device:ioctl chr_file { 0x5401 0x5403 range 0x541e 0x541f 0x5423 };
 allowxperm hal_can_socketcan usb_serial_device:ioctl chr_file 0x8910;

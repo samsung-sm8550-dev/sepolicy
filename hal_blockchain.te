@@ -1,0 +1,28 @@
+allow hal_blockchain_client hal_blockchain_server:binder { call transfer };
+allow hal_blockchain_client hal_blockchain_server:binder transfer;
+allow hal_blockchain_client hal_blockchain_server:fd *;
+allow hal_blockchain_client hal_blockchain_hwservice:hwservice_manager find;
+allow hal_blockchain_server hal_blockchain_client:binder transfer;
+allow hal_blockchain_server hal_blockchain_client:binder { call transfer };
+allow hal_blockchain_server hal_blockchain_client:fd *;
+allow hal_blockchain_default platform_app:fd *;
+allow hal_blockchain_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_blockchain_default app_data_file:file read;
+allow hal_blockchain_default ion_device:chr_file r_file_perms;
+allow hal_blockchain_default hal_allocator:fd *;
+allow hal_blockchain_default tzdaemon:fd *;
+allow hal_blockchain_default tz_user_device:chr_file rw_file_perms;
+allow hal_blockchain_default tee_efs_file:dir search;
+allow hal_blockchain_default tee_device:chr_file rw_file_perms;
+allow hal_blockchain_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_blockchain_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_blockchain_default)
+get_prop(hal_blockchain_default, tzdaemon_prop)
+get_prop(hal_blockchain_default, vendor_teegris_prop)
+hal_server_domain(hal_blockchain_default, hal_blockchain)
+hal_client_domain(hal_blockchain_default, vendor_hal_tui_comm)
+hal_client_domain(hal_blockchain_default, hal_tui_comm)
+add_hwservice(hal_blockchain_server, hal_blockchain_hwservice)
+type hal_blockchain_default, domain;
+type hal_blockchain_default_exec, exec_type, file_type, vendor_file_type;
+type hal_blockchain_hwservice, hwservice_manager_type;

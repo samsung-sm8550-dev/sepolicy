@@ -1,1 +1,0 @@
-neverallow { domain -vtloopback_app } vtloopback_app_userfaultfd:anon_inode *;

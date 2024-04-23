@@ -8,20 +8,29 @@ allow hal_nfc_server hal_nfc_client:binder { call transfer };
 allow hal_nfc_server hal_nfc_client:fd *;
 allow hal_nfc_server servicemanager:binder { call transfer };
 allow hal_nfc_server servicemanager:fd *;
-allow hal_nfc_server su:tcp_socket { accept getopt read write };
 allow hal_nfc_client hal_nfc_server:binder { call transfer };
 allow hal_nfc_client hal_nfc_server:binder transfer;
 allow hal_nfc_client hal_nfc_server:fd *;
 allow hal_nfc nfc_device:chr_file rw_file_perms;
-allow hal_nfc_default vendor_nfc_vendor_data_file:dir rw_dir_perms;
-allow hal_nfc_default vendor_nfc_vendor_data_file:file create_file_perms;
-allow hal_nfc_default vendor_hal_nxpnfc_service:service_manager { add find };
+allow hal_nfc nfc_vendor_data_file:dir rw_dir_perms;
+allow hal_nfc nfc_vendor_data_file:file create_file_perms;
+allow hal_nfc_default tz_device:chr_file rw_file_perms;
+allow hal_nfc_default sec_efs_file:dir search;
+allow hal_nfc_default vendor_data_file:file rw_file_perms;
+allow hal_nfc_default nfc_device:chr_file rw_file_perms;
+allow hal_nfc_default nfc_vendor_data_file:dir rw_dir_perms;
+allow hal_nfc_default nfc_vendor_data_file:file create_file_perms;
 init_daemon_domain(hal_nfc_default)
 r_dir_file(hal_nfc_default, firmware_file)
+unix_socket_connect(hal_nfc_default, property, vendor_ssgtzd)
+unix_socket_connect(hal_nfc_default, vendor_ssgtzd, init)
 unix_socket_connect(hal_nfc_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_nfc_default, product_ship_prop)
+get_prop(hal_nfc_default, vendor_factory_prop)
+get_prop(hal_nfc_default, vendor_sec_nfc_prop)
 get_prop(hal_nfc_default, vendor_nfc_nq_prop)
 set_prop(hal_nfc, nfc_prop)
-set_prop(hal_nfc, vendor_nfc_prop)
+set_prop(hal_nfc_default, vendor_nfc_prop)
 hal_server_domain(hal_nfc_default, hal_nfc)
 add_hwservice(hal_nfc_default, hal_nfc_hwservice)
 hal_attribute_service(hal_nfc, hal_nfc_service)

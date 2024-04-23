@@ -1,1 +1,0 @@
-neverallow { domain -vendor_powerservice_app } vendor_powerservice_app_userfaultfd:anon_inode *;

@@ -7,7 +7,7 @@ allow radio radio_core_data_file:dir r_dir_perms;
 allow radio radio_core_data_file:file r_file_perms;
 allow radio net_data_file:dir search;
 allow radio net_data_file:file r_file_perms;
-allow radio su:tcp_socket { accept getopt read write };
+allow radio radio_service:service_manager find;
 allow radio audioserver_service:service_manager find;
 allow radio cameraserver_service:service_manager find;
 allow radio drmserver_service:service_manager find;
@@ -18,27 +18,154 @@ allow radio system_api_service:service_manager find;
 allow radio timedetector_service:service_manager find;
 allow radio timezonedetector_service:service_manager find;
 allow radio proc_cmdline:file r_file_perms;
+allow radio storage_file:dir r_dir_perms;
+allow radio storage_file:lnk_file r_file_perms;
+allow radio mnt_user_file:dir r_dir_perms;
+allow radio mnt_user_file:lnk_file r_file_perms;
+allow radio media_rw_data_file:dir create_dir_perms;
+allow radio media_rw_data_file:dir rw_dir_perms;
+allow radio media_rw_data_file:file create_file_perms;
+allow radio media_rw_data_file:file rw_file_perms;
+allow radio sdcardfs:dir create_dir_perms;
+allow radio sdcardfs:file create_file_perms;
+allow radio fuse:dir create_dir_perms;
+allow radio fuse:file create_file_perms;
+allow radio at_distributor:binder transfer;
+allow radio sysfs_lowmemorykiller:file r_file_perms;
+allow radio sysfs_lcd_writable:file rw_file_perms;
+allow radio sysfs_lcd_writable:dir r_dir_perms;
+allow radio cpk_efs_file:dir create_dir_perms;
+allow radio cpk_efs_file:file create_file_perms;
+allow radio mediaextractor_service:service_manager find;
+allow radio nfc:binder { call transfer };
+allow radio nfc:fd *;
+allow radio self:process ptrace;
+allow radio overlay_service:service_manager find;
+allow radio remotedisplay_service:service_manager find;
+allow radio carrier_efs_file:dir create_dir_perms;
+allow radio carrier_efs_file:file create_file_perms;
+allow radio carrier_efs_file:file getattr;
+allow radio system_file:file lock;
+allow radio convergence_data_file:file r_file_perms;
+allow radio remotedisplay:binder { call transfer };
+allow radio remotedisplay:fd *;
+allow radio app_efs_file:dir create_dir_perms;
+allow radio app_efs_file:file create_file_perms;
+allow radio sysint_service:service_manager find;
+allow radio system_app_data_file:dir getattr;
+allow radio surfaceflinger:binder transfer;
+allow radio dumpstate:binder transfer;
+allow radio system_app:unix_dgram_socket sendto;
+allow radio sysfs_battery:dir r_dir_perms;
+allow radio sysfs_battery:file rw_file_perms;
+allow radio mnt_media_rw_file:dir search;
+allow radio tz_device:chr_file rw_file_perms;
+allow radio ursp_service:service_manager find;
+allow radio vendor_configs_file:file lock;
+allow radio ap_device:dir search;
+allow radio dumplog_data_file:dir create_dir_perms;
+allow radio dumplog_data_file:file create_file_perms;
+allow radio imei_efs_file:dir create_dir_perms;
+allow radio imei_efs_file:file create_file_perms;
+allow radio dumpstate_exec:file x_file_perms;
+allow radio shell_exec:file rx_file_perms;
+allow radio tcpopd_socket:sock_file w_file_perms;
+allow radio insthk_exec:file rx_file_perms;
+allow radio storage_stub_file:dir r_dir_perms;
+allow radio sec_efs_file:dir create_dir_perms;
+allow radio sec_efs_file:file create_file_perms;
+allow radio carrier_file:dir r_dir_perms;
+allow radio carrier_file:file r_file_perms;
+allow radio sysfs_sec:file r_file_perms;
+allow radio sysfs_sec:file w_file_perms;
+allow radio sysfs_sec:dir r_dir_perms;
+allow radio ssipc_device:chr_file rw_file_perms;
+allow radio sysfs_net:dir r_dir_perms;
+allow radio sysfs_batteryinfo:dir search;
+allow radio gpuservice:binder { call transfer };
+allow radio gpuservice:fd *;
+allow radio gpu_service:service_manager find;
+allow radio mobicore_user_device:chr_file r_file_perms;
+allow radio vendor_radio_data_file:dir create_dir_perms;
+allow radio vendor_radio_data_file:file create_file_perms;
+allow radio shell_data_file:dir r_dir_perms;
+allow radio shell_data_file:file r_file_perms;
+allow radio metadata_file:dir getattr;
+allow radio linkerconfig_file:dir getattr;
+allow radio sysfs_ss_writable:file w_file_perms;
+allow radio sysfs_ski_muic_writable:dir r_dir_perms;
+allow radio sysfs_ski_muic_writable:file rw_file_perms;
+allow radio sysfs_ski_display_readable:file r_file_perms;
+allow radio usb_configfs:file rw_file_perms;
+allow radio usb_configfs:dir rw_dir_perms;
+allow radio configfs:dir search;
+allow radio priv_app:tcp_socket rw_socket_perms;
+allow radio kumihodecoder:binder { call transfer };
+allow radio kumihodecoder:fd *;
+allow radio kumihodecoder_service:service_manager find;
+allow radio tzdaemon:fd *;
+allow radio tz_user_device:chr_file rw_file_perms;
+allow radio tee_efs_file:dir search;
+allow radio attiqi_service:service_manager find;
+allow radio vendor_sysfs_battery_supply:file rw_file_perms;
+allow radio vendor_sysfs_battery_supply:dir r_dir_perms;
+allow radio vendor_smd_device:chr_file { open read write };
+allow radio vendor_sysfs_kgsl:dir read;
+allow radio vendor_sysfs_kgsl:file read;
 allow radio vendor_atfwd:binder transfer;
-allow radio vendor_ims_service:binder transfer;
 allow radio vendor_file:lnk_file r_file_perms;
 allow radio vendor_framework_file:file r_file_perms;
 allow radio vendor_framework_file:dir search;
 allow radio vendor_hal_imsrtp_hwservice:hwservice_manager find;
-allow radio mediaextractor_service:service_manager find;
 allow radio vendor_avtimer_device:chr_file r_file_perms;
-allow radio vendor_diag_device:chr_file rw_file_perms;
-allow radio vendor_cnd:binder transfer;
-allow radio vendor_hal_atfwd_hwservice:hwservice_manager find;
-allow radio hidl_base_hwservice:hwservice_manager add;
-r_dir_file(radio, vendor_sysfs_diag)
-r_dir_file(radio, vendor_mbn_data_file)
+allowxperm radio radio_data_file:ioctl file 0x6601;
+r_dir_file(radio, sysfs_camera_writable)
+r_dir_file(radio, omr_file)
+r_dir_file(radio, sec_wifi_data_file)
+r_dir_file(radio, sysfs_android_usb)
+r_dir_file(radio, sysfs_sensor_writable)
+r_dir_file(radio, sec_data_file)
+r_dir_file(radio, keydata_data_file)
+r_dir_file(radio, keyrefuge_data_file)
+r_dir_file(radio, sysfs_ss_writable)
+r_dir_file(radio, sysfs_ski_display_writable)
+unix_socket_connect(radio, dumpstate, multiclientd)
+unix_socket_connect(radio, dumpstate, at_distributor)
+unix_socket_connect(radio, dumpstate, init)
+unix_socket_connect(radio, dumpstate, dumpstate)
+unix_socket_connect(radio, dumpstate, attiqi_app)
+unix_socket_connect(radio, property, multiclientd)
+unix_socket_connect(radio, property, at_distributor)
+unix_socket_connect(radio, property, dumpstate)
+unix_socket_connect(radio, property, attiqi_app)
+unix_socket_connect(radio, mnodm, multiclientd)
+unix_socket_connect(radio, mnodm, at_distributor)
+unix_socket_connect(radio, mnodm, init)
+unix_socket_connect(radio, mnodm, dumpstate)
+unix_socket_connect(radio, mnodm, attiqi_app)
+get_prop(radio, sec_ims_prop)
+get_prop(radio, rild_prop)
+get_prop(radio, dynamic_system_prop)
+get_prop(radio, boot_dram_info_prop)
+get_prop(radio, device_logging_prop)
+get_prop(radio, dumpstate_options_prop)
+get_prop(radio, tzdaemon_prop)
+get_prop(radio, vendor_teegris_prop)
 get_prop(radio, vendor_radio_prop)
+set_prop(radio, wifi_prop)
+set_prop(radio, csc_prop)
+set_prop(radio, system_prop)
+set_prop(radio, ctl_start_prop)
+set_prop(radio, ctl_restart_prop)
+set_prop(radio, ctl_dumpstate_prop)
+set_prop(radio, lpdumpd_prop)
 binder_service(radio)
 hwbinder_use(radio)
 net_domain(radio)
 hal_client_domain(radio, hal_telephony)
 hal_client_domain(radio, vendor_hal_perf)
 hal_client_domain(radio, vendor_hal_qspmhal)
-hal_client_domain(radio, vendor_hal_imsfactory)
+hal_client_domain(radio, hal_converter)
+hal_client_domain(radio, hal_engmode)
 add_service(radio, radio_service)
 type radio, bluetoothdomain, domain, mlstrustedsubject;

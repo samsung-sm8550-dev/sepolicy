@@ -1,0 +1,31 @@
+allow samsungpowersoundplay audioserver:binder transfer;
+allow samsungpowersoundplay audioserver:binder { call transfer };
+allow samsungpowersoundplay audioserver:fd *;
+allow samsungpowersoundplay mediaserver:binder { call transfer };
+allow samsungpowersoundplay mediaserver:fd *;
+allow samsungpowersoundplay binderservicedomain:binder { call transfer };
+allow samsungpowersoundplay binderservicedomain:fd *;
+allow samsungpowersoundplay sysfs_sec:file rw_file_perms;
+allow samsungpowersoundplay sysfs_audio_writable:file r_file_perms;
+allow samsungpowersoundplay efs_file:dir search;
+allow samsungpowersoundplay app_efs_file:dir r_dir_perms;
+allow samsungpowersoundplay app_efs_file:file r_file_perms;
+allow samsungpowersoundplay sec_efs_file:dir r_dir_perms;
+allow samsungpowersoundplay sec_efs_file:file r_file_perms;
+allow samsungpowersoundplay imei_efs_file:dir r_dir_perms;
+allow samsungpowersoundplay imei_efs_file:file r_file_perms;
+allow samsungpowersoundplay carrier_file:dir r_dir_perms;
+allow samsungpowersoundplay carrier_file:file r_file_perms;
+allow samsungpowersoundplay omr_file:dir r_dir_perms;
+allow samsungpowersoundplay omr_file:file r_file_perms;
+allow samsungpowersoundplay system_data_file:dir r_dir_perms;
+allow samsungpowersoundplay system_data_file:file r_file_perms;
+allow samsungpowersoundplay audioserver_service:service_manager find;
+allow samsungpowersoundplay mediaserver_service:service_manager find;
+allow samsungpowersoundplay surfaceflinger_service:service_manager find;
+allow samsungpowersoundplay audio_data_file:file r_file_perms;
+allow samsungpowersoundplay mediametrics_service:service_manager find;
+r_dir_file(samsungpowersoundplay, dumplog_data_file)
+set_prop(samsungpowersoundplay, audio_prop)
+type samsungpowersoundplay, coredomain, domain;
+type samsungpowersoundplay_exec, exec_type, file_type, system_file_type;

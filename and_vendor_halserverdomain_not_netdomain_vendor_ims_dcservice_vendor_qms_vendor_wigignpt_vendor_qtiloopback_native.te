@@ -1,1 +1,0 @@
-neverallow { vendor_halserverdomain -netdomain -vendor_ims_dcservice -vendor_qms -vendor_wigignpt -vendor_qtiloopback_native } hwservicemanager:binder { call transfer };

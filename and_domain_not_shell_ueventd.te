@@ -1,2 +1,3 @@
+neverallow { domain -shell -ueventd } hw_random_device:chr_file *;
 neverallow { domain -shell -ueventd } keychord_device:chr_file *;
 neverallow { domain -shell -ueventd } port_device:chr_file *;

@@ -1,2 +1,12 @@
 neverallow isolated_app graphics_device:chr_file { read write };
+allow isolated_app shell_data_file:dir search;
+allow isolated_app shell_data_file:file r_file_perms;
+allow isolated_app app_data_file:dir r_dir_perms;
+allow isolated_app app_data_file:file { getattr ioctl lock read };
+allow isolated_app app_data_file:file map;
+allow isolated_app media_rw_data_file:file map;
+allow isolated_app system_app_data_file:file { read write };
+allow isolated_app hal_perf_default:binder call;
+get_prop(isolated_app, hwservicemanager_prop)
+hwbinder_use(isolated_app)
 type isolated_app, domain;

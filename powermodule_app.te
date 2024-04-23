@@ -1,7 +1,5 @@
-allow vendor_powermodule_app vendor_powermodule_app_userfaultfd:anon_inode { create ioctl read };
 allow vendor_powermodule_app app_api_service:service_manager find;
 dontaudit vendor_powermodule_app default_prop:file read;
-type_transition vendor_powermodule_app vendor_powermodule_app:anon_inode vendor_powermodule_app_userfaultfd "[userfaultfd]";
 app_domain(vendor_powermodule_app)
 hal_client_domain(vendor_powermodule_app, vendor_hal_perf)
 hal_client_domain(vendor_powermodule_app, vendor_hal_poweroptservice)

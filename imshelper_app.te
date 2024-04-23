@@ -1,8 +1,6 @@
-allow vendor_imshelper_app vendor_imshelper_app_userfaultfd:anon_inode { create ioctl read };
 allow vendor_imshelper_app app_api_service:service_manager find;
 allow vendor_imshelper_app system_app_data_file:dir { getattr search };
 allow vendor_imshelper_app vendor_radio_data_file:dir { getattr search };
-type_transition vendor_imshelper_app vendor_imshelper_app:anon_inode vendor_imshelper_app_userfaultfd "[userfaultfd]";
 unix_socket_connect(vendor_imshelper_app, vendor_ims_service, vendor_ims_service)
 app_domain(vendor_imshelper_app)
 type vendor_imshelper_app, domain;

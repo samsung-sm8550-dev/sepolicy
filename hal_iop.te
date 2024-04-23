@@ -13,7 +13,6 @@ attribute vendor_hal_iop_server;
 init_daemon_domain(vendor_hal_iop_default)
 get_prop(vendor_hal_iop, vendor_iop_prop)
 get_prop(vendor_hal_iop, vendor_mpctl_prop)
-binder_use(vendor_hal_iop_default)
 hal_server_domain(vendor_hal_iop_default, vendor_hal_iop)
 hal_client_domain(vendor_hal_iop_default, vendor_hal_perf)
 add_hwservice(vendor_hal_iop_server, vendor_hal_iop_hwservice)

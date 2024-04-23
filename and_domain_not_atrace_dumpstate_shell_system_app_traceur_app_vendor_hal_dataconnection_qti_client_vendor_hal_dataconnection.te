@@ -1,2 +1,0 @@
-neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -vendor_hal_dataconnection_qti_client -vendor_hal_dataconnection_qti_server } vendor_hal_dataconnection_service:service_manager find;
-neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -vendor_hal_dataconnection_qti_client -vendor_hal_dataconnection_qti_server } vendor_hal_dataconnection_aidl_service:service_manager find;

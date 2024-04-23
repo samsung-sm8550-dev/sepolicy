@@ -1,0 +1,28 @@
+allow dtvserver storage_file:dir r_dir_perms;
+allow dtvserver storage_file:lnk_file r_file_perms;
+allow dtvserver mnt_user_file:dir r_dir_perms;
+allow dtvserver mnt_user_file:lnk_file r_file_perms;
+allow dtvserver media_rw_data_file:dir create_dir_perms;
+allow dtvserver media_rw_data_file:file create_file_perms;
+allow dtvserver sdcardfs:dir create_dir_perms;
+allow dtvserver sdcardfs:file create_file_perms;
+allow dtvserver fuse:dir create_dir_perms;
+allow dtvserver fuse:file create_file_perms;
+allow dtvserver mmb_device:chr_file rw_file_perms;
+allow dtvserver mediacodec:binder { call transfer };
+allow dtvserver mediacodec:fd *;
+allow dtvserver sec_debugfs:dir search;
+allow dtvserver digital_tv_fullseg:binder call;
+allow dtvserver hal_graphics_composer_default:fd *;
+allow dtvserver digitaltv_fullseg_hwservice:hwservice_manager find;
+allow dtvserver hal_graphics_allocator_default:fd *;
+allow dtvserver mediaserver_data_file:dir create_dir_perms;
+allow dtvserver mediaserver_data_file:file create_file_perms;
+allow dtvserver dtv_data_file:file create_file_perms;
+allow dtvserver dtv_data_file:dir create_dir_perms;
+allow dtvserver mediaswcodec:binder transfer;
+allow dtvserver vendor_sysfs_kgsl:file r_file_perms;
+hal_client_domain(dtvserver, hal_graphics_allocator)
+hal_client_domain(dtvserver, vendor_hal_qseecom)
+type dtvserver, coredomain, domain;
+type dtvserver_exec, exec_type, file_type, system_file_type;

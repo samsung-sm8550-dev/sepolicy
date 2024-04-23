@@ -1,0 +1,26 @@
+allow vendor_iod proc_diskstats:file r_file_perms;
+allow vendor_iod proc_iostats:file r_file_perms;
+allow vendor_iod proc_iodevs:file r_file_perms;
+allow vendor_iod vendor_sysfs_scsi_host:dir search;
+allow vendor_iod vendor_sysfs_scsi_host:file w_file_perms;
+allow vendor_iod proc_vmstat:file r_file_perms;
+allow vendor_iod proc_meminfo:file r_file_perms;
+allow vendor_iod vendor_sysfs_blksec:file rw_file_perms;
+allow vendor_iod proc_dirty:file rw_file_perms;
+allow vendor_iod sysfs_ski_ufs_writable:dir r_dir_perms;
+allow vendor_iod sysfs_ski_ufs_writable:file rw_file_perms;
+allow vendor_iod sysfs_dm:file w_file_perms;
+allow vendor_iod sysfs_loop:file w_file_perms;
+allow vendor_iod vendor_sysfs_mmc_host:file w_file_perms;
+allow vendor_iod proc_partition:file r_file_perms;
+allow vendor_iod self:netlink_kobject_uevent_socket { bind create read };
+allow vendor_iod vendor_log_file:dir create_dir_perms;
+allow vendor_iod vendor_log_file:file create_file_perms;
+init_daemon_domain(vendor_iod)
+r_dir_file(vendor_iod, vendor_sysfs_scsi_host)
+r_dir_file(vendor_iod, sysfs_dm)
+r_dir_file(vendor_iod, sysfs_loop)
+r_dir_file(vendor_iod, vendor_sysfs_mmc_host)
+get_prop(vendor_iod, product_ship_prop)
+type vendor_iod, domain;
+type vendor_iod_exec, exec_type, file_type, vendor_file_type;

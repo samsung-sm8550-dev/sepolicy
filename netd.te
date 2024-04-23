@@ -31,6 +31,8 @@ allow netd system_server:binder call;
 allow netd self:capability { kill net_admin net_raw };
 allow netd self:capability { chown dac_override dac_read_search };
 allow netd self:capability fowner;
+allow netd self:capability sys_module;
+allow netd self:capability sys_resource;
 allow netd self:cap_userns { kill net_admin net_raw };
 allow netd self:cap_userns { chown dac_override dac_read_search };
 allow netd self:cap_userns fowner;
@@ -57,7 +59,7 @@ allow netd sysfs_usb:file write;
 allow netd net_data_file:file create_file_perms;
 allow netd net_data_file:dir rw_dir_perms;
 allow netd dnsmasq:process signal;
-allow netd su:tcp_socket { accept getopt read write };
+allow netd dnsmasq:process sigkill;
 allow netd permission_service:service_manager find;
 allow netd netd_listener_service:service_manager find;
 allow netd netdomain:tcp_socket { getattr getopt read setattr setopt write };
@@ -66,8 +68,42 @@ allow netd netdomain:rawip_socket { getattr getopt read setattr setopt write };
 allow netd netdomain:tun_socket { getattr getopt read setattr setopt write };
 allow netd netdomain:icmp_socket { getattr getopt read setattr setopt write };
 allow netd netdomain:fd *;
+allow netd netdomain:unix_stream_socket { getattr getopt read setattr setopt write };
+allow netd sysfs_ss_writable:file { open read write };
+allow netd proc_info_file:file { open read };
+allow netd convergence_data_file:dir rw_dir_perms;
+allow netd convergence_data_file:file rw_file_perms;
+allow netd sec_wifi_data_file:file r_file_perms;
+allow netd wifi_efs_file:dir rw_dir_perms;
+allow netd wifi_efs_file:file rw_file_perms;
+allow netd kernel:system module_request;
+allow netd activity_service:service_manager find;
+allow netd netd:dir w_dir_perms;
+allow netd netd:file create_file_perms;
+allow netd proc:filesystem associate;
+allow netd wpa_socket:dir create_dir_perms;
+allow netd vendor_configs_file:file map;
+allow netd sdcardfs:dir create_dir_perms;
+allow netd sdcardfs:file create_file_perms;
+allow netd sdcardfs:lnk_file r_file_perms;
+allow netd mnt_user_file:dir create_dir_perms;
+allow netd mnt_user_file:file create_file_perms;
+allow netd mnt_user_file:lnk_file r_file_perms;
+allow netd storage_file:dir create_dir_perms;
+allow netd storage_file:file create_file_perms;
+allow netd storage_file:lnk_file r_file_perms;
+allow netd media_rw_data_file:dir create_dir_perms;
+allow netd media_rw_data_file:file create_file_perms;
+allow netd media_rw_data_file:lnk_file r_file_perms;
+allow netd teeregistryd_app:fd *;
+allow netd teeregistryd_app:tcp_socket { getopt read setopt write };
+allow netd dumplog_data_file:dir rw_dir_perms;
+allow netd dumplog_data_file:file rw_file_perms;
+allow netd smdac:fd *;
+allow netd smdac:tcp_socket { getopt read setopt write };
+allow netd ssud:fd *;
+allow netd ssud:tcp_socket { getopt read setopt write };
 allow netd vendor_netmgrd:binder transfer;
-allow netd vendor_qnicornd:binder transfer;
 dontaudit netd self:capability fsetid;
 dontaudit netd self:capability sys_admin;
 dontaudit netd self:capability sys_module;
@@ -85,14 +121,14 @@ r_dir_file(netd, cgroup)
 r_dir_file(netd, proc_net_type)
 r_dir_file(netd, sysfs_net)
 r_dir_file(netd, cgroup_v2)
-unix_socket_connect(netd, mdnsd, mdnsd)
+get_prop(netd, exported_wifi_prop)
 binder_use(netd)
 hwbinder_use(netd)
 net_domain(netd)
+hal_client_domain(netd, hal_graphics_allocator)
 add_service(netd, netd_service)
 add_service(netd, dnsresolver_service)
 add_service(netd, mdns_service)
-add_service(netd, system_net_netd_service)
 add_hwservice(netd, system_net_netd_hwservice)
 type netd, domain, mlstrustedsubject;
 type netd_exec, exec_type, file_type, system_file_type;

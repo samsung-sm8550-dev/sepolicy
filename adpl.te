@@ -4,13 +4,9 @@ allow vendor_adpl vendor_mhi_device:chr_file rw_file_perms;
 allow vendor_adpl self:socket create_socket_perms_no_ioctl;
 allow vendor_adpl self:udp_socket create_socket_perms_no_ioctl;
 allow vendor_adpl self:qipcrtr_socket create_socket_perms_no_ioctl;
-allow vendor_adpl vendor_diag_device:chr_file rw_file_perms;
-allow vendor_adpl vendor_sysfs_data:file r_file_perms;
 allow vendor_adpl vendor_dataadpl_socket:sock_file rw_file_perms;
 allow vendor_adpl sysfs:dir r_dir_perms;
-dontaudit vendor_adpl vendor_diag_device:chr_file { append getattr ioctl lock map open read watch watch_reads write };
 init_daemon_domain(vendor_adpl)
-r_dir_file(vendor_adpl, vendor_sysfs_diag)
 set_prop(vendor_adpl, vendor_dataadpl_prop)
 net_domain(vendor_adpl)
 type vendor_adpl, domain;

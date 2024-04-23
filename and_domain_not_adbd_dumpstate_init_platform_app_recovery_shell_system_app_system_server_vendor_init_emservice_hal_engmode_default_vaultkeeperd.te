@@ -1,0 +1,1 @@
+neverallow { domain -adbd -dumpstate -init -platform_app -recovery -shell -system_app -system_server -vendor_init -emservice -hal_engmode_default -vaultkeeperd } boot_em_did_prop:file { getattr ioctl lock map open read watch watch_reads };

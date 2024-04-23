@@ -1,1 +1,0 @@
-neverallow { hal_remoteaccess_client -halclientdomain } domain:process fork;

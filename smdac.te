@@ -1,0 +1,20 @@
+allow smdac audio_device:chr_file rw_file_perms;
+allow smdac audio_device:dir r_dir_perms;
+allow smdac mnt_user_file:dir r_dir_perms;
+allow smdac mnt_user_file:lnk_file r_file_perms;
+allow smdac node:tcp_socket node_bind;
+allow smdac port:tcp_socket name_bind;
+allow smdac sdcardfs:dir r_dir_perms;
+allow smdac smdac:tcp_socket create_stream_socket_perms;
+allow smdac storage_file:dir r_dir_perms;
+allow smdac storage_file:lnk_file r_file_perms;
+allow smdac media_rw_data_file:dir r_dir_perms;
+allow smdac serial_device:chr_file rw_file_perms;
+allow smdac sysfs_sec:file r_file_perms;
+allow smdac ion_device:chr_file r_file_perms;
+allow smdac dumplog_data_file:dir create_dir_perms;
+allow smdac cameraserver_service:service_manager find;
+unix_socket_connect(smdac, fwmarkd, netd)
+hal_client_domain(smdac, hal_graphics_allocator)
+type smdac, coredomain, domain;
+type smdac_exec, exec_type, file_type, system_file_type;

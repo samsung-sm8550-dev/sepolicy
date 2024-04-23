@@ -1,2 +1,0 @@
-neverallow hal_configstore_server { domain -hal_configstore_server -logd -prng_seeder -su -tombstoned }:unix_stream_socket *;
-neverallow hal_configstore_server { domain -hal_configstore_server -logd -prng_seeder -su -tombstoned }:unix_dgram_socket *;

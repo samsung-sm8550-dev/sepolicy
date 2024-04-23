@@ -1,0 +1,21 @@
+allow sysmon dumplog_data_file:dir create_dir_perms;
+allow sysmon dumplog_data_file:file create_file_perms;
+allow sysmon proc_stat:file r_file_perms;
+allow sysmon shell_exec:file rx_file_perms;
+allow sysmon toolbox_exec:file rx_file_perms;
+allow sysmon kmsg_device:chr_file r_file_perms;
+allow sysmon logcat_exec:file rx_file_perms;
+allow sysmon system_file:file rx_file_perms;
+allow sysmon proc_diskstats:file r_file_perms;
+allow sysmon proc_uptime:file r_file_perms;
+allow sysmon proc_version:file r_file_perms;
+allow sysmon vendor_init:dir r_dir_perms;
+allow sysmon vendor_init:file r_file_perms;
+allow sysmon ueventd:dir search;
+r_dir_file(sysmon, domain)
+unix_socket_connect(sysmon, property, logd)
+unix_socket_connect(sysmon, logdr, init)
+unix_socket_connect(sysmon, logdr, logd)
+set_prop(sysmon, system_prop)
+type sysmon, coredomain, domain;
+type sysmon_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,30 @@
+allow hal_teeregistry_client hal_teeregistry_server:binder { call transfer };
+allow hal_teeregistry_client hal_teeregistry_server:binder transfer;
+allow hal_teeregistry_client hal_teeregistry_server:fd *;
+allow hal_teeregistry_client hal_teeregistry_hwservice:hwservice_manager find;
+allow hal_teeregistry_server hal_teeregistry_client:binder transfer;
+allow hal_teeregistry_server hal_teeregistry_client:binder { call transfer };
+allow hal_teeregistry_server hal_teeregistry_client:fd *;
+allow hal_teeregistry_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_teeregistry_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_teeregistry_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_teeregistry_default mobicore_file:file r_file_perms;
+allow hal_teeregistry_default efs_file:file { create getattr open read write };
+allow hal_teeregistry_default efs_file:file create_file_perms;
+allow hal_teeregistry_default efs_file:dir { add_name write };
+allow hal_teeregistry_default efs_file:dir create_dir_perms;
+allow hal_teeregistry_default prov_efs_file:dir { add_name getattr remove_name write };
+allow hal_teeregistry_default prov_efs_file:dir create_dir_perms;
+allow hal_teeregistry_default prov_efs_file:file { getattr open read rename };
+allow hal_teeregistry_default prov_efs_file:file create_file_perms;
+allow hal_teeregistry_default vendor_data_file:dir create_dir_perms;
+allow hal_teeregistry_default vendor_data_file:file create_file_perms;
+allow hal_teeregistry_default vendor_mobicore_data_file:dir create_dir_perms;
+allow hal_teeregistry_default vendor_mobicore_data_file:file create_file_perms;
+init_daemon_domain(hal_teeregistry_default)
+hal_server_domain(hal_teeregistry_default, hal_teeregistry)
+hal_client_domain(hal_teeregistry_default, hal_allocator)
+add_hwservice(hal_teeregistry_server, hal_teeregistry_hwservice)
+type hal_teeregistry_default, domain;
+type hal_teeregistry_default_exec, exec_type, file_type, vendor_file_type;
+type hal_teeregistry_hwservice, hwservice_manager_type;

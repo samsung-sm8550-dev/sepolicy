@@ -10,7 +10,6 @@ allow vendor_location_xtwifi_client vendor_hal_gnss_qti:unix_dgram_socket sendto
 allow vendor_location_xtwifi_client system_server:binder { call transfer };
 allow vendor_location_xtwifi_client system_server:binder transfer;
 allow vendor_location_xtwifi_client system_server:fd *;
-allow vendor_location_xtwifi_client system_server:fifo_file { append write };
 allow vendor_location_xtwifi_client sysfs_wake_lock:file rw_file_perms;
 allow vendor_location_xtwifi_client self:capability2 block_suspend;
 allow vendor_location_xtwifi_client self:capability2 wake_alarm;
@@ -25,25 +24,9 @@ allow vendor_location_xtwifi_client mnt_vendor_file:dir search;
 allow vendor_location_xtwifi_client vendor_persist_rfs_shared_hlos_file:dir r_dir_perms;
 allow vendor_location_xtwifi_client vendor_persist_rfs_shared_hlos_file:file rw_file_perms;
 allow vendor_location_xtwifi_client vendor_location_lowi_server:unix_dgram_socket sendto;
+allow vendor_location_xtwifi_client vendor_location_xtwifi_inetagent:unix_dgram_socket sendto;
 allow vendor_location_xtwifi_client hal_wifi_default:unix_dgram_socket sendto;
 allow vendor_location_xtwifi_client vendor_location_slim_daemon:unix_dgram_socket sendto;
-allow vendor_location_xtwifi_client su:fifo_file append;
-allow vendor_location_xtwifi_client anr_data_file:file append;
-allow vendor_location_xtwifi_client dumpstate:fd *;
-allow vendor_location_xtwifi_client dumpstate:fifo_file { append write };
-allow vendor_location_xtwifi_client incidentd:fd *;
-allow vendor_location_xtwifi_client incidentd:fifo_file { append write };
-allow vendor_location_xtwifi_client tombstoned:fd *;
-allow vendor_location_xtwifi_client tombstone_data_file:file append;
-allow vendor_location_xtwifi_client vendor_location_xtwifi_inetagent:unix_dgram_socket sendto;
-unix_socket_connect(vendor_location_xtwifi_client, property, tombstoned)
-unix_socket_connect(vendor_location_xtwifi_client, property, vendor_ssgtzd)
-unix_socket_connect(vendor_location_xtwifi_client, tombstoned_crash, init)
-unix_socket_connect(vendor_location_xtwifi_client, tombstoned_crash, tombstoned)
-unix_socket_connect(vendor_location_xtwifi_client, tombstoned_crash, vendor_ssgtzd)
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, init)
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, tombstoned)
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, vendor_ssgtzd)
 get_prop(vendor_location_xtwifi_client, hwservicemanager_prop)
 set_prop(vendor_location_xtwifi_client, vendor_location_prop)
 binder_use(vendor_location_xtwifi_client)

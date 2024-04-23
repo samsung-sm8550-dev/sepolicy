@@ -1,0 +1,3 @@
+typealias(ramdump_device)
+typealiasactual(ramdump_device)
+type vendor_ramdump_device, dev_type;

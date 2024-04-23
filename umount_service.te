@@ -1,0 +1,4 @@
+allow umount_service labeledfs:filesystem unmount;
+allow umount_service self:capability sys_admin;
+allow umount_service rootfs:dir r_file_perms;
+type umount_service, coredomain, domain;

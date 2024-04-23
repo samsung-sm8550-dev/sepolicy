@@ -1,6 +1,5 @@
 allowxperm vendor_ipacm self:ioctl udp_socket 0x8910;
 init_daemon_domain(vendor_ipacm)
-unix_socket_send(vendor_ipacm, vendor_ipacm, vendor_ipacm-diag)
 net_domain(vendor_ipacm)
 hal_server_domain(vendor_ipacm, hal_tetheroffload)
 type vendor_ipacm, domain;

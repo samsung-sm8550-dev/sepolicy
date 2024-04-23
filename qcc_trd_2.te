@@ -1,12 +1,3 @@
-allow vendor_qcc_trd_2 hal_audio_default:binder transfer;
-allow vendor_qcc_trd_2 hal_audio_default:binder { call transfer };
-allow vendor_qcc_trd_2 hal_audio_default:fd *;
-allow vendor_qcc_trd_2 vendor_location_xtra_daemon:binder transfer;
-allow vendor_qcc_trd_2 vendor_location_xtra_daemon:binder { call transfer };
-allow vendor_qcc_trd_2 vendor_location_xtra_daemon:fd *;
-allow vendor_qcc_trd_2 vendor_battery_stats:binder transfer;
-allow vendor_qcc_trd_2 vendor_battery_stats:binder { call transfer };
-allow vendor_qcc_trd_2 vendor_battery_stats:fd *;
 allow vendor_qcc_trd_2 vendor_qcc_trd_data_file:file create_file_perms;
 allow vendor_qcc_trd_2 vendor_qcc_trd_data_file:dir create_dir_perms;
 allow vendor_qcc_trd_2 vendor_sysfs_devicetree_soc:dir search;
@@ -26,37 +17,10 @@ allow vendor_qcc_trd_2 vendor_qmuxd_socket:dir create_dir_perms;
 allow vendor_qcc_trd_2 vendor_qmuxd_socket:sock_file { create getattr read setattr unlink write };
 allow vendor_qcc_trd_2 vendor_firmware_file:dir r_dir_perms;
 allow vendor_qcc_trd_2 vendor_firmware_file:file r_file_perms;
-allow vendor_qcc_trd_2 fuse_device:chr_file rw_file_perms;
-allow vendor_qcc_trd_2 fuse:dir create_dir_perms;
-allow vendor_qcc_trd_2 fuse:file create_file_perms;
-allow vendor_qcc_trd_2 mnt_user_file:dir search;
-allow vendor_qcc_trd_2 mnt_user_file:lnk_file read;
 allow vendor_qcc_trd_2 vendor_qtrsdkservice_service:service_manager find;
-allow vendor_qcc_trd_2 vendor_qcc_trd_2:binder { call transfer };
-allow vendor_qcc_trd_2 vendor_qcc_trd_2:binder transfer;
-allow vendor_qcc_trd_2 vendor_qcc_trd_2:fd *;
-allow vendor_qcc_trd_2 su:fifo_file append;
-allow vendor_qcc_trd_2 su:tcp_socket { accept getopt read write };
-allow vendor_qcc_trd_2 anr_data_file:file append;
-allow vendor_qcc_trd_2 dumpstate:fd *;
-allow vendor_qcc_trd_2 dumpstate:fifo_file { append write };
-allow vendor_qcc_trd_2 incidentd:fd *;
-allow vendor_qcc_trd_2 incidentd:fifo_file { append write };
-allow vendor_qcc_trd_2 system_server:fifo_file { append write };
-allow vendor_qcc_trd_2 tombstoned:fd *;
-allow vendor_qcc_trd_2 tombstone_data_file:file append;
-allow vendor_qcc_trd_2 vendor_qccvendor_data_file:file create_file_perms;
-allow vendor_qcc_trd_2 vendor_qccvendor_data_file:dir create_dir_perms;
-allow vendor_qcc_trd_2 vendor_qccvendor_data_file:dir r_dir_perms;
-allow vendor_qcc_trd_2 servicemanager:binder { call transfer };
-allow vendor_qcc_trd_2 servicemanager:fd *;
-allow vendor_qcc_trd_2 vendor_qms:binder transfer;
-allow vendor_qcc_trd_2 vendor_qms:binder { call transfer };
-allow vendor_qcc_trd_2 vendor_qms:fd *;
-allow vendor_qcc_trd_2 vendor_ssgtzd:binder transfer;
-allow vendor_qcc_trd_2 vendor_ssgtzd:binder { call transfer };
-allow vendor_qcc_trd_2 vendor_ssgtzd:fd *;
-allow vendor_qcc_trd_2 system_data_root_file:dir r_dir_perms;
+allow vendor_qcc_trd_2 vendor_qccvendor:binder { call transfer };
+allow vendor_qcc_trd_2 vendor_qccvendor:binder transfer;
+allow vendor_qcc_trd_2 vendor_qccvendor:fd *;
 dontaudit vendor_qcc_trd_2 sysfs:file { append getattr ioctl lock map open read watch watch_reads write };
 init_daemon_domain(vendor_qcc_trd_2)
 r_dir_file(vendor_qcc_trd_2, vendor_sysfs_battery_supply)
@@ -67,24 +31,9 @@ r_dir_file(vendor_qcc_trd_2, vendor_sysfs_graphics)
 r_dir_file(vendor_qcc_trd_2, sysfs_thermal)
 unix_socket_connect(vendor_qcc_trd_2, logdr, logd)
 unix_socket_connect(vendor_qcc_trd_2, logdr, vendor_qmuxd)
-unix_socket_connect(vendor_qcc_trd_2, logdr, tombstoned)
-unix_socket_connect(vendor_qcc_trd_2, logdr, init)
 unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, logd)
 unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, vendor_qmuxd)
-unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, tombstoned)
-unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, init)
-unix_socket_connect(vendor_qcc_trd_2, tombstoned_crash, logd)
-unix_socket_connect(vendor_qcc_trd_2, tombstoned_crash, vendor_qmuxd)
-unix_socket_connect(vendor_qcc_trd_2, tombstoned_crash, tombstoned)
-unix_socket_connect(vendor_qcc_trd_2, tombstoned_crash, init)
-unix_socket_connect(vendor_qcc_trd_2, property, logd)
-unix_socket_connect(vendor_qcc_trd_2, property, vendor_qmuxd)
-unix_socket_connect(vendor_qcc_trd_2, property, tombstoned)
-set_prop(vendor_qcc_trd_2, vendor_qcc_prop)
-set_prop(vendor_qcc_trd_2, vendor_qtr_prop)
 vndbinder_use(vendor_qcc_trd_2)
-hal_server_domain(vendor_qcc_trd_2, vendor_hal_qccvndhal)
 hal_client_domain(vendor_qcc_trd_2, vendor_qccsyshal)
-add_service(vendor_qcc_trd_2, vendor_qtrsdkservice_service)
 type vendor_qcc_trd_2, domain;
 type vendor_qcc_trd_2_exec, exec_type, file_type, vendor_file_type;

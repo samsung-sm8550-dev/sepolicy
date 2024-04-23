@@ -1,3 +1,15 @@
-allow recovery vendor_sysfs_scsi_host:dir search;
-set_prop(recovery, boottime_prop)
+allow recovery security_spota_file:dir r_dir_perms;
+allow recovery security_spota_file:file r_file_perms;
+allow recovery sysfs_power:file { rw_file_perms setattr };
+allow recovery sysfs_lcd_writable:file rw_file_perms;
+allow recovery devpts:chr_file rw_file_perms;
+allow recovery sysfs_ski_debug_writable:file r_file_perms;
+allow recovery tzdaemon:fd *;
+allow recovery tz_user_device:chr_file rw_file_perms;
+allow recovery tee_efs_file:dir search;
+allowxperm recovery devpts:ioctl chr_file 0x5401;
+r_dir_file(recovery, nativetest_data_file)
+r_dir_file(recovery, pdp_data_file)
+get_prop(recovery, tzdaemon_prop)
+get_prop(recovery, vendor_teegris_prop)
 type recovery, domain;

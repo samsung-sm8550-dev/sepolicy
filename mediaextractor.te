@@ -2,16 +2,16 @@ neverallow mediaextractor fs_type:file execute_no_trans;
 neverallow mediaextractor file_type:file execute_no_trans;
 neverallow mediaextractor domain:udp_socket *;
 neverallow mediaextractor domain:rawip_socket *;
+neverallow mediaextractor domain:tcp_socket *;
 allow mediaextractor binderservicedomain:binder { call transfer };
 allow mediaextractor binderservicedomain:fd *;
 allow mediaextractor appdomain:binder { call transfer };
 allow mediaextractor appdomain:fd *;
-allow mediaextractor su:tcp_socket { accept getopt read write };
-allow mediaextractor su:fifo_file append;
 allow mediaextractor mediametrics_service:service_manager find;
 allow mediaextractor hidl_token_hwservice:hwservice_manager find;
 allow mediaextractor system_server:fd *;
 allow mediaextractor system_server:fifo_file { append write };
+allow mediaextractor system_server:fifo_file rw_file_perms;
 allow mediaextractor proc_meminfo:file r_file_perms;
 allow mediaextractor anr_data_file:file append;
 allow mediaextractor dumpstate:fd *;
@@ -30,9 +30,22 @@ allow mediaextractor asec_apk_file:file { getattr read };
 allow mediaextractor ringtone_file:file { getattr read };
 allow mediaextractor vendor_overlay_file:file { map read };
 allow mediaextractor system_file:dir { open read };
+allow mediaextractor sdcardfs:file rw_file_perms;
+allow mediaextractor vfat:file r_file_perms;
+allow mediaextractor radio_data_file:file { getattr read };
+allow mediaextractor shell_data_file:file read;
+allow mediaextractor themecenter_data_file:file { getattr read };
+allow mediaextractor dumplog_data_file:dir rw_dir_perms;
+allow mediaextractor dumplog_data_file:file create;
+allow mediaextractor omr_file:file r_file_perms;
+allow mediaextractor app_fuse_file:file { getattr read };
+allow mediaextractor vold:fd *;
+allow mediaextractor sec_data_file:file { getattr read };
+allow mediaextractor system_app_data_file:file { getattr read };
 r_dir_file(mediaextractor, cgroup)
 r_dir_file(mediaextractor, cgroup_v2)
 unix_socket_connect(mediaextractor, tombstoned_crash, tombstoned)
+get_prop(mediaextractor, audio_prop)
 get_prop(mediaextractor, vendor_audio_prop)
 binder_service(mediaextractor)
 binder_use(mediaextractor)

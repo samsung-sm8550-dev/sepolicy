@@ -6,7 +6,6 @@ allow hal_gnss_server dumpstate:fd *;
 allow hal_gnss_server hal_gnss_client:binder transfer;
 allow hal_gnss_server hal_gnss_client:binder { call transfer };
 allow hal_gnss_server hal_gnss_client:fd *;
-allow hal_gnss_server su:tcp_socket { accept getopt read write };
 allow hal_gnss_server servicemanager:binder { call transfer };
 allow hal_gnss_server servicemanager:fd *;
 allow hal_gnss_client hal_gnss_server:binder { call transfer };
@@ -15,6 +14,29 @@ allow hal_gnss_client hal_gnss_server:fd *;
 allow hal_gnss_client servicemanager:binder { call transfer };
 allow hal_gnss_client servicemanager:fd *;
 allow hal_gnss_default gnss_device:chr_file rw_file_perms;
+allow hal_gnss_default hal_gnss_default:binder call;
+allow hal_gnss_default gpsd:unix_stream_socket connectto;
+allow hal_gnss_default fwk_sensor_hwservice:hwservice_manager find;
+allow hal_gnss_default vendor_gps_file:dir create_dir_perms;
+allow hal_gnss_default vendor_gps_file:file create_file_perms;
+allow hal_gnss_default vendor_gps_file:fifo_file create_file_perms;
+allow hal_gnss_default vendor_hal_gnss_qti:binder { call transfer };
+allow hal_gnss_default vendor_hal_gnss_qti:fd *;
+allow hal_gnss_default self:socket ioctl;
+allow hal_gnss_default sysfs_battery:file rw_file_perms;
+allow vendor_hal_gnss_qti hal_gnss_default:binder transfer;
+allow vendor_hal_gnss_qti self:socket ioctl;
+allow vendor_hal_gnss_qti sysfs_battery:file rw_file_perms;
+allow vendor_hal_gnss_qti sysfs_battery:dir r_dir_perms;
+allow vendor_hal_gnss_qti vendor_data_file:dir r_dir_perms;
+allow vendor_hal_gnss_qti hostapd_data_file:dir r_dir_perms;
+allow vendor_hal_gnss_qti hostapd_data_file:file r_file_perms;
+allow vendor_hal_gnss_qti vendor_gps_file:dir r_dir_perms;
+allow vendor_hal_gnss_qti vendor_gps_file:file r_file_perms;
+allow vendor_hal_gnss_qti vendor_sysfs_battery_supply:dir r_dir_perms;
+allow vendor_hal_gnss_qti vendor_sysfs_battery_supply:file r_file_perms;
+allow vendor_hal_gnss_qti omr_file:dir r_dir_perms;
+allow vendor_hal_gnss_qti omr_file:file r_file_perms;
 allow vendor_hal_gnss_qti vendor_per_mgr:binder transfer;
 allow vendor_hal_gnss_qti vendor_per_mgr:binder { call transfer };
 allow vendor_hal_gnss_qti vendor_per_mgr:fd *;
@@ -31,7 +53,6 @@ allow vendor_hal_gnss_qti vendor_location_lowi_server:unix_dgram_socket sendto;
 allow vendor_hal_gnss_qti vendor_qsap_location_socket:sock_file create_file_perms;
 allow vendor_hal_gnss_qti vendor_qsap_location_socket:dir rw_dir_perms;
 allow vendor_hal_gnss_qti vendor_sysfs_mhi:file r_file_perms;
-allow vendor_hal_gnss_qti vendor_rild_socket:dir search;
 allow vendor_hal_gnss_qti vendor_location_engine_service:unix_dgram_socket sendto;
 allow vendor_hal_gnss_qti vendor_location_edgnss_daemon:unix_dgram_socket sendto;
 allow vendor_hal_gnss_qti vendor_qsap_location:unix_dgram_socket sendto;
@@ -41,29 +62,31 @@ allow vendor_hal_gnss_qti vendor_location_xtwifi_inetagent:unix_dgram_socket sen
 allow hal_gnss vendor_per_mgr:binder transfer;
 allow hal_gnss self:qipcrtr_socket create_socket_perms_no_ioctl;
 dontaudit vendor_hal_gnss_qti self:udp_socket create;
-dontaudit vendor_hal_gnss_qti vendor_pd_locater_dbg_prop:file { getattr ioctl lock map open read watch watch_reads };
+allowxperm hal_gnss_default self:ioctl socket 0xc304;
+allowxperm vendor_hal_gnss_qti self:ioctl socket { range 0xc300 0xc305 };
+typealias(hal_gnss_qti_exec)
+typealias(hal_gnss_qti)
+typealiasactual(hal_gnss_qti_exec)
+typealiasactual(hal_gnss_qti)
 init_daemon_domain(hal_gnss_default)
 init_daemon_domain(vendor_hal_gnss_qti)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_qesd, vendor_location)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_qesd, vendor_hal_qesdhal)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_qesd, vendor_ssgtzd)
 unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, vendor_location)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, vendor_hal_qesdhal)
 unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, vendor_ssgtzd)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, rild)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, init)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, vendor_location)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, vendor_ssgtzd)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, rild)
-unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, init)
-unix_socket_connect(vendor_hal_gnss_qti, property, vendor_location)
-unix_socket_connect(vendor_hal_gnss_qti, property, vendor_ssgtzd)
-unix_socket_connect(vendor_hal_gnss_qti, property, rild)
-get_prop(vendor_hal_gnss_qti, vendor_per_mgr_state_prop)
-get_prop(vendor_hal_gnss_qti, boot_status_prop)
 get_prop(vendor_hal_gnss_qti, vendor_pd_locater_dbg_prop)
-set_prop(vendor_hal_gnss_qti, vendor_gnss_fw_state)
+get_prop(vendor_hal_gnss_qti, exported_system_prop)
+get_prop(vendor_hal_gnss_qti, exported_default_prop)
+get_prop(vendor_hal_gnss_qti, exported2_default_prop)
+get_prop(vendor_hal_gnss_qti, bootloader_prop)
+get_prop(vendor_hal_gnss_qti, vendor_per_mgr_state_prop)
+vndbinder_use(hal_gnss_default)
 vndbinder_use(vendor_hal_gnss_qti)
 hal_server_domain(hal_gnss_default, hal_gnss)
 hal_server_domain(vendor_hal_gnss_qti, hal_gnss)
 hal_client_domain(vendor_hal_gnss_qti, hal_health)
-hal_client_domain(vendor_hal_gnss_qti, vendor_hal_qms_qti)
 hal_attribute_service(hal_gnss, hal_gnss_service)
 hal_attribute_hwservice(hal_gnss, hal_gnss_hwservice)
 type hal_gnss_default, domain;

@@ -1,0 +1,2 @@
+allow icdaemon { exec_type -vendor_file_type }:file r_file_perms;
+allow iofdaemon { exec_type -vendor_file_type }:file r_file_perms;

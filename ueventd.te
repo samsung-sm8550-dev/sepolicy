@@ -6,7 +6,6 @@ neverallow ueventd file_type:file execute_no_trans;
 allow ueventd kmsg_device:chr_file rw_file_perms;
 allow ueventd self:capability { chown dac_override dac_read_search fowner fsetid mknod net_admin setgid setuid sys_rawio };
 allow ueventd self:capability sys_module;
-allow ueventd self:capability sys_admin;
 allow ueventd self:cap_userns { chown dac_override dac_read_search fowner fsetid mknod net_admin setgid setuid sys_rawio };
 allow ueventd self:cap_userns sys_module;
 allow ueventd self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
@@ -17,6 +16,7 @@ allow ueventd sysfs_type:file { relabelfrom relabelto setattr };
 allow ueventd sysfs_type:dir { relabelfrom relabelto setattr };
 allow ueventd sysfs_type:lnk_file { relabelfrom relabelto setattr };
 allow ueventd tmpfs:chr_file rw_file_perms;
+allow ueventd tmpfs:chr_file relabelfrom;
 allow ueventd tmpfs:blk_file getattr;
 allow ueventd dev_type:dir create_dir_perms;
 allow ueventd dev_type:lnk_file { create unlink };
@@ -33,20 +33,28 @@ allow ueventd kernel:key search;
 allow ueventd system_bootstrap_lib_file:dir r_dir_perms;
 allow ueventd system_bootstrap_lib_file:file { execute getattr map open read };
 allow ueventd vendor_shell_exec:file execute;
-allow ueventd dm_device:chr_file rw_file_perms;
-allow ueventd vendor_sysfs_bond0:file rw_file_perms;
-allow ueventd vendor_sysfs_usb_c:file w_file_perms;
+allow ueventd security_spota_file:dir r_dir_perms;
+allow ueventd security_spota_file:file r_file_perms;
+allow ueventd vfat:dir create_dir_perms;
+allow ueventd vfat:file create_file_perms;
+allow ueventd mediaserver_data_file:dir r_dir_perms;
+allow ueventd mediaserver_data_file:file r_file_perms;
+allow ueventd watchdog_device:chr_file relabelto;
+allow ueventd firmware_file:dir r_dir_perms;
 allow ueventd firmware_file:dir search;
 allow ueventd firmware_file:file r_file_perms;
+allow ueventd vendor_sysfs_graphics:file { open write };
+allow ueventd vendor_sysfs_bond0:file rw_file_perms;
+allow ueventd vendor_sysfs_usb_c:file w_file_perms;
 allow ueventd vendor_persist_file:dir search;
 allow ueventd vendor_persist_file:file r_file_perms;
 allow ueventd vendor_vm_system_file:dir search;
 allow ueventd vendor_vm_system_file:file r_file_perms;
-allow ueventd vendor_persist_wcnss_service_file:dir search;
 dontaudit ueventd postinstall_mnt_dir:dir getattr;
 domain_auto_trans(ueventd, vendor_vm_mgr_exec, vendor_vm_mgr)
 r_dir_file(ueventd, rootfs)
 r_dir_file(ueventd, sysfs_type)
 r_dir_file(ueventd, selinuxfs)
+r_dir_file(ueventd, spu_file)
 r_dir_file(ueventd, mnt_vendor_file)
 type ueventd, domain;

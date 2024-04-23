@@ -1,0 +1,2 @@
+neverallow { domain -init -installd -platform_app -dsms -dsms_app } dsms_data_file:dir { remove_name write };
+neverallow { domain -init -installd -platform_app -dsms -dsms_app } dsms_data_file:file read;

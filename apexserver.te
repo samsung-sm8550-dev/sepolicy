@@ -1,0 +1,55 @@
+allow apexserver dmabuf_system_heap_device:chr_file r_file_perms;
+allow apexserver storage_file:dir r_dir_perms;
+allow apexserver storage_file:lnk_file r_file_perms;
+allow apexserver mnt_user_file:dir r_dir_perms;
+allow apexserver mnt_user_file:lnk_file r_file_perms;
+allow apexserver media_rw_data_file:dir create_dir_perms;
+allow apexserver media_rw_data_file:file create_file_perms;
+allow apexserver sdcardfs:dir create_dir_perms;
+allow apexserver sdcardfs:file create_file_perms;
+allow apexserver fuse:dir create_dir_perms;
+allow apexserver fuse:file create_file_perms;
+allow apexserver platform_app:binder { call transfer };
+allow apexserver platform_app:fd *;
+allow apexserver gpu_device:chr_file rw_file_perms;
+allow apexserver ion_device:chr_file rw_file_perms;
+allow apexserver m2m1shot_device:chr_file rw_file_perms;
+allow apexserver apexserver_service:service_manager add;
+allow apexserver batterystats_service:service_manager find;
+allow apexserver mediaserver_service:service_manager find;
+allow apexserver surfaceflinger_service:service_manager find;
+allow apexserver system_server:unix_stream_socket { read write };
+allow apexserver sensorservice_service:service_manager find;
+allow apexserver hal_graphics_mapper_hwservice:hwservice_manager find;
+allow apexserver hwservicemanager:binder call;
+allow apexserver mediametrics_service:service_manager find;
+allow apexserver mediacodec:binder { call transfer };
+allow apexserver mediacodec:fd *;
+allow apexserver codecsolution_service:service_manager find;
+allow apexserver mediaextractor_service:service_manager find;
+allow apexserver drmserver_service:service_manager find;
+allow apexserver vfat:file create_file_perms;
+allow apexserver system_file:dir r_dir_perms;
+allow apexserver audioserver_service:service_manager find;
+allow apexserver dumplog_data_file:dir search;
+allow apexserver sec_debugfs:dir r_dir_perms;
+allow apexserver system_app_data_file:file { read write };
+allow apexserver tmpfs:file write;
+allow apexserver audio_service:service_manager find;
+allow apexserver mediaswcodec:binder { call transfer };
+allow apexserver mediaswcodec:binder transfer;
+allow apexserver mediaswcodec:fd *;
+allow apexserver sec_data_file:dir create_dir_perms;
+allow apexserver sec_data_file:file create_file_perms;
+allow apexserver aidl_codecsolution_service:service_manager find;
+allowxperm apexserver dmabuf_system_heap_device:ioctl chr_file 0x4800;
+get_prop(apexserver, hwservicemanager_prop)
+get_prop(apexserver, boot_dram_info_prop)
+set_prop(apexserver, system_prop)
+set_prop(apexserver, audio_prop)
+hal_client_domain(apexserver, hal_allocator)
+hal_client_domain(apexserver, hal_codec2)
+hal_client_domain(apexserver, hal_graphics_allocator)
+hal_client_domain(apexserver, hal_omx)
+type apexserver, coredomain, domain;
+type apexserver_exec, exec_type, file_type, system_file_type;

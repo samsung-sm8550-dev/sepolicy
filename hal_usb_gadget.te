@@ -7,19 +7,13 @@ allow hal_usb_gadget_client hal_usb_gadget_server:fd *;
 allow hal_usb_gadget_server hal_usb_gadget_client:binder transfer;
 allow hal_usb_gadget_server hal_usb_gadget_client:binder { call transfer };
 allow hal_usb_gadget_server hal_usb_gadget_client:fd *;
-allow hal_usb_gadget_server su:tcp_socket { accept getopt read write };
-allow hal_usb_gadget_server servicemanager:binder { call transfer };
-allow hal_usb_gadget_server servicemanager:fd *;
 allow hal_usb_gadget_server configfs:lnk_file { create read unlink };
 allow hal_usb_gadget_server configfs:dir rw_dir_perms;
 allow hal_usb_gadget_server configfs:file create_file_perms;
 allow hal_usb_gadget_server functionfs:dir { read search };
 allow hal_usb_gadget_server functionfs:file read;
-allow hal_usb_gadget_server proc_interrupts:file r_file_perms;
 init_daemon_domain(hal_usb_gadget_default)
-get_prop(hal_usb_gadget_server, usb_uvc_enabled_prop)
 hal_server_domain(hal_usb_gadget_default, hal_usb_gadget)
-hal_attribute_service(hal_usb_gadget, hal_usb_gadget_service)
 hal_attribute_hwservice(hal_usb_gadget, hal_usb_gadget_hwservice)
 type hal_usb_gadget_default, domain;
 type hal_usb_gadget_default_exec, exec_type, file_type, vendor_file_type;

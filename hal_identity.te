@@ -4,7 +4,6 @@ expandtypeattribute(hal_identity_server)
 allow hal_identity_server dumpstate:fifo_file write;
 allow hal_identity_server dumpstate:fd *;
 allow hal_identity_server hal_identity_client:binder transfer;
-allow hal_identity_server su:tcp_socket { accept getopt read write };
 allow hal_identity_server servicemanager:binder { call transfer };
 allow hal_identity_server servicemanager:fd *;
 allow hal_identity_client hal_identity_server:binder { call transfer };

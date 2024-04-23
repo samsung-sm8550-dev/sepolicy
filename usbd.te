@@ -1,4 +1,2 @@
-allow usbd servicemanager:binder { call transfer };
-allow usbd servicemanager:fd *;
 type usbd, domain;
 type usbd_exec, exec_type, file_type, system_file_type;

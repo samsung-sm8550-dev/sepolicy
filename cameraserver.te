@@ -2,6 +2,7 @@ neverallow cameraserver fs_type:file execute_no_trans;
 neverallow cameraserver file_type:file execute_no_trans;
 neverallow cameraserver domain:udp_socket *;
 neverallow cameraserver domain:rawip_socket *;
+neverallow cameraserver domain:tcp_socket *;
 allow cameraserver binderservicedomain:binder { call transfer };
 allow cameraserver binderservicedomain:fd *;
 allow cameraserver appdomain:binder { call transfer };
@@ -9,10 +10,7 @@ allow cameraserver appdomain:fd *;
 allow cameraserver ion_device:chr_file rw_file_perms;
 allow cameraserver dmabuf_system_heap_device:chr_file r_file_perms;
 allow cameraserver hal_graphics_composer:fd *;
-allow cameraserver su:tcp_socket { accept getopt read write };
-allow cameraserver su:fd *;
-allow cameraserver su:fifo_file { read write };
-allow cameraserver su:unix_stream_socket { read write };
+allow cameraserver cameraserver_service:service_manager find;
 allow cameraserver activity_service:service_manager find;
 allow cameraserver appops_service:service_manager find;
 allow cameraserver audioserver_service:service_manager find;
@@ -34,25 +32,100 @@ allow cameraserver shell:fd *;
 allow cameraserver shell:unix_stream_socket { read write };
 allow cameraserver shell:fifo_file { read write };
 allow cameraserver mediametrics_service:service_manager find;
+allow cameraserver sysfs_camera_writable:file { getattr open read write };
+allow cameraserver sysfs_camera_writable:dir r_dir_perms;
+allow cameraserver sysfs_ss_writable:file write;
+allow cameraserver sysfs_ss_writable:file rw_file_perms;
+allow cameraserver sysfs_ss_writable:dir r_dir_perms;
+allow cameraserver sysfs_ss_writable:lnk_file rw_file_perms;
+allow cameraserver vfat:dir create_dir_perms;
+allow cameraserver vfat:file create_file_perms;
+allow cameraserver camera_device:chr_file rw_file_perms;
+allow cameraserver m2m1shot_device:chr_file rw_file_perms;
+allow cameraserver video_device:chr_file rw_file_perms;
+allow cameraserver stitch_device:chr_file rw_file_perms;
+allow cameraserver system_data_file:file r_file_perms;
+allow cameraserver sensorservice_service:service_manager find;
+allow cameraserver apexserver_service:service_manager find;
+allow cameraserver storage_file:dir r_dir_perms;
+allow cameraserver storage_file:lnk_file r_file_perms;
+allow cameraserver mnt_user_file:dir r_dir_perms;
+allow cameraserver mnt_user_file:lnk_file r_file_perms;
+allow cameraserver media_rw_data_file:dir create_dir_perms;
+allow cameraserver media_rw_data_file:file create_file_perms;
+allow cameraserver sdcardfs:dir create_dir_perms;
+allow cameraserver sdcardfs:file create_file_perms;
+allow cameraserver fuse:dir create_dir_perms;
+allow cameraserver fuse:file create_file_perms;
+allow cameraserver system_server:unix_stream_socket { read write };
+allow cameraserver sysfs_sensor_writable:file r_file_perms;
+allow cameraserver fwk_sensor_hwservice:hwservice_manager find;
+allow cameraserver hal_omx_hwservice:hwservice_manager find;
+allow cameraserver edmnativehelper_service:service_manager find;
+allow cameraserver codecsolution_service:service_manager find;
+allow cameraserver sysfs_leds:lnk_file r_file_perms;
 allow cameraserver gpu_device:chr_file rw_file_perms;
+allow cameraserver snap_efs_file:dir rw_dir_perms;
+allow cameraserver snap_data_file:dir rw_dir_perms;
+allow cameraserver snap_data_file:file create_file_perms;
+allow cameraserver sec_debugfs:dir search;
+allow cameraserver mediacodec:binder call;
+allow cameraserver mediacodec:binder { call transfer };
+allow cameraserver mediacodec:fd *;
+allow cameraserver dumplog_data_file:dir rw_dir_perms;
+allow cameraserver dumplog_data_file:file rw_file_perms;
+allow cameraserver dumplog_data_file:file create;
+allow cameraserver fwk_display_hwservice:hwservice_manager find;
+allow cameraserver localtm_data_file:dir rw_dir_perms;
+allow cameraserver camera_data_file:dir r_dir_perms;
+allow cameraserver camera_data_file:file r_file_perms;
+allow cameraserver snap_hidl:binder call;
+allow cameraserver snap_hidl:binder { call transfer };
+allow cameraserver snap_hidl:fd *;
+allow cameraserver snap_hwservice:hwservice_manager find;
+allow cameraserver hal_face_default:binder { call transfer };
+allow cameraserver hal_face_default:binder transfer;
+allow cameraserver hal_face_default:fd *;
+allow cameraserver vr_service:service_manager find;
+allow cameraserver sysfs_sec:file r_file_perms;
+allow cameraserver cameraworker_service:service_manager find;
+allow cameraserver speg_marker_data_file:file { getattr open read };
+allow cameraserver speg_marker_data_file:dir search;
+allow cameraserver hal_camera_default:process signal;
+allow cameraserver hal_thermal_default:binder { call transfer };
+allow cameraserver hal_thermal_default:binder transfer;
+allow cameraserver hal_thermal_default:fd *;
+allow cameraserver faced:binder transfer;
+allow cameraserver remosaicd:binder transfer;
+allow cameraserver visiond:binder transfer;
+allow cameraserver vendor_sysfs_graphics:file rw_file_perms;
+allow cameraserver hal_perf_default:binder { call transfer };
+allow cameraserver hal_perf_default:fd *;
+allow cameraserver CustomFrequencyManager_service:service_manager find;
+allow cameraserver vendor_sysfs_kgsl:dir search;
+allow cameraserver vendor_sysfs_kgsl:file r_file_perms;
 allow cameraserver vendor_sysfs_camera:file r_file_perms;
 allow cameraserver vendor_sysfs_camera:dir search;
 allow cameraserver system_file:dir r_dir_perms;
-allow cameraserver system_server:unix_stream_socket { read write };
-allow cameraserver mediacodec:binder { call transfer };
-allow cameraserver mediacodec:fd *;
+unix_socket_connect(cameraserver, property, multiclientd)
+get_prop(cameraserver, audio_prop)
+get_prop(cameraserver, apm_prop)
+get_prop(cameraserver, sec_camera_prop)
+get_prop(cameraserver, default_prop)
+get_prop(cameraserver, graphics_vulkan_prop)
 get_prop(cameraserver, vendor_camera_prop)
 get_prop(cameraserver, vendor_adsprpc_prop)
-get_prop(cameraserver, vendor_sys_video_prop)
+set_prop(cameraserver, exported_system_prop)
 binder_service(cameraserver)
 binder_use(cameraserver)
 hal_client_domain(cameraserver, hal_allocator)
 hal_client_domain(cameraserver, hal_camera)
 hal_client_domain(cameraserver, hal_codec2)
+hal_client_domain(cameraserver, hal_face)
 hal_client_domain(cameraserver, hal_graphics_allocator)
 hal_client_domain(cameraserver, hal_omx)
+hal_client_domain(cameraserver, hal_perf)
 add_service(cameraserver, cameraserver_service)
-add_service(cameraserver, fwk_camera_service)
 add_hwservice(cameraserver, fwk_camera_hwservice)
 type cameraserver, domain;
 type cameraserver_exec, exec_type, file_type, system_file_type;

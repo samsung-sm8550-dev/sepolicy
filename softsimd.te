@@ -1,0 +1,21 @@
+allow softsimd softsimd_service:service_manager add;
+allow softsimd mobicore_admin_device:chr_file rw_file_perms;
+allow softsimd mobicore_user_device:chr_file rw_file_perms;
+allow softsimd permission_service:service_manager find;
+allow softsimd softsimd_data_file:file r_file_perms;
+allow softsimd ion_device:chr_file r_file_perms;
+allow softsimd tz_user_device:chr_file rw_file_perms;
+allow softsimd tee_file:dir r_dir_perms;
+allow softsimd dumplog_data_file:dir rw_dir_perms;
+allow softsimd dumplog_data_file:file create_file_perms;
+allow softsimd hwservicemanager:binder { call transfer };
+allow softsimd hwservicemanager:fd *;
+allow softsimd system_app:binder transfer;
+get_prop(softsimd, hwservicemanager_prop)
+binder_service(softsimd)
+hal_attribute(softsimd)
+hal_client_domain(softsimd, vendor_hal_qseecom)
+hal_client_domain(softsimd, hal_softsimd)
+add_service(softsimd, softsimd_service)
+type softsimd, coredomain, domain;
+type softsimd_exec, exec_type, file_type, system_file_type;

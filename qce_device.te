@@ -1,0 +1,3 @@
+typealias(qce_device)
+typealiasactual(qce_device)
+type vendor_qce_device, dev_type;

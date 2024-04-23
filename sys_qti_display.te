@@ -1,3 +1,1 @@
-allow vendor_sys_qti_display shell_exec:file rx_file_perms;
-allow vendor_sys_qti_display toolbox_exec:file rx_file_perms;
 type vendor_sys_qti_display, domain, mlstrustedsubject;

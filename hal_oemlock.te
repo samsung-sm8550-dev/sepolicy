@@ -1,10 +1,10 @@
 expandtypeattribute(hal_oemlock)
 expandtypeattribute(hal_oemlock_client)
 expandtypeattribute(hal_oemlock_server)
+allow hal_oemlock_server dumpstate:binder transfer;
 allow hal_oemlock_server dumpstate:fifo_file write;
 allow hal_oemlock_server dumpstate:fd *;
 allow hal_oemlock_server hal_oemlock_client:binder transfer;
-allow hal_oemlock_server su:tcp_socket { accept getopt read write };
 allow hal_oemlock_server servicemanager:binder { call transfer };
 allow hal_oemlock_server servicemanager:fd *;
 allow hal_oemlock_client hal_oemlock_server:binder { call transfer };

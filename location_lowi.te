@@ -1,7 +1,6 @@
 allow vendor_location_lowi_server vendor_location:process sigchld;
 allow vendor_location_lowi_server vendor_location:fd *;
 allow vendor_location_lowi_server vendor_location:unix_dgram_socket { read sendto write };
-allow vendor_location_lowi_server vendor_location:unix_stream_socket { connectto read write };
 allow vendor_location_lowi_server vendor_location_data_file:dir create_dir_perms;
 allow vendor_location_lowi_server vendor_location_data_file:file create_file_perms;
 allow vendor_location_lowi_server vendor_location_socket:lnk_file { getattr open read };
@@ -33,8 +32,6 @@ unix_socket_send(vendor_location_lowi_server, vendor_wifihal, vendor_mlid)
 unix_socket_send(vendor_location_lowi_server, vendor_wifihal, vendor_location_xtwifi_inetagent)
 get_prop(vendor_location_lowi_server, hwservicemanager_prop)
 get_prop(vendor_location_lowi_server, vendor_cnd_prop)
-binder_use(vendor_location_lowi_server)
 hwbinder_use(vendor_location_lowi_server)
-hal_client_domain(vendor_location_lowi_server, vendor_hal_qms_qti)
 type vendor_location_lowi_server, domain;
 type vendor_location_lowi_server_exec, exec_type, file_type, vendor_file_type;

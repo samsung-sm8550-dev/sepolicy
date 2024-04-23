@@ -1,0 +1,11 @@
+allow ftm_ptt node:tcp_socket node_bind;
+allow ftm_ptt node:udp_socket node_bind;
+allow ftm_ptt port:tcp_socket name_bind;
+allow ftm_ptt port:udp_socket name_bind;
+allow ftm_ptt netd:unix_stream_socket connectto;
+allow ftm_ptt self:capability net_raw;
+allow ftm_ptt self:netlink_socket create_socket_perms_no_ioctl;
+init_daemon_domain(ftm_ptt)
+net_domain(ftm_ptt)
+type ftm_ptt, coredomain, domain;
+type ftm_ptt_exec, exec_type, file_type, system_file_type;

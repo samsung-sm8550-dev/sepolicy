@@ -1,8 +1,6 @@
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder transfer;
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder { call transfer };
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:fd *;
-allow vendor_wfdvndservice su:tcp_socket { accept getopt read write };
-allow vendor_wfdvndservice su:fifo_file append;
 allow vendor_wfdvndservice vendor_wfd_app:fd *;
 allow vendor_wfdvndservice mediacodec:fd *;
 allow vendor_wfdvndservice tee_device:chr_file rw_file_perms;

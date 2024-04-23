@@ -1,7 +1,10 @@
 allow gmscore_app update_engine:binder transfer;
+allow gmscore_app tcpopd_socket:sock_file w_file_perms;
+allow gmscore_app uwb_service:service_manager find;
+allow gmscore_app sec_data_file:file r_file_perms;
+allow gmscore_app system_app_data_file:file r_file_perms;
 dontaudit gmscore_app vendor_hal_qspmhal_default:binder call;
 dontaudit gmscore_app vendor_hal_qspmhal_hwservice:hwservice_manager find;
-dontaudit gmscore_app firmware_file:filesystem getattr;
-dontaudit gmscore_app bt_firmware_file:filesystem getattr;
 unix_socket_connect(gmscore_app, vendor_dpmtcm, vendor_dpmd)
+get_prop(gmscore_app, chipname_prop)
 type gmscore_app, domain;

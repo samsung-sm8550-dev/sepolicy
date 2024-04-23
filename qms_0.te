@@ -2,11 +2,13 @@ neverallow vendor_qms_0 self:capability *;
 neverallow vendor_qms_0 self:capability2 *;
 neverallow vendor_qms_0 self:cap_userns *;
 neverallow vendor_qms_0 self:cap2_userns *;
+neverallow vendor_qms_0 vendor_qms_vndr_data_file:file *;
+neverallow vendor_qms_0 vendor_qms_main_data_file:file *;
+neverallow vendor_qms_0 vendor_qms_config_data_file:file { create write };
 allow vendor_qms_0 vendor_qms:fd *;
 allow vendor_qms_0 vendor_qms:unix_dgram_socket write;
 allow vendor_qms_0 vendor_qms:unix_stream_socket { read write };
 allow vendor_qms_0 vendor_qms_exec:file execute_no_trans;
-allow vendor_qms_0 su:fifo_file append;
 allow vendor_qms_0 anr_data_file:file append;
 allow vendor_qms_0 dumpstate:fd *;
 allow vendor_qms_0 dumpstate:fifo_file { append write };
@@ -16,20 +18,12 @@ allow vendor_qms_0 system_server:fifo_file { append write };
 allow vendor_qms_0 tombstoned:fd *;
 allow vendor_qms_0 tombstone_data_file:file append;
 allow vendor_qms_0 self:qipcrtr_socket create_socket_perms_no_ioctl;
-allow vendor_qms_0 self:netlink_generic_socket create_socket_perms_no_ioctl;
-allow vendor_qms_0 vendor_hal_qesdhal_default:file read;
-allow vendor_qms_0 vendor_hal_qesdhal_default:lnk_file read;
-allow vendor_qms_0 vendor_hal_qesdhal_default:dir search;
-allow vendor_qms_0 vendor_qesd_one_socket:dir r_dir_perms;
+allow vendor_qms_0 vendor_qms_other_data_file:dir create_dir_perms;
+allow vendor_qms_0 vendor_qms_other_data_file:file create_file_perms;
+allow vendor_qms_0 vendor_qms_config_data_file:dir r_dir_perms;
+allow vendor_qms_0 vendor_qms_config_data_file:file r_file_perms;
 unix_socket_connect(vendor_qms_0, tombstoned_crash, tombstoned)
 unix_socket_connect(vendor_qms_0, tombstoned_crash, vendor_hal_qesdhal)
-unix_socket_connect(vendor_qms_0, tombstoned_crash, vendor_hal_qesdonehal_default)
 unix_socket_connect(vendor_qms_0, vendor_qesd, tombstoned)
 unix_socket_connect(vendor_qms_0, vendor_qesd, vendor_hal_qesdhal)
-unix_socket_connect(vendor_qms_0, vendor_qesd, vendor_hal_qesdonehal_default)
-unix_socket_connect(vendor_qms_0, vendor_qesd_one, tombstoned)
-unix_socket_connect(vendor_qms_0, vendor_qesd_one, vendor_hal_qesdhal)
-unix_socket_connect(vendor_qms_0, vendor_qesd_one, vendor_hal_qesdonehal_default)
-get_prop(vendor_qms_0, vendor_qesdk_one_prop)
-get_prop(vendor_qms_0, vendor_qms_prop)
 type vendor_qms_0, domain;

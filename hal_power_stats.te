@@ -6,7 +6,6 @@ allow hal_power_stats_server dumpstate:fd *;
 allow hal_power_stats_server hal_power_stats_client:binder transfer;
 allow hal_power_stats_server hal_power_stats_client:binder { call transfer };
 allow hal_power_stats_server hal_power_stats_client:fd *;
-allow hal_power_stats_server su:tcp_socket { accept getopt read write };
 allow hal_power_stats_server servicemanager:binder { call transfer };
 allow hal_power_stats_server servicemanager:fd *;
 allow hal_power_stats_client hal_power_stats_server:binder { call transfer };

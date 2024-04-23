@@ -7,8 +7,5 @@ allow hal_can_controller_client hal_can_controller_server:fd *;
 allow hal_can_controller_server hal_can_controller_client:binder transfer;
 allow hal_can_controller_server hal_can_controller_client:binder { call transfer };
 allow hal_can_controller_server hal_can_controller_client:fd *;
-allow hal_can_controller_server su:tcp_socket { accept getopt read write };
-binder_use(hal_can_controller)
-hal_attribute_service(hal_can_controller, hal_can_controller_service)
 hal_attribute_hwservice(hal_can_controller, hal_can_controller_hwservice)
 type hal_can_controller_hwservice, hwservice_manager_type, protected_hwservice;

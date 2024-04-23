@@ -1,4 +1,3 @@
-allow vendor_perfdump_app vendor_perfdump_app_userfaultfd:anon_inode { create ioctl read };
 allow vendor_perfdump_app system_app_data_file:dir create_dir_perms;
 allow vendor_perfdump_app system_app_data_file:file create_file_perms;
 allow vendor_perfdump_app servicemanager:service_manager list;
@@ -11,7 +10,6 @@ allow vendor_perfdump_app system_server:binder { call transfer };
 allow vendor_perfdump_app system_server:fd *;
 dontaudit vendor_perfdump_app service_manager_type:service_manager *;
 dontaudit vendor_perfdump_app hwservice_manager_type:hwservice_manager *;
-type_transition vendor_perfdump_app vendor_perfdump_app:anon_inode vendor_perfdump_app_userfaultfd "[userfaultfd]";
 unix_socket_connect(vendor_perfdump_app, property, dumpstate)
 unix_socket_connect(vendor_perfdump_app, dumpstate, init)
 unix_socket_connect(vendor_perfdump_app, dumpstate, dumpstate)

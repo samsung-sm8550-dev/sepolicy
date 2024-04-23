@@ -22,7 +22,6 @@ allow vendor_rfs_access vendor_tombstone_data_file:file create_file_perms;
 allow vendor_rfs_access kmsg_device:chr_file w_file_perms;
 allow vendor_rfs_access vendor_pddump_data_file:dir create_dir_perms;
 allow vendor_rfs_access vendor_pddump_data_file:file create_file_perms;
-dontaudit vendor_rfs_access self:capability { dac_override dac_read_search };
 type_transition vendor_rfs_access mnt_vendor_file:dir vendor_persist_rfs_file;
 type_transition vendor_rfs_access mnt_vendor_file:dir vendor_persist_rfs_shared_hlos_file "hlos_rfs";
 type_transition vendor_rfs_access mnt_vendor_file:file vendor_persist_rfs_file;

@@ -1,0 +1,67 @@
+allow dmb container_data_file:file rw_file_perms;
+allow dmb dmb_data_file:dir create_dir_perms;
+allow dmb dmb_data_file:file create_file_perms;
+allow dmb audioserver_service:service_manager find;
+allow dmb audioserver:binder { call transfer };
+allow dmb audioserver:fd *;
+allow dmb mediacodec:binder { call transfer };
+allow dmb mediacodec:fd *;
+allow dmb ion_device:chr_file rw_file_perms;
+allow dmb mediaserver:binder { call transfer };
+allow dmb mediaserver:fd *;
+allow dmb appdomain:binder { call transfer };
+allow dmb appdomain:fd *;
+allow dmb surfaceflinger:binder { call transfer };
+allow dmb surfaceflinger:fd *;
+allow dmb efs_file:dir r_dir_perms;
+allow dmb kernel:system module_request;
+allow dmb app_efs_file:dir search;
+allow dmb app_efs_file:file { open read };
+allow dmb dumplog_data_file:file w_file_perms;
+allow dmb dumplog_data_file:dir r_dir_perms;
+allow dmb media_rw_data_file:dir create_dir_perms;
+allow dmb media_rw_data_file:file create_file_perms;
+allow dmb radio_data_file:dir search;
+allow dmb radio_data_file:file { open read };
+allow dmb tdmb_device:chr_file rw_file_perms;
+allow dmb system_file:file rx_file_perms;
+allow dmb shell_exec:file rx_file_perms;
+allow dmb dmb_service:service_manager add;
+allow dmb mediaserver_service:service_manager find;
+allow dmb system_server:binder { call transfer };
+allow dmb system_server:fd *;
+allow dmb hal_graphics_allocator_default:binder { call transfer };
+allow dmb hal_graphics_allocator_default:fd *;
+allow dmb hal_graphics_composer_default:binder { call transfer };
+allow dmb hal_graphics_composer_default:fd *;
+allow dmb batterystats_service:service_manager find;
+allow dmb mediametrics_service:service_manager find;
+allow dmb hidl_allocator_hwservice:hwservice_manager find;
+allow dmb hidl_memory_hwservice:hwservice_manager find;
+allow dmb hal_graphics_mapper_hwservice:hwservice_manager find;
+allow dmb mediametrics:binder call;
+allow dmb sdcardfs:file rw_file_perms;
+allow dmb remotedisplay_service:service_manager find;
+allow dmb remotedisplay:binder { call transfer };
+allow dmb remotedisplay:fd *;
+allow dmb codecsolution_service:service_manager find;
+allow dmb sec_debugfs:dir search;
+allow dmb mediaswcodec:binder { call transfer };
+allow dmb mediaswcodec:fd *;
+allow dmb aidl_codecsolution_service:service_manager find;
+allow dmb fuse:dir create_dir_perms;
+allow dmb fuse:file create_file_perms;
+r_dir_file(dmb, system_file)
+get_prop(dmb, audio_prop)
+get_prop(dmb, hwservicemanager_prop)
+get_prop(dmb, sec_camera_prop)
+set_prop(dmb, system_prop)
+binder_service(dmb)
+binder_use(dmb)
+hwbinder_use(dmb)
+hal_client_domain(dmb, hal_allocator)
+hal_client_domain(dmb, hal_codec2)
+hal_client_domain(dmb, hal_omx)
+hal_client_domain(dmb, hal_tdmb)
+type dmb, coredomain, domain, mlstrustedsubject;
+type dmb_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,3 @@
+typealias(fm_radio_device)
+typealiasactual(fm_radio_device)
+type vendor_fm_radio_device, dev_type;

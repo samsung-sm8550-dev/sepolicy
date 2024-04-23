@@ -7,6 +7,10 @@ allow hal_vr_client hal_vr_server:fd *;
 allow hal_vr_server hal_vr_client:binder transfer;
 allow hal_vr_server hal_vr_client:binder { call transfer };
 allow hal_vr_server hal_vr_client:fd *;
+allow hal_vr_default vendor_shell_exec:file { execute open read };
+allow hal_vr_default sysfs_lcd_writable:file rw_file_perms;
+allow hal_vr_default sysfs_lcd_writable:dir r_dir_perms;
+allow hal_vr_default sysfs_hmp:file rw_file_perms;
 init_daemon_domain(hal_vr_default)
 hal_server_domain(hal_vr_default, hal_vr)
 hal_attribute_hwservice(hal_vr, hal_vr_hwservice)

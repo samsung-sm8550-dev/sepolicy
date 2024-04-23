@@ -48,10 +48,10 @@ allow logd system_data_file:lnk_file r_file_perms;
 allow logd packages_list_file:file r_file_perms;
 allow logd pstorefs:dir search;
 allow logd pstorefs:file r_file_perms;
-allow logd misc_logd_file:dir r_dir_perms;
-allow logd misc_logd_file:file rw_file_perms;
 allow logd runtime_event_log_tags_file:file rw_file_perms;
 allow logd runtime_event_log_tags_file:file r_file_perms;
+allow logd vendor_configs_file:file map;
+allow logd ewlogd:unix_dgram_socket sendto;
 r_dir_file(logd, cgroup)
 r_dir_file(logd, cgroup_v2)
 r_dir_file(logd, proc_kmsg)
@@ -60,6 +60,10 @@ r_dir_file(logd, domain)
 unix_socket_connect(logd, logd, logd)
 unix_socket_connect(logd, logd, init)
 unix_socket_connect(logd, property, logd)
+unix_socket_connect(logd, ewlogd, logd)
+unix_socket_connect(logd, ewlogd, init)
+get_prop(logd, boot_dram_info_prop)
 set_prop(logd, logd_prop)
+set_prop(logd, log_ewlogd_prop)
 type logd, domain, mlstrustedsubject;
 type logd_exec, exec_type, file_type, system_file_type;

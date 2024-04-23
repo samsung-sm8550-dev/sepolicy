@@ -1,0 +1,19 @@
+allow aasa_platform_app activity_service:service_manager find;
+allow aasa_platform_app anr_data_file:dir r_dir_perms;
+allow aasa_platform_app audio_service:service_manager find;
+allow aasa_platform_app autofill_service:service_manager find;
+allow aasa_platform_app desktop_service:service_manager find;
+allow aasa_platform_app multidisplay_service:service_manager find;
+allow aasa_platform_app EDM_Policy_service:service_manager find;
+allow aasa_platform_app vr_service:service_manager find;
+allow aasa_platform_app semclipboard_service:service_manager find;
+allow aasa_platform_app location_service:service_manager find;
+allow aasa_platform_app wifi_service:service_manager find;
+allow aasa_platform_app sensorservice_service:service_manager find;
+allow aasa_platform_app netpolicy_service:service_manager find;
+allow aasa_platform_app webviewupdate_service:service_manager find;
+unix_socket_connect(aasa_platform_app, property, dumpstate)
+unix_socket_connect(aasa_platform_app, dumpstate, init)
+unix_socket_connect(aasa_platform_app, dumpstate, dumpstate)
+set_prop(aasa_platform_app, ctl_dumpstate_prop)
+type aasa_platform_app, coredomain, domain, sec_standard_app_type;

@@ -1,0 +1,16 @@
+allow hal_softsimd_client hal_softsimd_server:binder { call transfer };
+allow hal_softsimd_client hal_softsimd_server:binder transfer;
+allow hal_softsimd_client hal_softsimd_server:fd *;
+allow hal_softsimd_client hal_softsimd_hwservice:hwservice_manager find;
+allow hal_softsimd_server hal_softsimd_client:binder transfer;
+allow hal_softsimd_server hal_softsimd_client:binder { call transfer };
+allow hal_softsimd_server hal_softsimd_client:fd *;
+allow hal_softsimd_default tz_user_device:chr_file rw_file_perms;
+allow hal_softsimd_default tee_device:chr_file rw_file_perms;
+allowxperm hal_softsimd_default tee_device:ioctl chr_file 0x4800;
+init_daemon_domain(hal_softsimd_default)
+hal_server_domain(hal_softsimd_default, hal_softsimd)
+add_hwservice(hal_softsimd_server, hal_softsimd_hwservice)
+type hal_softsimd_default, domain;
+type hal_softsimd_default_exec, exec_type, file_type, vendor_file_type;
+type hal_softsimd_hwservice, hwservice_manager_type;

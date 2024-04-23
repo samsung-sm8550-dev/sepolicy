@@ -2,8 +2,6 @@ allow vendor_wifidisplayhalservice_qti mediacodec:binder transfer;
 allow vendor_wifidisplayhalservice_qti mediacodec:binder { call transfer };
 allow vendor_wifidisplayhalservice_qti mediacodec:fd *;
 allow vendor_wifidisplayhalservice_qti system_file:dir r_dir_perms;
-allow vendor_wifidisplayhalservice_qti su:tcp_socket { accept getopt read write };
-allow vendor_wifidisplayhalservice_qti su:fifo_file append;
 allow vendor_wifidisplayhalservice_qti tee_device:chr_file rw_file_perms;
 allow vendor_wifidisplayhalservice_qti audio_device:chr_file rw_file_perms;
 allow vendor_wifidisplayhalservice_qti audio_device:dir r_dir_perms;
@@ -19,9 +17,6 @@ allow vendor_wifidisplayhalservice_qti vendor_dmabuf_qseecom_ta_heap_device:chr_
 allow vendor_wifidisplayhalservice_qti vendor_vm_cp_bitstream_device:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_qce_device:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice_qti vendor_media_data_file:dir w_dir_perms;
-allow vendor_wifidisplayhalservice_qti vendor_media_data_file:file create_file_perms;
-allow vendor_wifidisplayhalservice_qti vendor_data_file:file r_file_perms;
 allow vendor_wifidisplayhalservice_qti uhid_device:chr_file rw_file_perms;
 allow vendor_wifidisplayhalservice_qti anr_data_file:file append;
 allow vendor_wifidisplayhalservice_qti dumpstate:fd *;
@@ -52,14 +47,13 @@ unix_socket_connect(vendor_wifidisplayhalservice_qti, property, tombstoned)
 unix_socket_connect(vendor_wifidisplayhalservice_qti, tombstoned_crash, init)
 unix_socket_connect(vendor_wifidisplayhalservice_qti, tombstoned_crash, tombstoned)
 get_prop(vendor_wifidisplayhalservice_qti, hwservicemanager_prop)
-get_prop(vendor_wifidisplayhalservice_qti, vendor_wfd_vendor_debug_prop)
 get_prop(vendor_wifidisplayhalservice_qti, vendor_video_prop)
 hwbinder_use(vendor_wifidisplayhalservice_qti)
 vndbinder_use(vendor_wifidisplayhalservice)
 net_domain(vendor_wifidisplayhalservice_qti)
-hal_client_domain(vendor_wifidisplayhalservice_qti, hal_audio)
 hal_client_domain(vendor_wifidisplayhalservice_qti, hal_graphics_allocator)
 hal_client_domain(vendor_wifidisplayhalservice_qti, hal_graphics_composer)
+hal_client_domain(vendor_wifidisplayhalservice_qti, hal_audio)
 add_service(vendor_wifidisplayhalservice_qti, vendor_wfdnativemm_service)
 hal_attribute_hwservice(vendor_wifidisplayhalservice, vendor_wifidisplayhalservice_hwservice)
 type vendor_wifidisplayhalservice_qti, domain, vendor_halserverdomain, vendor_wifidisplayhalservice, vendor_wifidisplayhalservice_server;

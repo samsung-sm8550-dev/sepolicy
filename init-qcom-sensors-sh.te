@@ -7,6 +7,8 @@ init_daemon_domain(vendor_init-qcom-sensors-sh)
 r_dir_file(vendor_init-qcom-sensors-sh, mnt_vendor_file)
 r_dir_file(vendor_init-qcom-sensors-sh, vendor_persist_sensors_file)
 r_dir_file(vendor_init-qcom-sensors-sh, vendor_sysfs_devicetree_soc)
+set_prop(vendor_init-qcom-sensors-sh, ctl_factory_ssc_prop)
+set_prop(vendor_init-qcom-sensors-sh, ctl_start_prop)
 set_prop(vendor_init-qcom-sensors-sh, vendor_sensors_prop)
 type vendor_init-qcom-sensors-sh, domain;
 type vendor_init-qcom-sensors-sh_exec, exec_type, file_type, vendor_file_type;

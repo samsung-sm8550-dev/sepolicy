@@ -1,10 +1,4 @@
 neverallow { domain -kernel } kernel:security setcheckreqprot;
-neverallow { domain -kernel } nativetest_data_file:file no_w_file_perms;
-neverallow { domain -kernel } nativetest_data_file:lnk_file no_w_file_perms;
-neverallow { domain -kernel } nativetest_data_file:chr_file no_w_file_perms;
-neverallow { domain -kernel } nativetest_data_file:blk_file no_w_file_perms;
-neverallow { domain -kernel } nativetest_data_file:sock_file no_w_file_perms;
-neverallow { domain -kernel } nativetest_data_file:fifo_file no_w_file_perms;
 neverallow { domain -kernel } exec_type:file relabelto;
 neverallow { domain -kernel } exec_type:dir relabelto;
 neverallow { domain -kernel } exec_type:lnk_file relabelto;

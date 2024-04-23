@@ -1,2 +1,1 @@
-allow connectivity_native_service vendor_qnicornd:binder transfer;
 type connectivity_native_service, app_api_service, ephemeral_app_api_service, service_manager_type, system_server_service;

@@ -6,15 +6,10 @@ neverallow hal_cas_server file_type:file execute_no_trans;
 allow hal_cas_client hal_cas_server:binder { call transfer };
 allow hal_cas_client hal_cas_server:binder transfer;
 allow hal_cas_client hal_cas_server:fd *;
-allow hal_cas_client servicemanager:binder { call transfer };
-allow hal_cas_client servicemanager:fd *;
 allow hal_cas_server hal_cas_client:binder transfer;
 allow hal_cas_server hal_cas_client:binder { call transfer };
 allow hal_cas_server hal_cas_client:fd *;
 allow hal_cas_server hidl_memory_hwservice:hwservice_manager find;
-allow hal_cas_server su:tcp_socket { accept getopt read write };
-allow hal_cas_server servicemanager:binder { call transfer };
-allow hal_cas_server servicemanager:fd *;
 allow hal_cas system_data_file:file { getattr read };
 allow hal_cas cgroup:dir { search write };
 allow hal_cas cgroup:file w_file_perms;
@@ -39,7 +34,6 @@ r_dir_file(hal_cas, cgroup_v2)
 get_prop(hal_cas_server, serialno_prop)
 vndbinder_use(hal_cas_default)
 hal_server_domain(hal_cas_default, hal_cas)
-hal_attribute_service(hal_cas, hal_cas_service)
 hal_attribute_hwservice(hal_cas, hal_cas_hwservice)
 type hal_cas_default, domain;
 type hal_cas_default_exec, exec_type, file_type, vendor_file_type;

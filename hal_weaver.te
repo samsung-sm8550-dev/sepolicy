@@ -1,10 +1,10 @@
 expandtypeattribute(hal_weaver)
 expandtypeattribute(hal_weaver_client)
 expandtypeattribute(hal_weaver_server)
+allow hal_weaver_server dumpstate:binder transfer;
 allow hal_weaver_server dumpstate:fifo_file write;
 allow hal_weaver_server dumpstate:fd *;
 allow hal_weaver_server hal_weaver_client:binder transfer;
-allow hal_weaver_server su:tcp_socket { accept getopt read write };
 allow hal_weaver_server servicemanager:binder { call transfer };
 allow hal_weaver_server servicemanager:fd *;
 allow hal_weaver_client hal_weaver_server:binder { call transfer };

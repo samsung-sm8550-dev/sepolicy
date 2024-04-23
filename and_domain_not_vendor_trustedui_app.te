@@ -1,1 +1,0 @@
-neverallow { domain -vendor_trustedui_app } vendor_trustedui_app_userfaultfd:anon_inode *;

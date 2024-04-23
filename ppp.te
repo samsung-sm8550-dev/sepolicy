@@ -1,5 +1,7 @@
 allow ppp mtp:socket rw_socket_perms;
 allow ppp mtp:pppox_socket rw_socket_perms;
+allow ppp mtp:pppox_socket create_socket_perms_no_ioctl;
+allow ppp mtp:pppox_socket ioctl;
 allow ppp mtp:unix_dgram_socket rw_socket_perms;
 allow ppp mtp:fd *;
 allow ppp ppp_device:chr_file rw_file_perms;
@@ -13,6 +15,7 @@ allowxperm ppp self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 
 allowxperm ppp self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
 allowxperm ppp mtp:ioctl socket { range 0x7436 0x7441 range 0x7446 0x7447 range 0x744b 0x745a range 0x7480 0x7488 };
 allowxperm ppp mtp:ioctl pppox_socket { range 0x7436 0x7441 range 0x7446 0x7447 range 0x744b 0x745a range 0x7480 0x7488 };
+allowxperm ppp mtp:ioctl pppox_socket 0x7437;
 r_dir_file(ppp, proc_net_type)
 net_domain(ppp)
 type ppp, domain;

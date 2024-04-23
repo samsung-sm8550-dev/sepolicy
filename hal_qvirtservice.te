@@ -1,4 +1,0 @@
-attribute vendor_hal_qvirtservice;
-attribute vendor_hal_qvirtservice_server;
-attribute vendor_hal_qvirtservice_client;
-type vendor_hal_qvirtservice_qti, domain;

@@ -1,7 +1,8 @@
-allow vendor_timeservice_app vendor_timeservice_app_userfaultfd:anon_inode { create ioctl read };
 allow vendor_timeservice_app app_api_service:service_manager find;
 allow vendor_timeservice_app vendor_time_daemon:unix_stream_socket connectto;
-type_transition vendor_timeservice_app vendor_timeservice_app:anon_inode vendor_timeservice_app_userfaultfd "[userfaultfd]";
+typealias(timeservice_app)
+typealiasactual(timeservice_app)
+get_prop(vendor_timeservice_app, debug_level_prop)
 app_domain(vendor_timeservice_app)
 hal_client_domain(vendor_timeservice_app, vendor_hal_perf)
 type vendor_timeservice_app, domain;

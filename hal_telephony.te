@@ -7,7 +7,6 @@ allow hal_telephony_client hal_telephony_server:fd *;
 allow hal_telephony_server hal_telephony_client:binder transfer;
 allow hal_telephony_server hal_telephony_client:binder { call transfer };
 allow hal_telephony_server hal_telephony_client:fd *;
-allow hal_telephony_server su:tcp_socket { accept getopt read write };
 allow hal_telephony_server self:netlink_route_socket nlmsg_write;
 allow hal_telephony_server self:capability { net_admin net_raw setgid setpcap setuid };
 allow hal_telephony_server self:cap_userns { net_admin net_raw setgid setpcap setuid };

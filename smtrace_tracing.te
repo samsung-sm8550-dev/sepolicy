@@ -1,8 +1,0 @@
-allow vendor_smtrace_tracing debugfs_tracing:dir r_dir_perms;
-allow vendor_smtrace_tracing debugfs_tracing:file rw_file_perms;
-allow vendor_smtrace_tracing vendor_shell_exec:file { entrypoint rx_file_perms };
-allow vendor_smtrace_tracing vendor_toolbox_exec:file rx_file_perms;
-init_daemon_domain(vendor_smtrace_tracing)
-set_prop(vendor_smtrace_tracing, vendor_system_prop)
-type vendor_smtrace_tracing, domain, mlstrustedsubject;
-type vendor_smtrace_tracing_exec, exec_type, file_type, vendor_file_type;

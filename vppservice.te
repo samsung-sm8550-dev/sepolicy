@@ -1,5 +1,3 @@
-allow vendor_vppservice servicemanager:binder { call transfer };
-allow vendor_vppservice servicemanager:fd *;
 allow vendor_vppservice vendor_vpp_data_file:dir create_dir_perms;
 allow vendor_vppservice vendor_vpp_data_file:file create_file_perms;
 allow vendor_vppservice mnt_vendor_file:dir search;
@@ -10,7 +8,6 @@ allow vendor_vppservice vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_vppservice dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_vppservice vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_vppservice vendor_vm_cp_pixel_device:chr_file r_file_perms;
-allow vendor_vppservice ion_device:chr_file rw_file_perms;
 dontaudit vendor_vppservice vendor_xdsp_device:chr_file { ioctl open read };
 init_daemon_domain(vendor_vppservice)
 r_dir_file(vendor_vppservice, adsprpcd_file)

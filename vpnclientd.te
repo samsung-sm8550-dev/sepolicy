@@ -1,0 +1,5 @@
+allow vpnclientd tun_device:chr_file rw_file_perms;
+allow vpnclientd node_type:rawip_socket node_bind;
+allow vpnclientd system_server:fd *;
+type vpnclientd, coredomain, domain;
+type vpnclientd_exec, exec_type, file_type, system_file_type;

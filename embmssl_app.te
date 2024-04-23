@@ -1,8 +1,6 @@
-allow vendor_embmssl_app vendor_embmssl_app_userfaultfd:anon_inode { create ioctl read };
 allow vendor_embmssl_app app_api_service:service_manager find;
 allow vendor_embmssl_app radio_service:service_manager find;
 dontaudit vendor_embmssl_app system_file:dir write;
-type_transition vendor_embmssl_app vendor_embmssl_app:anon_inode vendor_embmssl_app_userfaultfd "[userfaultfd]";
 unix_socket_connect(vendor_embmssl_app, vendor_dpmtcm, vendor_dpmd)
 app_domain(vendor_embmssl_app)
 net_domain(vendor_embmssl_app)

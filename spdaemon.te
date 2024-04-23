@@ -1,4 +1,9 @@
-allow vendor_spdaemon servicemanager:fd *;
+allow vendor_spdaemon sec_debugfs:dir search;
+allow vendor_spdaemon vendor_log_file:dir create_dir_perms;
+allow vendor_spdaemon vendor_log_file:file create_file_perms;
+allow vendor_spdaemon hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow vendor_spdaemon vaultkeeperd:binder call;
+allow vendor_spdaemon proc_sysrq:file rw_file_perms;
 allow vendor_spdaemon vendor_spss_utils_device:chr_file rw_file_perms;
 allow vendor_spdaemon vendor_spcom_device:chr_file rw_file_perms;
 allow vendor_spdaemon vendor_skp_device:chr_file rw_file_perms;
@@ -14,8 +19,6 @@ allow vendor_spdaemon vendor_per_mgr:binder transfer;
 allow vendor_spdaemon vendor_per_mgr:binder { call transfer };
 allow vendor_spdaemon vendor_per_mgr:fd *;
 allow vendor_spdaemon vendor_per_mgr_service:service_manager find;
-allow vendor_spdaemon vendor_persist_spudc_file:dir rw_dir_perms;
-allow vendor_spdaemon vendor_persist_spudc_file:file create_file_perms;
 allow vendor_spdaemon vendor_persist_iar_db_file:dir rw_dir_perms;
 allow vendor_spdaemon vendor_persist_iar_db_file:file create_file_perms;
 allow vendor_spdaemon vendor_spunvm_file:dir rw_dir_perms;
@@ -29,25 +32,19 @@ allow vendor_spdaemon vendor_vm_cp_spss_sp_device:chr_file r_file_perms;
 allow vendor_spdaemon vendor_vm_cp_spss_sp_shared_device:chr_file r_file_perms;
 allow vendor_spdaemon vendor_vm_cp_spss_hlos_shared_device:chr_file r_file_perms;
 allow vendor_spdaemon vendor_membuf_dev:chr_file r_file_perms;
-allow vendor_spdaemon sysfs_wake_lock:file rw_file_perms;
-allow vendor_spdaemon self:capability2 block_suspend;
-allow vendor_spdaemon self:cap2_userns block_suspend;
-allow vendor_spdaemon system_suspend_server:binder { call transfer };
-allow vendor_spdaemon system_suspend_server:fd *;
-allow vendor_spdaemon system_suspend_hwservice:hwservice_manager find;
-allow vendor_spdaemon hidl_manager_hwservice:hwservice_manager find;
-allow vendor_spdaemon hal_system_suspend_service:service_manager find;
+typealias(spdaemon)
+typealias(spdaemon_exec)
+typealiasactual(spdaemon)
+typealiasactual(spdaemon_exec)
 init_daemon_domain(vendor_spdaemon)
 r_dir_file(vendor_spdaemon, firmware_file)
 r_dir_file(vendor_spdaemon, vendor_sysfs_spss)
-get_prop(vendor_spdaemon, vendor_per_mgr_state_prop)
-get_prop(vendor_spdaemon, vendor_disable_spu_prop)
 get_prop(vendor_spdaemon, hwservicemanager_prop)
+get_prop(vendor_spdaemon, vendor_per_mgr_state_prop)
+set_prop(vendor_spdaemon, vendor_spdaemon_prop)
 set_prop(vendor_spdaemon, vendor_spcomlib_prop)
-binder_use(vendor_spdaemon)
 hwbinder_use(vendor_spdaemon)
 vndbinder_use(vendor_spdaemon)
 hal_client_domain(vendor_spdaemon, hal_telephony)
-hal_client_domain(vendor_spdaemon, vendor_hal_qms_qti)
 type vendor_spdaemon, domain;
 type vendor_spdaemon_exec, exec_type, file_type, vendor_file_type;

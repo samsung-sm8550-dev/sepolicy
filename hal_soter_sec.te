@@ -1,0 +1,15 @@
+allow hal_soter_sec system_app:binder transfer;
+allow hal_soter_sec tee_device:chr_file rw_file_perms;
+allow hal_soter_sec ion_device:chr_file r_file_perms;
+allow hal_soter_sec sec_debugfs:dir search;
+allow hal_soter_sec tz_user_device:chr_file rw_file_perms;
+allow hal_soter_sec mobicore_user_device:chr_file rw_file_perms;
+allow hal_soter_sec vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_soter_sec vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allowxperm hal_soter_sec vendor_dmabuf_qseecom_heap_device:ioctl chr_file 0x4800;
+init_daemon_domain(hal_soter_sec)
+get_prop(hal_soter_sec, vendor_mobicore_prop)
+hal_server_domain(hal_soter_sec, hal_sec_soter)
+add_hwservice(hal_soter_sec, hal_sec_soter_hwservice)
+type hal_soter_sec, domain;
+type hal_soter_sec_exec, exec_type, file_type, vendor_file_type;

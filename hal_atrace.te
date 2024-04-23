@@ -6,8 +6,6 @@ allow hal_atrace_client hal_atrace_server:fd *;
 allow hal_atrace_server hal_atrace_client:binder transfer;
 allow hal_atrace_default debugfs_tracing:dir r_dir_perms;
 allow hal_atrace_default debugfs_tracing:file rw_file_perms;
-allow hal_atrace_default debugfs_tracing_debug:dir r_dir_perms;
-allow hal_atrace_default debugfs_tracing_debug:file rw_file_perms;
 init_daemon_domain(hal_atrace_default)
 hal_server_domain(hal_atrace_default, hal_atrace)
 hal_attribute_hwservice(hal_atrace, hal_atrace_hwservice)

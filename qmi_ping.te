@@ -1,6 +1,0 @@
-allow vendor_qmi_ping shell:process sigchld;
-allow vendor_qmi_ping devpts:chr_file { getattr ioctl read write };
-allow vendor_qmi_ping vendor_qmi_ping:socket { bind create read setopt write };
-allow vendor_qmi_ping vendor_qmi_ping:capability { fsetid setgid setuid };
-type vendor_qmi_ping, domain;
-type vendor_qmi_ping_exec, exec_type, file_type, vendor_file_type;

@@ -10,17 +10,7 @@ allow vendor_location_edgnss_daemon vendor_hal_gnss_qti:unix_dgram_socket sendto
 allow vendor_location_edgnss_daemon system_server:binder { call transfer };
 allow vendor_location_edgnss_daemon system_server:binder transfer;
 allow vendor_location_edgnss_daemon system_server:fd *;
-allow vendor_location_edgnss_daemon system_server:fifo_file { append write };
 allow vendor_location_edgnss_daemon self:qipcrtr_socket create_socket_perms_no_ioctl;
-allow vendor_location_edgnss_daemon su:fifo_file append;
-allow vendor_location_edgnss_daemon anr_data_file:file append;
-allow vendor_location_edgnss_daemon dumpstate:fd *;
-allow vendor_location_edgnss_daemon dumpstate:fifo_file { append write };
-allow vendor_location_edgnss_daemon incidentd:fd *;
-allow vendor_location_edgnss_daemon incidentd:fifo_file { append write };
-allow vendor_location_edgnss_daemon tombstoned:fd *;
-allow vendor_location_edgnss_daemon tombstone_data_file:file append;
-unix_socket_connect(vendor_location_edgnss_daemon, tombstoned_crash, tombstoned)
 get_prop(vendor_location_edgnss_daemon, hwservicemanager_prop)
 net_domain(vendor_location_edgnss_daemon)
 type vendor_location_edgnss_daemon, domain;

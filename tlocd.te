@@ -5,7 +5,6 @@ allow vendor_tlocd tee_device:chr_file rw_file_perms;
 allow vendor_tlocd self:socket create_socket_perms;
 allow vendor_tlocd self:qipcrtr_socket create_socket_perms;
 allow vendor_tlocd ion_device:chr_file rw_file_perms;
-allow vendor_tlocd vendor_location_data_file:dir search;
 allowxperm vendor_tlocd self:ioctl socket { range 0xc300 0xc305 };
 allowxperm vendor_tlocd self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
 init_daemon_domain(vendor_tlocd)

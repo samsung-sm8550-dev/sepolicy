@@ -2,16 +2,12 @@ allow vendor_hal_factory_qti_client vendor_hal_factory_qti_server:binder { call 
 allow vendor_hal_factory_qti_client vendor_hal_factory_qti_server:binder transfer;
 allow vendor_hal_factory_qti_client vendor_hal_factory_qti_server:fd *;
 allow vendor_hal_factory_qti_client vendor_hal_factory_qti_hwservice:hwservice_manager find;
-allow vendor_hal_factory_qti_client vendor_hal_factory_service:service_manager find;
 allow vendor_hal_factory_qti_server vendor_hal_factory_qti_client:binder transfer;
 allow vendor_hal_factory_qti_server vendor_hal_factory_qti_client:binder { call transfer };
 allow vendor_hal_factory_qti_server vendor_hal_factory_qti_client:fd *;
-allow vendor_hal_factory_qti_server su:tcp_socket { accept getopt read write };
 allow vendor_hal_factory_qti_default mnt_vendor_file:dir search;
 allow vendor_hal_factory_qti_default vendor_persist_mmi_file:dir rw_dir_perms;
 allow vendor_hal_factory_qti_default vendor_persist_mmi_file:file create_file_perms;
-allow vendor_hal_factory_qti servicemanager:binder { call transfer };
-allow vendor_hal_factory_qti servicemanager:fd *;
 allow vendor_hal_factory_qti vendor_mmi_socket:sock_file rw_file_perms;
 attribute vendor_hal_factory_qti;
 attribute vendor_hal_factory_qti_client;
@@ -21,7 +17,6 @@ unix_socket_connect(vendor_hal_factory_qti, property, vendor_mmi)
 set_prop(vendor_hal_factory_qti_default, vendor_boot_mode_prop)
 set_prop(vendor_hal_factory_qti, vendor_ctl_vendor_mmid_prop)
 hal_server_domain(vendor_hal_factory_qti_default, vendor_hal_factory_qti)
-add_service(vendor_hal_factory_qti_server, vendor_hal_factory_service)
 add_hwservice(vendor_hal_factory_qti_server, vendor_hal_factory_qti_hwservice)
 type vendor_hal_factory_qti_default, domain;
 type vendor_hal_factory_qti_default_exec, exec_type, file_type, vendor_file_type;

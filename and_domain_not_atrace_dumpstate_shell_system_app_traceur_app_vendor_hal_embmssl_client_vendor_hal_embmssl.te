@@ -1,1 +1,0 @@
-neverallow { domain -atrace -dumpstate -shell -system_app -traceur_app -vendor_hal_embmssl_client -vendor_hal_embmssl_server } vendor_hal_embmsslaidl_service:service_manager find;

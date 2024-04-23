@@ -2,14 +2,10 @@ allow vendor_hal_srvctracker_default system_server:binder transfer;
 allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:binder { call transfer };
 allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:binder transfer;
 allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:fd *;
-allow vendor_hal_srvctracker_client vendor_hal_servicetrackeraidl_service:service_manager find;
 allow vendor_hal_srvctracker_client vendor_hal_srvctracker_hwservice:hwservice_manager find;
 allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:binder transfer;
 allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:binder { call transfer };
 allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:fd *;
-allow vendor_hal_srvctracker_server su:tcp_socket { accept getopt read write };
-allow vendor_hal_srvctracker_server servicemanager:binder { call transfer };
-allow vendor_hal_srvctracker_server servicemanager:fd *;
 allow vendor_hal_srvctracker hwservicemanager:binder call;
 attribute vendor_hal_srvctracker;
 attribute vendor_hal_srvctracker_client;
@@ -17,7 +13,6 @@ attribute vendor_hal_srvctracker_server;
 init_daemon_domain(vendor_hal_srvctracker_default)
 get_prop(vendor_hal_srvctracker_default, hwservicemanager_prop)
 hal_server_domain(vendor_hal_srvctracker_default, vendor_hal_srvctracker)
-add_service(vendor_hal_srvctracker_server, vendor_hal_servicetrackeraidl_service)
 add_hwservice(vendor_hal_srvctracker, vendor_hal_srvctracker_hwservice)
 type vendor_hal_srvctracker_default, domain;
 type vendor_hal_srvctracker_default_exec, exec_type, file_type, vendor_file_type;

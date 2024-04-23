@@ -2,8 +2,6 @@ allow vendor_biometricsface vendor_dmabuf_system_heap_device:chr_file r_file_per
 allow vendor_biometricsface vendor_dmabuf_user_contig_heap_device:chr_file r_file_perms;
 allow vendor_biometricsface vendor_dmabuf_secure_cdsp_heap_device:chr_file r_file_perms;
 allow vendor_biometricsface tee_device:chr_file rw_file_perms;
-allow vendor_biometricsface sdcard_type:dir rw_dir_perms;
-allow vendor_biometricsface sdcard_type:file create_file_perms;
 allow vendor_biometricsface vendor_biometricsface_data_file:dir create_dir_perms;
 allow vendor_biometricsface vendor_biometricsface_data_file:file create_file_perms;
 allow vendor_biometricsface fwk_camera_hwservice:hwservice_manager find;

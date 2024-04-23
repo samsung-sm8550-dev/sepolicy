@@ -1,3 +1,6 @@
+allow vendor_trusteduilistener vendor_systemhelper_app:binder transfer;
+allow vendor_trusteduilistener vendor_systemhelper_app:binder { call transfer };
+allow vendor_trusteduilistener vendor_systemhelper_app:fd *;
 allow vendor_trusteduilistener sysfs_devices_system_cpu:file rw_file_perms;
 allow vendor_trusteduilistener sysfs:dir { open read };
 allow vendor_trusteduilistener vendor_sysfs_trusted_touch_enable:file rw_file_perms;

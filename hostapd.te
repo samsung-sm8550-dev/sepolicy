@@ -1,3 +1,11 @@
+allow vendor_hostapd sysfs:file r_file_perms;
+allow vendor_hostapd sysfs:lnk_file r_file_perms;
+allow vendor_hostapd proc_net:file { getattr open read };
+allow vendor_hostapd efs_file:dir search;
+allow vendor_hostapd wifi_efs_file:dir r_dir_perms;
+allow vendor_hostapd wifi_efs_file:file r_file_perms;
+allow vendor_hostapd system_server:binder { call transfer };
+allow vendor_hostapd system_server:fd *;
 allow vendor_hostapd vendor_cnd:process sigchld;
 allow vendor_hostapd vendor_cnd:binder { call transfer };
 allow vendor_hostapd vendor_cnd:fd *;
@@ -15,10 +23,12 @@ allow vendor_hostapd hostapd_data_file:dir w_dir_perms;
 allow vendor_hostapd hostapd_data_file:sock_file create_file_perms;
 allow vendor_hostapd vendor_wifi_vendor_wpa_socket:dir r_dir_perms;
 allow vendor_hostapd vendor_wifi_vendor_wpa_socket:sock_file rw_file_perms;
-allow vendor_hostapd vendor_diag_device:chr_file rw_file_perms;
-allow vendor_hostapd su:unix_dgram_socket sendto;
-r_dir_file(vendor_hostapd, vendor_sysfs_diag)
+typealias(hostapd_exec)
+typealias(hostapd)
+typealiasactual(hostapd_exec)
+typealiasactual(hostapd)
 unix_socket_connect(vendor_hostapd, vendor_cnd, vendor_cnd)
-unix_socket_connect(vendor_hostapd, vendor_wifi_vendor_wpa, vendor_cnd)
+get_prop(vendor_hostapd, hwservicemanager_prop)
+hwbinder_use(vendor_hostapd)
 type vendor_hostapd, domain;
 type vendor_hostapd_exec, exec_type, file_type, vendor_file_type;

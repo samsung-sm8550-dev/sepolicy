@@ -1,10 +1,10 @@
 expandtypeattribute(hal_rebootescrow)
 expandtypeattribute(hal_rebootescrow_client)
 expandtypeattribute(hal_rebootescrow_server)
+allow hal_rebootescrow_server dumpstate:binder transfer;
 allow hal_rebootescrow_server dumpstate:fifo_file write;
 allow hal_rebootescrow_server dumpstate:fd *;
 allow hal_rebootescrow_server hal_rebootescrow_client:binder transfer;
-allow hal_rebootescrow_server su:tcp_socket { accept getopt read write };
 allow hal_rebootescrow_client hal_rebootescrow_server:binder { call transfer };
 allow hal_rebootescrow_client hal_rebootescrow_server:fd *;
 allow hal_rebootescrow_default rebootescrow_device:chr_file rw_file_perms;

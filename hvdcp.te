@@ -1,19 +1,18 @@
+allow vendor_hvdcp sysfs_battery:file rw_file_perms;
+allow vendor_hvdcp sysfs_battery:dir r_dir_perms;
 allow vendor_hvdcp vendor_hvdcp_device:chr_file rw_file_perms;
 allow vendor_hvdcp vendor_qg_device:chr_file rw_file_perms;
 allow vendor_hvdcp vendor_sysfs_battery_supply:dir r_dir_perms;
 allow vendor_hvdcp vendor_sysfs_battery_supply:file rw_file_perms;
-allow vendor_hvdcp vendor_sysfs_battery_supply:file setattr;
 allow vendor_hvdcp vendor_sysfs_battery_supply:lnk_file r_file_perms;
 allow vendor_hvdcp vendor_sysfs_spmi_dev:dir r_dir_perms;
 allow vendor_hvdcp vendor_sysfs_spmi_dev:file rw_file_perms;
 allow vendor_hvdcp vendor_sysfs_spmi_dev:lnk_file r_file_perms;
 allow vendor_hvdcp vendor_sysfs_usb_supply:dir r_dir_perms;
 allow vendor_hvdcp vendor_sysfs_usb_supply:file rw_file_perms;
-allow vendor_hvdcp vendor_sysfs_usb_supply:file setattr;
 allow vendor_hvdcp vendor_sysfs_usb_supply:lnk_file r_file_perms;
 allow vendor_hvdcp vendor_sysfs_usbpd_device:dir r_dir_perms;
 allow vendor_hvdcp vendor_sysfs_usbpd_device:file rw_file_perms;
-allow vendor_hvdcp vendor_sysfs_usbpd_device:file setattr;
 allow vendor_hvdcp vendor_sysfs_vadc_dev:dir r_dir_perms;
 allow vendor_hvdcp vendor_sysfs_vadc_dev:file rw_file_perms;
 allow vendor_hvdcp vendor_sysfs_vadc_dev:lnk_file r_file_perms;
@@ -21,8 +20,6 @@ allow vendor_hvdcp self:capability2 wake_alarm;
 allow vendor_hvdcp self:capability2 block_suspend;
 allow vendor_hvdcp self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow vendor_hvdcp self:cap2_userns block_suspend;
-allow vendor_hvdcp self:capability { setgid setuid };
-allow vendor_hvdcp kmsg_device:chr_file rw_file_perms;
 allow vendor_hvdcp mnt_vendor_file:dir search;
 allow vendor_hvdcp vendor_persist_hvdcp_file:dir rw_dir_perms;
 allow vendor_hvdcp vendor_persist_hvdcp_file:file create_file_perms;
@@ -32,7 +29,10 @@ allow vendor_hvdcp system_suspend_server:fd *;
 allow vendor_hvdcp system_suspend_hwservice:hwservice_manager find;
 allow vendor_hvdcp hidl_manager_hwservice:hwservice_manager find;
 allow vendor_hvdcp hal_system_suspend_service:service_manager find;
-allow vendor_hvdcp cgroup:dir { add_name create };
+typealias(hvdcp_exec)
+typealias(hvdcp)
+typealiasactual(hvdcp_exec)
+typealiasactual(hvdcp)
 init_daemon_domain(vendor_hvdcp)
 get_prop(vendor_hvdcp, hwservicemanager_prop)
 set_prop(vendor_hvdcp, vendor_hvdcp_opti_prop)

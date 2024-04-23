@@ -1,0 +1,2 @@
+allow configfs sysfs:filesystem associate;
+type configfs, fs_type;

@@ -1,0 +1,12 @@
+allow dsms_app EDM_Policy_service:service_manager find;
+allow dsms_app activity_service:service_manager find;
+allow dsms_app radio_service:service_manager find;
+allow dsms_app app_efs_file:dir search;
+allow dsms_app app_efs_file:file { getattr open read };
+allow dsms_app dsms_data_file:dir { remove_name search write };
+allow dsms_app dsms_data_file:file { getattr open read unlink };
+allow dsms_app dsms_efs_file:dir { remove_name search write };
+allow dsms_app dsms_efs_file:file { getattr open read unlink };
+allow dsms_app surfaceflinger_service:service_manager find;
+app_domain(dsms_app)
+type dsms_app, coredomain, domain;

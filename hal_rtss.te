@@ -1,0 +1,27 @@
+allow hal_rtss_default servicemanager:binder transfer;
+allow hal_rtss_default servicemanager:binder { call transfer };
+allow hal_rtss_default servicemanager:fd *;
+allow hal_rtss_default bluetooth:binder transfer;
+allow hal_rtss_default emservice:binder transfer;
+allow hal_rtss_default vaultkeeper_socket:dir rw_dir_perms;
+allow hal_rtss_default vaultkeeper_socket:sock_file create_file_perms;
+allow hal_rtss_default kmsg_device:chr_file rw_file_perms;
+allow hal_rtss_default dumpstate:fifo_file rw_file_perms;
+allow hal_rtss_default vaultkeeperd:unix_stream_socket connectto;
+allow hal_rtss_default system_server:binder transfer;
+allow hal_rtss_client hal_rtss_server:binder { call transfer };
+allow hal_rtss_client hal_rtss_server:binder transfer;
+allow hal_rtss_client hal_rtss_server:fd *;
+allow hal_rtss_client hal_rtss_service:service_manager find;
+allow hal_rtss_client servicemanager:binder { call transfer };
+allow hal_rtss_client servicemanager:fd *;
+allow hal_rtss_server hal_rtss_client:binder transfer;
+allow hal_rtss_server hal_rtss_client:binder { call transfer };
+allow hal_rtss_server hal_rtss_client:fd *;
+allow hal_rtss_server servicemanager:binder { call transfer };
+allow hal_rtss_server servicemanager:fd *;
+init_daemon_domain(hal_rtss_default)
+hal_server_domain(hal_rtss_default, hal_rtss)
+add_service(hal_rtss_server, hal_rtss_service)
+type hal_rtss_default, domain;
+type hal_rtss_default_exec, exec_type, file_type, vendor_file_type;

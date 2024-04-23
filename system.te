@@ -3,6 +3,10 @@ allow system_server drmserver:binder transfer;
 allow system_server fingerprintd:binder transfer;
 allow system_server inputflinger:binder transfer;
 allow system_server installd:binder transfer;
+allow system_server installd:process signal;
+allow system_server iorapd:binder transfer;
+allow system_server iorapd_data_file:dir { getattr open read search };
+allow system_server iorapd_data_file:file getattr;
 allow system_server keystore:binder transfer;
 allow system_server performanced:binder transfer;
 allow system_server postinstall:binder transfer;
@@ -10,32 +14,477 @@ allow system_server statsd:binder transfer;
 allow system_server update_engine:binder transfer;
 allow system_server virtual_touchpad:binder transfer;
 allow system_server vold:binder transfer;
+allow system_server vold:process signal;
 allow system_server wificond:binder transfer;
-allow system_server sysfs_fastcharge:file r_file_perms;
+allow system_server wpantund:binder transfer;
+allow system_server gpuservice:binder transfer;
+allow system_server hal_camera_default:binder transfer;
+allow system_server hal_camera_default:binder call;
+allow system_server hal_camera_default:binder { call transfer };
+allow system_server hal_camera_default:fd *;
+allow system_server healthd:binder transfer;
+allow system_server servicemanager:binder transfer;
+allow system_server surfaceflinger:binder transfer;
+allow system_server gpu_device:chr_file rw_file_perms;
+allow system_server hal_miscpower_hwservice:hwservice_manager find;
+allow system_server hal_gnss_hwservice:hwservice_manager find;
+allow system_server hal_power_default:binder { call transfer };
+allow system_server hal_power_default:fd *;
+allow system_server sec_debugfs:dir search;
+allow system_server shell_exec:file r_file_perms;
+allow system_server gps_data_file:dir rw_dir_perms;
+allow system_server gps_data_file:dir r_dir_perms;
+allow system_server gps_data_file:fifo_file create_file_perms;
+allow system_server gps_data_file:file rw_file_perms;
+allow system_server gps_data_file:file create_file_perms;
+allow system_server hal_wifi_sec_hostapd_hwservice:hwservice_manager find;
+allow system_server dhcp_data_file:file r_file_perms;
+allow system_server media_rw_data_file:dir create_dir_perms;
+allow system_server media_rw_data_file:dir setattr;
+allow system_server media_rw_data_file:file create_file_perms;
+allow system_server graphics_device:chr_file rw_file_perms;
+allow system_server self_display_device:chr_file rw_file_perms;
+allow system_server remotedisplay:process signal;
+allow system_server remotedisplay:process { getsched setsched };
+allow system_server ddexe_socket:sock_file { append getattr ioctl read write };
+allow system_server jackservice:file rw_file_perms;
+allow system_server jackservice:binder transfer;
+allow system_server users_system_data_file:dir create_dir_perms;
+allow system_server users_system_data_file:dir relabelfrom;
+allow system_server users_system_data_file:file create_file_perms;
+allow system_server users_system_data_file:file relabelfrom;
+allow system_server sec_efs_file:dir create_dir_perms;
+allow system_server sec_efs_file:file create_file_perms;
+allow system_server mobicore_user_device:chr_file rw_file_perms;
+allow system_server sysfs_battery:file rw_file_perms;
+allow system_server proc_reset_reason:file r_file_perms;
+allow system_server proc_store_lastkmsg:file r_file_perms;
+allow system_server proc_reset_summary:file r_file_perms;
+allow system_server proc_reset_klog:file r_file_perms;
+allow system_server proc_reset_tzlog:file r_file_perms;
+allow system_server proc_reset_rwc:file r_file_perms;
+allow system_server knox_dar_device:chr_file rw_file_perms;
+allow system_server sdp_cryptod:binder transfer;
+allow system_server vendor_sysfs_scsi_host:lnk_file r_file_perms;
+allow system_server vendor_sysfs_scsi_host:file rw_file_perms;
+allow system_server vendor_sysfs_scsi_host:file write;
+allow system_server vendor_sysfs_mmc_host:lnk_file r_file_perms;
+allow system_server vendor_sysfs_mmc_host:file r_file_perms;
+allow system_server sysfs_virtual_data_on:file rw_file_perms;
+allow system_server sysfs_virtyal_relay_on:file rw_file_perms;
+allow system_server sysfs_s2mps18_adc:file rw_file_perms;
+allow system_server sysfs_s2mps18_adc:lnk_file r_file_perms;
+allow system_server sysfs_maxdsm_power:file rw_file_perms;
+allow system_server sysfs_maxdsm_power:lnk_file r_file_perms;
+allow system_server proc_dplog:file { getattr lock map open read };
+allow system_server sdhms_service:service_manager find;
+allow system_server knox_kap_device:chr_file r_file_perms;
+allow system_server lpnet_data_file:dir r_dir_perms;
+allow system_server lpnet_data_file:file r_file_perms;
+allow system_server system_server:capability sys_module;
+allow system_server mnt_media_rw_file:dir r_dir_perms;
+allow system_server sysfs_sec:file rw_file_perms;
+allow system_server container_data_file:file create_file_perms;
+allow system_server container_data_file:dir create_dir_perms;
+allow system_server storage_stub_file:dir getattr;
+allow system_server proc_iostats:file r_file_perms;
+allow system_server proc_meminfo:file r_file_perms;
+allow system_server watchdog_device:chr_file rw_file_perms;
+allow system_server proc_net_tcp_udp:file r_file_perms;
+allow system_server sysfs_ski_led_writable:file r_file_perms;
+allow system_server hal_keymint_default:binder { call transfer };
+allow system_server hal_keymint_default:fd *;
+allow system_server adservices_manager_service:service_manager find;
+allow system_server sysfs_ski_hwparam_writable:file rw_file_perms;
+allow system_server zygote:binder transfer;
+allow system_server zygote:process signal;
+allow system_server security_spota_file:dir r_dir_perms;
+allow system_server security_spota_file:dir create_dir_perms;
+allow system_server security_spota_file:file r_file_perms;
+allow system_server security_spota_file:file create_file_perms;
+allow system_server auditd:binder transfer;
+allow system_server connfwexe:binder transfer;
+allow system_server connfwexe:binder { call transfer };
+allow system_server connfwexe:fd *;
+allow system_server dmb:binder transfer;
+allow system_server dsms_hidl:binder transfer;
+allow system_server gpsd:binder transfer;
+allow system_server gpsd:binder { call transfer };
+allow system_server gpsd:fd *;
+allow system_server heimdall:binder transfer;
+allow system_server heimdall:binder { call transfer };
+allow system_server heimdall:fd *;
+allow system_server heimdall:fifo_file write;
+allow system_server imsd:binder transfer;
+allow system_server oneseg_mw:binder transfer;
+allow system_server oneseg_mw:process sigkill;
+allow system_server perfmond:binder transfer;
+allow system_server perfmond:binder { call transfer };
+allow system_server perfmond:fd *;
+allow system_server perfsdkserver:binder transfer;
+allow system_server sdcardd:binder transfer;
+allow system_server ssp_device:chr_file rw_file_perms;
+allow system_server skpmService_service:service_manager { add find };
+allow system_server dex_service:service_manager { add find };
+allow system_server appdomain:file write;
+allow system_server remotedisplay_service:service_manager find;
+allow system_server redsocks_exec:file r_file_perms;
+allow system_server resetreason_service:service_manager { add find };
+allow system_server tlc_server_service:service_manager find;
+allow system_server smartfaceservice_service:service_manager find;
+allow system_server aod_device:chr_file rw_file_perms;
+allow system_server carrier_file:dir create_dir_perms;
+allow system_server carrier_file:file create_file_perms;
+allow system_server SemAuthnr_service:service_manager add;
+allow system_server security_file:dir create_dir_perms;
+allow system_server security_file:dir rw_dir_perms;
+allow system_server security_file:file create_file_perms;
+allow system_server fido_data_file:dir create_dir_perms;
+allow system_server fido_data_file:file create_file_perms;
+allow system_server ncm_device:chr_file rw_file_perms;
+allow system_server pa_daemon_device:sock_file w_file_perms;
+allow system_server tzdaemon:binder { call transfer };
+allow system_server tzdaemon:fd *;
+allow system_server Dmfmanager_service:service_manager { add find };
+allow system_server hal_sensors_default:process signal;
+allow system_server hal_sensors_default:binder transfer;
+allow system_server SemMLDAP_service:service_manager { add find };
+allow system_server hal_audio_default:file rw_file_perms;
+allow system_server hal_audio_default:file w_file_perms;
+allow system_server audioserver:file w_file_perms;
+allow system_server bsd_socket:sock_file w_file_perms;
+allow system_server bsd_socket:dir search;
+allow system_server configfs:file create_file_perms;
+allow system_server mobicore_data_file:file r_file_perms;
+allow system_server directpeninputmanager_service:service_manager { add find };
+allow system_server charon_exec:file r_file_perms;
+allow system_server secdp_aux_device:chr_file rw_file_perms;
+allow system_server OcfKeyService_service:service_manager { add find };
+allow system_server TigerSskdsService_service:service_manager { add find };
+allow system_server iris_service:service_manager find;
+allow system_server ucm_hwservice:hwservice_manager add;
+allow system_server ucm_hwservice:hwservice_manager find;
+allow system_server serial_device:chr_file rw_file_perms;
+allow system_server ocf_key_service_data_file:dir create_dir_perms;
+allow system_server ocf_key_service_data_file:file create_file_perms;
+allow system_server neuralnetworks_service:service_manager { add find };
+allow system_server multidisplay_service:service_manager add;
+allow system_server ikev2_client:process { sigkill signal };
+allow system_server wlandutservice:binder { call transfer };
+allow system_server wlandutservice:fd *;
+allow system_server sysfs_app_writable:file rw_file_perms;
+allow system_server sysfs_led_writable:file rw_file_perms;
+allow system_server usb_configfs:dir create_dir_perms;
+allow system_server usb_configfs:file { getattr open unlink write };
+allow system_server tz_device:chr_file rw_file_perms;
+allow system_server app_fonts_data_file:dir create_dir_perms;
+allow system_server app_fonts_data_file:file create_file_perms;
+allow system_server audio_data_file:dir create_dir_perms;
+allow system_server audio_data_file:file create_file_perms;
+allow system_server efs_file:dir create_dir_perms;
+allow system_server efs_file:file create_file_perms;
+allow system_server imei_efs_file:dir create_dir_perms;
+allow system_server imei_efs_file:file create_file_perms;
+allow system_server omr_file:dir create_dir_perms;
+allow system_server omr_file:file create_file_perms;
+allow system_server otp_data_file:dir create_dir_perms;
+allow system_server otp_data_file:file create_file_perms;
+allow system_server proc_info_file:file r_file_perms;
+allow system_server convergence_data_file:dir r_dir_perms;
+allow system_server convergence_data_file:dir create_dir_perms;
+allow system_server convergence_data_file:file rw_file_perms;
+allow system_server convergence_data_file:file create_file_perms;
+allow system_server sec_wifi_data_file:dir create_dir_perms;
+allow system_server sec_wifi_data_file:file create_file_perms;
+allow system_server sec_wifi_data_file:file rw_file_perms;
+allow system_server prov_efs_file:dir create_dir_perms;
+allow system_server prov_efs_file:file create_file_perms;
+allow system_server themecenter_data_file:dir create_dir_perms;
+allow system_server themecenter_data_file:file create_file_perms;
+allow system_server themecenter_sensitive_data_file:dir create_dir_perms;
+allow system_server themecenter_sensitive_data_file:file create_file_perms;
+allow system_server system_data_file:dir rw_dir_perms;
+allow system_server system_data_file:dir relabelto;
+allow system_server system_data_file:file r_file_perms;
+allow system_server system_data_file:file relabelto;
+allow system_server ccm_data_file:file create_file_perms;
+allow system_server ccm_data_file:dir create_dir_perms;
+allow system_server aasa_data_file:file create_file_perms;
+allow system_server aasa_data_file:dir create_dir_perms;
+allow system_server cpk_efs_file:dir rw_dir_perms;
+allow system_server cpk_efs_file:file create_file_perms;
+allow system_server knox_system_misc_file:dir { create_dir_perms relabelfrom relabelto };
+allow system_server knox_system_misc_file:file { create_file_perms relabelfrom relabelto };
+allow system_server wallpaper_file:dir create_dir_perms;
+allow system_server wallpaper_file:file { create_file_perms relabelfrom };
+allow system_server wifishare_profile_data_file:dir create_dir_perms;
+allow system_server wifishare_profile_data_file:file create_file_perms;
+allow system_server mptcp_data_file:dir create_dir_perms;
+allow system_server mptcp_data_file:file create_file_perms;
+allow system_server apaservice_service:service_manager find;
+allow system_server Sve_service:service_manager find;
+allow system_server apexserver_service:service_manager find;
+allow system_server epdg_service:service_manager find;
+allow system_server gpu_service:service_manager find;
+allow system_server volte_service:service_manager find;
+allow system_server audit_log:dir rw_dir_perms;
+allow system_server audit_log:file create_file_perms;
+allow system_server proc_avc_msg:file rw_file_perms;
+allow system_server abt_pers_data_file:dir create_dir_perms;
+allow system_server abt_pers_data_file:file create_file_perms;
+allow system_server ccic_device:chr_file rw_file_perms;
+allow system_server apk_data_file:file r_file_perms;
+allow system_server apk_data_file:dir rw_dir_perms;
+allow system_server apk_data_file:sock_file unlink;
+allow system_server drmserver_socket:sock_file { append getattr ioctl read write };
+allow system_server drm_playready_file:dir rw_dir_perms;
+allow system_server drm_playready_file:file create_file_perms;
+allow system_server camera_data_file:dir create_dir_perms;
+allow system_server camera_data_file:file create_file_perms;
+allow system_server sem_device:chr_file rw_file_perms;
+allow system_server sysfs_mst_writable:file rw_file_perms;
+allow system_server mst_ctrl_device:chr_file { open write };
+allow system_server dqmdbgblk_file:dir create_dir_perms;
+allow system_server dqmdbgblk_file:file create_file_perms;
+allow system_server sysfs_camera_writable:file rw_file_perms;
+allow system_server sysfs_gpu:file rw_file_perms;
+allow system_server proc_last_kmsg:file r_file_perms;
+allow system_server dumplog_data_file:dir create_dir_perms;
+allow system_server dumplog_data_file:file create_file_perms;
+allow system_server dumplog_data_file:file r_file_perms;
+allow system_server sysfs_sensor_writable:file rw_file_perms;
+allow system_server sysfs_ss_writable:file rw_file_perms;
+allow system_server sysfs_ss_writable:lnk_file rw_file_perms;
+allow system_server sysfs_ss_writable:dir r_dir_perms;
+allow system_server info_extra_system_file:file r_file_perms;
+allow system_server app_efs_file:dir create_dir_perms;
+allow system_server app_efs_file:file create_file_perms;
+allow system_server vendor_gps_file:file { getattr read write };
+allow system_server sysfs_mdnie_writable:file rw_file_perms;
+allow system_server sysfs_lcd_writable:file rw_file_perms;
+allow system_server sysfs_lcd_writable:dir r_dir_perms;
+allow system_server clipboardui_service:service_manager find;
+allow system_server hal_secure_storage_daemon_hwservice:hwservice_manager find;
+allow system_server hal_secure_storage_daemon_default:binder { call transfer };
+allow system_server hal_secure_storage_daemon_default:fd *;
+allow system_server socket_device:sock_file write;
+allow system_server hal_health_hwservice:hwservice_manager find;
+allow system_server hal_light_hwservice:hwservice_manager find;
+allow system_server proc_fips:file r_file_perms;
+allow system_server proc_user_fault:file { getattr lock map open read };
+allow system_server proc_boot_stat:file { getattr lock map open read };
+allow system_server proc_auto_comment:file { getattr lock map open read };
+allow system_server proc_reset_reason_extra_info:file { getattr lock map open read };
+allow system_server proc_pwronsrc:file { getattr lock map open read };
+allow system_server proc_pwroffsrc:file { getattr lock map open read };
+allow system_server sysfs_s2dos05_adc:file r_file_perms;
+allow system_server proc_fb:file r_file_perms;
+allow system_server wifi_efs_file:dir r_dir_perms;
+allow system_server wifi_efs_file:file r_file_perms;
+allow system_server hal_skpm:binder { call transfer };
+allow system_server hal_skpm:fd *;
+allow system_server hal_skpm_hwservice:hwservice_manager find;
+allow system_server sysfs_usb:dir r_dir_perms;
+allow system_server sysfs_usb:file rw_file_perms;
+allow system_server HcmManager_service:service_manager { add find };
+allow system_server teed_app:binder { call transfer };
+allow system_server teed_app:fd *;
+allow system_server teed_app:process setsched;
+allow system_server teed_app:file write;
+allow system_server teeregistryd_app:binder { call transfer };
+allow system_server teeregistryd_app:fd *;
+allow system_server tee_service:service_manager find;
+allow system_server teeregistry_service:service_manager find;
+allow system_server ims_service:service_manager find;
+allow system_server emergency_service:service_manager find;
+allow system_server sysfs_devices_system_cpu:file rw_file_perms;
+allow system_server sysfs_input_booster:file rw_file_perms;
+allow system_server sysfs_ert:file rw_file_perms;
+allow system_server proc_type:file getattr;
+allow system_server tima_keystore_file:dir create_dir_perms;
+allow system_server tima_keystore_file:file create_file_perms;
+allow system_server proc_uptime:file r_file_perms;
+allow system_server proc_buddyinfo:file r_file_perms;
+allow system_server sysfs_ehmp:dir r_dir_perms;
+allow system_server sysfs_ehmp:file rw_file_perms;
+allow system_server proc_sched:file r_file_perms;
+allow system_server kernel:system syslog_read;
+allow system_server proc_nfclog:file { getattr lock map open read };
+allow system_server IFreecess_service:service_manager find;
+allow system_server freecessmonitor:binder call;
+allow system_server vendor_sysfs_devfreq:file w_file_perms;
+allow system_server vendor_sysfs_devfreq:file rw_file_perms;
+allow system_server container_system_file:dir create_dir_perms;
+allow system_server container_system_file:file rw_file_perms;
+allow system_server container_system_file:file create_file_perms;
+allow system_server debugfs:dir r_dir_perms;
+allow system_server vendor_configs_file:file map;
+allow system_server knox_clipboard_file:file { relabelfrom relabelto };
+allow system_server knox_clipboard_file:file create_file_perms;
+allow system_server knox_clipboard_file:dir { relabelfrom relabelto };
+allow system_server knox_clipboard_file:dir create_dir_perms;
+allow system_server knox_clipboard_file:lnk_file { relabelfrom relabelto };
+allow system_server pageboostd_data_file:dir create_dir_perms;
+allow system_server pageboostd_data_file:file create_file_perms;
+allow system_server sysint_service:service_manager add;
+allow system_server faced_service:service_manager find;
+allow system_server proc_vmstat:file r_file_perms;
+allow system_server vramdiskd:fifo_file write;
+allow system_server vramdiskd:binder { call transfer };
+allow system_server vramdiskd:binder transfer;
+allow system_server vramdiskd:fd *;
+allow system_server sysfs_secdebug_writable:file rw_file_perms;
+allow system_server secure_storage_device:sock_file rw_file_perms;
+allow system_server secure_storage_device:sock_file write;
+allow system_server secure_storage:fd *;
+allow system_server epm_service:service_manager find;
+allow system_server mb_po_efs_file:dir create_dir_perms;
+allow system_server mb_po_efs_file:file create_file_perms;
+allow system_server hwobs_service:service_manager find;
+allow system_server tee_file:dir r_dir_perms;
+allow system_server perfmond_socket:sock_file rw_file_perms;
+allow system_server sysfs_net:file rw_file_perms;
+allow system_server self_display1_device:chr_file rw_file_perms;
+allow system_server perfsdkservice_service:service_manager { add find };
+allow system_server kmsg_device:chr_file rw_file_perms;
+allow system_server mcps_service:service_manager add;
+allow system_server proc_diskstats:file r_file_perms;
+allow system_server tcpopd_socket:sock_file w_file_perms;
+allow system_server proc_history:file r_file_perms;
+allow system_server proc_swappiness:file r_file_perms;
+allow system_server alarm_device:chr_file rw_file_perms;
+allow system_server sysfs_fs_f2fs:file rw_file_perms;
+allow system_server proc_mmap_readaround_limit:file r_file_perms;
+allow system_server sysfs_lowmemorykiller:file r_file_perms;
+allow system_server faced:process signal;
+allow system_server proc_use_hugepage_pool:file w_file_perms;
+allow system_server perf_manager_device:chr_file rw_file_perms;
+allow system_server wlandutservice_service:service_manager find;
+allow system_server hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow system_server vaultkeeperd:binder { call transfer };
+allow system_server vaultkeeperd:fd *;
+allow system_server sec_iris_service:service_manager find;
+allow system_server proc_perf_reserve:file rw_file_perms;
+allow system_server ctl_interface_stop_prop:property_service set;
+allow system_server sem_service:service_manager find;
+allow system_server mafpc_device:chr_file rw_file_perms;
+allow system_server proc_pressure_lmkd_cricount:file r_file_perms;
+allow system_server proc_pressure_lmkd_count:file r_file_perms;
+allow system_server sysfs_req_mode:dir r_dir_perms;
+allow system_server sysfs_req_mode:file rw_file_perms;
+allow system_server accounts_data_file:file rw_file_perms;
+allow system_server accounts_data_file:file unlink;
+allow system_server blockchain_data_file:dir create_dir_perms;
+allow system_server blockchain_data_file:file create_file_perms;
+allow system_server sysfs_ski_usb_readable:file r_file_perms;
+allow system_server sysfs_ski_sensor_writable:dir r_dir_perms;
+allow system_server sysfs_ski_sensor_writable:file rw_file_perms;
+allow system_server sysfs_ski_muic_writable:dir r_dir_perms;
+allow system_server sysfs_ski_muic_writable:file rw_file_perms;
+allow system_server sysfs_ski_debug_writable:dir r_dir_perms;
+allow system_server sysfs_ski_debug_writable:file rw_file_perms;
+allow system_server uwb_service:service_manager find;
+allow system_server sysfs_ski_touch_writable:dir r_dir_perms;
+allow system_server sysfs_ski_touch_writable:file rw_file_perms;
+allow system_server sysfs_ski_memory_writable:dir r_dir_perms;
+allow system_server sysfs_ski_memory_writable:file rw_file_perms;
+allow system_server sysfs_ski_display_writable:dir r_dir_perms;
+allow system_server sysfs_ski_display_writable:file rw_file_perms;
+allow system_server sysfs_ski_hidden_writable:file r_file_perms;
+allow system_server sysfs_ski_usb_writable:dir r_dir_perms;
+allow system_server sysfs_ski_usb_writable:file rw_file_perms;
+allow system_server sysfs_ski_ufs_writable:dir r_dir_perms;
+allow system_server sysfs_ski_ufs_writable:file rw_file_perms;
+allow system_server pacmservice_socket:dir rw_dir_perms;
+allow system_server pacmservice_socket:sock_file create_file_perms;
+allow system_server semprivateshare_data_file:dir rw_dir_perms;
+allow system_server semprivateshare_data_file:file create_file_perms;
+allow system_server sysfs_ski_key_writable:dir r_dir_perms;
+allow system_server sysfs_ski_key_writable:file rw_file_perms;
+allow system_server sysfs_ski_pen_writable:dir r_dir_perms;
+allow system_server sysfs_ski_pen_writable:file rw_file_perms;
+allow system_server snapsec_efs_file:dir create_dir_perms;
+allow system_server snapsec_efs_file:file create_file_perms;
+allow system_server knoxai_efs_file:dir create_dir_perms;
+allow system_server knoxai_efs_file:file create_file_perms;
+allow system_server sysfs_ski_hall_writable:dir r_dir_perms;
+allow system_server sysfs_ski_hall_writable:file rw_file_perms;
+allow system_server sysfs_ski_camera_writable:dir r_dir_perms;
+allow system_server sysfs_ski_camera_writable:file rw_file_perms;
+allow system_server sysfs_ski_charging_writable:dir r_dir_perms;
+allow system_server sysfs_ski_charging_writable:file rw_file_perms;
+allow system_server qrandom_device:chr_file r_file_perms;
+allow system_server battery_efs_file:dir create_dir_perms;
+allow system_server battery_efs_file:file create_file_perms;
+allow system_server eris:fd *;
+allow system_server eris:udp_socket { getattr getopt read write };
+allow system_server hal_ifaa_default:binder { call transfer };
+allow system_server hal_ifaa_default:fd *;
+allow system_server stats_data_file:file { rw_file_perms unlink };
+allow system_server stats_data_file:dir rw_dir_perms;
+allow system_server proc_pressure_cpu:file rw_file_perms;
+allow system_server hal_mpostui_default:binder { call transfer };
+allow system_server hal_mpostui_default:fd *;
+allow system_server proc_rq_stat:file r_file_perms;
+allow system_server hal_snapsec_default:binder { call transfer };
+allow system_server hal_snapsec_default:fd *;
+allow system_server apex_mnt_dir:file r_file_perms;
+allow system_server proc_watermark_scale_factor:file rw_file_perms;
+allow system_server hal_sec_inputdev_service:service_manager find;
+allow system_server hal_sec_inputdev_default:binder { call transfer };
+allow system_server hal_sec_inputdev_default:fd *;
+allow system_server hal_display_service:service_manager find;
+allow system_server hal_display_default:binder { call transfer };
+allow system_server hal_display_default:fd *;
+allow system_server hal_hermes_service:service_manager find;
+allow system_server hal_hermes_default:binder { call transfer };
+allow system_server hal_hermes_default:fd *;
+allow system_server hal_vaultkeeper_service:service_manager find;
+allow system_server proc_caches_reclaim:file rw_file_perms;
+allow system_server vendor_sysfs_cirrus_cal:dir r_dir_perms;
+allow system_server vendor_sysfs_cirrus_cal:file rw_file_perms;
+allow system_server hal_rtss_service:service_manager find;
+allow system_server hal_rtss_default:binder { call transfer };
+allow system_server hal_rtss_default:fd *;
+allow system_server hal_vaultkeeperd_default:binder { call transfer };
+allow system_server hal_vaultkeeperd_default:fd *;
+allow system_server vendor_sysfs_blksec:file rw_file_perms;
+allow system_server sysfs_ski_hal_readable:file r_file_perms;
+allow system_server hal_drk_service:service_manager find;
+allow system_server sysfs_sdinfo:file r_file_perms;
+allow system_server vendor_sysfs_mmc:file rw_file_perms;
+allow system_server tz_user_device:chr_file rw_file_perms;
+allow system_server tee_efs_file:dir search;
+allow system_server visiond:binder transfer;
+allow system_server attiqi_service:service_manager { add find };
+allow system_server attiqi_app_data_file:dir create_dir_perms;
+allow system_server fabriccrypto:binder transfer;
+allow system_server vendor_hostapd:binder transfer;
+allow system_server vendor_fm_radio_device:chr_file rw_file_perms;
+allow system_server vendor_sysfs_kgsl:file rw_file_perms;
+allow system_server vendor_hal_tui_comm_qti:binder { call transfer };
+allow system_server vendor_hal_tui_comm_qti:fd *;
+allow system_server proc_partition:file r_file_perms;
+allow system_server vendor_sysfs_kgsl_proc:file rw_file_perms;
+allow system_server vendor_hal_perf_default:process signal;
+allow system_server vendor_sysfs_battery_supply:file rw_file_perms;
+allow system_server thales_spu_service:binder transfer;
 allow system_server hal_graphics_composer:binder transfer;
 allow system_server hal_graphics_composer:binder { call transfer };
 allow system_server hal_graphics_composer:fd *;
-allow system_server hal_sensors_default:binder transfer;
 allow system_server vendor_location_lowi_server:binder transfer;
 allow system_server vendor_location_lowi_server:binder { call transfer };
 allow system_server vendor_location_lowi_server:fd *;
 allow system_server vendor_location_xtra_daemon:binder transfer;
 allow system_server vendor_location_xtra_daemon:binder { call transfer };
 allow system_server vendor_location_xtra_daemon:fd *;
-allow system_server vendor_qnicornd:binder transfer;
-allow system_server vendor_qnicornd:fd *;
-allow system_server vendor_qnicornd:udp_socket { getattr getopt read write };
 allow system_server self:socket ioctl;
-allow system_server hal_camera_default:binder { call transfer };
-allow system_server hal_camera_default:fd *;
 allow system_server vendor_location:binder { call transfer };
 allow system_server vendor_location:fd *;
 allow system_server vendor_wlan_device:chr_file rw_file_perms;
-allow system_server hal_audio_default:file w_file_perms;
 allow system_server vendor_sysfs_sensors:dir search;
 allow system_server vendor_sysfs_sensors:file rw_file_perms;
 allow system_server vendor_sysfs_graphics:file rw_file_perms;
-allow system_server vendor_diag_device:chr_file rw_file_perms;
 allow system_server vendor_netmgrd:fd *;
 allow system_server vendor_netmgrd:udp_socket { getattr getopt read write };
 allow system_server vendor_location_edgnss_daemon:binder transfer;
@@ -47,24 +496,170 @@ allow system_server vendor_location_slim_daemon:fd *;
 allow system_server vendor_location_xtwifi_client:binder transfer;
 allow system_server vendor_location_xtwifi_client:binder { call transfer };
 allow system_server vendor_location_xtwifi_client:fd *;
+allow system_server vendor_location_xtwifi_inetagent:binder transfer;
+allow system_server vendor_location_xtwifi_inetagent:binder { call transfer };
+allow system_server vendor_location_xtwifi_inetagent:fd *;
 allow system_server vendor_perfdump_app:binder transfer;
 allow system_server vendor_qvrd_vndr:binder transfer;
-allow system_server vendor_qvrd_vndr:binder { call transfer };
-allow system_server vendor_qvrd_vndr:fd *;
 allow system_server vendor_hal_srvctracker_default:binder { call transfer };
 allow system_server vendor_hal_srvctracker_default:fd *;
 allow system_server vendor_location_engine_service:binder { call transfer };
 allow system_server vendor_location_engine_service:fd *;
 allow system_server vendor_proc_audiod:file r_file_perms;
 allow system_server vendor_sysfs_wigig:file rw_file_perms;
-allow system_server vendor_qseeproxysample:binder transfer;
-allow system_server vendor_location_xtwifi_inetagent:binder transfer;
-allow system_server vendor_location_xtwifi_inetagent:binder { call transfer };
-allow system_server vendor_location_xtwifi_inetagent:fd *;
 dontaudit system_server vendor_proc_shs:dir search;
+allowxperm system_server watchdog_device:ioctl file { range 0x5705 0x5706 };
+allowxperm system_server users_system_data_file:ioctl file 0x6685;
 allowxperm system_server self:ioctl socket { range 0xc300 0xc305 };
-r_dir_file(system_server, vendor_sysfs_diag)
+type_transition system_server apk_data_file:sock_file drmserver_socket "tlcd_sock";
+type_transition system_server system_data_file:dir aasa_data_file ".aasa";
+type_transition system_server system_data_file:dir ccm_data_file "tz_ccm";
+type_transition system_server security_file:dir security_spota_file "aasa";
+r_dir_file(system_server, sysfs_sec)
+r_dir_file(system_server, watchdog_device)
+r_dir_file(system_server, sysfs_memory)
+r_dir_file(system_server, vendor_sysfs_devfreq)
+r_dir_file(system_server, container_system_file)
+r_dir_file(system_server, sysfs_time_in_state)
+r_dir_file(system_server, sysfs_sec_touchscreen)
+r_dir_file(system_server, tad_data_file)
+r_dir_file(system_server, secure_storage_device)
+r_dir_file(system_server, proc_mcps)
+r_dir_file(system_server, proc_abox)
+r_dir_file(system_server, sysfs_ski_hwparam_readable)
+r_dir_file(system_server, proc_lmkd_debug)
+r_dir_file(system_server, sysfs_ski_power_readable)
+r_dir_file(system_server, sysfs_ski_sensor_readable)
+r_dir_file(system_server, sysfs_ski_display_readable)
+r_dir_file(system_server, vendor_sysfs_sectouch)
+r_dir_file(system_server, vendor_sysfs_kgsl_gpuclk)
+unix_socket_connect(system_server, property, vold)
+unix_socket_connect(system_server, property, multiclientd)
+unix_socket_connect(system_server, property, sdp_cryptod)
+unix_socket_connect(system_server, property, heimdall)
+unix_socket_connect(system_server, property, perfmond)
+unix_socket_connect(system_server, property, perfsdkserver)
+unix_socket_connect(system_server, property, bsd)
+unix_socket_connect(system_server, property, charon)
+unix_socket_connect(system_server, property, pa_daemon)
+unix_socket_connect(system_server, property, ddexe)
+unix_socket_connect(system_server, property, at_distributor)
+unix_socket_connect(system_server, property, pageboostd)
+unix_socket_connect(system_server, property, vramdiskd)
+unix_socket_connect(system_server, property, secure_storage)
+unix_socket_connect(system_server, property, sechcserver)
+unix_socket_connect(system_server, property, attiqi_app)
+unix_socket_connect(system_server, ddexe, init)
+unix_socket_connect(system_server, ddexe, vold)
+unix_socket_connect(system_server, ddexe, multiclientd)
+unix_socket_connect(system_server, ddexe, sdp_cryptod)
+unix_socket_connect(system_server, ddexe, heimdall)
+unix_socket_connect(system_server, ddexe, perfmond)
+unix_socket_connect(system_server, ddexe, perfsdkserver)
+unix_socket_connect(system_server, ddexe, bsd)
+unix_socket_connect(system_server, ddexe, charon)
+unix_socket_connect(system_server, ddexe, pa_daemon)
+unix_socket_connect(system_server, ddexe, ddexe)
+unix_socket_connect(system_server, ddexe, at_distributor)
+unix_socket_connect(system_server, ddexe, pageboostd)
+unix_socket_connect(system_server, ddexe, vramdiskd)
+unix_socket_connect(system_server, ddexe, secure_storage)
+unix_socket_connect(system_server, ddexe, sechcserver)
+unix_socket_connect(system_server, ddexe, attiqi_app)
+unix_socket_connect(system_server, charon, init)
+unix_socket_connect(system_server, charon, vold)
+unix_socket_connect(system_server, charon, multiclientd)
+unix_socket_connect(system_server, charon, sdp_cryptod)
+unix_socket_connect(system_server, charon, heimdall)
+unix_socket_connect(system_server, charon, perfmond)
+unix_socket_connect(system_server, charon, perfsdkserver)
+unix_socket_connect(system_server, charon, bsd)
+unix_socket_connect(system_server, charon, charon)
+unix_socket_connect(system_server, charon, pa_daemon)
+unix_socket_connect(system_server, charon, ddexe)
+unix_socket_connect(system_server, charon, at_distributor)
+unix_socket_connect(system_server, charon, pageboostd)
+unix_socket_connect(system_server, charon, vramdiskd)
+unix_socket_connect(system_server, charon, secure_storage)
+unix_socket_connect(system_server, charon, sechcserver)
+unix_socket_connect(system_server, charon, attiqi_app)
+unix_socket_connect(system_server, sdp, init)
+unix_socket_connect(system_server, sdp, vold)
+unix_socket_connect(system_server, sdp, multiclientd)
+unix_socket_connect(system_server, sdp, sdp_cryptod)
+unix_socket_connect(system_server, sdp, heimdall)
+unix_socket_connect(system_server, sdp, perfmond)
+unix_socket_connect(system_server, sdp, perfsdkserver)
+unix_socket_connect(system_server, sdp, bsd)
+unix_socket_connect(system_server, sdp, charon)
+unix_socket_connect(system_server, sdp, pa_daemon)
+unix_socket_connect(system_server, sdp, ddexe)
+unix_socket_connect(system_server, sdp, at_distributor)
+unix_socket_connect(system_server, sdp, pageboostd)
+unix_socket_connect(system_server, sdp, vramdiskd)
+unix_socket_connect(system_server, sdp, secure_storage)
+unix_socket_connect(system_server, sdp, sechcserver)
+unix_socket_connect(system_server, sdp, attiqi_app)
+unix_socket_connect(system_server, dualdard, init)
+unix_socket_connect(system_server, dualdard, vold)
+unix_socket_connect(system_server, dualdard, multiclientd)
+unix_socket_connect(system_server, dualdard, sdp_cryptod)
+unix_socket_connect(system_server, dualdard, heimdall)
+unix_socket_connect(system_server, dualdard, perfmond)
+unix_socket_connect(system_server, dualdard, perfsdkserver)
+unix_socket_connect(system_server, dualdard, bsd)
+unix_socket_connect(system_server, dualdard, charon)
+unix_socket_connect(system_server, dualdard, pa_daemon)
+unix_socket_connect(system_server, dualdard, ddexe)
+unix_socket_connect(system_server, dualdard, at_distributor)
+unix_socket_connect(system_server, dualdard, pageboostd)
+unix_socket_connect(system_server, dualdard, vramdiskd)
+unix_socket_connect(system_server, dualdard, secure_storage)
+unix_socket_connect(system_server, dualdard, sechcserver)
+unix_socket_connect(system_server, dualdard, attiqi_app)
+unix_socket_connect(system_server, frigate, init)
+unix_socket_connect(system_server, frigate, vold)
+unix_socket_connect(system_server, frigate, multiclientd)
+unix_socket_connect(system_server, frigate, sdp_cryptod)
+unix_socket_connect(system_server, frigate, heimdall)
+unix_socket_connect(system_server, frigate, perfmond)
+unix_socket_connect(system_server, frigate, perfsdkserver)
+unix_socket_connect(system_server, frigate, bsd)
+unix_socket_connect(system_server, frigate, charon)
+unix_socket_connect(system_server, frigate, pa_daemon)
+unix_socket_connect(system_server, frigate, ddexe)
+unix_socket_connect(system_server, frigate, at_distributor)
+unix_socket_connect(system_server, frigate, pageboostd)
+unix_socket_connect(system_server, frigate, vramdiskd)
+unix_socket_connect(system_server, frigate, secure_storage)
+unix_socket_connect(system_server, frigate, sechcserver)
+unix_socket_connect(system_server, frigate, attiqi_app)
 get_prop(system_server, graphics_config_prop)
+get_prop(system_server, mobicore_prop)
+get_prop(system_server, vendor_model_suffix_prop)
+get_prop(system_server, security_prop)
+get_prop(system_server, ccm_prop)
+get_prop(system_server, apm_prop)
+get_prop(system_server, sec_camera_prop)
+get_prop(system_server, vendor_camera_motor_prop)
+get_prop(system_server, vendor_camera_prop)
+get_prop(system_server, vendor_dqsvc_prop)
+get_prop(system_server, vendor_tzdaemon_prop)
+get_prop(system_server, vendor_tztsdaemon_prop)
+get_prop(system_server, vramdiskd_prop)
+get_prop(system_server, receiver_error_prop)
+get_prop(system_server, compact_dump_prop)
+get_prop(system_server, vendor_zram_prop)
+get_prop(system_server, vendor_sec_vaultkeeper_prop)
+get_prop(system_server, vendor_softdog_prop)
+get_prop(system_server, boot_em_did_prop)
+get_prop(system_server, vendor_em_tstate_prop)
+get_prop(system_server, ap_serial_prop)
+get_prop(system_server, vendor_sec_nfc_prop)
+get_prop(system_server, apexd_prop)
+get_prop(system_server, tzdaemon_prop)
+get_prop(system_server, vendor_teegris_prop)
+get_prop(system_server, vendor_qseecomd_prop)
 get_prop(system_server, vendor_display_prop)
 get_prop(system_server, vendor_display_notch_prop)
 get_prop(system_server, vendor_per_mgr_state_prop)
@@ -75,18 +670,69 @@ get_prop(system_server, vendor_reschedule_service_prop)
 get_prop(system_server, vendor_cgroup_follow_prop)
 get_prop(system_server, vendor_scroll_prop)
 get_prop(system_server, vendor_qspm_prop)
-get_prop(system_server, vendor_audio_prop)
 set_prop(system_server, power_debug_prop)
+set_prop(system_server, bluetooth_prop)
+set_prop(system_server, csc_prop)
+set_prop(system_server, dumpstate_prop)
+set_prop(system_server, wifi_log_prop)
+set_prop(system_server, radio_prop)
+set_prop(system_server, exported_bluetooth_prop)
+set_prop(system_server, dynamic_system_prop)
+set_prop(system_server, logd_prop)
+set_prop(system_server, wifi_prop)
+set_prop(system_server, nfc_prop)
+set_prop(system_server, audio_prop)
+set_prop(system_server, config_prop)
+set_prop(system_server, vold_prop)
+set_prop(system_server, exported_wifi_prop)
+set_prop(system_server, ctl_start_prop)
+set_prop(system_server, ctl_stop_prop)
+set_prop(system_server, sns_camera_light_prop)
+hal_client_domain(system_server, hal_graphics_composer)
+hal_client_domain(system_server, hal_bluetooth)
+hal_client_domain(system_server, hal_keymaster)
+hal_client_domain(system_server, hal_keymint)
+hal_client_domain(system_server, hal_uwb)
+hal_client_domain(system_server, vendor_hal_trustedui)
 hal_client_domain(system_server, vendor_hal_capabilityconfigstore_qti)
 hal_client_domain(system_server, vendor_hal_dataconnection_qti)
 hal_client_domain(system_server, vendor_hal_perf)
 hal_client_domain(system_server, vendor_hal_qspmhal)
+hal_client_domain(system_server, vendor_hal_fm)
 hal_client_domain(system_server, vendor_hal_iop)
+hal_client_domain(system_server, vendor_hal_qseecom)
 hal_client_domain(system_server, vendor_hal_wigig)
 hal_client_domain(system_server, vendor_hal_wigig_npt)
 hal_client_domain(system_server, vendor_hal_fstman)
 hal_client_domain(system_server, vendor_hal_wifilearner)
 hal_client_domain(system_server, vendor_hal_srvctracker)
-hal_client_domain(system_server, vendor_hal_wifimyftm)
-hal_client_domain(system_server, hal_wificfr)
+hal_client_domain(system_server, hal_sem)
+hal_client_domain(system_server, hal_drk)
+hal_client_domain(system_server, hal_sbtvd)
+hal_client_domain(system_server, hal_payment)
+hal_client_domain(system_server, hal_ddar)
+hal_client_domain(system_server, hal_iccc)
+hal_client_domain(system_server, hal_tima)
+hal_client_domain(system_server, hal_atn)
+hal_client_domain(system_server, hal_ucmtlc)
+hal_client_domain(system_server, hal_blockchain)
+hal_client_domain(system_server, hal_hdm)
+hal_client_domain(system_server, hal_arcounter)
+hal_client_domain(system_server, hal_authfw)
+hal_client_domain(system_server, hal_hyper)
+hal_client_domain(system_server, hal_stork)
+hal_client_domain(system_server, hal_kgta)
+hal_client_domain(system_server, hal_sec_inputdev)
+hal_client_domain(system_server, hal_hqm)
+hal_client_domain(system_server, hal_engmode)
+hal_client_domain(system_server, hal_snapsec)
+hal_client_domain(system_server, hal_knoxai)
+hal_client_domain(system_server, hal_mpostui)
+hal_client_domain(system_server, hal_ifaa)
+hal_client_domain(system_server, hal_softsimd)
+hal_client_domain(system_server, hal_tui_comm)
+hal_client_domain(system_server, hal_fm)
+add_service(system_server, Ifaa_service)
+add_service(system_server, knox_securetimer_service)
+add_service(system_server, blockchain_service)
 type system_server, domain;

@@ -11,8 +11,6 @@ allow performanced bufferhubd:process setsched;
 allow performanced kernel:process setsched;
 allow performanced surfaceflinger:process setsched;
 dontaudit performanced domain:dir read;
-dontaudit performanced domain:dir open;
-dontaudit performanced domain:file { getattr open read };
 r_dir_file(performanced, appdomain)
 r_dir_file(performanced, bufferhubd)
 r_dir_file(performanced, kernel)

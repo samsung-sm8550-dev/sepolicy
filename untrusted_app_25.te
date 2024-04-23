@@ -1,9 +1,21 @@
+neverallow untrusted_app_25 proc:file getattr;
+allow untrusted_app_25 msockets_socket:sock_file rw_file_perms;
+allow untrusted_app_25 app_data_file:lnk_file unlink;
+allow untrusted_app_25 fingerprint_app_service:service_manager find;
+allow untrusted_app_25 overlay_service:service_manager find;
+allow untrusted_app_25 rootfs:dir { open read };
+allow untrusted_app_25 sysfs_net:dir r_dir_perms;
+allow untrusted_app_25 sysfs_net:lnk_file r_file_perms;
+allow untrusted_app_25 sysfs_ss_writable:dir r_dir_perms;
+allow untrusted_app_25 sysfs_ss_writable:file r_file_perms;
+allow untrusted_app_25 mobicore_user_device:chr_file rw_file_perms;
+allow untrusted_app_25 tsdaemon:unix_stream_socket connectto;
+allow untrusted_app_25 untrusted_app_25:icmp_socket create_socket_perms_no_ioctl;
+allow untrusted_app_25 vendor_sysfs_graphics:file r_file_perms;
 allow untrusted_app_25 vendor_sysfs_kgsl_gpuclk:file r_file_perms;
-allow untrusted_app_25 vendor_sysfs_kgsl:dir search;
-allow untrusted_app_25 vendor_gles_data_file:dir rw_dir_perms;
-allow untrusted_app_25 vendor_gles_data_file:file rw_file_perms;
-r_dir_file(untrusted_app_25, vendor_sysfs_kgsl_snapshot)
-r_dir_file(untrusted_app_25, vendor_gles_data_file)
-hal_client_domain(untrusted_app_25, vendor_hal_dspmanager)
+dontaudit untrusted_app_25 file_type:dir getattr;
+dontaudit untrusted_app_25 file_type:file getattr;
+dontaudit untrusted_app_25 exec_type:file getattr;
+r_dir_file(untrusted_app_25, vendor_sysfs_mmc_host)
 hal_client_domain(untrusted_app_25, vendor_hal_qspmhal)
-type untrusted_app_25, domain;
+type untrusted_app_25, domain, untrusteddomain;

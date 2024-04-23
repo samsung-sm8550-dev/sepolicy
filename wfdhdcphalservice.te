@@ -8,7 +8,6 @@ allow vendor_wfdhdcphalservice_qti vendor_dmabuf_qseecom_heap_device:chr_file r_
 allow vendor_wfdhdcphalservice_qti vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_wfdhdcphalservice_qti vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_wfdhdcphalservice_qti vendor_vm_cp_bitstream_device:chr_file r_file_perms;
-allow vendor_wfdhdcphalservice_qti su:fifo_file append;
 allow vendor_wfdhdcphalservice_qti anr_data_file:file append;
 allow vendor_wfdhdcphalservice_qti dumpstate:fd *;
 allow vendor_wfdhdcphalservice_qti dumpstate:fifo_file { append write };

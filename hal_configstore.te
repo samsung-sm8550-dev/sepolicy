@@ -32,8 +32,6 @@ neverallow hal_configstore_server sdcard_type:dir { append audit_access execmod 
 neverallow hal_configstore_server sdcard_type:file *;
 neverallow hal_configstore_server fuse:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_configstore_server fuse:file *;
-neverallow hal_configstore_server fuseblk:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
-neverallow hal_configstore_server fuseblk:file *;
 neverallow hal_configstore_server sdcardfs:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_configstore_server sdcardfs:file *;
 neverallow hal_configstore_server vfat:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
@@ -47,7 +45,6 @@ neverallow hal_configstore_server self:cap2_userns *;
 allow hal_configstore_client hal_configstore_server:binder { call transfer };
 allow hal_configstore_client hal_configstore_server:fd *;
 allow hal_configstore_server hal_configstore_client:binder transfer;
-allow hal_configstore_server su:fifo_file append;
 allow hal_configstore_server anr_data_file:file append;
 allow hal_configstore_server dumpstate:fd *;
 allow hal_configstore_server dumpstate:fifo_file { append write };

@@ -1,22 +1,15 @@
 expandtypeattribute(hal_vehicle)
 expandtypeattribute(hal_vehicle_client)
 expandtypeattribute(hal_vehicle_server)
-allow hal_vehicle_server dumpstate:fifo_file write;
-allow hal_vehicle_server dumpstate:fd *;
-allow hal_vehicle_server hal_vehicle_client:binder transfer;
-allow hal_vehicle_server hal_vehicle_client:binder { call transfer };
-allow hal_vehicle_server hal_vehicle_client:fd *;
-allow hal_vehicle_server su:tcp_socket { accept getopt read write };
-allow hal_vehicle_server servicemanager:binder { call transfer };
-allow hal_vehicle_server servicemanager:fd *;
 allow hal_vehicle_client hal_vehicle_server:binder { call transfer };
 allow hal_vehicle_client hal_vehicle_server:binder transfer;
 allow hal_vehicle_client hal_vehicle_server:fd *;
-allow hal_vehicle_default fwk_stats_hwservice:hwservice_manager find;
-allow hal_vehicle_default stats_service_server:binder { call transfer };
-allow hal_vehicle_default stats_service_server:fd *;
+allow hal_vehicle_server hal_vehicle_client:binder transfer;
+allow hal_vehicle_server hal_vehicle_client:binder { call transfer };
+allow hal_vehicle_server hal_vehicle_client:fd *;
+allow hal_vehicle_server servicemanager:binder { call transfer };
+allow hal_vehicle_server servicemanager:fd *;
 init_daemon_domain(hal_vehicle_default)
-hwbinder_use(hal_vehicle_default)
 hal_server_domain(hal_vehicle_default, hal_vehicle)
 hal_client_domain(hal_vehicle_default, hal_can_bus)
 hal_attribute_service(hal_vehicle, hal_vehicle_service)

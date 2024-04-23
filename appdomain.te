@@ -1,5 +1,11 @@
 neverallow appdomain dev_type:blk_file { read write };
 neverallow appdomain dev_type:lnk_file no_w_file_perms;
+neverallow appdomain audio_device:chr_file { read write };
+neverallow appdomain camera_device:chr_file { read write };
+neverallow appdomain dm_device:chr_file { read write };
+neverallow appdomain radio_device:chr_file { read write };
+neverallow appdomain video_device:chr_file { read write };
+neverallow appdomain rpmsg_device:chr_file { read write };
 neverallow appdomain tee_device:chr_file { read write };
 neverallow appdomain socket_device:sock_file write;
 neverallow appdomain adbd_socket:sock_file write;
@@ -91,22 +97,59 @@ neverallow appdomain system_bootstrap_lib_file:dir { getattr open read search };
 allow appdomain cameraserver:binder transfer;
 allow appdomain system_file:file { execute getattr map open read };
 allow appdomain system_data_file:dir getattr;
-allow appdomain system_userdir_file:dir { getattr search };
-allow appdomain media_userdir_file:dir search;
+allow appdomain system_data_file:dir { open read };
+allow appdomain system_data_file:file open;
 allow appdomain drmserver:binder transfer;
 allow appdomain dumpstate:binder transfer;
 allow appdomain mediadrmserver:binder transfer;
 allow appdomain mediaextractor:binder transfer;
 allow appdomain mediaserver:binder transfer;
 allow appdomain statsd:binder transfer;
-allow appdomain vendor_npu_device:chr_file r_file_perms;
+allow appdomain apaservice:unix_dgram_socket sendto;
+allow appdomain jackservice:unix_dgram_socket sendto;
+allow appdomain sdcardd:fd *;
+allow appdomain sysfs_zram:dir search;
+allow appdomain knox_dar_shared_device:chr_file { ioctl open read write };
+allow appdomain m2m1shot_device:chr_file rw_file_perms;
+allow appdomain app_fonts_data_file:dir r_dir_perms;
+allow appdomain app_fonts_data_file:file r_file_perms;
+allow appdomain container_data_file:dir r_dir_perms;
+allow appdomain container_data_file:file r_file_perms;
+allow appdomain omr_file:file read;
+allow appdomain themecenter_data_file:dir r_dir_perms;
+allow appdomain themecenter_data_file:file r_file_perms;
+allow appdomain ccm_data_file:dir r_dir_perms;
+allow appdomain ccm_data_file:file r_file_perms;
+allow appdomain tlc_server:binder { call transfer };
+allow appdomain tlc_server:fd *;
+allow appdomain zygote:unix_stream_socket { getattr getopt };
 allow appdomain zygote:unix_dgram_socket getopt;
+allow appdomain sec_debugfs:dir search;
+allow appdomain astc_device:chr_file r_file_perms;
+allow appdomain users_system_data_file:file { getattr read write };
+allow appdomain same_process_hal_file:file x_file_perms;
+allow appdomain asec_apk_file:dir r_dir_perms;
+allow appdomain asec_apk_file:file r_file_perms;
+allow appdomain asec_public_file:dir r_dir_perms;
+allow appdomain asec_public_file:file r_file_perms;
+allow appdomain semprivateshare_data_file:dir r_dir_perms;
+allow appdomain semprivateshare_data_file:file r_file_perms;
+allow appdomain qrandom_device:chr_file r_file_perms;
+allow appdomain dmb:binder transfer;
+allow appdomain visiond:binder transfer;
+allow appdomain vendor_npu_device:chr_file r_file_perms;
 allow appdomain vendor_qdsp_device:chr_file { ioctl read };
 dontaudit appdomain vendor_hal_qspmhal_hwservice:hwservice_manager find;
-dontaudit appdomain vendor_gles_data_file:dir search;
-dontaudit appdomain vendor_gles_data_file:file *;
 attribute appdomain;
+r_dir_file(appdomain, kisekae_data_file)
+unix_socket_connect(appdomain, jack, jackservice)
+unix_socket_connect(appdomain, dualdard, jackservice)
+get_prop(appdomain, camera2_extensions_prop)
+get_prop(appdomain, camerax_extensions_prop)
+get_prop(appdomain, audio_prop)
+get_prop(appdomain, apm_prop)
+get_prop(appdomain, system_prop)
+get_prop(appdomain, sec_bluetooth_prop)
 get_prop(appdomain, vendor_camera_prop)
 get_prop(appdomain, vendor_adsprpc_prop)
-get_prop(appdomain, vendor_display_prop)
 get_prop(appdomain, vendor_iop_prop)

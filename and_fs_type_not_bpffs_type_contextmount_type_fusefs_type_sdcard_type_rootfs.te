@@ -1,1 +1,0 @@
-allow init { fs_type -bpffs_type -contextmount_type -fusefs_type -sdcard_type -rootfs }:dir { open read search setattr };

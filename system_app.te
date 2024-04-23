@@ -1,31 +1,745 @@
+allow system_app dumplog_data_file:dir create_dir_perms;
+allow system_app dumplog_data_file:file create_file_perms;
+allow system_app dumplog_data_file:file { open setattr };
+allow system_app appdomain:dir { getattr search };
+allow system_app appdomain:file getattr;
+allow system_app at_distributor:binder transfer;
+allow system_app imsd:binder { call transfer };
+allow system_app imsd:fd *;
+allow system_app secure_storage:fd *;
+allow system_app secure_storage_device:sock_file write;
+allow system_app secure_storage_device:dir r_dir_perms;
+allow system_app secure_storage_device:file r_file_perms;
+allow system_app eris_socket:sock_file rw_file_perms;
+allow system_app eris:fd *;
+allow system_app eris:udp_socket { getattr getopt read write };
+allow system_app vold:binder { call transfer };
+allow system_app sysfs_android_usb:dir r_dir_perms;
+allow system_app sysfs_android_usb:file rw_file_perms;
+allow system_app usb_configfs:dir rw_dir_perms;
+allow system_app usb_configfs:file rw_file_perms;
+allow system_app sysfs_camera_writable:file rw_file_perms;
+allow system_app sysfs_mdnie_writable:file create_file_perms;
+allow system_app sysfs_lcd_writable:dir r_dir_perms;
+allow system_app sysfs_lcd_writable:file create_file_perms;
+allow system_app sysfs_sec:file rw_file_perms;
+allow system_app sysfs_sec:dir search;
+allow system_app sysfs_lowmemorykiller:file r_file_perms;
+allow system_app sysfs_lowmemorykiller:dir r_dir_perms;
+allow system_app sysfs_sensor_writable:file rw_file_perms;
+allow system_app sysfs_sensor_writable:dir r_dir_perms;
+allow system_app info_extra_system_file:file r_file_perms;
+allow system_app emergency_service:service_manager add;
+allow system_app ims_service:service_manager add;
+allow system_app Sve_service:service_manager add;
+allow system_app volte_service:service_manager add;
+allow system_app clipboardui_service:service_manager add;
+allow system_app fingerprint_app_service:service_manager add;
+allow system_app faced_service:service_manager add;
+allow system_app mtp_device:chr_file rw_file_perms;
+allow system_app mobicore_tui_device:chr_file rw_file_perms;
+allow system_app app_fonts_data_file:dir create_dir_perms;
+allow system_app app_fonts_data_file:file create_file_perms;
+allow system_app app_efs_file:file setattr;
+allow system_app app_efs_file:file rw_file_perms;
+allow system_app app_efs_file:file create_file_perms;
+allow system_app app_efs_file:dir r_dir_perms;
+allow system_app app_efs_file:dir create_dir_perms;
+allow system_app audio_data_file:dir create_dir_perms;
+allow system_app audio_data_file:file create_file_perms;
+allow system_app asec_apk_file:dir rw_dir_perms;
+allow system_app asec_apk_file:file r_file_perms;
+allow system_app asec_public_file:dir rw_dir_perms;
+allow system_app asec_public_file:file r_file_perms;
+allow system_app audit_log:dir r_dir_perms;
+allow system_app audit_log:file r_file_perms;
+allow system_app battery_efs_file:dir r_dir_perms;
+allow system_app battery_efs_file:file rw_file_perms;
+allow system_app cache_file:dir create_dir_perms;
+allow system_app cache_file:file create_file_perms;
+allow system_app cache_recovery_file:dir rw_dir_perms;
+allow system_app cache_recovery_file:file create_file_perms;
+allow system_app proc_stat:file r_file_perms;
+allow system_app proc_misc:file r_file_perms;
+allow system_app proc_bluetooth_writable:file r_file_perms;
+allow system_app proc_cpuinfo:file r_file_perms;
+allow system_app proc_interrupts:file r_file_perms;
+allow system_app proc_iomem:file r_file_perms;
+allow system_app proc_meminfo:file r_file_perms;
+allow system_app proc_modules:file r_file_perms;
+allow system_app proc_net:file rw_file_perms;
+allow system_app proc_perf:file r_file_perms;
+allow system_app proc_sysrq:file r_file_perms;
+allow system_app proc_sysrq:file rw_file_perms;
+allow system_app proc_timer:file r_file_perms;
+allow system_app fido_data_file:dir create_dir_perms;
+allow system_app fido_data_file:file create_file_perms;
+allow system_app media_rw_data_file:file open;
+allow system_app mtp_socket:dir create_dir_perms;
+allow system_app mtp_socket:sock_file create_file_perms;
+allow system_app sec_efs_file:dir create_dir_perms;
+allow system_app sec_efs_file:dir ra_dir_perms;
+allow system_app sec_efs_file:file create_file_perms;
+allow system_app shared_data_file:dir r_dir_perms;
+allow system_app shared_data_file:file r_file_perms;
+allow system_app tima_log:dir r_dir_perms;
+allow system_app tima_log:file r_file_perms;
+allow system_app users_system_data_file:dir create_dir_perms;
+allow system_app users_system_data_file:file create_file_perms;
+allow system_app nps_socket:file create_file_perms;
+allow system_app nps_socket:dir create_dir_perms;
+allow system_app nps_socket:sock_file create_file_perms;
+allow system_app sec_wifi_data_file:dir create_dir_perms;
+allow system_app sec_wifi_data_file:dir search;
+allow system_app sec_wifi_data_file:file create_file_perms;
+allow system_app sec_wifi_data_file:file r_file_perms;
+allow system_app themecenter_data_file:dir create_dir_perms;
+allow system_app themecenter_data_file:dir rw_dir_perms;
+allow system_app themecenter_data_file:file create_file_perms;
+allow system_app themecenter_sensitive_data_file:file create_file_perms;
+allow system_app themecenter_sensitive_data_file:dir create_dir_perms;
+allow system_app proc_info_file:file r_file_perms;
+allow system_app convergence_data_file:dir r_dir_perms;
+allow system_app convergence_data_file:dir create_dir_perms;
+allow system_app convergence_data_file:file r_file_perms;
+allow system_app convergence_data_file:file create_file_perms;
+allow system_app proc_swappiness:file r_file_perms;
+allow system_app lpnet_data_file:dir create_dir_perms;
+allow system_app lpnet_data_file:file create_file_perms;
+allow system_app shell_exec:file rx_file_perms;
+allow system_app insthk_exec:file rx_file_perms;
+allow system_app wifishare_profile_data_file:dir create_dir_perms;
+allow system_app wifishare_profile_data_file:file create_file_perms;
+allow system_app knox_system_misc_file:dir r_dir_perms;
+allow system_app knox_system_misc_file:file r_file_perms;
+allow system_app policyloader_app_data_file:file read;
+allow system_app bluetooth_efs_file:dir search;
+allow system_app bluetooth_efs_file:dir create_dir_perms;
+allow system_app bluetooth_efs_file:file create_file_perms;
+allow system_app dhkprov_exec:file x_file_perms;
+allow system_app system_app_service_type:service_manager add;
+allow system_app epdg_service:service_manager { add find };
+allow system_app system_app_service:service_manager { add find };
+allow system_app self:process ptrace;
+allow system_app self:icmp_socket create_socket_perms_no_ioctl;
+allow system_app self:netlink_kobject_uevent_socket { bind create read setopt };
+allow system_app accessibility_service:service_manager find;
+allow system_app device_policy_service:service_manager find;
+allow system_app dropbox_service:service_manager find;
+allow system_app graphicsstats_service:service_manager find;
+allow system_app input_method_service:service_manager find;
+allow system_app radio_service:service_manager find;
+allow system_app registry_service:service_manager find;
+allow system_app surfaceflinger_service:service_manager find;
+allow system_app SecurityManager_service:service_manager find;
+allow system_app content_service:service_manager find;
+allow system_app selinuxfs:dir r_dir_perms;
+allow system_app selinuxfs:file r_file_perms;
+allow system_app downfilters_lib_file:dir create_dir_perms;
+allow system_app downfilters_lib_file:file create_file_perms;
+allow system_app otadm_efs_file:dir rw_dir_perms;
+allow system_app otadm_efs_file:file rw_file_perms;
+allow system_app iss_efs_file:dir rw_dir_perms;
+allow system_app iss_efs_file:file rw_file_perms;
+allow system_app prov_efs_file:dir create_dir_perms;
+allow system_app prov_efs_file:file create_file_perms;
+allow system_app cpk_efs_file:dir create_dir_perms;
+allow system_app cpk_efs_file:file create_file_perms;
+allow system_app tz_device:chr_file rw_file_perms;
+allow system_app fota_data_file:dir create_dir_perms;
+allow system_app fota_data_file:file create_file_perms;
+allow system_app retailmode_efs_file:dir create_dir_perms;
+allow system_app retailmode_efs_file:file create_file_perms;
+allow system_app omr_file:dir create_dir_perms;
+allow system_app omr_file:file create_file_perms;
+allow system_app sysfs_led_writable:file rw_file_perms;
+allow system_app vcsFPService_data_file:dir r_dir_perms;
+allow system_app vcsFPService_data_file:file r_file_perms;
+allow system_app ssipc_device:chr_file w_file_perms;
+allow system_app sysfs_ss_writable:file rw_file_perms;
+allow system_app proc_avc_msg:file r_file_perms;
+allow system_app TMAudio_socket:dir rw_dir_perms;
+allow system_app TMAudio_socket:sock_file create_file_perms;
+allow system_app powerctl_prop:property_service set;
+allow system_app ccm_data_file:dir create_dir_perms;
+allow system_app ccm_data_file:file create_file_perms;
+allow system_app fingerprintd:binder { call transfer };
+allow system_app fingerprintd:fd *;
+allow system_app wlandutservice:binder { call transfer };
+allow system_app wlandutservice:fd *;
+allow system_app gps_data_file:dir create_dir_perms;
+allow system_app gps_data_file:file create_file_perms;
+allow system_app gps_data_file:file rw_file_perms;
+allow system_app tvr_device:chr_file rw_file_perms;
+allow system_app sec_poc_file:dir create_dir_perms;
+allow system_app sec_poc_file:file create_file_perms;
+allow system_app dqmdbgblk_file:dir create_dir_perms;
+allow system_app dqmdbgblk_file:file create_file_perms;
+allow system_app block_device:dir r_dir_perms;
+allow system_app domain:dir search;
+allow system_app bluetooth_logs_data_file:dir rw_dir_perms;
+allow system_app bluetooth_logs_data_file:file rw_file_perms;
+allow system_app bluetooth_data_file:dir r_dir_perms;
+allow system_app bluetooth_data_file:file r_file_perms;
+allow system_app platform_app:dir { getattr search };
+allow system_app platform_app:file getattr;
+allow system_app priv_app:dir { getattr search };
+allow system_app priv_app:file getattr;
+allow system_app untrusted_app:file getattr;
+allow system_app proc_zoneinfo:file r_file_perms;
+allow system_app smartfaceservice_service:service_manager add;
+allow system_app sysfs_battery:dir r_dir_perms;
+allow system_app sysfs_battery:file rw_file_perms;
+allow system_app sysfs_batteryinfo:dir search;
+allow system_app hidden_file:dir create_dir_perms;
+allow system_app hidden_file:file create_file_perms;
+allow system_app input_device:chr_file getattr;
+allow system_app input_device:dir r_dir_perms;
+allow system_app directpeninputmanager_service:service_manager add;
+allow system_app sdcardd:binder { call transfer };
+allow system_app sdcardd:binder transfer;
+allow system_app sec_data_file:dir create_dir_perms;
+allow system_app sec_data_file:file create_file_perms;
+allow system_app sysfs_usb:file rw_file_perms;
+allow system_app storage_stub_file:dir getattr;
+allow system_app proc_tsp:file r_file_perms;
+allow system_app system_data_file:dir r_dir_perms;
+allow system_app vendor_sysfs_scsi_host:file rw_file_perms;
+allow system_app hostapd_data_file:dir search;
+allow system_app wifi_efs_file:dir search;
+allow system_app proc_pagetypeinfo:file r_file_perms;
+allow system_app fs_bpf:dir search;
+allow system_app sysfs_maxdsm_power:file write;
+allow system_app tad_data_file:dir create_dir_perms;
+allow system_app tad_data_file:file create_file_perms;
+allow system_app sysfs_virtyal_relay_on:dir r_dir_perms;
+allow system_app sysfs_virtyal_relay_on:file r_file_perms;
+allow system_app vendor_firmware_file:dir r_dir_perms;
+allow system_app proc_boot_stat:file { getattr lock map open read };
+allow system_app hal_secure_storage_daemon_hwservice:hwservice_manager find;
+allow system_app hal_secure_storage_daemon_default:binder { call transfer };
+allow system_app hal_secure_storage_daemon_default:fd *;
+allow system_app carrier_file:dir rw_dir_perms;
+allow system_app carrier_file:file create_file_perms;
+allow system_app idmap:binder { call transfer };
+allow system_app idmap:fd *;
+allow system_app traced_consumer_socket:sock_file rw_file_perms;
+allow system_app proc_filesystems:file r_file_perms;
+allow system_app vendor_sensorhub_data_file:dir create_dir_perms;
+allow system_app vendor_sensorhub_data_file:file create_file_perms;
+allow system_app hal_vibrator_default:binder { call transfer };
+allow system_app hal_vibrator_default:fd *;
+allow system_app apex_data_file:dir r_dir_perms;
+allow system_app system_file:file lock;
+allow system_app sysfs_ski_system_writable:file rw_file_perms;
+allow system_app sec_display_debug_device:chr_file r_file_perms;
+allow system_app adservices_manager_service:service_manager find;
+allow system_app update_engine:binder { call transfer };
+allow system_app update_engine:binder transfer;
+allow system_app update_engine:fd *;
+allow system_app security_spota_file:dir r_dir_perms;
+allow system_app security_spota_file:file r_file_perms;
+allow system_app hal_soter_sec:binder { call transfer };
+allow system_app hal_soter_sec:fd *;
+allow system_app oneseg_mw:binder transfer;
+allow system_app remotedisplay:binder { call transfer };
+allow system_app remotedisplay:fd *;
+allow system_app sec_standard_app_type:file getattr;
+allow system_app snap_hidl:binder transfer;
+allow system_app snap_hidl:binder { call transfer };
+allow system_app snap_hidl:fd *;
+allow system_app aasa_data_file:file r_file_perms;
+allow system_app iris_service:service_manager find;
+allow system_app keystore:keystore_key add_auth;
+allow system_app bsd_socket:sock_file rw_file_perms;
+allow system_app bsd_socket:dir r_dir_perms;
+allow system_app wificond:binder { call transfer };
+allow system_app wificond:fd *;
+allow system_app drm_efs_file:dir r_dir_perms;
+allow system_app drm_efs_file:file r_file_perms;
+allow system_app kisekae_data_file:dir create_dir_perms;
+allow system_app kisekae_data_file:file create_file_perms;
+allow system_app kisekae_data_file:lnk_file create_file_perms;
+allow system_app sysfs_vibrator:file rw_file_perms;
+allow system_app ocf_key_service_data_file:dir create_dir_perms;
+allow system_app ocf_key_service_data_file:file create_file_perms;
+allow system_app secure_storage_data_file:file r_file_perms;
+allow system_app sdunion_storagevold:binder call;
+allow system_app rootfs:file r_file_perms;
+allow system_app sec_wifi_device:chr_file rw_file_perms;
+allow system_app virtual_touchpad_service:service_manager find;
+allow system_app vendor_audiopcm_data_file:dir r_dir_perms;
+allow system_app vendor_audiopcm_data_file:file r_file_perms;
+allow system_app vendor_log_file:dir create_dir_perms;
+allow system_app vendor_log_file:file create_file_perms;
+allow system_app vendor_log_file:lnk_file r_file_perms;
+allow system_app sysfs_secgpio:dir r_dir_perms;
+allow system_app sysfs_secgpio:file rw_file_perms;
+allow system_app mnodm_socket:sock_file create_file_perms;
+allow system_app mnodm_socket:dir create_dir_perms;
+allow system_app proc_vmallocinfo:file r_file_perms;
+allow system_app ssm_efs_file:file create_file_perms;
+allow system_app ssm_efs_file:dir create_dir_perms;
+allow system_app efs_file:dir search;
+allow system_app efs_file:file getattr;
+allow system_app sysfs_audio_writable:file r_file_perms;
+allow system_app configfs:dir search;
+allow system_app sysfs_gpu:dir r_dir_perms;
+allow system_app sysfs_gpu:file rw_file_perms;
+allow system_app sysfs_power:dir r_dir_perms;
+allow system_app sysfs_power:file rw_file_perms;
+allow system_app sysfs_input_booster:dir r_dir_perms;
+allow system_app sysfs_input_booster:file rw_file_perms;
+allow system_app sysfs_ehmp:file rw_file_perms;
+allow system_app ap_device:file rw_file_perms;
+allow system_app ap_device:dir search;
+allow system_app proc_sched:file rw_file_perms;
+allow system_app sysfs_ert:file rw_file_perms;
+allow system_app vendor_sysfs_devfreq:file rw_file_perms;
+allow system_app sysfs_leds:dir search;
+allow system_app freecessmonitor:binder { call transfer };
+allow system_app freecessmonitor:fd *;
+allow system_app ucm_hwservice:hwservice_manager find;
+allow system_app sysfs_thermal:file rw_file_perms;
+allow system_app vendor_gps_file:dir create_dir_perms;
+allow system_app vendor_gps_file:file create_file_perms;
+allow system_app vendor_gps_file:fifo_file create_file_perms;
+allow system_app proc_nfclog:file { getattr lock map open read };
+allow system_app hal_sec_soter_hwservice:hwservice_manager find;
+allow system_app vendor_camera_data_file:dir search;
+allow system_app vendor_camera_data_file:dir create_dir_perms;
+allow system_app vendor_camera_data_file:file create_file_perms;
+allow system_app proc_vmstat:file r_file_perms;
+allow system_app proc_diskstats:file r_file_perms;
+allow system_app hwobs_service:service_manager { add find };
+allow system_app sysfs_secdebug_writable:dir search;
+allow system_app sysfs_secdebug_writable:file rw_file_perms;
+allow system_app wallpaper_file:dir search;
+allow system_app proc_iostats:file r_file_perms;
+allow system_app proc_slabinfo:file r_file_perms;
+allow system_app sec_debugfs:dir r_dir_perms;
+allow system_app perfmond_socket:sock_file rw_file_perms;
+allow system_app perfmond_socket:dir r_dir_perms;
+allow system_app sysfs_hmp:dir r_dir_perms;
+allow system_app sysfs_hmp:file rw_file_perms;
+allow system_app camerasdkservice_service:service_manager { add find };
+allow system_app hal_MultiFrameProcessing20_hwservice:hwservice_manager find;
+allow system_app hal_camera_default:binder { call transfer };
+allow system_app hal_camera_default:fd *;
+allow system_app proc_subfpcb_type:file r_file_perms;
+allow system_app proc_tima_log:file { getattr lock map open read };
+allow system_app proc_uh_log:file { getattr lock map open read };
+allow system_app proc_rkp:file { getattr lock map open read };
+allow system_app mpsd_device:chr_file rw_file_perms;
+allow system_app sysfs_wifi:dir r_dir_perms;
+allow system_app sysfs_wifi:file r_file_perms;
+allow system_app proc_wifi:dir r_dir_perms;
+allow system_app proc_wifi:file r_file_perms;
+allow system_app sysfs_app_writable:file rw_file_perms;
+allow system_app sysfs_app_writable:dir r_dir_perms;
+allow system_app samsungeuicc_service:service_manager { add find };
+allow system_app sysfs_devices_system_cpu:file rw_file_perms;
+allow system_app radio_data_file:dir r_dir_perms;
+allow system_app radio_data_file:file r_file_perms;
+allow system_app radio_data_file:file w_file_perms;
+allow system_app sysfs_mst_writable:file rw_file_perms;
+allow system_app sysfs_mst_writable:dir r_dir_perms;
+allow system_app tcpopd_socket:sock_file w_file_perms;
+allow system_app carrier_efs_file:dir create_dir_perms;
+allow system_app carrier_efs_file:file create_file_perms;
+allow system_app system_app_data_file:sock_file create_file_perms;
+allow system_app uhid_device:chr_file rw_file_perms;
+allow system_app ovr_device:chr_file rw_file_perms;
+allow system_app wifi_data_file:dir search;
+allow system_app wifi_data_file:file r_file_perms;
+allow system_app nfc_data_file:dir r_dir_perms;
+allow system_app nfc_data_file:file r_file_perms;
+allow system_app rdxdump_data_file:dir create_dir_perms;
+allow system_app rdxdump_data_file:file create_file_perms;
+allow system_app rdxdump_data_file:lnk_file create_file_perms;
+allow system_app panel_device:chr_file rw_file_perms;
+allow system_app graphics_device:chr_file rw_file_perms;
+allow system_app proc_intelligence:dir r_dir_perms;
+allow system_app proc_intelligence:file rw_file_perms;
+allow system_app sec_iris_service:service_manager add;
+allow system_app cgroup:dir create_dir_perms;
+allow system_app cgroup:file r_file_perms;
+allow system_app sysfs_wake_lock:file rw_file_perms;
+allow system_app hal_mpsd_hwservice:hwservice_manager find;
+allow system_app snap_hwservice:hwservice_manager find;
+allow system_app hal_ucmtlc_hwservice:hwservice_manager find;
+allow system_app hal_ucmtlc_default:binder call;
+allow system_app proc_pressure_lmkd_cricount:file r_file_perms;
+allow system_app proc_pressure_lmkd_count:file r_file_perms;
+allow system_app sysfs_req_mode:dir r_dir_perms;
+allow system_app sysfs_req_mode:file rw_file_perms;
+allow system_app proc_mmap_readaround_limit:file r_file_perms;
+allow system_app proc_latency_checker:dir r_dir_perms;
+allow system_app proc_latency_checker:file r_file_perms;
+allow system_app hal_authfw_default:binder { call transfer };
+allow system_app hal_authfw_default:fd *;
+allow system_app hal_authfw_hwservice:hwservice_manager find;
+allow system_app uwb_vendor_data_file:dir create_dir_perms;
+allow system_app uwb_vendor_data_file:file create_file_perms;
+allow system_app sem_wifi_service:service_manager find;
+allow system_app mnt_sdcard_file:lnk_file r_file_perms;
+allow system_app sysfs_ski_temp_writable:dir r_dir_perms;
+allow system_app sysfs_ski_temp_writable:file rw_file_perms;
+allow system_app sysfs_ski_sensor_writable:file rw_file_perms;
+allow system_app sysfs_ski_touch_writable:dir r_dir_perms;
+allow system_app sysfs_ski_touch_writable:file rw_file_perms;
+allow system_app sysfs_ski_usb_readable:file r_file_perms;
+allow system_app sysfs_ski_muic_writable:file r_file_perms;
+allow system_app sysfs_ski_display_writable:file rw_file_perms;
+allow system_app imei_efs_file:file create_file_perms;
+allow system_app sysfs_firmware_class:dir r_dir_perms;
+allow system_app sysfs_firmware_class:file rw_file_perms;
+allow system_app sysfs:dir { open read };
+allow system_app sysfs_ski_debug_writable:dir r_dir_perms;
+allow system_app sysfs_ski_debug_writable:file rw_file_perms;
+allow system_app semprivateshare_data_file:dir create_dir_perms;
+allow system_app semprivateshare_data_file:file create_file_perms;
+allow system_app kpm_efs_file:dir create_dir_perms;
+allow system_app kpm_efs_file:file create_file_perms;
+allow system_app kpm_data_file:dir create_dir_perms;
+allow system_app kpm_data_file:file create_file_perms;
+allow system_app sysfs_ski_led_writable:file rw_file_perms;
+allow system_app vendor_segbackground_data_file:dir create_dir_perms;
+allow system_app vendor_segbackground_data_file:file create_file_perms;
+allow system_app apex_mnt_dir:dir r_dir_perms;
+allow system_app sysfs_ski_usb_writable:dir r_dir_perms;
+allow system_app sysfs_ski_usb_writable:file rw_file_perms;
+allow system_app sysfs_ski_key_writable:dir r_dir_perms;
+allow system_app sysfs_ski_key_writable:file rw_file_perms;
+allow system_app sysfs_ski_hall_writable:file w_file_perms;
+allow system_app mesh_device:chr_file rw_file_perms;
+allow system_app taas_efs_file:file create_file_perms;
+allow system_app taas_efs_file:dir create_dir_perms;
+allow system_app apk_data_file:file ioctl;
+allow system_app hal_neuralnetworks_shim_service_gpu_default:binder { call transfer };
+allow system_app hal_neuralnetworks_shim_service_gpu_default:fd *;
+allow system_app hal_neuralnetworks_shim_service_npu_default:binder { call transfer };
+allow system_app hal_neuralnetworks_shim_service_npu_default:fd *;
+allow system_app hal_ifaa_hwservice:hwservice_manager find;
+allow system_app proc_pressure_mem:file r_file_perms;
+allow system_app hal_snap_service:service_manager find;
+allow system_app hal_securesnap_service:service_manager find;
+allow system_app heimdall:fd *;
+allow system_app fuse:file r_file_perms;
+allow system_app proc_rq_stat:file r_file_perms;
+allow system_app hal_ifaa_default:binder { call transfer };
+allow system_app hal_ifaa_default:fd *;
+allow system_app softsimd:binder { call transfer };
+allow system_app softsimd:fd *;
+allow system_app tzdaemon:fd *;
+allow system_app tz_user_device:chr_file rw_file_perms;
+allow system_app tee_efs_file:dir search;
+allow system_app attiqi_service:service_manager find;
+allow system_app felica_data_file:dir rw_dir_perms;
+allow system_app felica_data_file:file rw_file_perms;
+allow system_app qti_debugfs:file r_file_perms;
+allow system_app qti_debugfs:dir r_dir_perms;
+allow system_app vendor_sysfs_battery_supply:file rw_file_perms;
+allow system_app vendor_sysfs_battery_supply:dir r_dir_perms;
+allow system_app vendor_diag_device:chr_file rw_file_perms;
+allow system_app vendor_sysfs_kgsl:file w_file_perms;
+allow system_app vendor_tombstone_data_file:dir create_dir_perms;
+allow system_app vendor_tombstone_data_file:file create_file_perms;
+allow system_app vendor_ipa_dev:chr_file r_file_perms;
+allow system_app vendor_ramdump_vendor_data_file:file create_file_perms;
+allow system_app vendor_ramdump_vendor_data_file:dir rw_dir_perms;
+allow system_app vendor_sdx50m_file:dir create_dir_perms;
+allow system_app vendor_sdx50m_file:file create_file_perms;
+allow system_app vendor_sysfs_sensors:dir r_dir_perms;
+allow system_app vendor_sysfs_sensors:file r_file_perms;
+allow system_app vendor_sysfs_msm_power:dir r_dir_perms;
+allow system_app vendor_sysfs_msm_power:file rw_file_perms;
+allow system_app vendor_log_wifi_data_file:dir create_dir_perms;
+allow system_app vendor_log_wifi_data_file:file create_file_perms;
 allow system_app vendor_atfwd:binder transfer;
 allow system_app vendor_elabel_data_file:dir r_dir_perms;
 allow system_app vendor_elabel_data_file:file r_file_perms;
-allow system_app update_engine:binder transfer;
-allow system_app update_engine:binder { call transfer };
-allow system_app update_engine:fd *;
-allow system_app vendor_esepmdaemon:binder transfer;
-allow system_app vendor_fidotest:binder transfer;
-allow system_app vendor_fidotest:binder { call transfer };
-allow system_app vendor_fidotest:fd *;
-allow system_app sensors_device:chr_file getattr;
-allow system_app socket_device:dir read;
-allow system_app self:socket create_socket_perms_no_ioctl;
-allow system_app vendor_diag_device:chr_file rw_file_perms;
-allow system_app vendor_sysfs_qdss_dev:dir r_dir_perms;
+allow system_app vendor_sysfs_qdss_dev:dir search;
 allow system_app vendor_sysfs_qdss_dev:file rw_file_perms;
-allow system_app vendor_qdss_device:chr_file rw_file_perms;
-allow system_app sysfs_zram:dir r_dir_perms;
-allow system_app sysfs_zram:file r_file_perms;
-dontaudit system_app vendor_diag_device:chr_file { append getattr ioctl lock map open read watch watch_reads write };
+allow system_app vendor_qdss_device:chr_file { open read };
+allow system_app vendor_esepmdaemon:binder transfer;
+dontaudit system_app serialno_prop:file { getattr ioctl lock map open read watch watch_reads };
+allowxperm system_app sec_efs_file:ioctl file 0x6601;
+allowxperm system_app self:ioctl udp_socket 0x8954;
+allowxperm system_app apk_data_file:ioctl file 0x6722;
+allowxperm system_app fuse:ioctl file 0xf50d;
+type_transition system_app sec_efs_file:dir retailmode_efs_file "retailmode";
+type_transition system_app themecenter_data_file:dir themecenter_sensitive_data_file "preferences";
+type_transition system_app themecenter_data_file:dir themecenter_sensitive_data_file "jsonfiles";
+r_dir_file(system_app, sysfs_camera_writable)
+r_dir_file(system_app, sysfs_sec)
+r_dir_file(system_app, sysfs_ss_writable)
+r_dir_file(system_app, vendor_sysfs_scsi_host)
+r_dir_file(system_app, vendor_sysfs_mmc_host)
+r_dir_file(system_app, sysfs_rtc)
+r_dir_file(system_app, proc_uptime)
+r_dir_file(system_app, sysfs_s2dos05_adc)
+r_dir_file(system_app, sysfs_maxdsm_power)
+r_dir_file(system_app, sysfs_suspend_stats)
+r_dir_file(system_app, vendor_apex_file)
+r_dir_file(system_app, proc_fslog)
+r_dir_file(system_app, sysfs_svc)
+r_dir_file(system_app, sysfs_net)
+r_dir_file(system_app, sysfs_s2mps18_adc)
+r_dir_file(system_app, sysfs_ehmp)
+r_dir_file(system_app, vendor_sysfs_graphics)
+r_dir_file(system_app, sysfs_switch)
+r_dir_file(system_app, sysfs_thermal)
+r_dir_file(system_app, sysfs_sec_touchscreen)
+r_dir_file(system_app, mnt_media_rw_file)
+r_dir_file(system_app, biometrics_vendor_data_file)
+r_dir_file(system_app, debugfs_trustzone)
+r_dir_file(system_app, sysfs_time_in_state)
+r_dir_file(system_app, knox_clipboard_file)
+r_dir_file(system_app, sysfs_ski_hidden_writable)
+r_dir_file(system_app, proc_lmkd_debug)
+r_dir_file(system_app, sysfs_ski_display_writable)
+r_dir_file(system_app, sysfs_ski_ufs_writable)
+r_dir_file(system_app, sysfs_ski_display_readable)
+r_dir_file(system_app, sysfs_ski_storage_readable)
+r_dir_file(system_app, sysfs_ski_power_readable)
+r_dir_file(system_app, sysfs_ski_sensor_readable)
+r_dir_file(system_app, sysfs_ski_hal_readable)
+r_dir_file(system_app, sysfs_ski_led_writable)
+r_dir_file(system_app, sysfs_ski_key_readable)
+r_dir_file(system_app, sysfs_ski_muic_readable)
+r_dir_file(system_app, sysfs_qrandom)
+r_dir_file(system_app, sysfs_ski_security_readable)
+r_dir_file(system_app, sysfs_ski_hall_writable)
+r_dir_file(system_app, proc_ipc_logging)
 r_dir_file(system_app, vendor_sysfs_diag)
+r_dir_file(system_app, vendor_sysfs_kgsl)
+r_dir_file(system_app, vendor_sysfs_usbpd_device)
+r_dir_file(system_app, vendor_qms_main_data_file)
+r_dir_file(system_app, vendor_qms_other_data_file)
+r_dir_file(system_app, vendor_qms_config_data_file)
+r_dir_file(system_app, vendor_sysfs_kgsl_proc)
+r_dir_file(system_app, vendor_log_wifi_data_file)
+unix_socket_connect(system_app, property, at_distributor)
+unix_socket_connect(system_app, property, ddexe)
+unix_socket_connect(system_app, property, imsd)
+unix_socket_connect(system_app, property, secure_storage)
+unix_socket_connect(system_app, property, eris)
+unix_socket_connect(system_app, property, vold)
+unix_socket_connect(system_app, property, dumpstate)
+unix_socket_connect(system_app, property, audioserver)
+unix_socket_connect(system_app, property, ss_conn_daemon)
+unix_socket_connect(system_app, property, traced)
+unix_socket_connect(system_app, property, bsd)
+unix_socket_connect(system_app, property, vpnclientd)
+unix_socket_connect(system_app, property, ssud)
+unix_socket_connect(system_app, property, perfmond)
+unix_socket_connect(system_app, property, multiclientd)
+unix_socket_connect(system_app, property, system_server)
+unix_socket_connect(system_app, property, wland)
+unix_socket_connect(system_app, ddexe, init)
+unix_socket_connect(system_app, ddexe, at_distributor)
+unix_socket_connect(system_app, ddexe, ddexe)
+unix_socket_connect(system_app, ddexe, imsd)
+unix_socket_connect(system_app, ddexe, secure_storage)
+unix_socket_connect(system_app, ddexe, eris)
+unix_socket_connect(system_app, ddexe, vold)
+unix_socket_connect(system_app, ddexe, dumpstate)
+unix_socket_connect(system_app, ddexe, audioserver)
+unix_socket_connect(system_app, ddexe, ss_conn_daemon)
+unix_socket_connect(system_app, ddexe, traced)
+unix_socket_connect(system_app, ddexe, bsd)
+unix_socket_connect(system_app, ddexe, vpnclientd)
+unix_socket_connect(system_app, ddexe, ssud)
+unix_socket_connect(system_app, ddexe, perfmond)
+unix_socket_connect(system_app, ddexe, multiclientd)
+unix_socket_connect(system_app, ddexe, system_server)
+unix_socket_connect(system_app, ddexe, wland)
+unix_socket_connect(system_app, imsd, init)
+unix_socket_connect(system_app, imsd, at_distributor)
+unix_socket_connect(system_app, imsd, ddexe)
+unix_socket_connect(system_app, imsd, imsd)
+unix_socket_connect(system_app, imsd, secure_storage)
+unix_socket_connect(system_app, imsd, eris)
+unix_socket_connect(system_app, imsd, vold)
+unix_socket_connect(system_app, imsd, dumpstate)
+unix_socket_connect(system_app, imsd, audioserver)
+unix_socket_connect(system_app, imsd, ss_conn_daemon)
+unix_socket_connect(system_app, imsd, traced)
+unix_socket_connect(system_app, imsd, bsd)
+unix_socket_connect(system_app, imsd, vpnclientd)
+unix_socket_connect(system_app, imsd, ssud)
+unix_socket_connect(system_app, imsd, perfmond)
+unix_socket_connect(system_app, imsd, multiclientd)
+unix_socket_connect(system_app, imsd, system_server)
+unix_socket_connect(system_app, imsd, wland)
+unix_socket_connect(system_app, eris, init)
+unix_socket_connect(system_app, eris, at_distributor)
+unix_socket_connect(system_app, eris, ddexe)
+unix_socket_connect(system_app, eris, imsd)
+unix_socket_connect(system_app, eris, secure_storage)
+unix_socket_connect(system_app, eris, eris)
+unix_socket_connect(system_app, eris, vold)
+unix_socket_connect(system_app, eris, dumpstate)
+unix_socket_connect(system_app, eris, audioserver)
+unix_socket_connect(system_app, eris, ss_conn_daemon)
+unix_socket_connect(system_app, eris, traced)
+unix_socket_connect(system_app, eris, bsd)
+unix_socket_connect(system_app, eris, vpnclientd)
+unix_socket_connect(system_app, eris, ssud)
+unix_socket_connect(system_app, eris, perfmond)
+unix_socket_connect(system_app, eris, multiclientd)
+unix_socket_connect(system_app, eris, system_server)
+unix_socket_connect(system_app, eris, wland)
+unix_socket_connect(system_app, frigate, init)
+unix_socket_connect(system_app, frigate, at_distributor)
+unix_socket_connect(system_app, frigate, ddexe)
+unix_socket_connect(system_app, frigate, imsd)
+unix_socket_connect(system_app, frigate, secure_storage)
+unix_socket_connect(system_app, frigate, eris)
+unix_socket_connect(system_app, frigate, vold)
+unix_socket_connect(system_app, frigate, dumpstate)
+unix_socket_connect(system_app, frigate, audioserver)
+unix_socket_connect(system_app, frigate, ss_conn_daemon)
+unix_socket_connect(system_app, frigate, traced)
+unix_socket_connect(system_app, frigate, bsd)
+unix_socket_connect(system_app, frigate, vpnclientd)
+unix_socket_connect(system_app, frigate, ssud)
+unix_socket_connect(system_app, frigate, perfmond)
+unix_socket_connect(system_app, frigate, multiclientd)
+unix_socket_connect(system_app, frigate, system_server)
+unix_socket_connect(system_app, frigate, wland)
+unix_socket_connect(system_app, sme, init)
+unix_socket_connect(system_app, sme, at_distributor)
+unix_socket_connect(system_app, sme, ddexe)
+unix_socket_connect(system_app, sme, imsd)
+unix_socket_connect(system_app, sme, secure_storage)
+unix_socket_connect(system_app, sme, eris)
+unix_socket_connect(system_app, sme, vold)
+unix_socket_connect(system_app, sme, dumpstate)
+unix_socket_connect(system_app, sme, audioserver)
+unix_socket_connect(system_app, sme, ss_conn_daemon)
+unix_socket_connect(system_app, sme, traced)
+unix_socket_connect(system_app, sme, bsd)
+unix_socket_connect(system_app, sme, vpnclientd)
+unix_socket_connect(system_app, sme, ssud)
+unix_socket_connect(system_app, sme, perfmond)
+unix_socket_connect(system_app, sme, multiclientd)
+unix_socket_connect(system_app, sme, system_server)
+unix_socket_connect(system_app, sme, wland)
+unix_socket_connect(system_app, dumpstate, init)
+unix_socket_connect(system_app, dumpstate, at_distributor)
+unix_socket_connect(system_app, dumpstate, ddexe)
+unix_socket_connect(system_app, dumpstate, imsd)
+unix_socket_connect(system_app, dumpstate, secure_storage)
+unix_socket_connect(system_app, dumpstate, eris)
+unix_socket_connect(system_app, dumpstate, vold)
+unix_socket_connect(system_app, dumpstate, dumpstate)
+unix_socket_connect(system_app, dumpstate, audioserver)
+unix_socket_connect(system_app, dumpstate, ss_conn_daemon)
+unix_socket_connect(system_app, dumpstate, traced)
+unix_socket_connect(system_app, dumpstate, bsd)
+unix_socket_connect(system_app, dumpstate, vpnclientd)
+unix_socket_connect(system_app, dumpstate, ssud)
+unix_socket_connect(system_app, dumpstate, perfmond)
+unix_socket_connect(system_app, dumpstate, multiclientd)
+unix_socket_connect(system_app, dumpstate, system_server)
+unix_socket_connect(system_app, dumpstate, wland)
+unix_socket_connect(system_app, ss_conn_daemon, init)
+unix_socket_connect(system_app, ss_conn_daemon, at_distributor)
+unix_socket_connect(system_app, ss_conn_daemon, ddexe)
+unix_socket_connect(system_app, ss_conn_daemon, imsd)
+unix_socket_connect(system_app, ss_conn_daemon, secure_storage)
+unix_socket_connect(system_app, ss_conn_daemon, eris)
+unix_socket_connect(system_app, ss_conn_daemon, vold)
+unix_socket_connect(system_app, ss_conn_daemon, dumpstate)
+unix_socket_connect(system_app, ss_conn_daemon, audioserver)
+unix_socket_connect(system_app, ss_conn_daemon, ss_conn_daemon)
+unix_socket_connect(system_app, ss_conn_daemon, traced)
+unix_socket_connect(system_app, ss_conn_daemon, bsd)
+unix_socket_connect(system_app, ss_conn_daemon, vpnclientd)
+unix_socket_connect(system_app, ss_conn_daemon, ssud)
+unix_socket_connect(system_app, ss_conn_daemon, perfmond)
+unix_socket_connect(system_app, ss_conn_daemon, multiclientd)
+unix_socket_connect(system_app, ss_conn_daemon, system_server)
+unix_socket_connect(system_app, ss_conn_daemon, wland)
+unix_socket_connect(system_app, vpnclientd, init)
+unix_socket_connect(system_app, vpnclientd, at_distributor)
+unix_socket_connect(system_app, vpnclientd, ddexe)
+unix_socket_connect(system_app, vpnclientd, imsd)
+unix_socket_connect(system_app, vpnclientd, secure_storage)
+unix_socket_connect(system_app, vpnclientd, eris)
+unix_socket_connect(system_app, vpnclientd, vold)
+unix_socket_connect(system_app, vpnclientd, dumpstate)
+unix_socket_connect(system_app, vpnclientd, audioserver)
+unix_socket_connect(system_app, vpnclientd, ss_conn_daemon)
+unix_socket_connect(system_app, vpnclientd, traced)
+unix_socket_connect(system_app, vpnclientd, bsd)
+unix_socket_connect(system_app, vpnclientd, vpnclientd)
+unix_socket_connect(system_app, vpnclientd, ssud)
+unix_socket_connect(system_app, vpnclientd, perfmond)
+unix_socket_connect(system_app, vpnclientd, multiclientd)
+unix_socket_connect(system_app, vpnclientd, system_server)
+unix_socket_connect(system_app, vpnclientd, wland)
+get_prop(system_app, mobicore_prop)
+get_prop(system_app, tzdaemon_prop)
+get_prop(system_app, proc_swaps)
+get_prop(system_app, apm_prop)
+get_prop(system_app, facm_prop)
+get_prop(system_app, cp_reserved_mem_prop)
+get_prop(system_app, sec_factory_facm_prop)
+get_prop(system_app, vendor_omadm_prop)
+get_prop(system_app, sec_ims_prop)
+get_prop(system_app, vzw_os_prop)
+get_prop(system_app, ina_status_prop)
+get_prop(system_app, sec_camera_prop)
+get_prop(system_app, virtual_ab_prop)
+get_prop(system_app, security_prop)
+get_prop(system_app, device_logging_prop)
+get_prop(system_app, vendor_tzdaemon_prop)
+get_prop(system_app, vendor_bluetooth_prop)
+get_prop(system_app, proc_loadavg)
+get_prop(system_app, dumpstate_options_prop)
+get_prop(system_app, vendor_fastrpc_prop)
+get_prop(system_app, apexd_prop)
+get_prop(system_app, boot_dram_info_prop)
+get_prop(system_app, boot_force_upload_prop)
+get_prop(system_app, compact_dump_prop)
+get_prop(system_app, vendor_sehal_init_prop)
+get_prop(system_app, wifi_log_prop)
+get_prop(system_app, vendor_em_tstate_prop)
+get_prop(system_app, ap_serial_prop)
+get_prop(system_app, boot_em_did_prop)
+get_prop(system_app, incremental_prop)
+get_prop(system_app, vendor_mobicore_prop)
+get_prop(system_app, vendor_sec_nfc_prop)
+get_prop(system_app, chipname_prop)
+get_prop(system_app, vendor_teegris_prop)
+get_prop(system_app, vendor_qseecomd_prop)
+get_prop(system_app, vendor_iop_prop)
 get_prop(system_app, vendor_radio_prop)
 set_prop(system_app, nfc_prop)
 set_prop(system_app, radio_control_prop)
+set_prop(system_app, ctl_dumpstate_prop)
+set_prop(system_app, wifi_prop)
+set_prop(system_app, exported_wifi_prop)
+set_prop(system_app, radio_prop)
+set_prop(system_app, audio_prop)
+set_prop(system_app, ctl_start_prop)
+set_prop(system_app, traced_enabled_prop)
+set_prop(system_app, vold_prop)
+set_prop(system_app, csc_prop)
+set_prop(system_app, exported_radio_prop)
+set_prop(system_app, ctl_interface_stop_prop)
+set_prop(system_app, system_sensordebug_prop)
 hal_client_domain(system_app, hal_allocator)
 hal_client_domain(system_app, hal_light)
+hal_client_domain(system_app, hal_power)
+hal_client_domain(system_app, hal_telephony)
+hal_client_domain(system_app, hal_thermal)
 hal_client_domain(system_app, vendor_hal_hbtp)
 hal_client_domain(system_app, vendor_hal_qdutils_disp)
+hal_client_domain(system_app, vendor_hal_tui_comm)
 hal_client_domain(system_app, vendor_hal_display_color)
 hal_client_domain(system_app, vendor_hal_capabilityconfigstore_qti)
 hal_client_domain(system_app, vendor_hal_diaghal)
@@ -35,4 +749,13 @@ hal_client_domain(system_app, vendor_hal_soter)
 hal_client_domain(system_app, vendor_hal_sensorscalibrate_qti)
 hal_client_domain(system_app, vendor_hal_pasrmanager)
 hal_client_domain(system_app, vendor_hal_factory_qti)
+hal_client_domain(system_app, hal_skpm)
+hal_client_domain(system_app, hal_drk)
+hal_client_domain(system_app, hal_sec_soter)
+hal_client_domain(system_app, hal_hyper)
+hal_client_domain(system_app, hal_engmode)
+hal_client_domain(system_app, hal_ifaa)
+hal_client_domain(system_app, hal_frcmc)
+hal_client_domain(system_app, hal_csip)
+hal_client_domain(system_app, hal_vaultkeeper)
 type system_app, domain;

@@ -1,0 +1,3 @@
+typealias(esoc_device)
+typealiasactual(esoc_device)
+type vendor_esoc_device, dev_type;

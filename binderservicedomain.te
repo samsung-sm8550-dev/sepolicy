@@ -1,4 +1,3 @@
-allow binderservicedomain aidl_lazy_test_server:binder transfer;
 allow binderservicedomain cameraserver:binder transfer;
 allow binderservicedomain dumpstate:binder transfer;
 allow binderservicedomain hal_omx_server:binder transfer;
@@ -6,4 +5,6 @@ allow binderservicedomain mediadrmserver:binder transfer;
 allow binderservicedomain mediaextractor:binder transfer;
 allow binderservicedomain mediametrics:binder transfer;
 allow binderservicedomain mediaserver:binder transfer;
+allow binderservicedomain at_distributor:binder transfer;
+allow binderservicedomain samsungpowersoundplay:binder transfer;
 attribute binderservicedomain;

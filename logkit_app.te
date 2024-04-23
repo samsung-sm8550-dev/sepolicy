@@ -1,5 +1,0 @@
-allow vendor_logkit_app vendor_logkit_app_userfaultfd:anon_inode { create ioctl read };
-permissive vendor_logkit_app;
-type_transition vendor_logkit_app vendor_logkit_app:anon_inode vendor_logkit_app_userfaultfd "[userfaultfd]";
-app_domain(vendor_logkit_app)
-type vendor_logkit_app, domain;

@@ -1,0 +1,3 @@
+typealias(skp_device)
+typealiasactual(skp_device)
+type vendor_skp_device, dev_type;

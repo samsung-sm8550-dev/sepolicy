@@ -1,7 +1,0 @@
-allow vendor_qttestservice su:tcp_socket { accept getopt read write };
-init_daemon_domain(vendor_qttestservice)
-r_dir_file(vendor_qttestservice, firmware_file)
-vndbinder_use(vendor_qttestservice)
-add_service(vendor_qttestservice, vendor_qutestservice_service)
-type vendor_qttestservice, domain;
-type vendor_qttestservice_exec, exec_type, file_type, vendor_file_type;

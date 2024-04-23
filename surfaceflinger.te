@@ -1,12 +1,83 @@
 allow surfaceflinger bootanim:binder transfer;
+allow surfaceflinger bootanim:binder { call transfer };
+allow surfaceflinger bootanim:fd *;
+allow surfaceflinger dumplog_data_file:dir create_dir_perms;
+allow surfaceflinger dumplog_data_file:file create_file_perms;
+allow surfaceflinger shell_exec:file rx_file_perms;
+allow surfaceflinger toolbox_exec:file rx_file_perms;
+allow surfaceflinger zygote:binder { call transfer };
+allow surfaceflinger zygote:fd *;
+allow surfaceflinger adbd:binder { call transfer };
+allow surfaceflinger adbd:fd *;
+allow surfaceflinger bluetooth:binder { call transfer };
+allow surfaceflinger bluetooth:fd *;
+allow surfaceflinger mediaserver:binder { call transfer };
+allow surfaceflinger mediaserver:fd *;
+allow surfaceflinger nfc:binder { call transfer };
+allow surfaceflinger nfc:fd *;
+allow surfaceflinger radio:binder { call transfer };
+allow surfaceflinger radio:fd *;
+allow surfaceflinger system_server:binder { call transfer };
+allow surfaceflinger system_server:fd *;
+allow surfaceflinger mobicore_admin_device:chr_file rw_file_perms;
+allow surfaceflinger mobicore_user_device:chr_file rw_file_perms;
+allow surfaceflinger system_data_file:dir r_dir_perms;
+allow surfaceflinger system_data_file:file r_file_perms;
+allow surfaceflinger camera_device:chr_file rw_file_perms;
+allow surfaceflinger devpts:chr_file { read write };
+allow surfaceflinger domain:file { getattr open read };
+allow surfaceflinger domain:lnk_file { getattr open read };
+allow surfaceflinger domain:dir { getattr open read search };
+allow surfaceflinger self:capability sys_resource;
+allow surfaceflinger self:capability { sys_admin sys_resource };
+allow surfaceflinger self:tcp_socket create;
+allow surfaceflinger self:cap_userns { sys_admin sys_resource };
+allow surfaceflinger sysfs_ss_writable:file rw_file_perms;
+allow surfaceflinger system_app:fifo_file w_file_perms;
+allow surfaceflinger system_file:file x_file_perms;
+allow surfaceflinger tty_device:chr_file rw_file_perms;
+allow surfaceflinger cache_file:file write;
+allow surfaceflinger codecsolution_service:service_manager find;
+allow surfaceflinger sec_debugfs:dir search;
+allow surfaceflinger mediacodec:binder { call transfer };
+allow surfaceflinger mediacodec:fd *;
+allow surfaceflinger platform_app:unix_stream_socket { getopt read write };
+allow surfaceflinger CustomFrequencyManager_service:service_manager find;
+allow surfaceflinger sysfs_sec:file r_file_perms;
+allow surfaceflinger vr_service:service_manager find;
+allow surfaceflinger aidl_codecsolution_service:service_manager find;
+allow surfaceflinger sysfs_lcd_writable:file w_file_perms;
+allow surfaceflinger sysfs_ski_display_writable:file w_file_perms;
+allow surfaceflinger same_process_hal_file:file { execute r_file_perms };
+allow surfaceflinger dmb:binder transfer;
+allow surfaceflinger irisd:binder transfer;
+allow surfaceflinger oneseg_mw:binder transfer;
+allow surfaceflinger remotedisplay:binder transfer;
+allow surfaceflinger remotedisplay:binder { call transfer };
+allow surfaceflinger remotedisplay:fd *;
+allow surfaceflinger visiond:binder transfer;
+allow surfaceflinger dtvserver:binder call;
 allow surfaceflinger vendor_sysfs_graphics:file rw_file_perms;
-allow surfaceflinger vendor_firmware_file:dir r_dir_perms;
 dontaudit surfaceflinger firmware_file:dir search;
 dontaudit surfaceflinger kernel:system module_request;
 dontaudit surfaceflinger vendor_hal_qspmhal_hwservice:hwservice_manager find;
+allowxperm surfaceflinger self:ioctl unix_stream_socket { range 0x3e01 0x3e02 };
+r_dir_file(surfaceflinger, sysfs_gpu)
+r_dir_file(surfaceflinger, sysfs_lcd_writable)
+r_dir_file(surfaceflinger, sysfs_ski_display_writable)
 r_dir_file(surfaceflinger, vendor_sysfs_kgsl)
 r_dir_file(surfaceflinger, vendor_sysfs_qfprom)
+unix_socket_connect(surfaceflinger, property, perfmond)
+unix_socket_connect(surfaceflinger, perfmond, init)
+unix_socket_connect(surfaceflinger, perfmond, perfmond)
+get_prop(surfaceflinger, vendor_display_sf_prop)
 get_prop(surfaceflinger, vendor_gralloc_prop)
 get_prop(surfaceflinger, vendor_display_prop)
+set_prop(surfaceflinger, debug_prop)
+set_prop(surfaceflinger, shell_prop)
+set_prop(surfaceflinger, dumpstate_options_prop)
+set_prop(surfaceflinger, dumpstate_prop)
+set_prop(surfaceflinger, ctl_start_prop)
+binder_use(surfaceflinger)
 hal_client_domain(surfaceflinger, vendor_hal_perf)
 type surfaceflinger, domain;

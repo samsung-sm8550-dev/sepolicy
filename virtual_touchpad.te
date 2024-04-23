@@ -1,4 +1,3 @@
-allow virtual_touchpad su:tcp_socket { accept getopt read write };
 allow virtual_touchpad system_server:binder { call transfer };
 allow virtual_touchpad system_server:fd *;
 allow virtual_touchpad uhid_device:chr_file { ioctl w_file_perms };

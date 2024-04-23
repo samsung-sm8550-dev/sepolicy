@@ -11,7 +11,6 @@ allow hal_wifi_supplicant_client hal_wifi_supplicant_server:fd *;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder transfer;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder { call transfer };
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:fd *;
-allow hal_wifi_supplicant_server su:tcp_socket { accept getopt read write };
 allow hal_wifi_supplicant kernel:system module_request;
 allow hal_wifi_supplicant self:capability { net_admin net_raw setgid setuid };
 allow hal_wifi_supplicant self:cap_userns { net_admin net_raw setgid setuid };
@@ -43,16 +42,33 @@ allow hal_wifi_supplicant_default wpa_data_file:dir create_dir_perms;
 allow hal_wifi_supplicant_default wpa_data_file:dir w_dir_perms;
 allow hal_wifi_supplicant_default wpa_data_file:file create_file_perms;
 allow hal_wifi_supplicant_default wpa_data_file:sock_file create_file_perms;
+allow hal_wifi_supplicant_default tlc_server:binder { call transfer };
+allow hal_wifi_supplicant_default tlc_server:fd *;
+allow hal_wifi_supplicant_default rild:unix_stream_socket connectto;
+allow hal_wifi_supplicant_default proc_net:file rw_file_perms;
+allow hal_wifi_supplicant_default proc_net:file write;
+allow hal_wifi_supplicant_default secure_storage:binder { call transfer };
+allow hal_wifi_supplicant_default secure_storage:binder transfer;
+allow hal_wifi_supplicant_default secure_storage:fd *;
+allow hal_wifi_supplicant_default ucm_hwservice:hwservice_manager find;
+allow hal_wifi_supplicant_default secure_storage_device:sock_file write;
+allow hal_wifi_supplicant_default mnt_vendor_file:dir r_dir_perms;
+allow hal_wifi_supplicant_default dumpstate:fd *;
+allow hal_wifi_supplicant_default dumpstate:fifo_file write;
+allow hal_wifi_supplicant_default vendor_log_file:dir rw_dir_perms;
+allow hal_wifi_supplicant_default vendor_log_file:file create_file_perms;
+allow hal_wifi_supplicant_default vendor_convergence_data_file:dir rw_dir_perms;
+allow hal_wifi_supplicant_default vendor_convergence_data_file:file create_file_perms;
+allow hal_wifi_supplicant_default firmware_file:file r_file_perms;
+allow hal_wifi_supplicant_default vendor_tombstone_data_file:dir { open read search };
+allow hal_wifi_supplicant_default vendor_tombstone_data_file:file { getattr open read };
 allow hal_wifi_supplicant_default self:socket create_socket_perms;
 allow hal_wifi_supplicant_default self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow hal_wifi_supplicant_default vendor_cnd:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default vendor_qms:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default vendor_location_lowi_server:unix_dgram_socket sendto;
-allow hal_wifi_supplicant_default proc_net:file write;
 allow hal_wifi_supplicant_default hal_wifi_default:binder call;
 allow hal_wifi_supplicant_default hal_wifi_hwservice:hwservice_manager find;
-allow hal_wifi_supplicant_default vendor_tombstone_data_file:dir { open read search };
-allow hal_wifi_supplicant_default vendor_tombstone_data_file:file { getattr open read };
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir search;
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir { add_name write };
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir write;
@@ -71,7 +87,11 @@ type_transition hal_wifi_supplicant_default wifi_data_file:dir wpa_socket "socke
 init_daemon_domain(hal_wifi_supplicant_default)
 r_dir_file(hal_wifi_supplicant, sysfs_type)
 r_dir_file(hal_wifi_supplicant, proc_net_type)
+r_dir_file(hal_wifi_supplicant_default, vendor_tombstone_data_file)
 get_prop(hal_wifi_supplicant_default, device_logging_prop)
+get_prop(hal_wifi_supplicant_default, debug_level_prop)
+get_prop(hal_wifi_supplicant_default, product_ship_prop)
+get_prop(hal_wifi_supplicant_default, exported_wifi_prop)
 binder_use(hal_wifi_supplicant_server)
 hwbinder_use(hal_wifi_supplicant_default)
 net_domain(hal_wifi_supplicant_default)

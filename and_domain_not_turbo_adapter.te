@@ -1,1 +1,0 @@
-neverallow { domain -turbo_adapter } turbo_adapter_userfaultfd:anon_inode *;

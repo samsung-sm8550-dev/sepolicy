@@ -7,7 +7,6 @@ allow hal_usb_client hal_usb_server:fd *;
 allow hal_usb_server hal_usb_client:binder transfer;
 allow hal_usb_server hal_usb_client:binder { call transfer };
 allow hal_usb_server hal_usb_client:fd *;
-allow hal_usb_server su:tcp_socket { accept getopt read write };
 allow hal_usb_server servicemanager:binder { call transfer };
 allow hal_usb_server servicemanager:fd *;
 allow hal_usb self:netlink_kobject_uevent_socket create;
@@ -21,6 +20,15 @@ allow hal_usb sysfs:file read;
 allow hal_usb sysfs:file open;
 allow hal_usb sysfs:file write;
 allow hal_usb sysfs:file getattr;
+allow hal_usb_default sysfs_usb:file rw_file_perms;
+allow hal_usb_default usb_configfs:dir rw_dir_perms;
+allow hal_usb_default usb_configfs:file create_file_perms;
+allow hal_usb_default sysfs_ss_writable:dir r_dir_perms;
+allow hal_usb_default sysfs_ss_writable:file rw_file_perms;
+allow hal_usb_default sysfs_ss_writable:lnk_file rw_file_perms;
+allow hal_usb_default sysfs_battery:dir search;
+allow hal_usb_default sysfs_batteryinfo:dir search;
+allow hal_usb_default vendor_sysfs_usb_c:dir r_dir_perms;
 allow hal_usb_default vendor_sysfs_usbpd_device:dir r_dir_perms;
 allow hal_usb_default vendor_sysfs_usbpd_device:lnk_file r_file_perms;
 allow hal_usb_default vendor_sysfs_usbpd_device:file rw_file_perms;
@@ -31,14 +39,15 @@ allow vendor_hal_usb_qti vendor_sysfs_usb_c:lnk_file r_file_perms;
 allow vendor_hal_usb_qti vendor_sysfs_usb_c:file rw_file_perms;
 allow vendor_hal_usb_qti vendor_sysfs_usb_node:dir r_dir_perms;
 allow vendor_hal_usb_qti vendor_sysfs_usb_node:file rw_file_perms;
-allow vendor_hal_usb_qti vendor_sysfs_usb_device:file rw_file_perms;
 init_daemon_domain(hal_usb_default)
 init_daemon_domain(vendor_hal_usb_qti)
 r_dir_file(hal_usb_default, vendor_sysfs_usb_supply)
 r_dir_file(vendor_hal_usb_qti, vendor_sysfs_battery_supply)
 r_dir_file(vendor_hal_usb_qti, vendor_sysfs_usb_supply)
+get_prop(hal_usb_default, vendor_usb_prop)
 set_prop(vendor_hal_usb_qti, vendor_usb_prop)
 hal_server_domain(hal_usb_default, hal_usb)
+hal_server_domain(hal_usb_default, hal_usb_gadget)
 hal_server_domain(vendor_hal_usb_qti, hal_usb)
 hal_server_domain(vendor_hal_usb_qti, hal_usb_gadget)
 hal_attribute_service(hal_usb, hal_usb_service)

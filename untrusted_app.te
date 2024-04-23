@@ -1,10 +1,34 @@
 neverallow untrusted_app graphics_device:chr_file { read write };
-allow untrusted_app vendor_sysfs_kgsl:dir search;
-allow untrusted_app vendor_gles_data_file:dir rw_dir_perms;
-allow untrusted_app vendor_gles_data_file:file rw_file_perms;
-dontaudit untrusted_app vendor_sysfs_kgsl:dir read;
-r_dir_file(untrusted_app, vendor_sysfs_kgsl_snapshot)
-r_dir_file(untrusted_app, vendor_gles_data_file)
-hal_client_domain(untrusted_app, vendor_hal_dspmanager)
+neverallow untrusted_app proc:file getattr;
+neverallow untrusted_app qtaguid_device:chr_file { getattr ioctl lock map open read watch watch_reads };
+allow untrusted_app sysfs:file getattr;
+allow untrusted_app sysfs:dir getattr;
+allow untrusted_app sysfs:lnk_file getattr;
+allow untrusted_app sysfs:chr_file getattr;
+allow untrusted_app sysfs:blk_file getattr;
+allow untrusted_app sysfs:sock_file getattr;
+allow untrusted_app sysfs:fifo_file getattr;
+allow untrusted_app sysfs_sensor_writable:file r_file_perms;
+allow untrusted_app knox_dar_shared_device:chr_file write;
+allow untrusted_app msockets_socket:sock_file rw_file_perms;
+allow untrusted_app motion_recognition_service:service_manager find;
+allow untrusted_app sec_efs_file:dir search;
+allow untrusted_app retailmode_efs_file:dir search;
+allow untrusted_app retailmode_efs_file:file { getattr open read };
+allow untrusted_app fingerprint_app_service:service_manager find;
+allow untrusted_app snap_hwservice:hwservice_manager find;
+allow untrusted_app untrusted_app:icmp_socket create_socket_perms_no_ioctl;
+allow untrusted_app asec_apk_file:dir r_dir_perms;
+allow untrusted_app asec_apk_file:file rx_file_perms;
+allow untrusted_app omr_file:dir r_dir_perms;
+allow untrusted_app carrier_file:dir r_dir_perms;
+allow untrusted_app snap_hidl:binder { call transfer };
+allow untrusted_app snap_hidl:fd *;
+allow untrusted_app vendor_sysfs_graphics:file r_file_perms;
+allow untrusted_app vendor_sysfs_usb_supply:file r_file_perms;
+dontaudit untrusted_app system_app_data_file:dir search;
+dontaudit untrusted_app exec_type:file getattr;
+get_prop(untrusted_app, chipname_prop)
 hal_client_domain(untrusted_app, vendor_hal_qspmhal)
-type untrusted_app, domain;
+hal_client_domain(untrusted_app, hal_wsm)
+type untrusted_app, domain, untrusteddomain;

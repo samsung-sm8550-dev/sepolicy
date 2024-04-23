@@ -4,7 +4,6 @@ expandtypeattribute(hal_nlinterceptor_server)
 allow hal_nlinterceptor_client hal_nlinterceptor_server:binder { call transfer };
 allow hal_nlinterceptor_client hal_nlinterceptor_server:fd *;
 allow hal_nlinterceptor_server hal_nlinterceptor_client:binder transfer;
-allow hal_nlinterceptor_server su:tcp_socket { accept getopt read write };
 allow hal_nlinterceptor servicemanager:binder { call transfer };
 allow hal_nlinterceptor servicemanager:fd *;
 allow hal_nlinterceptor self:capability net_admin;

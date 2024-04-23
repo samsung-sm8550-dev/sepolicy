@@ -1,2 +1,1 @@
 allow { domain -hwservicemanager -vndservicemanager } binder_device:chr_file rw_file_perms;
-get_prop({ domain -hwservicemanager -vndservicemanager }, servicemanager_prop)

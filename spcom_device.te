@@ -1,0 +1,3 @@
+typealias(spcom_device)
+typealiasactual(spcom_device)
+type vendor_spcom_device, dev_type;

@@ -1,0 +1,1 @@
+neverallow { domain -hal_camera_server -hal_cas_server -hal_drm_server -adbd -dumpstate -fastbootd -init -mediadrmserver -mediaserver -recovery -shell -system_server -vendor_init } serialno_prop:file { getattr ioctl lock map open read watch watch_reads };

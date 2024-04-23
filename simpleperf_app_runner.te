@@ -1,2 +1,3 @@
+allow simpleperf_app_runner shell_data_file:file read;
 type simpleperf_app_runner, domain, mlstrustedsubject;
 type simpleperf_app_runner_exec, exec_type, file_type, system_file_type;

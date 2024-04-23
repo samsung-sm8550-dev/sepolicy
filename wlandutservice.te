@@ -1,0 +1,35 @@
+allow wlandutservice system_app:binder transfer;
+allow wlandutservice system_server:binder transfer;
+allow wlandutservice wlandutservice_service:service_manager find;
+allow wlandutservice wlandutservice_service:service_manager add;
+allow wlandutservice self:udp_socket { create ioctl };
+allow wlandutservice self:capability net_admin;
+allow wlandutservice self:netlink_socket create_socket_perms_no_ioctl;
+allow wlandutservice self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow wlandutservice kernel:system module_request;
+allow wlandutservice proc_wifi:file rw_file_perms;
+allow wlandutservice proc_net:file r_file_perms;
+allow wlandutservice system_file:file execute_no_trans;
+allow wlandutservice convergence_data_file:file rw_file_perms;
+allow wlandutservice wifi_efs_file:dir r_dir_perms;
+allow wlandutservice wifi_efs_file:file r_file_perms;
+allow wlandutservice shell_exec:file rx_file_perms;
+allow wlandutservice toolbox_exec:file rx_file_perms;
+allow wlandutservice sec_wifi_device:chr_file rw_file_perms;
+allow wlandutservice sysfs_wifi:file rw_file_perms;
+allow wlandutservice sysfs_wifi:dir r_dir_perms;
+allow wlandutservice sysfs_ss_writable:file rw_file_perms;
+allow wlandutservice sysfs_bluetooth_writable:file rw_file_perms;
+allow wlandutservice sysfs_bluetooth_writable:dir r_dir_perms;
+allow wlandutservice vendor_firmware_file:dir r_dir_perms;
+allowxperm wlandutservice wlandutservice:ioctl udp_socket 0x7502;
+allowxperm wlandutservice wlandutservice:ioctl udp_socket { 0x8914 0x8946 0x89f0 0x89f2 };
+allowxperm wlandutservice wlandutservice:ioctl udp_socket { 0x8bf9 0x8bfc };
+unix_socket_connect(wlandutservice, property, connfwexe)
+get_prop(wlandutservice, vendor_wlandriver_prop)
+set_prop(wlandutservice, system_prop)
+set_prop(wlandutservice, ctl_start_prop)
+set_prop(wlandutservice, wifi_prop)
+set_prop(wlandutservice, exported_wifi_prop)
+type wlandutservice, coredomain, domain;
+type wlandutservice_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,33 @@
+allow scs carrier_file:dir r_dir_perms;
+allow scs carrier_file:file r_file_perms;
+allow scs dumplog_data_file:dir create_dir_perms;
+allow scs dumplog_data_file:file create_file_perms;
+allow scs omr_file:dir create_dir_perms;
+allow scs omr_file:file create_file_perms;
+allow scs efs_file:dir r_dir_perms;
+allow scs efs_file:file r_file_perms;
+allow scs imei_efs_file:dir create_dir_perms;
+allow scs imei_efs_file:file create_file_perms;
+allow scs self:capability { chown fowner };
+allow scs vaultkeeper_socket:dir r_dir_perms;
+allow scs kmsg_device:chr_file w_file_perms;
+allow scs hwservicemanager:binder { call transfer };
+allow scs hwservicemanager:fd *;
+allow scs vaultkeeperd:binder { call transfer };
+allow scs vaultkeeperd:fd *;
+allow scs hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow scs proc_simslot_count:file r_file_perms;
+allow scs hal_vaultkeeper_service:service_manager find;
+allow scs servicemanager:binder { call transfer };
+allow scs servicemanager:fd *;
+allow scs hal_vaultkeeperd_default:binder { call transfer };
+allow scs hal_vaultkeeperd_default:fd *;
+get_prop(scs, vendor_sec_vaultkeeper_prop)
+get_prop(scs, hwservicemanager_prop)
+get_prop(scs, persistent_properties_ready_prop)
+set_prop(scs, radio_prop)
+set_prop(scs, system_prop)
+set_prop(scs, exported_system_prop)
+set_prop(scs, csc_prop)
+type scs, coredomain, domain;
+type scs_exec, exec_type, file_type, system_file_type;

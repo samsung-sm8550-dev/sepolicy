@@ -1,13 +1,9 @@
 allow vendor_hal_alarm_qti_default rtc_device:chr_file r_file_perms;
 allow vendor_hal_alarm_qti_default vendor_poweroffalarm_app:binder transfer;
-allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_aidl_service:service_manager find;
 allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:binder { call transfer };
 allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:binder transfer;
 allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:fd *;
 allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_hwservice:hwservice_manager find;
-allow vendor_hal_alarm_qti_server su:tcp_socket { accept getopt read write };
-allow vendor_hal_alarm_qti_server servicemanager:binder { call transfer };
-allow vendor_hal_alarm_qti_server servicemanager:fd *;
 allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:binder transfer;
 allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:binder { call transfer };
 allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:fd *;
@@ -16,7 +12,6 @@ attribute vendor_hal_alarm_qti_client;
 attribute vendor_hal_alarm_qti_server;
 init_daemon_domain(vendor_hal_alarm_qti_default)
 hal_server_domain(vendor_hal_alarm_qti_default, vendor_hal_alarm_qti)
-add_service(vendor_hal_alarm_qti_server, vendor_hal_alarm_qti_aidl_service)
 add_hwservice(vendor_hal_alarm_qti_server, vendor_hal_alarm_qti_hwservice)
 type vendor_hal_alarm_qti_default, domain;
 type vendor_hal_alarm_qti_default_exec, exec_type, file_type, vendor_file_type;

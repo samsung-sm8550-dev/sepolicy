@@ -1,0 +1,12 @@
+allow tsdaemon multiclientd:unix_stream_socket connectto;
+allow tsdaemon mobicore_admin_device:chr_file rw_file_perms;
+allow tsdaemon mobicore_user_device:chr_file rw_file_perms;
+allow tsdaemon sysfs_wake_lock:file rw_file_perms;
+allow tsdaemon servicemanager:binder call;
+allow tsdaemon tee_service:service_manager find;
+allow tsdaemon teed_app:binder { call transfer };
+allow tsdaemon teed_app:fd *;
+allow tsdaemon system_suspend_hwservice:hwservice_manager find;
+get_prop(tsdaemon, hwservicemanager_prop)
+type tsdaemon, coredomain, domain;
+type tsdaemon_exec, exec_type, file_type, system_file_type;

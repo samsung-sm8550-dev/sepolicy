@@ -1,9 +1,0 @@
-neverallow cameraserver { domain -su }:tcp_socket *;
-neverallow hal_camera_server { domain -su }:tcp_socket *;
-neverallow hal_camera_server { domain -su }:udp_socket *;
-neverallow hal_camera_server { domain -su }:rawip_socket *;
-neverallow hal_omx_server { domain -su }:tcp_socket *;
-neverallow mediaextractor { domain -su }:tcp_socket *;
-neverallow mediametrics { domain -su }:tcp_socket *;
-neverallow mediacodec { domain -su }:tcp_socket *;
-neverallow { halserverdomain -hal_automotive_socket_exemption -hal_can_controller_server -hal_nlinterceptor_server -hal_telephony_server -hal_tetheroffload_server -hal_wifi_server -hal_wifi_hostapd_server -hal_wifi_supplicant_server } { domain -su }:tcp_socket *;

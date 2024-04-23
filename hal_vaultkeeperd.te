@@ -1,0 +1,15 @@
+allow hal_vaultkeeperd_default bluetooth:binder transfer;
+allow hal_vaultkeeperd_default servicemanager:binder { call transfer };
+allow hal_vaultkeeperd_default servicemanager:fd *;
+allow hal_vaultkeeperd_default vaultkeeper_socket:dir rw_dir_perms;
+allow hal_vaultkeeperd_default vaultkeeper_socket:sock_file create_file_perms;
+allow hal_vaultkeeperd_default kmsg_device:chr_file rw_file_perms;
+allow hal_vaultkeeperd_default dumpstate:fifo_file rw_file_perms;
+allow hal_vaultkeeperd_default vaultkeeperd:unix_stream_socket connectto;
+allow hal_vaultkeeperd_default scs:binder transfer;
+allow hal_vaultkeeperd_default ssud:binder transfer;
+allow hal_vaultkeeperd_default system_server:binder transfer;
+init_daemon_domain(hal_vaultkeeperd_default)
+hal_server_domain(hal_vaultkeeperd_default, hal_vaultkeeper)
+type hal_vaultkeeperd_default, domain;
+type hal_vaultkeeperd_default_exec, exec_type, file_type, vendor_file_type;

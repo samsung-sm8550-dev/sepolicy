@@ -1,14 +1,11 @@
 expandtypeattribute(hal_input_processor)
 expandtypeattribute(hal_input_processor_client)
 expandtypeattribute(hal_input_processor_server)
-allow hal_input_processor_server dumpstate:fifo_file write;
-allow hal_input_processor_server dumpstate:fd *;
+allow hal_input_processor_client hal_input_processor_server:binder { call transfer };
+allow hal_input_processor_client hal_input_processor_server:fd *;
 allow hal_input_processor_server hal_input_processor_client:binder transfer;
 allow hal_input_processor_server servicemanager:binder { call transfer };
 allow hal_input_processor_server servicemanager:fd *;
-allow hal_input_processor_server su:tcp_socket { accept getopt read write };
-allow hal_input_processor_client hal_input_processor_server:binder { call transfer };
-allow hal_input_processor_client hal_input_processor_server:fd *;
 init_daemon_domain(hal_input_processor_default)
 hal_server_domain(hal_input_processor_default, hal_input_processor)
 hal_attribute_service(hal_input_processor, hal_input_processor_service)

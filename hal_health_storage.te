@@ -7,7 +7,6 @@ allow hal_health_storage_client hal_health_storage_server:fd *;
 allow hal_health_storage_server hal_health_storage_client:binder transfer;
 allow hal_health_storage_server hal_health_storage_client:binder { call transfer };
 allow hal_health_storage_server hal_health_storage_client:fd *;
-allow hal_health_storage_server su:tcp_socket { accept getopt read write };
 allow hal_health_storage_server gsi_metadata_file_type:dir search;
 allow hal_health_storage_server metadata_file:dir search;
 allow hal_health_storage_server gsi_public_metadata_file:file r_file_perms;

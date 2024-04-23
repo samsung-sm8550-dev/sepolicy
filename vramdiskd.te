@@ -1,0 +1,17 @@
+allow vramdiskd system_server:binder transfer;
+allow vramdiskd system_server:binder { call transfer };
+allow vramdiskd system_server:fd *;
+allow vramdiskd vramdiskd_data_file:dir create_dir_perms;
+allow vramdiskd vramdiskd_data_file:file create_file_perms;
+allow vramdiskd package_service:service_manager find;
+allow vramdiskd shell_exec:file rx_file_perms;
+allow vramdiskd system_file:dir r_file_perms;
+allow vramdiskd system_file:file rx_file_perms;
+allow vramdiskd servicemanager:binder call;
+allow vramdiskd dalvikcache_data_file:dir r_dir_perms;
+allow vramdiskd dalvikcache_data_file:file r_file_perms;
+allow vramdiskd apk_data_file:dir r_dir_perms;
+allow vramdiskd apk_data_file:file r_file_perms;
+get_prop(vramdiskd, vramdiskd_prop)
+type vramdiskd, coredomain, domain;
+type vramdiskd_exec, exec_type, file_type, system_file_type;

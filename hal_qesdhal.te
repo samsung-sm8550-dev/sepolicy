@@ -1,9 +1,6 @@
 allow vendor_hal_qesdhal_default vendor_qesd_socket:sock_file w_file_perms;
 allow vendor_hal_qesdhal_default vendor_qesdk_service:service_manager find;
-allow vendor_hal_qesdhal_default vendor_qesdsect:file read;
-allow vendor_hal_qesdhal_default vendor_qesdsect:dir search;
-allow vendor_hal_qesdhal_default vendor_qesdsect:lnk_file read;
-allow vendor_hal_qesdhal_default su:fifo_file append;
+allow vendor_hal_qesdhal_default tee_device:chr_file rw_file_perms;
 allow vendor_hal_qesdhal_default anr_data_file:file append;
 allow vendor_hal_qesdhal_default dumpstate:fd *;
 allow vendor_hal_qesdhal_default dumpstate:fifo_file { append write };
@@ -15,36 +12,22 @@ allow vendor_hal_qesdhal_default tombstone_data_file:file append;
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder { call transfer };
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder transfer;
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:fd *;
-allow vendor_hal_qesdhal_client vendor_hal_qesdhalaidl_service:service_manager find;
-allow vendor_hal_qesdhal_client vendor_qesdsect:binder transfer;
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder transfer;
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder { call transfer };
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:fd *;
-allow vendor_hal_qesdhal_server su:tcp_socket { accept getopt read write };
 attribute vendor_hal_qesdhal;
 attribute vendor_hal_qesdhal_client;
 attribute vendor_hal_qesdhal_server;
 init_daemon_domain(vendor_hal_qesdhal_default)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdsec, vendor_qesdsect)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdsec, tombstoned)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdsec, vendor_qesdoem_default)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdsec, init)
-unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, vendor_qesdsect)
 unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, tombstoned)
-unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, vendor_qesdoem_default)
 unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, init)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdoem, vendor_qesdsect)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdoem, tombstoned)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdoem, vendor_qesdoem_default)
-unix_socket_connect(vendor_hal_qesdhal_default, vendor_qesdoem, init)
-unix_socket_connect(vendor_hal_qesdhal_default, property, vendor_qesdsect)
 unix_socket_connect(vendor_hal_qesdhal_default, property, tombstoned)
-unix_socket_connect(vendor_hal_qesdhal_default, property, vendor_qesdoem_default)
 get_prop(vendor_hal_qesdhal_default, boot_status_prop)
 set_prop(vendor_hal_qesdhal_default, vendor_qesdk_ready_prop)
 binder_use(vendor_hal_qesdhal_default)
 hal_server_domain(vendor_hal_qesdhal_default, vendor_hal_qesdhal)
 hal_client_domain(vendor_hal_qesdhal_default, hal_allocator)
-add_service(vendor_hal_qesdhal_server, vendor_hal_qesdhalaidl_service)
+hal_attribute_hwservice(vendor_hal_qesdhal, vendor_hal_qesdhal_hwservice)
 type vendor_hal_qesdhal_default, domain;
 type vendor_hal_qesdhal_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_qesdhal_hwservice, hwservice_manager_type;

@@ -1,0 +1,9 @@
+allow spqr installd:process sigchld;
+allow spqr user_profile_data_file:file { getattr open read write };
+allow spqr user_profile_data_file:dir { getattr open read search };
+allow spqr apk_data_file:file { getattr map open read write };
+allow spqr apk_data_file:dir { getattr open read search };
+allow spqr oemfs:file read;
+allow spqr tmpfs:file { create getattr open read write };
+type spqr, coredomain, domain;
+type spqr_exec, exec_type, file_type, system_file_type;

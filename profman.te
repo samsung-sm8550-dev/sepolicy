@@ -13,10 +13,12 @@ allow profman apk_data_file:dir { getattr read search };
 allow profman oemfs:file { map read };
 allow profman tmpfs:file { map read };
 allow profman profman_dump_data_file:file { map write };
+allow profman installd:fd *;
 allow profman app_data_file:file { getattr lock map read write };
 allow profman app_data_file:dir { getattr read search };
 allow profman privapp_data_file:file { getattr lock map read write };
 allow profman privapp_data_file:dir { getattr read search };
+r_dir_file(profman, apk_data_file)
 get_prop(profman, device_config_runtime_native_prop)
 get_prop(profman, device_config_runtime_native_boot_prop)
 type profman, domain;

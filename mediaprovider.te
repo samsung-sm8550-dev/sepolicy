@@ -1,2 +1,25 @@
+allow mediaprovider sec_data_file:dir create_dir_perms;
+allow mediaprovider sec_data_file:file create_file_perms;
+allow mediaprovider omr_file:dir r_dir_perms;
+allow mediaprovider omr_file:file r_file_perms;
+allow mediaprovider system_server:unix_stream_socket connectto;
+allow mediaprovider mnt_media_rw_file:dir getattr;
+allow mediaprovider ursp_service:service_manager find;
+allow mediaprovider storage_stub_file:dir getattr;
+allow mediaprovider DirEncrypt_service:service_manager find;
+allow mediaprovider kernel:system module_request;
+allow mediaprovider tcpopd_socket:sock_file w_file_perms;
+allow mediaprovider shell_data_file:dir getattr;
+allow mediaprovider gpuservice:binder { call transfer };
+allow mediaprovider gpuservice:fd *;
+allow mediaprovider gpu_service:service_manager find;
+allow mediaprovider hal_engmode_default:binder { call transfer };
+allow mediaprovider hal_engmode_default:fd *;
+allow mediaprovider hal_engmode_service:service_manager find;
+allow mediaprovider vendor_sysfs_kgsl:dir search;
+allow mediaprovider vendor_sysfs_kgsl:file r_file_perms;
+allow mediaprovider hal_perf_default:binder { call transfer };
+allow mediaprovider hal_perf_default:fd *;
 dontaudit mediaprovider vendor_hal_perf_hwservice:hwservice_manager find;
+hal_client_domain(mediaprovider, hal_engmode)
 type mediaprovider, domain;

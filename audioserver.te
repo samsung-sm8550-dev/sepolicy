@@ -4,7 +4,57 @@ allow audioserver system_server:unix_stream_socket { read write };
 allow audioserver bootanim:binder transfer;
 allow audioserver bootanim:binder { call transfer };
 allow audioserver bootanim:fd *;
-allow audioserver vendor_diag_device:chr_file rw_file_perms;
-r_dir_file(audioserver, vendor_sysfs_diag)
+allow audioserver samsungpowersoundplay:binder { call transfer };
+allow audioserver samsungpowersoundplay:binder transfer;
+allow audioserver samsungpowersoundplay:fd *;
+allow audioserver self:netlink_kobject_uevent_socket { bind create read setopt };
+allow audioserver audio_device:chr_file rw_file_perms;
+allow audioserver app_efs_file:dir r_dir_perms;
+allow audioserver app_efs_file:file { r_file_perms setattr };
+allow audioserver imei_efs_file:dir r_dir_perms;
+allow audioserver imei_efs_file:file r_file_perms;
+allow audioserver audio_data_file:dir create_dir_perms;
+allow audioserver audio_data_file:file create_file_perms;
+allow audioserver mediaserver_data_file:dir create_dir_perms;
+allow audioserver mediaserver_data_file:file create_file_perms;
+allow audioserver dumplog_data_file:dir create_dir_perms;
+allow audioserver dumplog_data_file:file create_file_perms;
+allow audioserver sec_efs_file:dir r_dir_perms;
+allow audioserver sec_efs_file:dir rw_dir_perms;
+allow audioserver sec_efs_file:file r_file_perms;
+allow audioserver sec_efs_file:file create_file_perms;
+allow audioserver TMAudio_socket:dir rw_dir_perms;
+allow audioserver TMAudio_socket:sock_file create_file_perms;
+allow audioserver sysfs_audio_writable:dir r_dir_perms;
+allow audioserver sysfs_audio_writable:file rw_file_perms;
+allow audioserver activity_service:service_manager find;
+allow audioserver apaservice_service:service_manager find;
+allow audioserver media_rw_data_file:dir create_dir_perms;
+allow audioserver media_rw_data_file:file create_file_perms;
+allow audioserver efs_file:dir { getattr search };
+allow audioserver imsd:binder call;
+allow audioserver imsd:binder transfer;
+allow audioserver edmnativehelper_service:service_manager find;
+allow audioserver sysfs_ss_writable:file rw_file_perms;
+allow audioserver audio_service:service_manager find;
+allow audioserver kernel:fd *;
+allow audioserver speg_marker_data_file:file { getattr open read };
+allow audioserver speg_marker_data_file:dir search;
+allow audioserver CustomFrequencyManager_service:service_manager find;
+allow audioserver dmb:binder transfer;
+allow audioserver jackservice:binder transfer;
+allow audioserver oneseg_mw:binder transfer;
+allow audioserver remotedisplay:binder transfer;
+allow audioserver remotedisplay:binder { call transfer };
+allow audioserver remotedisplay:fd *;
+allow audioserver dtvserver:binder call;
+allow audioserver vendor_sysfs_graphics:file rw_file_perms;
+r_dir_file(audioserver, sysfs_ss_writable)
+r_dir_file(audioserver, omr_file)
+get_prop(audioserver, apm_prop)
+get_prop(audioserver, dolby_prop)
+get_prop(audioserver, vendor_dolby_prop)
 get_prop(audioserver, vendor_audio_prop)
-type audioserver, domain;
+set_prop(audioserver, audio_prop)
+set_prop(audioserver, config_prop)
+type audioserver, domain, mlstrustedsubject;

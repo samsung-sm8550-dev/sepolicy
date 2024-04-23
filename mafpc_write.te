@@ -1,0 +1,11 @@
+allow mafpc_write mafpc_device:chr_file rw_file_perms;
+allow mafpc_write sysfs_lcd_writable:dir r_dir_perms;
+allow mafpc_write sysfs_lcd_writable:file rw_file_perms;
+allow mafpc_write sysfs_app_writable:dir r_dir_perms;
+allow mafpc_write sysfs_app_writable:file rw_file_perms;
+allow mafpc_write sysfs_ski_display_writable:dir r_dir_perms;
+allow mafpc_write sysfs_ski_display_writable:file rw_file_perms;
+r_dir_file(mafpc_write, sec_efs_file)
+r_dir_file(mafpc_write, sysfs_ski_display_readable)
+type mafpc_write, coredomain, domain;
+type mafpc_write_exec, exec_type, file_type, system_file_type;

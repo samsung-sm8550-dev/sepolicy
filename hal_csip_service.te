@@ -1,0 +1,2 @@
+allow hal_csip_service hal_camera_default:binder transfer;
+type hal_csip_service, service_manager_type, vendor_service;

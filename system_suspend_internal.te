@@ -1,4 +1,2 @@
-allow system_suspend_internal_server su:tcp_socket { accept getopt read write };
-allow system_suspend_internal_server turbo_adapter:binder transfer;
 attribute system_suspend_internal_server;
 add_service(system_suspend_internal_server, system_suspend_control_internal_service)

@@ -3,18 +3,8 @@ allow vendor_qmipriod vendor_netmgrd_socket:dir r_dir_perms;
 allow vendor_qmipriod vendor_netmgrd_socket:dir w_dir_perms;
 allow vendor_qmipriod vendor_netmgrd_socket:sock_file { getattr read write };
 allow vendor_qmipriod vendor_netmgrd_socket:sock_file create;
-allow vendor_qmipriod vendor_qnicornd_socket:dir r_dir_perms;
-allow vendor_qmipriod vendor_qnicornd_socket:dir w_dir_perms;
-allow vendor_qmipriod vendor_qnicornd_socket:sock_file { getattr read write };
-allow vendor_qmipriod vendor_qnicornd_socket:sock_file create;
-allow vendor_qmipriod vendor_qnicornd_socket:tipc_socket create_socket_perms_no_ioctl;
-allow vendor_qmipriod vendor_qmipriod_data_file:dir rw_dir_perms;
-allow vendor_qmipriod vendor_qmipriod_data_file:file create_file_perms;
 init_daemon_domain(vendor_qmipriod)
 unix_socket_connect(vendor_qmipriod, vendor_netmgrd, vendor_netmgrd)
-unix_socket_connect(vendor_qmipriod, vendor_netmgrd, vendor_qnicornd)
-unix_socket_connect(vendor_qmipriod, vendor_qnicornd, vendor_netmgrd)
-unix_socket_connect(vendor_qmipriod, vendor_qnicornd, vendor_qnicornd)
 net_domain(vendor_qmipriod)
 type vendor_qmipriod, domain;
 type vendor_qmipriod_exec, exec_type, file_type, vendor_file_type;

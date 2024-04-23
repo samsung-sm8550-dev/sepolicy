@@ -1,25 +1,3 @@
-allow vendor_agmservice_qti hal_audio_default:binder transfer;
-allow vendor_agmservice_qti hal_audio_default:binder { call transfer };
-allow vendor_agmservice_qti hal_audio_default:fd *;
-allow vendor_agmservice_qti vendor_agm_device:chr_file rw_file_perms;
-allow vendor_agmservice_qti dmabuf_system_heap_device:chr_file r_file_perms;
-allow vendor_agmservice_qti vendor_dmabuf_audio_ml_heap_device:chr_file r_file_perms;
-allow vendor_agmservice_qti vendor_dmabuf_system_uncached_heap_device:chr_file r_file_perms;
-allow vendor_agmservice_qti vendor_sysfs_agm:file rw_file_perms;
-allow vendor_agmservice_qti vendor_sysfs_agm:dir r_dir_perms;
-allow vendor_agmservice_qti self:qipcrtr_socket create_socket_perms_no_ioctl;
-allow vendor_agmservice_qti self:capability sys_nice;
-allow vendor_agmservice_qti self:cap_userns sys_nice;
-allow vendor_agmservice_qti vendor_audio_data_file:dir w_dir_perms;
-allow vendor_agmservice_qti vendor_audio_data_file:file create_file_perms;
-allow vendor_agmservice_qti vendor_data_file:file r_file_perms;
-allow vendor_agmservice_qti proc_sysrq:file rw_file_perms;
 attribute vendor_agmservice;
 attribute vendor_agmservice_client;
 attribute vendor_agmservice_server;
-init_daemon_domain(vendor_agmservice_qti)
-get_prop(vendor_agmservice_qti, vendor_audio_debug_prop)
-get_prop(vendor_agmservice_qti, vendor_pd_locater_dbg_prop)
-hal_server_domain(vendor_agmservice_qti, hal_audio)
-type vendor_agmservice_qti, domain;
-type vendor_agmservice_qti_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,42 @@
+allow sec_diag shell:process sigchld;
+allow sec_diag shell:fd *;
+allow sec_diag console_device:chr_file rw_file_perms;
+allow sec_diag devpts:chr_file rw_file_perms;
+allow sec_diag diag_device:chr_file rw_file_perms;
+allow sec_diag su:fd *;
+allow sec_diag cgroup:dir create_dir_perms;
+allow sec_diag fuse:dir create_dir_perms;
+allow sec_diag fuse:dir r_dir_perms;
+allow sec_diag fuse:file r_file_perms;
+allow sec_diag port:tcp_socket name_connect;
+allow sec_diag self:capability2 syslog;
+allow sec_diag self:capability2 block_suspend;
+allow sec_diag self:tcp_socket { connect create setopt };
+allow sec_diag self:cap2_userns block_suspend;
+allow sec_diag self:capability setuid;
+allow sec_diag sysfs_wake_lock:file rw_file_perms;
+allow sec_diag system_suspend_server:binder { call transfer };
+allow sec_diag system_suspend_server:fd *;
+allow sec_diag system_suspend_hwservice:hwservice_manager find;
+allow sec_diag hidl_manager_hwservice:hwservice_manager find;
+allow sec_diag hal_system_suspend_service:service_manager find;
+allow sec_diag kernel:system syslog_mod;
+allow sec_diag media_rw_data_file:file r_file_perms;
+allow sec_diag at_distributor:unix_stream_socket connectto;
+allow sec_diag vendor_thermal-engine:process signull;
+allow sec_diag installd:process signull;
+allow sec_diag serial_device:chr_file rw_file_perms;
+allow sec_diag ttyhs_device:chr_file rw_file_perms;
+allow sec_diag vendor_diag_device:chr_file rw_file_perms;
+init_daemon_domain(sec_diag)
+r_dir_file(sec_diag, storage_file)
+r_dir_file(sec_diag, mnt_user_file)
+r_dir_file(sec_diag, sdcardfs)
+get_prop(sec_diag, hwservicemanager_prop)
+binder_use(sec_diag)
+hwbinder_use(sec_diag)
+net_domain(sec_diag)
+hal_client_domain(sec_diag, hal_allocator)
+hal_client_domain(sec_diag, vendor_hal_diaghal)
+type sec_diag, coredomain, domain;
+type sec_diag_exec, exec_type, file_type, system_file_type;

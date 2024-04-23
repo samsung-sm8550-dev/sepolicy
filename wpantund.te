@@ -1,0 +1,16 @@
+allow wpantund system_server:binder { call transfer };
+allow wpantund system_server:fd *;
+allow wpantund lowpan_service:service_manager find;
+allow wpantund priv_app:binder call;
+allow wpantund shell:binder call;
+allow wpantund self:udp_socket create_socket_perms;
+allow wpantund self:capability { net_admin net_raw };
+allow wpantund self:cap_userns { net_admin net_raw };
+allow wpantund self:tun_socket create;
+allow wpantund tun_device:chr_file rw_file_perms;
+allowxperm wpantund self:ioctl udp_socket { 0x8914 0x8922 };
+binder_use(wpantund)
+net_domain(wpantund)
+hal_client_domain(wpantund, hal_lowpan)
+type wpantund, domain;
+type wpantund_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,39 @@
+allow vzwfiltered_untrusted_app DMM-daemon:unix_stream_socket connectto;
+allow vzwfiltered_untrusted_app DMM-daemon_exec:file rx_file_perms;
+allow vzwfiltered_untrusted_app dumplog_data_file:file r_file_perms;
+allow vzwfiltered_untrusted_app self:socket create_socket_perms;
+allow vzwfiltered_untrusted_app self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vzwfiltered_untrusted_app audioserver_service:service_manager find;
+allow vzwfiltered_untrusted_app cameraserver_service:service_manager find;
+allow vzwfiltered_untrusted_app drmserver_service:service_manager find;
+allow vzwfiltered_untrusted_app mediaserver_service:service_manager find;
+allow vzwfiltered_untrusted_app mediaextractor_service:service_manager find;
+allow vzwfiltered_untrusted_app mediametrics_service:service_manager find;
+allow vzwfiltered_untrusted_app mediadrmserver_service:service_manager find;
+allow vzwfiltered_untrusted_app nfc_service:service_manager find;
+allow vzwfiltered_untrusted_app radio_service:service_manager find;
+allow vzwfiltered_untrusted_app surfaceflinger_service:service_manager find;
+allow vzwfiltered_untrusted_app app_api_service:service_manager find;
+allow vzwfiltered_untrusted_app vr_manager_service:service_manager find;
+allow vzwfiltered_untrusted_app overlay_service:service_manager find;
+allow vzwfiltered_untrusted_app proc_stat:file r_file_perms;
+allow vzwfiltered_untrusted_app sysfs_net:dir r_dir_perms;
+allow vzwfiltered_untrusted_app sysfs_net:file r_file_perms;
+allow vzwfiltered_untrusted_app sysfs_ss_writable:dir r_dir_perms;
+allow vzwfiltered_untrusted_app sysfs_ss_writable:file r_file_perms;
+allow vzwfiltered_untrusted_app diag_device:chr_file rw_file_perms;
+allow vzwfiltered_untrusted_app ursp_service:service_manager find;
+allow vzwfiltered_untrusted_app vendor_diag_device:chr_file rw_file_perms;
+allow vzwfiltered_untrusted_app gpuservice:binder call;
+allow vzwfiltered_untrusted_app privapp_data_file:file execute;
+allow vzwfiltered_untrusted_app vendor_hal_qspmhal_default:binder call;
+allow vzwfiltered_untrusted_app system_app_data_file:dir create_dir_perms;
+allow vzwfiltered_untrusted_app system_app_data_file:file create_file_perms;
+allowxperm vzwfiltered_untrusted_app self:ioctl socket { 0xc302 0xc304 };
+r_dir_file(vzwfiltered_untrusted_app, system_data_file)
+r_dir_file(vzwfiltered_untrusted_app, vendor_sysfs_data)
+r_dir_file(vzwfiltered_untrusted_app, vendor_sysfs_diag)
+get_prop(vzwfiltered_untrusted_app, proc_stat)
+hal_client_domain(vzwfiltered_untrusted_app, vendor_hal_diaghal)
+hal_client_domain(vzwfiltered_untrusted_app, vendor_hal_perf)
+type vzwfiltered_untrusted_app, coredomain, domain, sec_standard_app_type;

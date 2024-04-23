@@ -1,3 +1,7 @@
+allow hal_radio_config_default mnt_vendor_file:dir r_dir_perms;
+allow hal_radio_config_default efs_file:dir r_dir_perms;
+allow hal_radio_config_default imei_efs_file:dir create_dir_perms;
+allow hal_radio_config_default imei_efs_file:file create_file_perms;
 init_daemon_domain(hal_radio_config_default)
 hal_server_domain(hal_radio_config_default, hal_telephony)
 type hal_radio_config_default, domain;

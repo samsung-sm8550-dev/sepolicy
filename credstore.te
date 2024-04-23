@@ -2,7 +2,6 @@ allow credstore system_server:binder { call transfer };
 allow credstore system_server:fd *;
 allow credstore credstore_data_file:dir create_dir_perms;
 allow credstore credstore_data_file:file create_file_perms;
-allow credstore su:tcp_socket { accept getopt read write };
 allow credstore sec_key_att_app_id_provider_service:service_manager find;
 allow credstore dropbox_service:service_manager find;
 allow credstore authorization_service:service_manager find;

@@ -1,0 +1,20 @@
+allow auditd security_spota_file:dir r_dir_perms;
+allow auditd security_spota_file:file r_file_perms;
+allow auditd system_server:binder { call transfer };
+allow auditd system_server:fd *;
+allow auditd kernel:system syslog_read;
+allow auditd self:capability { audit_control setgid setuid };
+allow auditd self:netlink_audit_socket { create getopt nlmsg_write read write };
+allow auditd self:capability2 syslog;
+allow auditd proc_version:file { getattr open read };
+allow auditd audit_log:dir create_dir_perms;
+allow auditd audit_log:file create_file_perms;
+allow auditd selinuxfs:dir search;
+allow auditd selinuxfs:file { open read };
+allow auditd cgroup:dir { add_name create };
+allow auditd rootfs:file r_file_perms;
+get_prop(auditd, security_prop)
+set_prop(auditd, system_prop)
+binder_use(auditd)
+type auditd, coredomain, domain;
+type auditd_exec, exec_type, file_type, system_file_type;

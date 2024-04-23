@@ -1,3 +1,4 @@
+allow vendor_sec_nvm vendor_spss_utils_device:chr_file rw_file_perms;
 allow vendor_sec_nvm ion_device:chr_file rw_file_perms;
 allow vendor_sec_nvm vendor_skp_device:chr_file rw_file_perms;
 allow vendor_sec_nvm mnt_vendor_file:dir search;
@@ -14,7 +15,6 @@ allow vendor_sec_nvm vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_sec_nvm vendor_spcom_device:chr_file rw_file_perms;
 allow vendor_sec_nvm vendor_sp_ssr_device:chr_file rw_file_perms;
 allow vendor_sec_nvm vendor_sec_nvm_device:chr_file rw_file_perms;
-allow vendor_sec_nvm vendor_spss_utils_device:chr_file rw_file_perms;
 init_daemon_domain(vendor_sec_nvm)
 set_prop(vendor_sec_nvm, vendor_spcomlib_prop)
 type vendor_sec_nvm, domain;
