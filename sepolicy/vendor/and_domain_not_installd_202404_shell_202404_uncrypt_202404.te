@@ -1,0 +1,1 @@
+neverallow { domain -installd -shell -uncrypt } shell_data_file:lnk_file read;

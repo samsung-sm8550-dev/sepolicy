@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_secureprocessor_server } vendor_hal_secureprocessor_hwservice:hwservice_manager add;

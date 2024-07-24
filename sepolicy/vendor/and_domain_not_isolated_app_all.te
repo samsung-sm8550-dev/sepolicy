@@ -1,0 +1,6 @@
+allow { domain -isolated_app_all } vendor_sysfs_kgsl:dir search;
+allow { domain -isolated_app_all } vendor_sysfs_kgsl_gpu_model:file r_file_perms;
+allow { domain -isolated_app_all } vendor_sysfs_kgsl_gpubusy:file r_file_perms;
+r_dir_file({ domain -isolated_app_all }, sysfs_thermal)
+r_dir_file({ domain -isolated_app_all }, vendor_sysfs_public)
+r_dir_file({ domain -isolated_app_all }, vendor_sysfs_kgsl_snapshot)

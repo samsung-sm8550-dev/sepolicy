@@ -1,0 +1,6 @@
+allow aidl_lazy_test_server servicemanager:binder { call transfer };
+allow aidl_lazy_test_server binderservicedomain:binder { call transfer };
+allow aidl_lazy_test_server binderservicedomain:fd *;
+allow aidl_lazy_test_server su:tcp_socket { accept getopt read write };
+add_service(aidl_lazy_test_server, aidl_lazy_test_service)
+type aidl_lazy_test_server, domain;

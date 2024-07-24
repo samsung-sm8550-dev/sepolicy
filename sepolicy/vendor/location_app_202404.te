@@ -1,0 +1,4 @@
+dontaudit vendor_location_app default_prop:file read;
+hal_client_domain(vendor_location_app, vendor_hal_diaghal)
+hal_client_domain(vendor_location_app, vendor_hal_perf)
+type vendor_location_app, coredomain, domain;

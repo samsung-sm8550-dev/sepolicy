@@ -1,0 +1,7 @@
+allow healthd self:capability2 wake_alarm;
+allow healthd vendor_sysfs_battery_supply:file rw_file_perms;
+allow healthd vendor_sysfs_usb_supply:file rw_file_perms;
+r_dir_file(healthd, vendor_sysfs_battery_supply)
+r_dir_file(healthd, vendor_sysfs_usb_supply)
+r_dir_file(healthd, sysfs_thermal)
+type healthd, domain;

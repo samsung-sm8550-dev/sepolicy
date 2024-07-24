@@ -1,0 +1,1 @@
+neverallow { hal_gatekeeper_server -hal_gatekeeper } domain:process fork;

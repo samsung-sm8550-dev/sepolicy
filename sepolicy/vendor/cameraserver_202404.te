@@ -1,0 +1,59 @@
+neverallow cameraserver fs_type:file execute_no_trans;
+neverallow cameraserver file_type:file execute_no_trans;
+neverallow cameraserver domain:udp_socket *;
+neverallow cameraserver domain:rawip_socket *;
+allow cameraserver servicemanager:binder { call transfer };
+allow cameraserver binderservicedomain:binder { call transfer };
+allow cameraserver binderservicedomain:fd *;
+allow cameraserver appdomain:binder { call transfer };
+allow cameraserver appdomain:fd *;
+allow cameraserver ion_device:chr_file rw_file_perms;
+allow cameraserver dmabuf_system_heap_device:chr_file r_file_perms;
+allow cameraserver hal_graphics_composer:fd *;
+allow cameraserver su:tcp_socket { accept getopt read write };
+allow cameraserver su:fd *;
+allow cameraserver su:fifo_file { read write };
+allow cameraserver su:unix_stream_socket { read write };
+allow cameraserver fwk_camera_hwservice:hwservice_manager { add find };
+allow cameraserver hidl_base_hwservice:hwservice_manager add;
+allow cameraserver activity_service:service_manager find;
+allow cameraserver appops_service:service_manager find;
+allow cameraserver audioserver_service:service_manager find;
+allow cameraserver batterystats_service:service_manager find;
+allow cameraserver cameraproxy_service:service_manager find;
+allow cameraserver mediaserver_service:service_manager find;
+allow cameraserver package_native_service:service_manager find;
+allow cameraserver permission_checker_service:service_manager find;
+allow cameraserver processinfo_service:service_manager find;
+allow cameraserver scheduling_policy_service:service_manager find;
+allow cameraserver sensor_privacy_service:service_manager find;
+allow cameraserver surfaceflinger_service:service_manager find;
+allow cameraserver hidl_token_hwservice:hwservice_manager find;
+allow cameraserver hal_camera_service:service_manager find;
+allow cameraserver virtual_camera_service:service_manager find;
+allow cameraserver surfaceflinger:unix_stream_socket { read write };
+allow cameraserver adbd:fd *;
+allow cameraserver adbd:unix_stream_socket { read write };
+allow cameraserver shell:fd *;
+allow cameraserver shell:unix_stream_socket { read write };
+allow cameraserver shell:fifo_file { read write };
+allow cameraserver mediametrics_service:service_manager find;
+allow cameraserver gpu_device:chr_file rw_file_perms;
+allow cameraserver vendor_sysfs_camera:file r_file_perms;
+allow cameraserver vendor_sysfs_camera:dir search;
+allow cameraserver system_file:dir r_dir_perms;
+allow cameraserver system_server:unix_stream_socket { read write };
+allow cameraserver mediacodec:binder { call transfer };
+allow cameraserver mediacodec:fd *;
+get_prop(cameraserver, vendor_camera_prop)
+get_prop(cameraserver, vendor_adsprpc_prop)
+get_prop(cameraserver, vendor_sys_video_prop)
+binder_service(cameraserver)
+hal_client_domain(cameraserver, hal_allocator)
+hal_client_domain(cameraserver, hal_camera)
+hal_client_domain(cameraserver, hal_codec2)
+hal_client_domain(cameraserver, hal_graphics_allocator)
+hal_client_domain(cameraserver, hal_omx)
+add_service(cameraserver, cameraserver_service)
+add_service(cameraserver, fwk_camera_service)
+type cameraserver, domain;

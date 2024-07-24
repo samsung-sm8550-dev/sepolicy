@@ -1,0 +1,22 @@
+expandtypeattribute(hal_tv_input)
+expandtypeattribute(hal_tv_input_client)
+expandtypeattribute(hal_tv_input_server)
+allow hal_tv_input_client hal_tv_input_server:binder { call transfer };
+allow hal_tv_input_client hal_tv_input_server:binder transfer;
+allow hal_tv_input_client hal_tv_input_server:fd *;
+allow hal_tv_input_client hal_tv_input_hwservice:hwservice_manager find;
+allow hal_tv_input_client hal_tv_input_service:service_manager find;
+allow hal_tv_input_client servicemanager:binder { call transfer };
+allow hal_tv_input_client servicemanager:fd *;
+allow hal_tv_input_server hal_tv_input_client:binder transfer;
+allow hal_tv_input_server hal_tv_input_client:binder { call transfer };
+allow hal_tv_input_server hal_tv_input_client:fd *;
+allow hal_tv_input_server hal_tv_input_hwservice:hwservice_manager { add find };
+allow hal_tv_input_server hidl_base_hwservice:hwservice_manager add;
+allow hal_tv_input_server su:tcp_socket { accept getopt read write };
+allow hal_tv_input_server servicemanager:binder { call transfer };
+allow hal_tv_input_server servicemanager:fd *;
+hal_server_domain(hal_tv_input_default, hal_tv_input)
+add_service(hal_tv_input_server, hal_tv_input_service)
+type hal_tv_input_default, domain;
+type hal_tv_input_default_exec, exec_type, file_type, vendor_file_type;

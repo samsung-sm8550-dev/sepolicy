@@ -1,0 +1,64 @@
+allow update_engine self:process setsched;
+allow update_engine self:capability { fowner sys_admin };
+allow update_engine self:cap_userns { fowner sys_admin };
+allow update_engine self:capability2 block_suspend;
+allow update_engine self:cap2_userns block_suspend;
+allow update_engine kmsg_device:chr_file { getattr w_file_perms };
+allow update_engine update_engine_exec:file rx_file_perms;
+allow update_engine sysfs_wake_lock:file rw_file_perms;
+allow update_engine system_suspend_server:binder { call transfer };
+allow update_engine system_suspend_server:fd *;
+allow update_engine system_suspend_hwservice:hwservice_manager find;
+allow update_engine hwservicemanager:binder { call transfer };
+allow update_engine hidl_manager_hwservice:hwservice_manager find;
+allow update_engine hal_system_suspend_service:service_manager find;
+allow update_engine servicemanager:binder { call transfer };
+allow update_engine update_engine_data_file:dir create_dir_perms;
+allow update_engine update_engine_data_file:file create_file_perms;
+allow update_engine update_engine_log_data_file:dir create_dir_perms;
+allow update_engine update_engine_log_data_file:file create_file_perms;
+allow update_engine su:tcp_socket { accept getopt read write };
+allow update_engine priv_app:binder { call transfer };
+allow update_engine priv_app:fd *;
+allow update_engine gmscore_app:binder { call transfer };
+allow update_engine gmscore_app:fd *;
+allow update_engine system_server:binder { call transfer };
+allow update_engine system_server:fd *;
+allow update_engine ota_package_file:file r_file_perms;
+allow update_engine ota_package_file:dir r_dir_perms;
+allow update_engine proc_misc:file r_file_perms;
+allow update_engine system_file:dir r_dir_perms;
+allow update_engine gsi_metadata_file_type:dir search;
+allow update_engine metadata_file:dir search;
+allow update_engine gsi_public_metadata_file:file r_file_perms;
+allow update_engine proc_bootconfig:file r_file_perms;
+allow update_engine proc_cmdline:file r_file_perms;
+allow update_engine snapshotctl_log_data_file:dir rw_dir_perms;
+allow update_engine snapshotctl_log_data_file:file create_file_perms;
+allow update_engine proc_filesystems:file r_file_perms;
+allow update_engine dm_user_device:dir r_dir_perms;
+allow update_engine dm_user_device:chr_file r_file_perms;
+allow update_engine storage_file:file r_file_perms;
+allow update_engine storage_file:dir r_dir_perms;
+allow update_engine fuse:dir r_dir_perms;
+allow update_engine sdcard_type:dir r_dir_perms;
+allow update_engine sdcard_type:file r_file_perms;
+allow update_engine vendor_vm_system_file:dir search;
+allow update_engine system_app:binder { call transfer };
+allow update_engine system_app:binder transfer;
+allow update_engine system_app:fd *;
+allow update_engine misc_block_device:blk_file rw_file_perms;
+allow update_engine loop_device:blk_file rw_file_perms;
+dontaudit update_engine self:capability fsetid;
+dontaudit update_engine self:capability sys_rawio;
+dontaudit update_engine self:cap_userns fsetid;
+dontaudit update_engine self:cap_userns sys_rawio;
+dontaudit update_engine kernel:process setsched;
+auditallow update_engine priv_app:binder { call transfer };
+auditallow update_engine priv_app:fd use;
+get_prop(update_engine, hwservicemanager_prop)
+net_domain(update_engine)
+hal_client_domain(update_engine, hal_bootctl)
+add_service(update_engine, update_engine_service)
+add_service(update_engine, update_engine_stable_service)
+type update_engine, domain, update_engine_common;

@@ -1,0 +1,10 @@
+allow toolbox tmpfs:chr_file { ioctl read write };
+allow toolbox devpts:chr_file { getattr ioctl read write };
+allow toolbox block_device:dir search;
+allow toolbox swap_block_device:blk_file rw_file_perms;
+allow toolbox system_data_root_file:dir { remove_name write };
+allow toolbox system_data_file:dir { rmdir rw_dir_perms };
+allow toolbox system_data_file:file { getattr unlink };
+allow toolbox media_userdir_file:dir { r_dir_perms setattr };
+allowxperm toolbox media_userdir_file:ioctl dir { range 0x6601 0x6602 };
+type toolbox, domain;

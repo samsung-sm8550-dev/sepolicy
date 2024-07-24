@@ -1,0 +1,6 @@
+allow hal_lineage_livedisplay_sysfs sysfs_livedisplay_tuneable:file rw_file_perms;
+r_dir_file(hal_lineage_livedisplay_sysfs, vendor_sysfs_graphics)
+get_prop(hal_lineage_livedisplay_sysfs, vendor_display_prop)
+hal_server_domain(hal_lineage_livedisplay_sysfs, hal_lineage_livedisplay)
+type hal_lineage_livedisplay_sysfs, domain;
+type hal_lineage_livedisplay_sysfs_exec, exec_type, file_type, vendor_file_type;

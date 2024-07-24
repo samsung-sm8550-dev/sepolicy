@@ -1,0 +1,27 @@
+allow vendor_usta_app vendor_usta_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_usta_app appdomain_tmpfs:file { execute getattr map read write };
+allow vendor_usta_app vendor_diag_device:chr_file rw_file_perms;
+allow vendor_usta_app self:socket create_socket_perms;
+allow vendor_usta_app self:qipcrtr_socket create_socket_perms;
+allow vendor_usta_app vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_usta_app app_api_service:service_manager find;
+allow vendor_usta_app surfaceflinger_service:service_manager find;
+allow vendor_usta_app vendor_usta_app_data_file:dir create_dir_perms;
+allow vendor_usta_app vendor_usta_app_data_file:file create_file_perms;
+allow vendor_usta_app vendor_sensors_vendor_data_file:dir create_dir_perms;
+allow vendor_usta_app vendor_sensors_vendor_data_file:file create_file_perms;
+allow vendor_usta_app cgroup:file w_file_perms;
+dontaudit vendor_usta_app system_data_file:file open;
+dontaudit vendor_usta_app vendor_hal_qspmhal_hwservice:hwservice_manager find;
+dontaudit vendor_usta_app gpuservice:binder call;
+dontaudit vendor_usta_app default_prop:file read;
+dontaudit vendor_usta_app vendor_diag-router:unix_stream_socket connectto;
+allowxperm vendor_usta_app self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_usta_app self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+type_transition vendor_usta_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_usta_app vendor_usta_app:anon_inode vendor_usta_app_userfaultfd "[userfaultfd]";
+r_dir_file(vendor_usta_app, vendor_sysfs_diag)
+get_prop(vendor_usta_app, vendor_sensors_prop)
+get_prop(vendor_usta_app, vendor_sensors_dbg_prop)
+hal_client_domain(vendor_usta_app, vendor_hal_perf)
+type vendor_usta_app, appdomain, domain, mlstrustedsubject;

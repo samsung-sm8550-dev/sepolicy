@@ -1,0 +1,1 @@
+neverallow { domain -hal_uwb_client -hal_uwb_server -atrace -shell -system_app -traceur_app } hal_uwb_service:service_manager find;

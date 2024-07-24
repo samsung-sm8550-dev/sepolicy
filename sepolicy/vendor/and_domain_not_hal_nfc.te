@@ -1,0 +1,2 @@
+neverallow { domain -hal_nfc_server } hal_nfc_hwservice:hwservice_manager add;
+neverallow { domain -hal_nfc_default } hal_nfc_hwservice:hwservice_manager add;

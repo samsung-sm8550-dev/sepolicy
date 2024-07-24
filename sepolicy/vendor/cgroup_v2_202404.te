@@ -1,0 +1,2 @@
+allow cgroup_v2 tmpfs:filesystem associate;
+type cgroup_v2, fs_type;

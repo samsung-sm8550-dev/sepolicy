@@ -1,0 +1,17 @@
+allow vendor_dualsta_app vendor_dualsta_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_dualsta_app appdomain_tmpfs:file { execute getattr map read write };
+allow vendor_dualsta_app activity_service:service_manager find;
+allow vendor_dualsta_app activity_task_service:service_manager find;
+allow vendor_dualsta_app audio_service:service_manager find;
+allow vendor_dualsta_app autofill_service:service_manager find;
+allow vendor_dualsta_app cgroup:file write;
+allow vendor_dualsta_app gpu_service:service_manager find;
+allow vendor_dualsta_app gpuservice:binder call;
+allow vendor_dualsta_app surfaceflinger_service:service_manager find;
+allow vendor_dualsta_app system_app_data_file:dir { add_name getattr remove_name search write };
+allow vendor_dualsta_app system_app_data_file:file { create getattr map open read setattr unlink write };
+allow vendor_dualsta_app textservices_service:service_manager find;
+type_transition vendor_dualsta_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_dualsta_app vendor_dualsta_app:anon_inode vendor_dualsta_app_userfaultfd "[userfaultfd]";
+hal_client_domain(vendor_dualsta_app, vendor_hal_datafactory_qti)
+type vendor_dualsta_app, appdomain, domain;

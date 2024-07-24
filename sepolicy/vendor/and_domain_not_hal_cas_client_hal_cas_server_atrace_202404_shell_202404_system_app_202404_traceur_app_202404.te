@@ -1,0 +1,1 @@
+neverallow { domain -hal_cas_client -hal_cas_server -atrace -shell -system_app -traceur_app } hal_cas_service:service_manager find;

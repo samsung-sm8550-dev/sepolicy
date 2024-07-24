@@ -1,0 +1,27 @@
+allow vendor_wfdhdcphalservice_qti vndbinder_device:chr_file rw_file_perms;
+allow vendor_wfdhdcphalservice_qti vndservicemanager:binder { call transfer };
+allow vendor_wfdhdcphalservice_qti vendor_wfdhdcpvndservice_service:service_manager find;
+allow vendor_wfdhdcphalservice_qti vendor_wfdvndservice:binder { call transfer };
+allow vendor_wfdhdcphalservice_qti vendor_wfdvndservice:binder transfer;
+allow vendor_wfdhdcphalservice_qti vendor_wfdvndservice:fd *;
+allow vendor_wfdhdcphalservice_qti vendor_wfd_app:fd *;
+allow vendor_wfdhdcphalservice_qti mediacodec:fd *;
+allow vendor_wfdhdcphalservice_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_wfdhdcphalservice_qti vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_wfdhdcphalservice_qti vendor_membuf_dev:chr_file r_file_perms;
+allow vendor_wfdhdcphalservice_qti vendor_vm_cp_bitstream_device:chr_file r_file_perms;
+allow vendor_wfdhdcphalservice_qti su:fifo_file append;
+allow vendor_wfdhdcphalservice_qti anr_data_file:file append;
+allow vendor_wfdhdcphalservice_qti dumpstate:fd *;
+allow vendor_wfdhdcphalservice_qti dumpstate:fifo_file { append write };
+allow vendor_wfdhdcphalservice_qti incidentd:fd *;
+allow vendor_wfdhdcphalservice_qti incidentd:fifo_file { append write };
+allow vendor_wfdhdcphalservice_qti system_server:fifo_file { append write };
+allow vendor_wfdhdcphalservice_qti tombstoned:unix_stream_socket connectto;
+allow vendor_wfdhdcphalservice_qti tombstoned:fd *;
+allow vendor_wfdhdcphalservice_qti tombstoned_crash_socket:sock_file write;
+allow vendor_wfdhdcphalservice_qti tombstone_data_file:file append;
+hal_server_domain(vendor_wfdhdcphalservice_qti, hal_drm)
+hal_client_domain(vendor_wfdhdcphalservice_qti, hal_graphics_composer)
+type vendor_wfdhdcphalservice_qti, domain;
+type vendor_wfdhdcphalservice_qti_exec, exec_type, file_type, vendor_file_type;

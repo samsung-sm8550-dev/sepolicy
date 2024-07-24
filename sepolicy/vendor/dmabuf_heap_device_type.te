@@ -1,0 +1,2 @@
+expandtypeattribute(dmabuf_heap_device_type)
+attribute dmabuf_heap_device_type;

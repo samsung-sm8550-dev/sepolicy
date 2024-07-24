@@ -1,0 +1,11 @@
+allow vendor_powerservice_app vendor_powerservice_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_powerservice_app appdomain_tmpfs:file { execute getattr map read write };
+allow vendor_powerservice_app activity_service:service_manager find;
+allow vendor_powerservice_app app_api_service:service_manager find;
+type_transition vendor_powerservice_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_powerservice_app vendor_powerservice_app:anon_inode vendor_powerservice_app_userfaultfd "[userfaultfd]";
+get_prop(vendor_powerservice_app, vendor_pasr_prop)
+hal_client_domain(vendor_powerservice_app, vendor_hal_perf)
+hal_client_domain(vendor_powerservice_app, vendor_hal_pasrmanager)
+hal_client_domain(vendor_powerservice_app, vendor_hal_mem_pasrmanager)
+type vendor_powerservice_app, appdomain, domain;

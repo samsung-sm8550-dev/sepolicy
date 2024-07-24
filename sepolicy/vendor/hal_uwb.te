@@ -1,0 +1,19 @@
+expandtypeattribute(hal_uwb)
+expandtypeattribute(hal_uwb_client)
+expandtypeattribute(hal_uwb_server)
+allow hal_uwb_client hal_uwb_server:binder { call transfer };
+allow hal_uwb_client hal_uwb_server:binder transfer;
+allow hal_uwb_client hal_uwb_server:fd *;
+allow hal_uwb_client hal_uwb_service:service_manager find;
+allow hal_uwb_client servicemanager:binder { call transfer };
+allow hal_uwb_client servicemanager:fd *;
+allow hal_uwb_server hal_uwb_client:binder transfer;
+allow hal_uwb_server hal_uwb_client:binder { call transfer };
+allow hal_uwb_server hal_uwb_client:fd *;
+allow hal_uwb_server su:tcp_socket { accept getopt read write };
+allow hal_uwb_server servicemanager:binder { call transfer };
+allow hal_uwb_server servicemanager:fd *;
+hal_server_domain(hal_uwb_default, hal_uwb)
+add_service(hal_uwb_server, hal_uwb_service)
+type hal_uwb_default, domain;
+type hal_uwb_default_exec, exec_type, file_type, vendor_file_type;

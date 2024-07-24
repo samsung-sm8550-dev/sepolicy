@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_qseecom_client -vendor_hal_qseecom_server } vendor_hal_qseecom_hwservice:hwservice_manager find;

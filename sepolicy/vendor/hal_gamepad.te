@@ -1,0 +1,21 @@
+allow hal_gamepad_default vendor_aksgamepad_service:service_manager find;
+allow hal_gamepad_default vndbinder_device:chr_file rw_file_perms;
+allow hal_gamepad_default vndservicemanager:binder { call transfer };
+allow hal_gamepad_default sysfs_leds:file rw_file_perms;
+allow hal_gamepad_default sysfs_leds:dir r_dir_perms;
+allow hal_gamepad_default input_device:dir r_dir_perms;
+allow hal_gamepad_default input_device:chr_file rw_file_perms;
+allow hal_gamepad_default vendor_aks_chr_device:chr_file rw_file_perms;
+allow hal_gamepad_client hal_gamepad_server:binder { call transfer };
+allow hal_gamepad_client hal_gamepad_server:binder transfer;
+allow hal_gamepad_client hal_gamepad_server:fd *;
+allow hal_gamepad_client hal_gamepad_hwservice:hwservice_manager find;
+allow hal_gamepad_server hal_gamepad_client:binder transfer;
+allow hal_gamepad_server hal_gamepad_client:binder { call transfer };
+allow hal_gamepad_server hal_gamepad_client:fd *;
+allow hal_gamepad_server hal_gamepad_hwservice:hwservice_manager { add find };
+allow hal_gamepad_server hidl_base_hwservice:hwservice_manager add;
+hal_server_domain(hal_gamepad_default, hal_gamepad)
+type hal_gamepad_default, domain;
+type hal_gamepad_default_exec, exec_type, file_type, vendor_file_type;
+type hal_gamepad_hwservice, hwservice_manager_type;

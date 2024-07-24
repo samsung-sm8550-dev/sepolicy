@@ -1,0 +1,37 @@
+expandtypeattribute(hal_omx)
+expandtypeattribute(hal_omx_client)
+expandtypeattribute(hal_omx_server)
+neverallow hal_omx_server fs_type:file execute_no_trans;
+neverallow hal_omx_server file_type:file execute_no_trans;
+neverallow hal_omx_server domain:udp_socket *;
+neverallow hal_omx_server domain:rawip_socket *;
+allow hal_omx_server binderservicedomain:binder { call transfer };
+allow hal_omx_server binderservicedomain:fd *;
+allow hal_omx_server hal_graphics_composer:fd *;
+allow hal_omx_server ion_device:chr_file rw_file_perms;
+allow hal_omx_server hal_camera:fd *;
+allow hal_omx_server su:fifo_file append;
+allow hal_omx_server anr_data_file:file append;
+allow hal_omx_server dumpstate:fd *;
+allow hal_omx_server dumpstate:fifo_file { append write };
+allow hal_omx_server incidentd:fd *;
+allow hal_omx_server incidentd:fifo_file { append write };
+allow hal_omx_server system_server:fifo_file { append write };
+allow hal_omx_server tombstoned:unix_stream_socket connectto;
+allow hal_omx_server tombstoned:fd *;
+allow hal_omx_server tombstoned_crash_socket:sock_file write;
+allow hal_omx_server tombstone_data_file:file append;
+allow hal_omx_server bufferhubd:fd *;
+allow hal_omx_server hal_omx_hwservice:hwservice_manager { add find };
+allow hal_omx_server hidl_base_hwservice:hwservice_manager add;
+allow hal_omx_server hal_omx_client:binder transfer;
+allow hal_omx_server hal_omx_client:binder { call transfer };
+allow hal_omx_server hal_omx_client:fd *;
+allow hal_omx_server mediadrmserver:binder transfer;
+allow hal_omx_client hal_omx_hwservice:hwservice_manager find;
+allow hal_omx_client hidl_token_hwservice:hwservice_manager find;
+allow hal_omx_client hal_omx_server:binder { call transfer };
+allow hal_omx_client hal_omx_server:binder transfer;
+allow hal_omx_client hal_omx_server:fd *;
+get_prop(hal_omx_server, media_variant_prop)
+get_prop(hal_omx_client, media_variant_prop)

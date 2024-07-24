@@ -1,0 +1,16 @@
+expandtypeattribute(hal_atrace)
+expandtypeattribute(hal_atrace_client)
+expandtypeattribute(hal_atrace_server)
+allow hal_atrace_client hal_atrace_server:binder { call transfer };
+allow hal_atrace_client hal_atrace_server:fd *;
+allow hal_atrace_client hal_atrace_hwservice:hwservice_manager find;
+allow hal_atrace_server hal_atrace_client:binder transfer;
+allow hal_atrace_server hal_atrace_hwservice:hwservice_manager { add find };
+allow hal_atrace_server hidl_base_hwservice:hwservice_manager add;
+allow hal_atrace_default debugfs_tracing:dir r_dir_perms;
+allow hal_atrace_default debugfs_tracing:file rw_file_perms;
+allow hal_atrace_default debugfs_tracing_debug:dir r_dir_perms;
+allow hal_atrace_default debugfs_tracing_debug:file rw_file_perms;
+hal_server_domain(hal_atrace_default, hal_atrace)
+type hal_atrace_default, domain;
+type hal_atrace_default_exec, exec_type, file_type, vendor_file_type;

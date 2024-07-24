@@ -1,0 +1,1 @@
+neverallow { domain -hal_wifi_supplicant_server } hal_wifi_supplicant_hwservice:hwservice_manager add;

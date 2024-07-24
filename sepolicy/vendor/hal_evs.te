@@ -1,0 +1,38 @@
+expandtypeattribute(hal_evs)
+expandtypeattribute(hal_evs_client)
+expandtypeattribute(hal_evs_server)
+allow hal_evs_server dumpstate:fifo_file write;
+allow hal_evs_server dumpstate:fd *;
+allow hal_evs_server hwservicemanager:binder { call transfer };
+allow hal_evs_server hal_evs_client:binder transfer;
+allow hal_evs_server hal_evs_client:binder { call transfer };
+allow hal_evs_server hal_evs_client:fd *;
+allow hal_evs_server hal_evs_hwservice:hwservice_manager { add find };
+allow hal_evs_server hidl_base_hwservice:hwservice_manager add;
+allow hal_evs_server su:tcp_socket { accept getopt read write };
+allow hal_evs_client hwservicemanager:binder { call transfer };
+allow hal_evs_client hal_evs_server:binder { call transfer };
+allow hal_evs_client hal_evs_server:binder transfer;
+allow hal_evs_client hal_evs_server:fd *;
+allow hal_evs_client hal_evs_hwservice:hwservice_manager find;
+allow hal_evs_client hal_evs_service:service_manager find;
+allow hal_evs_default automotive_display_service_server:binder { call transfer };
+allow hal_evs_default automotive_display_service_server:fd *;
+allow hal_evs_default fwk_automotive_display_hwservice:hwservice_manager find;
+allow hal_evs_default fwk_automotive_display_service:service_manager find;
+allow hal_evs_default hidl_token_hwservice:hwservice_manager find;
+allow hal_evs_default surfaceflinger:fd *;
+allow hal_evs_default gpu_device:chr_file rw_file_perms;
+allow hal_evs_default gpu_device:dir search;
+allow hal_evs_default device:dir r_dir_perms;
+allow hal_evs_default video_device:chr_file rw_file_perms;
+allow hal_evs_default servicemanager:binder { call transfer };
+get_prop(hal_evs_default, graphics_config_prop)
+get_prop(hal_evs_default, graphics_config_writable_prop)
+hal_server_domain(hal_evs_default, hal_evs)
+hal_client_domain(hal_evs_default, hal_configstore)
+hal_client_domain(hal_evs_default, hal_graphics_allocator)
+hal_client_domain(hal_evs_default, hal_graphics_composer)
+add_service(hal_evs_server, hal_evs_service)
+type hal_evs_default, domain;
+type hal_evs_default_exec, exec_type, file_type, vendor_file_type;

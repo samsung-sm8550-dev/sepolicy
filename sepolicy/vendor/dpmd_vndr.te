@@ -1,0 +1,45 @@
+allow vendor_dpmd_vndr netutils_wrapper:process sigkill;
+allow vendor_dpmd_vndr property_socket:sock_file write;
+allow vendor_dpmd_vndr init:unix_stream_socket connectto;
+allow vendor_dpmd_vndr vendor_persist_dpm_prop:property_service set;
+allow vendor_dpmd_vndr vendor_persist_tcm_prop:property_service set;
+allow vendor_dpmd_vndr sysfs_wake_lock:file rw_file_perms;
+allow vendor_dpmd_vndr self:capability2 block_suspend;
+allow vendor_dpmd_vndr self:capability2 wake_alarm;
+allow vendor_dpmd_vndr self:cap2_userns block_suspend;
+allow vendor_dpmd_vndr self:capability { net_admin net_raw setuid };
+allow vendor_dpmd_vndr self:capability kill;
+allow vendor_dpmd_vndr self:netlink_netfilter_socket create_socket_perms_no_ioctl;
+allow vendor_dpmd_vndr system_suspend_server:binder { call transfer };
+allow vendor_dpmd_vndr system_suspend_server:fd *;
+allow vendor_dpmd_vndr system_suspend_hwservice:hwservice_manager find;
+allow vendor_dpmd_vndr hwservicemanager:binder { call transfer };
+allow vendor_dpmd_vndr hidl_manager_hwservice:hwservice_manager find;
+allow vendor_dpmd_vndr hal_system_suspend_service:service_manager find;
+allow vendor_dpmd_vndr servicemanager:binder { call transfer };
+allow vendor_dpmd_vndr system_file:dir r_dir_perms;
+allow vendor_dpmd_vndr vendor_dpm_vndr_data_file:file create_file_perms;
+allow vendor_dpmd_vndr vendor_dpm_vndr_data_file:dir create_dir_perms;
+allow vendor_dpmd_vndr proc_net:file write;
+allow vendor_dpmd_vndr su:tcp_socket { accept getopt read write };
+allow vendor_dpmd_vndr vndbinder_device:chr_file rw_file_perms;
+allow vendor_dpmd_vndr vndservicemanager:binder { call transfer };
+allow vendor_dpmd_vndr vendor_diag_device:chr_file rw_file_perms;
+dontaudit vendor_dpmd_vndr self:capability sys_module;
+type_transition vendor_dpmd_vndr netutils_wrapper_exec:process netutils_wrapper;
+domain_trans(vendor_dpmd_vndr, netutils_wrapper_exec, netutils_wrapper)
+r_dir_file(vendor_dpmd_vndr, vendor_sysfs_data)
+r_dir_file(vendor_dpmd_vndr, proc_net)
+r_dir_file(vendor_dpmd_vndr, appdomain)
+r_dir_file(vendor_dpmd_vndr, vendor_sysfs_diag)
+get_prop(vendor_dpmd_vndr, vendor_persist_dpm_prop)
+get_prop(vendor_dpmd_vndr, vendor_persist_tcm_prop)
+get_prop(vendor_dpmd_vndr, hwservicemanager_prop)
+net_domain(vendor_dpmd_vndr)
+hal_client_domain(vendor_dpmd_vndr, hal_allocator)
+hal_client_domain(vendor_dpmd_vndr, vendor_hal_diaghal)
+hal_client_domain(vendor_dpmd_vndr, vendor_hal_dpmqmiservice_qti)
+hal_client_domain(vendor_dpmd_vndr, vendor_hal_mwqemadapter_qti)
+add_service(vendor_dpmd_vndr, vendor_nwmgr_service)
+type vendor_dpmd_vndr, domain, vendor_hal_dpmapiservice_qti, vendor_hal_dpmapiservice_qti_server, vendor_halserverdomain;
+type vendor_dpmd_vndr_exec, exec_type, file_type, vendor_file_type;

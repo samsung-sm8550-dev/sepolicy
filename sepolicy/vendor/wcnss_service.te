@@ -1,0 +1,46 @@
+allow vendor_wcnss_service vendor_per_mgr:binder transfer;
+allow vendor_wcnss_service vendor_per_mgr:binder { call transfer };
+allow vendor_wcnss_service vendor_per_mgr:fd *;
+allow vendor_wcnss_service vndbinder_device:chr_file rw_file_perms;
+allow vendor_wcnss_service vndservicemanager:binder { call transfer };
+allow vendor_wcnss_service vendor_per_mgr_service:service_manager find;
+allow vendor_wcnss_service vendor_shell_exec:file rx_file_perms;
+allow vendor_wcnss_service vendor_toolbox_exec:file rx_file_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_data_file:dir create_dir_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_data_file:file create_file_perms;
+allow vendor_wcnss_service proc_net:file rw_file_perms;
+allow vendor_wcnss_service proc_net:file getattr;
+allow vendor_wcnss_service proc_net:file read;
+allow vendor_wcnss_service self:socket create_socket_perms;
+allow vendor_wcnss_service self:qipcrtr_socket create_socket_perms;
+allow vendor_wcnss_service self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_wcnss_service self:netlink_socket create_socket_perms_no_ioctl;
+allow vendor_wcnss_service self:capability net_admin;
+allow vendor_wcnss_service firmware_file:dir r_dir_perms;
+allow vendor_wcnss_service firmware_file:file r_file_perms;
+allow vendor_wcnss_service sysfs_net:dir search;
+allow vendor_wcnss_service sysfs_net:file { getattr open write };
+allow vendor_wcnss_service wpa_data_file:dir create_dir_perms;
+allow vendor_wcnss_service wpa_data_file:file create_file_perms;
+allow vendor_wcnss_service vendor_sysfs_data:file r_file_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_log_data_file:dir create_dir_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_log_data_file:file create_file_perms;
+allow vendor_wcnss_service kmsg_device:chr_file { open write };
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:dir create_dir_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:dir r_dir_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:sock_file create_file_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:sock_file rw_file_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:file create_file_perms;
+allow vendor_wcnss_service vendor_wifi_vendor_wpa_socket:file rw_file_perms;
+allowxperm vendor_wcnss_service self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_wcnss_service self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+allowxperm vendor_wcnss_service self:ioctl udp_socket 0x8914;
+allowxperm vendor_wcnss_service self:ioctl udp_socket 0x8be5;
+r_dir_file(vendor_wcnss_service, vendor_proc_wifi_dbg)
+r_dir_file(vendor_wcnss_service, vendor_sysfs_diag)
+r_dir_file(vendor_wcnss_service, storage_file)
+r_dir_file(vendor_wcnss_service, mnt_user_file)
+unix_socket_connect(vendor_wcnss_service, vendor_wigignpt, vendor_wigignpt)
+net_domain(vendor_wcnss_service)
+type vendor_wcnss_service, domain;
+type vendor_wcnss_service_exec, exec_type, file_type, vendor_file_type;

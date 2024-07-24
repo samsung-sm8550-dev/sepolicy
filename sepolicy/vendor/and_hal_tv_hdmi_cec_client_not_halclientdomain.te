@@ -1,0 +1,1 @@
+neverallow { hal_tv_hdmi_cec_client -halclientdomain } domain:process fork;

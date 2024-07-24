@@ -1,0 +1,15 @@
+allow idmap resourcecache_data_file:file create_file_perms;
+allow idmap resourcecache_data_file:dir rw_dir_perms;
+allow idmap apk_data_file:file r_file_perms;
+allow idmap apk_data_file:dir search;
+allow idmap apk_tmp_file:file r_file_perms;
+allow idmap apk_tmp_file:dir search;
+allow idmap apk_private_tmp_file:file r_file_perms;
+allow idmap apk_private_tmp_file:dir search;
+allow idmap servicemanager:binder { call transfer };
+allow idmap su:tcp_socket { accept getopt read write };
+r_dir_file(idmap, vendor_app_file)
+r_dir_file(idmap, vendor_overlay_file)
+binder_service(idmap)
+add_service(idmap, idmap_service)
+type idmap, domain;

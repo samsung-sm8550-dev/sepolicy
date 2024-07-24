@@ -1,0 +1,20 @@
+expandtypeattribute(hal_lineage_health)
+expandtypeattribute(hal_lineage_health_client)
+expandtypeattribute(hal_lineage_health_server)
+allow hal_lineage_health_default vendor_sysfs_battery_supply:dir r_dir_perms;
+allow hal_lineage_health_default vendor_sysfs_battery_supply:file rw_file_perms;
+allow hal_lineage_health_default vendor_sysfs_battery_supply:lnk_file rw_file_perms;
+allow hal_lineage_health_default vendor_sysfs_usb_supply:dir r_dir_perms;
+allow hal_lineage_health_default vendor_sysfs_usb_supply:file rw_file_perms;
+allow hal_lineage_health_default vendor_sysfs_usb_supply:lnk_file rw_file_perms;
+allow hal_lineage_health_default servicemanager:binder { call transfer };
+allow hal_lineage_health_default servicemanager:fd *;
+allow hal_lineage_health_client hal_lineage_health_server:binder { call transfer };
+allow hal_lineage_health_client hal_lineage_health_server:fd *;
+allow hal_lineage_health_client hal_lineage_health_service:service_manager find;
+allow hal_lineage_health_server hal_lineage_health_client:binder transfer;
+allow hal_lineage_health_server su:tcp_socket { accept getopt read write };
+hal_server_domain(hal_lineage_health_default, hal_lineage_health)
+add_service(hal_lineage_health_server, hal_lineage_health_service)
+type hal_lineage_health_default, domain;
+type hal_lineage_health_default_exec, exec_type, file_type, vendor_file_type;

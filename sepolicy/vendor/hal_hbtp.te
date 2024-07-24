@@ -1,0 +1,4 @@
+attribute vendor_hal_hbtp;
+attribute vendor_hal_hbtp_client;
+attribute vendor_hal_hbtp_server;
+type vendor_hal_hbtp_hwservice, hwservice_manager_type, protected_hwservice;

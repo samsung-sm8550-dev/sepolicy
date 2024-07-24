@@ -1,0 +1,1 @@
+neverallow { domain -stats_service_server } fwk_stats_hwservice:hwservice_manager add;

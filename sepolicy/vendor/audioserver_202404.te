@@ -1,0 +1,10 @@
+allow audioserver hal_audio_server:process signal;
+allow audioserver sensorservice_service:service_manager find;
+allow audioserver system_server:unix_stream_socket { read write };
+allow audioserver bootanim:binder transfer;
+allow audioserver bootanim:binder { call transfer };
+allow audioserver bootanim:fd *;
+allow audioserver vendor_diag_device:chr_file rw_file_perms;
+r_dir_file(audioserver, vendor_sysfs_diag)
+get_prop(audioserver, vendor_audio_prop)
+type audioserver, domain;

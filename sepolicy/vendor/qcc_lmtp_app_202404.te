@@ -1,0 +1,2 @@
+hal_client_domain(vendor_qcc_lmtp_app, vendor_hal_perf)
+type vendor_qcc_lmtp_app, coredomain, domain;

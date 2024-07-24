@@ -1,0 +1,1 @@
+neverallow { domain -hal_light_client -hal_light_server } hal_light_hwservice:hwservice_manager find;

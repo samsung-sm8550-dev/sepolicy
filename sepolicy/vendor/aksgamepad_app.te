@@ -1,0 +1,5 @@
+allow vendor_aksgamepad_app vendor_aksgamepad_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_aksgamepad_app appdomain_tmpfs:file { execute getattr map read write };
+type_transition vendor_aksgamepad_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_aksgamepad_app vendor_aksgamepad_app:anon_inode vendor_aksgamepad_app_userfaultfd "[userfaultfd]";
+type vendor_aksgamepad_app, appdomain, domain;

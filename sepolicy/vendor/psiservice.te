@@ -1,0 +1,15 @@
+allow vendor_psiservice proc_zoneinfo:file r_file_perms;
+allow vendor_psiservice proc_meminfo:file r_file_perms;
+allow vendor_psiservice proc_vmstat:file r_file_perms;
+allow vendor_psiservice proc_pressure_mem:file rw_file_perms;
+allow vendor_psiservice sysfs:dir r_dir_perms;
+allow vendor_psiservice vendor_sysfs_mem_offline:file rw_file_perms;
+allow vendor_psiservice vendor_sysfs_mem_offline:dir r_dir_perms;
+allow vendor_psiservice self:capability sys_resource;
+allow vendor_psiservice self:cap_userns sys_resource;
+get_prop(vendor_psiservice, vendor_pasr_prop)
+get_prop(vendor_psiservice, boot_status_prop)
+hal_client_domain(vendor_psiservice, hal_allocator)
+hal_client_domain(vendor_psiservice, vendor_hal_mem_pasrmanager)
+type vendor_psiservice, domain;
+type vendor_psiservice_exec, exec_type, file_type, vendor_file_type;

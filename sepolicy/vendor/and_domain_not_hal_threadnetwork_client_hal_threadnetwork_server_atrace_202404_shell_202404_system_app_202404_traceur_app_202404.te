@@ -1,0 +1,1 @@
+neverallow { domain -hal_threadnetwork_client -hal_threadnetwork_server -atrace -shell -system_app -traceur_app } hal_threadnetwork_service:service_manager find;

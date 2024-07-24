@@ -1,0 +1,2 @@
+neverallow { domain -vendor_snapcam_app } vendor_snapcam_app_userfaultfd:anon_inode *;
+neverallow { vendor_snapcam_app -runas_app -shell -simpleperf } { domain -vendor_snapcam_app }:file no_rw_file_perms;

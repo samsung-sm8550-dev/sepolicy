@@ -1,0 +1,1 @@
+type testharness_service, service_manager_type, system_server_service;

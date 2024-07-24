@@ -1,0 +1,1 @@
+neverallow { domain -vendor_ims_service } vendor_imsd_data_file:chr_file no_rw_file_perms;

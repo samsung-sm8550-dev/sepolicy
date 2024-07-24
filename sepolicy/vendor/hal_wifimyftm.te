@@ -1,0 +1,14 @@
+allow vendor_hal_wifimyftm_client vendor_hal_wifimyftm_server:binder { call transfer };
+allow vendor_hal_wifimyftm_client vendor_hal_wifimyftm_server:binder transfer;
+allow vendor_hal_wifimyftm_client vendor_hal_wifimyftm_server:fd *;
+allow vendor_hal_wifimyftm_client vendor_hal_wifimyftm_hwservice:hwservice_manager find;
+allow vendor_hal_wifimyftm_server vendor_hal_wifimyftm_client:binder transfer;
+allow vendor_hal_wifimyftm_server vendor_hal_wifimyftm_client:binder { call transfer };
+allow vendor_hal_wifimyftm_server vendor_hal_wifimyftm_client:fd *;
+allow vendor_hal_wifimyftm_server vendor_hal_wifimyftm_hwservice:hwservice_manager { add find };
+allow vendor_hal_wifimyftm_server hidl_base_hwservice:hwservice_manager add;
+allow vendor_hal_wifimyftm self:netlink_generic_socket create_socket_perms_no_ioctl;
+attribute vendor_hal_wifimyftm;
+attribute vendor_hal_wifimyftm_client;
+attribute vendor_hal_wifimyftm_server;
+type vendor_hal_wifimyftm_hwservice, hwservice_manager_type, protected_hwservice;

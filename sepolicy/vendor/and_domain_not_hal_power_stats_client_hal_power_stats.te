@@ -1,0 +1,1 @@
+neverallow { domain -hal_power_stats_client -hal_power_stats_server } hal_power_stats_hwservice:hwservice_manager find;

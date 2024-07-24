@@ -1,0 +1,2 @@
+neverallow { domain -hal_bluetooth_client -hal_bluetooth_server -atrace -shell -system_app -traceur_app } hal_bluetooth_service:service_manager find;
+neverallow { domain -hal_bluetooth_client -hal_bluetooth_server -atrace -shell -system_app -traceur_app } vendor_hal_bttpi_service:service_manager find;

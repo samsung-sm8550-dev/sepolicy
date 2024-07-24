@@ -1,0 +1,1 @@
+neverallow { domain -vendor_wifidisplayhalservice_server } vendor_wifidisplayhalservice_hwservice:hwservice_manager add;

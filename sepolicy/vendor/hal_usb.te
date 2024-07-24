@@ -1,0 +1,58 @@
+expandtypeattribute(hal_usb)
+expandtypeattribute(hal_usb_client)
+expandtypeattribute(hal_usb_server)
+allow hal_usb_client hal_usb_server:binder { call transfer };
+allow hal_usb_client hal_usb_server:binder transfer;
+allow hal_usb_client hal_usb_server:fd *;
+allow hal_usb_client hal_usb_service:service_manager find;
+allow hal_usb_client hal_usb_hwservice:hwservice_manager find;
+allow hal_usb_server hal_usb_client:binder transfer;
+allow hal_usb_server hal_usb_client:binder { call transfer };
+allow hal_usb_server hal_usb_client:fd *;
+allow hal_usb_server su:tcp_socket { accept getopt read write };
+allow hal_usb_server servicemanager:binder { call transfer };
+allow hal_usb_server servicemanager:fd *;
+allow hal_usb_server hal_usb_hwservice:hwservice_manager { add find };
+allow hal_usb_server hidl_base_hwservice:hwservice_manager add;
+allow hal_usb self:netlink_kobject_uevent_socket create;
+allow hal_usb self:netlink_kobject_uevent_socket setopt;
+allow hal_usb self:netlink_kobject_uevent_socket getopt;
+allow hal_usb self:netlink_kobject_uevent_socket bind;
+allow hal_usb self:netlink_kobject_uevent_socket read;
+allow hal_usb sysfs:dir open;
+allow hal_usb sysfs:dir read;
+allow hal_usb sysfs:file read;
+allow hal_usb sysfs:file open;
+allow hal_usb sysfs:file write;
+allow hal_usb sysfs:file getattr;
+allow hal_usb_default vendor_sysfs_usbpd_device:dir r_dir_perms;
+allow hal_usb_default vendor_sysfs_usbpd_device:lnk_file r_file_perms;
+allow hal_usb_default vendor_sysfs_usbpd_device:file rw_file_perms;
+allow hal_usb_default configfs:dir create_dir_perms;
+allow hal_usb_default configfs:file create_file_perms;
+allow hal_usb_default proc_deny_new_usb:file w_file_perms;
+allow hal_usb_default sysfs_usb_data_enabled:file w_file_perms;
+allow hal_usb_default self:capability sys_admin;
+allow vendor_hal_usb_qti vendor_usb_prop:property_service set;
+allow vendor_hal_usb_qti property_socket:sock_file write;
+allow vendor_hal_usb_qti init:unix_stream_socket connectto;
+allow vendor_hal_usb_qti configfs:file create_file_perms;
+allow vendor_hal_usb_qti functionfs:dir r_dir_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_c:dir r_dir_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_c:lnk_file r_file_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_c:file rw_file_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_node:dir r_dir_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_node:file rw_file_perms;
+allow vendor_hal_usb_qti vendor_sysfs_usb_device:file rw_file_perms;
+r_dir_file(hal_usb_default, vendor_sysfs_usb_supply)
+r_dir_file(vendor_hal_usb_qti, vendor_sysfs_battery_supply)
+r_dir_file(vendor_hal_usb_qti, vendor_sysfs_usb_supply)
+get_prop(vendor_hal_usb_qti, vendor_usb_prop)
+hal_server_domain(hal_usb_default, hal_usb)
+hal_server_domain(vendor_hal_usb_qti, hal_usb)
+hal_server_domain(vendor_hal_usb_qti, hal_usb_gadget)
+add_service(hal_usb_server, hal_usb_service)
+type hal_usb_default, domain;
+type vendor_hal_usb_qti, domain;
+type hal_usb_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_usb_qti_exec, exec_type, file_type, vendor_file_type;

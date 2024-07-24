@@ -1,0 +1,42 @@
+allow radio radio_data_file:dir create_dir_perms;
+allow radio radio_data_file:file create_file_perms;
+allow radio radio_data_file:lnk_file create_file_perms;
+allow radio radio_data_file:sock_file create_file_perms;
+allow radio radio_data_file:fifo_file create_file_perms;
+allow radio radio_core_data_file:dir r_dir_perms;
+allow radio radio_core_data_file:file r_file_perms;
+allow radio net_data_file:dir search;
+allow radio net_data_file:file r_file_perms;
+allow radio su:tcp_socket { accept getopt read write };
+allow radio audioserver_service:service_manager find;
+allow radio cameraserver_service:service_manager find;
+allow radio drmserver_service:service_manager find;
+allow radio mediaserver_service:service_manager find;
+allow radio nfc_service:service_manager find;
+allow radio app_api_service:service_manager find;
+allow radio system_api_service:service_manager find;
+allow radio timedetector_service:service_manager find;
+allow radio timezonedetector_service:service_manager find;
+allow radio hwservicemanager:binder { call transfer };
+allow radio proc_cmdline:file r_file_perms;
+allow radio vendor_atfwd:binder transfer;
+allow radio vendor_ims_service:binder transfer;
+allow radio vendor_file:lnk_file r_file_perms;
+allow radio vendor_framework_file:file r_file_perms;
+allow radio vendor_framework_file:dir search;
+allow radio vendor_hal_imsrtp_hwservice:hwservice_manager find;
+allow radio mediaextractor_service:service_manager find;
+allow radio vendor_avtimer_device:chr_file r_file_perms;
+allow radio vendor_diag_device:chr_file rw_file_perms;
+allow radio vendor_cnd:binder transfer;
+r_dir_file(radio, vendor_sysfs_diag)
+r_dir_file(radio, vendor_mbn_data_file)
+get_prop(radio, vendor_radio_prop)
+binder_service(radio)
+net_domain(radio)
+hal_client_domain(radio, hal_telephony)
+hal_client_domain(radio, vendor_hal_perf)
+hal_client_domain(radio, vendor_hal_qspmhal)
+hal_client_domain(radio, vendor_hal_imsfactory)
+add_service(radio, radio_service)
+type radio, bluetoothdomain, domain, mlstrustedsubject;

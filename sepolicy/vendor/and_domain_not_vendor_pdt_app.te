@@ -1,0 +1,2 @@
+neverallow { domain -vendor_pdt_app } vendor_pdt_app_userfaultfd:anon_inode *;
+neverallow { vendor_pdt_app -runas_app -shell -simpleperf } { domain -vendor_pdt_app }:file no_rw_file_perms;

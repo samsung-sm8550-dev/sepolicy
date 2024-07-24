@@ -1,0 +1,1 @@
+neverallow { hal_omx_server -hal_omx } domain:process fork;

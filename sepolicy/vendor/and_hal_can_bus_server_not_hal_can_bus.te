@@ -1,0 +1,1 @@
+neverallow { hal_can_bus_server -hal_can_bus } domain:process fork;

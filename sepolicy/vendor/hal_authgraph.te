@@ -1,0 +1,18 @@
+expandtypeattribute(hal_authgraph)
+expandtypeattribute(hal_authgraph_client)
+expandtypeattribute(hal_authgraph_server)
+allow hal_authgraph_server dumpstate:fifo_file write;
+allow hal_authgraph_server dumpstate:fd *;
+allow hal_authgraph_server hal_authgraph_client:binder transfer;
+allow hal_authgraph_server su:tcp_socket { accept getopt read write };
+allow hal_authgraph_server servicemanager:binder { call transfer };
+allow hal_authgraph_server servicemanager:fd *;
+allow hal_authgraph_server tee_device:chr_file rw_file_perms;
+allow hal_authgraph_server ion_device:chr_file r_file_perms;
+allow hal_authgraph_client hal_authgraph_server:binder { call transfer };
+allow hal_authgraph_client hal_authgraph_server:fd *;
+allow hal_authgraph_client hal_authgraph_service:service_manager find;
+hal_server_domain(hal_authgraph_default, hal_authgraph)
+add_service(hal_authgraph_server, hal_authgraph_service)
+type hal_authgraph_default, domain;
+type hal_authgraph_default_exec, exec_type, file_type, vendor_file_type;

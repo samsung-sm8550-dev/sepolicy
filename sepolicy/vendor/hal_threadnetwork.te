@@ -1,0 +1,21 @@
+expandtypeattribute(hal_threadnetwork)
+expandtypeattribute(hal_threadnetwork_client)
+expandtypeattribute(hal_threadnetwork_server)
+allow hal_threadnetwork_client hal_threadnetwork_server:binder { call transfer };
+allow hal_threadnetwork_client hal_threadnetwork_server:binder transfer;
+allow hal_threadnetwork_client hal_threadnetwork_server:fd *;
+allow hal_threadnetwork_client hal_threadnetwork_service:service_manager find;
+allow hal_threadnetwork_client servicemanager:binder { call transfer };
+allow hal_threadnetwork_client servicemanager:fd *;
+allow hal_threadnetwork_server hal_threadnetwork_client:binder transfer;
+allow hal_threadnetwork_server hal_threadnetwork_client:binder { call transfer };
+allow hal_threadnetwork_server hal_threadnetwork_client:fd *;
+allow hal_threadnetwork_server su:tcp_socket { accept getopt read write };
+allow hal_threadnetwork_server servicemanager:binder { call transfer };
+allow hal_threadnetwork_server servicemanager:fd *;
+allow hal_threadnetwork_default devpts:chr_file { ioctl open read write };
+domain_auto_trans(hal_threadnetwork_default, ot_rcp_exec, ot_rcp)
+hal_server_domain(hal_threadnetwork_default, hal_threadnetwork)
+add_service(hal_threadnetwork_server, hal_threadnetwork_service)
+type hal_threadnetwork_default, domain;
+type hal_threadnetwork_default_exec, exec_type, file_type, vendor_file_type;

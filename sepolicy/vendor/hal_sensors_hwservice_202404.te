@@ -1,0 +1,1 @@
+type hal_sensors_hwservice, hwservice_manager_type, protected_hwservice;

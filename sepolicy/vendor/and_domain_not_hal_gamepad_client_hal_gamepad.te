@@ -1,0 +1,1 @@
+neverallow { domain -hal_gamepad_client -hal_gamepad_server } hal_gamepad_hwservice:hwservice_manager find;

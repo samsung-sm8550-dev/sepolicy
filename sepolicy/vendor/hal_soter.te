@@ -1,0 +1,22 @@
+allow vendor_hal_soter_qti tee_device:chr_file rw_file_perms;
+allow vendor_hal_soter_qti ion_device:chr_file r_file_perms;
+allow vendor_hal_soter_qti vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_hal_soter_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_soter_client vendor_hal_soter_server:binder { call transfer };
+allow vendor_hal_soter_client vendor_hal_soter_server:binder transfer;
+allow vendor_hal_soter_client vendor_hal_soter_server:fd *;
+allow vendor_hal_soter_client vendor_hal_soter_hwservice:hwservice_manager find;
+allow vendor_hal_soter_server vendor_hal_soter_client:binder transfer;
+allow vendor_hal_soter_server vendor_hal_soter_client:binder { call transfer };
+allow vendor_hal_soter_server vendor_hal_soter_client:fd *;
+allow vendor_hal_soter_server vendor_hal_soter_hwservice:hwservice_manager { add find };
+allow vendor_hal_soter_server hidl_base_hwservice:hwservice_manager add;
+attribute vendor_hal_soter;
+attribute vendor_hal_soter_client;
+attribute vendor_hal_soter_server;
+r_dir_file(vendor_hal_soter_qti, firmware_file)
+get_prop(vendor_hal_soter_qti, vendor_tee_listener_prop)
+hal_server_domain(vendor_hal_soter_qti, vendor_hal_soter)
+type vendor_hal_soter_qti, domain;
+type vendor_hal_soter_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_soter_hwservice, hwservice_manager_type, protected_hwservice;

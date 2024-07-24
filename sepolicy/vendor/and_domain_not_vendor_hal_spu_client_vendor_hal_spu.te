@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_spu_client -vendor_hal_spu_server } vendor_hal_spu_hwservice:hwservice_manager find;

@@ -1,0 +1,6 @@
+allow vendor_limits-hal sysfs_thermal:file w_file_perms;
+allow vendor_limits-hal self:netlink_generic_socket create_socket_perms_no_ioctl;
+hal_server_domain(vendor_limits-hal, vendor_hal_limits)
+hal_client_domain(vendor_limits-hal, hal_thermal)
+type vendor_limits-hal, domain;
+type vendor_limits-hal_exec, exec_type, file_type, vendor_file_type;

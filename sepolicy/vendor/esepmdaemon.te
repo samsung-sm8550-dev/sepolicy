@@ -1,0 +1,12 @@
+allow vendor_esepmdaemon vndbinder_device:chr_file rw_file_perms;
+allow vendor_esepmdaemon vndservicemanager:binder { call transfer };
+allow vendor_esepmdaemon system_app:binder { call transfer };
+allow vendor_esepmdaemon system_app:fd *;
+allow vendor_esepmdaemon su:tcp_socket { accept getopt read write };
+allow vendor_esepmdaemon nfc_device:chr_file rw_file_perms;
+allow vendor_esepmdaemon ion_device:chr_file r_file_perms;
+allow vendor_esepmdaemon tee_device:chr_file rw_file_perms;
+r_dir_file(vendor_esepmdaemon, firmware_file)
+add_service(vendor_esepmdaemon, vendor_esepmdaemon_service)
+type vendor_esepmdaemon, domain;
+type vendor_esepmdaemon_exec, exec_type, file_type, vendor_file_type;

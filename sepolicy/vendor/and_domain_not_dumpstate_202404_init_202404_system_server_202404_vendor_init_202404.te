@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate -init -system_server -vendor_init } binderfs_logs_stats:file no_rw_file_perms;

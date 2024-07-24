@@ -1,0 +1,7 @@
+allow extra_free_kbytes shell_exec:file rx_file_perms;
+allow extra_free_kbytes system_file:file x_file_perms;
+allow extra_free_kbytes toolbox_exec:file rx_file_perms;
+allow extra_free_kbytes proc_extra_free_kbytes:file rw_file_perms;
+allow extra_free_kbytes proc_watermark_scale_factor:file rw_file_perms;
+allow extra_free_kbytes proc_zoneinfo:file r_file_perms;
+type extra_free_kbytes, domain;

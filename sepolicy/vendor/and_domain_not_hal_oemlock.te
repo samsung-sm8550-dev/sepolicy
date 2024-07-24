@@ -1,0 +1,1 @@
+neverallow { domain -hal_oemlock_server } hal_oemlock_hwservice:hwservice_manager add;

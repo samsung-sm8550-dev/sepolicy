@@ -1,0 +1,1 @@
+neverallow { appdomain -runas_app -shell -simpleperf -vendor_sysmonapp_app_test } vendor_sysmonapp_app_test:file no_rw_file_perms;

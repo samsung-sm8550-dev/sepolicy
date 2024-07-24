@@ -1,0 +1,26 @@
+expandtypeattribute(hal_identity)
+expandtypeattribute(hal_identity_client)
+expandtypeattribute(hal_identity_server)
+allow hal_identity_server dumpstate:fifo_file write;
+allow hal_identity_server dumpstate:fd *;
+allow hal_identity_server hal_identity_client:binder transfer;
+allow hal_identity_server su:tcp_socket { accept getopt read write };
+allow hal_identity_server servicemanager:binder { call transfer };
+allow hal_identity_server servicemanager:fd *;
+allow hal_identity_client hal_identity_server:binder { call transfer };
+allow hal_identity_client hal_identity_server:fd *;
+allow hal_identity_client hal_identity_service:service_manager find;
+allow vendor_hal_identity_qti tee_device:chr_file rw_file_perms;
+allow vendor_hal_identity_qti ion_device:chr_file r_file_perms;
+allow vendor_hal_identity_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_identity_qti vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+dontaudit vendor_hal_identity_qti firmware_file:dir search;
+get_prop(vendor_hal_identity_qti, vendor_tee_listener_prop)
+hal_server_domain(hal_identity_default, hal_identity)
+hal_server_domain(vendor_hal_identity_qti, hal_identity)
+hal_client_domain(hal_identity_default, hal_keymint)
+add_service(hal_identity_server, hal_identity_service)
+type hal_identity_default, domain;
+type vendor_hal_identity_qti, domain;
+type hal_identity_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_identity_qti_exec, exec_type, file_type, vendor_file_type;

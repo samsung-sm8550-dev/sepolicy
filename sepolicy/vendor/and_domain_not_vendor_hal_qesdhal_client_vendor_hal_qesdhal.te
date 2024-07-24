@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_qesdhal_client -vendor_hal_qesdhal_server } vendor_hal_qesdhal_hwservice:hwservice_manager find;

@@ -1,0 +1,10 @@
+allow qtidiagservices_app qtidiagservices_app_userfaultfd:anon_inode { create ioctl read };
+allow qtidiagservices_app appdomain_tmpfs:file { execute getattr map read write };
+allow qtidiagservices_app app_api_service:service_manager find;
+allow qtidiagservices_app system_app_data_file:dir create_dir_perms;
+allow qtidiagservices_app system_app_data_file:file create_file_perms;
+type_transition qtidiagservices_app tmpfs:file appdomain_tmpfs;
+type_transition qtidiagservices_app qtidiagservices_app:anon_inode qtidiagservices_app_userfaultfd "[userfaultfd]";
+hal_client_domain(qtidiagservices_app, vendor_hal_diaghal)
+hal_client_domain(qtidiagservices_app, vendor_hal_perf)
+type qtidiagservices_app, appdomain, domain, mlstrustedsubject;

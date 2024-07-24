@@ -1,0 +1,2 @@
+type vendor_ipacm-diag, domain;
+type vendor_ipacm-diag_exec, exec_type, file_type, vendor_file_type;

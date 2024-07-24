@@ -1,0 +1,4 @@
+get_prop(vendor_perfservice, vendor_iop_prop)
+hal_client_domain(vendor_perfservice, vendor_hal_perf)
+hal_client_domain(vendor_perfservice, vendor_hal_iop)
+type vendor_perfservice, coredomain, domain;

@@ -1,0 +1,11 @@
+allow surfaceflinger bootanim:binder transfer;
+allow surfaceflinger vendor_sysfs_graphics:file rw_file_perms;
+dontaudit surfaceflinger firmware_file:dir search;
+dontaudit surfaceflinger kernel:system module_request;
+dontaudit surfaceflinger vendor_hal_qspmhal_hwservice:hwservice_manager find;
+r_dir_file(surfaceflinger, vendor_sysfs_kgsl)
+r_dir_file(surfaceflinger, vendor_sysfs_qfprom)
+get_prop(surfaceflinger, vendor_gralloc_prop)
+get_prop(surfaceflinger, vendor_display_prop)
+hal_client_domain(surfaceflinger, vendor_hal_perf)
+type surfaceflinger, domain;

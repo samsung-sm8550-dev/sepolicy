@@ -1,0 +1,15 @@
+allow bufferhubd pdx_bufferhub_client_endpoint_socket_type:unix_stream_socket { accept append getattr getopt listen lock read setattr setopt shutdown write };
+allow bufferhubd self:process setsockcreate;
+allow bufferhubd pdx_bufferhub_client_channel_socket_type:unix_stream_socket create_stream_socket_perms;
+allow bufferhubd pdx_performance_client_endpoint_dir_type:dir r_dir_perms;
+allow bufferhubd pdx_performance_client_endpoint_socket_type:sock_file rw_file_perms;
+allow bufferhubd pdx_performance_client_endpoint_socket_type:unix_stream_socket { connectto read shutdown write };
+allow bufferhubd pdx_performance_client_channel_socket_type:unix_stream_socket { append getattr getopt lock read setattr setopt shutdown write };
+allow bufferhubd pdx_performance_client_server_type:fd *;
+allow bufferhubd gpu_device:chr_file rw_file_perms;
+allow bufferhubd ion_device:chr_file r_file_perms;
+allow bufferhubd hal_omx_server:fd *;
+allow bufferhubd hal_codec2_server:fd *;
+allow bufferhubd dumpstate:binder transfer;
+hal_client_domain(bufferhubd, hal_graphics_allocator)
+type bufferhubd, domain, mlstrustedsubject, pdx_bufferhub_client_server_type;

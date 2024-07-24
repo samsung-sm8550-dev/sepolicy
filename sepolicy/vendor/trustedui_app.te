@@ -1,0 +1,6 @@
+allow vendor_trustedui_app vendor_trustedui_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_trustedui_app appdomain_tmpfs:file { execute getattr map read write };
+type_transition vendor_trustedui_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_trustedui_app vendor_trustedui_app:anon_inode vendor_trustedui_app_userfaultfd "[userfaultfd]";
+hal_client_domain(vendor_trustedui_app, vendor_hal_trustedui)
+type vendor_trustedui_app, appdomain, domain;

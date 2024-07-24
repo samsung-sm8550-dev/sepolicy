@@ -1,0 +1,1 @@
+neverallow { domain -hal_gatekeeper_client -hal_gatekeeper_server -atrace -shell -system_app -traceur_app } hal_gatekeeper_service:service_manager find;

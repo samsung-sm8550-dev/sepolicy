@@ -1,0 +1,1 @@
+neverallow { domain -hal_dumpstate_server } hal_dumpstate_hwservice:hwservice_manager add;

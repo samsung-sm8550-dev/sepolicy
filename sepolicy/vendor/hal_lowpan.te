@@ -1,0 +1,20 @@
+expandtypeattribute(hal_lowpan)
+expandtypeattribute(hal_lowpan_client)
+expandtypeattribute(hal_lowpan_server)
+allow hal_lowpan_client hal_lowpan_server:binder { call transfer };
+allow hal_lowpan_client hal_lowpan_server:binder transfer;
+allow hal_lowpan_client hal_lowpan_server:fd *;
+allow hal_lowpan_client hal_lowpan_hwservice:hwservice_manager find;
+allow hal_lowpan_server hal_lowpan_client:binder transfer;
+allow hal_lowpan_server hal_lowpan_client:binder { call transfer };
+allow hal_lowpan_server hal_lowpan_client:fd *;
+allow hal_lowpan_server hal_lowpan_hwservice:hwservice_manager { add find };
+allow hal_lowpan_server hidl_base_hwservice:hwservice_manager add;
+allow hal_lowpan_server property_socket:sock_file write;
+allow hal_lowpan_server init:unix_stream_socket connectto;
+allow hal_lowpan_server lowpan_prop:property_service set;
+allow hal_lowpan_server lowpan_device:chr_file rw_file_perms;
+get_prop(hal_lowpan_server, lowpan_prop)
+hal_server_domain(hal_lowpan_default, hal_lowpan)
+type hal_lowpan_default, domain;
+type hal_lowpan_default_exec, exec_type, file_type, vendor_file_type;

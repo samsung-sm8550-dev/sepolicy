@@ -1,0 +1,2 @@
+allow vendor_qmcs_file self:filesystem associate;
+type vendor_qmcs_file, file_type, vendor_qmcs_file_type;

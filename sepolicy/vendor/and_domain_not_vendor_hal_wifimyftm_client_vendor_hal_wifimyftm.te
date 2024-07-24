@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_wifimyftm_client -vendor_hal_wifimyftm_server } vendor_hal_wifimyftm_hwservice:hwservice_manager find;

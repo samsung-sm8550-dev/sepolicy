@@ -1,0 +1,1 @@
+allow servicemanager { domain -hwservicemanager -init -vendor_init -vndservicemanager }:binder transfer;

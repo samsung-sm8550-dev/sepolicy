@@ -1,0 +1,3 @@
+neverallow { domain -hal_camera_server } hal_camera_hwservice:hwservice_manager add;
+neverallow { domain -hal_camera_server } vendor_hal_camera_postproc_hwservice:hwservice_manager add;
+neverallow { domain -hal_camera_server } vendor_hal_camera_aon_hwservice:hwservice_manager add;

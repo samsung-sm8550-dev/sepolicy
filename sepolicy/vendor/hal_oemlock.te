@@ -1,0 +1,19 @@
+expandtypeattribute(hal_oemlock)
+expandtypeattribute(hal_oemlock_client)
+expandtypeattribute(hal_oemlock_server)
+allow hal_oemlock_server dumpstate:fifo_file write;
+allow hal_oemlock_server dumpstate:fd *;
+allow hal_oemlock_server hal_oemlock_client:binder transfer;
+allow hal_oemlock_server hal_oemlock_hwservice:hwservice_manager { add find };
+allow hal_oemlock_server hidl_base_hwservice:hwservice_manager add;
+allow hal_oemlock_server su:tcp_socket { accept getopt read write };
+allow hal_oemlock_server servicemanager:binder { call transfer };
+allow hal_oemlock_server servicemanager:fd *;
+allow hal_oemlock_client hal_oemlock_server:binder { call transfer };
+allow hal_oemlock_client hal_oemlock_server:fd *;
+allow hal_oemlock_client hal_oemlock_hwservice:hwservice_manager find;
+allow hal_oemlock_client hal_oemlock_service:service_manager find;
+hal_server_domain(hal_oemlock_default, hal_oemlock)
+add_service(hal_oemlock_server, hal_oemlock_service)
+type hal_oemlock_default, domain;
+type hal_oemlock_default_exec, exec_type, file_type, vendor_file_type;

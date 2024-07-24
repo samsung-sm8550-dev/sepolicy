@@ -1,0 +1,1 @@
+neverallow { domain -app_zygote -runas -simpleperf_app_runner -webview_zygote -zygote } { appdomain -shell -simpleperf -su }:process { dyntransition transition };

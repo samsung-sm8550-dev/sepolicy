@@ -1,0 +1,1 @@
+type artd_pre_reboot_service, service_manager_type;

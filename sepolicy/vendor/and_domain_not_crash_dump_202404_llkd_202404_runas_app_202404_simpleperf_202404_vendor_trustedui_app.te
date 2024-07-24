@@ -1,0 +1,1 @@
+neverallow { domain -crash_dump -llkd -runas_app -simpleperf -vendor_trustedui_app } vendor_trustedui_app:process ptrace;

@@ -1,0 +1,4 @@
+get_prop(vendor_qcc_app, vendor_qcc_prop)
+hal_client_domain(vendor_qcc_app, vendor_hal_perf)
+hal_client_domain(vendor_qcc_app, vendor_hal_qccvndhal)
+type vendor_qcc_app, coredomain, domain;

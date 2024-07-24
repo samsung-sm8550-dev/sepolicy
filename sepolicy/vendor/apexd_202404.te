@@ -1,0 +1,4 @@
+allow apexd servicemanager:binder { call transfer };
+allow apexd su:tcp_socket { accept getopt read write };
+add_service(apexd, apex_service)
+type apexd, domain;

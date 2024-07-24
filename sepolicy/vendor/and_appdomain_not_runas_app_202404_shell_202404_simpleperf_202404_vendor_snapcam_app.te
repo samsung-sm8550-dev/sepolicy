@@ -1,0 +1,1 @@
+neverallow { appdomain -runas_app -shell -simpleperf -vendor_snapcam_app } vendor_snapcam_app:file no_rw_file_perms;

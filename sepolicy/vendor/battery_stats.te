@@ -1,0 +1,13 @@
+allow vendor_battery_stats vndbinder_device:chr_file rw_file_perms;
+allow vendor_battery_stats vndservicemanager:binder { call transfer };
+allow vendor_battery_stats vendor_qtrsdkservice_service:service_manager find;
+allow vendor_battery_stats vendor_qccvendor:binder { call transfer };
+allow vendor_battery_stats vendor_qccvendor:binder transfer;
+allow vendor_battery_stats vendor_qccvendor:fd *;
+allow vendor_battery_stats vendor_battery_stats_data_file:dir create_dir_perms;
+allow vendor_battery_stats vendor_battery_stats_data_file:file create_file_perms;
+r_dir_file(vendor_battery_stats, vendor_sysfs_battery_supply)
+r_dir_file(vendor_battery_stats, vendor_sysfs_usb_supply)
+hal_client_domain(vendor_battery_stats, vendor_qccsyshal)
+type vendor_battery_stats, domain;
+type vendor_battery_stats_exec, exec_type, file_type, vendor_file_type;

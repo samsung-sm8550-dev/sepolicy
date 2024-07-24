@@ -1,0 +1,33 @@
+allow crash_dump logd:process { ptrace sigchld sigkill signal sigstop };
+allow crash_dump logd:unix_stream_socket connectto;
+allow crash_dump kmsg_debug_device:chr_file { append open };
+allow crash_dump domain:fd *;
+allow crash_dump domain:fifo_file { read write };
+allow crash_dump domain:fifo_file append;
+allow crash_dump domain:process getattr;
+allow crash_dump exec_type:file r_file_perms;
+allow crash_dump dalvikcache_data_file:dir { getattr search };
+allow crash_dump dalvikcache_data_file:file r_file_perms;
+allow crash_dump apex_module_data_file:dir { getattr search };
+allow crash_dump proc_uptime:file r_file_perms;
+allow crash_dump tombstoned_crash_socket:sock_file write;
+allow crash_dump tombstoned:unix_stream_socket connectto;
+allow crash_dump system_ndebug_socket:sock_file write;
+allow crash_dump system_server:unix_stream_socket connectto;
+allow crash_dump anr_data_file:file { append getattr };
+allow crash_dump tombstone_data_file:file { append getattr };
+allow crash_dump logdr_socket:sock_file write;
+allow crash_dump vendor_hal_gnss_qti:unix_dgram_socket { read write };
+dontaudit crash_dump self:capability sys_ptrace;
+dontaudit crash_dump self:cap_userns sys_ptrace;
+dontaudit crash_dump core_data_file_type:dir search;
+dontaudit crash_dump vendor_file_type:dir search;
+dontaudit crash_dump system_data_file:file read;
+dontaudit crash_dump system_data_file:lnk_file read;
+dontaudit crash_dump property_type:file read;
+r_dir_file(crash_dump, domain)
+r_dir_file(crash_dump, apk_data_file)
+r_dir_file(crash_dump, vendor_file)
+r_dir_file(crash_dump, same_process_hal_file)
+r_dir_file(crash_dump, shell_test_data_file)
+type crash_dump, domain;

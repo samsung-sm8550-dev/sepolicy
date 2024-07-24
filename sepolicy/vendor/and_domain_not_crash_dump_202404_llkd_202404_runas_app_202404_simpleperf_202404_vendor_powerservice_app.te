@@ -1,0 +1,1 @@
+neverallow { domain -crash_dump -llkd -runas_app -simpleperf -vendor_powerservice_app } vendor_powerservice_app:process ptrace;

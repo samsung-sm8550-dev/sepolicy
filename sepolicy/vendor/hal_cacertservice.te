@@ -1,0 +1,12 @@
+allow vendor_hal_cacertservice_qti_client vendor_hal_cacertservice_qti_server:binder { call transfer };
+allow vendor_hal_cacertservice_qti_client vendor_hal_cacertservice_qti_server:binder transfer;
+allow vendor_hal_cacertservice_qti_client vendor_hal_cacertservice_qti_server:fd *;
+allow vendor_hal_cacertservice_qti_client vendor_hal_cacert_hwservice:hwservice_manager find;
+allow vendor_hal_cacertservice_qti_server vendor_hal_cacertservice_qti_client:binder transfer;
+allow vendor_hal_cacertservice_qti_server vendor_hal_cacertservice_qti_client:binder { call transfer };
+allow vendor_hal_cacertservice_qti_server vendor_hal_cacertservice_qti_client:fd *;
+allow vendor_hal_cacertservice_qti_server vendor_hal_cacert_hwservice:hwservice_manager { add find };
+allow vendor_hal_cacertservice_qti_server hidl_base_hwservice:hwservice_manager add;
+attribute vendor_hal_cacertservice_qti;
+attribute vendor_hal_cacertservice_qti_client;
+attribute vendor_hal_cacertservice_qti_server;

@@ -1,0 +1,2 @@
+allow dev_type tmpfs:filesystem associate;
+attribute dev_type;

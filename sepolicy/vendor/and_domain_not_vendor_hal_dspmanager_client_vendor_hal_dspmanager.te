@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_dspmanager_client -vendor_hal_dspmanager_server } vendor_hal_dspmanager_hwservice:hwservice_manager find;

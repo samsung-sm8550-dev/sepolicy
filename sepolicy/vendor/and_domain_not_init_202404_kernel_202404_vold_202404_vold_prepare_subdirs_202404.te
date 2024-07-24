@@ -1,0 +1,8 @@
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_metadata_file:file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_metadata_file:lnk_file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_metadata_file:sock_file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_metadata_file:fifo_file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_data_file:file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_data_file:lnk_file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_data_file:sock_file *;
+neverallow { domain -init -kernel -vold -vold_prepare_subdirs } vold_data_file:fifo_file *;

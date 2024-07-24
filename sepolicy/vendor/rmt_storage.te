@@ -1,0 +1,32 @@
+allow vendor_rmt_storage sysfs_wake_lock:file rw_file_perms;
+allow vendor_rmt_storage self:capability2 block_suspend;
+allow vendor_rmt_storage self:cap2_userns block_suspend;
+allow vendor_rmt_storage self:capability { net_bind_service setgid setpcap setuid };
+allow vendor_rmt_storage self:socket create_socket_perms;
+allow vendor_rmt_storage self:qipcrtr_socket create_socket_perms;
+allow vendor_rmt_storage system_suspend_server:binder { call transfer };
+allow vendor_rmt_storage system_suspend_server:fd *;
+allow vendor_rmt_storage system_suspend_hwservice:hwservice_manager find;
+allow vendor_rmt_storage hwservicemanager:binder { call transfer };
+allow vendor_rmt_storage hidl_manager_hwservice:hwservice_manager find;
+allow vendor_rmt_storage hal_system_suspend_service:service_manager find;
+allow vendor_rmt_storage servicemanager:binder { call transfer };
+allow vendor_rmt_storage property_socket:sock_file write;
+allow vendor_rmt_storage init:unix_stream_socket connectto;
+allow vendor_rmt_storage vendor_ctl_vendor_rmt_storage_prop:property_service set;
+allow vendor_rmt_storage cgroup:dir create_dir_perms;
+allow vendor_rmt_storage uio_device:chr_file rw_file_perms;
+allow vendor_rmt_storage kmsg_device:chr_file w_file_perms;
+allow vendor_rmt_storage block_device:dir r_dir_perms;
+allow vendor_rmt_storage vendor_modem_efs_partition_device:blk_file rw_file_perms;
+allow vendor_rmt_storage vendor_ssd_block_device:blk_file rw_file_perms;
+allowxperm vendor_rmt_storage self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_rmt_storage self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+r_dir_file(vendor_rmt_storage, sysfs_uio)
+r_dir_file(vendor_rmt_storage, vendor_sysfs_uio_file)
+r_dir_file(vendor_rmt_storage, vendor_sysfs_ssr)
+r_dir_file(vendor_rmt_storage, vendor_sysfs_data)
+get_prop(vendor_rmt_storage, hwservicemanager_prop)
+get_prop(vendor_rmt_storage, vendor_ctl_vendor_rmt_storage_prop)
+type vendor_rmt_storage, domain;
+type vendor_rmt_storage_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,1 @@
+neverallow { domain -adbd -init -runas -zygote } shell:process { dyntransition transition };
