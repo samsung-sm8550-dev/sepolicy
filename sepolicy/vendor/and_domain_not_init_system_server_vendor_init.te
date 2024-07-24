@@ -1,0 +1,1 @@
+neverallow { domain -init -system_server -vendor_init } exported_pm_prop:property_service set;

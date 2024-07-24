@@ -1,0 +1,4 @@
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace -shell -system_app -traceur_app } hal_keymint_service:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace -shell -system_app -traceur_app } hal_remotelyprovisionedcomponent_service:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace -shell -system_app -traceur_app } hal_secureclock_service:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace -shell -system_app -traceur_app } hal_sharedsecret_service:service_manager find;

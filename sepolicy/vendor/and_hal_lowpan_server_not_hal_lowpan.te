@@ -1,0 +1,1 @@
+neverallow { hal_lowpan_server -hal_lowpan } domain:process fork;

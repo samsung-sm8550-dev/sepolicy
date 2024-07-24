@@ -1,0 +1,2 @@
+allow bt_firmware_file self:filesystem associate;
+type bt_firmware_file, contextmount_type, file_type, vendor_file_type;

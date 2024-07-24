@@ -1,0 +1,2 @@
+neverallow { domain -vendor_aksgamepad_app } vendor_aksgamepad_app_userfaultfd:anon_inode *;
+neverallow { vendor_aksgamepad_app -runas_app -shell -simpleperf } { domain -vendor_aksgamepad_app }:file no_rw_file_perms;

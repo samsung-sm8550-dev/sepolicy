@@ -1,0 +1,1 @@
+type hal_graphics_mapper_hwservice, hwservice_manager_type, same_process_hwservice;

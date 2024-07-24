@@ -1,0 +1,47 @@
+allow update_engine_common block_device:dir search;
+allow update_engine_common block_device:dir r_dir_perms;
+allow update_engine_common boot_block_device:blk_file rw_file_perms;
+allow update_engine_common system_block_device:blk_file rw_file_perms;
+allow update_engine_common misc_block_device:blk_file rw_file_perms;
+allow update_engine_common rootfs:dir getattr;
+allow update_engine_common rootfs:file r_file_perms;
+allow update_engine_common postinstall_mnt_dir:dir { getattr mounton search };
+allow update_engine_common postinstall_file:filesystem { mount relabelfrom relabelto unmount };
+allow update_engine_common postinstall_file:file rx_file_perms;
+allow update_engine_common postinstall_file:lnk_file r_file_perms;
+allow update_engine_common postinstall_file:dir r_dir_perms;
+allow update_engine_common labeledfs:filesystem { mount relabelfrom unmount };
+allow update_engine_common shell_exec:file rx_file_perms;
+allow update_engine_common postinstall:process { sigkill signal sigstop };
+allow update_engine_common proc_cmdline:file r_file_perms;
+allow update_engine_common sysfs:dir r_dir_perms;
+allow update_engine_common sysfs_fs_f2fs:dir r_dir_perms;
+allow update_engine_common dm_device:chr_file rw_file_perms;
+allow update_engine_common dm_device:blk_file rw_file_perms;
+allow update_engine_common super_block_device_type:blk_file rw_file_perms;
+allow update_engine_common statsdw_socket:sock_file write;
+allow update_engine_common statsd:unix_dgram_socket sendto;
+allow update_engine_common metadata_file:dir search;
+allow update_engine_common ota_metadata_file:dir rw_dir_perms;
+allow update_engine_common ota_metadata_file:file create_file_perms;
+allow update_engine_common recovery_block_device:blk_file rw_file_perms;
+allow update_engine_common vendor_custom_ab_block_device:blk_file rw_file_perms;
+allow update_engine_common vendor_modem_block_device:blk_file rw_file_perms;
+allow update_engine_common vendor_ssd_block_device:blk_file rw_file_perms;
+allow update_engine_common vendor_xbl_block_device:blk_file rw_file_perms;
+allow update_engine_common vendor_uefi_block_device:blk_file rw_file_perms;
+allow update_engine_common tmpfs:lnk_file r_file_perms;
+allow update_engine_common firmware_file:dir search;
+allow update_engine_common firmware_file:filesystem getattr;
+allow update_engine_common adsprpcd_file:dir search;
+allow update_engine_common bt_firmware_file:filesystem getattr;
+dontaudit update_engine_common self:capability { dac_override dac_read_search };
+allowxperm update_engine_common dev_type:ioctl blk_file { range 0x125d 0x125e 0x1277 range 0x127c 0x127d 0x127f };
+allowxperm update_engine_common super_block_device_type:ioctl blk_file { 0x1278 0x127a };
+attribute update_engine_common;
+r_dir_file(update_engine_common, cache_file)
+r_dir_file(update_engine_common, sysfs_dt_firmware_android)
+r_dir_file(update_engine_common, sysfs_dm)
+get_prop(update_engine_common, virtual_ab_prop)
+get_prop(update_engine_common, ab_update_gki_prop)
+get_prop(update_engine_common, build_bootimage_prop)

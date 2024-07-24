@@ -1,0 +1,1 @@
+type hal_usb_gadget_hwservice, hwservice_manager_type, protected_hwservice;

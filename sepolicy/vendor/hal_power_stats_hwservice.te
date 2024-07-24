@@ -1,0 +1,1 @@
+type hal_power_stats_hwservice, hwservice_manager_type, protected_hwservice;

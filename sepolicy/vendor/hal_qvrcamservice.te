@@ -1,0 +1,3 @@
+attribute vendor_hal_qvrcamservice_qti;
+attribute vendor_hal_qvrcamservice_qti_client;
+attribute vendor_hal_qvrcamservice_qti_server;

@@ -1,0 +1,1 @@
+neverallow { domain -hal_lowpan_client -hal_lowpan_server } hal_lowpan_hwservice:hwservice_manager find;

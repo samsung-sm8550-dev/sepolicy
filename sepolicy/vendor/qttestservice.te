@@ -1,0 +1,7 @@
+allow vendor_qttestservice vndbinder_device:chr_file rw_file_perms;
+allow vendor_qttestservice vndservicemanager:binder { call transfer };
+allow vendor_qttestservice su:tcp_socket { accept getopt read write };
+r_dir_file(vendor_qttestservice, firmware_file)
+add_service(vendor_qttestservice, vendor_qutestservice_service)
+type vendor_qttestservice, domain;
+type vendor_qttestservice_exec, exec_type, file_type, vendor_file_type;

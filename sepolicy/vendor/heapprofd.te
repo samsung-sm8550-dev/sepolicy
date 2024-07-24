@@ -1,0 +1,2 @@
+neverallow heapprofd shell_test_data_file:file { no_w_file_perms no_x_file_perms };
+type heapprofd, coredomain, domain;

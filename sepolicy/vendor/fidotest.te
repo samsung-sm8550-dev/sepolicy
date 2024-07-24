@@ -1,0 +1,13 @@
+allow vendor_fidotest platform_app:binder { call transfer };
+allow vendor_fidotest platform_app:binder transfer;
+allow vendor_fidotest platform_app:fd *;
+allow vendor_fidotest system_app:binder { call transfer };
+allow vendor_fidotest system_app:binder transfer;
+allow vendor_fidotest system_app:fd *;
+allow vendor_fidotest property_socket:sock_file write;
+allow vendor_fidotest init:unix_stream_socket connectto;
+allow vendor_fidotest tee_device:chr_file rw_file_perms;
+allow vendor_fidotest firmware_file:dir r_dir_perms;
+allow vendor_fidotest firmware_file:file r_file_perms;
+type vendor_fidotest, domain;
+type vendor_fidotest_exec, exec_type, file_type, vendor_file_type;

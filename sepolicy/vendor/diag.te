@@ -1,0 +1,36 @@
+allow vendor_diag shell:process sigchld;
+allow vendor_diag shell:fd *;
+allow vendor_diag tty_device:chr_file rw_file_perms;
+allow vendor_diag devpts:chr_file rw_file_perms;
+allow vendor_diag tee_device:chr_file rw_file_perms;
+allow vendor_diag vendor_diag_device:chr_file rw_file_perms;
+allow vendor_diag su:fd *;
+allow vendor_diag cgroup:dir create_dir_perms;
+allow vendor_diag fuse:dir create_dir_perms;
+allow vendor_diag fuse:dir r_dir_perms;
+allow vendor_diag fuse:file r_file_perms;
+allow vendor_diag vendor_persist_drm_file:dir create_dir_perms;
+allow vendor_diag vendor_persist_drm_file:file create_file_perms;
+allow vendor_diag port:tcp_socket name_connect;
+allow vendor_diag self:capability { net_raw setgid setuid sys_admin };
+allow vendor_diag self:capability2 syslog;
+allow vendor_diag self:capability2 block_suspend;
+allow vendor_diag self:tcp_socket { connect create setopt };
+allow vendor_diag self:cap2_userns block_suspend;
+allow vendor_diag sysfs_wake_lock:file rw_file_perms;
+allow vendor_diag system_suspend_server:binder { call transfer };
+allow vendor_diag system_suspend_server:fd *;
+allow vendor_diag system_suspend_hwservice:hwservice_manager find;
+allow vendor_diag hwservicemanager:binder { call transfer };
+allow vendor_diag hidl_manager_hwservice:hwservice_manager find;
+allow vendor_diag hal_system_suspend_service:service_manager find;
+allow vendor_diag servicemanager:binder { call transfer };
+allow vendor_diag kernel:system syslog_mod;
+allow vendor_diag mnt_vendor_file:dir r_dir_perms;
+r_dir_file(vendor_diag, vendor_persist_data_file)
+r_dir_file(vendor_diag, storage_file)
+r_dir_file(vendor_diag, mnt_user_file)
+get_prop(vendor_diag, hwservicemanager_prop)
+net_domain(vendor_diag)
+type vendor_diag, domain;
+type vendor_diag_exec, exec_type, file_type, vendor_file_type;

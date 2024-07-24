@@ -1,0 +1,2 @@
+neverallow { vendor_halserverdomain -vendor_hal_diaghal -vendor_hal_fstman -vendor_hal_dpmapiservice_qti -vendor_cnd -vendor_qms -vendor_wigignpt } self:capability { net_admin net_raw };
+neverallow { vendor_halserverdomain -vendor_hal_diaghal -vendor_hal_fstman -vendor_hal_dpmapiservice_qti -vendor_cnd -vendor_qms -vendor_wigignpt } self:cap_userns { net_admin net_raw };

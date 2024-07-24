@@ -1,0 +1,38 @@
+allow vendor_location_lowi_server vendor_location:process sigchld;
+allow vendor_location_lowi_server vendor_location:fd *;
+allow vendor_location_lowi_server vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_lowi_server vendor_location_data_file:dir create_dir_perms;
+allow vendor_location_lowi_server vendor_location_data_file:file create_file_perms;
+allow vendor_location_lowi_server vendor_location_socket:lnk_file { getattr open read };
+allow vendor_location_lowi_server vendor_location_socket:sock_file create_file_perms;
+allow vendor_location_lowi_server vendor_location_socket:dir rw_dir_perms;
+allow vendor_location_lowi_server hwservicemanager:binder { call transfer };
+allow vendor_location_lowi_server system_server:binder { call transfer };
+allow vendor_location_lowi_server system_server:binder transfer;
+allow vendor_location_lowi_server system_server:fd *;
+allow vendor_location_lowi_server vendor_cnd:binder { call transfer };
+allow vendor_location_lowi_server vendor_cnd:fd *;
+allow vendor_location_lowi_server self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_location_lowi_server self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_location_lowi_server self:netlink_socket create_socket_perms_no_ioctl;
+allow vendor_location_lowi_server self:udp_socket create_socket_perms;
+allow vendor_location_lowi_server self:netlink_route_socket { bind create read };
+allow vendor_location_lowi_server hal_wifi:unix_stream_socket { read write };
+allow vendor_location_lowi_server vendor_wifi_vendor_data_file:dir search;
+allow vendor_location_lowi_server wpa_data_file:dir rw_dir_perms;
+allow vendor_location_lowi_server wpa_data_file:sock_file create_file_perms;
+allow vendor_location_lowi_server vendor_wifihal_socket:dir search;
+allow vendor_location_lowi_server servicemanager:binder { call transfer };
+dontaudit vendor_location_lowi_server vendor_location_slim_daemon:unix_dgram_socket sendto;
+allowxperm vendor_location_lowi_server self:ioctl udp_socket { 0x8913 0x8927 0x8933 0x89f1 };
+allowxperm vendor_location_lowi_server self:ioctl udp_socket { 0x8be5 0x8bf1 0x8bf3 };
+unix_socket_send(vendor_location_lowi_server, vendor_wifihal, vendor_hal_gnss_qti)
+unix_socket_send(vendor_location_lowi_server, vendor_wifihal, hal_wifi_supplicant_default)
+unix_socket_send(vendor_location_lowi_server, vendor_wifihal, hal_wifi_default)
+unix_socket_send(vendor_location_lowi_server, vendor_wifihal, vendor_location_xtwifi_client)
+unix_socket_send(vendor_location_lowi_server, vendor_wifihal, vendor_mlid)
+get_prop(vendor_location_lowi_server, hwservicemanager_prop)
+get_prop(vendor_location_lowi_server, vendor_cnd_prop)
+hal_client_domain(vendor_location_lowi_server, vendor_hal_qms_qti)
+type vendor_location_lowi_server, domain;
+type vendor_location_lowi_server_exec, exec_type, file_type, vendor_file_type;

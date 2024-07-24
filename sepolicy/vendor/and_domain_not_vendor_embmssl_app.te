@@ -1,0 +1,2 @@
+neverallow { domain -vendor_embmssl_app } vendor_embmssl_app_userfaultfd:anon_inode *;
+neverallow { vendor_embmssl_app -runas_app -shell -simpleperf } { domain -vendor_embmssl_app }:file no_rw_file_perms;

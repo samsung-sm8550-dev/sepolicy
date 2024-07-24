@@ -1,0 +1,1 @@
+neverallow { domain -crash_dump -llkd -runas_app -simpleperf -vendor_episteme_app } vendor_episteme_app:process ptrace;

@@ -1,0 +1,1 @@
+neverallow { appdomain -runas_app -shell -simpleperf -vendor_aksgamepad_app } vendor_aksgamepad_app:file no_rw_file_perms;

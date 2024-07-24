@@ -1,0 +1,33 @@
+expandtypeattribute(hal_neuralnetworks)
+expandtypeattribute(hal_neuralnetworks_client)
+expandtypeattribute(hal_neuralnetworks_server)
+allow hal_neuralnetworks_server dumpstate:fifo_file write;
+allow hal_neuralnetworks_server dumpstate:fd *;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder transfer;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder { call transfer };
+allow hal_neuralnetworks_server hal_neuralnetworks_client:fd *;
+allow hal_neuralnetworks_server hal_neuralnetworks_hwservice:hwservice_manager { add find };
+allow hal_neuralnetworks_server hidl_base_hwservice:hwservice_manager add;
+allow hal_neuralnetworks_server app_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server privapp_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server shell_data_file:file { getattr map read write };
+allow hal_neuralnetworks_server ion_device:chr_file r_file_perms;
+allow hal_neuralnetworks_server storage_file:file { getattr map read };
+allow hal_neuralnetworks_server apk_data_file:file { getattr map read };
+allow hal_neuralnetworks_server su:tcp_socket { accept getopt read write };
+allow hal_neuralnetworks_server servicemanager:binder { call transfer };
+allow hal_neuralnetworks_server servicemanager:fd *;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder { call transfer };
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder transfer;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:fd *;
+allow hal_neuralnetworks_client hal_neuralnetworks_hwservice:hwservice_manager find;
+allow hal_neuralnetworks_client hal_neuralnetworks_service:service_manager find;
+allow hal_neuralnetworks hidl_memory_hwservice:hwservice_manager find;
+allow hal_neuralnetworks hal_allocator:fd *;
+allow hal_neuralnetworks hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_neuralnetworks hal_graphics_allocator:fd *;
+allow hal_neuralnetworks gpu_device:chr_file rw_file_perms;
+allow hal_neuralnetworks gpu_device:dir r_dir_perms;
+get_prop(hal_neuralnetworks_client, nnapi_ext_deny_product_prop)
+get_prop(hal_neuralnetworks_client, device_config_nnapi_native_prop)
+add_service(hal_neuralnetworks_server, hal_neuralnetworks_service)

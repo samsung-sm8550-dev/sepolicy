@@ -1,0 +1,1 @@
+neverallow { domain -recovery -update_engine } postinstall:process { dyntransition transition };

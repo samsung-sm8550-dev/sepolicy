@@ -1,0 +1,1 @@
+type hal_renderscript_hwservice, hwservice_manager_type, same_process_hwservice;

@@ -1,0 +1,1 @@
+neverallow { hal_light_server -hal_light } domain:process fork;

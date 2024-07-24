@@ -1,0 +1,3 @@
+attribute vendor_hal_atfwd;
+attribute vendor_hal_atfwd_server;
+attribute vendor_hal_atfwd_client;

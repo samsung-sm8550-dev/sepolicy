@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_cacertservice_qti_server } vendor_hal_cacert_hwservice:hwservice_manager add;

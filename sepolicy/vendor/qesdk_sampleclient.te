@@ -1,0 +1,13 @@
+allow vendor_qesdk_sampleclient vendor_hal_qesdhal_default:file read;
+allow vendor_qesdk_sampleclient vendor_hal_qesdhal_default:lnk_file read;
+allow vendor_qesdk_sampleclient vendor_hal_qesdhal_default:dir search;
+allow vendor_qesdk_sampleclient self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_qesdk_sampleclient vendor_qesd_one_socket:dir r_dir_perms;
+unix_socket_connect(vendor_qesdk_sampleclient, vendor_qesd, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qesdk_sampleclient, vendor_qesd, vendor_hal_qesdonehal_default)
+unix_socket_connect(vendor_qesdk_sampleclient, vendor_qesd_one, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qesdk_sampleclient, vendor_qesd_one, vendor_hal_qesdonehal_default)
+get_prop(vendor_qesdk_sampleclient, vendor_qesdk_one_prop)
+get_prop(vendor_qesdk_sampleclient, hwservicemanager_prop)
+type vendor_qesdk_sampleclient, domain;
+type vendor_qesdk_sampleclient_exec, exec_type, file_type, vendor_file_type;

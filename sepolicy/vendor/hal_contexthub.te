@@ -1,0 +1,41 @@
+expandtypeattribute(hal_contexthub)
+expandtypeattribute(hal_contexthub_client)
+expandtypeattribute(hal_contexthub_server)
+allow hal_contexthub_server dumpstate:fifo_file write;
+allow hal_contexthub_server dumpstate:fd *;
+allow hal_contexthub_server hal_contexthub_client:binder transfer;
+allow hal_contexthub_server hal_contexthub_client:binder { call transfer };
+allow hal_contexthub_server hal_contexthub_client:fd *;
+allow hal_contexthub_server su:tcp_socket { accept getopt read write };
+allow hal_contexthub_server servicemanager:binder { call transfer };
+allow hal_contexthub_server servicemanager:fd *;
+allow hal_contexthub_server hal_contexthub_hwservice:hwservice_manager { add find };
+allow hal_contexthub_server hidl_base_hwservice:hwservice_manager add;
+allow hal_contexthub_client hal_contexthub_server:binder { call transfer };
+allow hal_contexthub_client hal_contexthub_server:binder transfer;
+allow hal_contexthub_client hal_contexthub_server:fd *;
+allow hal_contexthub_client hal_contexthub_service:service_manager find;
+allow hal_contexthub_client hal_contexthub_hwservice:hwservice_manager find;
+allow hal_contexthub_default fwk_stats_service:service_manager find;
+allow hal_contexthub_default stats_service_server:binder { call transfer };
+allow hal_contexthub_default stats_service_server:fd *;
+allow hal_contexthub_default self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow hal_contexthub_default self:capability2 block_suspend;
+allow hal_contexthub_default self:cap2_userns block_suspend;
+allow hal_contexthub_default vendor_xdsp_device:chr_file r_file_perms;
+allow hal_contexthub_default vendor_dsp_device:chr_file r_file_perms;
+allow hal_contexthub_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_contexthub_default sysfs_wake_lock:file rw_file_perms;
+allow hal_contexthub_default system_suspend_server:binder { call transfer };
+allow hal_contexthub_default system_suspend_server:fd *;
+allow hal_contexthub_default system_suspend_hwservice:hwservice_manager find;
+allow hal_contexthub_default hwservicemanager:binder { call transfer };
+allow hal_contexthub_default hidl_manager_hwservice:hwservice_manager find;
+allow hal_contexthub_default hal_system_suspend_service:service_manager find;
+allow hal_contexthub_default servicemanager:binder { call transfer };
+get_prop(hal_contexthub_default, vendor_adsprpc_prop)
+get_prop(hal_contexthub_default, hwservicemanager_prop)
+hal_server_domain(hal_contexthub_default, hal_contexthub)
+add_service(hal_contexthub_server, hal_contexthub_service)
+type hal_contexthub_default, domain;
+type hal_contexthub_default_exec, exec_type, file_type, vendor_file_type;

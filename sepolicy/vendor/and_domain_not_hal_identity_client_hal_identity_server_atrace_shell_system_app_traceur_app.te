@@ -1,0 +1,1 @@
+neverallow { domain -hal_identity_client -hal_identity_server -atrace -shell -system_app -traceur_app } hal_identity_service:service_manager find;

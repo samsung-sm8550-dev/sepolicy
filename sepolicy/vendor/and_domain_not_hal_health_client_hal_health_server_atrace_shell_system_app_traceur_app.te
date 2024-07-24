@@ -1,0 +1,1 @@
+neverallow { domain -hal_health_client -hal_health_server -atrace -shell -system_app -traceur_app } hal_health_service:service_manager find;

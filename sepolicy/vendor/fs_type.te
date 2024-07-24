@@ -1,0 +1,3 @@
+neverallow fs_type file_type:filesystem associate;
+allow fs_type self:filesystem associate;
+attribute fs_type;

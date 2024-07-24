@@ -1,0 +1,1 @@
+neverallow { domain -hal_authgraph_client -hal_authgraph_server -atrace -shell -system_app -traceur_app } hal_authgraph_service:service_manager find;

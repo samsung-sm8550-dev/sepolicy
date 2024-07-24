@@ -1,0 +1,1 @@
+neverallow { domain -hal_tv_hdmi_earc_client -hal_tv_hdmi_earc_server -atrace -shell -system_app -traceur_app } hal_tv_hdmi_earc_service:service_manager find;

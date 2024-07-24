@@ -1,0 +1,1 @@
+type dexopt_chroot_setup_service, service_manager_type;

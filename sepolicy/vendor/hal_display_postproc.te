@@ -1,0 +1,5 @@
+allow vendor_hal_display_postproc_client vendor_hal_display_postproc_hwservice:hwservice_manager find;
+attribute vendor_hal_display_postproc;
+attribute vendor_hal_display_postproc_client;
+attribute vendor_hal_display_postproc_server;
+type vendor_hal_display_postproc_hwservice, hwservice_manager_type, protected_hwservice;

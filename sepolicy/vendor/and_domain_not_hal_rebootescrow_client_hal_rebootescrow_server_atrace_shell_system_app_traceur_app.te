@@ -1,0 +1,1 @@
+neverallow { domain -hal_rebootescrow_client -hal_rebootescrow_server -atrace -shell -system_app -traceur_app } hal_rebootescrow_service:service_manager find;

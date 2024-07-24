@@ -1,0 +1,1 @@
+neverallow appdomain { domain -appdomain -perfetto }:process { sigkill signal sigstop };

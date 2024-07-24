@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_bluetooth_dun_server } vendor_hal_bluetooth_dun_hwservice:hwservice_manager add;

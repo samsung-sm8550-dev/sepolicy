@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate -shell -su } su_exec:file no_x_file_perms;

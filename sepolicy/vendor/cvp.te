@@ -1,0 +1,8 @@
+allow vendor_cvp ion_device:chr_file rw_file_perms;
+allow vendor_cvp sdcard_type:dir rw_dir_perms;
+allow vendor_cvp sdcard_type:file create_file_perms;
+allow vendor_cvp video_device:chr_file rw_file_perms;
+r_dir_file(vendor_cvp, adsprpcd_file)
+hal_server_domain(vendor_cvp, vendor_hal_cvp)
+type vendor_cvp, domain;
+type vendor_cvp_exec, exec_type, file_type, vendor_file_type;

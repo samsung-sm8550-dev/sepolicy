@@ -1,0 +1,1 @@
+neverallow { domain -hal_drm_client -hal_drm_server -atrace -shell -system_app -traceur_app } hal_drm_service:service_manager find;

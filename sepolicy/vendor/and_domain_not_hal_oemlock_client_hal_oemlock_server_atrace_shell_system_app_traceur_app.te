@@ -1,0 +1,1 @@
+neverallow { domain -hal_oemlock_client -hal_oemlock_server -atrace -shell -system_app -traceur_app } hal_oemlock_service:service_manager find;

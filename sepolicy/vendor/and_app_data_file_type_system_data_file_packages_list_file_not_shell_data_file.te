@@ -1,0 +1,7 @@
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:file write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:dir write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:lnk_file write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:chr_file write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:blk_file write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:sock_file write;
+neverallow logd { app_data_file_type system_data_file packages_list_file -shell_data_file }:fifo_file write;

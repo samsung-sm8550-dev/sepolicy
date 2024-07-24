@@ -1,0 +1,1 @@
+neverallow { domain -hal_face_server } hal_face_hwservice:hwservice_manager add;

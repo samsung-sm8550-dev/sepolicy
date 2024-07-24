@@ -1,0 +1,1 @@
+neverallow { domain -hal_vr_client -hal_vr_server } hal_vr_hwservice:hwservice_manager find;

@@ -1,0 +1,2 @@
+allow cgroup tmpfs:filesystem associate;
+type cgroup, fs_type, mlstrustedobject;

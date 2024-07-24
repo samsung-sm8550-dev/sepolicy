@@ -1,0 +1,1 @@
+neverallow { coredomain -system_writes_mnt_vendor_violators -init -ueventd -vold } mnt_vendor_file:dir *;

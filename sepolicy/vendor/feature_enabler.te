@@ -1,0 +1,17 @@
+allow vendor_feature_enabler_client tee_device:chr_file rw_file_perms;
+allow vendor_feature_enabler_client ion_device:chr_file rw_file_perms;
+allow vendor_feature_enabler_client mnt_vendor_file:dir search;
+allow vendor_feature_enabler_client vndbinder_device:chr_file rw_file_perms;
+allow vendor_feature_enabler_client vndservicemanager:binder { call transfer };
+allow vendor_feature_enabler_client vendor_qfeatenab_client_service:service_manager { add find };
+allow vendor_feature_enabler_client vendor_qdisplay_service:service_manager find;
+allow vendor_feature_enabler_client graphics_device:chr_file rw_file_perms;
+allow vendor_feature_enabler_client vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_feature_enabler_client vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_feature_enabler_client vendor_dmabuf_user_contig_heap_device:chr_file r_file_perms;
+r_dir_file(vendor_feature_enabler_client, vendor_persist_feature_enabler_file)
+r_dir_file(vendor_feature_enabler_client, vendor_persist_data_file)
+unix_socket_connect(vendor_feature_enabler_client, vendor_ssgtzd, vendor_ssgtzd)
+hal_client_domain(vendor_feature_enabler_client, hal_graphics_composer)
+type vendor_feature_enabler_client, domain;
+type vendor_feature_enabler_client_exec, exec_type, file_type, vendor_file_type;

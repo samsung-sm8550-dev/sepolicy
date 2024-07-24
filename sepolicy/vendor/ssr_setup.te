@@ -1,0 +1,7 @@
+allow vendor_ssr_setup vendor_sysfs_ssr:lnk_file w_file_perms;
+allow vendor_ssr_setup vendor_sysfs_ssr:file rw_file_perms;
+allow vendor_ssr_setup vendor_sysfs_ssr_toggle:file rw_file_perms;
+allow vendor_ssr_setup vendor_sysfs_data:file r_file_perms;
+get_prop(vendor_ssr_setup, vendor_ssr_prop)
+type vendor_ssr_setup, domain;
+type vendor_ssr_setup_exec, exec_type, file_type, vendor_file_type;

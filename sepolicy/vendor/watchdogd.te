@@ -1,0 +1,3 @@
+allow watchdogd watchdog_device:chr_file rw_file_perms;
+allow watchdogd kmsg_device:chr_file rw_file_perms;
+type watchdogd, domain;

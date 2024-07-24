@@ -1,0 +1,3 @@
+attribute vendor_hal_eid;
+attribute vendor_hal_eid_client;
+attribute vendor_hal_eid_server;

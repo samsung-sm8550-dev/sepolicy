@@ -1,0 +1,12 @@
+allow sgdisk block_device:dir search;
+allow sgdisk vold_device:blk_file rw_file_perms;
+allow sgdisk devpts:chr_file { getattr ioctl read write };
+allow sgdisk vold:fd *;
+allow sgdisk vold:fifo_file { getattr read write };
+allow sgdisk self:capability sys_admin;
+allow sgdisk self:cap_userns sys_admin;
+allowxperm sgdisk vold_device:ioctl blk_file 0x301;
+allowxperm sgdisk vold_device:ioctl blk_file 0x1260;
+allowxperm sgdisk vold_device:ioctl blk_file 0x125f;
+allowxperm sgdisk vold_device:ioctl blk_file 0x127b;
+type sgdisk, domain;

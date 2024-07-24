@@ -1,0 +1,2 @@
+allow hal_codec2_server { appdomain -isolated_app_all }:fifo_file read;
+allow vendor_hal_drm_widevine { appdomain -isolated_app_all }:fd *;

@@ -1,0 +1,38 @@
+allow system_suspend_server charger_type:binder transfer;
+allow system_suspend_server dumpstate:binder transfer;
+allow system_suspend_server hal_bluetooth:binder transfer;
+allow system_suspend_server hal_health_server:binder transfer;
+allow system_suspend_server hal_telephony_server:binder transfer;
+allow system_suspend_server inputflinger:binder transfer;
+allow system_suspend_server slideshow:binder transfer;
+allow system_suspend_server hwservicemanager:binder { call transfer };
+allow system_suspend_server system_suspend_hwservice:hwservice_manager { add find };
+allow system_suspend_server hidl_base_hwservice:hwservice_manager add;
+allow system_suspend_server update_engine:binder transfer;
+allow system_suspend_server vold:binder transfer;
+allow system_suspend_server hal_sensors_default:binder transfer;
+allow system_suspend_server vendor_cnd:binder transfer;
+allow system_suspend_server vendor_diag:binder transfer;
+allow system_suspend_server vendor_dspservice:binder transfer;
+allow system_suspend_server hal_audio:binder transfer;
+allow system_suspend_server hal_camera_default:binder transfer;
+allow system_suspend_server hal_contexthub_default:binder transfer;
+allow system_suspend_server vendor_hal_drm_widevine:binder transfer;
+allow system_suspend_server vendor_ims_service:binder transfer;
+allow system_suspend_server vendor_qti_init_shell:binder transfer;
+allow system_suspend_server vendor_mdm_helper:binder transfer;
+allow system_suspend_server vendor_netmgrd:binder transfer;
+allow system_suspend_server vendor_rfs_access:binder transfer;
+allow system_suspend_server vendor_rmt_storage:binder transfer;
+allow system_suspend_server vendor_sensors:binder transfer;
+allow system_suspend_server vendor_sensors_qesdk:binder transfer;
+allow system_suspend_server vendor_lowirpcd_service:binder transfer;
+allow system_suspend_server vendor_dpmd:binder transfer;
+allow system_suspend_server vendor_dpmd_vndr:binder transfer;
+allow system_suspend_server vendor_hvdcp:binder transfer;
+allow system_suspend_server vendor_location_xtwifi_client:binder transfer;
+allow system_suspend_server vendor_qms:binder transfer;
+allow system_suspend_server tee:binder transfer;
+attribute system_suspend_server;
+r_dir_file(system_suspend_server, vendor_sysfs_usb_node)
+get_prop(system_suspend_server, hwservicemanager_prop)

@@ -1,0 +1,21 @@
+expandtypeattribute(hal_lineage_livedisplay)
+expandtypeattribute(hal_lineage_livedisplay_client)
+expandtypeattribute(hal_lineage_livedisplay_server)
+allow hal_lineage_livedisplay_qti vendor_qdisplay_service:service_manager find;
+allow hal_lineage_livedisplay_qti hal_graphics_composer_default:binder { call transfer };
+allow hal_lineage_livedisplay_qti hal_graphics_composer_default:fd *;
+allow hal_lineage_livedisplay_qti vndbinder_device:chr_file rw_file_perms;
+allow hal_lineage_livedisplay_qti vndservicemanager:binder { call transfer };
+allow hal_lineage_livedisplay_qti vendor_display_vendor_data_file:dir rw_dir_perms;
+allow hal_lineage_livedisplay_qti vendor_display_vendor_data_file:file create_file_perms;
+allow hal_lineage_livedisplay_client hal_lineage_livedisplay_server:binder { call transfer };
+allow hal_lineage_livedisplay_client hal_lineage_livedisplay_server:fd *;
+allow hal_lineage_livedisplay_client hal_lineage_livedisplay_hwservice:hwservice_manager find;
+allow hal_lineage_livedisplay_server hal_lineage_livedisplay_client:binder transfer;
+allow hal_lineage_livedisplay_server hal_lineage_livedisplay_hwservice:hwservice_manager { add find };
+allow hal_lineage_livedisplay_server hidl_base_hwservice:hwservice_manager add;
+get_prop(hal_lineage_livedisplay_qti, vendor_display_prop)
+hal_server_domain(hal_lineage_livedisplay_qti, hal_lineage_livedisplay)
+type hal_lineage_livedisplay_qti, domain;
+type hal_lineage_livedisplay_qti_exec, exec_type, file_type, vendor_file_type;
+type hal_lineage_livedisplay_hwservice, hwservice_manager_type;

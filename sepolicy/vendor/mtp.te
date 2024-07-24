@@ -1,0 +1,2 @@
+allow mtp self:pppox_socket create_socket_perms_no_ioctl;
+type mtp, domain;

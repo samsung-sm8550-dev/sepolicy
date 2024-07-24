@@ -1,0 +1,1 @@
+neverallow { domain -sensor_service_server } fwk_sensor_hwservice:hwservice_manager add;

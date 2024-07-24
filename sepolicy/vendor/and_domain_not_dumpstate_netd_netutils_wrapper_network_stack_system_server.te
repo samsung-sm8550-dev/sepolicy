@@ -1,0 +1,3 @@
+neverallow { domain -dumpstate -netd -netutils_wrapper -network_stack -system_server } netd_service:service_manager find;
+neverallow { domain -dumpstate -netd -netutils_wrapper -network_stack -system_server } dnsresolver_service:service_manager find;
+neverallow { domain -dumpstate -netd -netutils_wrapper -network_stack -system_server } mdns_service:service_manager find;

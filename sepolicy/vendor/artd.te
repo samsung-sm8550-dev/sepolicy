@@ -1,0 +1,2 @@
+allow artd dumpstate:binder transfer;
+type artd, domain;

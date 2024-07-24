@@ -1,0 +1,1 @@
+neverallow { domain -hal_audiocontrol_client -hal_audiocontrol_server -atrace -shell -system_app -traceur_app } hal_audiocontrol_service:service_manager find;

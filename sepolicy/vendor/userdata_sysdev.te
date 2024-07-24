@@ -1,0 +1,2 @@
+allow userdata_sysdev sysfs:filesystem associate;
+type userdata_sysdev, dev_type;

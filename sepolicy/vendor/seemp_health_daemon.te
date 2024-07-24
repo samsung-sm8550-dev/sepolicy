@@ -1,0 +1,3 @@
+allow vendor_seemp_health_daemon tee_device:chr_file rw_file_perms;
+type vendor_seemp_health_daemon, domain;
+type vendor_seemp_health_daemon_exec, exec_type, file_type, vendor_file_type;

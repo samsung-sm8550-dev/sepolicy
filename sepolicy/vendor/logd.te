@@ -1,0 +1,38 @@
+neverallow logd dev_type:blk_file { read write };
+neverallow logd domain:process ptrace;
+neverallow logd system_file_type:file write;
+neverallow logd system_file_type:dir write;
+neverallow logd system_file_type:lnk_file write;
+neverallow logd system_file_type:chr_file write;
+neverallow logd system_file_type:blk_file write;
+neverallow logd system_file_type:sock_file write;
+neverallow logd system_file_type:fifo_file write;
+allow logd self:capability { audit_control setgid setpcap setuid sys_nice };
+allow logd self:cap_userns { audit_control setgid setpcap setuid sys_nice };
+allow logd self:capability2 syslog;
+allow logd self:cap2_userns syslog;
+allow logd self:netlink_audit_socket { create_socket_perms_no_ioctl nlmsg_write };
+allow logd kernel:system syslog_read;
+allow logd kernel:system syslog_mod;
+allow logd kmsg_device:chr_file { getattr w_file_perms };
+allow logd system_data_file:file r_file_perms;
+allow logd system_data_file:lnk_file r_file_perms;
+allow logd packages_list_file:file r_file_perms;
+allow logd pstorefs:dir search;
+allow logd pstorefs:file r_file_perms;
+allow logd misc_logd_file:dir r_dir_perms;
+allow logd misc_logd_file:file rw_file_perms;
+allow logd runtime_event_log_tags_file:file rw_file_perms;
+allow logd runtime_event_log_tags_file:file r_file_perms;
+allow logd logd_socket:sock_file write;
+allow logd logd:unix_stream_socket connectto;
+allow logd property_socket:sock_file write;
+allow logd init:unix_stream_socket connectto;
+allow logd logd_prop:property_service set;
+r_dir_file(logd, cgroup)
+r_dir_file(logd, cgroup_v2)
+r_dir_file(logd, proc_kmsg)
+r_dir_file(logd, proc_meminfo)
+r_dir_file(logd, domain)
+get_prop(logd, logd_prop)
+type logd, domain, mlstrustedsubject;

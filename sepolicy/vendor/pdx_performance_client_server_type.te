@@ -1,0 +1,2 @@
+allow pdx_performance_client_server_type bufferhubd:fd *;
+attribute pdx_performance_client_server_type;

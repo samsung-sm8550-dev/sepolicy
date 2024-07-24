@@ -1,0 +1,3 @@
+attribute vendor_agmservice;
+attribute vendor_agmservice_client;
+attribute vendor_agmservice_server;

@@ -1,0 +1,2 @@
+allow automotive_display_service_server hal_evs_default:binder transfer;
+attribute automotive_display_service_server;

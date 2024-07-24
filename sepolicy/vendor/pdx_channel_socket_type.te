@@ -1,0 +1,2 @@
+expandtypeattribute(pdx_channel_socket_type)
+attribute pdx_channel_socket_type;

@@ -1,0 +1,20 @@
+allow vendor_ustaservice_app vendor_ustaservice_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_ustaservice_app appdomain_tmpfs:file { execute getattr map read write };
+allow vendor_ustaservice_app vendor_usta_app_service:service_manager find;
+allow vendor_ustaservice_app activity_service:service_manager find;
+allow vendor_ustaservice_app app_api_service:service_manager find;
+allow vendor_ustaservice_app self:socket create_socket_perms;
+allow vendor_ustaservice_app self:qipcrtr_socket create_socket_perms;
+allow vendor_ustaservice_app vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_ustaservice_app vendor_ssr_device:chr_file r_file_perms;
+allow vendor_ustaservice_app hwservicemanager:binder { call transfer };
+allow vendor_ustaservice_app vendor_diag_device:chr_file rw_file_perms;
+allow vendor_ustaservice_app system_app_data_file:dir create_dir_perms;
+allow vendor_ustaservice_app system_app_data_file:file create_file_perms;
+allow vendor_ustaservice_app cgroup:file w_file_perms;
+allowxperm vendor_ustaservice_app self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_ustaservice_app self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+type_transition vendor_ustaservice_app tmpfs:file appdomain_tmpfs;
+type_transition vendor_ustaservice_app vendor_ustaservice_app:anon_inode vendor_ustaservice_app_userfaultfd "[userfaultfd]";
+r_dir_file(vendor_ustaservice_app, vendor_sysfs_diag)
+type vendor_ustaservice_app, appdomain, domain;

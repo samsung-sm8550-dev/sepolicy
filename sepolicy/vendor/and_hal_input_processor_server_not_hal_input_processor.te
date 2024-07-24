@@ -1,0 +1,1 @@
+neverallow { hal_input_processor_server -hal_input_processor } domain:process fork;

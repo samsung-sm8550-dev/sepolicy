@@ -1,0 +1,1 @@
+neverallow { domain -fastbootd -fsck -init -recovery -remount -update_engine } system_block_device:blk_file { append write };

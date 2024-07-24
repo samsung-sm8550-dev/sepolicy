@@ -1,0 +1,1 @@
+neverallow { domain -recovery } rootfs:file { append create link relabelto rename setattr unlink write };

@@ -1,0 +1,5 @@
+allow vendor_usb_qti vendor_sysfs_usb_device:file w_file_perms;
+unix_socket_connect(vendor_usb_qti, vendor_ssgtzd, vendor_ssgtzd)
+hal_attribute(usb)
+type vendor_usb_qti, domain;
+type vendor_usb_qti_exec, exec_type, file_type, vendor_file_type;

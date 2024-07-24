@@ -1,0 +1,1 @@
+allow init { fs_type -bpffs_type -contextmount_type -fusefs_type -proc_type -sysfs_type -debugfs_type -sdcard_type -keychord_device -rootfs }:file { open read setattr };

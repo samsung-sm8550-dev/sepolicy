@@ -1,0 +1,36 @@
+expandtypeattribute(hal_nfc)
+expandtypeattribute(hal_nfc_client)
+expandtypeattribute(hal_nfc_server)
+allow hal_nfc_server dumpstate:fifo_file write;
+allow hal_nfc_server dumpstate:fd *;
+allow hal_nfc_server hal_nfc_client:binder transfer;
+allow hal_nfc_server hal_nfc_client:binder { call transfer };
+allow hal_nfc_server hal_nfc_client:fd *;
+allow hal_nfc_server servicemanager:binder { call transfer };
+allow hal_nfc_server servicemanager:fd *;
+allow hal_nfc_server hal_nfc_hwservice:hwservice_manager { add find };
+allow hal_nfc_server hidl_base_hwservice:hwservice_manager add;
+allow hal_nfc_server su:tcp_socket { accept getopt read write };
+allow hal_nfc_client hal_nfc_server:binder { call transfer };
+allow hal_nfc_client hal_nfc_server:binder transfer;
+allow hal_nfc_client hal_nfc_server:fd *;
+allow hal_nfc_client hal_nfc_hwservice:hwservice_manager find;
+allow hal_nfc_client hal_nfc_service:service_manager find;
+allow hal_nfc property_socket:sock_file write;
+allow hal_nfc init:unix_stream_socket connectto;
+allow hal_nfc nfc_prop:property_service set;
+allow hal_nfc nfc_device:chr_file rw_file_perms;
+allow hal_nfc vendor_nfc_prop:property_service set;
+allow hal_nfc_default hal_nfc_hwservice:hwservice_manager { add find };
+allow hal_nfc_default hidl_base_hwservice:hwservice_manager add;
+allow hal_nfc_default vendor_nfc_vendor_data_file:dir rw_dir_perms;
+allow hal_nfc_default vendor_nfc_vendor_data_file:file create_file_perms;
+r_dir_file(hal_nfc_default, firmware_file)
+unix_socket_connect(hal_nfc_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_nfc, nfc_prop)
+get_prop(hal_nfc, vendor_nfc_prop)
+get_prop(hal_nfc_default, vendor_nfc_nq_prop)
+hal_server_domain(hal_nfc_default, hal_nfc)
+add_service(hal_nfc_server, hal_nfc_service)
+type hal_nfc_default, domain;
+type hal_nfc_default_exec, exec_type, file_type, vendor_file_type;

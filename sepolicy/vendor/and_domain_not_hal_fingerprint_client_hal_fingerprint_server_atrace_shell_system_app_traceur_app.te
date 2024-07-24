@@ -1,0 +1,1 @@
+neverallow { domain -hal_fingerprint_client -hal_fingerprint_server -atrace -shell -system_app -traceur_app } hal_fingerprint_service:service_manager find;

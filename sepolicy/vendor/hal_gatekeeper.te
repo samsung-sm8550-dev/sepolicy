@@ -1,0 +1,33 @@
+expandtypeattribute(hal_gatekeeper)
+expandtypeattribute(hal_gatekeeper_client)
+expandtypeattribute(hal_gatekeeper_server)
+allow hal_gatekeeper_client hal_gatekeeper_server:binder { call transfer };
+allow hal_gatekeeper_client hal_gatekeeper_server:fd *;
+allow hal_gatekeeper_client hal_gatekeeper_hwservice:hwservice_manager find;
+allow hal_gatekeeper_client hal_gatekeeper_service:service_manager find;
+allow hal_gatekeeper_server hal_gatekeeper_client:binder transfer;
+allow hal_gatekeeper_server hal_gatekeeper_hwservice:hwservice_manager { add find };
+allow hal_gatekeeper_server hidl_base_hwservice:hwservice_manager add;
+allow hal_gatekeeper_server su:tcp_socket { accept getopt read write };
+allow hal_gatekeeper_server servicemanager:binder { call transfer };
+allow hal_gatekeeper_server servicemanager:fd *;
+allow hal_gatekeeper tee_device:chr_file rw_file_perms;
+allow hal_gatekeeper ion_device:chr_file r_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_spcom_device:chr_file rw_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_skp_device:chr_file rw_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_sp_keymaster_device:chr_file rw_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_sp_ssr_device:chr_file rw_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
+dontaudit vendor_hal_gatekeeper_qti firmware_file:dir search;
+get_prop(vendor_hal_gatekeeper_qti, vendor_tee_listener_prop)
+get_prop(vendor_hal_gatekeeper_qti, vendor_spcomlib_prop)
+get_prop(vendor_hal_gatekeeper_qti, vendor_disable_spu_prop)
+hal_server_domain(hal_gatekeeper_default, hal_gatekeeper)
+hal_server_domain(vendor_hal_gatekeeper_qti, hal_gatekeeper)
+add_service(hal_gatekeeper_server, hal_gatekeeper_service)
+type hal_gatekeeper_default, domain;
+type vendor_hal_gatekeeper_qti, domain;
+type hal_gatekeeper_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_gatekeeper_qti_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,5 @@
+allow vendor_vpsservice hwservicemanager:binder { call transfer };
+get_prop(vendor_vpsservice, vendor_iop_prop)
+hal_client_domain(vendor_vpsservice, vendor_hal_iop)
+hal_client_domain(vendor_vpsservice, vendor_hal_vpp)
+type vendor_vpsservice, coredomain, domain;

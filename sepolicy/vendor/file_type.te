@@ -1,0 +1,5 @@
+allow file_type labeledfs:filesystem associate;
+allow file_type tmpfs:filesystem associate;
+allow file_type rootfs:filesystem associate;
+attribute file_type;
+attribute vendor_file_type;

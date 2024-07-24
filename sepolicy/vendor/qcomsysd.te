@@ -1,0 +1,29 @@
+allow vendor_qcomsysd vendor_smem_log_device:chr_file rw_file_perms;
+allow vendor_qcomsysd block_device:dir r_dir_perms;
+allow vendor_qcomsysd vendor_sysfs_soc:file w_file_perms;
+allow vendor_qcomsysd self:socket create;
+allow vendor_qcomsysd self:capability sys_boot;
+allow vendor_qcomsysd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qcomsysd vndbinder_device:chr_file rw_file_perms;
+allow vendor_qcomsysd vndservicemanager:binder { call transfer };
+allow vendor_qcomsysd vendor_per_mgr:binder transfer;
+allow vendor_qcomsysd vendor_per_mgr:binder { call transfer };
+allow vendor_qcomsysd vendor_per_mgr:fd *;
+allow vendor_qcomsysd vendor_per_mgr_service:service_manager find;
+allow vendor_qcomsysd vendor_diag_device:chr_file rw_file_perms;
+allow vendor_qcomsysd property_socket:sock_file write;
+allow vendor_qcomsysd init:unix_stream_socket connectto;
+allow vendor_qcomsysd vendor_boot_mode_prop:property_service set;
+allow vendor_qcomsysd powerctl_prop:property_service set;
+allow vendor_qcomsysd vendor_sysfs_qdss_dev:dir r_dir_perms;
+allow vendor_qcomsysd vendor_sysfs_qdss_dev:file rw_file_perms;
+allow vendor_qcomsysd vendor_sysfs_data:file r_file_perms;
+r_dir_file(vendor_qcomsysd, vendor_sysfs_soc)
+r_dir_file(vendor_qcomsysd, vendor_sysfs_diag)
+get_prop(vendor_qcomsysd, vendor_per_mgr_state_prop)
+get_prop(vendor_qcomsysd, vendor_boot_mode_prop)
+get_prop(vendor_qcomsysd, powerctl_prop)
+hal_client_domain(vendor_qcomsysd, hal_allocator)
+hal_client_domain(vendor_qcomsysd, vendor_hal_diaghal)
+type vendor_qcomsysd, domain;
+type vendor_qcomsysd_exec, exec_type, file_type, vendor_file_type;

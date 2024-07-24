@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_trustedui_client -vendor_hal_trustedui_server } vendor_hal_trustedui_hwservice:hwservice_manager find;

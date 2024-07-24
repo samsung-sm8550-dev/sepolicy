@@ -1,0 +1,2 @@
+neverallow { domain -qtidiagservices_app } qtidiagservices_app_userfaultfd:anon_inode *;
+neverallow { qtidiagservices_app -runas_app -shell -simpleperf } { domain -qtidiagservices_app }:file no_rw_file_perms;

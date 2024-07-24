@@ -1,0 +1,1 @@
+neverallow { domain -coredomain -vendor_init } exported_pm_prop:file no_rw_file_perms;

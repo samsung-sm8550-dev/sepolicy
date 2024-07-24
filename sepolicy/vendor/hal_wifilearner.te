@@ -1,0 +1,14 @@
+allow vendor_hal_wifilearner_client vendor_hal_wifilearner_server:binder { call transfer };
+allow vendor_hal_wifilearner_client vendor_hal_wifilearner_server:binder transfer;
+allow vendor_hal_wifilearner_client vendor_hal_wifilearner_server:fd *;
+allow vendor_hal_wifilearner_client vendor_hal_wifilearner_hwservice:hwservice_manager find;
+allow vendor_hal_wifilearner_server vendor_hal_wifilearner_client:binder transfer;
+allow vendor_hal_wifilearner_server vendor_hal_wifilearner_client:binder { call transfer };
+allow vendor_hal_wifilearner_server vendor_hal_wifilearner_client:fd *;
+allow vendor_hal_wifilearner_server vendor_hal_wifilearner_hwservice:hwservice_manager { add find };
+allow vendor_hal_wifilearner_server hidl_base_hwservice:hwservice_manager add;
+allow vendor_hal_wifilearner self:netlink_generic_socket create_socket_perms_no_ioctl;
+attribute vendor_hal_wifilearner;
+attribute vendor_hal_wifilearner_client;
+attribute vendor_hal_wifilearner_server;
+type vendor_hal_wifilearner_hwservice, hwservice_manager_type, protected_hwservice;

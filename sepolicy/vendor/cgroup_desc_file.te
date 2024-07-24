@@ -1,0 +1,2 @@
+type cgroup_desc_file, file_type, system_file_type;
+type vendor_cgroup_desc_file, file_type, vendor_file_type;

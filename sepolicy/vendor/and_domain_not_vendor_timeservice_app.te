@@ -1,0 +1,2 @@
+neverallow { domain -vendor_timeservice_app } vendor_timeservice_app_userfaultfd:anon_inode *;
+neverallow { vendor_timeservice_app -runas_app -shell -simpleperf } { domain -vendor_timeservice_app }:file no_rw_file_perms;

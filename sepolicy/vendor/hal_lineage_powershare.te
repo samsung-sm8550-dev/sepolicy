@@ -1,0 +1,15 @@
+expandtypeattribute(hal_lineage_powershare)
+expandtypeattribute(hal_lineage_powershare_client)
+expandtypeattribute(hal_lineage_powershare_server)
+allow hal_lineage_powershare_client hal_lineage_powershare_server:binder { call transfer };
+allow hal_lineage_powershare_client hal_lineage_powershare_server:fd *;
+allow hal_lineage_powershare_client hal_lineage_powershare_hwservice:hwservice_manager find;
+allow hal_lineage_powershare_server hal_lineage_powershare_client:binder transfer;
+allow hal_lineage_powershare_server hal_lineage_powershare_hwservice:hwservice_manager { add find };
+allow hal_lineage_powershare_server hidl_base_hwservice:hwservice_manager add;
+allow hal_lineage_powershare platform_app:binder { call transfer };
+allow hal_lineage_powershare platform_app:fd *;
+hal_server_domain(hal_lineage_powershare_default, hal_lineage_powershare)
+type hal_lineage_powershare_default, domain;
+type hal_lineage_powershare_default_exec, exec_type, file_type, vendor_file_type;
+type hal_lineage_powershare_hwservice, hwservice_manager_type;

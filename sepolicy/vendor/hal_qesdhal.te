@@ -1,0 +1,37 @@
+allow vendor_hal_qesdhal_default vendor_qesd_socket:sock_file w_file_perms;
+allow vendor_hal_qesdhal_default vendor_qesdk_service:service_manager find;
+allow vendor_hal_qesdhal_default servicemanager:binder { call transfer };
+allow vendor_hal_qesdhal_default tee_device:chr_file rw_file_perms;
+allow vendor_hal_qesdhal_default su:fifo_file append;
+allow vendor_hal_qesdhal_default anr_data_file:file append;
+allow vendor_hal_qesdhal_default dumpstate:fd *;
+allow vendor_hal_qesdhal_default dumpstate:fifo_file { append write };
+allow vendor_hal_qesdhal_default incidentd:fd *;
+allow vendor_hal_qesdhal_default incidentd:fifo_file { append write };
+allow vendor_hal_qesdhal_default system_server:fifo_file { append write };
+allow vendor_hal_qesdhal_default tombstoned:unix_stream_socket connectto;
+allow vendor_hal_qesdhal_default tombstoned:fd *;
+allow vendor_hal_qesdhal_default tombstoned_crash_socket:sock_file write;
+allow vendor_hal_qesdhal_default tombstone_data_file:file append;
+allow vendor_hal_qesdhal_default property_socket:sock_file write;
+allow vendor_hal_qesdhal_default init:unix_stream_socket connectto;
+allow vendor_hal_qesdhal_default vendor_qesdk_ready_prop:property_service set;
+allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder { call transfer };
+allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder transfer;
+allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:fd *;
+allow vendor_hal_qesdhal_client vendor_hal_qesdhal_hwservice:hwservice_manager find;
+allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder transfer;
+allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder { call transfer };
+allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:fd *;
+allow vendor_hal_qesdhal_server vendor_hal_qesdhal_hwservice:hwservice_manager { add find };
+allow vendor_hal_qesdhal_server hidl_base_hwservice:hwservice_manager add;
+attribute vendor_hal_qesdhal;
+attribute vendor_hal_qesdhal_client;
+attribute vendor_hal_qesdhal_server;
+get_prop(vendor_hal_qesdhal_default, boot_status_prop)
+get_prop(vendor_hal_qesdhal_default, vendor_qesdk_ready_prop)
+hal_server_domain(vendor_hal_qesdhal_default, vendor_hal_qesdhal)
+hal_client_domain(vendor_hal_qesdhal_default, hal_allocator)
+type vendor_hal_qesdhal_default, domain;
+type vendor_hal_qesdhal_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_qesdhal_hwservice, hwservice_manager_type;

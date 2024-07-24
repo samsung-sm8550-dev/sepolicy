@@ -1,0 +1,32 @@
+allow vendor_hal_wigig_client vendor_hal_wigig_server:binder { call transfer };
+allow vendor_hal_wigig_client vendor_hal_wigig_server:binder transfer;
+allow vendor_hal_wigig_client vendor_hal_wigig_server:fd *;
+allow vendor_hal_wigig_client vendor_hal_wigig_hwservice:hwservice_manager find;
+allow vendor_hal_wigig_server vendor_hal_wigig_client:binder transfer;
+allow vendor_hal_wigig_server vendor_hal_wigig_client:binder { call transfer };
+allow vendor_hal_wigig_server vendor_hal_wigig_client:fd *;
+allow vendor_hal_wigig_server vendor_hal_wigig_hwservice:hwservice_manager { add find };
+allow vendor_hal_wigig_server hidl_base_hwservice:hwservice_manager add;
+allow vendor_hal_wigig property_socket:sock_file write;
+allow vendor_hal_wigig init:unix_stream_socket connectto;
+allow vendor_hal_wigig vendor_ctl_vendor_wigigsvc_prop:property_service set;
+allow vendor_hal_wigig vendor_wigig_prop:property_service set;
+allow vendor_hal_wigig vendor_wifi_vendor_data_file:dir rw_dir_perms;
+allow vendor_hal_wigig vendor_wifi_vendor_data_file:file create_file_perms;
+allow vendor_hal_wigig hostapd_data_file:dir rw_dir_perms;
+allow vendor_hal_wigig hostapd_data_file:file create_file_perms;
+allow vendor_hal_wigig hal_wifi_supplicant:unix_dgram_socket sendto;
+allow vendor_hal_wigig hal_wifi_hostapd_default:unix_dgram_socket sendto;
+allow vendor_hal_wigig vendor_wifi_vendor_wpa_socket:dir rw_dir_perms;
+allow vendor_hal_wigig vendor_wifi_vendor_wpa_socket:sock_file create_file_perms;
+allow vendor_hal_wigig vendor_wigig_vendor_wpa_socket:sock_file rw_file_perms;
+allow vendor_hal_wigig vendor_wigig_hostapd_socket:dir rw_dir_perms;
+allow vendor_hal_wigig vendor_wigig_hostapd_socket:sock_file create_file_perms;
+allow vendor_hal_wigig proc_modules:file r_file_perms;
+attribute vendor_hal_wigig;
+attribute vendor_hal_wigig_client;
+attribute vendor_hal_wigig_server;
+r_dir_file(vendor_hal_wigig, vendor_wifi_vendor_data_file)
+get_prop(vendor_hal_wigig, vendor_ctl_vendor_wigigsvc_prop)
+get_prop(vendor_hal_wigig, vendor_wigig_prop)
+type vendor_hal_wigig_hwservice, hwservice_manager_type, protected_hwservice;

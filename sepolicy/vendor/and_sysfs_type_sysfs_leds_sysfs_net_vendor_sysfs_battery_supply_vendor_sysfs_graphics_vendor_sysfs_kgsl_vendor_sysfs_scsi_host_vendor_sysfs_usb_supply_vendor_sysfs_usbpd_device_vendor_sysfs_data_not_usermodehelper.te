@@ -1,0 +1,1 @@
+allow ueventd { sysfs_type sysfs_leds sysfs_net vendor_sysfs_battery_supply vendor_sysfs_graphics vendor_sysfs_kgsl vendor_sysfs_scsi_host vendor_sysfs_usb_supply vendor_sysfs_usbpd_device vendor_sysfs_data -usermodehelper }:file w_file_perms;

@@ -1,0 +1,3 @@
+allow usbd servicemanager:binder { call transfer };
+allow usbd servicemanager:fd *;
+type usbd, domain;

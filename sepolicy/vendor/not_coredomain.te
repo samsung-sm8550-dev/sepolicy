@@ -1,0 +1,1 @@
+neverallow ~coredomain coredomain_hwservice:hwservice_manager add;

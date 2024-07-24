@@ -1,0 +1,9 @@
+allow vendor_init-qti-ese-strongbox-sh property_socket:sock_file write;
+allow vendor_init-qti-ese-strongbox-sh init:unix_stream_socket connectto;
+allow vendor_init-qti-ese-strongbox-sh vendor_ese_strongbox_prop:property_service set;
+allow vendor_init-qti-ese-strongbox-sh vendor_shell_exec:file rx_file_perms;
+allow vendor_init-qti-ese-strongbox-sh vendor_toolbox_exec:file rx_file_perms;
+allow vendor_init-qti-ese-strongbox-sh nfc_device:chr_file { getattr map open };
+get_prop(vendor_init-qti-ese-strongbox-sh, vendor_ese_strongbox_prop)
+type vendor_init-qti-ese-strongbox-sh, domain;
+type vendor_init-qti-ese-strongbox-sh_exec, exec_type, file_type, vendor_file_type;

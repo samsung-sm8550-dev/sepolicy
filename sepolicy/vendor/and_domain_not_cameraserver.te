@@ -1,0 +1,1 @@
+neverallow { domain -cameraserver } fwk_camera_hwservice:hwservice_manager add;
