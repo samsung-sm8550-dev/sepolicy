@@ -1,0 +1,29 @@
+expandtypeattribute(hal_keymaster)
+expandtypeattribute(hal_keymaster_client)
+expandtypeattribute(hal_keymaster_server)
+allow hal_keymaster_client hal_keymaster_server:binder { call transfer };
+allow hal_keymaster_client hal_keymaster_server:fd *;
+allow hal_keymaster_client hal_keymaster_hwservice:hwservice_manager find;
+allow hal_keymaster_server hal_keymaster_client:binder transfer;
+allow hal_keymaster_server hal_keymaster_hwservice:hwservice_manager { add find };
+allow hal_keymaster_server hidl_base_hwservice:hwservice_manager add;
+allow hal_keymaster tee_device:chr_file rw_file_perms;
+allow hal_keymaster ion_device:chr_file r_file_perms;
+allow vendor_hal_keymaster_qti vendor_spcom_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_skp_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_sp_keymaster_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_sp_ssr_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_keymaster_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
+dontaudit vendor_hal_keymaster_qti firmware_file:dir search;
+get_prop(hal_keymaster_default, vendor_security_patch_level_prop)
+get_prop(vendor_hal_keymaster_qti, vendor_tee_listener_prop)
+get_prop(vendor_hal_keymaster_qti, vendor_spcomlib_prop)
+hal_server_domain(hal_keymaster_default, hal_keymaster)
+hal_server_domain(vendor_hal_keymaster_qti, hal_keymaster)
+hal_client_domain(hal_keymaster_default, hal_secure_element)
+type hal_keymaster_default, domain;
+type vendor_hal_keymaster_qti, domain;
+type hal_keymaster_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_keymaster_qti_exec, exec_type, file_type, vendor_file_type;
