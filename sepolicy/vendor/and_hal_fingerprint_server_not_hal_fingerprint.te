@@ -1,0 +1,1 @@
+neverallow { hal_fingerprint_server -hal_fingerprint } domain:process fork;

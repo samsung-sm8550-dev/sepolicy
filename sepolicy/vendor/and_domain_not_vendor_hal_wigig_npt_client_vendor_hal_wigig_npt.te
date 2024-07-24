@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_wigig_npt_client -vendor_hal_wigig_npt_server } vendor_hal_wigig_npt_hwservice:hwservice_manager find;

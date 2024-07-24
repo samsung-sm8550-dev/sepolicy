@@ -1,0 +1,10 @@
+allow audioserver_202404 hal_audio_server:process signal;
+allow audioserver_202404 sensorservice_service_202404:service_manager find;
+allow audioserver_202404 system_server_202404:unix_stream_socket { read write };
+allow audioserver_202404 bootanim_202404:binder transfer;
+allow audioserver_202404 bootanim_202404:binder { call transfer };
+allow audioserver_202404 bootanim_202404:fd *;
+allow audioserver_202404 vendor_diag_device:chr_file rw_file_perms;
+r_dir_file(audioserver_202404, vendor_sysfs_diag)
+get_prop(audioserver_202404, vendor_audio_prop)
+type audioserver_202404, domain;

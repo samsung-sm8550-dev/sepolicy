@@ -1,0 +1,25 @@
+expandtypeattribute(hal_weaver)
+expandtypeattribute(hal_weaver_client)
+expandtypeattribute(hal_weaver_server)
+allow hal_weaver_server dumpstate_202404:fifo_file write;
+allow hal_weaver_server dumpstate_202404:fd *;
+allow hal_weaver_server hal_weaver_client:binder transfer;
+allow hal_weaver_server hal_weaver_hwservice_202404:hwservice_manager { add find };
+allow hal_weaver_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_weaver_server su_202404:tcp_socket { accept getopt read write };
+allow hal_weaver_server servicemanager_202404:binder { call transfer };
+allow hal_weaver_server servicemanager_202404:fd *;
+allow hal_weaver_client hal_weaver_server:binder { call transfer };
+allow hal_weaver_client hal_weaver_server:fd *;
+allow hal_weaver_client hal_weaver_hwservice_202404:hwservice_manager find;
+allow hal_weaver_client hal_weaver_service_202404:service_manager find;
+allow vendor_hal_weaver_default secure_element_202404:binder { call transfer };
+allow vendor_hal_weaver_default secure_element_202404:fd *;
+allow vendor_hal_weaver_default secure_element_service_202404:service_manager find;
+hal_server_domain(hal_weaver_default, hal_weaver)
+hal_server_domain(vendor_hal_weaver_default, hal_weaver)
+add_service(hal_weaver_server, hal_weaver_service_202404)
+type hal_weaver_default, domain;
+type vendor_hal_weaver_default, domain;
+type hal_weaver_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_weaver_default_exec, exec_type, file_type, vendor_file_type;

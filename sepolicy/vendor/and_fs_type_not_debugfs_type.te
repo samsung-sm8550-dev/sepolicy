@@ -1,0 +1,1 @@
+allow init_202404 { fs_type -debugfs_type }:filesystem { associate getattr mount quotaget quotamod relabelfrom remount unmount watch };

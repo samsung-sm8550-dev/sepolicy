@@ -1,0 +1,7 @@
+allow vendor_nqnfcinfo property_socket_202404:sock_file write;
+allow vendor_nqnfcinfo init_202404:unix_stream_socket connectto;
+allow vendor_nqnfcinfo vendor_nfc_nq_prop:property_service set;
+allow vendor_nqnfcinfo nfc_device_202404:chr_file rw_file_perms;
+get_prop(vendor_nqnfcinfo, vendor_nfc_nq_prop)
+type vendor_nqnfcinfo, domain;
+type vendor_nqnfcinfo_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,2 @@
+neverallow { domain -shell_202404 -ueventd_202404 } keychord_device_202404:chr_file *;
+neverallow { domain -shell_202404 -ueventd_202404 } port_device_202404:chr_file *;

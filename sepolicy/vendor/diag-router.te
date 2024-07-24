@@ -1,0 +1,16 @@
+allow vendor_diag-router vendor_sysfs_soc:file w_file_perms;
+allow vendor_diag-router vendor_sysfs_qdss_dev:file w_file_perms;
+allow vendor_diag-router functionfs_202404:dir r_dir_perms;
+allow vendor_diag-router functionfs_202404:file rw_file_perms;
+allow vendor_diag-router self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_diag-router self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow vendor_diag-router self:capability kill;
+allow vendor_diag-router vendor_mhi_diag_device:chr_file rw_file_perms;
+allow vendor_diag-router su_202404:process signal;
+allowxperm vendor_diag-router functionfs_202404:ioctl file 0x6782;
+r_dir_file(vendor_diag-router, vendor_sysfs_soc)
+r_dir_file(vendor_diag-router, vendor_sysfs_qdss_dev)
+hal_server_domain(vendor_diag-router, vendor_hal_diaghal)
+hal_client_domain(vendor_diag-router, hal_allocator)
+type vendor_diag-router, domain;
+type vendor_diag-router_exec, exec_type, file_type, vendor_file_type;

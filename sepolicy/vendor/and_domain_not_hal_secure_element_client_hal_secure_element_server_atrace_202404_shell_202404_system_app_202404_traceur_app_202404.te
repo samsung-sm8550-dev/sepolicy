@@ -1,0 +1,1 @@
+neverallow { domain -hal_secure_element_client -hal_secure_element_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_secure_element_service_202404:service_manager find;

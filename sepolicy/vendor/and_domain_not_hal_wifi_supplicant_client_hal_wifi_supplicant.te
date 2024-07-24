@@ -1,0 +1,1 @@
+neverallow { domain -hal_wifi_supplicant_client -hal_wifi_supplicant_server } hal_wifi_supplicant_hwservice_202404:hwservice_manager find;

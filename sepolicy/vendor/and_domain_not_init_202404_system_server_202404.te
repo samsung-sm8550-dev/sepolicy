@@ -1,0 +1,1 @@
+neverallow { domain -init_202404 -system_server_202404 } heapdump_data_file_202404:file read;

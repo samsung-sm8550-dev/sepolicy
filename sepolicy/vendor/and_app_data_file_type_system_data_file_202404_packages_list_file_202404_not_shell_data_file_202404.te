@@ -1,0 +1,7 @@
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:file write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:dir write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:lnk_file write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:chr_file write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:blk_file write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:sock_file write;
+neverallow logd_202404 { app_data_file_type system_data_file_202404 packages_list_file_202404 -shell_data_file_202404 }:fifo_file write;

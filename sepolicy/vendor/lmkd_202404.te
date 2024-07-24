@@ -1,0 +1,40 @@
+neverallow lmkd_202404 self:capability sys_ptrace;
+neverallow lmkd_202404 self:cap_userns sys_ptrace;
+allow lmkd_202404 self:capability { dac_override dac_read_search kill sys_resource };
+allow lmkd_202404 self:capability ipc_lock;
+allow lmkd_202404 self:capability sys_nice;
+allow lmkd_202404 self:cap_userns { dac_override dac_read_search kill sys_resource };
+allow lmkd_202404 self:cap_userns ipc_lock;
+allow lmkd_202404 self:cap_userns sys_nice;
+allow lmkd_202404 self:capability2 block_suspend;
+allow lmkd_202404 self:cap2_userns block_suspend;
+allow lmkd_202404 domain:dir { open read search };
+allow lmkd_202404 domain:file write;
+allow lmkd_202404 domain:file { open read };
+allow lmkd_202404 domain:process { setsched sigkill };
+allow lmkd_202404 sysfs_lowmemorykiller_202404:file w_file_perms;
+allow lmkd_202404 kernel_202404:process setsched;
+allow lmkd_202404 cgroup_202404:dir { remove_name rmdir };
+allow lmkd_202404 cgroup_202404:file r_file_perms;
+allow lmkd_202404 cgroup_v2_202404:dir { remove_name rmdir };
+allow lmkd_202404 cgroup_v2_202404:file r_file_perms;
+allow lmkd_202404 proc_zoneinfo_202404:file r_file_perms;
+allow lmkd_202404 proc_vmstat_202404:file r_file_perms;
+allow lmkd_202404 proc_sysrq_202404:file rw_file_perms;
+allow lmkd_202404 proc_lowmemorykiller_202404:file r_file_perms;
+allow lmkd_202404 proc_meminfo_202404:file r_file_perms;
+allow lmkd_202404 proc_pressure_cpu_202404:file r_file_perms;
+allow lmkd_202404 proc_pressure_io_202404:file r_file_perms;
+allow lmkd_202404 proc_pressure_mem_202404:file rw_file_perms;
+allow lmkd_202404 lmkd_socket_202404:sock_file write;
+allow lmkd_202404 statsdw_socket_202404:sock_file write;
+allow lmkd_202404 statsd_202404:unix_dgram_socket sendto;
+allow lmkd_202404 vendor_hal_perf_hwservice:hwservice_manager find;
+allow lmkd_202404 vendor_hal_perf_default:binder call;
+allow lmkd_202404 vendor_hal_iop_hwservice:hwservice_manager find;
+allow lmkd_202404 vendor_hal_iop_default:binder call;
+allow lmkd_202404 hwservicemanager_202404:binder call;
+r_dir_file(lmkd_202404, domain)
+r_dir_file(lmkd_202404, sysfs_lowmemorykiller_202404)
+get_prop(lmkd_202404, hwservicemanager_prop_202404)
+type lmkd_202404, domain, mlstrustedsubject;

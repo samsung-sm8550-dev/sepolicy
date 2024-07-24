@@ -1,0 +1,3 @@
+neverallow { domain -init_202404 -vold_202404 } fsck_202404:process transition;
+neverallow { domain -init_202404 -vold_202404 } vold_metadata_file_202404:dir *;
+neverallow { domain -init_202404 -vold_202404 } restorecon_prop_202404:property_service set;

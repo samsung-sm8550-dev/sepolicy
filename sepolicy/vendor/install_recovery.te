@@ -1,0 +1,9 @@
+allow vendor_install_recovery vendor_shell_exec_202404:file rx_file_perms;
+allow vendor_install_recovery vendor_file_202404:file rx_file_perms;
+allow vendor_install_recovery vendor_toolbox_exec_202404:file rx_file_perms;
+allow vendor_install_recovery block_device_202404:dir search;
+allow vendor_install_recovery boot_block_device_202404:blk_file r_file_perms;
+allow vendor_install_recovery recovery_block_device_202404:blk_file rw_file_perms;
+allow vendor_install_recovery proc_drop_caches_202404:file w_file_perms;
+type vendor_install_recovery, domain;
+type vendor_install_recovery_exec, exec_type, file_type, vendor_file_type;

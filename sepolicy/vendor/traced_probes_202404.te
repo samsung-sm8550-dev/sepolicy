@@ -1,0 +1,2 @@
+allow traced_probes_202404 statsd_202404:binder transfer;
+type traced_probes_202404, coredomain, domain, mlstrustedsubject;

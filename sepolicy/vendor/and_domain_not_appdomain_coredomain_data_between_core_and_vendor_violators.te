@@ -1,0 +1,1 @@
+neverallow { domain -appdomain -coredomain -data_between_core_and_vendor_violators } system_data_file_202404:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto unlink watch watch_mount watch_reads watch_sb watch_with_perm };

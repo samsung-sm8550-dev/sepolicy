@@ -1,0 +1,1 @@
+neverallow { domain -app_zygote_202404 -system_server_202404 -webview_zygote_202404 } webview_zygote_202404:unix_stream_socket connectto;

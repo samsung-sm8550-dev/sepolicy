@@ -1,0 +1,1 @@
+neverallow { domain -adbd_202404 -crash_dump_202404 -heapprofd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:file *;

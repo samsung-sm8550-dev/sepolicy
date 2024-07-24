@@ -1,0 +1,51 @@
+allow vendor_sensors self:capability { net_bind_service setgid setuid };
+allow vendor_sensors self:socket create_socket_perms;
+allow vendor_sensors self:qipcrtr_socket create_socket_perms;
+allow vendor_sensors self:capability2 block_suspend;
+allow vendor_sensors self:cap2_userns block_suspend;
+allow vendor_sensors mnt_vendor_file_202404:dir r_dir_perms;
+allow vendor_sensors system_file_202404:dir r_dir_perms;
+allow vendor_sensors sensors_device_202404:chr_file rw_file_perms;
+allow vendor_sensors vendor_sysfs_soc:file w_file_perms;
+allow vendor_sensors vendor_sysfs_data:file r_file_perms;
+allow vendor_sensors ion_device_202404:chr_file r_file_perms;
+allow vendor_sensors dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow vendor_sensors vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_sensors vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_sensors vendor_persist_sensors_file:dir create_dir_perms;
+allow vendor_sensors vendor_persist_sensors_file:file create_file_perms;
+allow vendor_sensors sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_sensors system_suspend_server:binder { call transfer };
+allow vendor_sensors system_suspend_server:fd *;
+allow vendor_sensors system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_sensors hwservicemanager_202404:binder { call transfer };
+allow vendor_sensors hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_sensors hal_system_suspend_service_202404:service_manager find;
+allow vendor_sensors servicemanager_202404:binder { call transfer };
+allow vendor_sensors_qti vendor_diag_device:chr_file rw_file_perms;
+allow vendor_sensors_qti vendor_qlogd_exec:file rx_file_perms;
+allow vendor_sensors_qti vendor_shell_exec_202404:file rx_file_perms;
+allow vendor_sensors_qti self:socket create_socket_perms;
+allow vendor_sensors_qti self:qipcrtr_socket create_socket_perms;
+allow vendor_sensors_qti mnt_vendor_file_202404:dir r_dir_perms;
+allow vendor_sensors_qti vendor_sensors_vendor_data_file:dir create_dir_perms;
+allow vendor_sensors_qti vendor_sensors_vendor_data_file:file create_file_perms;
+allow vendor_sensors_qti vendor_sensors_vendor_data_file:fifo_file create_file_perms;
+allow vendor_sensors_qti vendor_sysfs_slpi:dir search;
+allow vendor_sensors_qti vendor_sysfs_slpi:file getattr;
+allowxperm vendor_sensors self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_sensors self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+allowxperm vendor_sensors_qti self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_sensors_qti self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+r_dir_file(vendor_sensors, adsprpcd_file)
+r_dir_file(vendor_sensors_qti, vendor_sysfs_diag)
+get_prop(vendor_sensors, vendor_sensors_prop)
+get_prop(vendor_sensors, vendor_adsprpc_prop)
+get_prop(vendor_sensors, hwservicemanager_prop_202404)
+get_prop(vendor_sensors_qti, vendor_sensors_prop)
+get_prop(vendor_sensors_qti, vendor_sensors_dbg_prop)
+hal_attribute(sensors)
+type vendor_sensors, domain;
+type vendor_sensors_qti, domain;
+type vendor_sensors_exec, exec_type, file_type, vendor_file_type;
+type vendor_sensors_qti_exec, exec_type, file_type, vendor_file_type;

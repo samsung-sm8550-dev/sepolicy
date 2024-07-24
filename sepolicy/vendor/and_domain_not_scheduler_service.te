@@ -1,0 +1,1 @@
+neverallow { domain -scheduler_service_server } fwk_scheduler_hwservice_202404:hwservice_manager add;

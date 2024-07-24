@@ -1,0 +1,2 @@
+neverallow { halserverdomain -hal_bluetooth_server -hal_can_controller_server -hal_nlinterceptor_server -hal_telephony_server -hal_uwb_server -hal_uwb_vendor_server -hal_wifi_server -hal_wifi_hostapd_server -hal_wifi_supplicant_server } self:capability { net_admin net_raw };
+neverallow { halserverdomain -hal_bluetooth_server -hal_can_controller_server -hal_nlinterceptor_server -hal_telephony_server -hal_uwb_server -hal_uwb_vendor_server -hal_wifi_server -hal_wifi_hostapd_server -hal_wifi_supplicant_server } self:cap_userns { net_admin net_raw };

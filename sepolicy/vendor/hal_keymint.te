@@ -1,0 +1,33 @@
+expandtypeattribute(hal_keymint)
+expandtypeattribute(hal_keymint_client)
+expandtypeattribute(hal_keymint_server)
+allow hal_keymint_server dumpstate_202404:fifo_file write;
+allow hal_keymint_server dumpstate_202404:fd *;
+allow hal_keymint_server hal_keymint_client:binder transfer;
+allow hal_keymint_server su_202404:tcp_socket { accept getopt read write };
+allow hal_keymint_server servicemanager_202404:binder { call transfer };
+allow hal_keymint_server servicemanager_202404:fd *;
+allow hal_keymint_server tee_device_202404:chr_file rw_file_perms;
+allow hal_keymint_server ion_device_202404:chr_file r_file_perms;
+allow hal_keymint_client hal_keymint_server:binder { call transfer };
+allow hal_keymint_client hal_keymint_server:fd *;
+allow hal_keymint_client hal_keymint_service_202404:service_manager find;
+allow hal_keymint_client hal_remotelyprovisionedcomponent_service_202404:service_manager find;
+allow hal_keymint_client hal_secureclock_service_202404:service_manager find;
+allow hal_keymint_client hal_sharedsecret_service_202404:service_manager find;
+allow vendor_hal_keymint_qti tee_device_202404:chr_file rw_file_perms;
+allow vendor_hal_keymint_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+dontaudit vendor_hal_keymint_qti firmware_file:dir search;
+get_prop(hal_keymint_default, vendor_security_patch_level_prop_202404)
+get_prop(vendor_hal_keymint_qti, vendor_tee_listener_prop)
+get_prop(vendor_hal_keymint_qti, vendor_disable_spu_prop)
+hal_server_domain(hal_keymint_default, hal_keymint)
+hal_server_domain(vendor_hal_keymint_qti, hal_keymint)
+add_service(hal_keymint_server, hal_keymint_service_202404)
+add_service(hal_keymint_server, hal_remotelyprovisionedcomponent_service_202404)
+add_service(hal_keymint_server, hal_secureclock_service_202404)
+add_service(hal_keymint_server, hal_sharedsecret_service_202404)
+type hal_keymint_default, domain;
+type vendor_hal_keymint_qti, domain;
+type hal_keymint_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_keymint_qti_exec, exec_type, file_type, vendor_file_type;

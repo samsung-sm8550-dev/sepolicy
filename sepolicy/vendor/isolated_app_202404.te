@@ -1,0 +1,2 @@
+neverallow isolated_app_202404 graphics_device_202404:chr_file { read write };
+type isolated_app_202404, domain;

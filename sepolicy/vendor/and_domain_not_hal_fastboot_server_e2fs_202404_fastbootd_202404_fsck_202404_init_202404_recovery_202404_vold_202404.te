@@ -1,0 +1,1 @@
+neverallow { domain -hal_fastboot_server -e2fs_202404 -fastbootd_202404 -fsck_202404 -init_202404 -recovery_202404 -vold_202404 } metadata_block_device_202404:blk_file { append ioctl link lock open read rename write };

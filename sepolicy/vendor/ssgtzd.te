@@ -1,0 +1,22 @@
+allow vendor_ssgtzd tee_device_202404:chr_file rw_file_perms;
+allow vendor_ssgtzd vendor_cs_app:unix_stream_socket connectto;
+allow vendor_ssgtzd vendor_firmware_file:dir r_dir_perms;
+allow vendor_ssgtzd vendor_firmware_file:file r_file_perms;
+allow vendor_ssgtzd vendor_qwes_data_file:dir { rw_dir_perms setattr };
+allow vendor_ssgtzd vendor_qwes_data_file:file rw_file_perms;
+allow vendor_ssgtzd self:socket create_socket_perms;
+allow vendor_ssgtzd self:qipcrtr_socket create_socket_perms;
+allow vendor_ssgtzd vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_ssgtzd vndbinder_device_202404:chr_file rw_file_perms;
+allow vendor_ssgtzd vndservicemanager_202404:binder { call transfer };
+allow vendor_ssgtzd servicemanager_202404:binder { call transfer };
+allow vendor_ssgtzd servicemanager_202404:fd *;
+allow vendor_ssgtzd vendor_qtrsdkservice_service:service_manager find;
+allow vendor_ssgtzd vendor_qccvendor:binder { call transfer };
+allow vendor_ssgtzd vendor_qccvendor:binder transfer;
+allow vendor_ssgtzd vendor_qccvendor:fd *;
+allowxperm vendor_ssgtzd self:ioctl socket { range 0xc300 0xc305 };
+allowxperm vendor_ssgtzd self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+hal_client_domain(vendor_ssgtzd, vendor_qccsyshal)
+type vendor_ssgtzd, domain, mlstrustedsubject;
+type vendor_ssgtzd_exec, exec_type, file_type, vendor_file_type;

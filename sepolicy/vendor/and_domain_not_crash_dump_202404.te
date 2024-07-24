@@ -1,0 +1,2 @@
+neverallow { domain -crash_dump_202404 } apexd_202404:process ptrace;
+neverallow { domain -crash_dump_202404 } keystore_202404:process ptrace;

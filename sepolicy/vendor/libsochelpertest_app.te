@@ -1,0 +1,14 @@
+allow vendor_libsochelpertest_app vendor_libsochelpertest_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_libsochelpertest_app appdomain_tmpfs_202404:file { execute getattr map read write };
+allow vendor_libsochelpertest_app gpuservice_202404:binder { call transfer };
+allow vendor_libsochelpertest_app gpuservice_202404:fd *;
+allow vendor_libsochelpertest_app app_api_service:service_manager find;
+allow vendor_libsochelpertest_app vendor_sysfs_kgsl_gpu_model:file r_file_perms;
+allow vendor_libsochelpertest_app vendor_sysfs_kgsl:file r_file_perms;
+dontaudit vendor_libsochelpertest_app default_prop_202404:file read;
+type_transition vendor_libsochelpertest_app tmpfs_202404:file appdomain_tmpfs;
+type_transition vendor_libsochelpertest_app vendor_libsochelpertest_app:anon_inode vendor_libsochelpertest_app_userfaultfd "[userfaultfd]";
+get_prop(vendor_libsochelpertest_app, vendor_soc_id_prop)
+hal_client_domain(vendor_libsochelpertest_app, vendor_hal_perf)
+hal_client_domain(vendor_libsochelpertest_app, vendor_hal_qspmhal)
+type vendor_libsochelpertest_app, appdomain, domain;

@@ -1,0 +1,3 @@
+allow sensor_service_server fwk_sensor_hwservice_202404:hwservice_manager { add find };
+allow sensor_service_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute sensor_service_server;

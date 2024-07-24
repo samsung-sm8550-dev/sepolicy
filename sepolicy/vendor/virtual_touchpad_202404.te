@@ -1,0 +1,9 @@
+allow virtual_touchpad_202404 servicemanager_202404:binder { call transfer };
+allow virtual_touchpad_202404 su_202404:tcp_socket { accept getopt read write };
+allow virtual_touchpad_202404 system_server_202404:binder { call transfer };
+allow virtual_touchpad_202404 system_server_202404:fd *;
+allow virtual_touchpad_202404 uhid_device_202404:chr_file { ioctl w_file_perms };
+allow virtual_touchpad_202404 permission_service_202404:service_manager find;
+binder_service(virtual_touchpad_202404)
+add_service(virtual_touchpad_202404, virtual_touchpad_service_202404)
+type virtual_touchpad_202404, domain;

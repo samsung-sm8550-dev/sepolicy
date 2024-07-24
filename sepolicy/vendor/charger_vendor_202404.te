@@ -1,0 +1,2 @@
+hal_server_domain(charger_vendor_202404, hal_health)
+type charger_vendor_202404, bpfdomain, charger_type, domain;

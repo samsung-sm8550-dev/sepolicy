@@ -1,0 +1,1 @@
+neverallow { domain -init_202404 -hal_face_default } virtual_face_hal_prop_202404:property_service set;

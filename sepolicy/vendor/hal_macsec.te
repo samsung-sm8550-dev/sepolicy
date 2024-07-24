@@ -1,0 +1,18 @@
+expandtypeattribute(hal_macsec)
+expandtypeattribute(hal_macsec_client)
+expandtypeattribute(hal_macsec_server)
+allow hal_macsec_client hal_macsec_server:binder { call transfer };
+allow hal_macsec_client hal_macsec_server:binder transfer;
+allow hal_macsec_client hal_macsec_server:fd *;
+allow hal_macsec_client hal_macsec_service_202404:service_manager find;
+allow hal_macsec_server hal_macsec_client:binder transfer;
+allow hal_macsec_server hal_macsec_client:binder { call transfer };
+allow hal_macsec_server hal_macsec_client:fd *;
+allow hal_macsec_server su_202404:tcp_socket { accept getopt read write };
+allow hal_macsec_server servicemanager_202404:binder { call transfer };
+allow hal_macsec_default servicemanager_202404:binder { call transfer };
+allow hal_macsec_default servicemanager_202404:fd *;
+hal_server_domain(hal_macsec_default, hal_macsec)
+add_service(hal_macsec_server, hal_macsec_service_202404)
+type hal_macsec_default, domain;
+type hal_macsec_default_exec, exec_type, file_type, vendor_file_type;

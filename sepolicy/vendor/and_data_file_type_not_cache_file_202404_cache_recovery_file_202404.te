@@ -1,0 +1,2 @@
+neverallow recovery_202404 { data_file_type -cache_file_202404 -cache_recovery_file_202404 }:file { no_w_file_perms no_x_file_perms };
+neverallow recovery_202404 { data_file_type -cache_file_202404 -cache_recovery_file_202404 }:dir no_w_dir_perms;

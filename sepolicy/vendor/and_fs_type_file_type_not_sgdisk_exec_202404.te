@@ -1,0 +1,1 @@
+neverallow sgdisk_202404 { fs_type file_type -sgdisk_exec_202404 }:file entrypoint;

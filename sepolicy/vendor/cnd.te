@@ -1,0 +1,97 @@
+allow vendor_cnd self:capability net_bind_service;
+allow vendor_cnd self:capability { net_admin net_raw };
+allow vendor_cnd self:capability2 block_suspend;
+allow vendor_cnd self:udp_socket create_socket_perms;
+allow vendor_cnd self:netlink_socket create_socket_perms_no_ioctl;
+allow vendor_cnd self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_cnd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_cnd self:cap2_userns block_suspend;
+allow vendor_cnd self:netlink_route_socket create_socket_perms_no_ioctl;
+allow vendor_cnd self:netlink_tcpdiag_socket create_socket_perms_no_ioctl;
+allow vendor_cnd self:socket create_socket_perms_no_ioctl;
+allow vendor_cnd wpa_socket_202404:sock_file write;
+allow vendor_cnd hal_wifi_supplicant:unix_dgram_socket sendto;
+allow vendor_cnd wpa_data_file:dir w_dir_perms;
+allow vendor_cnd wpa_data_file:sock_file create_file_perms;
+allow vendor_cnd vendor_sysfs_data:file r_file_perms;
+allow vendor_cnd proc_meminfo_202404:file r_file_perms;
+allow vendor_cnd property_socket_202404:sock_file write;
+allow vendor_cnd vendor_cnd_prop:property_service set;
+allow vendor_cnd vendor_cnd_data_file:file create_file_perms;
+allow vendor_cnd vendor_cnd_data_file:sock_file { create setattr unlink };
+allow vendor_cnd vendor_cnd_data_file:dir rw_dir_perms;
+allow vendor_cnd sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_cnd system_suspend_server:binder { call transfer };
+allow vendor_cnd system_suspend_server:fd *;
+allow vendor_cnd system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_cnd hwservicemanager_202404:binder { call transfer };
+allow vendor_cnd hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_cnd hal_system_suspend_service_202404:service_manager find;
+allow vendor_cnd servicemanager_202404:binder { call transfer };
+allow vendor_cnd vendor_ipa_vendor_data_file:dir r_dir_perms;
+allow vendor_cnd vendor_ipa_vendor_data_file:file r_file_perms;
+allow vendor_cnd vendor_netmgrd_socket:dir r_dir_perms;
+allow vendor_cnd vendor_netmgrd_socket:sock_file { getattr read write };
+allow vendor_cnd vendor_netmgrd:fd *;
+allow vendor_cnd vendor_netmgrd:udp_socket { read write };
+allow vendor_cnd system_file_202404:dir r_dir_perms;
+allow vendor_cnd vendor_wlan_device:chr_file w_file_perms;
+allow vendor_cnd vendor_diag_device:chr_file rw_file_perms;
+allow vendor_cnd vendor_location_lowi_server:binder transfer;
+allow vendor_cnd vendor_cnd_vendor_prop:property_service set;
+allow vendor_cnd vendor_smem_log_device:chr_file rw_file_perms;
+allow vendor_cnd vendor_wifi_vendor_data_file:dir r_dir_perms;
+allow vendor_cnd vendor_hostapd:unix_dgram_socket sendto;
+allow vendor_cnd vendor_hostapd:binder transfer;
+allow vendor_cnd vendor_hostapd_socket:dir r_dir_perms;
+allow vendor_cnd vendor_hal_latency_hwservice:hwservice_manager { add find };
+allow vendor_cnd hidl_base_hwservice_202404:hwservice_manager add;
+allow vendor_cnd vendor_hal_slmadapter_hwservice:hwservice_manager { add find };
+allow vendor_cnd vendor_shsusrd_socket:dir r_dir_perms;
+allow vendor_cnd vendor_shsusrd_socket:sock_file { read write };
+allow vendor_cnd hostapd_data_file:dir rw_dir_perms;
+allow vendor_cnd hostapd_data_file:sock_file create_file_perms;
+allow vendor_cnd hal_wifi_hostapd_default:unix_dgram_socket sendto;
+allow vendor_cnd vndbinder_device_202404:chr_file rw_file_perms;
+allow vendor_cnd vndservicemanager_202404:binder { call transfer };
+allow vendor_cnd vendor_nwmgr_service:service_manager find;
+allow vendor_cnd radio_202404:binder { call transfer };
+allow vendor_cnd radio_202404:fd *;
+allowxperm vendor_cnd self:ioctl udp_socket 0x8921;
+allowxperm vendor_cnd self:ioctl udp_socket { 0x8b0c 0x8bf5 };
+domain_auto_trans(vendor_cnd, vendor_hostapd_exec, vendor_hostapd)
+file_type_auto_trans(vendor_cnd, socket_device_202404, vendor_cnd_socket)
+r_dir_file(vendor_cnd, vendor_sysfs_ssr)
+r_dir_file(vendor_cnd, vendor_sysfs_diag)
+unix_socket_connect(vendor_cnd, vendor_netmgrd, init_202404)
+unix_socket_connect(vendor_cnd, vendor_netmgrd, vendor_netmgrd)
+unix_socket_connect(vendor_cnd, vendor_netmgrd, vendor_ssgtzd)
+unix_socket_connect(vendor_cnd, vendor_netmgrd, vendor_shsusrd)
+unix_socket_connect(vendor_cnd, vendor_ssgtzd, init_202404)
+unix_socket_connect(vendor_cnd, vendor_ssgtzd, vendor_netmgrd)
+unix_socket_connect(vendor_cnd, vendor_ssgtzd, vendor_ssgtzd)
+unix_socket_connect(vendor_cnd, vendor_ssgtzd, vendor_shsusrd)
+unix_socket_connect(vendor_cnd, vendor_wifi_vendor_wpa, init_202404)
+unix_socket_connect(vendor_cnd, vendor_wifi_vendor_wpa, vendor_netmgrd)
+unix_socket_connect(vendor_cnd, vendor_wifi_vendor_wpa, vendor_ssgtzd)
+unix_socket_connect(vendor_cnd, vendor_wifi_vendor_wpa, vendor_shsusrd)
+unix_socket_connect(vendor_cnd, vendor_hostapd, init_202404)
+unix_socket_connect(vendor_cnd, vendor_hostapd, vendor_netmgrd)
+unix_socket_connect(vendor_cnd, vendor_hostapd, vendor_ssgtzd)
+unix_socket_connect(vendor_cnd, vendor_hostapd, vendor_shsusrd)
+unix_socket_connect(vendor_cnd, vendor_shsusrd, init_202404)
+unix_socket_connect(vendor_cnd, vendor_shsusrd, vendor_netmgrd)
+unix_socket_connect(vendor_cnd, vendor_shsusrd, vendor_ssgtzd)
+unix_socket_connect(vendor_cnd, vendor_shsusrd, vendor_shsusrd)
+get_prop(vendor_cnd, vendor_cnd_prop)
+get_prop(vendor_cnd, hwservicemanager_prop_202404)
+get_prop(vendor_cnd, vendor_cnd_vendor_prop)
+get_prop(vendor_cnd, wifi_hal_prop_202404)
+get_prop(vendor_cnd, vendor_slm_prop)
+get_prop(vendor_cnd, vendor_mwqem_prop)
+net_domain(vendor_cnd)
+hal_client_domain(vendor_cnd, hal_wifi_hostapd)
+hal_client_domain(vendor_cnd, hal_wifi_supplicant)
+hal_client_domain(vendor_cnd, vendor_hal_qms_qti)
+type vendor_cnd, domain, vendor_hal_datafactory_qti, vendor_hal_datafactory_qti_server, vendor_hal_mwqemadapter_qti, vendor_hal_mwqemadapter_qti_server, vendor_halserverdomain;
+type vendor_cnd_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,7 @@
+allow gpuservice_202404 statsd_202404:binder transfer;
+allow gpuservice_202404 bluetooth_202404:binder transfer;
+allow gpuservice_202404 vendor_libsochelpertest_app:binder transfer;
+allow gpuservice_202404 vendor_snapcam_app:binder transfer;
+allow gpuservice_202404 vendor_location_app_test:binder transfer;
+allow gpuservice_202404 vendor_sys_seccam2_app:binder transfer;
+type gpuservice_202404, domain;

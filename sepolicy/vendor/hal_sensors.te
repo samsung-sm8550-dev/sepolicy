@@ -1,0 +1,71 @@
+expandtypeattribute(hal_sensors)
+expandtypeattribute(hal_sensors_client)
+expandtypeattribute(hal_sensors_server)
+allow hal_sensors_server dumpstate_202404:fifo_file write;
+allow hal_sensors_server dumpstate_202404:fd *;
+allow hal_sensors_server hal_sensors_client:binder transfer;
+allow hal_sensors_server hal_sensors_hwservice_202404:hwservice_manager { add find };
+allow hal_sensors_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_sensors_server su_202404:tcp_socket { accept getopt read write };
+allow hal_sensors_server servicemanager_202404:binder { call transfer };
+allow hal_sensors_server servicemanager_202404:fd *;
+allow hal_sensors_client hal_sensors_server:binder { call transfer };
+allow hal_sensors_client hal_sensors_server:fd *;
+allow hal_sensors_client hal_sensors_hwservice_202404:hwservice_manager find;
+allow hal_sensors_client hal_sensors_service_202404:service_manager find;
+allow hal_sensors hal_allocator:fd *;
+allow hal_sensors self:capability sys_nice;
+allow hal_sensors self:cap_userns sys_nice;
+allow hal_sensors vendor_sysfs_data:file r_file_perms;
+allow hal_sensors vendor_sysfs_sensors:dir r_dir_perms;
+allow hal_sensors vendor_sysfs_sensors:file rw_file_perms;
+allow hal_sensors vendor_sysfs_sensors:lnk_file read;
+allow hal_sensors_default fwk_scheduler_hwservice_202404:hwservice_manager find;
+allow hal_sensors_default input_device_202404:dir r_dir_perms;
+allow hal_sensors_default input_device_202404:chr_file r_file_perms;
+allow hal_sensors_default hal_graphics_allocator_default:fd *;
+allow hal_sensors_default ion_device_202404:chr_file r_file_perms;
+allow hal_sensors_default dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow hal_sensors_default sysfs_wake_lock_202404:file rw_file_perms;
+allow hal_sensors_default self:capability2 block_suspend;
+allow hal_sensors_default self:cap2_userns block_suspend;
+allow hal_sensors_default self:socket create_socket_perms;
+allow hal_sensors_default self:qipcrtr_socket create_socket_perms;
+allow hal_sensors_default system_suspend_server:binder { call transfer };
+allow hal_sensors_default system_suspend_server:fd *;
+allow hal_sensors_default system_suspend_hwservice_202404:hwservice_manager find;
+allow hal_sensors_default hwservicemanager_202404:binder { call transfer };
+allow hal_sensors_default hidl_manager_hwservice_202404:hwservice_manager find;
+allow hal_sensors_default hal_system_suspend_service_202404:service_manager find;
+allow hal_sensors_default servicemanager_202404:binder { call transfer };
+allow hal_sensors_default system_server_202404:fd *;
+allow hal_sensors_default system_server_202404:binder { call transfer };
+allow hal_sensors_default mnt_vendor_file_202404:dir search;
+allow hal_sensors_default mnt_vendor_file_202404:dir rw_dir_perms;
+allow hal_sensors_default mnt_vendor_file_202404:file create_file_perms;
+allow hal_sensors_default vendor_persist_sensors_file:dir rw_dir_perms;
+allow hal_sensors_default vendor_persist_sensors_file:file create_file_perms;
+allow hal_sensors_default vendor_diag_device:chr_file rw_file_perms;
+allow hal_sensors_default proc_sysrq_202404:file rw_file_perms;
+allow hal_sensors_default vendor_xdsp_device:chr_file r_file_perms;
+allow hal_sensors_default vendor_sysfs_slpi:dir search;
+allow hal_sensors_default vendor_sysfs_slpi:file rw_file_perms;
+allow hal_sensors_default vendor_sysfs_adsp_ssr:file w_file_perms;
+allow hal_sensors_default vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_sensors_default device_202404:dir r_dir_perms;
+allow hal_sensors_default vendor_hidraw_device:chr_file rw_file_perms;
+allow hal_sensors_default vendor_qvrd_vndr:fd *;
+allowxperm hal_sensors_default self:ioctl socket { range 0xc300 0xc305 };
+allowxperm hal_sensors_default self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+r_dir_file(hal_sensors_default, vendor_persist_sensors_file)
+r_dir_file(hal_sensors_default, vendor_sysfs_diag)
+get_prop(hal_sensors_default, hwservicemanager_prop_202404)
+get_prop(hal_sensors_default, vendor_sensors_prop)
+get_prop(hal_sensors_default, vendor_sensors_dbg_prop)
+get_prop(hal_sensors_default, vendor_adsprpc_prop)
+get_prop(hal_sensors_default, vendor_dynamic_sensor_prop)
+hal_server_domain(hal_sensors_default, hal_sensors)
+hal_client_domain(hal_sensors_default, hal_graphics_allocator)
+add_service(hal_sensors_server, hal_sensors_service_202404)
+type hal_sensors_default, domain;
+type hal_sensors_default_exec, exec_type, file_type, vendor_file_type;

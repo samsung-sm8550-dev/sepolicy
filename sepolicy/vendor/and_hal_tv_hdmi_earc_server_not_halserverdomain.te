@@ -1,0 +1,1 @@
+neverallow { hal_tv_hdmi_earc_server -halserverdomain } domain:process fork;

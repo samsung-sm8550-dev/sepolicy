@@ -1,0 +1,3 @@
+allow watchdogd_202404 watchdog_device_202404:chr_file rw_file_perms;
+allow watchdogd_202404 kmsg_device_202404:chr_file rw_file_perms;
+type watchdogd_202404, domain;

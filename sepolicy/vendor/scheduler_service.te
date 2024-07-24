@@ -1,0 +1,3 @@
+allow scheduler_service_server fwk_scheduler_hwservice_202404:hwservice_manager { add find };
+allow scheduler_service_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute scheduler_service_server;

@@ -1,0 +1,2 @@
+allow cgroup_v2_202404 tmpfs_202404:filesystem associate;
+type cgroup_v2_202404, fs_type;

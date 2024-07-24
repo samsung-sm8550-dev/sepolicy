@@ -1,0 +1,2 @@
+neverallow { domain -init_202404 -zygote_202404 } proc_type:file mounton;
+neverallow { domain -init_202404 -zygote_202404 } proc_type:dir mounton;

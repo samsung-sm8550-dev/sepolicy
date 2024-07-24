@@ -1,0 +1,87 @@
+expandtypeattribute(hal_bluetooth)
+expandtypeattribute(hal_bluetooth_client)
+expandtypeattribute(hal_bluetooth_server)
+allow hal_bluetooth_server dumpstate_202404:fifo_file write;
+allow hal_bluetooth_server dumpstate_202404:fd *;
+allow hal_bluetooth_server hal_bluetooth_client:binder transfer;
+allow hal_bluetooth_server hal_bluetooth_client:binder { call transfer };
+allow hal_bluetooth_server hal_bluetooth_client:fd *;
+allow hal_bluetooth_server servicemanager_202404:binder { call transfer };
+allow hal_bluetooth_server servicemanager_202404:fd *;
+allow hal_bluetooth_server hal_bluetooth_hwservice_202404:hwservice_manager { add find };
+allow hal_bluetooth_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_bluetooth_server su_202404:tcp_socket { accept getopt read write };
+allow hal_bluetooth_client hal_bluetooth_server:binder { call transfer };
+allow hal_bluetooth_client hal_bluetooth_server:binder transfer;
+allow hal_bluetooth_client hal_bluetooth_server:fd *;
+allow hal_bluetooth_client hal_bluetooth_hwservice_202404:hwservice_manager find;
+allow hal_bluetooth_client hal_bluetooth_service_202404:service_manager find;
+allow hal_bluetooth_client vendor_hal_bttpi_service:service_manager find;
+allow hal_bluetooth sysfs_wake_lock_202404:file rw_file_perms;
+allow hal_bluetooth self:capability2 block_suspend;
+allow hal_bluetooth self:capability2 wake_alarm;
+allow hal_bluetooth self:cap2_userns block_suspend;
+allow hal_bluetooth self:cap2_userns wake_alarm;
+allow hal_bluetooth self:capability net_admin;
+allow hal_bluetooth self:capability sys_nice;
+allow hal_bluetooth self:cap_userns net_admin;
+allow hal_bluetooth self:cap_userns sys_nice;
+allow hal_bluetooth system_suspend_server:binder { call transfer };
+allow hal_bluetooth system_suspend_server:fd *;
+allow hal_bluetooth system_suspend_hwservice_202404:hwservice_manager find;
+allow hal_bluetooth hwservicemanager_202404:binder { call transfer };
+allow hal_bluetooth hidl_manager_hwservice_202404:hwservice_manager find;
+allow hal_bluetooth hal_system_suspend_service_202404:service_manager find;
+allow hal_bluetooth servicemanager_202404:binder { call transfer };
+allow hal_bluetooth servicemanager_202404:fd *;
+allow hal_bluetooth uhid_device_202404:chr_file rw_file_perms;
+allow hal_bluetooth hci_attach_dev_202404:chr_file rw_file_perms;
+allow hal_bluetooth sysfs_bluetooth_writable_202404:file rw_file_perms;
+allow hal_bluetooth property_socket_202404:sock_file write;
+allow hal_bluetooth init_202404:unix_stream_socket connectto;
+allow hal_bluetooth bluetooth_a2dp_offload_prop_202404:property_service set;
+allow hal_bluetooth bluetooth_audio_hal_prop_202404:property_service set;
+allow hal_bluetooth bluetooth_prop_202404:property_service set;
+allow hal_bluetooth exported_bluetooth_prop_202404:property_service set;
+allow hal_bluetooth proc_bluetooth_writable_202404:file rw_file_perms;
+allow hal_bluetooth fwk_scheduler_hwservice_202404:hwservice_manager find;
+allow hal_bluetooth system_server_202404:binder call;
+allow hal_bluetooth vendor_bluetooth_prop:property_service set;
+allow hal_bluetooth vendor_diag_device:chr_file rw_file_perms;
+allow hal_bluetooth_default bt_device_202404:chr_file { open read write };
+allow hal_bluetooth_default self:bluetooth_socket { bind create read write };
+allow hal_bluetooth_default self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow hal_bluetooth_default self:socket create_socket_perms_no_ioctl;
+allow hal_bluetooth_default vendor_bt_device:chr_file rw_file_perms;
+allow hal_bluetooth_default vendor_persist_bluetooth_file:dir rw_dir_perms;
+allow hal_bluetooth_default vendor_persist_bluetooth_file:file create_file_perms;
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:file create_file_perms;
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:dir create_dir_perms;
+allow hal_bluetooth_default proc_sysrq_202404:file rw_file_perms;
+allow hal_bluetooth_default vendor_bt_data_file:dir ra_dir_perms;
+allow hal_bluetooth_default vendor_bt_data_file:file create_file_perms;
+allow hal_bluetooth_default vendor_debugfs_bt_tracing:dir r_dir_perms;
+allow hal_bluetooth_default vendor_debugfs_bt_tracing:file r_file_perms;
+allow hal_bluetooth_default debugfs_tracing_instances_202404:dir search;
+allow hal_bluetooth_default dumpstate_202404:binder transfer;
+allow hal_bluetooth_default vendor_fm_radio_device:chr_file r_file_perms;
+r_dir_file(hal_bluetooth, bluetooth_efs_file_202404)
+r_dir_file(hal_bluetooth, sysfs_type)
+r_dir_file(hal_bluetooth, vendor_sysfs_diag)
+r_dir_file(hal_bluetooth_default, bt_firmware_file)
+r_dir_file(hal_bluetooth_default, mnt_vendor_file_202404)
+unix_socket_connect(hal_bluetooth_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_bluetooth, hwservicemanager_prop_202404)
+get_prop(hal_bluetooth, bluetooth_a2dp_offload_prop_202404)
+get_prop(hal_bluetooth, bluetooth_audio_hal_prop_202404)
+get_prop(hal_bluetooth, bluetooth_prop_202404)
+get_prop(hal_bluetooth, exported_bluetooth_prop_202404)
+get_prop(hal_bluetooth, vendor_bluetooth_prop)
+get_prop(hal_bluetooth_default, vendor_soc_id_prop)
+hal_server_domain(hal_bluetooth_default, hal_bluetooth)
+hal_server_domain(hal_bluetooth_default, vendor_hal_btconfigstore)
+hal_server_domain(hal_bluetooth_default, vendor_hal_fm)
+add_service(hal_bluetooth_server, hal_bluetooth_service_202404)
+add_service(hal_bluetooth_server, vendor_hal_bttpi_service)
+type hal_bluetooth_default, domain;
+type hal_bluetooth_default_exec, exec_type, file_type, vendor_file_type;

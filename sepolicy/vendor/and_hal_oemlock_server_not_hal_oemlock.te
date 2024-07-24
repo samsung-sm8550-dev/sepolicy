@@ -1,0 +1,1 @@
+neverallow { hal_oemlock_server -hal_oemlock } domain:process fork;

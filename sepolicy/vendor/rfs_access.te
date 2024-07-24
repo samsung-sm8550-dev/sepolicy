@@ -1,0 +1,33 @@
+allow vendor_rfs_access self:capability { chown net_bind_service setgid setpcap setuid };
+allow vendor_rfs_access self:capability2 block_suspend;
+allow vendor_rfs_access self:cap2_userns block_suspend;
+allow vendor_rfs_access self:socket create_socket_perms_no_ioctl;
+allow vendor_rfs_access self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_rfs_access sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_rfs_access system_suspend_server:binder { call transfer };
+allow vendor_rfs_access system_suspend_server:fd *;
+allow vendor_rfs_access system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_rfs_access hwservicemanager_202404:binder { call transfer };
+allow vendor_rfs_access hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_rfs_access hal_system_suspend_service_202404:service_manager find;
+allow vendor_rfs_access servicemanager_202404:binder { call transfer };
+allow vendor_rfs_access vendor_firmware_data_file:dir r_dir_perms;
+allow vendor_rfs_access vendor_firmware_data_file:file r_file_perms;
+allow vendor_rfs_access mnt_vendor_file_202404:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_file:dir search;
+allow vendor_rfs_access vendor_persist_rfs_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_file:file create_file_perms;
+allow vendor_rfs_access vendor_persist_rfs_shared_hlos_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_persist_rfs_shared_hlos_file:file create_file_perms;
+allow vendor_rfs_access vendor_tombstone_data_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_tombstone_data_file:file create_file_perms;
+allow vendor_rfs_access kmsg_device_202404:chr_file w_file_perms;
+allow vendor_rfs_access vendor_pddump_data_file:dir create_dir_perms;
+allow vendor_rfs_access vendor_pddump_data_file:file create_file_perms;
+type_transition vendor_rfs_access mnt_vendor_file_202404:dir vendor_persist_rfs_file;
+type_transition vendor_rfs_access mnt_vendor_file_202404:dir vendor_persist_rfs_shared_hlos_file "hlos_rfs";
+type_transition vendor_rfs_access mnt_vendor_file_202404:file vendor_persist_rfs_file;
+r_dir_file(vendor_rfs_access, firmware_file)
+get_prop(vendor_rfs_access, hwservicemanager_prop_202404)
+type vendor_rfs_access, domain;
+type vendor_rfs_access_exec, exec_type, file_type, vendor_file_type;

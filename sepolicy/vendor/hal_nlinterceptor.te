@@ -1,0 +1,15 @@
+expandtypeattribute(hal_nlinterceptor)
+expandtypeattribute(hal_nlinterceptor_client)
+expandtypeattribute(hal_nlinterceptor_server)
+allow hal_nlinterceptor_client hal_nlinterceptor_server:binder { call transfer };
+allow hal_nlinterceptor_client hal_nlinterceptor_server:fd *;
+allow hal_nlinterceptor_client hal_nlinterceptor_service_202404:service_manager find;
+allow hal_nlinterceptor_server hal_nlinterceptor_client:binder transfer;
+allow hal_nlinterceptor_server su_202404:tcp_socket { accept getopt read write };
+allow hal_nlinterceptor servicemanager_202404:binder { call transfer };
+allow hal_nlinterceptor servicemanager_202404:fd *;
+allow hal_nlinterceptor self:capability net_admin;
+allow hal_nlinterceptor self:cap_userns net_admin;
+allow hal_nlinterceptor self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow hal_nlinterceptor self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_readpriv nlmsg_write };
+add_service(hal_nlinterceptor_server, hal_nlinterceptor_service_202404)

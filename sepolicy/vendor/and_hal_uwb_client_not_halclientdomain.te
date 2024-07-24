@@ -1,0 +1,1 @@
+neverallow { hal_uwb_client -halclientdomain } domain:process fork;

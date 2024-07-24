@@ -1,0 +1,9 @@
+allow gmscore_app_202404 update_engine_202404:binder transfer;
+allow gmscore_app_202404 vendor_dpmtcm_socket_202404:sock_file write;
+allow gmscore_app_202404 vendor_dpmd_202404:unix_stream_socket connectto;
+dontaudit gmscore_app_202404 vendor_hal_qspmhal_default:binder call;
+dontaudit gmscore_app_202404 vendor_hal_qspmhal_hwservice:hwservice_manager find;
+dontaudit gmscore_app_202404 firmware_file:filesystem getattr;
+dontaudit gmscore_app_202404 bt_firmware_file:filesystem getattr;
+dontaudit gmscore_app_202404 adsprpcd_file:filesystem getattr;
+type gmscore_app_202404, domain;

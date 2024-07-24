@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_diaghal_client -vendor_hal_diaghal_server } vendor_hal_diaghal_hwservice:hwservice_manager find;

@@ -1,0 +1,2 @@
+neverallow { domain -init_202404 -kernel_202404 -recovery_202404 -ueventd_202404 -vold_202404 } self:capability mknod;
+neverallow { domain -init_202404 -kernel_202404 -recovery_202404 -ueventd_202404 -vold_202404 } self:cap_userns mknod;

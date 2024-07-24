@@ -1,0 +1,13 @@
+allow vendor_embmssl_app vendor_embmssl_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_embmssl_app appdomain_tmpfs_202404:file { execute getattr map read write };
+allow vendor_embmssl_app vendor_dpmtcm_socket_202404:sock_file write;
+allow vendor_embmssl_app vendor_dpmd_202404:unix_stream_socket connectto;
+allow vendor_embmssl_app app_api_service:service_manager find;
+allow vendor_embmssl_app radio_service_202404:service_manager find;
+dontaudit vendor_embmssl_app system_file_202404:dir write;
+type_transition vendor_embmssl_app tmpfs_202404:file appdomain_tmpfs;
+type_transition vendor_embmssl_app vendor_embmssl_app:anon_inode vendor_embmssl_app_userfaultfd "[userfaultfd]";
+net_domain(vendor_embmssl_app)
+hal_client_domain(vendor_embmssl_app, vendor_hal_embmssl)
+hal_client_domain(vendor_embmssl_app, vendor_hal_perf)
+type vendor_embmssl_app, appdomain, domain;

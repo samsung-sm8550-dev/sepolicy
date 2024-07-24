@@ -1,0 +1,3 @@
+allow camera_service_server fwk_camera_hwservice_202404:hwservice_manager { add find };
+allow camera_service_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute camera_service_server;

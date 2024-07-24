@@ -1,0 +1,2 @@
+allow mtp_202404 self:pppox_socket create_socket_perms_no_ioctl;
+type mtp_202404, domain;

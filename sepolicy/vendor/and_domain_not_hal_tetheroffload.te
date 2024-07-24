@@ -1,0 +1,1 @@
+neverallow { domain -hal_tetheroffload_server } hal_tetheroffload_hwservice_202404:hwservice_manager add;

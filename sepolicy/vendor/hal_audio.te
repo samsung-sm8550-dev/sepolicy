@@ -1,0 +1,97 @@
+expandtypeattribute(hal_audio)
+expandtypeattribute(hal_audio_client)
+expandtypeattribute(hal_audio_server)
+neverallow hal_audio_server fs_type:file execute_no_trans;
+neverallow hal_audio_server file_type:file execute_no_trans;
+allow hal_audio_server dumpstate_202404:fifo_file write;
+allow hal_audio_server dumpstate_202404:fd *;
+allow hal_audio_server hal_audio_client:binder transfer;
+allow hal_audio_server hal_audio_client:binder { call transfer };
+allow hal_audio_server hal_audio_client:fd *;
+allow hal_audio_server hal_audio_hwservice_202404:hwservice_manager { add find };
+allow hal_audio_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_audio_server su_202404:tcp_socket { accept getopt read write };
+allow hal_audio_server servicemanager_202404:binder { call transfer };
+allow hal_audio_server servicemanager_202404:fd *;
+allow hal_audio_server audio_device_202404:dir r_dir_perms;
+allow hal_audio_server audio_device_202404:chr_file rw_file_perms;
+allow hal_audio_server appdomain:fd *;
+allow hal_audio_server system_server_tmpfs_202404:file { getattr map read };
+allow hal_audio_server self:capability sys_nice;
+allow hal_audio_server self:cap_userns sys_nice;
+allow hal_audio_client hal_audio_server:binder { call transfer };
+allow hal_audio_client hal_audio_server:binder transfer;
+allow hal_audio_client hal_audio_server:fd *;
+allow hal_audio_client hal_audio_hwservice_202404:hwservice_manager find;
+allow hal_audio_client hal_audio_service_202404:service_manager find;
+allow hal_audio ion_device_202404:chr_file r_file_perms;
+allow hal_audio shell_202404:fd *;
+allow hal_audio shell_202404:fifo_file write;
+allow hal_audio dumpstate_202404:fd *;
+allow hal_audio dumpstate_202404:fifo_file write;
+allow hal_audio vndbinder_device_202404:chr_file rw_file_perms;
+allow hal_audio vndservicemanager_202404:binder { call transfer };
+allow hal_audio vendor_diag_device:chr_file rw_file_perms;
+allow hal_audio property_socket_202404:sock_file write;
+allow hal_audio init_202404:unix_stream_socket connectto;
+allow hal_audio vendor_audio_prop:property_service set;
+allow hal_audio vendor_adsp_sleepmon_device:chr_file rw_file_perms;
+allow hal_audio firmware_file:dir r_dir_perms;
+allow hal_audio firmware_file:file r_file_perms;
+allow hal_audio vendor_proc_audiod:file r_file_perms;
+allow hal_audio sysfs_wake_lock_202404:file rw_file_perms;
+allow hal_audio self:capability2 block_suspend;
+allow hal_audio self:cap2_userns block_suspend;
+allow hal_audio system_suspend_server:binder { call transfer };
+allow hal_audio system_suspend_server:fd *;
+allow hal_audio system_suspend_hwservice_202404:hwservice_manager find;
+allow hal_audio hwservicemanager_202404:binder { call transfer };
+allow hal_audio hidl_manager_hwservice_202404:hwservice_manager find;
+allow hal_audio hal_system_suspend_service_202404:service_manager find;
+allow hal_audio servicemanager_202404:binder { call transfer };
+allow hal_audio vendor_sysfs_audio:file rw_file_perms;
+allow hal_audio vendor_sysfs_audio:dir r_dir_perms;
+allow hal_audio vendor_sysfs_sndcard:file rw_file_perms;
+allow hal_audio vendor_audio_ssr_prop:property_service set;
+allow hal_audio bluetooth_202404:binder { call transfer };
+allow hal_audio bluetooth_202404:fd *;
+allow hal_audio_default fwk_sensor_service_202404:service_manager find;
+allow hal_audio_default audioserver_202404:fifo_file write;
+allow hal_audio_default mnt_vendor_file_202404:dir search;
+allow hal_audio_default vendor_audio_data_file:dir rw_dir_perms;
+allow hal_audio_default vendor_audio_data_file:file create_file_perms;
+allow hal_audio_default self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow hal_audio_default self:capability sys_nice;
+allow hal_audio_default self:cap_userns sys_nice;
+allow hal_audio_default vendor_agm_device:chr_file rw_file_perms;
+allow hal_audio_default dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow hal_audio_default vendor_dmabuf_system_uncached_heap_device:chr_file r_file_perms;
+allow hal_audio_default vendor_dmabuf_audio_ml_heap_device:chr_file r_file_perms;
+allow hal_audio_default vendor_sysfs_agm:file rw_file_perms;
+allow hal_audio_default vendor_sysfs_agm:dir r_dir_perms;
+allow hal_audio_default vendor_sysfs_adsp_ssr:file w_file_perms;
+allow hal_audio_default vendor_vuidmgr_socket:sock_file rw_file_perms;
+allow hal_audio_default devpts_202404:chr_file rw_file_perms;
+r_dir_file(hal_audio, proc_202404)
+r_dir_file(hal_audio, proc_asound_202404)
+r_dir_file(hal_audio, vendor_sysfs_diag)
+r_dir_file(hal_audio_default, vendor_persist_audio_file)
+unix_socket_connect(hal_audio_default, vendor_ssgtzd, vendor_vui_dmgr)
+unix_socket_connect(hal_audio_default, vendor_ssgtzd, vendor_ssgtzd)
+get_prop(hal_audio, audio_config_prop_202404)
+get_prop(hal_audio, bluetooth_a2dp_offload_prop_202404)
+get_prop(hal_audio, bluetooth_audio_hal_prop_202404)
+get_prop(hal_audio, vendor_pd_locater_dbg_prop)
+get_prop(hal_audio, vendor_audio_prop)
+get_prop(hal_audio, hwservicemanager_prop_202404)
+get_prop(hal_audio, vendor_audio_ssr_prop)
+get_prop(hal_audio, vendor_bluetooth_prop)
+hal_server_domain(hal_audio_default, hal_audio)
+hal_client_domain(hal_audio_default, hal_allocator)
+hal_client_domain(hal_audio_default, hal_codec2)
+hal_client_domain(hal_audio_default, hal_health)
+hal_client_domain(hal_audio_default, hal_power)
+hal_client_domain(hal_audio_default, vendor_hal_perf)
+add_service(hal_audio_server, hal_audio_service_202404)
+type hal_audio_default, domain;
+type hal_audio_default_exec, exec_type, file_type, vendor_file_type;

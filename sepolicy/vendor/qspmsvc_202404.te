@@ -1,0 +1,2 @@
+hal_client_domain(vendor_qspmsvc_202404, vendor_hal_qspmhal)
+type vendor_qspmsvc_202404, domain;

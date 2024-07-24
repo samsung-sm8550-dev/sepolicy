@@ -1,0 +1,23 @@
+allow vendor_snapcam_app vendor_snapcam_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_snapcam_app appdomain_tmpfs_202404:file { execute getattr map read write };
+allow vendor_snapcam_app cameraserver_service_202404:service_manager find;
+allow vendor_snapcam_app property_socket_202404:sock_file write;
+allow vendor_snapcam_app init_202404:unix_stream_socket connectto;
+allow vendor_snapcam_app vendor_camera_prop:property_service set;
+allow vendor_snapcam_app nfc_service_202404:service_manager find;
+allow vendor_snapcam_app gpuservice_202404:binder { call transfer };
+allow vendor_snapcam_app gpuservice_202404:fd *;
+allow vendor_snapcam_app app_api_service:service_manager find;
+allow vendor_snapcam_app vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_snapcam_app audioserver_service_202404:service_manager find;
+allow vendor_snapcam_app mediaextractor_service_202404:service_manager find;
+allow vendor_snapcam_app mediametrics_service_202404:service_manager find;
+allow vendor_snapcam_app mediaserver_service_202404:service_manager find;
+dontaudit vendor_snapcam_app default_prop_202404:file read;
+type_transition vendor_snapcam_app tmpfs_202404:file appdomain_tmpfs;
+type_transition vendor_snapcam_app vendor_snapcam_app:anon_inode vendor_snapcam_app_userfaultfd "[userfaultfd]";
+get_prop(vendor_snapcam_app, vendor_persist_camera_prop_202404)
+get_prop(vendor_snapcam_app, vendor_camera_prop)
+get_prop(vendor_snapcam_app, camera_config_prop_202404)
+hal_client_domain(vendor_snapcam_app, vendor_hal_perf)
+type vendor_snapcam_app, appdomain, domain;

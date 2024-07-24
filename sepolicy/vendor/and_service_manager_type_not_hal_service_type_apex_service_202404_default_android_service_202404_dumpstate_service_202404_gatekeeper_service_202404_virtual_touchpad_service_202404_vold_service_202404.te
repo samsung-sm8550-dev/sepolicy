@@ -1,0 +1,1 @@
+allow dumpstate_202404 { service_manager_type -hal_service_type -apex_service_202404 -default_android_service_202404 -dumpstate_service_202404 -gatekeeper_service_202404 -virtual_touchpad_service_202404 -vold_service_202404 }:service_manager find;

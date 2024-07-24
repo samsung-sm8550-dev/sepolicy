@@ -1,0 +1,28 @@
+allow vendor_hal_drm_widevine mediacodec:fd *;
+allow vendor_hal_drm_widevine vendor_qce_device:chr_file rw_file_perms;
+allow vendor_hal_drm_widevine tee_device_202404:chr_file rw_file_perms;
+allow vendor_hal_drm_widevine vndbinder_device_202404:chr_file rw_file_perms;
+allow vendor_hal_drm_widevine vndservicemanager_202404:binder { call transfer };
+allow vendor_hal_drm_widevine vendor_qdisplay_service:service_manager find;
+allow vendor_hal_drm_widevine vendor_mediadrm_vendor_data_file:dir create_dir_perms;
+allow vendor_hal_drm_widevine vendor_mediadrm_vendor_data_file:file create_file_perms;
+allow vendor_hal_drm_widevine vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_drm_widevine vendor_membuf_dev:chr_file r_file_perms;
+allow vendor_hal_drm_widevine vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_hal_drm_widevine vendor_vm_cp_bitstream_device:chr_file r_file_perms;
+allow vendor_hal_drm_widevine sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_hal_drm_widevine self:capability2 block_suspend;
+allow vendor_hal_drm_widevine self:cap2_userns block_suspend;
+allow vendor_hal_drm_widevine system_suspend_server:binder { call transfer };
+allow vendor_hal_drm_widevine system_suspend_server:fd *;
+allow vendor_hal_drm_widevine system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_hal_drm_widevine hwservicemanager_202404:binder { call transfer };
+allow vendor_hal_drm_widevine hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_hal_drm_widevine hal_system_suspend_service_202404:service_manager find;
+allow vendor_hal_drm_widevine servicemanager_202404:binder { call transfer };
+unix_socket_connect(vendor_hal_drm_widevine, vendor_notify-topology, tee_202404)
+get_prop(vendor_hal_drm_widevine, hwservicemanager_prop_202404)
+hal_server_domain(vendor_hal_drm_widevine, hal_drm)
+hal_client_domain(vendor_hal_drm_widevine, hal_graphics_composer)
+type vendor_hal_drm_widevine, domain;
+type vendor_hal_drm_widevine_exec, exec_type, file_type, vendor_file_type;

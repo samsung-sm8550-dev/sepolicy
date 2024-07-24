@@ -1,0 +1,2 @@
+allow vendor_hal_sxrservice_qti_socket_fd_use_client vendor_sxrd_vndr:fd *;
+attribute vendor_hal_sxrservice_qti_socket_fd_use_client;

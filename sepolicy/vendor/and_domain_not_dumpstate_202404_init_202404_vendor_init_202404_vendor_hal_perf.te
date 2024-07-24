@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate_202404 -init_202404 -vendor_init_202404 -vendor_hal_perf_default } vendor_procomp_prop:file *;

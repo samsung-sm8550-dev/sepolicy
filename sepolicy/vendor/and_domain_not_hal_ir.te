@@ -1,0 +1,1 @@
+neverallow { domain -hal_ir_server } hal_ir_hwservice_202404:hwservice_manager add;

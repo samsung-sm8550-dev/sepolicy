@@ -1,0 +1,3 @@
+hal_server_domain(vendor_wifilearnersvc, vendor_hal_wifilearner)
+type vendor_wifilearnersvc, domain;
+type vendor_wifilearnersvc_exec, exec_type, file_type, vendor_file_type;

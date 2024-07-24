@@ -1,0 +1,18 @@
+allow platform_app_202404 vendor_hal_display_color_server:binder { call transfer };
+allow platform_app_202404 vendor_hal_display_color_server:fd *;
+allow platform_app_202404 vendor_hal_display_color_hwservice:hwservice_manager find;
+allow platform_app_202404 nfc_service_202404:service_manager find;
+allow platform_app_202404 vendor_fidotest:binder transfer;
+allow platform_app_202404 vendor_fidotest:binder { call transfer };
+allow platform_app_202404 vendor_fidotest:fd *;
+allow platform_app_202404 hal_lineage_fastcharge:binder transfer;
+allow platform_app_202404 hal_lineage_powershare:binder transfer;
+get_prop(platform_app_202404, vendor_display_notch_prop_202404)
+get_prop(platform_app_202404, vendor_mpctl_prop)
+hal_client_domain(platform_app_202404, hal_fingerprint)
+hal_client_domain(platform_app_202404, vendor_hal_perf)
+hal_client_domain(platform_app_202404, vendor_hal_qspmhal)
+hal_client_domain(platform_app_202404, vendor_hal_scve)
+hal_client_domain(platform_app_202404, vendor_hal_pasrmanager)
+hal_client_domain(platform_app_202404, vendor_hal_cvp)
+type platform_app_202404, domain;

@@ -1,0 +1,19 @@
+allow vendor_dspservice vendor_qdsp_device:chr_file r_file_perms;
+allow vendor_dspservice vendor_xdsp_device:chr_file r_file_perms;
+allow vendor_dspservice ion_device_202404:chr_file r_file_perms;
+allow vendor_dspservice sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_dspservice self:capability2 block_suspend;
+allow vendor_dspservice self:cap2_userns block_suspend;
+allow vendor_dspservice system_suspend_server:binder { call transfer };
+allow vendor_dspservice system_suspend_server:fd *;
+allow vendor_dspservice system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_dspservice hwservicemanager_202404:binder { call transfer };
+allow vendor_dspservice hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_dspservice hal_system_suspend_service_202404:service_manager find;
+allow vendor_dspservice servicemanager_202404:binder { call transfer };
+r_dir_file(vendor_dspservice, adsprpcd_file)
+get_prop(vendor_dspservice, vendor_adsprpc_prop)
+get_prop(vendor_dspservice, hwservicemanager_prop_202404)
+hal_server_domain(vendor_dspservice, vendor_hal_dspmanager)
+type vendor_dspservice, domain;
+type vendor_dspservice_exec, exec_type, file_type, vendor_file_type;

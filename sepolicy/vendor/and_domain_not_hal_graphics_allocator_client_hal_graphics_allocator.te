@@ -1,0 +1,1 @@
+neverallow { domain -hal_graphics_allocator_client -hal_graphics_allocator_server } hal_graphics_allocator_hwservice_202404:hwservice_manager find;

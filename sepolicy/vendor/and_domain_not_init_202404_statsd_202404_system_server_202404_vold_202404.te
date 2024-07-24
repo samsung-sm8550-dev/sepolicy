@@ -1,0 +1,2 @@
+neverallow { domain -init_202404 -statsd_202404 -system_server_202404 -vold_202404 } stats_config_data_file_202404:file *;
+neverallow { domain -init_202404 -statsd_202404 -system_server_202404 -vold_202404 } stats_config_data_file_202404:dir *;

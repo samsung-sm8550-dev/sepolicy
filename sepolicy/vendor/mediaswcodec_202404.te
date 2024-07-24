@@ -1,0 +1,27 @@
+neverallow mediaswcodec_202404 fs_type:file execute_no_trans;
+neverallow mediaswcodec_202404 file_type:file execute_no_trans;
+neverallow mediaswcodec_202404 domain:udp_socket *;
+neverallow mediaswcodec_202404 domain:rawip_socket *;
+allow mediaswcodec_202404 dumpstate_202404:binder transfer;
+allow mediaswcodec_202404 dumpstate_202404:fd *;
+allow mediaswcodec_202404 dumpstate_202404:fifo_file { append write };
+allow mediaswcodec_202404 su_202404:fifo_file append;
+allow mediaswcodec_202404 anr_data_file_202404:file append;
+allow mediaswcodec_202404 incidentd_202404:fd *;
+allow mediaswcodec_202404 incidentd_202404:fifo_file { append write };
+allow mediaswcodec_202404 system_server_202404:fifo_file { append write };
+allow mediaswcodec_202404 tombstoned_202404:unix_stream_socket connectto;
+allow mediaswcodec_202404 tombstoned_202404:fd *;
+allow mediaswcodec_202404 tombstoned_crash_socket_202404:sock_file write;
+allow mediaswcodec_202404 tombstone_data_file_202404:file append;
+allow mediaswcodec_202404 dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow mediaswcodec_202404 dmabuf_system_secure_heap_device_202404:chr_file r_file_perms;
+allow mediaswcodec_202404 gpu_device_202404:chr_file rw_file_perms;
+allow mediaswcodec_202404 gpu_device_202404:dir r_dir_perms;
+get_prop(mediaswcodec_202404, aac_drc_prop_202404)
+hal_server_domain(mediaswcodec_202404, hal_codec2)
+hal_client_domain(mediaswcodec_202404, hal_allocator)
+hal_client_domain(mediaswcodec_202404, hal_codec2)
+hal_client_domain(mediaswcodec_202404, hal_graphics_allocator)
+hal_client_domain(mediaswcodec_202404, hal_omx)
+type mediaswcodec_202404, domain;

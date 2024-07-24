@@ -1,0 +1,1 @@
+neverallow { domain -hal_remoteaccess_client -hal_remoteaccess_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_remoteaccess_service_202404:service_manager find;

@@ -1,0 +1,42 @@
+allow vendor_sxrd_vndr hwservicemanager_202404:binder { call transfer };
+allow vendor_sxrd_vndr system_file_202404:dir r_dir_perms;
+allow vendor_sxrd_vndr vendor_hal_sxrservice_qti_socket_client:unix_stream_socket { getopt read setopt shutdown write };
+allow vendor_sxrd_vndr servicemanager_202404:binder { call transfer };
+allow vendor_sxrd_vndr vendor_sxrd_vndr_socket:sock_file rw_file_perms;
+allow vendor_sxrd_vndr vendor_sxrd_vndr_data_file:dir create_dir_perms;
+allow vendor_sxrd_vndr vendor_sxrd_vndr_data_file:file create_file_perms;
+allow vendor_sxrd_vndr video_device_202404:chr_file rw_file_perms;
+allow vendor_sxrd_vndr usb_device_202404:chr_file rw_file_perms;
+allow vendor_sxrd_vndr usb_device_202404:dir { open read search watch };
+allow vendor_sxrd_vndr device_202404:dir { read watch };
+allow vendor_sxrd_vndr vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_membuf_dev:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_vm_cp_bitstream_device:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_dmabuf_display_heap_device:chr_file r_file_perms;
+allow vendor_sxrd_vndr vendor_qce_device:chr_file rw_file_perms;
+allow vendor_sxrd_vndr tee_device_202404:chr_file rw_file_perms;
+allow vendor_sxrd_vndr self:udp_socket create_socket_perms_no_ioctl;
+allow vendor_sxrd_vndr self:netlink_route_socket create_socket_perms_no_ioctl;
+allow vendor_sxrd_vndr su_202404:fifo_file append;
+allow vendor_sxrd_vndr anr_data_file_202404:file append;
+allow vendor_sxrd_vndr dumpstate_202404:fd *;
+allow vendor_sxrd_vndr dumpstate_202404:fifo_file { append write };
+allow vendor_sxrd_vndr incidentd_202404:fd *;
+allow vendor_sxrd_vndr incidentd_202404:fifo_file { append write };
+allow vendor_sxrd_vndr system_server_202404:fifo_file { append write };
+allow vendor_sxrd_vndr tombstoned_202404:unix_stream_socket connectto;
+allow vendor_sxrd_vndr tombstoned_202404:fd *;
+allow vendor_sxrd_vndr tombstoned_crash_socket_202404:sock_file write;
+allow vendor_sxrd_vndr tombstone_data_file_202404:file append;
+r_dir_file(vendor_sxrd_vndr, firmware_file)
+get_prop(vendor_sxrd_vndr, hwservicemanager_prop_202404)
+get_prop(vendor_sxrd_vndr, vendor_sxr_prop)
+binder_service(vendor_sxrd_vndr)
+net_domain(vendor_sxrd_vndr)
+hal_client_domain(vendor_sxrd_vndr, hal_audio)
+hal_client_domain(vendor_sxrd_vndr, hal_graphics_allocator)
+hal_client_domain(vendor_sxrd_vndr, vendor_sys_sxrauxservice_qti_socket)
+type vendor_sxrd_vndr, domain, vendor_hal_sxrservice_qti, vendor_hal_sxrservice_qti_server, vendor_halserverdomain;
+type vendor_sxrd_vndr_exec, exec_type, file_type, vendor_file_type;

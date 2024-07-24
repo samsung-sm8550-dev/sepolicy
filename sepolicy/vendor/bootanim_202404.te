@@ -1,0 +1,31 @@
+allow bootanim_202404 servicemanager_202404:binder { call transfer };
+allow bootanim_202404 surfaceflinger_202404:binder { call transfer };
+allow bootanim_202404 surfaceflinger_202404:fd *;
+allow bootanim_202404 surfaceflinger_202404:unix_stream_socket { read write };
+allow bootanim_202404 audioserver_202404:binder { call transfer };
+allow bootanim_202404 audioserver_202404:binder transfer;
+allow bootanim_202404 audioserver_202404:fd *;
+allow bootanim_202404 hwservicemanager_202404:binder { call transfer };
+allow bootanim_202404 hwservicemanager_202404:binder call;
+allow bootanim_202404 gpu_device_202404:chr_file rw_file_perms;
+allow bootanim_202404 gpu_device_202404:dir r_dir_perms;
+allow bootanim_202404 sysfs_gpu_202404:file r_file_perms;
+allow bootanim_202404 oemfs_202404:dir r_dir_perms;
+allow bootanim_202404 bootanim_oem_file_202404:file r_file_perms;
+allow bootanim_202404 audio_device_202404:dir r_dir_perms;
+allow bootanim_202404 audio_device_202404:chr_file rw_file_perms;
+allow bootanim_202404 audioserver_service_202404:service_manager find;
+allow bootanim_202404 surfaceflinger_service_202404:service_manager find;
+allow bootanim_202404 ion_device_202404:chr_file rw_file_perms;
+allow bootanim_202404 dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow bootanim_202404 hal_graphics_allocator:fd *;
+allow bootanim_202404 hal_graphics_composer:fd *;
+allow bootanim_202404 proc_meminfo_202404:file r_file_perms;
+allow bootanim_202404 system_file_202404:dir r_dir_perms;
+dontaudit bootanim_202404 system_data_file_202404:dir read;
+dontaudit bootanim_202404 vendor_hal_qspmhal_hwservice:hwservice_manager find;
+get_prop(bootanim_202404, vendor_display_prop)
+hal_client_domain(bootanim_202404, hal_configstore)
+hal_client_domain(bootanim_202404, hal_graphics_allocator)
+hal_client_domain(bootanim_202404, hal_graphics_composer)
+type bootanim_202404, domain;

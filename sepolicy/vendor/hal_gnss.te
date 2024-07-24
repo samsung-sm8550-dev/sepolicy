@@ -1,0 +1,65 @@
+expandtypeattribute(hal_gnss)
+expandtypeattribute(hal_gnss_client)
+expandtypeattribute(hal_gnss_server)
+allow hal_gnss_server dumpstate_202404:fifo_file write;
+allow hal_gnss_server dumpstate_202404:fd *;
+allow hal_gnss_server hal_gnss_client:binder transfer;
+allow hal_gnss_server hal_gnss_client:binder { call transfer };
+allow hal_gnss_server hal_gnss_client:fd *;
+allow hal_gnss_server hal_gnss_hwservice_202404:hwservice_manager { add find };
+allow hal_gnss_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_gnss_server su_202404:tcp_socket { accept getopt read write };
+allow hal_gnss_server servicemanager_202404:binder { call transfer };
+allow hal_gnss_client hal_gnss_server:binder { call transfer };
+allow hal_gnss_client hal_gnss_server:binder transfer;
+allow hal_gnss_client hal_gnss_server:fd *;
+allow hal_gnss_client hal_gnss_hwservice_202404:hwservice_manager find;
+allow hal_gnss_client hal_gnss_service_202404:service_manager find;
+allow hal_gnss_client servicemanager_202404:binder { call transfer };
+allow hal_gnss_default gnss_device_202404:chr_file rw_file_perms;
+allow vendor_hal_gnss_qti vndbinder_device_202404:chr_file rw_file_perms;
+allow vendor_hal_gnss_qti vndservicemanager_202404:binder { call transfer };
+allow vendor_hal_gnss_qti vendor_per_mgr:binder transfer;
+allow vendor_hal_gnss_qti vendor_per_mgr:binder { call transfer };
+allow vendor_hal_gnss_qti vendor_per_mgr:fd *;
+allow vendor_hal_gnss_qti vendor_per_mgr_service:service_manager find;
+allow vendor_hal_gnss_qti vendor_location_data_file:fifo_file { open read setattr write };
+allow vendor_hal_gnss_qti vendor_location_data_file:dir create_dir_perms;
+allow vendor_hal_gnss_qti vendor_location_data_file:file create_file_perms;
+allow vendor_hal_gnss_qti vendor_location_socket:lnk_file create_file_perms;
+allow vendor_hal_gnss_qti vendor_location_socket:sock_file create_file_perms;
+allow vendor_hal_gnss_qti vendor_location_socket:dir rw_dir_perms;
+allow vendor_hal_gnss_qti vendor_location:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_location_xtra_daemon:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_location_lowi_server:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_qsap_location_socket:sock_file create_file_perms;
+allow vendor_hal_gnss_qti vendor_qsap_location_socket:dir rw_dir_perms;
+allow vendor_hal_gnss_qti vendor_sysfs_mhi:file r_file_perms;
+allow vendor_hal_gnss_qti vendor_rild_socket:dir search;
+allow vendor_hal_gnss_qti vendor_location_engine_service:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_location_edgnss_daemon:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_qsap_location:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_location_slim_daemon:unix_dgram_socket sendto;
+allow vendor_hal_gnss_qti vendor_location_xtwifi_client:unix_dgram_socket sendto;
+allow hal_gnss vendor_per_mgr:binder transfer;
+allow hal_gnss self:qipcrtr_socket create_socket_perms_no_ioctl;
+dontaudit vendor_hal_gnss_qti self:udp_socket create;
+dontaudit vendor_hal_gnss_qti xtra_control_prop_202404:file read;
+unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, vendor_location)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, vendor_ssgtzd)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_ssgtzd, rild)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, vendor_location)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, vendor_ssgtzd)
+unix_socket_connect(vendor_hal_gnss_qti, vendor_rild, rild)
+get_prop(vendor_hal_gnss_qti, vendor_per_mgr_state_prop)
+get_prop(vendor_hal_gnss_qti, boot_status_prop_202404)
+get_prop(vendor_hal_gnss_qti, vendor_pd_locater_dbg_prop)
+hal_server_domain(hal_gnss_default, hal_gnss)
+hal_server_domain(vendor_hal_gnss_qti, hal_gnss)
+hal_client_domain(vendor_hal_gnss_qti, hal_health)
+hal_client_domain(vendor_hal_gnss_qti, vendor_hal_qms_qti)
+add_service(hal_gnss_server, hal_gnss_service_202404)
+type hal_gnss_default, domain;
+type vendor_hal_gnss_qti, domain;
+type hal_gnss_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_gnss_qti_exec, exec_type, file_type, vendor_file_type;

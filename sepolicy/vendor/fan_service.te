@@ -1,0 +1,4 @@
+allow vendor_fan_service vendor_shell_exec_202404:file rx_file_perms;
+allow vendor_fan_service sysfs_thermal_202404:file rw_file_perms;
+type vendor_fan_service, domain;
+type vendor_fan_service_exec, exec_type, file_type, vendor_file_type;

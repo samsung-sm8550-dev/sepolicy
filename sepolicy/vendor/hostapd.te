@@ -1,0 +1,24 @@
+allow vendor_hostapd vendor_cnd:process sigchld;
+allow vendor_hostapd vendor_cnd:binder { call transfer };
+allow vendor_hostapd vendor_cnd:fd *;
+allow vendor_hostapd vendor_cnd:unix_stream_socket { read write };
+allow vendor_hostapd vendor_cnd:unix_dgram_socket sendto;
+allow vendor_hostapd vendor_cnd:unix_dgram_socket { read write };
+allow vendor_hostapd vendor_cnd:fifo_file { read write };
+allow vendor_hostapd vendor_cnd:fifo_file r_file_perms;
+allow vendor_hostapd vendor_cnd:netlink_route_socket { read write };
+allow vendor_hostapd vendor_cnd:netlink_tcpdiag_socket { read write };
+allow vendor_hostapd vendor_smem_log_device:chr_file rw_file_perms;
+allow vendor_hostapd vendor_wifi_vendor_data_file:dir w_dir_perms;
+allow vendor_hostapd vendor_wifi_vendor_data_file:file create_file_perms;
+allow vendor_hostapd hostapd_data_file:dir w_dir_perms;
+allow vendor_hostapd hostapd_data_file:sock_file create_file_perms;
+allow vendor_hostapd vendor_wifi_vendor_wpa_socket:dir r_dir_perms;
+allow vendor_hostapd vendor_wifi_vendor_wpa_socket:sock_file rw_file_perms;
+allow vendor_hostapd vendor_diag_device:chr_file rw_file_perms;
+allow vendor_hostapd su_202404:unix_dgram_socket sendto;
+r_dir_file(vendor_hostapd, vendor_sysfs_diag)
+unix_socket_connect(vendor_hostapd, vendor_cnd, vendor_cnd)
+unix_socket_connect(vendor_hostapd, vendor_wifi_vendor_wpa, vendor_cnd)
+type vendor_hostapd, domain;
+type vendor_hostapd_exec, exec_type, file_type, vendor_file_type;

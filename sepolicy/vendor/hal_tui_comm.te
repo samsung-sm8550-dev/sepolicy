@@ -1,0 +1,17 @@
+allow vendor_hal_tui_comm_client vendor_hal_tui_comm_server:binder { call transfer };
+allow vendor_hal_tui_comm_client vendor_hal_tui_comm_server:binder transfer;
+allow vendor_hal_tui_comm_client vendor_hal_tui_comm_server:fd *;
+allow vendor_hal_tui_comm_client vendor_hal_tui_comm_hwservice:hwservice_manager find;
+allow vendor_hal_tui_comm_server vendor_hal_tui_comm_client:binder transfer;
+allow vendor_hal_tui_comm_server vendor_hal_tui_comm_client:binder { call transfer };
+allow vendor_hal_tui_comm_server vendor_hal_tui_comm_client:fd *;
+allow vendor_hal_tui_comm_server vendor_hal_tui_comm_hwservice:hwservice_manager { add find };
+allow vendor_hal_tui_comm_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute vendor_hal_tui_comm;
+attribute vendor_hal_tui_comm_client;
+attribute vendor_hal_tui_comm_server;
+hal_server_domain(vendor_hal_tui_comm_qti, vendor_hal_tui_comm)
+hal_client_domain(vendor_hal_tui_comm_qti, hal_graphics_allocator)
+type vendor_hal_tui_comm_qti, domain;
+type vendor_hal_tui_comm_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_tui_comm_hwservice, hwservice_manager_type, protected_hwservice;

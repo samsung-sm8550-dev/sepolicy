@@ -1,0 +1,1 @@
+neverallow { domain -hal_bluetooth_client -hal_bluetooth_server } hal_bluetooth_hwservice_202404:hwservice_manager find;

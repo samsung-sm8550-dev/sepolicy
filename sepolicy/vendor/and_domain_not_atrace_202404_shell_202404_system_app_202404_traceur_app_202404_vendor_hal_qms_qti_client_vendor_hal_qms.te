@@ -1,0 +1,1 @@
+neverallow { domain -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 -vendor_hal_qms_qti_client -vendor_hal_qms_qti_server } vendor_hal_qms_service:service_manager find;

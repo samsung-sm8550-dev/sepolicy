@@ -1,0 +1,1 @@
+neverallow { domain -recovery_202404 -update_engine_202404 } postinstall_202404:process { dyntransition transition };

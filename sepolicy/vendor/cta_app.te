@@ -1,0 +1,6 @@
+allow vendor_cta_app vendor_cta_app_userfaultfd:anon_inode { create ioctl read };
+allow vendor_cta_app appdomain_tmpfs_202404:file { execute getattr map read write };
+permissive vendor_cta_app;
+type_transition vendor_cta_app tmpfs_202404:file appdomain_tmpfs;
+type_transition vendor_cta_app vendor_cta_app:anon_inode vendor_cta_app_userfaultfd "[userfaultfd]";
+type vendor_cta_app, appdomain, domain;

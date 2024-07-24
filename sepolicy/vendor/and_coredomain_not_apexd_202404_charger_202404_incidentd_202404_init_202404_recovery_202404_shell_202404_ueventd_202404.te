@@ -1,0 +1,1 @@
+neverallow { coredomain -apexd_202404 -charger_202404 -incidentd_202404 -init_202404 -recovery_202404 -shell_202404 -ueventd_202404 } sysfs_batteryinfo_202404:file { open read };

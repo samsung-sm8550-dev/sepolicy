@@ -1,0 +1,2 @@
+expandtypeattribute(untrusted_app_visible_hwservice_violators)
+attribute untrusted_app_visible_hwservice_violators;

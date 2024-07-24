@@ -1,0 +1,44 @@
+expandtypeattribute(hal_health)
+expandtypeattribute(hal_health_client)
+expandtypeattribute(hal_health_server)
+allow hal_health_server dumpstate_202404:fifo_file write;
+allow hal_health_server dumpstate_202404:fd *;
+allow hal_health_server hal_health_client:binder transfer;
+allow hal_health_server hal_health_client:binder { call transfer };
+allow hal_health_server hal_health_client:fd *;
+allow hal_health_server hal_health_hwservice_202404:hwservice_manager { add find };
+allow hal_health_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_health_server su_202404:tcp_socket { accept getopt read write };
+allow hal_health_server self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow hal_health_server self:capability2 block_suspend;
+allow hal_health_server self:capability2 wake_alarm;
+allow hal_health_server self:cap2_userns block_suspend;
+allow hal_health_server sysfs_202404:dir r_dir_perms;
+allow hal_health_server sysfs_wake_lock_202404:file rw_file_perms;
+allow hal_health_server system_suspend_server:binder { call transfer };
+allow hal_health_server system_suspend_server:fd *;
+allow hal_health_server system_suspend_hwservice_202404:hwservice_manager find;
+allow hal_health_server hwservicemanager_202404:binder { call transfer };
+allow hal_health_server hidl_manager_hwservice_202404:hwservice_manager find;
+allow hal_health_server hal_system_suspend_service_202404:service_manager find;
+allow hal_health_server servicemanager_202404:binder { call transfer };
+allow hal_health_server kmsg_device_202404:chr_file { getattr w_file_perms };
+allow hal_health_server fs_bpf_vendor_202404:dir search;
+allow hal_health_server fs_bpf_vendor_202404:file read;
+allow hal_health_server bpfloader_202404:bpf prog_run;
+allow hal_health_client hal_health_server:binder { call transfer };
+allow hal_health_client hal_health_server:binder transfer;
+allow hal_health_client hal_health_server:fd *;
+allow hal_health_client hal_health_hwservice_202404:hwservice_manager find;
+allow hal_health_client hal_health_service_202404:service_manager find;
+allow hal_health vendor_sysfs_battery_supply:file rw_file_perms;
+allow hal_health vendor_sysfs_usb_supply:file rw_file_perms;
+allow hal_health hal_health_default:dir search;
+r_dir_file(hal_health_server, sysfs_batteryinfo_202404)
+r_dir_file(hal_health, vendor_sysfs_battery_supply)
+r_dir_file(hal_health, vendor_sysfs_usb_supply)
+get_prop(hal_health_server, hwservicemanager_prop_202404)
+hal_server_domain(hal_health_default, hal_health)
+add_service(hal_health_server, hal_health_service_202404)
+type hal_health_default, bpfdomain, domain;
+type hal_health_default_exec, exec_type, file_type, vendor_file_type;

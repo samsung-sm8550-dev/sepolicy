@@ -1,0 +1,14 @@
+expandtypeattribute(hal_ivn)
+expandtypeattribute(hal_ivn_client)
+expandtypeattribute(hal_ivn_server)
+allow hal_ivn_client hal_ivn_server:binder { call transfer };
+allow hal_ivn_client hal_ivn_server:fd *;
+allow hal_ivn_client hal_ivn_service_202404:service_manager find;
+allow hal_ivn_server hal_ivn_client:binder transfer;
+allow hal_ivn_server su_202404:tcp_socket { accept getopt read write };
+allow hal_ivn_default servicemanager_202404:binder { call transfer };
+allow hal_ivn_default servicemanager_202404:fd *;
+hal_server_domain(hal_ivn_default, hal_ivn)
+add_service(hal_ivn_server, hal_ivn_service_202404)
+type hal_ivn_default, domain;
+type hal_ivn_default_exec, exec_type, file_type, vendor_file_type;

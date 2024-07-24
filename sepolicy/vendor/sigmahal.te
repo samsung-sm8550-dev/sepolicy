@@ -1,0 +1,3 @@
+attribute vendor_sigmahal;
+attribute vendor_sigmahal_server;
+attribute vendor_sigmahal_client;

@@ -1,0 +1,9 @@
+allow binderservicedomain aidl_lazy_test_server_202404:binder transfer;
+allow binderservicedomain cameraserver_202404:binder transfer;
+allow binderservicedomain dumpstate_202404:binder transfer;
+allow binderservicedomain hal_omx_server:binder transfer;
+allow binderservicedomain mediadrmserver_202404:binder transfer;
+allow binderservicedomain mediaextractor_202404:binder transfer;
+allow binderservicedomain mediametrics_202404:binder transfer;
+allow binderservicedomain mediaserver_202404:binder transfer;
+attribute binderservicedomain;

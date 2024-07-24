@@ -1,0 +1,1 @@
+type hal_thermal_hwservice_202404, hwservice_manager_type, protected_hwservice;

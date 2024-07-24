@@ -1,0 +1,7 @@
+allow vendor_qwesd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qwesd vendor_qwes_data_file:dir rw_dir_perms;
+allow vendor_qwesd vendor_qwes_data_file:file create_file_perms;
+unix_socket_connect(vendor_qwesd, vendor_ssgtzd, vendor_ssgtzd)
+net_domain(vendor_qwesd)
+type vendor_qwesd, domain;
+type vendor_qwesd_exec, exec_type, file_type, vendor_file_type;

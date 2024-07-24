@@ -1,0 +1,15 @@
+allow postinstall_202404 update_engine_common:fd *;
+allow postinstall_202404 update_engine_common:fifo_file rw_file_perms;
+allow postinstall_202404 postinstall_file_202404:file rx_file_perms;
+allow postinstall_202404 postinstall_file_202404:lnk_file r_file_perms;
+allow postinstall_202404 postinstall_file_202404:dir r_dir_perms;
+allow postinstall_202404 shell_exec_202404:file rx_file_perms;
+allow postinstall_202404 system_file_202404:file rx_file_perms;
+allow postinstall_202404 toolbox_exec_202404:file rx_file_perms;
+allow postinstall_202404 servicemanager_202404:binder { call transfer };
+allow postinstall_202404 system_server_202404:binder { call transfer };
+allow postinstall_202404 system_server_202404:fd *;
+allow postinstall_202404 otadexopt_service_202404:service_manager find;
+allow postinstall_202404 sysfs_fs_f2fs_202404:file rw_file_perms;
+allow postinstall_202404 sysfs_fs_f2fs_202404:dir r_dir_perms;
+type postinstall_202404, domain;

@@ -1,0 +1,8 @@
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:lnk_file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:chr_file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:blk_file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:sock_file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:sock_file *;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:fifo_file no_w_file_perms;
+neverallow { domain -adbd_202404 -init_202404 -shell_202404 } shell_test_data_file_202404:dir no_w_dir_perms;

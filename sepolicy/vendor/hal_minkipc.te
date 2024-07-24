@@ -1,0 +1,3 @@
+attribute vendor_hal_minkipc;
+attribute vendor_hal_minkipc_client;
+attribute vendor_hal_minkipc_server;

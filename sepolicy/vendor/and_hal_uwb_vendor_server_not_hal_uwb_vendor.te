@@ -1,0 +1,1 @@
+neverallow { hal_uwb_vendor_server -hal_uwb_vendor } domain:process fork;

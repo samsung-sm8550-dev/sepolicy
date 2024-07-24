@@ -1,0 +1,2 @@
+neverallow heapprofd_202404 shell_test_data_file_202404:file { no_w_file_perms no_x_file_perms };
+type heapprofd_202404, coredomain, domain;

@@ -1,0 +1,4 @@
+allow vendor_diag_test shell_202404:process sigchld;
+allow vendor_diag_test devpts_202404:chr_file getattr;
+allow vendor_diag_test devpts_202404:chr_file { ioctl open read write };
+type vendor_diag_test, domain;

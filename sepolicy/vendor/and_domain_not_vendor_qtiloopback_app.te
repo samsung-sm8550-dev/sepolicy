@@ -1,0 +1,2 @@
+neverallow { domain -vendor_qtiloopback_app } vendor_qtiloopback_app_userfaultfd:anon_inode *;
+neverallow { vendor_qtiloopback_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vendor_qtiloopback_app }:file no_rw_file_perms;

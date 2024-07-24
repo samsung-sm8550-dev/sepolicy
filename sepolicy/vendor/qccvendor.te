@@ -1,0 +1,43 @@
+allow vendor_qccvendor vendor_location_xtra_daemon:binder transfer;
+allow vendor_qccvendor vendor_location_xtra_daemon:binder { call transfer };
+allow vendor_qccvendor vendor_location_xtra_daemon:fd *;
+allow vendor_qccvendor vendor_battery_stats:binder transfer;
+allow vendor_qccvendor vendor_battery_stats:binder { call transfer };
+allow vendor_qccvendor vendor_battery_stats:fd *;
+allow vendor_qccvendor vendor_qcc_trd_2:binder transfer;
+allow vendor_qccvendor vendor_qcc_trd_2:binder { call transfer };
+allow vendor_qccvendor vendor_qcc_trd_2:fd *;
+allow vendor_qccvendor vndbinder_device_202404:chr_file rw_file_perms;
+allow vendor_qccvendor vndservicemanager_202404:binder { call transfer };
+allow vendor_qccvendor vendor_qccvendor_data_file:file create_file_perms;
+allow vendor_qccvendor vendor_qccvendor_data_file:dir create_dir_perms;
+allow vendor_qccvendor property_socket_202404:sock_file write;
+allow vendor_qccvendor init_202404:unix_stream_socket connectto;
+allow vendor_qccvendor vendor_qcc_prop:property_service set;
+allow vendor_qccvendor vendor_qtr_prop:property_service set;
+allow vendor_qccvendor vendor_firmware_file:dir r_dir_perms;
+allow vendor_qccvendor vendor_firmware_file:file r_file_perms;
+allow vendor_qccvendor fuse_device_202404:chr_file rw_file_perms;
+allow vendor_qccvendor fuse_202404:dir create_dir_perms;
+allow vendor_qccvendor fuse_202404:file create_file_perms;
+allow vendor_qccvendor mnt_user_file_202404:dir search;
+allow vendor_qccvendor mnt_user_file_202404:lnk_file read;
+allow vendor_qccvendor self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qccvendor logdr_socket_202404:sock_file write;
+allow vendor_qccvendor logd_202404:unix_stream_socket connectto;
+allow vendor_qccvendor vendor_qcc_trd_data_file:file create_file_perms;
+allow vendor_qccvendor vendor_qcc_trd_data_file:dir create_dir_perms;
+allow vendor_qccvendor su_202404:tcp_socket { accept getopt read write };
+allow vendor_qccvendor vendor_qms:binder transfer;
+allow vendor_qccvendor vendor_qms:binder { call transfer };
+allow vendor_qccvendor vendor_qms:fd *;
+allow vendor_qccvendor vendor_ssgtzd:binder transfer;
+allow vendor_qccvendor vendor_ssgtzd:binder { call transfer };
+allow vendor_qccvendor vendor_ssgtzd:fd *;
+get_prop(vendor_qccvendor, vendor_qcc_prop)
+get_prop(vendor_qccvendor, vendor_qtr_prop)
+hal_server_domain(vendor_qccvendor, vendor_hal_qccvndhal)
+hal_client_domain(vendor_qccvendor, vendor_qccsyshal)
+add_service(vendor_qccvendor, vendor_qtrsdkservice_service)
+type vendor_qccvendor, domain;
+type vendor_qccvendor_exec, exec_type, file_type, vendor_file_type;

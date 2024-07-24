@@ -1,0 +1,1 @@
+neverallow { domain -hal_memtrack_client -hal_memtrack_server } hal_memtrack_hwservice_202404:hwservice_manager find;

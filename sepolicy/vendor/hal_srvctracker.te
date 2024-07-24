@@ -1,0 +1,19 @@
+allow vendor_hal_srvctracker_default system_server_202404:binder transfer;
+allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:binder { call transfer };
+allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:binder transfer;
+allow vendor_hal_srvctracker_client vendor_hal_srvctracker_server:fd *;
+allow vendor_hal_srvctracker_client vendor_hal_srvctracker_hwservice:hwservice_manager find;
+allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:binder transfer;
+allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:binder { call transfer };
+allow vendor_hal_srvctracker_server vendor_hal_srvctracker_client:fd *;
+allow vendor_hal_srvctracker vendor_hal_srvctracker_hwservice:hwservice_manager { add find };
+allow vendor_hal_srvctracker hidl_base_hwservice_202404:hwservice_manager add;
+allow vendor_hal_srvctracker hwservicemanager_202404:binder call;
+attribute vendor_hal_srvctracker;
+attribute vendor_hal_srvctracker_client;
+attribute vendor_hal_srvctracker_server;
+get_prop(vendor_hal_srvctracker_default, hwservicemanager_prop_202404)
+hal_server_domain(vendor_hal_srvctracker_default, vendor_hal_srvctracker)
+type vendor_hal_srvctracker_default, domain;
+type vendor_hal_srvctracker_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_srvctracker_hwservice, hwservice_manager_type, protected_hwservice;

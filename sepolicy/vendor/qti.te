@@ -1,0 +1,23 @@
+allow vendor_qti self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qti self:udp_socket create_socket_perms_no_ioctl;
+allow vendor_qti self:udp_socket ioctl;
+allow vendor_qti self:netlink_socket create_socket_perms_no_ioctl;
+allow vendor_qti vendor_qti_data_file:dir r_dir_perms;
+allow vendor_qti vendor_qti_data_file:file create_file_perms;
+allow vendor_qti vendor_smd_device:chr_file rw_file_perms;
+allow vendor_qti vendor_rmnet_device:chr_file rw_file_perms;
+allow vendor_qti vendor_shell_exec_202404:file rx_file_perms;
+allow vendor_qti vendor_diag_device:chr_file rw_file_perms;
+allow vendor_qti vendor_mhi_device:chr_file rw_file_perms;
+allow vendor_qti vendor_sysfs_mhi:dir r_dir_perms;
+allow vendor_qti vendor_dataqti_socket:sock_file rw_file_perms;
+allow vendor_qti kmsg_device_202404:chr_file rw_file_perms;
+allow vendor_qti vendor_smem_log_device:chr_file rw_file_perms;
+dontaudit vendor_qti vendor_shell_exec_202404:file { execute execute_no_trans getattr map };
+allowxperm vendor_qti self:ioctl udp_socket { 0x6900 0x6902 };
+allowxperm vendor_qti self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
+allowxperm vendor_qti self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
+r_dir_file(vendor_qti, vendor_sysfs_diag)
+net_domain(vendor_qti)
+type vendor_qti, domain;
+type vendor_qti_exec, exec_type, file_type, vendor_file_type;

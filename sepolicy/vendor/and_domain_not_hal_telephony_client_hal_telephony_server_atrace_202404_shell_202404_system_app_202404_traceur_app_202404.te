@@ -1,0 +1,3 @@
+neverallow { domain -hal_telephony_client -hal_telephony_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_radio_service_202404:service_manager find;
+neverallow { domain -hal_telephony_client -hal_telephony_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } vendor_hal_telephony_service_202404:service_manager find;
+neverallow { domain -hal_telephony_client -hal_telephony_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } vendor_hal_telephony_service2:service_manager find;

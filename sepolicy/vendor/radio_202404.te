@@ -1,0 +1,42 @@
+allow radio_202404 radio_data_file_202404:dir create_dir_perms;
+allow radio_202404 radio_data_file_202404:file create_file_perms;
+allow radio_202404 radio_data_file_202404:lnk_file create_file_perms;
+allow radio_202404 radio_data_file_202404:sock_file create_file_perms;
+allow radio_202404 radio_data_file_202404:fifo_file create_file_perms;
+allow radio_202404 radio_core_data_file_202404:dir r_dir_perms;
+allow radio_202404 radio_core_data_file_202404:file r_file_perms;
+allow radio_202404 net_data_file_202404:dir search;
+allow radio_202404 net_data_file_202404:file r_file_perms;
+allow radio_202404 su_202404:tcp_socket { accept getopt read write };
+allow radio_202404 audioserver_service_202404:service_manager find;
+allow radio_202404 cameraserver_service_202404:service_manager find;
+allow radio_202404 drmserver_service_202404:service_manager find;
+allow radio_202404 mediaserver_service_202404:service_manager find;
+allow radio_202404 nfc_service_202404:service_manager find;
+allow radio_202404 app_api_service:service_manager find;
+allow radio_202404 system_api_service:service_manager find;
+allow radio_202404 timedetector_service_202404:service_manager find;
+allow radio_202404 timezonedetector_service_202404:service_manager find;
+allow radio_202404 hwservicemanager_202404:binder { call transfer };
+allow radio_202404 proc_cmdline_202404:file r_file_perms;
+allow radio_202404 vendor_atfwd:binder transfer;
+allow radio_202404 vendor_ims_service:binder transfer;
+allow radio_202404 vendor_file_202404:lnk_file r_file_perms;
+allow radio_202404 vendor_framework_file_202404:file r_file_perms;
+allow radio_202404 vendor_framework_file_202404:dir search;
+allow radio_202404 vendor_hal_imsrtp_hwservice:hwservice_manager find;
+allow radio_202404 mediaextractor_service_202404:service_manager find;
+allow radio_202404 vendor_avtimer_device:chr_file r_file_perms;
+allow radio_202404 vendor_diag_device:chr_file rw_file_perms;
+allow radio_202404 vendor_cnd:binder transfer;
+r_dir_file(radio_202404, vendor_sysfs_diag)
+r_dir_file(radio_202404, vendor_mbn_data_file)
+get_prop(radio_202404, vendor_radio_prop)
+binder_service(radio_202404)
+net_domain(radio_202404)
+hal_client_domain(radio_202404, hal_telephony)
+hal_client_domain(radio_202404, vendor_hal_perf)
+hal_client_domain(radio_202404, vendor_hal_qspmhal)
+hal_client_domain(radio_202404, vendor_hal_imsfactory)
+add_service(radio_202404, radio_service_202404)
+type radio_202404, bluetoothdomain, domain, mlstrustedsubject;

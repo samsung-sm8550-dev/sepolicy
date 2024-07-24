@@ -1,0 +1,1 @@
+neverallow { appdomain -runas_app_202404 -shell_202404 -simpleperf_202404 -vendor_qms_app } vendor_qms_app:file no_rw_file_perms;

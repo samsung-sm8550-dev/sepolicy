@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_debugutils_server } hal_debugutils_hwservice:hwservice_manager add;

@@ -1,0 +1,1 @@
+neverallow { domain -hal_lowpan_server -init_202404 -ueventd_202404 } lowpan_device_202404:chr_file { audit_access entrypoint execmod map mounton no_rw_file_perms no_x_file_perms quotaon relabelto };

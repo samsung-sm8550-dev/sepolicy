@@ -1,0 +1,25 @@
+allow vendor_sensors_qesdk vendor_hal_qesdhal_default:file read;
+allow vendor_sensors_qesdk vendor_hal_qesdhal_default:lnk_file read;
+allow vendor_sensors_qesdk vendor_hal_qesdhal_default:dir search;
+allow vendor_sensors_qesdk self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_sensors_qesdk self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_sensors_qesdk self:capability2 block_suspend;
+allow vendor_sensors_qesdk self:cap2_userns block_suspend;
+allow vendor_sensors_qesdk vendor_qesd_one_socket:dir r_dir_perms;
+allow vendor_sensors_qesdk sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_sensors_qesdk system_suspend_server:binder { call transfer };
+allow vendor_sensors_qesdk system_suspend_server:fd *;
+allow vendor_sensors_qesdk system_suspend_hwservice_202404:hwservice_manager find;
+allow vendor_sensors_qesdk hwservicemanager_202404:binder { call transfer };
+allow vendor_sensors_qesdk hidl_manager_hwservice_202404:hwservice_manager find;
+allow vendor_sensors_qesdk hal_system_suspend_service_202404:service_manager find;
+allow vendor_sensors_qesdk servicemanager_202404:binder { call transfer };
+unix_socket_connect(vendor_sensors_qesdk, vendor_qesd, vendor_hal_qesdhal)
+unix_socket_connect(vendor_sensors_qesdk, vendor_qesd, vendor_hal_qesdonehal_default)
+unix_socket_connect(vendor_sensors_qesdk, vendor_qesd_one, vendor_hal_qesdhal)
+unix_socket_connect(vendor_sensors_qesdk, vendor_qesd_one, vendor_hal_qesdonehal_default)
+get_prop(vendor_sensors_qesdk, vendor_sensors_prop)
+get_prop(vendor_sensors_qesdk, vendor_qesdk_one_prop)
+get_prop(vendor_sensors_qesdk, hwservicemanager_prop_202404)
+type vendor_sensors_qesdk, domain;
+type vendor_sensors_qesdk_exec, exec_type, file_type, vendor_file_type;

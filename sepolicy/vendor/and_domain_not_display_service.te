@@ -1,0 +1,1 @@
+neverallow { domain -display_service_server } fwk_display_hwservice_202404:hwservice_manager add;

@@ -1,0 +1,1 @@
+type hal_codec2_service_202404, hal_service_type, isolated_compute_allowed_service, service_manager_type;

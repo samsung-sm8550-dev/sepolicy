@@ -1,0 +1,22 @@
+allow vendor_hal_seccam_qti video_device_202404:chr_file rw_file_perms;
+allow vendor_hal_seccam_qti property_socket_202404:sock_file write;
+allow vendor_hal_seccam_qti init_202404:unix_stream_socket connectto;
+allow vendor_hal_seccam_qti vendor_core_ctl_prop:property_service set;
+allow vendor_hal_seccam_client vendor_hal_seccam_server:binder { call transfer };
+allow vendor_hal_seccam_client vendor_hal_seccam_server:binder transfer;
+allow vendor_hal_seccam_client vendor_hal_seccam_server:fd *;
+allow vendor_hal_seccam_server vendor_hal_seccam_client:binder transfer;
+allow vendor_hal_seccam_server vendor_hal_seccam_client:binder { call transfer };
+allow vendor_hal_seccam_server vendor_hal_seccam_client:fd *;
+allow vendor_hal_seccam_server vendor_hal_seccam_hwservice:hwservice_manager { add find };
+allow vendor_hal_seccam_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute vendor_hal_seccam;
+attribute vendor_hal_seccam_client;
+attribute vendor_hal_seccam_server;
+get_prop(vendor_hal_seccam_qti, vendor_core_ctl_prop)
+hal_server_domain(vendor_hal_seccam_qti, vendor_hal_seccam)
+hal_client_domain(vendor_hal_seccam_qti, hal_graphics_allocator)
+hal_client_domain(vendor_hal_seccam_qti, vendor_hal_perf)
+type vendor_hal_seccam_qti, domain;
+type vendor_hal_seccam_qti_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_seccam_hwservice, hwservice_manager_type, protected_hwservice;

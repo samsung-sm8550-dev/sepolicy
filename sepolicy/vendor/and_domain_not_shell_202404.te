@@ -1,0 +1,1 @@
+neverallow { domain -shell_202404 } nativetest_data_file_202404:file no_x_file_perms;

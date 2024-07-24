@@ -1,0 +1,2 @@
+neverallow vendor_init_202404 { fs_type file_type -init_exec_202404 }:file entrypoint;
+neverallow init_202404 { fs_type file_type -init_exec_202404 }:file entrypoint;

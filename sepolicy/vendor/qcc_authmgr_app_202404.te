@@ -1,0 +1,2 @@
+get_prop(vendor_qcc_authmgr_app_202404, vendor_qcc_prop)
+type vendor_qcc_authmgr_app_202404, domain;

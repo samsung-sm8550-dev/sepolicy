@@ -1,0 +1,41 @@
+allow system_app_202404 property_socket_202404:sock_file write;
+allow system_app_202404 init_202404:unix_stream_socket connectto;
+allow system_app_202404 nfc_prop_202404:property_service set;
+allow system_app_202404 radio_control_prop_202404:property_service set;
+allow system_app_202404 vendor_atfwd:binder transfer;
+allow system_app_202404 vendor_elabel_data_file_202404:dir r_dir_perms;
+allow system_app_202404 vendor_elabel_data_file_202404:file r_file_perms;
+allow system_app_202404 update_engine_202404:binder transfer;
+allow system_app_202404 update_engine_202404:binder { call transfer };
+allow system_app_202404 update_engine_202404:fd *;
+allow system_app_202404 vendor_esepmdaemon:binder transfer;
+allow system_app_202404 vendor_fidotest:binder transfer;
+allow system_app_202404 vendor_fidotest:binder { call transfer };
+allow system_app_202404 vendor_fidotest:fd *;
+allow system_app_202404 sensors_device_202404:chr_file getattr;
+allow system_app_202404 socket_device_202404:dir read;
+allow system_app_202404 self:socket create_socket_perms_no_ioctl;
+allow system_app_202404 vendor_diag_device:chr_file rw_file_perms;
+allow system_app_202404 vendor_sysfs_qdss_dev:dir r_dir_perms;
+allow system_app_202404 vendor_sysfs_qdss_dev:file rw_file_perms;
+allow system_app_202404 vendor_qdss_device:chr_file rw_file_perms;
+r_dir_file(system_app_202404, vendor_sysfs_diag)
+get_prop(system_app_202404, nfc_prop_202404)
+get_prop(system_app_202404, radio_control_prop_202404)
+get_prop(system_app_202404, vendor_radio_prop)
+get_prop(system_app_202404, vendor_fm_radio_app_prop)
+hal_client_domain(system_app_202404, hal_allocator)
+hal_client_domain(system_app_202404, hal_light)
+hal_client_domain(system_app_202404, vendor_hal_hbtp)
+hal_client_domain(system_app_202404, vendor_hal_qdutils_disp)
+hal_client_domain(system_app_202404, vendor_hal_tui_comm)
+hal_client_domain(system_app_202404, vendor_hal_display_color)
+hal_client_domain(system_app_202404, vendor_hal_capabilityconfigstore_qti)
+hal_client_domain(system_app_202404, vendor_hal_diaghal)
+hal_client_domain(system_app_202404, vendor_hal_perf)
+hal_client_domain(system_app_202404, vendor_hal_qspmhal)
+hal_client_domain(system_app_202404, vendor_hal_soter)
+hal_client_domain(system_app_202404, vendor_hal_sensorscalibrate_qti)
+hal_client_domain(system_app_202404, vendor_hal_pasrmanager)
+hal_client_domain(system_app_202404, vendor_hal_factory_qti)
+type system_app_202404, domain;

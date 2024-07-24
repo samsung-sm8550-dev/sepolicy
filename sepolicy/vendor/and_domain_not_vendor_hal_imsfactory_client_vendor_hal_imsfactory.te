@@ -1,0 +1,3 @@
+neverallow { domain -vendor_hal_imsfactory_client -vendor_hal_imsfactory_server } vendor_hal_imsfactory_hwservice:hwservice_manager find;
+neverallow { domain -vendor_hal_imsfactory_client -vendor_hal_imsfactory_server } vendor_hal_imsrcsd_hwservice:hwservice_manager find;
+neverallow { domain -vendor_hal_imsfactory_client -vendor_hal_imsfactory_server } vendor_hal_imscallinfo_hwservice:hwservice_manager find;

@@ -1,0 +1,25 @@
+expandtypeattribute(hal_tv_tuner)
+expandtypeattribute(hal_tv_tuner_client)
+expandtypeattribute(hal_tv_tuner_server)
+allow hal_tv_tuner_client hal_tv_tuner_server:binder { call transfer };
+allow hal_tv_tuner_client hal_tv_tuner_server:binder transfer;
+allow hal_tv_tuner_client hal_tv_tuner_server:fd *;
+allow hal_tv_tuner_client hal_tv_tuner_hwservice_202404:hwservice_manager find;
+allow hal_tv_tuner_client hal_tv_tuner_service_202404:service_manager find;
+allow hal_tv_tuner_client servicemanager_202404:binder { call transfer };
+allow hal_tv_tuner_client servicemanager_202404:fd *;
+allow hal_tv_tuner_server hal_tv_tuner_client:binder transfer;
+allow hal_tv_tuner_server hal_tv_tuner_client:binder { call transfer };
+allow hal_tv_tuner_server hal_tv_tuner_client:fd *;
+allow hal_tv_tuner_server hal_tv_tuner_hwservice_202404:hwservice_manager { add find };
+allow hal_tv_tuner_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_tv_tuner_server su_202404:tcp_socket { accept getopt read write };
+allow hal_tv_tuner_server servicemanager_202404:binder { call transfer };
+allow hal_tv_tuner_server servicemanager_202404:fd *;
+allow hal_tv_tuner_default ion_device_202404:chr_file r_file_perms;
+allow hal_tv_tuner_default dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow hal_tv_tuner_default servicemanager_202404:binder { call transfer };
+hal_server_domain(hal_tv_tuner_default, hal_tv_tuner)
+add_service(hal_tv_tuner_server, hal_tv_tuner_service_202404)
+type hal_tv_tuner_default, domain;
+type hal_tv_tuner_default_exec, exec_type, file_type, vendor_file_type;

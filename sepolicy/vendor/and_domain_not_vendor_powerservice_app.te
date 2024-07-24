@@ -1,0 +1,2 @@
+neverallow { domain -vendor_powerservice_app } vendor_powerservice_app_userfaultfd:anon_inode *;
+neverallow { vendor_powerservice_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vendor_powerservice_app }:file no_rw_file_perms;

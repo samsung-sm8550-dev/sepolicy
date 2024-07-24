@@ -1,0 +1,3 @@
+neverallow { domain -dumpstate_202404 -netd_202404 -netutils_wrapper_202404 -network_stack_202404 -system_server_202404 } netd_service_202404:service_manager find;
+neverallow { domain -dumpstate_202404 -netd_202404 -netutils_wrapper_202404 -network_stack_202404 -system_server_202404 } dnsresolver_service_202404:service_manager find;
+neverallow { domain -dumpstate_202404 -netd_202404 -netutils_wrapper_202404 -network_stack_202404 -system_server_202404 } mdns_service_202404:service_manager find;

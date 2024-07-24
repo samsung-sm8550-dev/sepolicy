@@ -1,0 +1,1 @@
+neverallow { domain -init_202404 -traced_probes_202404 -vendor_init_202404 } debugfs_tracing_printk_formats_202404:file *;

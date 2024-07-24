@@ -1,0 +1,2 @@
+neverallow { domain -vtloopback_app } vtloopback_app_userfaultfd:anon_inode *;
+neverallow { vtloopback_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vtloopback_app }:file no_rw_file_perms;

@@ -1,0 +1,2 @@
+neverallow { domain -vendor_qms_app } vendor_qms_app_userfaultfd:anon_inode *;
+neverallow { vendor_qms_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vendor_qms_app }:file no_rw_file_perms;

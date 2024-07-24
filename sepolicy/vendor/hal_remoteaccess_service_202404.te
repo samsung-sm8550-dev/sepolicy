@@ -1,0 +1,1 @@
+type hal_remoteaccess_service_202404, hal_service_type, protected_service, service_manager_type;

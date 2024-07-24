@@ -1,0 +1,1 @@
+neverallow { domain -cameraserver_202404 } fwk_camera_hwservice_202404:hwservice_manager add;

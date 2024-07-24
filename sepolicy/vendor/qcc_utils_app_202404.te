@@ -1,0 +1,2 @@
+hal_client_domain(vendor_qcc_utils_app_202404, vendor_hal_perf)
+type vendor_qcc_utils_app_202404, coredomain, domain;

@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_wifilearner_client -vendor_hal_wifilearner_server } vendor_hal_wifilearner_hwservice:hwservice_manager find;

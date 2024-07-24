@@ -1,0 +1,1 @@
+neverallow { domain -ephemeral_app_202404 -untrusted_app_27_202404 -untrusted_app_25_202404 } ashmem_device_202404:chr_file open;

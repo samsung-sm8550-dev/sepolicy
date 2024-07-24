@@ -1,0 +1,1 @@
+neverallow { domain -hal_can_bus_client -hal_can_bus_server } hal_can_bus_hwservice_202404:hwservice_manager find;

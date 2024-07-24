@@ -1,0 +1,28 @@
+expandtypeattribute(hal_thermal)
+expandtypeattribute(hal_thermal_client)
+expandtypeattribute(hal_thermal_server)
+allow hal_thermal_server dumpstate_202404:fifo_file write;
+allow hal_thermal_server dumpstate_202404:fd *;
+allow hal_thermal_server hal_thermal_client:binder transfer;
+allow hal_thermal_server hal_thermal_client:binder { call transfer };
+allow hal_thermal_server hal_thermal_client:fd *;
+allow hal_thermal_server hal_thermal_hwservice_202404:hwservice_manager { add find };
+allow hal_thermal_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_thermal_server su_202404:tcp_socket { accept getopt read write };
+allow hal_thermal_server servicemanager_202404:binder { call transfer };
+allow hal_thermal_server servicemanager_202404:fd *;
+allow hal_thermal_client hal_thermal_server:binder { call transfer };
+allow hal_thermal_client hal_thermal_server:binder transfer;
+allow hal_thermal_client hal_thermal_server:fd *;
+allow hal_thermal_client hal_thermal_hwservice_202404:hwservice_manager find;
+allow hal_thermal_client hal_thermal_service_202404:service_manager find;
+allow hal_thermal_client servicemanager_202404:binder { call transfer };
+allow hal_thermal_client servicemanager_202404:fd *;
+allow hal_thermal_default proc_stat_202404:file { getattr open read };
+allow hal_thermal_default sysfs_thermal_202404:file w_file_perms;
+allow hal_thermal_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow hal_thermal_default self:netlink_generic_socket create_socket_perms_no_ioctl;
+hal_server_domain(hal_thermal_default, hal_thermal)
+add_service(hal_thermal_server, hal_thermal_service_202404)
+type hal_thermal_default, domain;
+type hal_thermal_default_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,1 @@
+type cameraserver_service_202404, isolated_compute_allowed_service, service_manager_type;

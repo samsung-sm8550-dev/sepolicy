@@ -1,0 +1,1 @@
+neverallow { hal_keymaster_server -hal_keymaster } domain:process fork;

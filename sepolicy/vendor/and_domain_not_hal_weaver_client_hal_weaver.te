@@ -1,0 +1,1 @@
+neverallow { domain -hal_weaver_client -hal_weaver_server } hal_weaver_hwservice_202404:hwservice_manager find;

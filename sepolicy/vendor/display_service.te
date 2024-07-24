@@ -1,0 +1,3 @@
+allow display_service_server fwk_display_hwservice_202404:hwservice_manager { add find };
+allow display_service_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute display_service_server;

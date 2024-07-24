@@ -1,0 +1,27 @@
+expandtypeattribute(hal_vehicle)
+expandtypeattribute(hal_vehicle_client)
+expandtypeattribute(hal_vehicle_server)
+allow hal_vehicle_server dumpstate_202404:fifo_file write;
+allow hal_vehicle_server dumpstate_202404:fd *;
+allow hal_vehicle_server hal_vehicle_client:binder transfer;
+allow hal_vehicle_server hal_vehicle_client:binder { call transfer };
+allow hal_vehicle_server hal_vehicle_client:fd *;
+allow hal_vehicle_server hal_vehicle_hwservice_202404:hwservice_manager { add find };
+allow hal_vehicle_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_vehicle_server su_202404:tcp_socket { accept getopt read write };
+allow hal_vehicle_server servicemanager_202404:binder { call transfer };
+allow hal_vehicle_server servicemanager_202404:fd *;
+allow hal_vehicle_client hal_vehicle_server:binder { call transfer };
+allow hal_vehicle_client hal_vehicle_server:binder transfer;
+allow hal_vehicle_client hal_vehicle_server:fd *;
+allow hal_vehicle_client hal_vehicle_hwservice_202404:hwservice_manager find;
+allow hal_vehicle_client hal_vehicle_service_202404:service_manager find;
+allow hal_vehicle_default hwservicemanager_202404:binder { call transfer };
+allow hal_vehicle_default fwk_stats_hwservice_202404:hwservice_manager find;
+allow hal_vehicle_default stats_service_server:binder { call transfer };
+allow hal_vehicle_default stats_service_server:fd *;
+hal_server_domain(hal_vehicle_default, hal_vehicle)
+hal_client_domain(hal_vehicle_default, hal_can_bus)
+add_service(hal_vehicle_server, hal_vehicle_service_202404)
+type hal_vehicle_default, domain;
+type hal_vehicle_default_exec, exec_type, file_type, vendor_file_type;

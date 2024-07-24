@@ -1,0 +1,1 @@
+neverallow mediaextractor_202404 { data_file_type -apk_data_file_202404 }:file open;

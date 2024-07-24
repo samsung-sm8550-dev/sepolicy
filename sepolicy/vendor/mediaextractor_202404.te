@@ -1,0 +1,43 @@
+neverallow mediaextractor_202404 fs_type:file execute_no_trans;
+neverallow mediaextractor_202404 file_type:file execute_no_trans;
+neverallow mediaextractor_202404 domain:udp_socket *;
+neverallow mediaextractor_202404 domain:rawip_socket *;
+allow mediaextractor_202404 servicemanager_202404:binder { call transfer };
+allow mediaextractor_202404 binderservicedomain:binder { call transfer };
+allow mediaextractor_202404 binderservicedomain:fd *;
+allow mediaextractor_202404 appdomain:binder { call transfer };
+allow mediaextractor_202404 appdomain:fd *;
+allow mediaextractor_202404 su_202404:tcp_socket { accept getopt read write };
+allow mediaextractor_202404 su_202404:fifo_file append;
+allow mediaextractor_202404 mediametrics_service_202404:service_manager find;
+allow mediaextractor_202404 hidl_token_hwservice_202404:hwservice_manager find;
+allow mediaextractor_202404 system_server_202404:fd *;
+allow mediaextractor_202404 system_server_202404:fifo_file { append write };
+allow mediaextractor_202404 proc_meminfo_202404:file r_file_perms;
+allow mediaextractor_202404 anr_data_file_202404:file append;
+allow mediaextractor_202404 dumpstate_202404:fd *;
+allow mediaextractor_202404 dumpstate_202404:fifo_file { append write };
+allow mediaextractor_202404 incidentd_202404:fd *;
+allow mediaextractor_202404 incidentd_202404:fifo_file { append write };
+allow mediaextractor_202404 tombstoned_202404:unix_stream_socket connectto;
+allow mediaextractor_202404 tombstoned_202404:fd *;
+allow mediaextractor_202404 tombstoned_crash_socket_202404:sock_file write;
+allow mediaextractor_202404 tombstone_data_file_202404:file append;
+allow mediaextractor_202404 sdcard_type:file { getattr read };
+allow mediaextractor_202404 fuse_202404:file { getattr read };
+allow mediaextractor_202404 media_rw_data_file_202404:file { getattr read };
+allow mediaextractor_202404 app_data_file_202404:file { getattr read };
+allow mediaextractor_202404 privapp_data_file_202404:file { getattr read };
+allow mediaextractor_202404 apk_data_file_202404:file { getattr read };
+allow mediaextractor_202404 asec_apk_file_202404:file { getattr read };
+allow mediaextractor_202404 ringtone_file_202404:file { getattr read };
+allow mediaextractor_202404 vendor_overlay_file_202404:file { map read };
+allow mediaextractor_202404 system_file_202404:dir { open read };
+r_dir_file(mediaextractor_202404, cgroup_202404)
+r_dir_file(mediaextractor_202404, cgroup_v2_202404)
+get_prop(mediaextractor_202404, vendor_audio_prop)
+binder_service(mediaextractor_202404)
+hal_client_domain(mediaextractor_202404, hal_allocator)
+hal_client_domain(mediaextractor_202404, hal_cas)
+add_service(mediaextractor_202404, mediaextractor_service_202404)
+type mediaextractor_202404, domain, mlstrustedsubject;

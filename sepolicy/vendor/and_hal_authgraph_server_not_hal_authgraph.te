@@ -1,0 +1,1 @@
+neverallow { hal_authgraph_server -hal_authgraph } domain:process fork;

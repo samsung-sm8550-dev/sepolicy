@@ -1,0 +1,8 @@
+allow coredomain system_file_202404:file { execute getattr map open read };
+allow coredomain system_data_file_202404:dir getattr;
+allow coredomain system_userdir_file_202404:dir { getattr search };
+allow coredomain media_userdir_file_202404:dir search;
+dontaudit coredomain vendor_gles_data_file:dir search;
+dontaudit coredomain vendor_gles_data_file:file *;
+attribute coredomain_hwservice;
+attribute coredomain;

@@ -1,0 +1,3 @@
+allow system_suspend_internal_server su_202404:tcp_socket { accept getopt read write };
+attribute system_suspend_internal_server;
+add_service(system_suspend_internal_server, system_suspend_control_internal_service_202404)

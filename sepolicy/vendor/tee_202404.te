@@ -1,0 +1,79 @@
+allow tee_202404 fingerprint_vendor_data_file_202404:dir rw_dir_perms;
+allow tee_202404 fingerprint_vendor_data_file_202404:file create_file_perms;
+allow tee_202404 self:capability dac_override;
+allow tee_202404 self:capability { chown setgid setuid sys_admin sys_rawio };
+allow tee_202404 self:cap_userns dac_override;
+allow tee_202404 self:netlink_socket create_socket_perms_no_ioctl;
+allow tee_202404 self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow tee_202404 self:capability2 block_suspend;
+allow tee_202404 self:cap2_userns block_suspend;
+allow tee_202404 tee_device_202404:chr_file rw_file_perms;
+allow tee_202404 tee_data_file_202404:dir create_dir_perms;
+allow tee_202404 tee_data_file_202404:file create_file_perms;
+allow tee_202404 ion_device_202404:chr_file r_file_perms;
+allow tee_202404 system_data_file_202404:file { getattr read };
+allow tee_202404 system_data_file_202404:lnk_file { getattr read };
+allow tee_202404 device_202404:dir r_dir_perms;
+allow tee_202404 property_socket_202404:sock_file write;
+allow tee_202404 init_202404:unix_stream_socket connectto;
+allow tee_202404 vendor_tee_listener_prop:property_service set;
+allow tee_202404 firmware_file:dir search;
+allow tee_202404 block_device_202404:dir { getattr search };
+allow tee_202404 vendor_rpmb_device:blk_file rw_file_perms;
+allow tee_202404 vendor_rpmb_device:chr_file rw_file_perms;
+allow tee_202404 vendor_ssd_block_device:blk_file rw_file_perms;
+allow tee_202404 vendor_sg_device:chr_file { rw_file_perms setattr };
+allow tee_202404 vendor_bsg_device:chr_file rw_file_perms;
+allow tee_202404 vendor_ufs_lun4_bsg_device:chr_file rw_file_perms;
+allow tee_202404 mnt_vendor_file_202404:dir r_dir_perms;
+allow tee_202404 vendor_persist_drm_file:dir create_dir_perms;
+allow tee_202404 vendor_persist_drm_file:file create_file_perms;
+allow tee_202404 vendor_persist_data_file:dir create_dir_perms;
+allow tee_202404 vendor_persist_data_file:file create_file_perms;
+allow tee_202404 vendor_time_daemon:unix_stream_socket connectto;
+allow tee_202404 vendor_data_tzstorage_file:dir create_dir_perms;
+allow tee_202404 vendor_data_tzstorage_file:file create_file_perms;
+allow tee_202404 vndbinder_device_202404:chr_file rw_file_perms;
+allow tee_202404 vndservicemanager_202404:binder { call transfer };
+allow tee_202404 vendor_qdisplay_service:service_manager find;
+allow tee_202404 vendor_sysfs_sectouch:file rw_file_perms;
+allow tee_202404 vendor_tui_data_file:file rw_file_perms;
+allow tee_202404 vendor_tui_data_file:dir r_dir_perms;
+allow tee_202404 graphics_device_202404:chr_file rw_file_perms;
+allow tee_202404 graphics_device_202404:chr_file r_file_perms;
+allow tee_202404 graphics_device_202404:dir r_dir_perms;
+allow tee_202404 vendor_sysfs_graphics:dir r_dir_perms;
+allow tee_202404 vendor_sysfs_graphics:file rw_file_perms;
+allow tee_202404 vendor_qsee_ipc_irq_spss_device:chr_file rw_file_perms;
+allow tee_202404 vendor_data_qsee_file:dir create_dir_perms;
+allow tee_202404 vendor_data_qsee_file:file create_file_perms;
+allow tee_202404 vendor_data_file_202404:dir r_dir_perms;
+allow tee_202404 sysfs_wake_lock_202404:file rw_file_perms;
+allow tee_202404 system_suspend_server:binder { call transfer };
+allow tee_202404 system_suspend_server:fd *;
+allow tee_202404 system_suspend_hwservice_202404:hwservice_manager find;
+allow tee_202404 hwservicemanager_202404:binder { call transfer };
+allow tee_202404 hidl_manager_hwservice_202404:hwservice_manager find;
+allow tee_202404 hal_system_suspend_service_202404:service_manager find;
+allow tee_202404 servicemanager_202404:binder { call transfer };
+allow tee_202404 vendor_qfp-daemon_data_file:dir create_dir_perms;
+allow tee_202404 vendor_qfp-daemon_data_file:file create_file_perms;
+allow tee_202404 vendor_persist_qti_fp_file:dir create_dir_perms;
+allow tee_202404 vendor_persist_qti_fp_file:file create_file_perms;
+allow tee_202404 vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow tee_202404 vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow tee_202404 vendor_dmabuf_user_contig_heap_device:chr_file r_file_perms;
+dontaudit tee_202404 rootfs_202404:dir read;
+allowxperm tee_202404 vendor_rpmb_device:ioctl chr_file 0xb301;
+allowxperm tee_202404 vendor_rpmb_device:ioctl blk_file 0xb300;
+r_dir_file(tee_202404, sysfs_type)
+r_dir_file(tee_202404, firmware_file)
+get_prop(tee_202404, vendor_tee_listener_prop)
+get_prop(tee_202404, hwservicemanager_prop_202404)
+get_prop(tee_202404, userspace_reboot_exported_prop_202404)
+hal_client_domain(tee_202404, hal_graphics_allocator)
+hal_client_domain(tee_202404, hal_graphics_composer)
+hal_client_domain(tee_202404, vendor_hal_qdutils_disp)
+hal_client_domain(tee_202404, vendor_hal_tui_comm)
+hal_client_domain(tee_202404, vendor_hal_soter)
+type tee_202404, domain;

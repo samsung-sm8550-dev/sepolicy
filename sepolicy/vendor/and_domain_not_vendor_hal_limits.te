@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_limits_server } vendor_hal_limits_hwservice:hwservice_manager add;

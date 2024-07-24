@@ -1,0 +1,1 @@
+neverallow { domain -system_suspend_server } system_suspend_hwservice_202404:hwservice_manager add;

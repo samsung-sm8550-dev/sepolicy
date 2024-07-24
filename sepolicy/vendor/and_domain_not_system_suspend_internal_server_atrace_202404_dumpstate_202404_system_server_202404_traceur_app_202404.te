@@ -1,0 +1,1 @@
+neverallow { domain -system_suspend_internal_server -atrace_202404 -dumpstate_202404 -system_server_202404 -traceur_app_202404 } system_suspend_control_internal_service_202404:service_manager find;

@@ -1,0 +1,22 @@
+allow dhcp_202404 cgroup_202404:dir { add_name create write };
+allow dhcp_202404 cgroup_v2_202404:dir { add_name create write };
+allow dhcp_202404 self:capability { net_admin net_bind_service net_raw setgid setuid };
+allow dhcp_202404 self:cap_userns { net_admin net_bind_service net_raw setgid setuid };
+allow dhcp_202404 self:packet_socket create_socket_perms_no_ioctl;
+allow dhcp_202404 self:netlink_route_socket nlmsg_write;
+allow dhcp_202404 shell_exec_202404:file rx_file_perms;
+allow dhcp_202404 system_file_202404:file rx_file_perms;
+allow dhcp_202404 toolbox_exec_202404:file rx_file_perms;
+allow dhcp_202404 proc_net_type:file write;
+allow dhcp_202404 dhcp_data_file_202404:dir create_dir_perms;
+allow dhcp_202404 dhcp_data_file_202404:file create_file_perms;
+allow dhcp_202404 netd_202404:fd *;
+allow dhcp_202404 netd_202404:fifo_file rw_file_perms;
+allow dhcp_202404 netd_202404:udp_socket { read write };
+allow dhcp_202404 netd_202404:unix_stream_socket { read write };
+allow dhcp_202404 netd_202404:unix_dgram_socket { read write };
+allow dhcp_202404 netd_202404:netlink_route_socket { read write };
+allow dhcp_202404 netd_202404:netlink_nflog_socket { read write };
+allow dhcp_202404 netd_202404:netlink_kobject_uevent_socket { read write };
+net_domain(dhcp_202404)
+type dhcp_202404, domain;

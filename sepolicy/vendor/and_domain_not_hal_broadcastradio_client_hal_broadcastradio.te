@@ -1,0 +1,1 @@
+neverallow { domain -hal_broadcastradio_client -hal_broadcastradio_server } hal_broadcastradio_hwservice_202404:hwservice_manager find;

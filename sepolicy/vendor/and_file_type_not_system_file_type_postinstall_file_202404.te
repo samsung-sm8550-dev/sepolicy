@@ -1,0 +1,1 @@
+neverallow coredomain { file_type -system_file_type -postinstall_file_202404 }:file entrypoint;

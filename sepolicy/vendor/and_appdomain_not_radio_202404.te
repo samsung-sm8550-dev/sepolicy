@@ -1,0 +1,1 @@
+neverallow { appdomain -radio_202404 } rild_socket_202404:sock_file write;

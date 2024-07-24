@@ -1,0 +1,1 @@
+neverallow { domain -init_202404 -toolbox_202404 -vendor_init_202404 -vold_202404 } system_data_root_file_202404:dir { add_name remove_name write };

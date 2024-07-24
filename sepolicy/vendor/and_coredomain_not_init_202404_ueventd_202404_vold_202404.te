@@ -1,0 +1,2 @@
+neverallow { coredomain -init_202404 -ueventd_202404 -vold_202404 } vendor_persist_type:file *;
+neverallow { coredomain -init_202404 -ueventd_202404 -vold_202404 } vendor_persist_type:dir *;

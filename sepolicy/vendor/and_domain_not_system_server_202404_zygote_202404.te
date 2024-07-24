@@ -1,0 +1,1 @@
+neverallow { domain -system_server_202404 -zygote_202404 } zygote_202404:unix_stream_socket connectto;

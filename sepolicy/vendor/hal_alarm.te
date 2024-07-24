@@ -1,0 +1,18 @@
+allow vendor_hal_alarm_qti_default rtc_device_202404:chr_file r_file_perms;
+allow vendor_hal_alarm_qti_default vendor_poweroffalarm_app:binder transfer;
+allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:binder { call transfer };
+allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:binder transfer;
+allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_server:fd *;
+allow vendor_hal_alarm_qti_client vendor_hal_alarm_qti_hwservice:hwservice_manager find;
+allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:binder transfer;
+allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:binder { call transfer };
+allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_client:fd *;
+allow vendor_hal_alarm_qti_server vendor_hal_alarm_qti_hwservice:hwservice_manager { add find };
+allow vendor_hal_alarm_qti_server hidl_base_hwservice_202404:hwservice_manager add;
+attribute vendor_hal_alarm_qti;
+attribute vendor_hal_alarm_qti_client;
+attribute vendor_hal_alarm_qti_server;
+hal_server_domain(vendor_hal_alarm_qti_default, vendor_hal_alarm_qti)
+type vendor_hal_alarm_qti_default, domain;
+type vendor_hal_alarm_qti_default_exec, exec_type, file_type, vendor_file_type;
+type vendor_hal_alarm_qti_hwservice, hwservice_manager_type, protected_hwservice;

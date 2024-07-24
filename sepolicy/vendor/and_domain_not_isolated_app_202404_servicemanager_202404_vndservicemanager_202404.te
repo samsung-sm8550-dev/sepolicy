@@ -1,0 +1,1 @@
+allow { domain -isolated_app_202404 -servicemanager_202404 -vndservicemanager_202404 } hwbinder_device_202404:chr_file rw_file_perms;

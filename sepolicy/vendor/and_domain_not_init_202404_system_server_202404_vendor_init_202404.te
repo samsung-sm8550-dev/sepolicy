@@ -1,0 +1,1 @@
+neverallow { domain -init_202404 -system_server_202404 -vendor_init_202404 } exported_pm_prop_202404:property_service set;

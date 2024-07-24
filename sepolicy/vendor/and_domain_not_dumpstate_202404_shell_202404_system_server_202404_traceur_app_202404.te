@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate_202404 -shell_202404 -system_server_202404 -traceur_app_202404 } dumpstate_service_202404:service_manager find;

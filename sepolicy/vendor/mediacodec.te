@@ -1,0 +1,60 @@
+neverallow mediacodec fs_type:file execute_no_trans;
+neverallow mediacodec file_type:file execute_no_trans;
+neverallow mediacodec domain:udp_socket *;
+neverallow mediacodec domain:rawip_socket *;
+neverallow mediacodec vendor_qdsp_device:chr_file { audit_access entrypoint execmod getattr lock map mounton no_w_file_perms no_x_file_perms open quotaon relabelto watch watch_mount watch_reads watch_sb watch_with_perm };
+allow mediacodec vndbinder_device_202404:chr_file rw_file_perms;
+allow mediacodec vndservicemanager_202404:binder { call transfer };
+allow mediacodec gpu_device_202404:chr_file rw_file_perms;
+allow mediacodec gpu_device_202404:dir r_dir_perms;
+allow mediacodec ion_device_202404:chr_file rw_file_perms;
+allow mediacodec dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow mediacodec video_device_202404:chr_file rw_file_perms;
+allow mediacodec video_device_202404:dir search;
+allow mediacodec su_202404:fifo_file append;
+allow mediacodec anr_data_file_202404:file append;
+allow mediacodec dumpstate_202404:fd *;
+allow mediacodec dumpstate_202404:fifo_file { append write };
+allow mediacodec incidentd_202404:fd *;
+allow mediacodec incidentd_202404:fifo_file { append write };
+allow mediacodec system_server_202404:fifo_file { append write };
+allow mediacodec tombstoned_202404:unix_stream_socket connectto;
+allow mediacodec tombstoned_202404:fd *;
+allow mediacodec tombstoned_crash_socket_202404:sock_file write;
+allow mediacodec tombstone_data_file_202404:file append;
+allow mediacodec cameraserver_202404:binder transfer;
+allow mediacodec system_file_202404:dir r_dir_perms;
+allow mediacodec vendor_media_data_file:dir create_dir_perms;
+allow mediacodec vendor_media_data_file:file create_file_perms;
+allow mediacodec vendor_dmabuf_system_heap_device:chr_file r_file_perms;
+allow mediacodec vendor_wfdnativemm_service:service_manager find;
+allow mediacodec audio_device_202404:chr_file rw_file_perms;
+allow mediacodec vendor_membuf_dev:chr_file r_file_perms;
+allow mediacodec vendor_vm_cp_bitstream_device:chr_file r_file_perms;
+allow mediacodec vendor_wifidisplayhalservice_qti:binder { call transfer };
+allow mediacodec vendor_wifidisplayhalservice_qti:binder transfer;
+allow mediacodec vendor_wifidisplayhalservice_qti:fd *;
+allow mediacodec vendor_qdsp_device:chr_file { ioctl read };
+allow mediacodec hal_graphics_composer_default:binder { call transfer };
+allow mediacodec hal_graphics_composer_default:fd *;
+dontaudit mediacodec vendor_xdsp_device:chr_file { getattr map open read };
+dontaudit mediacodec vendor_qdsp_device:chr_file open;
+get_prop(mediacodec, aac_drc_prop_202404)
+get_prop(mediacodec, vendor_adsprpc_prop)
+get_prop(mediacodec, vendor_video_prop)
+get_prop(mediacodec, vendor_audio_prop)
+hal_server_domain(mediacodec, hal_codec2)
+hal_server_domain(mediacodec, hal_omx)
+hal_client_domain(mediacodec, hal_allocator)
+hal_client_domain(mediacodec, hal_audio)
+hal_client_domain(mediacodec, hal_codec2)
+hal_client_domain(mediacodec, hal_graphics_allocator)
+hal_client_domain(mediacodec, hal_graphics_composer)
+hal_client_domain(mediacodec, hal_omx)
+hal_client_domain(mediacodec, vendor_hal_capabilityconfigstore_qti)
+hal_client_domain(mediacodec, vendor_hal_dspmanager)
+hal_client_domain(mediacodec, vendor_hal_perf)
+hal_client_domain(mediacodec, vendor_hal_vpp)
+hal_client_domain(mediacodec, vendor_hal_qconfig)
+type mediacodec, domain, mlstrustedsubject;
+type mediacodec_exec, exec_type, file_type, vendor_file_type;

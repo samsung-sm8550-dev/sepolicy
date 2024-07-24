@@ -1,0 +1,10 @@
+allow vendor_smtrace_tracing debugfs_tracing_202404:dir r_dir_perms;
+allow vendor_smtrace_tracing debugfs_tracing_202404:file rw_file_perms;
+allow vendor_smtrace_tracing vendor_shell_exec_202404:file { entrypoint rx_file_perms };
+allow vendor_smtrace_tracing vendor_toolbox_exec_202404:file rx_file_perms;
+allow vendor_smtrace_tracing property_socket_202404:sock_file write;
+allow vendor_smtrace_tracing init_202404:unix_stream_socket connectto;
+allow vendor_smtrace_tracing vendor_system_prop:property_service set;
+get_prop(vendor_smtrace_tracing, vendor_system_prop)
+type vendor_smtrace_tracing, domain, mlstrustedsubject;
+type vendor_smtrace_tracing_exec, exec_type, file_type, vendor_file_type;

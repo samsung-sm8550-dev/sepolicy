@@ -1,0 +1,5 @@
+allow adbd_202404 shell_test_data_file_202404:dir create_dir_perms;
+allow adbd_202404 shell_test_data_file_202404:file create_file_perms;
+allow adbd_202404 shell_test_data_file_202404:lnk_file create_file_perms;
+unix_socket_connect(adbd_202404, vendor_qdcmsocket, vendor_qdcm-ss)
+type adbd_202404, domain;

@@ -1,0 +1,9 @@
+allow vendor_sectest mnt_vendor_file_202404:dir r_dir_perms;
+allow vendor_sectest vendor_persist_drm_file:dir create_dir_perms;
+allow vendor_sectest vendor_persist_drm_file:file create_file_perms;
+allow vendor_sectest tee_device_202404:chr_file rw_file_perms;
+allow vendor_sectest vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow vendor_sectest vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+r_dir_file(vendor_sectest, vendor_persist_data_file)
+type vendor_sectest, domain;
+type vendor_sectest_exec, exec_type, file_type, vendor_file_type;

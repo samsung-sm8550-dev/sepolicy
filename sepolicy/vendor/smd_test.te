@@ -1,0 +1,5 @@
+allow vendor_smd_test shell_202404:process sigchld;
+allow vendor_smd_test vendor_smd_device:chr_file { append getattr ioctl open read write };
+allow vendor_smd_test devpts_202404:chr_file { getattr ioctl open read write };
+type vendor_smd_test, domain;
+type vendor_smd_test_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,3 @@
+neverallow { domain -system_server_202404 } zygote_socket_202404:sock_file write;
+neverallow { domain -system_server_202404 } webview_zygote_202404:sock_file write;
+neverallow { domain -system_server_202404 } app_zygote_202404:sock_file write;

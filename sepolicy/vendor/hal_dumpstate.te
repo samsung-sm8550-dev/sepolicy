@@ -1,0 +1,32 @@
+expandtypeattribute(hal_dumpstate)
+expandtypeattribute(hal_dumpstate_client)
+expandtypeattribute(hal_dumpstate_server)
+allow hal_dumpstate_server dumpstate_202404:fifo_file write;
+allow hal_dumpstate_server dumpstate_202404:fd *;
+allow hal_dumpstate_server hal_dumpstate_client:binder transfer;
+allow hal_dumpstate_server hal_dumpstate_client:binder { call transfer };
+allow hal_dumpstate_server hal_dumpstate_client:fd *;
+allow hal_dumpstate_server property_socket_202404:sock_file write;
+allow hal_dumpstate_server init_202404:unix_stream_socket connectto;
+allow hal_dumpstate_server hal_dumpstate_config_prop_202404:property_service set;
+allow hal_dumpstate_server hal_dumpstate_hwservice_202404:hwservice_manager { add find };
+allow hal_dumpstate_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_dumpstate_server su_202404:tcp_socket { accept getopt read write };
+allow hal_dumpstate_server servicemanager_202404:binder { call transfer };
+allow hal_dumpstate_server servicemanager_202404:fd *;
+allow hal_dumpstate_client hal_dumpstate_server:binder { call transfer };
+allow hal_dumpstate_client hal_dumpstate_server:binder transfer;
+allow hal_dumpstate_client hal_dumpstate_server:fd *;
+allow hal_dumpstate_client hal_dumpstate_hwservice_202404:hwservice_manager find;
+allow hal_dumpstate_client hal_dumpstate_service_202404:service_manager find;
+allow hal_dumpstate shell_data_file_202404:file write;
+allow hal_dumpstate proc_interrupts_202404:file r_file_perms;
+allow hal_dumpstate_default debugfs_202404:dir { open read };
+allow hal_dumpstate_default servicemanager_202404:binder { call transfer };
+allow hal_dumpstate_default dumpstate_202404:binder transfer;
+r_dir_file(hal_dumpstate, fscklogs_202404)
+get_prop(hal_dumpstate_server, hal_dumpstate_config_prop_202404)
+hal_server_domain(hal_dumpstate_default, hal_dumpstate)
+add_service(hal_dumpstate_server, hal_dumpstate_service_202404)
+type hal_dumpstate_default, domain;
+type hal_dumpstate_default_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,7 @@
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:file create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:dir create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:lnk_file create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:chr_file create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:blk_file create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:sock_file create;
+neverallow { domain -init_202404 -recovery_202404 } unlabeled_202404:fifo_file create;

@@ -1,0 +1,33 @@
+expandtypeattribute(hal_neuralnetworks)
+expandtypeattribute(hal_neuralnetworks_client)
+expandtypeattribute(hal_neuralnetworks_server)
+allow hal_neuralnetworks_server dumpstate_202404:fifo_file write;
+allow hal_neuralnetworks_server dumpstate_202404:fd *;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder transfer;
+allow hal_neuralnetworks_server hal_neuralnetworks_client:binder { call transfer };
+allow hal_neuralnetworks_server hal_neuralnetworks_client:fd *;
+allow hal_neuralnetworks_server hal_neuralnetworks_hwservice_202404:hwservice_manager { add find };
+allow hal_neuralnetworks_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_neuralnetworks_server app_data_file_202404:file { getattr map read write };
+allow hal_neuralnetworks_server privapp_data_file_202404:file { getattr map read write };
+allow hal_neuralnetworks_server shell_data_file_202404:file { getattr map read write };
+allow hal_neuralnetworks_server ion_device_202404:chr_file r_file_perms;
+allow hal_neuralnetworks_server storage_file_202404:file { getattr map read };
+allow hal_neuralnetworks_server apk_data_file_202404:file { getattr map read };
+allow hal_neuralnetworks_server su_202404:tcp_socket { accept getopt read write };
+allow hal_neuralnetworks_server servicemanager_202404:binder { call transfer };
+allow hal_neuralnetworks_server servicemanager_202404:fd *;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder { call transfer };
+allow hal_neuralnetworks_client hal_neuralnetworks_server:binder transfer;
+allow hal_neuralnetworks_client hal_neuralnetworks_server:fd *;
+allow hal_neuralnetworks_client hal_neuralnetworks_hwservice_202404:hwservice_manager find;
+allow hal_neuralnetworks_client hal_neuralnetworks_service_202404:service_manager find;
+allow hal_neuralnetworks hidl_memory_hwservice_202404:hwservice_manager find;
+allow hal_neuralnetworks hal_allocator:fd *;
+allow hal_neuralnetworks hal_graphics_mapper_hwservice_202404:hwservice_manager find;
+allow hal_neuralnetworks hal_graphics_allocator:fd *;
+allow hal_neuralnetworks gpu_device_202404:chr_file rw_file_perms;
+allow hal_neuralnetworks gpu_device_202404:dir r_dir_perms;
+get_prop(hal_neuralnetworks_client, nnapi_ext_deny_product_prop_202404)
+get_prop(hal_neuralnetworks_client, device_config_nnapi_native_prop_202404)
+add_service(hal_neuralnetworks_server, hal_neuralnetworks_service_202404)

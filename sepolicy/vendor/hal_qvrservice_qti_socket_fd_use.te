@@ -1,0 +1,2 @@
+allow vendor_hal_qvrservice_qti_socket_fd_use_client vendor_qvrd_vndr:fd *;
+attribute vendor_hal_qvrservice_qti_socket_fd_use_client;

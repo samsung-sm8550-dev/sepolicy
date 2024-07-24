@@ -1,0 +1,2 @@
+allow rootdisk_sysdev_202404 sysfs_202404:filesystem associate;
+type rootdisk_sysdev_202404, dev_type;

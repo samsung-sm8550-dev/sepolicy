@@ -1,0 +1,2 @@
+neverallow { domain -init_202404 -vendor_init_202404 -vold_202404 } fusectlfs_202404:file no_rw_file_perms;
+neverallowxperm { domain -init_202404 -vendor_init_202404 -vold_202404 } data_file_type:ioctl dir 0x6613;

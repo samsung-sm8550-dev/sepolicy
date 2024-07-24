@@ -1,0 +1,12 @@
+allow vendor_keymasterd tee_device_202404:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_spcom_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_sp_keymaster_ssr_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_skp_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_sp_keymaster_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_sp_ssr_device:chr_file rw_file_perms;
+allow vendor_keymasterd vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+get_prop(vendor_keymasterd, vendor_tee_listener_prop)
+get_prop(vendor_keymasterd, vendor_spcomlib_prop)
+type vendor_keymasterd, domain;
+type vendor_keymasterd_exec, exec_type, file_type, vendor_file_type;

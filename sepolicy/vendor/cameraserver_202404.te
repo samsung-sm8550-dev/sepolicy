@@ -1,0 +1,59 @@
+neverallow cameraserver_202404 fs_type:file execute_no_trans;
+neverallow cameraserver_202404 file_type:file execute_no_trans;
+neverallow cameraserver_202404 domain:udp_socket *;
+neverallow cameraserver_202404 domain:rawip_socket *;
+allow cameraserver_202404 servicemanager_202404:binder { call transfer };
+allow cameraserver_202404 binderservicedomain:binder { call transfer };
+allow cameraserver_202404 binderservicedomain:fd *;
+allow cameraserver_202404 appdomain:binder { call transfer };
+allow cameraserver_202404 appdomain:fd *;
+allow cameraserver_202404 ion_device_202404:chr_file rw_file_perms;
+allow cameraserver_202404 dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow cameraserver_202404 hal_graphics_composer:fd *;
+allow cameraserver_202404 su_202404:tcp_socket { accept getopt read write };
+allow cameraserver_202404 su_202404:fd *;
+allow cameraserver_202404 su_202404:fifo_file { read write };
+allow cameraserver_202404 su_202404:unix_stream_socket { read write };
+allow cameraserver_202404 fwk_camera_hwservice_202404:hwservice_manager { add find };
+allow cameraserver_202404 hidl_base_hwservice_202404:hwservice_manager add;
+allow cameraserver_202404 activity_service_202404:service_manager find;
+allow cameraserver_202404 appops_service_202404:service_manager find;
+allow cameraserver_202404 audioserver_service_202404:service_manager find;
+allow cameraserver_202404 batterystats_service_202404:service_manager find;
+allow cameraserver_202404 cameraproxy_service_202404:service_manager find;
+allow cameraserver_202404 mediaserver_service_202404:service_manager find;
+allow cameraserver_202404 package_native_service_202404:service_manager find;
+allow cameraserver_202404 permission_checker_service_202404:service_manager find;
+allow cameraserver_202404 processinfo_service_202404:service_manager find;
+allow cameraserver_202404 scheduling_policy_service_202404:service_manager find;
+allow cameraserver_202404 sensor_privacy_service_202404:service_manager find;
+allow cameraserver_202404 surfaceflinger_service_202404:service_manager find;
+allow cameraserver_202404 hidl_token_hwservice_202404:hwservice_manager find;
+allow cameraserver_202404 hal_camera_service_202404:service_manager find;
+allow cameraserver_202404 virtual_camera_service_202404:service_manager find;
+allow cameraserver_202404 surfaceflinger_202404:unix_stream_socket { read write };
+allow cameraserver_202404 adbd_202404:fd *;
+allow cameraserver_202404 adbd_202404:unix_stream_socket { read write };
+allow cameraserver_202404 shell_202404:fd *;
+allow cameraserver_202404 shell_202404:unix_stream_socket { read write };
+allow cameraserver_202404 shell_202404:fifo_file { read write };
+allow cameraserver_202404 mediametrics_service_202404:service_manager find;
+allow cameraserver_202404 gpu_device_202404:chr_file rw_file_perms;
+allow cameraserver_202404 vendor_sysfs_camera:file r_file_perms;
+allow cameraserver_202404 vendor_sysfs_camera:dir search;
+allow cameraserver_202404 system_file_202404:dir r_dir_perms;
+allow cameraserver_202404 system_server_202404:unix_stream_socket { read write };
+allow cameraserver_202404 mediacodec:binder { call transfer };
+allow cameraserver_202404 mediacodec:fd *;
+get_prop(cameraserver_202404, vendor_camera_prop)
+get_prop(cameraserver_202404, vendor_adsprpc_prop)
+get_prop(cameraserver_202404, vendor_sys_video_prop_202404)
+binder_service(cameraserver_202404)
+hal_client_domain(cameraserver_202404, hal_allocator)
+hal_client_domain(cameraserver_202404, hal_camera)
+hal_client_domain(cameraserver_202404, hal_codec2)
+hal_client_domain(cameraserver_202404, hal_graphics_allocator)
+hal_client_domain(cameraserver_202404, hal_omx)
+add_service(cameraserver_202404, cameraserver_service_202404)
+add_service(cameraserver_202404, fwk_camera_service_202404)
+type cameraserver_202404, domain;

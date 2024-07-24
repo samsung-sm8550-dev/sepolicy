@@ -1,0 +1,5 @@
+allow file_type labeledfs_202404:filesystem associate;
+allow file_type tmpfs_202404:filesystem associate;
+allow file_type rootfs_202404:filesystem associate;
+attribute file_type;
+attribute vendor_file_type;

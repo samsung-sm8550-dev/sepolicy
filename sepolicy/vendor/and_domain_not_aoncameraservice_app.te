@@ -1,0 +1,2 @@
+neverallow { domain -aoncameraservice_app } aoncameraservice_app_userfaultfd:anon_inode *;
+neverallow { aoncameraservice_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -aoncameraservice_app }:file no_rw_file_perms;

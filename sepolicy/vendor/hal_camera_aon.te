@@ -1,0 +1,1 @@
+type vendor_hal_camera_aon_hwservice, hwservice_manager_type, protected_hwservice;

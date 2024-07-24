@@ -1,0 +1,1 @@
+neverallow { domain -netd_202404 } system_net_netd_hwservice_202404:hwservice_manager add;

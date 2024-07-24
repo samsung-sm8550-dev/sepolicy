@@ -1,0 +1,1 @@
+allow init_202404 { fs_type -bpffs_type -contextmount_type -fusefs_type -proc_type -sysfs_type -debugfs_type -sdcard_type -keychord_device_202404 -rootfs_202404 }:file { open read setattr };

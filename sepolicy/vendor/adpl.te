@@ -1,0 +1,18 @@
+allow vendor_adpl vendor_ipa_dev:chr_file rw_file_perms;
+allow vendor_adpl vendor_rmnet_device:chr_file rw_file_perms;
+allow vendor_adpl vendor_mhi_device:chr_file rw_file_perms;
+allow vendor_adpl self:socket create_socket_perms_no_ioctl;
+allow vendor_adpl self:udp_socket create_socket_perms_no_ioctl;
+allow vendor_adpl self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_adpl property_socket_202404:sock_file write;
+allow vendor_adpl init_202404:unix_stream_socket connectto;
+allow vendor_adpl vendor_dataadpl_prop:property_service set;
+allow vendor_adpl vendor_diag_device:chr_file rw_file_perms;
+allow vendor_adpl vendor_sysfs_data:file r_file_perms;
+allow vendor_adpl vendor_dataadpl_socket:sock_file rw_file_perms;
+allow vendor_adpl sysfs_202404:dir r_dir_perms;
+r_dir_file(vendor_adpl, vendor_sysfs_diag)
+get_prop(vendor_adpl, vendor_dataadpl_prop)
+net_domain(vendor_adpl)
+type vendor_adpl, domain;
+type vendor_adpl_exec, exec_type, file_type, vendor_file_type;

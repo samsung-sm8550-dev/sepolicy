@@ -1,0 +1,2 @@
+allow sysfs_type sysfs_202404:filesystem associate;
+attribute sysfs_type;

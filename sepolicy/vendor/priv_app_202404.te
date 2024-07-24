@@ -1,0 +1,12 @@
+allow priv_app_202404 update_engine_202404:binder transfer;
+allow priv_app_202404 rs_exec_202404:file rx_file_perms;
+allow priv_app_202404 vendor_sysfs_kgsl:dir search;
+allow priv_app_202404 vendor_gles_data_file:dir rw_dir_perms;
+allow priv_app_202404 vendor_gles_data_file:file rw_file_perms;
+auditallow priv_app_202404 update_engine_202404:binder transfer;
+r_dir_file(priv_app_202404, vendor_sysfs_kgsl_snapshot)
+r_dir_file(priv_app_202404, vendor_gles_data_file)
+hal_client_domain(priv_app_202404, vendor_hal_perf)
+hal_client_domain(priv_app_202404, vendor_hal_qspmhal)
+hal_client_domain(priv_app_202404, vendor_hal_qesdhal)
+type priv_app_202404, domain;

@@ -1,0 +1,1 @@
+neverallow { domain -hal_audio_client -hal_audio_server } hal_audio_hwservice_202404:hwservice_manager find;

@@ -1,0 +1,32 @@
+expandtypeattribute(hal_tetheroffload)
+expandtypeattribute(hal_tetheroffload_client)
+expandtypeattribute(hal_tetheroffload_server)
+allow hal_tetheroffload_client hal_tetheroffload_server:binder { call transfer };
+allow hal_tetheroffload_client hal_tetheroffload_server:binder transfer;
+allow hal_tetheroffload_client hal_tetheroffload_server:fd *;
+allow hal_tetheroffload_client hal_tetheroffload_hwservice_202404:hwservice_manager find;
+allow hal_tetheroffload_client hal_tetheroffload_service_202404:service_manager find;
+allow hal_tetheroffload_server hal_tetheroffload_client:binder transfer;
+allow hal_tetheroffload_server hal_tetheroffload_client:binder { call transfer };
+allow hal_tetheroffload_server hal_tetheroffload_client:fd *;
+allow hal_tetheroffload_server hal_tetheroffload_client:netlink_netfilter_socket { getattr read setopt write };
+allow hal_tetheroffload_server hal_tetheroffload_hwservice_202404:hwservice_manager { add find };
+allow hal_tetheroffload_server hidl_base_hwservice_202404:hwservice_manager add;
+allow hal_tetheroffload_server su_202404:tcp_socket { accept getopt read write };
+allow hal_tetheroffload_server servicemanager_202404:binder { call transfer };
+allow hal_tetheroffload_default vendor_ipa_dev:chr_file rw_file_perms;
+allow hal_tetheroffload_default vendor_ipacm_socket:sock_file w_file_perms;
+allow hal_tetheroffload_default vendor_ipa_vendor_data_file:dir w_dir_perms;
+allow hal_tetheroffload_default vendor_ipa_vendor_data_file:file create_file_perms;
+allow hal_tetheroffload vendor_ipa_dev:chr_file rw_file_perms;
+allow hal_tetheroffload self:udp_socket create_socket_perms;
+allow hal_tetheroffload self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_readpriv };
+allow hal_tetheroffload self:netlink_socket create_socket_perms_no_ioctl;
+allow hal_tetheroffload self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow hal_tetheroffload vendor_ipa_vendor_data_file:dir rw_dir_perms;
+allow hal_tetheroffload vendor_ipa_vendor_data_file:file create_file_perms;
+r_dir_file(hal_tetheroffload_default, vendor_sysfs_diag)
+hal_server_domain(hal_tetheroffload_default, hal_tetheroffload)
+add_service(hal_tetheroffload_server, hal_tetheroffload_service_202404)
+type hal_tetheroffload_default, domain;
+type hal_tetheroffload_default_exec, exec_type, file_type, vendor_file_type;

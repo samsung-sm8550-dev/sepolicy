@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_perf_server } vendor_hal_perf_hwservice:hwservice_manager add;

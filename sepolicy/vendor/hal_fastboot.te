@@ -1,0 +1,14 @@
+expandtypeattribute(hal_fastboot)
+expandtypeattribute(hal_fastboot_client)
+expandtypeattribute(hal_fastboot_server)
+allow hal_fastboot_client hal_fastboot_server:binder { call transfer };
+allow hal_fastboot_client hal_fastboot_server:fd *;
+allow hal_fastboot_client hal_fastboot_service_202404:service_manager find;
+allow hal_fastboot_server hal_fastboot_client:binder transfer;
+allow hal_fastboot_server su_202404:tcp_socket { accept getopt read write };
+allow hal_fastboot_server servicemanager_202404:binder { call transfer };
+allow hal_fastboot_server servicemanager_202404:fd *;
+hal_server_domain(hal_fastboot_default, hal_fastboot)
+add_service(hal_fastboot_server, hal_fastboot_service_202404)
+type hal_fastboot_default, domain;
+type hal_fastboot_default_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,4 @@
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_keymint_service_202404:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_remotelyprovisionedcomponent_service_202404:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_secureclock_service_202404:service_manager find;
+neverallow { domain -hal_keymint_client -hal_keymint_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_sharedsecret_service_202404:service_manager find;

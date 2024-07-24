@@ -1,0 +1,2 @@
+allow incidentd_202404 statsd_202404:binder transfer;
+type incidentd_202404, domain;

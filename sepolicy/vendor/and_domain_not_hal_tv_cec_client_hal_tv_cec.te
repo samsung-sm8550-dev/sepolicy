@@ -1,0 +1,1 @@
+neverallow { domain -hal_tv_cec_client -hal_tv_cec_server } hal_tv_cec_hwservice_202404:hwservice_manager find;

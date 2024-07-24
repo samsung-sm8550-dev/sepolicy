@@ -1,0 +1,4 @@
+neverallow { domain -kernel_202404 -vold_202404 -vold_prepare_subdirs_202404 } vold_data_file_202404:file { audit_access entrypoint execmod map mounton no_rw_file_perms no_x_file_perms quotaon };
+neverallow { domain -kernel_202404 -vold_202404 -vold_prepare_subdirs_202404 } vold_data_file_202404:lnk_file { audit_access execmod execute map mounton no_rw_file_perms quotaon };
+neverallow { domain -kernel_202404 -vold_202404 -vold_prepare_subdirs_202404 } vold_data_file_202404:sock_file { audit_access execmod execute map mounton no_rw_file_perms quotaon };
+neverallow { domain -kernel_202404 -vold_202404 -vold_prepare_subdirs_202404 } vold_data_file_202404:fifo_file { audit_access execmod execute map mounton no_rw_file_perms quotaon };

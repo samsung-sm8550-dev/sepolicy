@@ -1,0 +1,11 @@
+allow vendor_misc_writer_202404 misc_block_device_202404:blk_file w_file_perms;
+allow vendor_misc_writer_202404 block_device_202404:dir r_dir_perms;
+allow vendor_misc_writer_202404 gsi_metadata_file_type:dir search;
+allow vendor_misc_writer_202404 metadata_file_202404:dir search;
+allow vendor_misc_writer_202404 gsi_public_metadata_file_202404:file r_file_perms;
+allow vendor_misc_writer_202404 proc_bootconfig_202404:file r_file_perms;
+allow vendor_misc_writer_202404 proc_cmdline_202404:file r_file_perms;
+dontaudit vendor_misc_writer_202404 proc_cmdline_202404:file { getattr ioctl lock map open read watch watch_reads };
+dontaudit vendor_misc_writer_202404 sysfs_dt_firmware_android_202404:dir search;
+dontaudit vendor_misc_writer_202404 proc_bootconfig_202404:file { getattr ioctl lock map open read watch watch_reads };
+type vendor_misc_writer_202404, domain;

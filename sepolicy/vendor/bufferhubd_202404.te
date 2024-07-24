@@ -1,0 +1,15 @@
+allow bufferhubd_202404 pdx_bufferhub_client_endpoint_socket_type:unix_stream_socket { accept append getattr getopt listen lock read setattr setopt shutdown write };
+allow bufferhubd_202404 self:process setsockcreate;
+allow bufferhubd_202404 pdx_bufferhub_client_channel_socket_type:unix_stream_socket create_stream_socket_perms;
+allow bufferhubd_202404 pdx_performance_client_endpoint_dir_type:dir r_dir_perms;
+allow bufferhubd_202404 pdx_performance_client_endpoint_socket_type:sock_file rw_file_perms;
+allow bufferhubd_202404 pdx_performance_client_endpoint_socket_type:unix_stream_socket { connectto read shutdown write };
+allow bufferhubd_202404 pdx_performance_client_channel_socket_type:unix_stream_socket { append getattr getopt lock read setattr setopt shutdown write };
+allow bufferhubd_202404 pdx_performance_client_server_type:fd *;
+allow bufferhubd_202404 gpu_device_202404:chr_file rw_file_perms;
+allow bufferhubd_202404 ion_device_202404:chr_file r_file_perms;
+allow bufferhubd_202404 hal_omx_server:fd *;
+allow bufferhubd_202404 hal_codec2_server:fd *;
+allow bufferhubd_202404 dumpstate_202404:binder transfer;
+hal_client_domain(bufferhubd_202404, hal_graphics_allocator)
+type bufferhubd_202404, domain, mlstrustedsubject, pdx_bufferhub_client_server_type;

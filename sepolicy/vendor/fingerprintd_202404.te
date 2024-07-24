@@ -1,0 +1,18 @@
+allow fingerprintd_202404 servicemanager_202404:binder { call transfer };
+allow fingerprintd_202404 system_file_202404:dir r_dir_perms;
+allow fingerprintd_202404 su_202404:tcp_socket { accept getopt read write };
+allow fingerprintd_202404 fingerprintd_data_file_202404:file create_file_perms;
+allow fingerprintd_202404 fingerprintd_data_file_202404:dir rw_dir_perms;
+allow fingerprintd_202404 apc_service_202404:service_manager find;
+allow fingerprintd_202404 keystore_service_202404:service_manager find;
+allow fingerprintd_202404 legacykeystore_service_202404:service_manager find;
+allow fingerprintd_202404 keystore_202404:binder { call transfer };
+allow fingerprintd_202404 keystore_202404:binder transfer;
+allow fingerprintd_202404 keystore_202404:fd *;
+allow fingerprintd_202404 keystore_202404:keystore2 add_auth;
+allow fingerprintd_202404 system_server_202404:binder { call transfer };
+allow fingerprintd_202404 system_server_202404:fd *;
+allow fingerprintd_202404 permission_service_202404:service_manager find;
+allow fingerprintd_202404 ion_device_202404:chr_file r_file_perms;
+add_service(fingerprintd_202404, fingerprintd_service_202404)
+type fingerprintd_202404, domain;

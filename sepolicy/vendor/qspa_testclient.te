@@ -1,0 +1,3 @@
+hal_client_domain(vendor_qspa_testclient, vendor_hal_qspa_qti)
+type vendor_qspa_testclient, domain;
+type vendor_qspa_testclient_exec, exec_type, file_type, vendor_file_type;

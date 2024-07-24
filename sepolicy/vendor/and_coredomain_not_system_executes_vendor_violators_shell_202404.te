@@ -1,0 +1,1 @@
+neverallow { coredomain -system_executes_vendor_violators -shell_202404 } { vendor_file_type -same_process_hal_file_202404 }:file execute_no_trans;

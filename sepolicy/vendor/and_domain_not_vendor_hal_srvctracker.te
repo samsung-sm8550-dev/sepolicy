@@ -1,0 +1,1 @@
+neverallow { domain -vendor_hal_srvctracker } vendor_hal_srvctracker_hwservice:hwservice_manager add;

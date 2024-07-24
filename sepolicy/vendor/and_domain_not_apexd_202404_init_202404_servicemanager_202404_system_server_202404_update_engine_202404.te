@@ -1,0 +1,1 @@
+neverallow { domain -apexd_202404 -init_202404 -servicemanager_202404 -system_server_202404 -update_engine_202404 } apexd_202404:binder call;

@@ -1,0 +1,1 @@
+neverallow { domain -hal_graphics_composer_client -hal_graphics_composer_server } hal_graphics_composer_hwservice_202404:hwservice_manager find;

@@ -1,0 +1,3 @@
+attribute vendor_qccsyshal;
+attribute vendor_qccsyshal_server;
+attribute vendor_qccsyshal_client;

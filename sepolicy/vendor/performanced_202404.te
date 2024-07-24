@@ -1,0 +1,23 @@
+allow performanced_202404 servicemanager_202404:binder { call transfer };
+allow performanced_202404 system_server_202404:binder { call transfer };
+allow performanced_202404 system_server_202404:fd *;
+allow performanced_202404 permission_service_202404:service_manager find;
+allow performanced_202404 pdx_performance_client_endpoint_socket_type:unix_stream_socket { accept append getattr getopt listen lock read setattr setopt shutdown write };
+allow performanced_202404 self:process setsockcreate;
+allow performanced_202404 self:capability { setgid setuid sys_nice };
+allow performanced_202404 self:cap_userns { setgid setuid sys_nice };
+allow performanced_202404 pdx_performance_client_channel_socket_type:unix_stream_socket create_stream_socket_perms;
+allow performanced_202404 appdomain:process setsched;
+allow performanced_202404 bufferhubd_202404:process setsched;
+allow performanced_202404 kernel_202404:process setsched;
+allow performanced_202404 surfaceflinger_202404:process setsched;
+dontaudit performanced_202404 domain:dir read;
+dontaudit performanced_202404 domain:dir open;
+dontaudit performanced_202404 domain:file { getattr open read };
+r_dir_file(performanced_202404, appdomain)
+r_dir_file(performanced_202404, bufferhubd_202404)
+r_dir_file(performanced_202404, kernel_202404)
+r_dir_file(performanced_202404, surfaceflinger_202404)
+r_dir_file(performanced_202404, cgroup_202404)
+r_dir_file(performanced_202404, cgroup_v2_202404)
+type performanced_202404, domain, mlstrustedsubject, pdx_performance_client_server_type;
