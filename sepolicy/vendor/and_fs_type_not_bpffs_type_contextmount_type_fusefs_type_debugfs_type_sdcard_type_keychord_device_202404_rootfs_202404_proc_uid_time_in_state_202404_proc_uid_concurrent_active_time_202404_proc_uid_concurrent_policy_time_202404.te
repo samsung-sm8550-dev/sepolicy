@@ -1,1 +1,0 @@
-allow vendor_init_202404 { fs_type -bpffs_type -contextmount_type -fusefs_type -debugfs_type -sdcard_type -keychord_device_202404 -rootfs_202404 -proc_uid_time_in_state_202404 -proc_uid_concurrent_active_time_202404 -proc_uid_concurrent_policy_time_202404 }:file { map open read setattr };

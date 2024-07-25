@@ -1,0 +1,4 @@
+allow sbm app_efs_file:dir create_dir_perms;
+allow sbm app_efs_file:file create_file_perms;
+type sbm, coredomain, domain;
+type sbm_exec, exec_type, file_type, system_file_type;

@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_dataconnection_qti_server } vendor_hal_dataconnection_hwservice:hwservice_manager add;

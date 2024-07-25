@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_display_demura_client -vendor_hal_display_demura_server } vendor_hal_display_demura_hwservice:hwservice_manager find;

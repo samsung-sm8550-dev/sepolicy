@@ -1,10 +1,7 @@
-allow vendor_init-qcom-crashdata-sh vendor_shell_exec_202404:file rx_file_perms;
-allow vendor_init-qcom-crashdata-sh vendor_toolbox_exec_202404:file rx_file_perms;
-allow vendor_init-qcom-crashdata-sh property_socket_202404:sock_file write;
-allow vendor_init-qcom-crashdata-sh init_202404:unix_stream_socket connectto;
-allow vendor_init-qcom-crashdata-sh vendor_crash_cnt_prop:property_service set;
-allow vendor_init-qcom-crashdata-sh vendor_crash_detect_prop:property_service set;
-get_prop(vendor_init-qcom-crashdata-sh, vendor_crash_cnt_prop)
-get_prop(vendor_init-qcom-crashdata-sh, vendor_crash_detect_prop)
+allow vendor_init-qcom-crashdata-sh vendor_shell_exec:file rx_file_perms;
+allow vendor_init-qcom-crashdata-sh vendor_toolbox_exec:file rx_file_perms;
+init_daemon_domain(vendor_init-qcom-crashdata-sh)
+set_prop(vendor_init-qcom-crashdata-sh, vendor_crash_cnt_prop)
+set_prop(vendor_init-qcom-crashdata-sh, vendor_crash_detect_prop)
 type vendor_init-qcom-crashdata-sh, domain;
 type vendor_init-qcom-crashdata-sh_exec, exec_type, file_type, vendor_file_type;

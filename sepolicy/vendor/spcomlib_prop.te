@@ -1,0 +1,3 @@
+typealias(spcomlib_prop)
+typealiasactual(spcomlib_prop)
+vendor_internal_prop(vendor_spcomlib_prop)

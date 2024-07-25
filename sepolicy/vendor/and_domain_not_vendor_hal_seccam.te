@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_seccam_server } vendor_hal_seccam_hwservice:hwservice_manager add;

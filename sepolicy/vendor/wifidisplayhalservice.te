@@ -1,20 +1,15 @@
 allow vendor_wifidisplayhalservice_qti mediacodec:binder transfer;
 allow vendor_wifidisplayhalservice_qti mediacodec:binder { call transfer };
 allow vendor_wifidisplayhalservice_qti mediacodec:fd *;
-allow vendor_wifidisplayhalservice_qti hwservicemanager_202404:binder { call transfer };
-allow vendor_wifidisplayhalservice_qti system_file_202404:dir r_dir_perms;
-allow vendor_wifidisplayhalservice_qti su_202404:tcp_socket { accept getopt read write };
-allow vendor_wifidisplayhalservice_qti su_202404:fifo_file append;
-allow vendor_wifidisplayhalservice_qti tee_device_202404:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice_qti audio_device_202404:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice_qti audio_device_202404:dir r_dir_perms;
-allow vendor_wifidisplayhalservice_qti video_device_202404:chr_file rw_file_perms;
+allow vendor_wifidisplayhalservice_qti system_file:dir r_dir_perms;
+allow vendor_wifidisplayhalservice_qti tee_device:chr_file rw_file_perms;
+allow vendor_wifidisplayhalservice_qti audio_device:chr_file rw_file_perms;
+allow vendor_wifidisplayhalservice_qti audio_device:dir r_dir_perms;
+allow vendor_wifidisplayhalservice_qti video_device:chr_file rw_file_perms;
 allow vendor_wifidisplayhalservice_qti self:udp_socket create_socket_perms;
 allow vendor_wifidisplayhalservice_qti self:netlink_generic_socket create_socket_perms_no_ioctl;
-allow vendor_wifidisplayhalservice_qti proc_net_202404:file r_file_perms;
-allow vendor_wifidisplayhalservice_qti property_socket_202404:sock_file write;
-allow vendor_wifidisplayhalservice_qti init_202404:unix_stream_socket connectto;
-allow vendor_wifidisplayhalservice_qti ion_device_202404:chr_file r_file_perms;
+allow vendor_wifidisplayhalservice_qti proc_net:file r_file_perms;
+allow vendor_wifidisplayhalservice_qti ion_device:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_dmabuf_display_heap_device:chr_file r_file_perms;
@@ -22,48 +17,45 @@ allow vendor_wifidisplayhalservice_qti vendor_dmabuf_qseecom_ta_heap_device:chr_
 allow vendor_wifidisplayhalservice_qti vendor_vm_cp_bitstream_device:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_wifidisplayhalservice_qti vendor_qce_device:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice_qti vendor_media_data_file:dir w_dir_perms;
-allow vendor_wifidisplayhalservice_qti vendor_media_data_file:file create_file_perms;
-allow vendor_wifidisplayhalservice_qti vendor_data_file_202404:file r_file_perms;
-allow vendor_wifidisplayhalservice_qti uhid_device_202404:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice_qti anr_data_file_202404:file append;
-allow vendor_wifidisplayhalservice_qti dumpstate_202404:fd *;
-allow vendor_wifidisplayhalservice_qti dumpstate_202404:fifo_file { append write };
-allow vendor_wifidisplayhalservice_qti incidentd_202404:fd *;
-allow vendor_wifidisplayhalservice_qti incidentd_202404:fifo_file { append write };
-allow vendor_wifidisplayhalservice_qti system_server_202404:fifo_file { append write };
-allow vendor_wifidisplayhalservice_qti tombstoned_202404:unix_stream_socket connectto;
-allow vendor_wifidisplayhalservice_qti tombstoned_202404:fd *;
-allow vendor_wifidisplayhalservice_qti tombstoned_crash_socket_202404:sock_file write;
-allow vendor_wifidisplayhalservice_qti tombstone_data_file_202404:file append;
-allow vendor_wifidisplayhalservice vndbinder_device_202404:chr_file rw_file_perms;
-allow vendor_wifidisplayhalservice vndservicemanager_202404:binder { call transfer };
+allow vendor_wifidisplayhalservice_qti uhid_device:chr_file rw_file_perms;
+allow vendor_wifidisplayhalservice_qti anr_data_file:file append;
+allow vendor_wifidisplayhalservice_qti dumpstate:fd *;
+allow vendor_wifidisplayhalservice_qti dumpstate:fifo_file { append write };
+allow vendor_wifidisplayhalservice_qti incidentd:fd *;
+allow vendor_wifidisplayhalservice_qti incidentd:fifo_file { append write };
+allow vendor_wifidisplayhalservice_qti system_server:fifo_file { append write };
+allow vendor_wifidisplayhalservice_qti tombstoned:fd *;
+allow vendor_wifidisplayhalservice_qti tombstone_data_file:file append;
 allow vendor_wifidisplayhalservice_client vendor_wifidisplayhalservice_server:binder { call transfer };
 allow vendor_wifidisplayhalservice_client vendor_wifidisplayhalservice_server:binder transfer;
 allow vendor_wifidisplayhalservice_client vendor_wifidisplayhalservice_server:fd *;
-allow vendor_wifidisplayhalservice_client vendor_wifidisplayhalservice_hwservice:hwservice_manager find;
 allow vendor_wifidisplayhalservice_server vendor_wifidisplayhalservice_client:binder transfer;
 allow vendor_wifidisplayhalservice_server vendor_wifidisplayhalservice_client:binder { call transfer };
 allow vendor_wifidisplayhalservice_server vendor_wifidisplayhalservice_client:fd *;
-allow vendor_wifidisplayhalservice_server vendor_wifidisplayhalservice_hwservice:hwservice_manager { add find };
-allow vendor_wifidisplayhalservice_server hidl_base_hwservice_202404:hwservice_manager add;
 allowxperm vendor_wifidisplayhalservice_qti self:ioctl udp_socket { 0x6900 0x6902 };
 allowxperm vendor_wifidisplayhalservice_qti self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 allowxperm vendor_wifidisplayhalservice_qti self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
 attribute vendor_wifidisplayhalservice;
 attribute vendor_wifidisplayhalservice_client;
 attribute vendor_wifidisplayhalservice_server;
+init_daemon_domain(vendor_wifidisplayhalservice_qti)
 r_dir_file(vendor_wifidisplayhalservice_qti, firmware_file)
-r_dir_file(vendor_wifidisplayhalservice_qti, proc_asound_202404)
+r_dir_file(vendor_wifidisplayhalservice_qti, proc_asound)
 r_dir_file(vendor_wifidisplayhalservice_qti, vendor_proc_audiod)
-get_prop(vendor_wifidisplayhalservice_qti, hwservicemanager_prop_202404)
-get_prop(vendor_wifidisplayhalservice_qti, vendor_wfd_vendor_debug_prop)
+unix_socket_connect(vendor_wifidisplayhalservice_qti, property, init)
+unix_socket_connect(vendor_wifidisplayhalservice_qti, property, tombstoned)
+unix_socket_connect(vendor_wifidisplayhalservice_qti, tombstoned_crash, init)
+unix_socket_connect(vendor_wifidisplayhalservice_qti, tombstoned_crash, tombstoned)
+get_prop(vendor_wifidisplayhalservice_qti, hwservicemanager_prop)
 get_prop(vendor_wifidisplayhalservice_qti, vendor_video_prop)
+hwbinder_use(vendor_wifidisplayhalservice_qti)
+vndbinder_use(vendor_wifidisplayhalservice)
 net_domain(vendor_wifidisplayhalservice_qti)
-hal_client_domain(vendor_wifidisplayhalservice_qti, hal_audio)
 hal_client_domain(vendor_wifidisplayhalservice_qti, hal_graphics_allocator)
 hal_client_domain(vendor_wifidisplayhalservice_qti, hal_graphics_composer)
+hal_client_domain(vendor_wifidisplayhalservice_qti, hal_audio)
 add_service(vendor_wifidisplayhalservice_qti, vendor_wfdnativemm_service)
+hal_attribute_hwservice(vendor_wifidisplayhalservice, vendor_wifidisplayhalservice_hwservice)
 type vendor_wifidisplayhalservice_qti, domain, vendor_halserverdomain, vendor_wifidisplayhalservice, vendor_wifidisplayhalservice_server;
 type vendor_wifidisplayhalservice_qti_exec, exec_type, file_type, vendor_file_type;
 type vendor_wifidisplayhalservice_hwservice, hwservice_manager_type, protected_hwservice;

@@ -3,17 +3,16 @@ allow vendor_hal_bluetooth_dun_qti vendor_port-bridge_socket:sock_file { read wr
 allow vendor_hal_bluetooth_dun_client vendor_hal_bluetooth_dun_server:binder { call transfer };
 allow vendor_hal_bluetooth_dun_client vendor_hal_bluetooth_dun_server:binder transfer;
 allow vendor_hal_bluetooth_dun_client vendor_hal_bluetooth_dun_server:fd *;
-allow vendor_hal_bluetooth_dun_client vendor_hal_bluetooth_dun_hwservice:hwservice_manager find;
 allow vendor_hal_bluetooth_dun_server vendor_hal_bluetooth_dun_client:binder transfer;
 allow vendor_hal_bluetooth_dun_server vendor_hal_bluetooth_dun_client:binder { call transfer };
 allow vendor_hal_bluetooth_dun_server vendor_hal_bluetooth_dun_client:fd *;
-allow vendor_hal_bluetooth_dun_server vendor_hal_bluetooth_dun_hwservice:hwservice_manager { add find };
-allow vendor_hal_bluetooth_dun_server hidl_base_hwservice_202404:hwservice_manager add;
 attribute vendor_hal_bluetooth_dun;
 attribute vendor_hal_bluetooth_dun_client;
 attribute vendor_hal_bluetooth_dun_server;
+init_daemon_domain(vendor_hal_bluetooth_dun_qti)
 unix_socket_connect(vendor_hal_bluetooth_dun_qti, vendor_port-bridge, vendor_port-bridge)
 hal_server_domain(vendor_hal_bluetooth_dun_qti, vendor_hal_bluetooth_dun)
+hal_attribute_hwservice(vendor_hal_bluetooth_dun, vendor_hal_bluetooth_dun_hwservice)
 type vendor_hal_bluetooth_dun_qti, domain;
 type vendor_hal_bluetooth_dun_qti_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_bluetooth_dun_hwservice, hwservice_manager_type, protected_hwservice;

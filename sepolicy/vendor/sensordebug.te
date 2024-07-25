@@ -1,0 +1,13 @@
+allow vendor_sensordebug vendor_shell_exec:file rx_file_perms;
+allow vendor_sensordebug vendor_toolbox_exec:file rx_file_perms;
+allow vendor_sensordebug mnt_user_file:dir create_dir_perms;
+allow vendor_sensordebug mnt_user_file:file create_file_perms;
+allow vendor_sensordebug mnt_user_file:lnk_file create_file_perms;
+allow vendor_sensordebug fuse:dir create_dir_perms;
+allow vendor_sensordebug fuse:file create_file_perms;
+allow vendor_sensordebug vendor_log_file:dir create_dir_perms;
+allow vendor_sensordebug vendor_log_file:file create_file_perms;
+init_daemon_domain(vendor_sensordebug)
+r_dir_file(vendor_sensordebug, vendor_persist_sensors_file)
+type vendor_sensordebug, domain;
+type vendor_sensordebug_exec, exec_type, file_type, vendor_file_type;

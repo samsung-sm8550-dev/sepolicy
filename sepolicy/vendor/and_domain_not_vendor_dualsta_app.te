@@ -1,2 +1,0 @@
-neverallow { domain -vendor_dualsta_app } vendor_dualsta_app_userfaultfd:anon_inode *;
-neverallow { vendor_dualsta_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vendor_dualsta_app }:file no_rw_file_perms;

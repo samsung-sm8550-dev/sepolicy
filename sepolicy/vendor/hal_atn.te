@@ -1,0 +1,24 @@
+allow hal_atn_client hal_atn_server:binder { call transfer };
+allow hal_atn_client hal_atn_server:binder transfer;
+allow hal_atn_client hal_atn_server:fd *;
+allow hal_atn_client hal_atn_hwservice:hwservice_manager find;
+allow hal_atn_server hal_atn_client:binder transfer;
+allow hal_atn_server hal_atn_client:binder { call transfer };
+allow hal_atn_server hal_atn_client:fd *;
+allow hal_atn_default tz_user_device:chr_file rw_file_perms;
+allow hal_atn_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_atn_default tee_device:chr_file rw_file_perms;
+allow hal_atn_default ion_device:chr_file r_file_perms;
+allow hal_atn_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_atn_default hidl_allocator_hwservice:hwservice_manager find;
+allow hal_atn_default tzdaemon:fd *;
+allow hal_atn_default tee_efs_file:dir search;
+init_daemon_domain(hal_atn_default)
+get_prop(hal_atn_default, tzdaemon_prop)
+get_prop(hal_atn_default, vendor_teegris_prop)
+hal_server_domain(hal_atn_default, hal_atn)
+hal_client_domain(hal_atn_default, hal_allocator)
+add_hwservice(hal_atn_server, hal_atn_hwservice)
+type hal_atn_default, domain;
+type hal_atn_default_exec, exec_type, file_type, vendor_file_type;
+type hal_atn_hwservice, hwservice_manager_type;

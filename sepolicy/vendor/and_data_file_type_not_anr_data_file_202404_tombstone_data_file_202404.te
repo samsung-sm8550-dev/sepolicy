@@ -1,3 +1,0 @@
-neverallow hal_configstore_server { data_file_type -anr_data_file_202404 -tombstone_data_file_202404 }:file *;
-neverallow hal_configstore_server { data_file_type -anr_data_file_202404 -tombstone_data_file_202404 }:sock_file *;
-neverallow hal_configstore_server { data_file_type -anr_data_file_202404 -tombstone_data_file_202404 }:fifo_file *;

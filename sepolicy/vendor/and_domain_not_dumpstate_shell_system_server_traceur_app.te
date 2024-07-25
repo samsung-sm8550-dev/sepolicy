@@ -1,0 +1,1 @@
+neverallow { domain -dumpstate -shell -system_server -traceur_app } dumpstate_service:service_manager find;

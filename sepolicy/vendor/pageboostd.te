@@ -1,0 +1,9 @@
+allow pageboostd pageboostd_data_file:dir create_dir_perms;
+allow pageboostd pageboostd_data_file:file create_file_perms;
+allow pageboostd apk_data_file:dir r_dir_perms;
+allow pageboostd apk_data_file:file r_file_perms;
+allow pageboostd resourcecache_data_file:dir search;
+allow pageboostd system_app_data_file:dir search;
+allow pageboostd vendor_overlay_file:file read;
+type pageboostd, coredomain, domain, mlstrustedsubject;
+type pageboostd_exec, exec_type, file_type, system_file_type;

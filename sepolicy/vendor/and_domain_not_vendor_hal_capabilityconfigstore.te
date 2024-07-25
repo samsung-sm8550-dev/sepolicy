@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_capabilityconfigstore_qti_server } vendor_hal_capabilityconfigstore_qti_hwservice:hwservice_manager add;

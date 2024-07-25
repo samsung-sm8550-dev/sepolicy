@@ -1,0 +1,25 @@
+allow hal_hermes_client hal_hermes_server:binder { call transfer };
+allow hal_hermes_client hal_hermes_server:binder transfer;
+allow hal_hermes_client hal_hermes_server:fd *;
+allow hal_hermes_client hal_hermes_service:service_manager find;
+allow hal_hermes_client servicemanager:binder { call transfer };
+allow hal_hermes_client servicemanager:fd *;
+allow hal_hermes_server hal_hermes_client:binder transfer;
+allow hal_hermes_server hal_hermes_client:binder { call transfer };
+allow hal_hermes_server hal_hermes_client:fd *;
+allow hal_hermes_server servicemanager:binder { call transfer };
+allow hal_hermes_server servicemanager:fd *;
+allow hal_hermes_default vendor_log_file:dir create_dir_perms;
+allow hal_hermes_default vendor_log_file:file create_file_perms;
+allow hal_hermes_default hermesd:unix_stream_socket connectto;
+allow hal_hermes_default hermesd:binder transfer;
+allow hal_hermes_default hermes_socket:sock_file rw_file_perms;
+allow hal_hermes_default system_server:binder transfer;
+allow hal_hermes_default vendor_spss_utils_device:chr_file rw_file_perms;
+allow hal_hermes_default vendor_spcom_device:chr_file rw_file_perms;
+allow hal_hermes_default vendor_skp_device:chr_file rw_file_perms;
+init_daemon_domain(hal_hermes_default)
+hal_server_domain(hal_hermes_default, hal_hermes)
+add_service(hal_hermes_server, hal_hermes_service)
+type hal_hermes_default, domain;
+type hal_hermes_default_exec, exec_type, file_type, vendor_file_type;

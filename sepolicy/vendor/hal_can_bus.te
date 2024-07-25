@@ -4,9 +4,8 @@ expandtypeattribute(hal_can_bus_server)
 allow hal_can_bus_client hal_can_bus_server:binder { call transfer };
 allow hal_can_bus_client hal_can_bus_server:binder transfer;
 allow hal_can_bus_client hal_can_bus_server:fd *;
-allow hal_can_bus_client hal_can_bus_hwservice_202404:hwservice_manager find;
 allow hal_can_bus_server hal_can_bus_client:binder transfer;
 allow hal_can_bus_server hal_can_bus_client:binder { call transfer };
 allow hal_can_bus_server hal_can_bus_client:fd *;
-allow hal_can_bus_server hal_can_bus_hwservice_202404:hwservice_manager { add find };
-allow hal_can_bus_server hidl_base_hwservice_202404:hwservice_manager add;
+hal_attribute_hwservice(hal_can_bus, hal_can_bus_hwservice)
+type hal_can_bus_hwservice, hwservice_manager_type, protected_hwservice;

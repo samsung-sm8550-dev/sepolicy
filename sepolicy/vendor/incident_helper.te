@@ -1,0 +1,3 @@
+allow incident_helper system_app_data_file:file { getattr read write };
+allow incident_helper system_app:fd *;
+type incident_helper, domain;

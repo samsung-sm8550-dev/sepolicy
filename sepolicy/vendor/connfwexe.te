@@ -1,0 +1,58 @@
+allow connfwexe proc_sysrq:file w_file_perms;
+allow connfwexe block_device:dir r_dir_perms;
+allow connfwexe block_device:lnk_file r_file_perms;
+allow connfwexe paramblk_device:blk_file rw_file_perms;
+allow connfwexe efs_file:dir r_dir_perms;
+allow connfwexe efs_file:file r_file_perms;
+allow connfwexe app_efs_file:dir r_dir_perms;
+allow connfwexe app_efs_file:file r_file_perms;
+allow connfwexe radio_data_file:dir r_dir_perms;
+allow connfwexe radio_data_file:file r_file_perms;
+allow connfwexe activity_service:service_manager find;
+allow connfwexe system_server:binder { call transfer };
+allow connfwexe system_server:binder transfer;
+allow connfwexe system_server:fd *;
+allow connfwexe self:packet_socket create_socket_perms;
+allow connfwexe self:udp_socket create_socket_perms;
+allow connfwexe self:socket create_socket_perms;
+allow connfwexe dumplog_data_file:dir create_dir_perms;
+allow connfwexe dumplog_data_file:file create_file_perms;
+allow connfwexe ashmem_device:chr_file x_file_perms;
+allow connfwexe sysfs_ss_writable:file rw_file_perms;
+allow connfwexe sysfs_wake_lock:file rw_file_perms;
+allow connfwexe system_file:file x_file_perms;
+allow connfwexe system_data_file:dir r_dir_perms;
+allow connfwexe system_data_file:file r_file_perms;
+allow connfwexe storage_file:lnk_file r_file_perms;
+allow connfwexe storage_file:dir getattr;
+allow connfwexe mnt_user_file:lnk_file r_file_perms;
+allow connfwexe sdcardfs:dir r_dir_perms;
+allow connfwexe vendor_sysfs_scsi_host:file r_file_perms;
+allow connfwexe sysfs_lcd_writable:file r_file_perms;
+allow connfwexe sysfs_lcd_writable:dir r_dir_perms;
+allow connfwexe sysfs_battery:file rw_file_perms;
+allow connfwexe sysfs_battery:dir search;
+allow connfwexe dev_type:blk_file getattr;
+allow connfwexe imei_efs_file:dir create_dir_perms;
+allow connfwexe imei_efs_file:file create_file_perms;
+allow connfwexe system_suspend_server:binder { call transfer };
+allow connfwexe system_suspend_server:fd *;
+allow connfwexe system_suspend_hwservice:hwservice_manager find;
+allow connfwexe sysfs_batteryinfo:dir r_dir_perms;
+allowxperm connfwexe self:ioctl packet_socket { 0x8906 0x8933 };
+allowxperm connfwexe self:ioctl packet_socket 0x8927;
+allowxperm connfwexe self:ioctl udp_socket 0x8946;
+allowxperm connfwexe self:ioctl socket 0x8946;
+allowxperm connfwexe self:ioctl unix_dgram_socket 0x8946;
+r_dir_file(connfwexe, vendor_sysfs_battery_supply)
+unix_socket_connect(connfwexe, ddexe, ddexe)
+unix_socket_connect(connfwexe, ddexe, multiclientd)
+unix_socket_connect(connfwexe, ddexe, init)
+unix_socket_connect(connfwexe, property, ddexe)
+unix_socket_connect(connfwexe, property, multiclientd)
+get_prop(connfwexe, hwservicemanager_prop)
+set_prop(connfwexe, system_prop)
+set_prop(connfwexe, powerctl_prop)
+hwbinder_use(connfwexe)
+type connfwexe, coredomain, domain;
+type connfwexe_exec, exec_type, file_type, system_file_type;

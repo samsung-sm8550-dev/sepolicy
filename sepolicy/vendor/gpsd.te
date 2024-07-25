@@ -1,0 +1,41 @@
+allow gpsd vendor_shell_exec:file rx_file_perms;
+allow gpsd vendor_toolbox_exec:file rx_file_perms;
+allow gpsd gpsd_exec:file rx_file_perms;
+allow gpsd sysfs_wake_lock:file { open read write };
+allow gpsd sysfs_wake_lock:file rw_file_perms;
+allow gpsd self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow gpsd self:capability net_raw;
+allow gpsd self:capability2 block_suspend;
+allow gpsd self:cap2_userns block_suspend;
+allow gpsd fwk_sensor_hwservice:hwservice_manager find;
+allow gpsd system_server:binder { call transfer };
+allow gpsd system_server:binder transfer;
+allow gpsd system_server:fd *;
+allow gpsd sysfs:file rw_file_perms;
+allow gpsd gps_device:chr_file rw_file_perms;
+allow gpsd serial_device:chr_file rw_file_perms;
+allow gpsd vendor_gps_file:dir create_dir_perms;
+allow gpsd vendor_gps_file:file create_file_perms;
+allow gpsd vendor_gps_file:fifo_file create_file_perms;
+allow gpsd vendor_log_file:file create_file_perms;
+allow gpsd vendor_log_file:dir create_dir_perms;
+allow gpsd system_suspend_server:binder { call transfer };
+allow gpsd system_suspend_server:fd *;
+allow gpsd system_suspend_hwservice:hwservice_manager find;
+allow gpsd hidl_manager_hwservice:hwservice_manager find;
+allow gpsd hal_system_suspend_service:service_manager find;
+init_daemon_domain(gpsd)
+unix_socket_connect(gpsd, property, rild)
+get_prop(gpsd, hwservicemanager_prop)
+get_prop(gpsd, tzdaemon_prop)
+get_prop(gpsd, mobicore_prop)
+get_prop(gpsd, recovery_prop)
+get_prop(gpsd, cp_reserved_mem_prop)
+get_prop(gpsd, debug_level_prop)
+get_prop(gpsd, product_ship_prop)
+set_prop(gpsd, vendor_gnss_psds_prop)
+binder_use(gpsd)
+hwbinder_use(gpsd)
+net_domain(gpsd)
+type gpsd, domain, mlstrustedsubject;
+type gpsd_exec, exec_type, file_type, vendor_file_type;

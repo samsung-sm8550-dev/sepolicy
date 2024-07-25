@@ -1,1 +1,0 @@
-neverallow { domain -dumpstate_202404 -servicemanager_202404 -system_server_202404 } installd_202404:binder call;

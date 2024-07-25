@@ -1,1 +1,0 @@
-neverallow { domain -performanced_202404 } pdx_performance_client_endpoint_socket_type:unix_stream_socket { accept listen };

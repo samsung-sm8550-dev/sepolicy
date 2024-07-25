@@ -1,1 +1,0 @@
-allow traceur_app_202404 { service_manager_type -apex_service_202404 -default_android_service_202404 -dnsresolver_service_202404 -gatekeeper_service_202404 -incident_service_202404 -installd_service_202404 -lpdump_service_202404 -mdns_service_202404 -netd_service_202404 -virtual_touchpad_service_202404 -vold_service_202404 }:service_manager find;

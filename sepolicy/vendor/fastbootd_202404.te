@@ -1,2 +1,0 @@
-neverallow fastbootd_202404 data_file_type:file no_x_file_perms;
-type fastbootd_202404, domain;

@@ -1,3 +1,0 @@
-get_prop(nfc_202404, vendor_nfc_nq_prop)
-hal_client_domain(nfc_202404, vendor_hal_perf)
-type nfc_202404, domain;

@@ -1,1 +1,0 @@
-neverallow { coredomain -shell_202404 -su_202404 -ueventd_202404 } vndbinder_device_202404:chr_file { append getattr ioctl lock map open read watch watch_reads write };

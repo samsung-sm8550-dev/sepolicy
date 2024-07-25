@@ -1,13 +1,9 @@
-allow vendor_cs_app vendor_cs_app_userfaultfd:anon_inode { create ioctl read };
-allow vendor_cs_app appdomain_tmpfs_202404:file { execute getattr map read write };
-allow vendor_cs_app radio_service_202404:service_manager find;
-allow vendor_cs_app surfaceflinger_service_202404:service_manager find;
+allow vendor_cs_app radio_service:service_manager find;
+allow vendor_cs_app surfaceflinger_service:service_manager find;
 allow vendor_cs_app app_api_service:service_manager find;
 allow vendor_cs_app self:qipcrtr_socket create_socket_perms_no_ioctl;
-allow vendor_cs_app proc_cpuinfo_202404:file r_file_perms;
-allow vendor_cs_app proc_meminfo_202404:file r_file_perms;
-type_transition vendor_cs_app tmpfs_202404:file appdomain_tmpfs;
-type_transition vendor_cs_app vendor_cs_app:anon_inode vendor_cs_app_userfaultfd "[userfaultfd]";
+allow vendor_cs_app proc_cpuinfo:file r_file_perms;
+allow vendor_cs_app proc_meminfo:file r_file_perms;
 unix_socket_connect(vendor_cs_app, vendor_mlid, vendor_mlid)
 unix_socket_connect(vendor_cs_app, vendor_mlid, vendor_ssgqmigd)
 unix_socket_connect(vendor_cs_app, vendor_mlid, vendor_ssgtzd)
@@ -17,7 +13,8 @@ unix_socket_connect(vendor_cs_app, vendor_ssgqmig, vendor_ssgtzd)
 unix_socket_connect(vendor_cs_app, vendor_ssgtzd, vendor_mlid)
 unix_socket_connect(vendor_cs_app, vendor_ssgtzd, vendor_ssgqmigd)
 unix_socket_connect(vendor_cs_app, vendor_ssgtzd, vendor_ssgtzd)
+app_domain(vendor_cs_app)
 net_domain(vendor_cs_app)
 hal_client_domain(vendor_cs_app, vendor_hal_perf)
 hal_client_domain(vendor_cs_app, vendor_qccsyshal)
-type vendor_cs_app, appdomain, domain;
+type vendor_cs_app, domain;

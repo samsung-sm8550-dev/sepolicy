@@ -1,1 +1,0 @@
-neverallow { appdomain -nfc_202404 } nfc_device_202404:chr_file { read write };

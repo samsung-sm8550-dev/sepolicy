@@ -1,0 +1,2 @@
+hal_client_domain(vendor_qspmsvc, vendor_hal_qspmhal)
+type vendor_qspmsvc, domain;

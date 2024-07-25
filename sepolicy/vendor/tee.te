@@ -1,0 +1,117 @@
+allow tee fingerprint_vendor_data_file:dir rw_dir_perms;
+allow tee fingerprint_vendor_data_file:file create_file_perms;
+allow tee self:capability dac_override;
+allow tee self:capability { chown setgid setuid sys_admin sys_rawio };
+allow tee self:cap_userns dac_override;
+allow tee self:netlink_socket create_socket_perms_no_ioctl;
+allow tee self:netlink_socket { bind create read write };
+allow tee self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow tee self:capability2 block_suspend;
+allow tee self:cap2_userns block_suspend;
+allow tee tee_device:chr_file rw_file_perms;
+allow tee tee_data_file:dir create_dir_perms;
+allow tee tee_data_file:file create_file_perms;
+allow tee ion_device:chr_file r_file_perms;
+allow tee system_data_file:file { getattr read };
+allow tee system_data_file:lnk_file { getattr read };
+allow tee hwservicemanager:binder transfer;
+allow tee hwservicemanager:fd *;
+allow tee appdomain:fd *;
+allow tee proc:file { open read };
+allow tee proc_sysrq:file w_file_perms;
+allow tee proc_sysrq:file rw_file_perms;
+allow tee efs_file:dir create_dir_perms;
+allow tee efs_file:file create_file_perms;
+allow tee mobicore_file:dir r_dir_perms;
+allow tee mobicore_file:file r_file_perms;
+allow tee mobicore_tui_device:chr_file rw_file_perms;
+allow tee prov_efs_file:dir rw_dir_perms;
+allow tee prov_efs_file:dir create_dir_perms;
+allow tee prov_efs_file:file rw_file_perms;
+allow tee prov_efs_file:file create_file_perms;
+allow tee hidl_base_hwservice:hwservice_manager add;
+allow tee sysfs_ss_writable:file w_file_perms;
+allow tee hal_graphics_mapper_hwservice:hwservice_manager find;
+allow tee hal_graphics_allocator_default:fd *;
+allow tee hal_graphics_composer_default:fd *;
+allow tee mobicore_exec:file { entrypoint execute getattr open read };
+allow tee mobicore_admin_device:chr_file rw_file_perms;
+allow tee mobicore_user_device:chr_file rw_file_perms;
+allow tee sec_debugfs:dir r_dir_perms;
+allow tee vndbinder_device:chr_file { read write };
+allow tee hal_drm_default_exec:file entrypoint;
+allow tee vendor_gatekeeper_data_file:dir create_dir_perms;
+allow tee vendor_gatekeeper_data_file:file create_file_perms;
+allow tee tmpfs:dir r_dir_perms;
+allow tee tmpfs:file r_file_perms;
+allow tee vaultkeeper_efs_file:dir rw_dir_perms;
+allow tee vaultkeeper_efs_file:file create_file_perms;
+allow tee ssdblk_device:blk_file rw_file_perms;
+allow tee kmsg_device:chr_file rw_file_perms;
+allow tee vendor_sysfs_graphics:file w_file_perms;
+allow tee vendor_sysfs_graphics:file rw_file_perms;
+allow tee device:dir r_dir_perms;
+allow tee firmware_file:dir search;
+allow tee block_device:dir { getattr search };
+allow tee vendor_rpmb_device:blk_file rw_file_perms;
+allow tee vendor_rpmb_device:chr_file rw_file_perms;
+allow tee vendor_ssd_block_device:blk_file rw_file_perms;
+allow tee vendor_sg_device:chr_file { rw_file_perms setattr };
+allow tee vendor_bsg_device:chr_file rw_file_perms;
+allow tee vendor_ufs_lun4_bsg_device:chr_file rw_file_perms;
+allow tee mnt_vendor_file:dir r_dir_perms;
+allow tee vendor_persist_drm_file:dir create_dir_perms;
+allow tee vendor_persist_drm_file:file create_file_perms;
+allow tee vendor_persist_data_file:dir create_dir_perms;
+allow tee vendor_persist_data_file:file create_file_perms;
+allow tee vendor_data_tzstorage_file:dir create_dir_perms;
+allow tee vendor_data_tzstorage_file:file create_file_perms;
+allow tee vendor_qdisplay_service:service_manager find;
+allow tee vendor_sysfs_sectouch:file rw_file_perms;
+allow tee vendor_tui_data_file:file rw_file_perms;
+allow tee vendor_tui_data_file:dir r_dir_perms;
+allow tee graphics_device:chr_file rw_file_perms;
+allow tee graphics_device:chr_file r_file_perms;
+allow tee graphics_device:dir r_dir_perms;
+allow tee vendor_qsee_ipc_irq_spss_device:chr_file rw_file_perms;
+allow tee vendor_data_qsee_file:dir create_dir_perms;
+allow tee vendor_data_qsee_file:file create_file_perms;
+allow tee vendor_data_file:dir r_dir_perms;
+allow tee sysfs_wake_lock:file rw_file_perms;
+allow tee system_suspend_server:binder { call transfer };
+allow tee system_suspend_server:fd *;
+allow tee system_suspend_hwservice:hwservice_manager find;
+allow tee hidl_manager_hwservice:hwservice_manager find;
+allow tee hal_system_suspend_service:service_manager find;
+allow tee vendor_qfp-daemon_data_file:dir create_dir_perms;
+allow tee vendor_qfp-daemon_data_file:file create_file_perms;
+allow tee vendor_persist_qti_fp_file:dir create_dir_perms;
+allow tee vendor_persist_qti_fp_file:file create_file_perms;
+allow tee vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow tee vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow tee vendor_dmabuf_user_contig_heap_device:chr_file r_file_perms;
+dontaudit tee rootfs:dir read;
+allowxperm tee vendor_rpmb_device:ioctl chr_file 0xb301;
+allowxperm tee vendor_rpmb_device:ioctl blk_file 0xb300;
+init_daemon_domain(tee)
+r_dir_file(tee, sysfs_type)
+r_dir_file(tee, rootfs)
+r_dir_file(tee, vendor_sysfs_graphics)
+r_dir_file(tee, firmware_file)
+unix_socket_connect(tee, property, vendor_time_daemon)
+get_prop(tee, hwservicemanager_prop)
+get_prop(tee, userspace_reboot_exported_prop)
+set_prop(tee, mobicore_prop)
+set_prop(tee, vendor_qseecomd_prop)
+set_prop(tee, vendor_tee_listener_prop)
+binder_use(tee)
+hwbinder_use(tee)
+vndbinder_use(tee)
+hal_attribute(tee)
+hal_client_domain(tee, hal_graphics_allocator)
+hal_client_domain(tee, hal_graphics_composer)
+hal_client_domain(tee, vendor_hal_qdutils_disp)
+hal_client_domain(tee, vendor_hal_tui_comm)
+hal_client_domain(tee, vendor_hal_soter)
+type tee, domain, mlstrustedsubject;
+type tee_exec, exec_type, file_type, vendor_file_type;

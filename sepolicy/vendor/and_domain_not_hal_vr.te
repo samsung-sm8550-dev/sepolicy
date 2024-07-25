@@ -1,1 +1,0 @@
-neverallow { domain -hal_vr_server } hal_vr_hwservice_202404:hwservice_manager add;

@@ -1,0 +1,27 @@
+allow heimdall platform_app:binder transfer;
+allow heimdall platform_app:dir search;
+allow heimdall shell_exec:file rx_file_perms;
+allow heimdall meminfo_service:service_manager find;
+allow heimdall dumplog_data_file:dir create_dir_perms;
+allow heimdall dumplog_data_file:file create_file_perms;
+allow heimdall system_file:file execute_no_trans;
+allow heimdall servicemanager:binder { call transfer };
+allow heimdall servicemanager:fd *;
+allow heimdall system_server:binder { call transfer };
+allow heimdall system_server:binder transfer;
+allow heimdall system_server:fd *;
+allow heimdall untrusted_app_all:dir search;
+allow heimdall toolbox_exec:file rx_file_perms;
+allow heimdall proc_meminfo:file r_file_perms;
+allow heimdall domain:process sigkill;
+allow heimdall selinuxfs:file w_file_perms;
+allow heimdall kernel:security compute_av;
+allow heimdall self:netlink_selinux_socket { accept append bind connect create getattr getopt listen lock name_bind read recvfrom relabelfrom relabelto sendto setattr setopt shutdown write };
+allow heimdall activity_service:service_manager find;
+allow heimdall proc_avc_msg:file rw_file_perms;
+r_dir_file(heimdall, sysfs_ski_memory_writable)
+r_dir_file(heimdall, selinuxfs)
+get_prop(heimdall, vendor_heimdalld_prop)
+set_prop(heimdall, system_prop)
+type heimdall, coredomain, domain, mlstrustedsubject;
+type heimdall_exec, exec_type, file_type, system_file_type;

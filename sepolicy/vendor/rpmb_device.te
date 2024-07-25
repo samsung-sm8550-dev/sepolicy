@@ -1,0 +1,3 @@
+typealias(rpmb_device)
+typealiasactual(rpmb_device)
+type vendor_rpmb_device, dev_type;

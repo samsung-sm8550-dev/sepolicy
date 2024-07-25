@@ -1,2 +1,0 @@
-neverallow { domain -vendor_hal_display_color_server } vendor_hal_display_color_hwservice:hwservice_manager add;
-neverallow { domain -vendor_hal_display_color_server } vendor_hal_display_postproc_hwservice:hwservice_manager add;

@@ -1,1 +1,0 @@
-neverallow toolbox_202404 { fs_type file_type -toolbox_exec_202404 }:file entrypoint;

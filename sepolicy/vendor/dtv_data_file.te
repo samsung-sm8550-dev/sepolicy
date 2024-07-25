@@ -1,0 +1,2 @@
+type dtv_data_file, core_data_file_type, data_file_type, file_type;
+type vendor_dtv_data_file, data_file_type, file_type;

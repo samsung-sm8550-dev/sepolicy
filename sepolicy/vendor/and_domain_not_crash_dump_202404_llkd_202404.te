@@ -1,1 +1,0 @@
-neverallow { domain -crash_dump_202404 -llkd_202404 } logd_202404:process ptrace;

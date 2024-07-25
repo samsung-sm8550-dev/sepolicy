@@ -1,1 +1,0 @@
-neverallow { domain -hal_oemlock_client -hal_oemlock_server } hal_oemlock_hwservice_202404:hwservice_manager find;

@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_iop_server } vendor_hal_iop_hwservice:hwservice_manager add;

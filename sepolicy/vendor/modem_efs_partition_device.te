@@ -1,0 +1,3 @@
+typealias(modem_efs_partition_device)
+typealiasactual(modem_efs_partition_device)
+type vendor_modem_efs_partition_device, dev_type;

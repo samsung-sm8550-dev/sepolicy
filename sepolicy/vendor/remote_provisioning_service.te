@@ -1,5 +1,0 @@
-allow remote_provisioning_service_server keystore_202404:binder transfer;
-allow remote_provisioning_service_server su_202404:tcp_socket { accept getopt read write };
-allow remote_provisioning_service_server servicemanager_202404:binder { call transfer };
-attribute remote_provisioning_service_server;
-add_service(remote_provisioning_service_server, remote_provisioning_service_202404)

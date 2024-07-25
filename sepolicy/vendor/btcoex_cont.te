@@ -1,0 +1,6 @@
+allow btcoex_cont self:udp_socket { create ioctl };
+allow btcoex_cont self:capability net_admin;
+allowxperm btcoex_cont self:ioctl udp_socket 0x8be7;
+init_daemon_domain(btcoex_cont)
+type btcoex_cont, domain;
+type btcoex_cont_exec, exec_type, file_type, vendor_file_type;

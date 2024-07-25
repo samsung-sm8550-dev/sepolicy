@@ -1,0 +1,16 @@
+allow vendor_dpmd sysfs_wake_lock:file rw_file_perms;
+allow vendor_dpmd self:capability2 block_suspend;
+allow vendor_dpmd self:cap2_userns block_suspend;
+allow vendor_dpmd system_suspend_server:binder { call transfer };
+allow vendor_dpmd system_suspend_server:fd *;
+allow vendor_dpmd system_suspend_hwservice:hwservice_manager find;
+allow vendor_dpmd hidl_manager_hwservice:hwservice_manager find;
+allow vendor_dpmd hal_system_suspend_service:service_manager find;
+domain_auto_trans(vendor_dpmd, netutils_wrapper_exec, netutils_wrapper)
+r_dir_file(vendor_dpmd, vendor_sysfs_data)
+get_prop(vendor_dpmd, vendor_persist_dpm_prop)
+get_prop(vendor_dpmd, hwservicemanager_prop)
+binder_use(vendor_dpmd)
+hwbinder_use(vendor_dpmd)
+hal_client_domain(vendor_dpmd, vendor_hal_dpmqmiservice_qti)
+type vendor_dpmd, domain;

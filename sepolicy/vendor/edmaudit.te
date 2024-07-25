@@ -1,0 +1,4 @@
+allow edmaudit self:capability2 syslog;
+allow edmaudit edmnativehelper_service:service_manager find;
+type edmaudit, coredomain, domain;
+type edmaudit_exec, exec_type, file_type, system_file_type;

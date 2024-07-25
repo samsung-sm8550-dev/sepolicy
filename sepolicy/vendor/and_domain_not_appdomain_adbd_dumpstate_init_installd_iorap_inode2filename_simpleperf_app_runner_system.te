@@ -1,0 +1,1 @@
+neverallow { domain -appdomain -adbd -dumpstate -init -installd -iorap_inode2filename -simpleperf_app_runner -system_server } shell_data_file:dir { open search };

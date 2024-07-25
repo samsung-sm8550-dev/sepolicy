@@ -1,0 +1,19 @@
+allow kfa_app snapsec_efs_file:dir create_dir_perms;
+allow kfa_app snapsec_efs_file:file create_file_perms;
+allow kfa_app knoxai_efs_file:dir create_dir_perms;
+allow kfa_app knoxai_efs_file:file create_file_perms;
+allow kfa_app activity_service:service_manager find;
+allow kfa_app snap_hwservice:hwservice_manager find;
+allow kfa_app edm_proxy_service:service_manager find;
+allow kfa_app surfaceflinger_service:service_manager find;
+allow kfa_app device_policy_service:service_manager find;
+allow kfa_app EDM_Policy_service:service_manager find;
+allow kfa_app hal_snap_service:service_manager find;
+allow kfa_app hal_securesnap_service:service_manager find;
+allow kfa_app radio_service:service_manager find;
+get_prop(kfa_app, chipname_prop)
+get_prop(kfa_app, media_plat_prop)
+hal_client_domain(kfa_app, hal_drk)
+hal_client_domain(kfa_app, hal_snapsec)
+hal_client_domain(kfa_app, hal_securesnap)
+type kfa_app, coredomain, domain;

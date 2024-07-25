@@ -1,0 +1,2 @@
+neverallow { domain -init -kernel -ueventd -vold } self:capability mknod;
+neverallow { domain -init -kernel -ueventd -vold } self:cap_userns mknod;

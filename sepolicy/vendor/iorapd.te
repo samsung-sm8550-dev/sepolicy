@@ -1,0 +1,25 @@
+neverallow iorapd domain:udp_socket *;
+neverallow iorapd domain:rawip_socket *;
+neverallow iorapd domain:tcp_socket *;
+allow iorapd dumpstate:binder transfer;
+allow iorapd dumpstate:fd *;
+allow iorapd dumpstate:fifo_file write;
+allow iorapd proc_drop_caches:file rw_file_perms;
+allow iorapd iorapd_data_file:dir create_dir_perms;
+allow iorapd iorapd_data_file:file create_file_perms;
+allow iorapd system_server:binder { call transfer };
+allow iorapd system_server:fd *;
+allow iorapd permission_service:service_manager find;
+allow iorapd user_service:service_manager find;
+allow iorapd package_native_service:service_manager find;
+allow iorapd self:capability sys_nice;
+allow iorapd self:cap_userns sys_nice;
+allow iorapd system_file:file rx_file_perms;
+allow iorapd iorap_inode2filename:process signull;
+allow iorapd iorap_prefetcherd:process signull;
+r_dir_file(iorapd, rootfs)
+unix_socket_connect(iorapd, traced_consumer, traced)
+binder_use(iorapd)
+add_service(iorapd, iorapd_service)
+type iorapd, domain;
+type iorapd_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,3 @@
+init_daemon_domain(nwfs)
+type nwfs, domain;
+type nwfs_exec, exec_type, file_type, vendor_file_type;

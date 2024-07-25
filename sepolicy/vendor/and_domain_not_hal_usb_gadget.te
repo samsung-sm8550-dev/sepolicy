@@ -1,1 +1,0 @@
-neverallow { domain -hal_usb_gadget_server } hal_usb_gadget_hwservice_202404:hwservice_manager add;

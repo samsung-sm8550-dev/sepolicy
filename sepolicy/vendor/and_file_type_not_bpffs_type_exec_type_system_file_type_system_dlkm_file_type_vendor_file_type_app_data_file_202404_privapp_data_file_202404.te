@@ -1,7 +1,0 @@
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:file relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:dir relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:lnk_file relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:chr_file relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:blk_file relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:sock_file relabelto;
-allow init_202404 { file_type -bpffs_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file_202404 -privapp_data_file_202404 }:fifo_file relabelto;

@@ -1,2 +1,0 @@
-type shell_exec_202404, exec_type, file_type, system_file_type;
-type vendor_shell_exec_202404, exec_type, file_type, vendor_file_type;

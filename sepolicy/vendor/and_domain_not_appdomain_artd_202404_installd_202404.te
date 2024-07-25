@@ -1,2 +1,0 @@
-neverallow { domain -appdomain -artd_202404 -installd_202404 } app_data_file_202404:lnk_file read;
-neverallow { domain -appdomain -artd_202404 -installd_202404 } privapp_data_file_202404:lnk_file read;

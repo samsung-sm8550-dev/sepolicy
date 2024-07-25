@@ -1,0 +1,26 @@
+allow hal_fkey_client hal_fkey_server:binder { call transfer };
+allow hal_fkey_client hal_fkey_server:binder transfer;
+allow hal_fkey_client hal_fkey_server:fd *;
+allow hal_fkey_client hal_fkey_service:service_manager find;
+allow hal_fkey_client servicemanager:binder { call transfer };
+allow hal_fkey_client servicemanager:fd *;
+allow hal_fkey_server hal_fkey_client:binder transfer;
+allow hal_fkey_server hal_fkey_client:binder { call transfer };
+allow hal_fkey_server hal_fkey_client:fd *;
+allow hal_fkey_server servicemanager:binder { call transfer };
+allow hal_fkey_server servicemanager:fd *;
+allow hal_fkey_default tee_device:chr_file rw_file_perms;
+allow hal_fkey_default ion_device:chr_file rw_file_perms;
+allow hal_fkey_default tz_user_device:chr_file rw_file_perms;
+allow hal_fkey_default fabriccrypto:binder transfer;
+allow hal_fkey_default vendor_dmabuf_qseecom_heap_device:chr_file rw_file_perms;
+allow hal_fkey_default vendor_dmabuf_qseecom_ta_heap_device:chr_file rw_file_perms;
+allowxperm hal_fkey_default vendor_dmabuf_qseecom_heap_device:ioctl chr_file 0x4800;
+allowxperm hal_fkey_default vendor_dmabuf_qseecom_ta_heap_device:ioctl chr_file 0x4800;
+init_daemon_domain(hal_fkey_default)
+get_prop(hal_fkey_default, vendor_tztsdaemon_prop)
+binder_use(hal_fkey_default)
+hal_server_domain(hal_fkey_default, hal_fkey)
+add_service(hal_fkey_server, hal_fkey_service)
+type hal_fkey_default, domain;
+type hal_fkey_default_exec, exec_type, file_type, vendor_file_type;

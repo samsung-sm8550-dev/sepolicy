@@ -1,2 +1,0 @@
-neverallow fsck_202404 { fs_type file_type -fsck_exec_202404 }:file entrypoint;
-neverallow fsck_untrusted_202404 { fs_type file_type -fsck_exec_202404 }:file entrypoint;

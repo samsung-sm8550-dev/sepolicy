@@ -1,1 +1,1 @@
-neverallow { halserverdomain -hal_audio_server -hal_omx_server } audio_device_202404:chr_file *;
+neverallow { halserverdomain -hal_audio_server -hal_omx_server } audio_device:chr_file *;

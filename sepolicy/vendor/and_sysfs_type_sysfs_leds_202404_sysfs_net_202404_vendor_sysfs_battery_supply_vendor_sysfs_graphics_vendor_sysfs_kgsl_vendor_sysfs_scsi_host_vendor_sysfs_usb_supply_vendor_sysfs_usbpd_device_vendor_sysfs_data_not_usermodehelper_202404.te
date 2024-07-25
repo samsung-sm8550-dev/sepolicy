@@ -1,1 +1,0 @@
-allow ueventd_202404 { sysfs_type sysfs_leds_202404 sysfs_net_202404 vendor_sysfs_battery_supply vendor_sysfs_graphics vendor_sysfs_kgsl vendor_sysfs_scsi_host vendor_sysfs_usb_supply vendor_sysfs_usbpd_device vendor_sysfs_data -usermodehelper_202404 }:file w_file_perms;

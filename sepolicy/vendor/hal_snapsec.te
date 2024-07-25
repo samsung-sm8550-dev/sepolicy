@@ -1,0 +1,34 @@
+allow hal_snapsec_client hal_snapsec_server:binder { call transfer };
+allow hal_snapsec_client hal_snapsec_server:binder transfer;
+allow hal_snapsec_client hal_snapsec_server:fd *;
+allow hal_snapsec_client hal_snapsec_hwservice:hwservice_manager find;
+allow hal_snapsec_server hal_snapsec_client:binder transfer;
+allow hal_snapsec_server hal_snapsec_client:binder { call transfer };
+allow hal_snapsec_server hal_snapsec_client:fd *;
+allow hal_snapsec_default tz_user_device:chr_file rw_file_perms;
+allow hal_snapsec_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_snapsec_default tee_device:chr_file rw_file_perms;
+allow hal_snapsec_default ion_device:chr_file rw_file_perms;
+allow hal_snapsec_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_snapsec_default hal_allocator:fd *;
+allow hal_snapsec_default snapsec_efs_file:dir create_dir_perms;
+allow hal_snapsec_default snapsec_efs_file:file create_file_perms;
+allow hal_snapsec_default kfa_app:fd *;
+allow hal_snapsec_default app_data_file:file read;
+allow hal_snapsec_default apk_data_file:file read;
+allow hal_snapsec_default system_server:binder transfer;
+allow hal_snapsec_default tzdaemon:fd *;
+allow hal_snapsec_default tee_efs_file:dir search;
+allow hal_snapsec_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_snapsec_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_snapsec_default)
+r_dir_file(hal_snapsec_default, tee_vendor_data_file)
+get_prop(hal_snapsec_default, mobicore_prop)
+get_prop(hal_snapsec_default, vendor_tztsdaemon_prop)
+get_prop(hal_snapsec_default, tzdaemon_prop)
+get_prop(hal_snapsec_default, vendor_teegris_prop)
+hal_server_domain(hal_snapsec_default, hal_snapsec)
+add_hwservice(hal_snapsec_server, hal_snapsec_hwservice)
+type hal_snapsec_default, domain;
+type hal_snapsec_default_exec, exec_type, file_type, vendor_file_type;
+type hal_snapsec_hwservice, hwservice_manager_type;

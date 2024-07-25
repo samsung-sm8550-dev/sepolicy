@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_dpmqmiservice_qti_client -vendor_hal_dpmqmiservice_qti_server } vendor_hal_dpmqmi_hwservice:hwservice_manager find;

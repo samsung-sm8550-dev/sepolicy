@@ -1,1 +1,0 @@
-neverallow { domain -appdomain -crash_dump_202404 -llkd_202404 } appdomain:process ptrace;

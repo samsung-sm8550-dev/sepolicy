@@ -1,30 +1,30 @@
-allow charger_type kmsg_device_202404:chr_file rw_file_perms;
+allow charger_type kmsg_device:chr_file rw_file_perms;
 allow charger_type sysfs_type:dir r_dir_perms;
 allow charger_type self:capability { sys_boot sys_tty_config };
 allow charger_type self:cap_userns { sys_boot sys_tty_config };
 allow charger_type self:capability2 block_suspend;
 allow charger_type self:cap2_userns block_suspend;
 allow charger_type self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
-allow charger_type sysfs_wake_lock_202404:file rw_file_perms;
+allow charger_type sysfs_wake_lock:file rw_file_perms;
 allow charger_type system_suspend_server:binder { call transfer };
 allow charger_type system_suspend_server:fd *;
-allow charger_type system_suspend_hwservice_202404:hwservice_manager find;
-allow charger_type hwservicemanager_202404:binder { call transfer };
-allow charger_type hidl_manager_hwservice_202404:hwservice_manager find;
-allow charger_type hal_system_suspend_service_202404:service_manager find;
-allow charger_type servicemanager_202404:binder { call transfer };
-allow charger_type sysfs_power_202404:file rw_file_perms;
-allow charger_type pstorefs_202404:dir r_dir_perms;
-allow charger_type pstorefs_202404:file r_file_perms;
-allow charger_type graphics_device_202404:dir r_dir_perms;
-allow charger_type graphics_device_202404:chr_file rw_file_perms;
-allow charger_type input_device_202404:dir r_dir_perms;
-allow charger_type input_device_202404:chr_file r_file_perms;
-allow charger_type tty_device_202404:chr_file rw_file_perms;
-allow charger_type proc_sysrq_202404:file rw_file_perms;
+allow charger_type system_suspend_hwservice:hwservice_manager find;
+allow charger_type hidl_manager_hwservice:hwservice_manager find;
+allow charger_type hal_system_suspend_service:service_manager find;
+allow charger_type sysfs_power:file rw_file_perms;
+allow charger_type pstorefs:dir r_dir_perms;
+allow charger_type pstorefs:file r_file_perms;
+allow charger_type graphics_device:dir r_dir_perms;
+allow charger_type graphics_device:chr_file rw_file_perms;
+allow charger_type input_device:dir r_dir_perms;
+allow charger_type input_device:chr_file r_file_perms;
+allow charger_type tty_device:chr_file rw_file_perms;
+allow charger_type proc_sysrq:file rw_file_perms;
 attribute charger_type;
-r_dir_file(charger_type, rootfs_202404)
-r_dir_file(charger_type, cgroup_202404)
-r_dir_file(charger_type, cgroup_v2_202404)
-r_dir_file(charger_type, sysfs_batteryinfo_202404)
-get_prop(charger_type, hwservicemanager_prop_202404)
+r_dir_file(charger_type, rootfs)
+r_dir_file(charger_type, cgroup)
+r_dir_file(charger_type, cgroup_v2)
+r_dir_file(charger_type, sysfs_batteryinfo)
+get_prop(charger_type, hwservicemanager_prop)
+binder_use(charger_type)
+hwbinder_use(charger_type)

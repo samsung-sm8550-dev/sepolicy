@@ -1,1 +1,0 @@
-neverallow { hal_remotelyprovisionedcomponent_avf_server -hal_remotelyprovisionedcomponent_avf } domain:process fork;

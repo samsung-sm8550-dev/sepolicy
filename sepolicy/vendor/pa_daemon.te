@@ -1,0 +1,13 @@
+allow pa_daemon mobicore_admin_device:chr_file rw_file_perms;
+allow pa_daemon mobicore_user_device:chr_file rw_file_perms;
+allow pa_daemon pa_daemon_device:dir create_dir_perms;
+allow pa_daemon pa_daemon_device:file create_file_perms;
+allow pa_daemon pa_daemon_device:sock_file create_file_perms;
+allow pa_daemon ion_device:chr_file r_file_perms;
+allow pa_daemon rootfs:file r_file_perms;
+allow pa_daemon toolbox_exec:file rx_file_perms;
+allow pa_daemon shell_exec:file rx_file_perms;
+allow pa_daemon tz_user_device:chr_file rw_file_perms;
+get_prop(pa_daemon, mobicore_prop)
+type pa_daemon, coredomain, domain, mlstrustedsubject;
+type pa_daemon_exec, exec_type, file_type, system_file_type;

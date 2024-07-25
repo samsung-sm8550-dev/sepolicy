@@ -1,0 +1,26 @@
+allow hal_converter_client hal_converter_server:binder { call transfer };
+allow hal_converter_client hal_converter_server:binder transfer;
+allow hal_converter_client hal_converter_server:fd *;
+allow hal_converter_client hal_converter_hwservice:hwservice_manager find;
+allow hal_converter_client hal_converter_service:service_manager find;
+allow hal_converter_server hal_converter_client:binder transfer;
+allow hal_converter_server hal_converter_client:binder { call transfer };
+allow hal_converter_server hal_converter_client:fd *;
+allow hal_converter_server servicemanager:binder { call transfer };
+allow hal_converter_server servicemanager:fd *;
+allow hal_converter_default gpu_device:chr_file rw_file_perms;
+allow hal_converter_default ion_device:chr_file r_file_perms;
+allow hal_converter_default sec_debugfs:dir search;
+allow hal_converter_default hal_graphics_allocator_default:fd *;
+allow hal_converter_default dumpstate:fifo_file write;
+init_daemon_domain(hal_converter_default)
+r_dir_file(hal_converter_default, vendor_sysfs_kgsl)
+get_prop(hal_converter_default, hwservicemanager_prop)
+hal_server_domain(hal_converter_default, hal_converter)
+hal_client_domain(hal_converter_default, hal_allocator)
+hal_client_domain(hal_converter_default, hal_graphics_allocator)
+add_service(hal_converter_server, hal_converter_service)
+add_hwservice(hal_converter_server, hal_converter_hwservice)
+type hal_converter_default, domain;
+type hal_converter_default_exec, exec_type, file_type, vendor_file_type;
+type hal_converter_hwservice, hwservice_manager_type;

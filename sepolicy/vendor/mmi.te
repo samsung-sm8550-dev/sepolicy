@@ -2,21 +2,20 @@ allow vendor_mmi vendor_mmi_exec:file rx_file_perms;
 allow vendor_mmi self:socket create_socket_perms_no_ioctl;
 allow vendor_mmi self:udp_socket create_socket_perms_no_ioctl;
 allow vendor_mmi self:capability { fowner fsetid kill };
-allow vendor_mmi sysfs_wake_lock_202404:file rw_file_perms;
-allow vendor_mmi sysfs_power_202404:file rw_file_perms;
-allow vendor_mmi sysfs_devices_system_cpu_202404:file rw_file_perms;
+allow vendor_mmi sysfs_wake_lock:file rw_file_perms;
+allow vendor_mmi sysfs_power:file rw_file_perms;
+allow vendor_mmi sysfs_devices_system_cpu:file rw_file_perms;
 allow vendor_mmi vendor_sysfs_battery_supply:file rw_file_perms;
 allow vendor_mmi vendor_sysfs_graphics:file rw_file_perms;
 allow vendor_mmi vendor_sysfs_soc:file rw_file_perms;
 allow vendor_mmi vendor_sysfs_usb_supply:file rw_file_perms;
-allow vendor_mmi socket_device_202404:dir w_dir_perms;
+allow vendor_mmi socket_device:dir w_dir_perms;
 allow vendor_mmi vendor_mmi_socket:sock_file create_file_perms;
-allow vendor_mmi mnt_vendor_file_202404:dir r_dir_perms;
-allow vendor_mmi proc_202404:file r_file_perms;
-allow vendor_mmi vendor_diag_device:chr_file rw_file_perms;
-type_transition vendor_mmi socket_device_202404:sock_file vendor_mmi_socket;
+allow vendor_mmi mnt_vendor_file:dir r_dir_perms;
+allow vendor_mmi proc:file r_file_perms;
+type_transition vendor_mmi socket_device:sock_file vendor_mmi_socket;
 domain_auto_trans(vendor_mmi, vendor_audioftm_exec, vendor_audioftm)
-r_dir_file(vendor_mmi, vendor_sysfs_diag)
+init_daemon_domain(vendor_mmi)
 unix_socket_connect(vendor_mmi, vendor_cnd, vendor_cnd)
 unix_socket_connect(vendor_mmi, vendor_cnd, vendor_netmgrd)
 unix_socket_connect(vendor_mmi, vendor_netmgrd, vendor_cnd)

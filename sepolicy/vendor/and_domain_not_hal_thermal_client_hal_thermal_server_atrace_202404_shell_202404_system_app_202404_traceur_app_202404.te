@@ -1,1 +1,0 @@
-neverallow { domain -hal_thermal_client -hal_thermal_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_thermal_service_202404:service_manager find;

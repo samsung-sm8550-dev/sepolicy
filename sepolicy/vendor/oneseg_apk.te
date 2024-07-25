@@ -1,0 +1,2 @@
+allow oneseg_apk oneseg_mw:binder transfer;
+type oneseg_apk, coredomain, domain, sec_standard_app_type;

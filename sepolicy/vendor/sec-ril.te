@@ -1,0 +1,23 @@
+allow sec-ril self:udp_socket { create ioctl read };
+allow sec-ril dumplog_data_file:dir create_dir_perms;
+allow sec-ril dumplog_data_file:file create_file_perms;
+allow sec-ril efs_file:dir create_dir_perms;
+allow sec-ril efs_file:file create_file_perms;
+allow sec-ril sysfs_ss_writable:file rw_file_perms;
+allow sec-ril sysfs_wake_lock:file { open read write };
+allow sec-ril sec_radio_device:chr_file rw_file_perms;
+allow sec-ril app_efs_file:dir create_dir_perms;
+allow sec-ril app_efs_file:file create_file_perms;
+allow sec-ril imei_efs_file:dir create_dir_perms;
+allow sec-ril imei_efs_file:file create_file_perms;
+allow sec-ril radio_data_file:dir rw_dir_perms;
+allow sec-ril radio_data_file:file create_file_perms;
+allow sec-ril sec_efs_file:dir create_dir_perms;
+allow sec-ril sec_efs_file:file create_file_perms;
+allow sec-ril system_file:file rx_file_perms;
+allow sec-ril shell_exec:file rx_file_perms;
+allow sec-ril toolbox_exec:file rx_file_perms;
+set_prop(sec-ril, radio_prop)
+set_prop(sec-ril, system_prop)
+type sec-ril, coredomain, domain;
+type sec-ril_exec, exec_type, file_type, system_file_type;

@@ -1,1 +1,0 @@
-neverallow { domain -artd_202404 -installd_202404 -profman_202404 } profman_exec_202404:file no_x_file_perms;

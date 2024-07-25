@@ -1,1 +1,0 @@
-type hal_vehicle_service_202404, hal_service_type, protected_service, service_manager_type;

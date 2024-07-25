@@ -1,0 +1,2 @@
+allow cgroup_rc_file tmpfs:filesystem associate;
+type cgroup_rc_file, file_type;

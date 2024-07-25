@@ -1,0 +1,1 @@
+neverallow { vendor_halserverdomain -netdomain -vendor_qms -vendor_wigignpt } hwservicemanager:binder { call transfer };

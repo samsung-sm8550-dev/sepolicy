@@ -1,42 +1,51 @@
 expandtypeattribute(hal_power)
 expandtypeattribute(hal_power_client)
 expandtypeattribute(hal_power_server)
-allow hal_power_server dumpstate_202404:fifo_file write;
-allow hal_power_server dumpstate_202404:fd *;
+allow hal_power_server dumpstate:fifo_file write;
+allow hal_power_server dumpstate:fd *;
 allow hal_power_server hal_power_client:binder transfer;
 allow hal_power_server hal_power_client:binder { call transfer };
 allow hal_power_server hal_power_client:fd *;
-allow hal_power_server hal_power_hwservice_202404:hwservice_manager { add find };
-allow hal_power_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_power_server su_202404:tcp_socket { accept getopt read write };
-allow hal_power_server servicemanager_202404:binder { call transfer };
-allow hal_power_server servicemanager_202404:fd *;
+allow hal_power_server servicemanager:binder { call transfer };
+allow hal_power_server servicemanager:fd *;
 allow hal_power_client hal_power_server:binder { call transfer };
 allow hal_power_client hal_power_server:binder transfer;
 allow hal_power_client hal_power_server:fd *;
-allow hal_power_client hal_power_hwservice_202404:hwservice_manager find;
-allow hal_power_client hal_power_service_202404:service_manager find;
-allow hal_power_client servicemanager_202404:binder { call transfer };
-allow hal_power_client servicemanager_202404:fd *;
-allow hal_power_default vendor_hbtp_kernel_sysfs:file rw_file_perms;
-allow hal_power_default dumpstate_202404:binder transfer;
-allow hal_power_default proc_sched_202404:dir r_dir_perms;
-allow hal_power_default proc_sched_202404:file rw_file_perms;
-allow hal_power_default proc_sched_202404:lnk_file rw_file_perms;
+allow hal_power_client servicemanager:binder { call transfer };
+allow hal_power_client servicemanager:fd *;
+allow hal_power_default sysfs_devices_system_cpu:file w_file_perms;
+allow hal_power_default sysfs:file rw_file_perms;
+allow hal_power_default sysfs_ss_writable:dir r_dir_perms;
+allow hal_power_default sysfs_ss_writable:file rw_file_perms;
+allow hal_power_default sysfs_sec:dir r_dir_perms;
+allow hal_power_default sysfs_sec:file rw_file_perms;
+allow hal_power_default sysfs_sec:lnk_file rw_file_perms;
+allow hal_power_default sysfs_battery:dir r_dir_perms;
+allow hal_power_default sysfs_battery:file rw_file_perms;
 allow hal_power_default vendor_sysfs_devfreq:dir r_dir_perms;
 allow hal_power_default vendor_sysfs_devfreq:file rw_file_perms;
-allow hal_power_default vendor_sysfs_devfreq:lnk_file rw_file_perms;
-allow hal_power_default vendor_sysfs_graphics:dir r_dir_perms;
-allow hal_power_default vendor_sysfs_graphics:file rw_file_perms;
-allow hal_power_default vendor_sysfs_graphics:lnk_file rw_file_perms;
-allow hal_power_default vendor_sysfs_kgsl:dir r_dir_perms;
-allow hal_power_default vendor_sysfs_kgsl:file rw_file_perms;
-allow hal_power_default vendor_sysfs_kgsl:lnk_file rw_file_perms;
-allow hal_power_default vendor_sysfs_scsi_host:dir r_dir_perms;
-allow hal_power_default vendor_sysfs_scsi_host:file rw_file_perms;
-allow hal_power_default vendor_sysfs_scsi_host:lnk_file rw_file_perms;
+allow hal_power_default sysfs_power:dir r_dir_perms;
+allow hal_power_default sysfs_power:file rw_file_perms;
+allow hal_power_default sysfs_ski_touch_writable:dir r_dir_perms;
+allow hal_power_default sysfs_ski_touch_writable:file rw_file_perms;
+allow hal_power_default sysfs_ski_pen_writable:dir r_dir_perms;
+allow hal_power_default sysfs_ski_pen_writable:file rw_file_perms;
+allow hal_power_default system_app:fifo_file write;
+allow hal_power_default system_server:binder transfer;
+allow hal_power_default mediacodec:binder transfer;
+allow hal_power_default vendor_sysfs_battery_supply:file rw_file_perms;
+allow hal_power_default vendor_hbtp_kernel_sysfs:file rw_file_perms;
+allow hal_power_default dumpstate:binder transfer;
+init_daemon_domain(hal_power_default)
+r_dir_file(hal_power_default, sysfs_type)
+r_dir_file(hal_power_default, sysfs_ski_power_readable)
+r_dir_file(hal_power_default, sysfs_ski_hal_readable)
 hal_server_domain(hal_power_default, hal_power)
 hal_client_domain(hal_power_default, vendor_hal_perf)
-add_service(hal_power_server, hal_power_service_202404)
+hal_client_domain(hal_power_default, hal_hyper)
+add_hwservice(hal_power_default, hal_miscpower_hwservice)
+hal_attribute_service(hal_power, hal_power_service)
+hal_attribute_hwservice(hal_power, hal_power_hwservice)
 type hal_power_default, domain;
 type hal_power_default_exec, exec_type, file_type, vendor_file_type;
+type hal_power_hwservice, hwservice_manager_type, protected_hwservice;

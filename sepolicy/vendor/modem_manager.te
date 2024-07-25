@@ -1,25 +1,16 @@
-allow vendor_modem_manager vendor_hal_qesdhal_default:file read;
-allow vendor_modem_manager vendor_hal_qesdhal_default:lnk_file read;
-allow vendor_modem_manager vendor_hal_qesdhal_default:dir search;
-allow vendor_modem_manager self:netlink_generic_socket create_socket_perms_no_ioctl;
-allow vendor_modem_manager vendor_qesd_one_socket:dir r_dir_perms;
-allow vendor_modem_manager su_202404:fifo_file append;
-allow vendor_modem_manager anr_data_file_202404:file append;
-allow vendor_modem_manager dumpstate_202404:fd *;
-allow vendor_modem_manager dumpstate_202404:fifo_file { append write };
-allow vendor_modem_manager incidentd_202404:fd *;
-allow vendor_modem_manager incidentd_202404:fifo_file { append write };
-allow vendor_modem_manager system_server_202404:fifo_file { append write };
-allow vendor_modem_manager tombstoned_202404:fd *;
-allow vendor_modem_manager tombstoned_crash_socket_202404:sock_file write;
-allow vendor_modem_manager tombstone_data_file_202404:file append;
+allow vendor_modem_manager anr_data_file:file append;
+allow vendor_modem_manager dumpstate:fd *;
+allow vendor_modem_manager dumpstate:fifo_file { append write };
+allow vendor_modem_manager incidentd:fd *;
+allow vendor_modem_manager incidentd:fifo_file { append write };
+allow vendor_modem_manager system_server:fifo_file { append write };
+allow vendor_modem_manager tombstoned:fd *;
+allow vendor_modem_manager tombstone_data_file:file append;
+init_daemon_domain(vendor_modem_manager)
 unix_socket_connect(vendor_modem_manager, vendor_qesd, vendor_hal_qesdhal)
-unix_socket_connect(vendor_modem_manager, vendor_qesd, vendor_hal_qesdonehal_default)
-unix_socket_connect(vendor_modem_manager, vendor_qesd, tombstoned_202404)
-unix_socket_connect(vendor_modem_manager, vendor_qesd_one, vendor_hal_qesdhal)
-unix_socket_connect(vendor_modem_manager, vendor_qesd_one, vendor_hal_qesdonehal_default)
-unix_socket_connect(vendor_modem_manager, vendor_qesd_one, tombstoned_202404)
-get_prop(vendor_modem_manager, vendor_qesdk_one_prop)
+unix_socket_connect(vendor_modem_manager, vendor_qesd, tombstoned)
+unix_socket_connect(vendor_modem_manager, tombstoned_crash, vendor_hal_qesdhal)
+unix_socket_connect(vendor_modem_manager, tombstoned_crash, tombstoned)
 get_prop(vendor_modem_manager, vendor_cnd_vendor_prop)
 hal_client_domain(vendor_modem_manager, vendor_hal_datafactory_qti)
 type vendor_modem_manager, domain;

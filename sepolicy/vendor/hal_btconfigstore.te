@@ -1,13 +1,11 @@
 allow vendor_hal_btconfigstore_client vendor_hal_btconfigstore_server:binder { call transfer };
 allow vendor_hal_btconfigstore_client vendor_hal_btconfigstore_server:binder transfer;
 allow vendor_hal_btconfigstore_client vendor_hal_btconfigstore_server:fd *;
-allow vendor_hal_btconfigstore_client vendor_hal_btconfigstore_hwservice:hwservice_manager find;
 allow vendor_hal_btconfigstore_server vendor_hal_btconfigstore_client:binder transfer;
 allow vendor_hal_btconfigstore_server vendor_hal_btconfigstore_client:binder { call transfer };
 allow vendor_hal_btconfigstore_server vendor_hal_btconfigstore_client:fd *;
-allow vendor_hal_btconfigstore_server vendor_hal_btconfigstore_hwservice:hwservice_manager { add find };
-allow vendor_hal_btconfigstore_server hidl_base_hwservice_202404:hwservice_manager add;
 attribute vendor_hal_btconfigstore;
 attribute vendor_hal_btconfigstore_client;
 attribute vendor_hal_btconfigstore_server;
+hal_attribute_hwservice(vendor_hal_btconfigstore, vendor_hal_btconfigstore_hwservice)
 type vendor_hal_btconfigstore_hwservice, hwservice_manager_type, protected_hwservice;

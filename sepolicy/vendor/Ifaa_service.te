@@ -1,0 +1,2 @@
+hal_client_domain(Ifaa_service, hal_ifaa)
+type Ifaa_service, app_api_service, service_manager_type;

@@ -1,0 +1,26 @@
+neverallow vendor_qms_2 self:capability *;
+neverallow vendor_qms_2 self:capability2 *;
+neverallow vendor_qms_2 self:cap_userns *;
+neverallow vendor_qms_2 self:cap2_userns *;
+allow vendor_qms_2 vendor_qms:fd *;
+allow vendor_qms_2 vendor_qms:unix_dgram_socket write;
+allow vendor_qms_2 vendor_qms:unix_stream_socket { read write };
+allow vendor_qms_2 vendor_qms_exec:file execute_no_trans;
+allow vendor_qms_2 self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qms_2 anr_data_file:file append;
+allow vendor_qms_2 dumpstate:fd *;
+allow vendor_qms_2 dumpstate:fifo_file { append write };
+allow vendor_qms_2 incidentd:fd *;
+allow vendor_qms_2 incidentd:fifo_file { append write };
+allow vendor_qms_2 system_server:fifo_file { append write };
+allow vendor_qms_2 tombstoned:fd *;
+allow vendor_qms_2 tombstone_data_file:file append;
+allow vendor_qms_2 vendor_qms_other_data_file:dir create_dir_perms;
+allow vendor_qms_2 vendor_qms_other_data_file:file create_file_perms;
+allow vendor_qms_2 vendor_qms_config_data_file:dir r_dir_perms;
+allow vendor_qms_2 vendor_qms_config_data_file:file r_file_perms;
+unix_socket_connect(vendor_qms_2, vendor_qesd, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qms_2, vendor_qesd, tombstoned)
+unix_socket_connect(vendor_qms_2, tombstoned_crash, vendor_hal_qesdhal)
+unix_socket_connect(vendor_qms_2, tombstoned_crash, tombstoned)
+type vendor_qms_2, domain;

@@ -1,28 +1,50 @@
 expandtypeattribute(hal_thermal)
 expandtypeattribute(hal_thermal_client)
 expandtypeattribute(hal_thermal_server)
-allow hal_thermal_server dumpstate_202404:fifo_file write;
-allow hal_thermal_server dumpstate_202404:fd *;
+allow hal_thermal_server dumpstate:fifo_file write;
+allow hal_thermal_server dumpstate:fd *;
 allow hal_thermal_server hal_thermal_client:binder transfer;
 allow hal_thermal_server hal_thermal_client:binder { call transfer };
 allow hal_thermal_server hal_thermal_client:fd *;
-allow hal_thermal_server hal_thermal_hwservice_202404:hwservice_manager { add find };
-allow hal_thermal_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_thermal_server su_202404:tcp_socket { accept getopt read write };
-allow hal_thermal_server servicemanager_202404:binder { call transfer };
-allow hal_thermal_server servicemanager_202404:fd *;
 allow hal_thermal_client hal_thermal_server:binder { call transfer };
 allow hal_thermal_client hal_thermal_server:binder transfer;
 allow hal_thermal_client hal_thermal_server:fd *;
-allow hal_thermal_client hal_thermal_hwservice_202404:hwservice_manager find;
-allow hal_thermal_client hal_thermal_service_202404:service_manager find;
-allow hal_thermal_client servicemanager_202404:binder { call transfer };
-allow hal_thermal_client servicemanager_202404:fd *;
-allow hal_thermal_default proc_stat_202404:file { getattr open read };
-allow hal_thermal_default sysfs_thermal_202404:file w_file_perms;
+allow hal_thermal_default cameraserver:binder transfer;
+allow hal_thermal_default cameraserver:binder { call transfer };
+allow hal_thermal_default cameraserver:fd *;
+allow hal_thermal_default sysfs_wake_lock:file rw_file_perms;
+allow hal_thermal_default self:capability2 block_suspend;
+allow hal_thermal_default self:cap2_userns block_suspend;
 allow hal_thermal_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow hal_thermal_default self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow hal_thermal_default system_suspend_server:binder { call transfer };
+allow hal_thermal_default system_suspend_server:fd *;
+allow hal_thermal_default system_suspend_hwservice:hwservice_manager find;
+allow hal_thermal_default hidl_manager_hwservice:hwservice_manager find;
+allow hal_thermal_default hal_system_suspend_service:service_manager find;
+allow hal_thermal_default fwk_camera_hwservice:hwservice_manager find;
+allow hal_thermal_default hal_hyper_default:binder { call transfer };
+allow hal_thermal_default hal_hyper_default:fd *;
+allow hal_thermal_default sysfs_switch:dir search;
+allow hal_thermal_default sysfs_switch:file r_file_perms;
+allow hal_thermal_default hal_audio_default:binder { call transfer };
+allow hal_thermal_default hal_audio_default:fd *;
+allow hal_thermal_default proc_stat:file { getattr open read };
+allow hal_thermal_default sysfs_thermal:file w_file_perms;
+init_daemon_domain(hal_thermal_default)
+r_dir_file(hal_thermal_default, sysfs_battery)
+r_dir_file(hal_thermal_default, sysfs_power)
+r_dir_file(hal_thermal_default, vendor_sysfs_battery_supply)
+unix_socket_connect(hal_thermal_default, property, rild)
+get_prop(hal_thermal_default, hwservicemanager_prop)
+get_prop(hal_thermal_default, boot_dram_info_prop)
+set_prop(hal_thermal_default, vendor_thermal_test_prop)
+binder_use(hal_thermal_default)
+hwbinder_use(hal_thermal_default)
 hal_server_domain(hal_thermal_default, hal_thermal)
-add_service(hal_thermal_server, hal_thermal_service_202404)
+hal_client_domain(hal_thermal_default, hal_audio)
+hal_client_domain(hal_thermal_default, hal_hyper)
+hal_attribute_hwservice(hal_thermal, hal_thermal_hwservice)
 type hal_thermal_default, domain;
 type hal_thermal_default_exec, exec_type, file_type, vendor_file_type;
+type hal_thermal_hwservice, hwservice_manager_type, protected_hwservice;

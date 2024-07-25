@@ -6,38 +6,34 @@ allow vendor_qcc_trd_2 self:netlink_kobject_uevent_socket create_socket_perms_no
 allow vendor_qcc_trd_2 self:netlink_generic_socket create_socket_perms_no_ioctl;
 allow vendor_qcc_trd_2 self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow vendor_qcc_trd_2 vendor_sysfs_devcd:file rw_file_perms;
-allow vendor_qcc_trd_2 sysfs_202404:file getattr;
+allow vendor_qcc_trd_2 sysfs:file getattr;
 allow vendor_qcc_trd_2 vendor_sysfs_microdump:file rw_file_perms;
-allow vendor_qcc_trd_2 proc_stat_202404:file r_file_perms;
-allow vendor_qcc_trd_2 proc_stat_202404:dir r_dir_perms;
-allow vendor_qcc_trd_2 mnt_vendor_file_202404:dir r_dir_perms;
+allow vendor_qcc_trd_2 proc_stat:file r_file_perms;
+allow vendor_qcc_trd_2 proc_stat:dir r_dir_perms;
+allow vendor_qcc_trd_2 mnt_vendor_file:dir r_dir_perms;
 allow vendor_qcc_trd_2 vendor_persist_rfs_shared_hlos_file:dir rw_dir_perms;
 allow vendor_qcc_trd_2 vendor_persist_rfs_shared_hlos_file:file create_file_perms;
-allow vendor_qcc_trd_2 logdr_socket_202404:sock_file write;
 allow vendor_qcc_trd_2 vendor_qmuxd_socket:dir create_dir_perms;
 allow vendor_qcc_trd_2 vendor_qmuxd_socket:sock_file { create getattr read setattr unlink write };
 allow vendor_qcc_trd_2 vendor_firmware_file:dir r_dir_perms;
 allow vendor_qcc_trd_2 vendor_firmware_file:file r_file_perms;
-allow vendor_qcc_trd_2 fuse_device_202404:chr_file rw_file_perms;
-allow vendor_qcc_trd_2 fuse_202404:dir create_dir_perms;
-allow vendor_qcc_trd_2 fuse_202404:file create_file_perms;
-allow vendor_qcc_trd_2 mnt_user_file_202404:dir search;
-allow vendor_qcc_trd_2 mnt_user_file_202404:lnk_file read;
-allow vendor_qcc_trd_2 vndbinder_device_202404:chr_file rw_file_perms;
-allow vendor_qcc_trd_2 vndservicemanager_202404:binder { call transfer };
 allow vendor_qcc_trd_2 vendor_qtrsdkservice_service:service_manager find;
 allow vendor_qcc_trd_2 vendor_qccvendor:binder { call transfer };
 allow vendor_qcc_trd_2 vendor_qccvendor:binder transfer;
 allow vendor_qcc_trd_2 vendor_qccvendor:fd *;
-dontaudit vendor_qcc_trd_2 sysfs_202404:file { append getattr ioctl lock map open read watch watch_reads write };
+dontaudit vendor_qcc_trd_2 sysfs:file { append getattr ioctl lock map open read watch watch_reads write };
+init_daemon_domain(vendor_qcc_trd_2)
 r_dir_file(vendor_qcc_trd_2, vendor_sysfs_battery_supply)
 r_dir_file(vendor_qcc_trd_2, vendor_sysfs_kgsl)
 r_dir_file(vendor_qcc_trd_2, vendor_sysfs_kgsl_gpuclk)
-r_dir_file(vendor_qcc_trd_2, sysfs_leds_202404)
+r_dir_file(vendor_qcc_trd_2, sysfs_leds)
 r_dir_file(vendor_qcc_trd_2, vendor_sysfs_graphics)
-r_dir_file(vendor_qcc_trd_2, sysfs_thermal_202404)
-unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, logd_202404)
+r_dir_file(vendor_qcc_trd_2, sysfs_thermal)
+unix_socket_connect(vendor_qcc_trd_2, logdr, logd)
+unix_socket_connect(vendor_qcc_trd_2, logdr, vendor_qmuxd)
+unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, logd)
 unix_socket_connect(vendor_qcc_trd_2, vendor_qmuxd, vendor_qmuxd)
+vndbinder_use(vendor_qcc_trd_2)
 hal_client_domain(vendor_qcc_trd_2, vendor_qccsyshal)
 type vendor_qcc_trd_2, domain;
 type vendor_qcc_trd_2_exec, exec_type, file_type, vendor_file_type;

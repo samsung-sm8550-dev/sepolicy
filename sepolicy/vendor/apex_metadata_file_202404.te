@@ -1,2 +1,0 @@
-type apex_metadata_file_202404, file_type;
-type vendor_apex_metadata_file_202404, file_type, vendor_file_type;

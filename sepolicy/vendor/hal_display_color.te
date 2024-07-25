@@ -2,24 +2,22 @@ allow vendor_hal_display_color_client vendor_hal_display_color_server:binder { c
 allow vendor_hal_display_color_client vendor_hal_display_color_server:fd *;
 allow vendor_hal_display_color_client vendor_hal_display_color_hwservice:hwservice_manager find;
 allow vendor_hal_display_color_server vendor_hal_display_color_client:binder transfer;
-allow vendor_hal_display_color_server platform_app_202404:binder transfer;
-allow vendor_hal_display_color_server vendor_hal_display_color_hwservice:hwservice_manager { add find };
-allow vendor_hal_display_color_server hidl_base_hwservice_202404:hwservice_manager add;
-allow vendor_hal_display_color_server vendor_hal_display_postproc_hwservice:hwservice_manager { add find };
+allow vendor_hal_display_color_server platform_app:binder transfer;
 allow vendor_hal_display_color vendor_qdisplay_service:service_manager find;
-allow vendor_hal_display_color vndbinder_device_202404:chr_file rw_file_perms;
-allow vendor_hal_display_color vndservicemanager_202404:binder { call transfer };
 allow vendor_hal_display_color hal_graphics_composer:binder { call transfer };
 allow vendor_hal_display_color hal_graphics_composer:fd *;
-allow vendor_hal_display_color property_socket_202404:sock_file write;
-allow vendor_hal_display_color vendor_qdcmss_prop:property_service set;
 attribute vendor_hal_display_color;
 attribute vendor_hal_display_color_client;
 attribute vendor_hal_display_color_server;
+init_daemon_domain(vendor_hal_display_color_default)
 unix_socket_connect(vendor_hal_display_color, vendor_pps, hal_graphics_composer_default)
-unix_socket_connect(vendor_hal_display_color, vendor_pps, init_202404)
-get_prop(vendor_hal_display_color, vendor_qdcmss_prop)
+unix_socket_connect(vendor_hal_display_color, vendor_pps, init)
+unix_socket_connect(vendor_hal_display_color, property, hal_graphics_composer_default)
+set_prop(vendor_hal_display_color, vendor_qdcmss_prop)
+vndbinder_use(vendor_hal_display_color)
 hal_server_domain(vendor_hal_display_color_default, vendor_hal_display_color)
+add_hwservice(vendor_hal_display_color_server, vendor_hal_display_color_hwservice)
+add_hwservice(vendor_hal_display_color_server, vendor_hal_display_postproc_hwservice)
 type vendor_hal_display_color_default, domain;
 type vendor_hal_display_color_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_display_color_hwservice, hwservice_manager_type, protected_hwservice;

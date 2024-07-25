@@ -1,0 +1,7 @@
+allow spud spu_file:dir create_dir_perms;
+allow spud spu_file:file create_file_perms;
+allow spud paramblk_device:blk_file rw_file_perms;
+allowxperm spud spu_file:ioctl file 0x660b;
+set_prop(spud, spud_prop)
+type spud, coredomain, domain;
+type spud_exec, exec_type, file_type, system_file_type;

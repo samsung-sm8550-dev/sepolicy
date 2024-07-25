@@ -1,0 +1,5 @@
+allow sec-sh kernel:system module_request;
+allow sec-sh kmsg_device:chr_file rw_file_perms;
+allow sec-sh shell_exec:file rx_file_perms;
+type sec-sh, coredomain, domain;
+type sec-sh_exec, exec_type, file_type, system_file_type;

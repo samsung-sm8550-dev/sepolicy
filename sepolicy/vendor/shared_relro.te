@@ -1,0 +1,2 @@
+allow shared_relro EDM_Policy_service:service_manager find;
+type shared_relro, domain;

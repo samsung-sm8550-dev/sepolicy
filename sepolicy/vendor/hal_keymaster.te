@@ -3,27 +3,71 @@ expandtypeattribute(hal_keymaster_client)
 expandtypeattribute(hal_keymaster_server)
 allow hal_keymaster_client hal_keymaster_server:binder { call transfer };
 allow hal_keymaster_client hal_keymaster_server:fd *;
-allow hal_keymaster_client hal_keymaster_hwservice_202404:hwservice_manager find;
 allow hal_keymaster_server hal_keymaster_client:binder transfer;
-allow hal_keymaster_server hal_keymaster_hwservice_202404:hwservice_manager { add find };
-allow hal_keymaster_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_keymaster tee_device_202404:chr_file rw_file_perms;
-allow hal_keymaster ion_device_202404:chr_file r_file_perms;
+allow hal_keymaster tee_device:chr_file rw_file_perms;
+allow hal_keymaster ion_device:chr_file r_file_perms;
+allow hal_keymaster_default tee_device:chr_file rw_file_perms;
+allow hal_keymaster_default prov_efs_file:file r_file_perms;
+allow hal_keymaster_default prov_efs_file:file create_file_perms;
+allow hal_keymaster_default prov_efs_file:dir search;
+allow hal_keymaster_default prov_efs_file:dir create_dir_perms;
+allow hal_keymaster_default mobicore_file:file r_file_perms;
+allow hal_keymaster_default tz_device:chr_file rw_file_perms;
+allow hal_keymaster_default mnt_vendor_file:dir r_dir_perms;
+allow hal_keymaster_default dak_efs_file:dir create_dir_perms;
+allow hal_keymaster_default dak_efs_file:file create_file_perms;
+allow hal_keymaster_default ssp_device:chr_file rw_file_perms;
+allow hal_keymaster_default hal_keymaster_default:binder call;
+allow hal_keymaster_default vendor_keymaster_data_file:dir create_dir_perms;
+allow hal_keymaster_default vendor_keymaster_data_file:file create_file_perms;
+allow hal_keymaster_default tzdaemon:fd *;
+allow hal_keymaster_default tz_user_device:chr_file rw_file_perms;
+allow hal_keymaster_default tee_efs_file:dir search;
+allow hal_keymaster_default firmware_file:file r_file_perms;
+allow hal_keymaster_default vendor_hal_keymaster_qti:binder call;
+allow hal_keymaster_default vendor_sp_keymaster_device:chr_file rw_file_perms;
+allow hal_keymaster_default vendor_spcom_device:chr_file rw_file_perms;
+allow hal_keymaster_default vendor_skp_device:chr_file rw_file_perms;
+allow hal_keymaster_default vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti hal_keymint_default:binder transfer;
+allow vendor_hal_keymaster_qti vendor_spss_utils_device:chr_file rw_file_perms;
+allow vendor_hal_keymaster_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
 allow vendor_hal_keymaster_qti vendor_spcom_device:chr_file rw_file_perms;
 allow vendor_hal_keymaster_qti vendor_skp_device:chr_file rw_file_perms;
-allow vendor_hal_keymaster_qti vendor_spss_utils_device:chr_file rw_file_perms;
 allow vendor_hal_keymaster_qti vendor_sp_keymaster_device:chr_file rw_file_perms;
 allow vendor_hal_keymaster_qti vendor_sp_ssr_device:chr_file rw_file_perms;
 allow vendor_hal_keymaster_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
-allow vendor_hal_keymaster_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
 dontaudit vendor_hal_keymaster_qti firmware_file:dir search;
-get_prop(hal_keymaster_default, vendor_security_patch_level_prop_202404)
+allowxperm hal_keymaster_default vendor_spss_utils_device:ioctl chr_file 0x5302;
+typealias(hal_keymaster_qti_exec)
+typealias(hal_keymaster_qti)
+typealiasactual(hal_keymaster_qti_exec)
+typealiasactual(hal_keymaster_qti)
+init_daemon_domain(hal_keymaster_default)
+init_daemon_domain(vendor_hal_keymaster_qti)
+r_dir_file(hal_keymaster_default, efs_file)
+unix_socket_connect(hal_keymaster_default, property, mobicore)
+get_prop(hal_keymaster_default, vendor_security_patch_level_prop)
+get_prop(hal_keymaster_default, mobicore_prop)
+get_prop(hal_keymaster_default, vendor_tztsdaemon_prop)
+get_prop(hal_keymaster_default, compact_dump_prop)
+get_prop(hal_keymaster_default, tzdaemon_prop)
+get_prop(hal_keymaster_default, vendor_teegris_prop)
+get_prop(hal_keymaster_default, vendor_tee_listener_prop)
+get_prop(hal_keymaster_default, vendor_spcomlib_prop)
+get_prop(vendor_hal_keymaster_qti, vendor_security_patch_level_prop)
 get_prop(vendor_hal_keymaster_qti, vendor_tee_listener_prop)
 get_prop(vendor_hal_keymaster_qti, vendor_spcomlib_prop)
+set_prop(hal_keymaster_default, vendor_mobicore_prop)
+set_prop(hal_keymaster_default, dumpstate_options_prop)
+set_prop(hal_keymaster_default, ctl_start_prop)
 hal_server_domain(hal_keymaster_default, hal_keymaster)
 hal_server_domain(vendor_hal_keymaster_qti, hal_keymaster)
 hal_client_domain(hal_keymaster_default, hal_secure_element)
+hal_client_domain(hal_keymaster_default, hal_weaver)
+hal_attribute_hwservice(hal_keymaster, hal_keymaster_hwservice)
 type hal_keymaster_default, domain;
 type vendor_hal_keymaster_qti, domain;
 type hal_keymaster_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_keymaster_qti_exec, exec_type, file_type, vendor_file_type;
+type hal_keymaster_hwservice, hwservice_manager_type, protected_hwservice;

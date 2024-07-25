@@ -1,1 +1,0 @@
-neverallow { coredomain -init_202404 -shell_202404 -ueventd_202404 } vendor_shell_exec_202404:file no_x_file_perms;

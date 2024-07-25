@@ -1,29 +1,7 @@
-allow vendor_qsap_location vendor_hal_qesdhal_default:file read;
-allow vendor_qsap_location vendor_hal_qesdhal_default:lnk_file read;
-allow vendor_qsap_location vendor_hal_qesdhal_default:dir search;
-allow vendor_qsap_location self:netlink_generic_socket create_socket_perms_no_ioctl;
-allow vendor_qsap_location vendor_qesd_one_socket:dir r_dir_perms;
-allow vendor_qsap_location vendor_location_data_file:dir create_dir_perms;
-allow vendor_qsap_location vendor_location_data_file:file create_file_perms;
 allow vendor_qsap_location vendor_qsap_location_socket:sock_file create_file_perms;
 allow vendor_qsap_location vendor_qsap_location_socket:dir rw_dir_perms;
 allow vendor_qsap_location vendor_hal_gnss_qti:unix_dgram_socket sendto;
-allow vendor_qsap_location su_202404:fifo_file append;
-allow vendor_qsap_location anr_data_file_202404:file append;
-allow vendor_qsap_location dumpstate_202404:fd *;
-allow vendor_qsap_location dumpstate_202404:fifo_file { append write };
-allow vendor_qsap_location incidentd_202404:fd *;
-allow vendor_qsap_location incidentd_202404:fifo_file { append write };
-allow vendor_qsap_location system_server_202404:fifo_file { append write };
-allow vendor_qsap_location tombstoned_202404:fd *;
-allow vendor_qsap_location tombstoned_crash_socket_202404:sock_file write;
-allow vendor_qsap_location tombstone_data_file_202404:file append;
+init_daemon_domain(vendor_qsap_location)
 unix_socket_connect(vendor_qsap_location, vendor_qesd, vendor_hal_qesdhal)
-unix_socket_connect(vendor_qsap_location, vendor_qesd, vendor_hal_qesdonehal_default)
-unix_socket_connect(vendor_qsap_location, vendor_qesd, tombstoned_202404)
-unix_socket_connect(vendor_qsap_location, vendor_qesd_one, vendor_hal_qesdhal)
-unix_socket_connect(vendor_qsap_location, vendor_qesd_one, vendor_hal_qesdonehal_default)
-unix_socket_connect(vendor_qsap_location, vendor_qesd_one, tombstoned_202404)
-get_prop(vendor_qsap_location, vendor_qesdk_one_prop)
 type vendor_qsap_location, domain;
 type vendor_qsap_location_exec, exec_type, file_type, vendor_file_type;

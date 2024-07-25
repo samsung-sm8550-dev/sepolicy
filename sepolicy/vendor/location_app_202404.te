@@ -1,4 +1,0 @@
-dontaudit vendor_location_app_202404 default_prop_202404:file read;
-hal_client_domain(vendor_location_app_202404, vendor_hal_diaghal)
-hal_client_domain(vendor_location_app_202404, vendor_hal_perf)
-type vendor_location_app_202404, coredomain, domain;

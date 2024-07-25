@@ -1,9 +1,0 @@
-allow ot_rcp hal_threadnetwork_default:process sigchld;
-allow ot_rcp hal_threadnetwork_default:fd *;
-allow ot_rcp hal_threadnetwork_default:fifo_file rw_file_perms;
-allow ot_rcp devpts_202404:chr_file { ioctl read write };
-allow ot_rcp self:udp_socket create_socket_perms_no_ioctl;
-allow ot_rcp node_202404:udp_socket node_bind;
-allow ot_rcp port_202404:udp_socket name_bind;
-type ot_rcp, domain;
-type ot_rcp_exec, exec_type, file_type, vendor_file_type;

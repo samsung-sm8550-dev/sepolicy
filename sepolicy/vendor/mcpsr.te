@@ -1,0 +1,6 @@
+allow mcpsr proc_stat:file r_file_perms;
+allow mcpsr sysfs_ss_writable:file rw_file_perms;
+allow mcpsr sysfs_cpif_parameters_writable:file rw_file_perms;
+init_daemon_domain(mcpsr)
+type mcpsr, domain;
+type mcpsr_exec, exec_type, file_type, vendor_file_type;

@@ -1,1 +1,0 @@
-neverallow fsck_202404 { vold_device_202404 root_block_device_202404 frp_block_device_202404 system_block_device_202404 recovery_block_device_202404 boot_block_device_202404 swap_block_device_202404 -system_block_device_202404 }:blk_file no_rw_file_perms;

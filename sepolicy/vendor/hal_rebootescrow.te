@@ -1,19 +1,19 @@
 expandtypeattribute(hal_rebootescrow)
 expandtypeattribute(hal_rebootescrow_client)
 expandtypeattribute(hal_rebootescrow_server)
-allow hal_rebootescrow_server dumpstate_202404:fifo_file write;
-allow hal_rebootescrow_server dumpstate_202404:fd *;
+allow hal_rebootescrow_server dumpstate:binder transfer;
+allow hal_rebootescrow_server dumpstate:fifo_file write;
+allow hal_rebootescrow_server dumpstate:fd *;
 allow hal_rebootescrow_server hal_rebootescrow_client:binder transfer;
-allow hal_rebootescrow_server su_202404:tcp_socket { accept getopt read write };
-allow hal_rebootescrow_server servicemanager_202404:binder { call transfer };
 allow hal_rebootescrow_client hal_rebootescrow_server:binder { call transfer };
 allow hal_rebootescrow_client hal_rebootescrow_server:fd *;
-allow hal_rebootescrow_client hal_rebootescrow_service_202404:service_manager find;
 allow hal_rebootescrow_default rebootescrow_device:chr_file rw_file_perms;
 allow hal_rebootescrow_default rebootescrow_device:blk_file rw_file_perms;
-allow hal_rebootescrow_default block_device_202404:dir search;
-get_prop(hal_rebootescrow_default, rebootescrow_hal_prop_202404)
+allow hal_rebootescrow_default block_device:dir search;
+init_daemon_domain(hal_rebootescrow_default)
+get_prop(hal_rebootescrow_default, rebootescrow_hal_prop)
+binder_use(hal_rebootescrow_server)
 hal_server_domain(hal_rebootescrow_default, hal_rebootescrow)
-add_service(hal_rebootescrow_server, hal_rebootescrow_service_202404)
+hal_attribute_service(hal_rebootescrow, hal_rebootescrow_service)
 type hal_rebootescrow_default, domain;
 type hal_rebootescrow_default_exec, exec_type, file_type, vendor_file_type;

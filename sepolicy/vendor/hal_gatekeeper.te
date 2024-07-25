@@ -3,31 +3,53 @@ expandtypeattribute(hal_gatekeeper_client)
 expandtypeattribute(hal_gatekeeper_server)
 allow hal_gatekeeper_client hal_gatekeeper_server:binder { call transfer };
 allow hal_gatekeeper_client hal_gatekeeper_server:fd *;
-allow hal_gatekeeper_client hal_gatekeeper_hwservice_202404:hwservice_manager find;
-allow hal_gatekeeper_client hal_gatekeeper_service_202404:service_manager find;
 allow hal_gatekeeper_server hal_gatekeeper_client:binder transfer;
-allow hal_gatekeeper_server hal_gatekeeper_hwservice_202404:hwservice_manager { add find };
-allow hal_gatekeeper_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_gatekeeper_server su_202404:tcp_socket { accept getopt read write };
-allow hal_gatekeeper_server servicemanager_202404:binder { call transfer };
-allow hal_gatekeeper_server servicemanager_202404:fd *;
-allow hal_gatekeeper tee_device_202404:chr_file rw_file_perms;
-allow hal_gatekeeper ion_device_202404:chr_file r_file_perms;
+allow hal_gatekeeper tee_device:chr_file rw_file_perms;
+allow hal_gatekeeper ion_device:chr_file r_file_perms;
+allow hal_gatekeeper_default efs_file:dir search;
+allow hal_gatekeeper_default efs_file:dir rw_dir_perms;
+allow hal_gatekeeper_default efs_file:file create_file_perms;
+allow hal_gatekeeper_default prov_efs_file:dir create_dir_perms;
+allow hal_gatekeeper_default prov_efs_file:file create_file_perms;
+allow hal_gatekeeper_default mobicore_file:dir r_dir_perms;
+allow hal_gatekeeper_default mobicore_file:file r_file_perms;
+allow hal_gatekeeper_default tz_device:chr_file rw_file_perms;
+allow hal_gatekeeper_default sec_debugfs:dir r_dir_perms;
+allow hal_gatekeeper_default vendor_gatekeeper_data_file:dir r_dir_perms;
+allow hal_gatekeeper_default dak_efs_file:dir create_dir_perms;
+allow hal_gatekeeper_default dak_efs_file:file create_file_perms;
+allow hal_gatekeeper_default tzdaemon:fd *;
+allow hal_gatekeeper_default tz_user_device:chr_file rw_file_perms;
+allow hal_gatekeeper_default tee_efs_file:dir search;
+allow hal_gatekeeper_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vendor_hal_gatekeeper_qti vendor_spss_utils_device:chr_file rw_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_spcom_device:chr_file rw_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_skp_device:chr_file rw_file_perms;
-allow vendor_hal_gatekeeper_qti vendor_spss_utils_device:chr_file rw_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_sp_keymaster_device:chr_file rw_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_sp_ssr_device:chr_file rw_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 allow vendor_hal_gatekeeper_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
 dontaudit vendor_hal_gatekeeper_qti firmware_file:dir search;
+init_daemon_domain(hal_gatekeeper_default)
+init_daemon_domain(vendor_hal_gatekeeper_qti)
+unix_socket_connect(hal_gatekeeper_default, property, mobicore)
+unix_socket_connect(hal_gatekeeper_default, property, hermesd)
+unix_socket_connect(hal_gatekeeper_default, hermes, mobicore)
+unix_socket_connect(hal_gatekeeper_default, hermes, init)
+unix_socket_connect(hal_gatekeeper_default, hermes, hermesd)
+get_prop(hal_gatekeeper_default, vendor_tztsdaemon_prop)
+get_prop(hal_gatekeeper_default, tztsdaemon_prop)
+get_prop(hal_gatekeeper_default, tzdaemon_prop)
+get_prop(hal_gatekeeper_default, vendor_teegris_prop)
 get_prop(vendor_hal_gatekeeper_qti, vendor_tee_listener_prop)
 get_prop(vendor_hal_gatekeeper_qti, vendor_spcomlib_prop)
 get_prop(vendor_hal_gatekeeper_qti, vendor_disable_spu_prop)
+set_prop(hal_gatekeeper_default, dumpstate_options_prop)
 hal_server_domain(hal_gatekeeper_default, hal_gatekeeper)
 hal_server_domain(vendor_hal_gatekeeper_qti, hal_gatekeeper)
-add_service(hal_gatekeeper_server, hal_gatekeeper_service_202404)
+hal_attribute_hwservice(hal_gatekeeper, hal_gatekeeper_hwservice)
 type hal_gatekeeper_default, domain;
 type vendor_hal_gatekeeper_qti, domain;
 type hal_gatekeeper_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_gatekeeper_qti_exec, exec_type, file_type, vendor_file_type;
+type hal_gatekeeper_hwservice, hwservice_manager_type, protected_hwservice;

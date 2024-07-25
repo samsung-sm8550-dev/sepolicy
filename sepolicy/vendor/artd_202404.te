@@ -1,2 +1,0 @@
-allow artd_202404 dumpstate_202404:binder transfer;
-type artd_202404, domain;

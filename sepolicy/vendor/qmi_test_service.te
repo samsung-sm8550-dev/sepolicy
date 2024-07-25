@@ -1,7 +1,0 @@
-allow vendor_qmi_test_service shell_202404:process sigchld;
-allow vendor_qmi_test_service shell_202404:fd *;
-allow vendor_qmi_test_service devpts_202404:chr_file { getattr ioctl read write };
-allow vendor_qmi_test_service vendor_qmi_test_service:socket { bind create read setopt write };
-allow vendor_qmi_test_service vendor_qmi_test_service:capability { fsetid setgid setuid };
-type vendor_qmi_test_service, domain;
-type vendor_qmi_test_service_exec, exec_type, file_type, vendor_file_type;

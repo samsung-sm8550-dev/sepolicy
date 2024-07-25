@@ -1,1 +1,0 @@
-neverallow { domain -wificond_202404 } system_wifi_keystore_hwservice_202404:hwservice_manager add;

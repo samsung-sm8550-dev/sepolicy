@@ -4,16 +4,9 @@ expandtypeattribute(hal_telephony_server)
 allow hal_telephony_client hal_telephony_server:binder { call transfer };
 allow hal_telephony_client hal_telephony_server:binder transfer;
 allow hal_telephony_client hal_telephony_server:fd *;
-allow hal_telephony_client hal_telephony_hwservice_202404:hwservice_manager find;
-allow hal_telephony_client hal_radio_service_202404:service_manager find;
-allow hal_telephony_client vendor_hal_telephony_service_202404:service_manager find;
-allow hal_telephony_client vendor_hal_telephony_service2:service_manager find;
 allow hal_telephony_server hal_telephony_client:binder transfer;
 allow hal_telephony_server hal_telephony_client:binder { call transfer };
 allow hal_telephony_server hal_telephony_client:fd *;
-allow hal_telephony_server hal_telephony_hwservice_202404:hwservice_manager { add find };
-allow hal_telephony_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_telephony_server su_202404:tcp_socket { accept getopt read write };
 allow hal_telephony_server self:netlink_route_socket nlmsg_write;
 allow hal_telephony_server self:capability { net_admin net_raw setgid setpcap setuid };
 allow hal_telephony_server self:cap_userns { net_admin net_raw setgid setpcap setuid };
@@ -23,49 +16,46 @@ allow hal_telephony_server self:netlink_kobject_uevent_socket create_socket_perm
 allow hal_telephony_server self:capability2 block_suspend;
 allow hal_telephony_server self:cap2_userns block_suspend;
 allow hal_telephony_server self:socket create_socket_perms_no_ioctl;
-allow hal_telephony_server cgroup_202404:dir create_dir_perms;
-allow hal_telephony_server cgroup_202404:file r_file_perms;
-allow hal_telephony_server cgroup_202404:lnk_file r_file_perms;
-allow hal_telephony_server cgroup_v2_202404:dir create_dir_perms;
-allow hal_telephony_server cgroup_v2_202404:file r_file_perms;
-allow hal_telephony_server cgroup_v2_202404:lnk_file r_file_perms;
-allow hal_telephony_server radio_device_202404:chr_file rw_file_perms;
-allow hal_telephony_server radio_device_202404:blk_file r_file_perms;
-allow hal_telephony_server efs_file_202404:dir create_dir_perms;
-allow hal_telephony_server efs_file_202404:file create_file_perms;
-allow hal_telephony_server vendor_shell_exec_202404:file rx_file_perms;
-allow hal_telephony_server bluetooth_efs_file_202404:file r_file_perms;
-allow hal_telephony_server bluetooth_efs_file_202404:dir r_dir_perms;
-allow hal_telephony_server property_socket_202404:sock_file write;
-allow hal_telephony_server init_202404:unix_stream_socket connectto;
-allow hal_telephony_server radio_control_prop_202404:property_service set;
-allow hal_telephony_server radio_prop_202404:property_service set;
-allow hal_telephony_server telephony_status_prop_202404:property_service set;
-allow hal_telephony_server tty_device_202404:chr_file rw_file_perms;
-allow hal_telephony_server sysfs_wake_lock_202404:file rw_file_perms;
+allow hal_telephony_server kernel:system module_request;
+allow hal_telephony_server cgroup:dir create_dir_perms;
+allow hal_telephony_server cgroup:file r_file_perms;
+allow hal_telephony_server cgroup:lnk_file r_file_perms;
+allow hal_telephony_server cgroup_v2:dir create_dir_perms;
+allow hal_telephony_server cgroup_v2:file r_file_perms;
+allow hal_telephony_server cgroup_v2:lnk_file r_file_perms;
+allow hal_telephony_server radio_device:chr_file rw_file_perms;
+allow hal_telephony_server radio_device:blk_file r_file_perms;
+allow hal_telephony_server efs_file:dir create_dir_perms;
+allow hal_telephony_server efs_file:file create_file_perms;
+allow hal_telephony_server vendor_shell_exec:file rx_file_perms;
+allow hal_telephony_server bluetooth_efs_file:file r_file_perms;
+allow hal_telephony_server bluetooth_efs_file:dir r_dir_perms;
+allow hal_telephony_server tty_device:chr_file rw_file_perms;
+allow hal_telephony_server sysfs_wake_lock:file rw_file_perms;
 allow hal_telephony_server system_suspend_server:binder { call transfer };
 allow hal_telephony_server system_suspend_server:fd *;
-allow hal_telephony_server system_suspend_hwservice_202404:hwservice_manager find;
-allow hal_telephony_server hwservicemanager_202404:binder { call transfer };
-allow hal_telephony_server hidl_manager_hwservice_202404:hwservice_manager find;
-allow hal_telephony_server hal_system_suspend_service_202404:service_manager find;
-allow hal_telephony_server servicemanager_202404:binder { call transfer };
-allow hal_telephony_server servicemanager_202404:fd *;
+allow hal_telephony_server system_suspend_hwservice:hwservice_manager find;
+allow hal_telephony_server hidl_manager_hwservice:hwservice_manager find;
+allow hal_telephony_server hal_system_suspend_service:service_manager find;
+allow hal_telephony_server servicemanager:fd *;
 allow hal_telephony_server hal_telephony_server:binder { call transfer };
 allow hal_telephony_server hal_telephony_server:binder transfer;
 allow hal_telephony_server hal_telephony_server:fd *;
-allow hal_telephony_server vendor_radio_prop:property_service set;
 allowxperm hal_telephony_server self:ioctl udp_socket { 0x6900 0x6902 };
 allowxperm hal_telephony_server self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 allowxperm hal_telephony_server self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
 r_dir_file(hal_telephony_server, proc_net_type)
 r_dir_file(hal_telephony_server, sysfs_type)
-get_prop(hal_telephony_server, telephony_config_prop_202404)
-get_prop(hal_telephony_server, radio_control_prop_202404)
-get_prop(hal_telephony_server, radio_prop_202404)
-get_prop(hal_telephony_server, telephony_status_prop_202404)
-get_prop(hal_telephony_server, hwservicemanager_prop_202404)
-get_prop(hal_telephony_server, vendor_radio_prop)
-add_service(hal_telephony_server, hal_radio_service_202404)
-add_service(hal_telephony_server, vendor_hal_telephony_service_202404)
-add_service(hal_telephony_server, vendor_hal_telephony_service2)
+get_prop(hal_telephony_server, telephony_config_prop)
+get_prop(hal_telephony_server, hwservicemanager_prop)
+set_prop(hal_telephony_server, radio_control_prop)
+set_prop(hal_telephony_server, radio_prop)
+set_prop(hal_telephony_server, telephony_status_prop)
+set_prop(hal_telephony_server, vendor_radio_prop)
+binder_use(hal_telephony_server)
+hwbinder_use(hal_telephony_server)
+hal_attribute_service(hal_telephony, hal_radio_service)
+hal_attribute_service(hal_telephony, vendor_hal_telephony_service)
+hal_attribute_service(hal_telephony, vendor_hal_telephony_service2)
+hal_attribute_hwservice(hal_telephony, hal_telephony_hwservice)
+type hal_telephony_hwservice, hwservice_manager_type, protected_hwservice;

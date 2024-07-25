@@ -1,1 +1,0 @@
-neverallow { domain -untrusted_app_27_202404 -untrusted_app_25_202404 } file_type:file execmod;

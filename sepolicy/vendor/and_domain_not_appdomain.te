@@ -1,5 +1,7 @@
 neverallow appdomain { domain -appdomain }:process ptrace;
 neverallow appdomain { domain -appdomain }:file no_w_file_perms;
-neverallow { appdomain -shell_202404 } { domain -appdomain }:file no_rw_file_perms;
+neverallow { appdomain -shell } { domain -appdomain }:file no_rw_file_perms;
+allow { domain -appdomain } efs_file:lnk_file r_file_perms;
+allow { domain -appdomain } cgroup:file getattr;
 dontaudit vendor_hal_perf_default { domain -appdomain }:process { getsched setsched };
-dontaudit { domain -appdomain } zygote_202404:unix_dgram_socket getopt;
+dontaudit { domain -appdomain } zygote:unix_dgram_socket getopt;

@@ -1,2 +1,3 @@
 neverallow * { vendor_halserverdomain -vendor_qtidataservices_app }:process dyntransition;
-neverallow { vendor_halserverdomain -vendor_qtidataservices_app } { fs_type file_type -shell_exec_202404 -toolbox_exec_202404 }:file execute_no_trans;
+neverallow { vendor_halserverdomain -vendor_qtidataservices_app } fs_type:file execute_no_trans;
+neverallow { vendor_halserverdomain -vendor_qtidataservices_app } file_type:file execute_no_trans;

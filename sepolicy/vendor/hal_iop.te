@@ -1,21 +1,21 @@
-allow vendor_hal_iop_default proc_202404:file r_file_perms;
+allow vendor_hal_iop_default proc:file r_file_perms;
 allow vendor_hal_iop_client vendor_hal_iop_server:binder { call transfer };
 allow vendor_hal_iop_client vendor_hal_iop_server:fd *;
 allow vendor_hal_iop_client vendor_hal_iop_hwservice:hwservice_manager find;
 allow vendor_hal_iop_client vendor_hal_perf_hwservice:hwservice_manager find;
 allow vendor_hal_iop_server vendor_hal_iop_client:binder transfer;
-allow vendor_hal_iop_server vendor_hal_iop_hwservice:hwservice_manager { add find };
-allow vendor_hal_iop_server hidl_base_hwservice_202404:hwservice_manager add;
 allow vendor_hal_iop vendor_iop_data_file:dir rw_dir_perms;
 allow vendor_hal_iop vendor_iop_data_file:file create_file_perms;
-allow vendor_hal_iop proc_meminfo_202404:file r_file_perms;
+allow vendor_hal_iop proc_meminfo:file r_file_perms;
 attribute vendor_hal_iop;
 attribute vendor_hal_iop_client;
 attribute vendor_hal_iop_server;
+init_daemon_domain(vendor_hal_iop_default)
 get_prop(vendor_hal_iop, vendor_iop_prop)
 get_prop(vendor_hal_iop, vendor_mpctl_prop)
 hal_server_domain(vendor_hal_iop_default, vendor_hal_iop)
 hal_client_domain(vendor_hal_iop_default, vendor_hal_perf)
+add_hwservice(vendor_hal_iop_server, vendor_hal_iop_hwservice)
 type vendor_hal_iop_default, domain, mlstrustedsubject;
 type vendor_hal_iop_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_iop_hwservice, hwservice_manager_type, protected_hwservice;

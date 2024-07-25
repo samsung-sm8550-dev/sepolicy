@@ -1,7 +1,0 @@
-allow extra_free_kbytes_202404 shell_exec_202404:file rx_file_perms;
-allow extra_free_kbytes_202404 system_file_202404:file x_file_perms;
-allow extra_free_kbytes_202404 toolbox_exec_202404:file rx_file_perms;
-allow extra_free_kbytes_202404 proc_extra_free_kbytes_202404:file rw_file_perms;
-allow extra_free_kbytes_202404 proc_watermark_scale_factor_202404:file rw_file_perms;
-allow extra_free_kbytes_202404 proc_zoneinfo_202404:file r_file_perms;
-type extra_free_kbytes_202404, domain;

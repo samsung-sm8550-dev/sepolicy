@@ -1,1 +1,0 @@
-neverallow { domain -crash_dump_202404 -llkd_202404 -runas_app_202404 -simpleperf_202404 -vendor_snapcam_app } vendor_snapcam_app:process ptrace;

@@ -1,12 +1,26 @@
+allow hal_perf_default cameraserver:binder transfer;
+allow hal_perf_default hal_hyper_default:binder transfer;
+allow hal_perf_default hal_hyper_default:dir search;
+allow hal_perf_default system_file:dir r_dir_perms;
+allow hal_perf_default sysfs:file rw_file_perms;
+allow hal_perf_default self:capability kill;
+allow hal_perf_default self:capability sys_admin;
+allow hal_perf_default property_socket:sock_file write;
+allow hal_perf_default proc_sched:file rw_file_perms;
+allow hal_perf_default zygote:file w_file_perms;
+allow hal_perf_default dumpstate:fifo_file write;
+allow hal_perf_default jackservice:binder transfer;
+allow hal_perf_default mediaprovider:binder transfer;
+allow hal_perf_default shell:binder transfer;
 allow vendor_hal_perf_default vendor_tzas_app:binder transfer;
-allow vendor_hal_perf_default cgroup_202404:file r_file_perms;
-allow vendor_hal_perf_default proc_202404:file rw_file_perms;
+allow vendor_hal_perf_default cgroup:file r_file_perms;
+allow vendor_hal_perf_default proc:file rw_file_perms;
 allow vendor_hal_perf_default vendor_mpctl_data_file:dir rw_dir_perms;
 allow vendor_hal_perf_default vendor_mpctl_data_file:file create_file_perms;
 allow vendor_hal_perf_default vendor_lm_data_file:dir rw_dir_perms;
 allow vendor_hal_perf_default vendor_lm_data_file:file create_file_perms;
 allow vendor_hal_perf_default vendor_sysfs_lib:file w_file_perms;
-allow vendor_hal_perf_default proc_meminfo_202404:file r_file_perms;
+allow vendor_hal_perf_default proc_meminfo:file r_file_perms;
 allow vendor_hal_perf_default self:netlink_generic_socket create_socket_perms_no_ioctl;
 allow vendor_hal_perf_default self:capability kill;
 allow vendor_hal_perf_default self:capability { setuid sys_nice };
@@ -16,24 +30,20 @@ allow vendor_hal_perf_default appdomain:process setsched;
 allow vendor_hal_perf_default appdomain:process getsched;
 allow vendor_hal_perf_default appdomain:process sigkill;
 allow vendor_hal_perf_default appdomain:file rw_file_perms;
-allow vendor_hal_perf_default property_socket_202404:sock_file write;
-allow vendor_hal_perf_default vendor_mpctl_prop:property_service set;
-allow vendor_hal_perf_default vendor_wlc_public_prop_202404:property_service set;
-allow vendor_hal_perf_default vendor_procomp_prop:property_service set;
-allow vendor_hal_perf_default graphics_device_202404:chr_file rw_file_perms;
-allow vendor_hal_perf_default block_device_202404:dir { open read search };
-allow vendor_hal_perf_default proc_diskstats_202404:file { getattr open read };
-allow vendor_hal_perf_default surfaceflinger_202404:process setsched;
+allow vendor_hal_perf_default graphics_device:chr_file rw_file_perms;
+allow vendor_hal_perf_default block_device:dir { open read search };
+allow vendor_hal_perf_default proc_diskstats:file { getattr open read };
+allow vendor_hal_perf_default surfaceflinger:process setsched;
 allow vendor_hal_perf_default hal_graphics_composer_default:process setsched;
 allow vendor_hal_perf_client vendor_hal_perf_server:binder { call transfer };
 allow vendor_hal_perf_client vendor_hal_perf_server:fd *;
 allow vendor_hal_perf_client vendor_hal_perf_hwservice:hwservice_manager find;
 allow vendor_hal_perf_server vendor_hal_perf_client:binder transfer;
-allow vendor_hal_perf_server vendor_hal_perf_hwservice:hwservice_manager { add find };
-allow vendor_hal_perf_server hidl_base_hwservice_202404:hwservice_manager add;
+allow vendor_hal_perf_server servicemanager:binder { call transfer };
+allow vendor_hal_perf_server servicemanager:fd *;
 allow vendor_hal_perf vendor_latency_device:chr_file rw_file_perms;
-allow vendor_hal_perf sysfs_devices_system_cpu_202404:dir r_dir_perms;
-allow vendor_hal_perf sysfs_devices_system_cpu_202404:file rw_file_perms;
+allow vendor_hal_perf sysfs_devices_system_cpu:dir r_dir_perms;
+allow vendor_hal_perf sysfs_devices_system_cpu:file rw_file_perms;
 allow vendor_hal_perf vendor_sysfs_battery_supply:dir r_dir_perms;
 allow vendor_hal_perf vendor_sysfs_battery_supply:file rw_file_perms;
 allow vendor_hal_perf vendor_sysfs_cpu_boost:dir r_dir_perms;
@@ -66,24 +76,33 @@ allow vendor_hal_perf vendor_sysfs_mpctl:dir r_dir_perms;
 allow vendor_hal_perf vendor_sysfs_mpctl:file rw_file_perms;
 allow vendor_hal_perf vendor_sysfs_qfprom:dir r_dir_perms;
 allow vendor_hal_perf vendor_sysfs_qfprom:file rw_file_perms;
-allow vendor_hal_perf sysfs_dm_202404:file rw_file_perms;
+allow vendor_hal_perf sysfs_dm:file rw_file_perms;
 allow vendor_hal_perf vendor_qdisplay_service:service_manager find;
-allow vendor_hal_perf vndbinder_device_202404:chr_file rw_file_perms;
-allow vendor_hal_perf vndservicemanager_202404:binder { call transfer };
 dontaudit vendor_hal_perf_default self:capability dac_override;
-dontaudit vendor_hal_perf_default system_server_202404:dir search;
+dontaudit vendor_hal_perf_default system_server:dir search;
+typealias(hal_perf_hwservice)
+typealiasactual(hal_perf_hwservice)
 attribute vendor_hal_perf;
 attribute vendor_hal_perf_client;
 attribute vendor_hal_perf_server;
+init_daemon_domain(hal_perf_default)
+init_daemon_domain(vendor_hal_perf_default)
+r_dir_file(hal_perf_default, zygote)
+r_dir_file(vendor_hal_perf_default, hal_hyper_default)
+r_dir_file(vendor_hal_perf_default, system_server)
 r_dir_file(vendor_hal_perf_default, appdomain)
-r_dir_file(vendor_hal_perf_default, hal_power_default)
-unix_socket_connect(vendor_hal_perf_default, vendor_thermal, init_202404)
+unix_socket_connect(vendor_hal_perf_default, property, vendor_thermal-engine)
+unix_socket_connect(vendor_hal_perf_default, vendor_thermal, init)
 unix_socket_connect(vendor_hal_perf_default, vendor_thermal, vendor_thermal-engine)
-get_prop(vendor_hal_perf_default, vendor_mpctl_prop)
-get_prop(vendor_hal_perf_default, vendor_wlc_public_prop_202404)
-get_prop(vendor_hal_perf_default, vendor_procomp_prop)
+get_prop(hal_perf_default, hwservicemanager_prop)
+get_prop(hal_perf_default, sec_camera_prop)
 get_prop(vendor_hal_perf, vendor_freq_prop)
 get_prop(vendor_hal_perf, vendor_mpctl_prop)
+set_prop(vendor_hal_perf_default, vendor_mpctl_prop)
+set_prop(vendor_hal_perf_default, vendor_wlc_public_prop)
+set_prop(vendor_hal_perf_default, vendor_procomp_prop)
+hwbinder_use(hal_perf_default)
+vndbinder_use(vendor_hal_perf)
 hal_server_domain(vendor_hal_perf_default, vendor_hal_perf)
 hal_client_domain(vendor_hal_perf_default, hal_allocator)
 hal_client_domain(vendor_hal_perf_default, hal_graphics_composer)
@@ -93,6 +112,10 @@ hal_client_domain(vendor_hal_perf_default, vendor_hal_iop)
 hal_client_domain(vendor_hal_perf_default, vendor_hal_srvctracker)
 hal_client_domain(vendor_hal_perf_default, vendor_hal_mem_pasrmanager)
 hal_client_domain(vendor_hal_perf_default, vendor_hal_poweroptservice)
+add_hwservice(vendor_hal_perf_server, vendor_hal_perf_hwservice)
+hal_attribute_service(vendor_hal_perf, vendor_hal_perf2_service)
+type hal_perf_default, domain, hal_perf, hal_perf_server, mlstrustedsubject, vendor_halserverdomain;
 type vendor_hal_perf_default, domain, mlstrustedsubject;
+type hal_perf_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_perf_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_perf_hwservice, hwservice_manager_type, protected_hwservice;

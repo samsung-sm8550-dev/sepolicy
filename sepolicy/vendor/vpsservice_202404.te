@@ -1,5 +1,0 @@
-allow vendor_vpsservice_202404 hwservicemanager_202404:binder { call transfer };
-get_prop(vendor_vpsservice_202404, vendor_iop_prop)
-hal_client_domain(vendor_vpsservice_202404, vendor_hal_iop)
-hal_client_domain(vendor_vpsservice_202404, vendor_hal_vpp)
-type vendor_vpsservice_202404, coredomain, domain;

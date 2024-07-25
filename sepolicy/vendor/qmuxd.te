@@ -1,7 +1,5 @@
-allow vendor_qmuxd property_socket_202404:sock_file write;
-allow vendor_qmuxd init_202404:unix_stream_socket connectto;
-allow vendor_qmuxd vendor_ctl_qmuxd_prop:property_service set;
-get_prop(vendor_qmuxd, vendor_ctl_qmuxd_prop)
+init_daemon_domain(vendor_qmuxd)
+set_prop(vendor_qmuxd, vendor_ctl_qmuxd_prop)
 net_domain(vendor_qmuxd)
 type vendor_qmuxd, domain;
 type vendor_qmuxd_exec, exec_type, file_type, vendor_file_type;

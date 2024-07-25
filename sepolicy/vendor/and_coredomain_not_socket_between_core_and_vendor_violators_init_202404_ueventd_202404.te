@@ -1,1 +1,0 @@
-neverallow { coredomain -socket_between_core_and_vendor_violators -init_202404 -ueventd_202404 } { dev_type file_type -core_data_file_type -app_data_file_type -coredomain_socket -unlabeled_202404 }:sock_file { audit_access create execmod execute link lock map mounton open quotaon relabelfrom relabelto rename setattr unlink watch watch_mount watch_reads watch_sb watch_with_perm };

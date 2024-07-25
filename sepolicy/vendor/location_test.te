@@ -1,8 +1,0 @@
-allow vendor_location_test shell_202404:process sigchld;
-allow vendor_location_test shell_202404:fd *;
-allow vendor_location_test devpts_202404:chr_file rw_file_perms;
-allow vendor_location_test adbd_202404:fd *;
-allow vendor_location_test adbd_202404:unix_stream_socket { getattr read write };
-allow vendor_location_test self:qipcrtr_socket create_socket_perms_no_ioctl;
-type vendor_location_test, domain;
-type vendor_location_test_exec, exec_type, file_type, vendor_file_type;

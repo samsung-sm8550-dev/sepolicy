@@ -1,9 +1,10 @@
-allow vendor_msm_irqbalanced cgroup_202404:dir { add_name create };
-allow vendor_msm_irqbalanced proc_202404:file w_file_perms;
-allow vendor_msm_irqbalanced proc_202404:file r_file_perms;
-allow vendor_msm_irqbalanced sysfs_devices_system_cpu_202404:file w_file_perms;
-allow vendor_msm_irqbalanced proc_interrupts_202404:file r_file_perms;
-allow vendor_msm_irqbalanced proc_stat_202404:file r_file_perms;
+allow vendor_msm_irqbalanced cgroup:dir { add_name create };
+allow vendor_msm_irqbalanced proc:file w_file_perms;
+allow vendor_msm_irqbalanced proc:file r_file_perms;
+allow vendor_msm_irqbalanced sysfs_devices_system_cpu:file w_file_perms;
+allow vendor_msm_irqbalanced proc_interrupts:file r_file_perms;
+allow vendor_msm_irqbalanced proc_stat:file r_file_perms;
 allow vendor_msm_irqbalanced vendor_sysfs_irqbalance:file r_file_perms;
+init_daemon_domain(vendor_msm_irqbalanced)
 type vendor_msm_irqbalanced, domain;
 type vendor_msm_irqbalanced_exec, exec_type, file_type, vendor_file_type;

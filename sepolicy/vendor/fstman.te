@@ -1,8 +1,7 @@
-allow vendor_fstman hwservicemanager_202404:binder { call transfer };
-allow vendor_fstman system_file_202404:dir r_dir_perms;
+allow vendor_fstman system_file:dir r_dir_perms;
 allow vendor_fstman self:capability { net_admin net_raw };
 allow vendor_fstman self:netlink_route_socket nlmsg_write;
-allow vendor_fstman sysfs_net_202404:dir r_dir_perms;
+allow vendor_fstman sysfs_net:dir r_dir_perms;
 allow vendor_fstman vendor_sysfs_bond0:file rw_file_perms;
 allow vendor_fstman vendor_sysfs_wigig:file rw_file_perms;
 allow vendor_fstman vendor_wifi_vendor_data_file:dir rw_dir_perms;
@@ -15,8 +14,10 @@ allow vendor_fstman vendor_wigig_vendor_wpa_socket:sock_file rw_file_perms;
 allow vendor_fstman hostapd_data_file:dir rw_dir_perms;
 allow vendor_fstman hostapd_data_file:sock_file create_file_perms;
 allowxperm vendor_fstman self:ioctl udp_socket { range 0x8913 0x8914 0x8924 0x8943 0x8946 range 0x8990 0x8991 };
+init_daemon_domain(vendor_fstman)
 r_dir_file(vendor_fstman, vendor_wifi_vendor_data_file)
-get_prop(vendor_fstman, hwservicemanager_prop_202404)
+get_prop(vendor_fstman, hwservicemanager_prop)
+hwbinder_use(vendor_fstman)
 net_domain(vendor_fstman)
 hal_client_domain(vendor_fstman, vendor_hal_capabilityconfigstore_qti)
 type vendor_fstman, domain, vendor_hal_fstman, vendor_hal_fstman_server, vendor_halserverdomain;

@@ -1,2 +1,0 @@
-neverallow { domain -vendor_libsochelpertest_app } vendor_libsochelpertest_app_userfaultfd:anon_inode *;
-neverallow { vendor_libsochelpertest_app -runas_app_202404 -shell_202404 -simpleperf_202404 } { domain -vendor_libsochelpertest_app }:file no_rw_file_perms;

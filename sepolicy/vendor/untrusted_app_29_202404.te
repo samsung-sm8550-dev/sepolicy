@@ -1,3 +1,0 @@
-hal_client_domain(untrusted_app_29_202404, vendor_hal_dspmanager)
-hal_client_domain(untrusted_app_29_202404, vendor_hal_qspmhal)
-type untrusted_app_29_202404, domain;

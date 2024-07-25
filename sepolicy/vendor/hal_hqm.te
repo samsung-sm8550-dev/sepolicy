@@ -1,0 +1,63 @@
+allow hal_hqm_client hal_hqm_server:binder { call transfer };
+allow hal_hqm_client hal_hqm_server:binder transfer;
+allow hal_hqm_client hal_hqm_server:fd *;
+allow hal_hqm_client hal_hqm_hwservice:hwservice_manager find;
+allow hal_hqm_server hal_hqm_client:binder transfer;
+allow hal_hqm_server hal_hqm_client:binder { call transfer };
+allow hal_hqm_server hal_hqm_client:fd *;
+allow hal_hqm_default sysfs_ss_writable:dir r_dir_perms;
+allow hal_hqm_default sysfs_ss_writable:file rw_file_perms;
+allow hal_hqm_default sysfs_ss_writable:lnk_file rw_file_perms;
+allow hal_hqm_default sysfs_camera_writable:dir r_dir_perms;
+allow hal_hqm_default sysfs_camera_writable:file rw_file_perms;
+allow hal_hqm_default sysfs_camera_writable:lnk_file rw_file_perms;
+allow hal_hqm_default vendor_sysfs_scsi_host:dir r_dir_perms;
+allow hal_hqm_default vendor_sysfs_scsi_host:file rw_file_perms;
+allow hal_hqm_default vendor_sysfs_scsi_host:lnk_file rw_file_perms;
+allow hal_hqm_default sysfs_lcd_writable:dir r_dir_perms;
+allow hal_hqm_default sysfs_lcd_writable:file rw_file_perms;
+allow hal_hqm_default sysfs_lcd_writable:lnk_file rw_file_perms;
+allow hal_hqm_default sysfs_batteryinfo:dir r_dir_perms;
+allow hal_hqm_default sysfs_batteryinfo:file rw_file_perms;
+allow hal_hqm_default sysfs_batteryinfo:lnk_file rw_file_perms;
+allow hal_hqm_default sec_efs_file:dir search;
+allow hal_hqm_default sec_efs_file:file r_file_perms;
+allow hal_hqm_default sysfs_usb:file rw_file_perms;
+allow hal_hqm_default sysfs_sec:dir r_dir_perms;
+allow hal_hqm_default sysfs_sec:file rw_file_perms;
+allow hal_hqm_default vendor_sysfs_ap_pmic:file r_file_perms;
+allow hal_hqm_default vendor_sysfs_blksec:file w_file_perms;
+allow hal_hqm_default sysfs_ski_hwparam_writable:file rw_file_perms;
+allow hal_hqm_default sysfs_ski_sensor_readable:file r_file_perms;
+allow hal_hqm_default vendor_sysfs_dpui:file w_file_perms;
+allow hal_hqm_default vendor_sysfs_hrm_sensor:file rw_file_perms;
+allow hal_hqm_default sysfs_sensor_writable:file w_file_perms;
+allow hal_hqm_default sysfs_devices_block:dir r_dir_perms;
+allow hal_hqm_default sysfs_devices_block:file rw_file_perms;
+allow hal_hqm_default sec_debugfs:dir r_dir_perms;
+allow hal_hqm_default vendor_sysfs_mmc_host:file w_file_perms;
+allow hal_hqm_default sysfs_ski_display_writable:file rw_file_perms;
+allow hal_hqm_default sysfs_ski_display_writable:dir r_dir_perms;
+allow hal_hqm_default vendor_sysfs_sensors:dir search;
+dontaudit hal_hqm_default dumplog_data_file:dir search;
+init_daemon_domain(hal_hqm_default)
+r_dir_file(hal_hqm_default, app_efs_file)
+r_dir_file(hal_hqm_default, sysfs_fs_f2fs)
+r_dir_file(hal_hqm_default, sysfs_ski_hwparam_readable)
+r_dir_file(hal_hqm_default, sysfs_battery)
+r_dir_file(hal_hqm_default, vendor_sysfs_cirrus_cal)
+r_dir_file(hal_hqm_default, sysfs_ski_ufs_writable)
+r_dir_file(hal_hqm_default, vendor_sysfs_blksec)
+r_dir_file(hal_hqm_default, sysfs_rtc)
+r_dir_file(hal_hqm_default, sysfs_ski_hwparam_writable)
+r_dir_file(hal_hqm_default, vendor_sysfs_dpui)
+r_dir_file(hal_hqm_default, sysfs_sensor_writable)
+r_dir_file(hal_hqm_default, sysfs_qrandom)
+r_dir_file(hal_hqm_default, vendor_sysfs_mmc)
+r_dir_file(hal_hqm_default, vendor_sysfs_mmc_host)
+r_dir_file(hal_hqm_default, vendor_sysfs_battery_supply)
+hal_server_domain(hal_hqm_default, hal_hqm)
+add_hwservice(hal_hqm_server, hal_hqm_hwservice)
+type hal_hqm_default, domain;
+type hal_hqm_default_exec, exec_type, file_type, vendor_file_type;
+type hal_hqm_hwservice, hwservice_manager_type;

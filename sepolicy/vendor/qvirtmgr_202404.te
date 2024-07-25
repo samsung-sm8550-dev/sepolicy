@@ -1,7 +1,0 @@
-allow vendor_qvirtmgr_202404 vendor_sysfs_guestvm:file rw_file_perms;
-allow vendor_qvirtmgr_202404 vendor_virtio_chr_device:chr_file rw_file_perms;
-allow vendor_qvirtmgr_202404 vendor_gunyah_chr_device:chr_file rw_file_perms;
-allow vendor_qvirtmgr_202404 same_process_hal_file_202404:file r_file_perms;
-allow vendor_qvirtmgr_202404 mnt_product_file_202404:file rw_file_perms;
-allow vendor_qvirtmgr_202404 mnt_product_file_202404:dir search;
-type vendor_qvirtmgr_202404, domain;

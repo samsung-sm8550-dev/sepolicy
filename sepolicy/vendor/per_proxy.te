@@ -1,8 +1,8 @@
 allow vendor_per_proxy vendor_per_mgr_service:service_manager find;
-allow vendor_per_proxy vndbinder_device_202404:chr_file rw_file_perms;
-allow vendor_per_proxy vndservicemanager_202404:binder { call transfer };
 allow vendor_per_proxy vendor_per_mgr:binder { call transfer };
 allow vendor_per_proxy vendor_per_mgr:binder transfer;
 allow vendor_per_proxy vendor_per_mgr:fd *;
+init_daemon_domain(vendor_per_proxy)
+vndbinder_use(vendor_per_proxy)
 type vendor_per_proxy, domain;
 type vendor_per_proxy_exec, exec_type, file_type, vendor_file_type;

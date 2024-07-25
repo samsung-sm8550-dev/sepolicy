@@ -1,8 +1,4 @@
-allow stats_service_server fwk_stats_hwservice_202404:hwservice_manager { add find };
-allow stats_service_server hidl_base_hwservice_202404:hwservice_manager add;
-allow stats_service_server su_202404:tcp_socket { accept getopt read write };
-allow stats_service_server servicemanager_202404:binder { call transfer };
-allow stats_service_server hal_contexthub_default:binder transfer;
-allow stats_service_server hal_vehicle_default:binder transfer;
 attribute stats_service_server;
-add_service(stats_service_server, fwk_stats_service_202404)
+binder_use(stats_service_server)
+add_service(stats_service_server, fwk_stats_service)
+add_hwservice(stats_service_server, fwk_stats_hwservice)

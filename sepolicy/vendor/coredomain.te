@@ -1,8 +1,11 @@
-allow coredomain system_file_202404:file { execute getattr map open read };
-allow coredomain system_data_file_202404:dir getattr;
-allow coredomain system_userdir_file_202404:dir { getattr search };
-allow coredomain media_userdir_file_202404:dir search;
-dontaudit coredomain vendor_gles_data_file:dir search;
-dontaudit coredomain vendor_gles_data_file:file *;
+neverallow coredomain vendor_service:service_manager add;
+allow coredomain system_file:file { execute getattr map open read };
+allow coredomain system_data_file:dir getattr;
+allow coredomain tmpfs:lnk_file r_file_perms;
+dontaudit coredomain mnt_vendor_file:dir search;
 attribute coredomain_hwservice;
 attribute coredomain;
+get_prop(coredomain, product_ship_prop)
+get_prop(coredomain, vendor_debug_egl_prop)
+get_prop(coredomain, rfkilldisabled_prop)
+get_prop(coredomain, em_version_prop)

@@ -1,1 +1,0 @@
-neverallow { domain -bufferhubd_202404 } pdx_bufferhub_client_endpoint_socket_type:unix_stream_socket { accept listen };

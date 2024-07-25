@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_scve_server } vendor_hal_scve_hwservice:hwservice_manager add;

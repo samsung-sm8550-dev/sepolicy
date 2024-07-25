@@ -1,8 +1,0 @@
-allow vendor_sensors_test shell_202404:process sigchld;
-allow vendor_sensors_test devpts_202404:chr_file rw_file_perms;
-allow vendor_sensors_test vendor_sensors:unix_stream_socket connectto;
-allow vendor_sensors_test sensors_device_202404:chr_file rw_file_perms;
-allow vendor_sensors_test vendor_smd_device:chr_file rw_file_perms;
-allow vendor_sensors_test socket_device_202404:dir r_dir_perms;
-type vendor_sensors_test, domain;
-type vendor_sensors_test_exec, exec_type, file_type, vendor_file_type;

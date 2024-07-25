@@ -1,7 +1,0 @@
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:file *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:dir *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:lnk_file *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:chr_file *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:blk_file *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:sock_file *;
-neverallow { domain -credstore_202404 -init_202404 } credstore_data_file_202404:fifo_file *;

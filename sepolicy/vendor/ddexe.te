@@ -1,0 +1,14 @@
+allow ddexe sysfs_sec:file rw_file_perms;
+allow ddexe app_efs_file:dir r_dir_perms;
+allow ddexe app_efs_file:file r_file_perms;
+allow ddexe system_server:unix_stream_socket connectto;
+allow ddexe serial_device:chr_file rw_file_perms;
+allow ddexe sysfs_ski_muic_writable:dir r_dir_perms;
+allow ddexe sysfs_ski_muic_writable:file rw_file_perms;
+allow ddexe pacmservice_socket:dir rw_dir_perms;
+allow ddexe pacmservice_socket:sock_file create_file_perms;
+allow ddexe gadget_serial_device:chr_file rw_file_perms;
+r_dir_file(ddexe, sysfs_ss_writable)
+r_dir_file(ddexe, sysfs_ski_muic_readable)
+type ddexe, coredomain, domain;
+type ddexe_exec, exec_type, file_type, system_file_type;

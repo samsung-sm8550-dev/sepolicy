@@ -1,3 +1,4 @@
 attribute vendor_qccsyshal;
 attribute vendor_qccsyshal_server;
 attribute vendor_qccsyshal_client;
+type vendor_qccsyshal_hwservice, coredomain_hwservice, hwservice_manager_type, protected_hwservice;

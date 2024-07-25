@@ -1,0 +1,29 @@
+allow hal_mpp_default servicemanager:binder transfer;
+allow hal_mpp_default ion_device:chr_file r_file_perms;
+allow hal_mpp_default gpu_device:chr_file rw_file_perms;
+allow hal_mpp_default hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_mpp_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_mpp_default dumpstate:fifo_file write;
+allow hal_mpp_default mpp_vendor_data_file:file create_file_perms;
+allow hal_mpp_default mpp_vendor_data_file:dir create_dir_perms;
+allow hal_mpp_default hidl_token_hwservice:hwservice_manager find;
+allow hal_mpp_default mediacodec:binder transfer;
+allow hal_mpp_default vendor_xdsp_device:chr_file r_file_perms;
+allow hal_mpp_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_mpp_server servicemanager:binder { call transfer };
+allow hal_mpp_server servicemanager:fd *;
+allow hal_mpp_server hal_mpp_client:binder transfer;
+allow hal_mpp_server hal_mpp_client:binder { call transfer };
+allow hal_mpp_server hal_mpp_client:fd *;
+allow hal_mpp_client hal_mpp_service:service_manager find;
+allow hal_mpp_client hal_mpp_server:binder { call transfer };
+allow hal_mpp_client hal_mpp_server:binder transfer;
+allow hal_mpp_client hal_mpp_server:fd *;
+init_daemon_domain(hal_mpp_default)
+get_prop(hal_mpp_default, vendor_adsprpc_prop)
+hal_server_domain(hal_mpp_default, hal_mpp)
+hal_client_domain(hal_mpp_default, hal_allocator)
+hal_client_domain(hal_mpp_default, hal_graphics_allocator)
+add_service(hal_mpp_server, hal_mpp_service)
+type hal_mpp_default, domain;
+type hal_mpp_default_exec, exec_type, file_type, vendor_file_type;

@@ -1,1 +1,0 @@
-neverallow { domain -hal_health_client -hal_health_server } hal_health_hwservice_202404:hwservice_manager find;

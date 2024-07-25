@@ -1,1 +1,0 @@
-neverallow { domain -hal_power_server } hal_power_hwservice_202404:hwservice_manager add;

@@ -1,1 +1,0 @@
-neverallow { domain -hal_lineage_fastcharge_server } hal_lineage_fastcharge_hwservice:hwservice_manager add;

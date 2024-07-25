@@ -1,3 +1,0 @@
-allow ppp_202404 mtp_202404:pppox_socket rw_socket_perms;
-allowxperm ppp_202404 mtp_202404:ioctl pppox_socket { range 0x7436 0x7441 range 0x7446 0x7447 range 0x744b 0x745a range 0x7480 0x7488 };
-type ppp_202404, domain;

@@ -1,1 +1,0 @@
-neverallow { domain -init_202404 -shell_202404 -system_server_202404 -vendor_init_202404 } power_debug_prop_202404:property_service set;

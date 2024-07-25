@@ -1,0 +1,1 @@
+neverallow { domain -init -ueventd } sysfs_usermodehelper:file { append write };

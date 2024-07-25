@@ -1,2 +1,0 @@
-neverallow { domain -init_202404 -ueventd_202404 -vendor_init_202404 } vendor_xdsp_device:chr_file { audit_access entrypoint execmod mounton no_w_file_perms no_x_file_perms quotaon relabelto watch_mount watch_sb watch_with_perm };
-neverallow { domain -init_202404 -ueventd_202404 -vendor_init_202404 } vendor_qdsp_device:chr_file { audit_access entrypoint execmod mounton no_w_file_perms no_x_file_perms quotaon relabelto watch_mount watch_sb watch_with_perm };

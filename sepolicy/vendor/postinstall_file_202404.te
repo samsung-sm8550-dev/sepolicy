@@ -1,2 +1,0 @@
-allow postinstall_file_202404 self:filesystem associate;
-type postinstall_file_202404, file_type;

@@ -4,16 +4,26 @@ expandtypeattribute(hal_uwb_server)
 allow hal_uwb_client hal_uwb_server:binder { call transfer };
 allow hal_uwb_client hal_uwb_server:binder transfer;
 allow hal_uwb_client hal_uwb_server:fd *;
-allow hal_uwb_client hal_uwb_service_202404:service_manager find;
-allow hal_uwb_client servicemanager_202404:binder { call transfer };
-allow hal_uwb_client servicemanager_202404:fd *;
+allow hal_uwb_client servicemanager:binder { call transfer };
+allow hal_uwb_client servicemanager:fd *;
 allow hal_uwb_server hal_uwb_client:binder transfer;
 allow hal_uwb_server hal_uwb_client:binder { call transfer };
 allow hal_uwb_server hal_uwb_client:fd *;
-allow hal_uwb_server su_202404:tcp_socket { accept getopt read write };
-allow hal_uwb_server servicemanager_202404:binder { call transfer };
-allow hal_uwb_server servicemanager_202404:fd *;
+allow hal_uwb_server servicemanager:binder { call transfer };
+allow hal_uwb_server servicemanager:fd *;
+allow hal_uwb_default servicemanager:binder transfer;
+allow hal_uwb_default sec_efs_file:dir create_dir_perms;
+allow hal_uwb_default sec_efs_file:file create_file_perms;
+allow hal_uwb_default uwb_sr_device:chr_file rw_file_perms;
+allow hal_uwb_default uwb_vendor_data_file:dir rw_dir_perms;
+allow hal_uwb_default uwb_vendor_data_file:file create_file_perms;
+allow hal_uwb_default uwb_device:chr_file rw_file_perms;
+allow hal_uwb_default dumpstate:fifo_file rw_file_perms;
+init_daemon_domain(hal_uwb_default)
+r_dir_file(hal_uwb_default, proc_uwblog)
+get_prop(hal_uwb_default, uwb_regulation_skip_prop)
+set_prop(hal_uwb_default, vendor_uwb_prop)
 hal_server_domain(hal_uwb_default, hal_uwb)
-add_service(hal_uwb_server, hal_uwb_service_202404)
+hal_attribute_service(hal_uwb, hal_uwb_service)
 type hal_uwb_default, domain;
 type hal_uwb_default_exec, exec_type, file_type, vendor_file_type;

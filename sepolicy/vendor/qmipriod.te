@@ -3,8 +3,7 @@ allow vendor_qmipriod vendor_netmgrd_socket:dir r_dir_perms;
 allow vendor_qmipriod vendor_netmgrd_socket:dir w_dir_perms;
 allow vendor_qmipriod vendor_netmgrd_socket:sock_file { getattr read write };
 allow vendor_qmipriod vendor_netmgrd_socket:sock_file create;
-allow vendor_qmipriod vendor_qmipriod_data_file:dir rw_dir_perms;
-allow vendor_qmipriod vendor_qmipriod_data_file:file create_file_perms;
+init_daemon_domain(vendor_qmipriod)
 unix_socket_connect(vendor_qmipriod, vendor_netmgrd, vendor_netmgrd)
 net_domain(vendor_qmipriod)
 type vendor_qmipriod, domain;

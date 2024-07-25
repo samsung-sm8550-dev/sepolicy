@@ -1,12 +1,13 @@
 allow vendor_tlocd vendor_tlocd_data_file:dir create_dir_perms;
 allow vendor_tlocd vendor_tlocd_data_file:file create_file_perms;
 allow vendor_tlocd vendor_tlocd_data_file:fifo_file create_file_perms;
-allow vendor_tlocd tee_device_202404:chr_file rw_file_perms;
+allow vendor_tlocd tee_device:chr_file rw_file_perms;
 allow vendor_tlocd self:socket create_socket_perms;
 allow vendor_tlocd self:qipcrtr_socket create_socket_perms;
-allow vendor_tlocd ion_device_202404:chr_file rw_file_perms;
+allow vendor_tlocd ion_device:chr_file rw_file_perms;
 allowxperm vendor_tlocd self:ioctl socket { range 0xc300 0xc305 };
 allowxperm vendor_tlocd self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+init_daemon_domain(vendor_tlocd)
 r_dir_file(vendor_tlocd, firmware_file)
 type vendor_tlocd, domain;
 type vendor_tlocd_exec, exec_type, file_type, vendor_file_type;

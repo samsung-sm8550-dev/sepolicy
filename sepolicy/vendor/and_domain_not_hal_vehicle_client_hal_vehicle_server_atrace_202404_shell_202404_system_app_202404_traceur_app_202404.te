@@ -1,1 +1,0 @@
-neverallow { domain -hal_vehicle_client -hal_vehicle_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_vehicle_service_202404:service_manager find;

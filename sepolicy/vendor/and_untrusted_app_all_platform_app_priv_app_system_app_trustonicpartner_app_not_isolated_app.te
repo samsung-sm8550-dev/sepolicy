@@ -1,0 +1,4 @@
+allow { untrusted_app_all platform_app priv_app system_app trustonicpartner_app -isolated_app } apaservice_service:service_manager find;
+allow { untrusted_app_all platform_app priv_app system_app trustonicpartner_app -isolated_app } jackservice_service:service_manager find;
+allow { untrusted_app_all platform_app priv_app system_app trustonicpartner_app -isolated_app } directpeninputmanager_service:service_manager find;
+allow { untrusted_app_all platform_app priv_app system_app trustonicpartner_app -isolated_app } tlc_server_service:service_manager find;

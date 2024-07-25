@@ -1,0 +1,3 @@
+get_prop(Sats_service, exported_default_prop)
+get_prop(Sats_service, domain_read_prop)
+type Sats_service, service_manager_type, system_api_service, system_server_service;

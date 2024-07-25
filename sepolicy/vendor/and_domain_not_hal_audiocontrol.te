@@ -1,1 +1,0 @@
-neverallow { domain -hal_audiocontrol_server } hal_audiocontrol_hwservice_202404:hwservice_manager add;

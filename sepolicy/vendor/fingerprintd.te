@@ -1,0 +1,25 @@
+allow fingerprintd system_file:dir r_dir_perms;
+allow fingerprintd fingerprintd_data_file:file create_file_perms;
+allow fingerprintd fingerprintd_data_file:dir rw_dir_perms;
+allow fingerprintd apc_service:service_manager find;
+allow fingerprintd keystore_service:service_manager find;
+allow fingerprintd legacykeystore_service:service_manager find;
+allow fingerprintd keystore:binder { call transfer };
+allow fingerprintd keystore:binder transfer;
+allow fingerprintd keystore:fd *;
+allow fingerprintd keystore:keystore_key add_auth;
+allow fingerprintd keystore:keystore2 add_auth;
+allow fingerprintd system_server:binder { call transfer };
+allow fingerprintd system_server:fd *;
+allow fingerprintd permission_service:service_manager find;
+allow fingerprintd ion_device:chr_file r_file_perms;
+allow fingerprintd system_app:binder transfer;
+allow fingerprintd tzdaemon:fd *;
+allow fingerprintd tz_user_device:chr_file rw_file_perms;
+allow fingerprintd tee_efs_file:dir search;
+get_prop(fingerprintd, tzdaemon_prop)
+get_prop(fingerprintd, vendor_teegris_prop)
+binder_use(fingerprintd)
+add_service(fingerprintd, fingerprintd_service)
+type fingerprintd, domain;
+type fingerprintd_exec, exec_type, file_type, system_file_type;

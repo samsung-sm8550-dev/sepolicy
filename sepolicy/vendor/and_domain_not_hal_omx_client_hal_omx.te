@@ -1,1 +1,0 @@
-neverallow { domain -hal_omx_client -hal_omx_server } hal_omx_hwservice_202404:hwservice_manager find;

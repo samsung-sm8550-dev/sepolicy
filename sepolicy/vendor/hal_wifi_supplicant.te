@@ -3,35 +3,30 @@ expandtypeattribute(hal_wifi_supplicant_client)
 expandtypeattribute(hal_wifi_supplicant_server)
 neverallow hal_wifi_supplicant_server sdcard_type:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_wifi_supplicant_server sdcard_type:file *;
-neverallow hal_wifi_supplicant_server fuse_202404:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
-neverallow hal_wifi_supplicant_server fuse_202404:file *;
+neverallow hal_wifi_supplicant_server fuse:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
+neverallow hal_wifi_supplicant_server fuse:file *;
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:binder { call transfer };
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:binder transfer;
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:fd *;
-allow hal_wifi_supplicant_client hal_wifi_supplicant_hwservice_202404:hwservice_manager find;
-allow hal_wifi_supplicant_client hal_wifi_supplicant_service_202404:service_manager find;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder transfer;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder { call transfer };
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:fd *;
-allow hal_wifi_supplicant_server hal_wifi_supplicant_hwservice_202404:hwservice_manager { add find };
-allow hal_wifi_supplicant_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_wifi_supplicant_server su_202404:tcp_socket { accept getopt read write };
-allow hal_wifi_supplicant_server servicemanager_202404:binder { call transfer };
+allow hal_wifi_supplicant kernel:system module_request;
 allow hal_wifi_supplicant self:capability { net_admin net_raw setgid setuid };
 allow hal_wifi_supplicant self:cap_userns { net_admin net_raw setgid setuid };
 allow hal_wifi_supplicant self:netlink_route_socket nlmsg_write;
 allow hal_wifi_supplicant self:netlink_socket create_socket_perms_no_ioctl;
 allow hal_wifi_supplicant self:netlink_generic_socket create_socket_perms_no_ioctl;
 allow hal_wifi_supplicant self:packet_socket create_socket_perms;
-allow hal_wifi_supplicant cgroup_202404:dir create_dir_perms;
-allow hal_wifi_supplicant cgroup_v2_202404:dir create_dir_perms;
-allow hal_wifi_supplicant apc_service_202404:service_manager find;
-allow hal_wifi_supplicant keystore_service_202404:service_manager find;
-allow hal_wifi_supplicant legacykeystore_service_202404:service_manager find;
-allow hal_wifi_supplicant keystore_202404:binder { call transfer };
-allow hal_wifi_supplicant keystore_202404:binder transfer;
-allow hal_wifi_supplicant keystore_202404:fd *;
-allow hal_wifi_supplicant wifi_key_202404:keystore2_key { get_info use };
+allow hal_wifi_supplicant cgroup:dir create_dir_perms;
+allow hal_wifi_supplicant cgroup_v2:dir create_dir_perms;
+allow hal_wifi_supplicant apc_service:service_manager find;
+allow hal_wifi_supplicant keystore_service:service_manager find;
+allow hal_wifi_supplicant legacykeystore_service:service_manager find;
+allow hal_wifi_supplicant keystore:binder { call transfer };
+allow hal_wifi_supplicant keystore:binder transfer;
+allow hal_wifi_supplicant keystore:fd *;
+allow hal_wifi_supplicant wifi_key:keystore2_key { get_info use };
 allow hal_wifi_supplicant vendor_wifi_vendor_data_file:dir create_dir_perms;
 allow hal_wifi_supplicant vendor_wifi_vendor_data_file:file create_file_perms;
 allow hal_wifi_supplicant vendor_wifi_vendor_wpa_socket:dir create_dir_perms;
@@ -40,29 +35,45 @@ allow hal_wifi_supplicant vendor_wigig_vendor_wpa_socket:sock_file rw_file_perms
 allow hal_wifi_supplicant vendor_fstman:unix_dgram_socket sendto;
 allow hal_wifi_supplicant vendor_wigighalsvc:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default proc_net_type:file write;
-allow hal_wifi_supplicant_default hwservicemanager_202404:binder { call transfer };
-allow hal_wifi_supplicant_default system_wifi_keystore_hwservice_202404:hwservice_manager find;
+allow hal_wifi_supplicant_default system_wifi_keystore_hwservice:hwservice_manager find;
 allow hal_wifi_supplicant_default wifi_keystore_service_server:binder { call transfer };
 allow hal_wifi_supplicant_default wifi_keystore_service_server:fd *;
 allow hal_wifi_supplicant_default wpa_data_file:dir create_dir_perms;
 allow hal_wifi_supplicant_default wpa_data_file:dir w_dir_perms;
 allow hal_wifi_supplicant_default wpa_data_file:file create_file_perms;
 allow hal_wifi_supplicant_default wpa_data_file:sock_file create_file_perms;
+allow hal_wifi_supplicant_default tlc_server:binder { call transfer };
+allow hal_wifi_supplicant_default tlc_server:fd *;
+allow hal_wifi_supplicant_default rild:unix_stream_socket connectto;
+allow hal_wifi_supplicant_default proc_net:file rw_file_perms;
+allow hal_wifi_supplicant_default proc_net:file write;
+allow hal_wifi_supplicant_default secure_storage:binder { call transfer };
+allow hal_wifi_supplicant_default secure_storage:binder transfer;
+allow hal_wifi_supplicant_default secure_storage:fd *;
+allow hal_wifi_supplicant_default ucm_hwservice:hwservice_manager find;
+allow hal_wifi_supplicant_default secure_storage_device:sock_file write;
+allow hal_wifi_supplicant_default mnt_vendor_file:dir r_dir_perms;
+allow hal_wifi_supplicant_default dumpstate:fd *;
+allow hal_wifi_supplicant_default dumpstate:fifo_file write;
+allow hal_wifi_supplicant_default vendor_log_file:dir rw_dir_perms;
+allow hal_wifi_supplicant_default vendor_log_file:file create_file_perms;
+allow hal_wifi_supplicant_default vendor_convergence_data_file:dir rw_dir_perms;
+allow hal_wifi_supplicant_default vendor_convergence_data_file:file create_file_perms;
+allow hal_wifi_supplicant_default firmware_file:file r_file_perms;
+allow hal_wifi_supplicant_default vendor_tombstone_data_file:dir { open read search };
+allow hal_wifi_supplicant_default vendor_tombstone_data_file:file { getattr open read };
 allow hal_wifi_supplicant_default self:socket create_socket_perms;
 allow hal_wifi_supplicant_default self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow hal_wifi_supplicant_default vendor_cnd:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default vendor_qms:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default vendor_location_lowi_server:unix_dgram_socket sendto;
-allow hal_wifi_supplicant_default proc_net_202404:file write;
 allow hal_wifi_supplicant_default hal_wifi_default:binder call;
-allow hal_wifi_supplicant_default hal_wifi_hwservice_202404:hwservice_manager find;
-allow hal_wifi_supplicant_default vendor_tombstone_data_file:dir { open read search };
-allow hal_wifi_supplicant_default vendor_tombstone_data_file:file { getattr open read };
+allow hal_wifi_supplicant_default hal_wifi_hwservice:hwservice_manager find;
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir search;
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir { add_name write };
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:dir write;
 allow hal_wifi_supplicant_default vendor_log_wifi_data_file:file { create getattr open write };
-dontaudit hal_wifi_supplicant_default wifi_data_file_202404:dir search;
+dontaudit hal_wifi_supplicant_default wifi_data_file:dir search;
 allowxperm hal_wifi_supplicant self:ioctl udp_socket { 0x6900 0x6902 };
 allowxperm hal_wifi_supplicant self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 allowxperm hal_wifi_supplicant self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
@@ -72,14 +83,23 @@ allowxperm hal_wifi_supplicant self:ioctl packet_socket { range 0x8906 0x8907 ra
 allowxperm hal_wifi_supplicant self:ioctl packet_socket { range 0x8b00 0x8b02 range 0x8b04 0x8b1d range 0x8b20 0x8b2d range 0x8b30 0x8b36 range 0x8be0 0x8bff };
 allowxperm hal_wifi_supplicant_default self:ioctl socket { range 0xc300 0xc305 };
 type_transition hal_wifi_supplicant vendor_wifi_vendor_data_file:dir vendor_wifi_vendor_wpa_socket "wigig_sockets";
-type_transition hal_wifi_supplicant_default wifi_data_file_202404:dir wpa_socket "sockets";
+type_transition hal_wifi_supplicant_default wifi_data_file:dir wpa_socket "sockets";
+init_daemon_domain(hal_wifi_supplicant_default)
 r_dir_file(hal_wifi_supplicant, sysfs_type)
 r_dir_file(hal_wifi_supplicant, proc_net_type)
-get_prop(hal_wifi_supplicant_default, device_logging_prop_202404)
+r_dir_file(hal_wifi_supplicant_default, vendor_tombstone_data_file)
+get_prop(hal_wifi_supplicant_default, device_logging_prop)
+get_prop(hal_wifi_supplicant_default, debug_level_prop)
+get_prop(hal_wifi_supplicant_default, product_ship_prop)
+get_prop(hal_wifi_supplicant_default, exported_wifi_prop)
+binder_use(hal_wifi_supplicant_server)
+hwbinder_use(hal_wifi_supplicant_default)
 net_domain(hal_wifi_supplicant_default)
 hal_server_domain(hal_wifi_supplicant_default, hal_wifi_supplicant)
 hal_client_domain(hal_wifi_supplicant_default, hal_nlinterceptor)
 hal_client_domain(hal_wifi_supplicant_default, hal_wifi)
-add_service(hal_wifi_supplicant_server, hal_wifi_supplicant_service_202404)
+hal_attribute_service(hal_wifi_supplicant, hal_wifi_supplicant_service)
+hal_attribute_hwservice(hal_wifi_supplicant, hal_wifi_supplicant_hwservice)
 type hal_wifi_supplicant_default, domain;
 type hal_wifi_supplicant_default_exec, exec_type, file_type, vendor_file_type;
+type hal_wifi_supplicant_hwservice, hwservice_manager_type, protected_hwservice;

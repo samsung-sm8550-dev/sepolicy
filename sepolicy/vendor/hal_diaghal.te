@@ -1,13 +1,11 @@
 allow vendor_hal_diaghal_client vendor_hal_diaghal_server:binder { call transfer };
 allow vendor_hal_diaghal_client vendor_hal_diaghal_server:binder transfer;
 allow vendor_hal_diaghal_client vendor_hal_diaghal_server:fd *;
-allow vendor_hal_diaghal_client vendor_hal_diaghal_hwservice:hwservice_manager find;
 allow vendor_hal_diaghal_server vendor_hal_diaghal_client:binder transfer;
 allow vendor_hal_diaghal_server vendor_hal_diaghal_client:binder { call transfer };
 allow vendor_hal_diaghal_server vendor_hal_diaghal_client:fd *;
-allow vendor_hal_diaghal_server vendor_hal_diaghal_hwservice:hwservice_manager { add find };
-allow vendor_hal_diaghal_server hidl_base_hwservice_202404:hwservice_manager add;
 attribute vendor_hal_diaghal;
 attribute vendor_hal_diaghal_client;
 attribute vendor_hal_diaghal_server;
+hal_attribute_hwservice(vendor_hal_diaghal, vendor_hal_diaghal_hwservice)
 type vendor_hal_diaghal_hwservice, hwservice_manager_type, protected_hwservice;

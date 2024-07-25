@@ -1,0 +1,1 @@
+neverallow { domain -init -installd -platform_app -dsms } dsms_data_file:dir add_name;

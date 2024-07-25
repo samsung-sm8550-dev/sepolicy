@@ -1,1 +1,0 @@
-neverallow { hal_macsec_server -hal_macsec } domain:process fork;

@@ -1,9 +1,6 @@
-allow vendor_powermodule_app vendor_powermodule_app_userfaultfd:anon_inode { create ioctl read };
-allow vendor_powermodule_app appdomain_tmpfs_202404:file { execute getattr map read write };
 allow vendor_powermodule_app app_api_service:service_manager find;
-dontaudit vendor_powermodule_app default_prop_202404:file read;
-type_transition vendor_powermodule_app tmpfs_202404:file appdomain_tmpfs;
-type_transition vendor_powermodule_app vendor_powermodule_app:anon_inode vendor_powermodule_app_userfaultfd "[userfaultfd]";
+dontaudit vendor_powermodule_app default_prop:file read;
+app_domain(vendor_powermodule_app)
 hal_client_domain(vendor_powermodule_app, vendor_hal_perf)
 hal_client_domain(vendor_powermodule_app, vendor_hal_poweroptservice)
-type vendor_powermodule_app, appdomain, domain;
+type vendor_powermodule_app, domain;

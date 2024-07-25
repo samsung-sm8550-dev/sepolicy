@@ -1,1 +1,0 @@
-neverallow { appdomain -runas_app_202404 -shell_202404 -simpleperf_202404 -vendor_embmssl_app } vendor_embmssl_app:file no_rw_file_perms;

@@ -1,1 +1,0 @@
-neverallow { domain -hal_evs_server -evsmanagerd_202404 } hal_evs_hwservice_202404:hwservice_manager add;

@@ -1,4 +1,0 @@
-neverallow { appdomain -bluetooth_202404 -system_app_202404 } bluetooth_a2dp_offload_prop_202404:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
-neverallow { appdomain -bluetooth_202404 -system_app_202404 } bluetooth_audio_hal_prop_202404:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
-neverallow { appdomain -bluetooth_202404 -system_app_202404 } bluetooth_prop_202404:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
-neverallow { appdomain -bluetooth_202404 -system_app_202404 } exported_bluetooth_prop_202404:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };

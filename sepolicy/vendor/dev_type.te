@@ -1,2 +1,3 @@
-allow dev_type tmpfs_202404:filesystem associate;
+allow dev_type tmpfs:filesystem associate;
+allow dev_type ecryptfs:filesystem associate;
 attribute dev_type;

@@ -1,1 +1,0 @@
-neverallow { domain -hal_dumpstate_client -hal_dumpstate_server -atrace_202404 -shell_202404 -system_app_202404 -traceur_app_202404 } hal_dumpstate_service_202404:service_manager find;

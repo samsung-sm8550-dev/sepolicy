@@ -1,2 +1,0 @@
-allow userdata_sysdev_202404 sysfs_202404:filesystem associate;
-type userdata_sysdev_202404, dev_type;

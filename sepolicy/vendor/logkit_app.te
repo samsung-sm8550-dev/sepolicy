@@ -1,6 +1,0 @@
-allow vendor_logkit_app vendor_logkit_app_userfaultfd:anon_inode { create ioctl read };
-allow vendor_logkit_app appdomain_tmpfs_202404:file { execute getattr map read write };
-permissive vendor_logkit_app;
-type_transition vendor_logkit_app tmpfs_202404:file appdomain_tmpfs;
-type_transition vendor_logkit_app vendor_logkit_app:anon_inode vendor_logkit_app_userfaultfd "[userfaultfd]";
-type vendor_logkit_app, appdomain, domain;

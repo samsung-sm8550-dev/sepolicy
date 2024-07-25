@@ -1,33 +1,65 @@
 expandtypeattribute(hal_fingerprint)
 expandtypeattribute(hal_fingerprint_client)
 expandtypeattribute(hal_fingerprint_server)
-allow hal_fingerprint_server dumpstate_202404:fifo_file write;
-allow hal_fingerprint_server dumpstate_202404:fd *;
+allow hal_fingerprint_server dumpstate:fifo_file write;
+allow hal_fingerprint_server dumpstate:fd *;
 allow hal_fingerprint_server hal_fingerprint_client:binder transfer;
 allow hal_fingerprint_server hal_fingerprint_client:binder { call transfer };
 allow hal_fingerprint_server hal_fingerprint_client:fd *;
-allow hal_fingerprint_server hal_fingerprint_hwservice_202404:hwservice_manager { add find };
-allow hal_fingerprint_server hidl_base_hwservice_202404:hwservice_manager add;
-allow hal_fingerprint_server su_202404:tcp_socket { accept getopt read write };
-allow hal_fingerprint_server servicemanager_202404:binder { call transfer };
+allow hal_fingerprint_server servicemanager:binder { call transfer };
+allow hal_fingerprint_server servicemanager:fd *;
 allow hal_fingerprint_client hal_fingerprint_server:binder { call transfer };
 allow hal_fingerprint_client hal_fingerprint_server:binder transfer;
 allow hal_fingerprint_client hal_fingerprint_server:fd *;
-allow hal_fingerprint_client hal_fingerprint_hwservice_202404:hwservice_manager find;
-allow hal_fingerprint_client hal_fingerprint_service_202404:service_manager find;
-allow hal_fingerprint ion_device_202404:chr_file r_file_perms;
-allow hal_fingerprint fingerprint_vendor_data_file_202404:file create_file_perms;
-allow hal_fingerprint fingerprint_vendor_data_file_202404:dir rw_dir_perms;
-allow hal_fingerprint_default fwk_sensor_service_202404:service_manager find;
-allow hal_fingerprint_default property_socket_202404:sock_file write;
-allow hal_fingerprint_default init_202404:unix_stream_socket connectto;
-allow hal_fingerprint_default virtual_fingerprint_hal_prop_202404:property_service set;
-allow hal_fingerprint_default appdomain:fifo_file read;
-r_dir_file(hal_fingerprint, cgroup_202404)
-r_dir_file(hal_fingerprint, cgroup_v2_202404)
-r_dir_file(hal_fingerprint, sysfs_202404)
-get_prop(hal_fingerprint_default, virtual_fingerprint_hal_prop_202404)
+allow hal_fingerprint ion_device:chr_file r_file_perms;
+allow hal_fingerprint fingerprint_vendor_data_file:file create_file_perms;
+allow hal_fingerprint fingerprint_vendor_data_file:dir rw_dir_perms;
+allow hal_fingerprint_default vendor_data_file:dir rw_dir_perms;
+allow hal_fingerprint_default vendor_data_file:dir create_dir_perms;
+allow hal_fingerprint_default vendor_data_file:file create_file_perms;
+allow hal_fingerprint_default biometrics_vendor_data_file:file create_file_perms;
+allow hal_fingerprint_default biometrics_vendor_data_file:dir create_dir_perms;
+allow hal_fingerprint_default fp_sensor_device:chr_file rw_file_perms;
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default goodix_device:chr_file rw_file_perms;
+allow hal_fingerprint_default hal_fingerprint_default:netlink_socket { bind create read write };
+allow hal_fingerprint_default hal_fingerprint_default:netlink_route_socket { bind create read write };
+allow hal_fingerprint_default mobicore:unix_stream_socket connectto;
+allow hal_fingerprint_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_fingerprint_default sec_debugfs:dir r_dir_perms;
+allow hal_fingerprint_default efs_file:file r_file_perms;
+allow hal_fingerprint_default sec_efs_file:dir create_dir_perms;
+allow hal_fingerprint_default sec_efs_file:file create_file_perms;
+allow hal_fingerprint_default sysfs_batteryinfo:dir search;
+allow hal_fingerprint_default vendor_qbt_device:chr_file rw_file_perms;
+allow hal_fingerprint_default tzdaemon:fd *;
+allow hal_fingerprint_default tz_user_device:chr_file rw_file_perms;
+allow hal_fingerprint_default tee_efs_file:dir search;
+allow hal_fingerprint_default firmware_file:file r_file_perms;
+allow hal_fingerprint_default vendor_qfp-daemon_data_file:dir create_dir_perms;
+allow hal_fingerprint_default vendor_qfp-daemon_data_file:file create_file_perms;
+allow hal_fingerprint_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_fingerprint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+type_transition hal_fingerprint_default vendor_data_file:dir biometrics_vendor_data_file "biometrics";
+init_daemon_domain(hal_fingerprint_default)
+r_dir_file(hal_fingerprint, cgroup)
+r_dir_file(hal_fingerprint, cgroup_v2)
+r_dir_file(hal_fingerprint, sysfs)
+r_dir_file(hal_fingerprint_default, sysfs_ss_writable)
+r_dir_file(hal_fingerprint_default, sec_efs_file)
+r_dir_file(hal_fingerprint_default, sysfs_battery)
+r_dir_file(hal_fingerprint_default, sysfs_lcd_writable)
+r_dir_file(hal_fingerprint_default, tee_vendor_data_file)
+r_dir_file(hal_fingerprint_default, sysfs_ski_display_readable)
+r_dir_file(hal_fingerprint_default, sysfs_ski_display_writable)
+r_dir_file(hal_fingerprint_default, vendor_sysfs_battery_supply)
+get_prop(hal_fingerprint_default, debug_level_prop)
+get_prop(hal_fingerprint_default, product_ship_prop)
+get_prop(hal_fingerprint_default, tzdaemon_prop)
+get_prop(hal_fingerprint_default, vendor_teegris_prop)
 hal_server_domain(hal_fingerprint_default, hal_fingerprint)
-add_service(hal_fingerprint_server, hal_fingerprint_service_202404)
+hal_attribute_service(hal_fingerprint, hal_fingerprint_service)
+hal_attribute_hwservice(hal_fingerprint, hal_fingerprint_hwservice)
 type hal_fingerprint_default, domain;
 type hal_fingerprint_default_exec, exec_type, file_type, vendor_file_type;
+type hal_fingerprint_hwservice, hwservice_manager_type, protected_hwservice;

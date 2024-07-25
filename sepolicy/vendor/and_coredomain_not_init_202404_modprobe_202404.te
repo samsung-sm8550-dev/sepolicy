@@ -1,1 +1,0 @@
-neverallow { coredomain -init_202404 -modprobe_202404 } vendor_toolbox_exec_202404:file { entrypoint no_x_file_perms };

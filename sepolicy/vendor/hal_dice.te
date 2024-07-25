@@ -1,0 +1,13 @@
+expandtypeattribute(hal_dice)
+expandtypeattribute(hal_dice_client)
+expandtypeattribute(hal_dice_server)
+allow hal_dice_client hal_dice_server:binder { call transfer };
+allow hal_dice_client hal_dice_server:fd *;
+allow hal_dice_server hal_dice_client:binder transfer;
+allow hal_dice_server servicemanager:binder { call transfer };
+allow hal_dice_server servicemanager:fd *;
+init_daemon_domain(hal_dice_default)
+hal_server_domain(hal_dice_default, hal_dice)
+hal_attribute_service(hal_dice, hal_dice_service)
+type hal_dice_default, domain;
+type hal_dice_default_exec, exec_type, file_type, vendor_file_type;

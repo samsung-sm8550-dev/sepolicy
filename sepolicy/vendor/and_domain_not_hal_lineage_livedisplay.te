@@ -1,1 +1,0 @@
-neverallow { domain -hal_lineage_livedisplay_server } hal_lineage_livedisplay_hwservice:hwservice_manager add;

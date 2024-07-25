@@ -1,3 +1,5 @@
+allow vendor_hvdcp sysfs_battery:file rw_file_perms;
+allow vendor_hvdcp sysfs_battery:dir r_dir_perms;
 allow vendor_hvdcp vendor_hvdcp_device:chr_file rw_file_perms;
 allow vendor_hvdcp vendor_qg_device:chr_file rw_file_perms;
 allow vendor_hvdcp vendor_sysfs_battery_supply:dir r_dir_perms;
@@ -18,22 +20,23 @@ allow vendor_hvdcp self:capability2 wake_alarm;
 allow vendor_hvdcp self:capability2 block_suspend;
 allow vendor_hvdcp self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow vendor_hvdcp self:cap2_userns block_suspend;
-allow vendor_hvdcp kmsg_device_202404:chr_file rw_file_perms;
-allow vendor_hvdcp mnt_vendor_file_202404:dir search;
+allow vendor_hvdcp mnt_vendor_file:dir search;
 allow vendor_hvdcp vendor_persist_hvdcp_file:dir rw_dir_perms;
 allow vendor_hvdcp vendor_persist_hvdcp_file:file create_file_perms;
-allow vendor_hvdcp property_socket_202404:sock_file write;
-allow vendor_hvdcp init_202404:unix_stream_socket connectto;
-allow vendor_hvdcp vendor_hvdcp_opti_prop:property_service set;
-allow vendor_hvdcp sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_hvdcp sysfs_wake_lock:file rw_file_perms;
 allow vendor_hvdcp system_suspend_server:binder { call transfer };
 allow vendor_hvdcp system_suspend_server:fd *;
-allow vendor_hvdcp system_suspend_hwservice_202404:hwservice_manager find;
-allow vendor_hvdcp hwservicemanager_202404:binder { call transfer };
-allow vendor_hvdcp hidl_manager_hwservice_202404:hwservice_manager find;
-allow vendor_hvdcp hal_system_suspend_service_202404:service_manager find;
-allow vendor_hvdcp servicemanager_202404:binder { call transfer };
-get_prop(vendor_hvdcp, vendor_hvdcp_opti_prop)
-get_prop(vendor_hvdcp, hwservicemanager_prop_202404)
+allow vendor_hvdcp system_suspend_hwservice:hwservice_manager find;
+allow vendor_hvdcp hidl_manager_hwservice:hwservice_manager find;
+allow vendor_hvdcp hal_system_suspend_service:service_manager find;
+typealias(hvdcp_exec)
+typealias(hvdcp)
+typealiasactual(hvdcp_exec)
+typealiasactual(hvdcp)
+init_daemon_domain(vendor_hvdcp)
+get_prop(vendor_hvdcp, hwservicemanager_prop)
+set_prop(vendor_hvdcp, vendor_hvdcp_opti_prop)
+binder_use(vendor_hvdcp)
+hwbinder_use(vendor_hvdcp)
 type vendor_hvdcp, domain;
 type vendor_hvdcp_exec, exec_type, file_type, vendor_file_type;

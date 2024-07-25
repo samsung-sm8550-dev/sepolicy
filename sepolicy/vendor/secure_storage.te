@@ -1,0 +1,46 @@
+allow secure_storage bluetooth:fd *;
+allow secure_storage hal_wifi_supplicant_default:binder transfer;
+allow secure_storage hal_wifi_supplicant_default:binder { call transfer };
+allow secure_storage hal_wifi_supplicant_default:fd *;
+allow secure_storage installd:fd *;
+allow secure_storage platformappdomain:fd *;
+allow secure_storage system_app:fd *;
+allow secure_storage vold:fd *;
+allow secure_storage policyloader_app:fd *;
+allow secure_storage aasa_service_app:fd *;
+allow secure_storage mobicore_admin_device:chr_file rw_file_perms;
+allow secure_storage mobicore_user_device:chr_file rw_file_perms;
+allow secure_storage rootfs:file r_file_perms;
+allow secure_storage storage_file:dir r_dir_perms;
+allow secure_storage storage_file:lnk_file r_file_perms;
+allow secure_storage mnt_user_file:dir r_dir_perms;
+allow secure_storage mnt_user_file:lnk_file r_file_perms;
+allow secure_storage media_rw_data_file:dir create_dir_perms;
+allow secure_storage media_rw_data_file:file create_file_perms;
+allow secure_storage sdcardfs:dir create_dir_perms;
+allow secure_storage sdcardfs:file create_file_perms;
+allow secure_storage fuse:dir create_dir_perms;
+allow secure_storage fuse:file create_file_perms;
+allow secure_storage secure_storage_device:dir create_dir_perms;
+allow secure_storage secure_storage_device:file create_file_perms;
+allow secure_storage secure_storage_device:sock_file create_file_perms;
+allow secure_storage efs_file:file { open read };
+allow secure_storage system_data_file:dir rw_dir_perms;
+allow secure_storage secure_storage_data_file:file create_file_perms;
+allow secure_storage secure_storage_data_file:dir create_dir_perms;
+allow secure_storage tzdaemon:binder { call transfer };
+allow secure_storage tzdaemon:fd *;
+allow secure_storage apk_data_file:dir r_dir_perms;
+allow secure_storage system_server:fd *;
+allow secure_storage tz_user_device:chr_file rw_file_perms;
+allow secure_storage tee_efs_file:dir search;
+allow secure_storage ion_device:chr_file r_file_perms;
+type_transition secure_storage system_data_file:dir secure_storage_data_file "secure_storage";
+unix_socket_connect(secure_storage, tz, init)
+get_prop(secure_storage, mobicore_prop)
+get_prop(secure_storage, tzdaemon_prop)
+get_prop(secure_storage, vendor_teegris_prop)
+set_prop(secure_storage, dumpstate_options_prop)
+set_prop(secure_storage, ctl_bugreport_prop)
+type secure_storage, coredomain, domain;
+type secure_storage_exec, exec_type, file_type, system_file_type;

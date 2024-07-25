@@ -1,0 +1,21 @@
+allow teeregistryd_app system_server:binder transfer;
+allow teeregistryd_app teeregistry_service:service_manager add;
+allow teeregistryd_app connectivity_service:service_manager find;
+allow teeregistryd_app display_service:service_manager find;
+allow teeregistryd_app network_management_service:service_manager find;
+allow teeregistryd_app self:udp_socket create;
+allow teeregistryd_app self:tcp_socket { connect create getattr getopt read setopt write };
+allow teeregistryd_app tee_service:service_manager find;
+allow teeregistryd_app system_app_data_file:dir { add_name create getattr search setattr write };
+allow teeregistryd_app system_app_data_file:file { create getattr open read write };
+allow teeregistryd_app activity_service:service_manager find;
+allow teeregistryd_app EDM_Policy_service:service_manager find;
+allow teeregistryd_app port:tcp_socket name_connect;
+allow teeregistryd_app mobicore_admin_device:chr_file rw_file_perms;
+allow teeregistryd_app mobicore_user_device:chr_file rw_file_perms;
+unix_socket_connect(teeregistryd_app, dnsproxyd, netd)
+unix_socket_connect(teeregistryd_app, fwmarkd, netd)
+hal_client_domain(teeregistryd_app, hal_allocator)
+hal_client_domain(teeregistryd_app, hal_teeregistry)
+add_service(teeregistryd_app, teeregistry_service)
+type teeregistryd_app, coredomain, domain;

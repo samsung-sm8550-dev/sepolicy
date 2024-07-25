@@ -1,1 +1,0 @@
-neverallow { domain -dumpstate_202404 -init_202404 -system_server_202404 -vendor_init_202404 } binderfs_logs_stats_202404:file no_rw_file_perms;

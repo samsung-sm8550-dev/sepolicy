@@ -1,2 +1,2 @@
-neverallow { coredomain -appdomain } vendor_public_lib_file_202404:file no_x_file_perms;
-neverallow { coredomain -appdomain } vendor_public_framework_file_202404:file no_x_file_perms;
+neverallow { coredomain -appdomain } vendor_public_lib_file:file no_x_file_perms;
+neverallow { coredomain -appdomain } vendor_public_framework_file:file no_x_file_perms;

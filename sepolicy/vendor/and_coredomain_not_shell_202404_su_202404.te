@@ -1,2 +1,0 @@
-neverallow { coredomain -shell_202404 -su_202404 } vndservice_manager_type:service_manager *;
-neverallow { coredomain -shell_202404 -su_202404 } vndservicemanager_202404:binder *;

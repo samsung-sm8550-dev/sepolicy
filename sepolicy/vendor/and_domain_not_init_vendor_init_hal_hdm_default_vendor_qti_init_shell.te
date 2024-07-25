@@ -1,0 +1,1 @@
+neverallow { domain -init -vendor_init -hal_hdm_default -vendor_qti_init_shell } vendor_hdm_internal_prop:property_service set;

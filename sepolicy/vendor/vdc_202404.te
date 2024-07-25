@@ -1,7 +1,0 @@
-allow vdc_202404 devpts_202404:chr_file rw_file_perms;
-allow vdc_202404 kmsg_device_202404:chr_file { getattr w_file_perms };
-allow vdc_202404 servicemanager_202404:binder { call transfer };
-allow vdc_202404 vold_202404:binder { call transfer };
-allow vdc_202404 vold_202404:fd *;
-allow vdc_202404 vold_service_202404:service_manager find;
-type vdc_202404, domain;

@@ -1,0 +1,4 @@
+allow { appdomain -untrusteddomain -isolated_app -shell } imei_efs_file:dir r_dir_perms;
+allow { appdomain -untrusteddomain -isolated_app -shell } imei_efs_file:file r_file_perms;
+allow { appdomain -untrusteddomain -isolated_app -shell } sec_efs_file:dir r_dir_perms;
+allow { appdomain -untrusteddomain -isolated_app -shell } sec_efs_file:file r_file_perms;

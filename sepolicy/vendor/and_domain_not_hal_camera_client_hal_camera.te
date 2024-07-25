@@ -1,3 +1,0 @@
-neverallow { domain -hal_camera_client -hal_camera_server } hal_camera_hwservice_202404:hwservice_manager find;
-neverallow { domain -hal_camera_client -hal_camera_server } vendor_hal_camera_postproc_hwservice:hwservice_manager find;
-neverallow { domain -hal_camera_client -hal_camera_server } vendor_hal_camera_aon_hwservice:hwservice_manager find;

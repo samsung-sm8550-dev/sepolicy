@@ -1,0 +1,35 @@
+allow imsd system_app:binder transfer;
+allow imsd audioserver:binder { call transfer };
+allow imsd audioserver:fd *;
+allow imsd storage_file:dir r_dir_perms;
+allow imsd storage_file:lnk_file r_file_perms;
+allow imsd mnt_user_file:dir r_dir_perms;
+allow imsd mnt_user_file:lnk_file r_file_perms;
+allow imsd media_rw_data_file:dir create_dir_perms;
+allow imsd media_rw_data_file:file create_file_perms;
+allow imsd sdcardfs:dir create_dir_perms;
+allow imsd sdcardfs:file create_file_perms;
+allow imsd fuse:dir create_dir_perms;
+allow imsd fuse:file create_file_perms;
+allow imsd dumplog_data_file:dir ra_dir_perms;
+allow imsd system_file:file rx_file_perms;
+allow imsd toolbox_exec:file rx_file_perms;
+allow imsd net_data_file:dir r_dir_perms;
+allow imsd net_data_file:file r_file_perms;
+allow imsd audio_data_file:dir rw_dir_perms;
+allow imsd audio_data_file:file create_file_perms;
+allow imsd Sve_service:service_manager find;
+allow imsd mediaserver_service:service_manager find;
+allow imsd audioserver_service:service_manager find;
+allow imsd activity_service:service_manager find;
+allow imsd proc_net:file r_file_perms;
+allow imsd system_server:binder { call transfer };
+allow imsd system_server:fd *;
+allow imsd edmnativehelper_service:service_manager find;
+allow imsd self:key_socket create_socket_perms_no_ioctl;
+allow imsd self:capability net_admin;
+unix_socket_connect(imsd, property, attiqi_app)
+set_prop(imsd, system_prop)
+binder_use(imsd)
+type imsd, coredomain, domain;
+type imsd_exec, exec_type, file_type, system_file_type;

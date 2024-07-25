@@ -1,0 +1,2 @@
+allow rootdisk_sysdev sysfs:filesystem associate;
+type rootdisk_sysdev, dev_type;

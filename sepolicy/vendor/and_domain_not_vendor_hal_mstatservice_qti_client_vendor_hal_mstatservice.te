@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_mstatservice_qti_client -vendor_hal_mstatservice_qti_server } vendor_hal_mstatservice_hwservice:hwservice_manager find;

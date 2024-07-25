@@ -1,2 +1,2 @@
-allow pdx_performance_client_server_type bufferhubd_202404:fd *;
+allow pdx_performance_client_server_type bufferhubd:fd *;
 attribute pdx_performance_client_server_type;

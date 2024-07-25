@@ -1,0 +1,15 @@
+allow ss_conn_daemon system_data_file:dir rw_dir_perms;
+allow ss_conn_daemon proc_info_file:file create_file_perms;
+allow ss_conn_daemon sysfs:lnk_file getattr;
+allow ss_conn_daemon usb_device:chr_file { ioctl open read write };
+allow ss_conn_daemon node:tcp_socket node_bind;
+allow ss_conn_daemon node:udp_socket node_bind;
+allow ss_conn_daemon port:tcp_socket { name_bind name_connect };
+allow ss_conn_daemon port:udp_socket name_bind;
+allow ss_conn_daemon socket_device:dir rw_dir_perms;
+allow ss_conn_daemon sysfs_socinfo:lnk_file getattr;
+type_transition ss_conn_daemon system_data_file:file proc_info_file "ss_conn_daemon2.pid";
+type_transition ss_conn_daemon system_data_file:file proc_info_file "ss_conn_daemon.pid";
+r_dir_file(ss_conn_daemon, sysfs_android_usb)
+type ss_conn_daemon, coredomain, domain, mlstrustedsubject;
+type ss_conn_daemon_exec, exec_type, file_type, system_file_type;

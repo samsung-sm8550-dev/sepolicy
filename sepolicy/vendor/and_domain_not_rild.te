@@ -1,2 +1,0 @@
-neverallow { domain -rild } hal_lineage_backend_radio_hwservice:hwservice_manager add;
-neverallow { domain -rild } hal_lineage_backend_radio_config_hwservice:hwservice_manager add;

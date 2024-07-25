@@ -1,18 +1,19 @@
-allow vendor_lowirpcd_service dmabuf_system_heap_device_202404:chr_file r_file_perms;
+allow vendor_lowirpcd_service dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_lowirpcd_service vendor_dmabuf_system_heap_device:chr_file r_file_perms;
-allow vendor_lowirpcd_service ion_device_202404:chr_file r_file_perms;
+allow vendor_lowirpcd_service ion_device:chr_file r_file_perms;
 allow vendor_lowirpcd_service vendor_xdsp_device:chr_file r_file_perms;
-allow vendor_lowirpcd_service sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_lowirpcd_service sysfs_wake_lock:file rw_file_perms;
 allow vendor_lowirpcd_service self:capability2 block_suspend;
 allow vendor_lowirpcd_service self:cap2_userns block_suspend;
 allow vendor_lowirpcd_service system_suspend_server:binder { call transfer };
 allow vendor_lowirpcd_service system_suspend_server:fd *;
-allow vendor_lowirpcd_service system_suspend_hwservice_202404:hwservice_manager find;
-allow vendor_lowirpcd_service hwservicemanager_202404:binder { call transfer };
-allow vendor_lowirpcd_service hidl_manager_hwservice_202404:hwservice_manager find;
-allow vendor_lowirpcd_service hal_system_suspend_service_202404:service_manager find;
-allow vendor_lowirpcd_service servicemanager_202404:binder { call transfer };
+allow vendor_lowirpcd_service system_suspend_hwservice:hwservice_manager find;
+allow vendor_lowirpcd_service hidl_manager_hwservice:hwservice_manager find;
+allow vendor_lowirpcd_service hal_system_suspend_service:service_manager find;
+init_daemon_domain(vendor_lowirpcd_service)
 get_prop(vendor_lowirpcd_service, vendor_adsprpc_prop)
-get_prop(vendor_lowirpcd_service, hwservicemanager_prop_202404)
+get_prop(vendor_lowirpcd_service, hwservicemanager_prop)
+binder_use(vendor_lowirpcd_service)
+hwbinder_use(vendor_lowirpcd_service)
 type vendor_lowirpcd_service, domain;
 type vendor_lowirpcd_service_exec, exec_type, file_type, vendor_file_type;

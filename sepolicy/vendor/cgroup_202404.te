@@ -1,2 +1,0 @@
-allow cgroup_202404 tmpfs_202404:filesystem associate;
-type cgroup_202404, fs_type, mlstrustedobject;

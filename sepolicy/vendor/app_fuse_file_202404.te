@@ -1,2 +1,0 @@
-allow app_fuse_file_202404 app_fusefs_202404:filesystem associate;
-type app_fuse_file_202404, core_data_file_type, data_file_type, file_type, mlstrustedobject;

@@ -1,0 +1,2 @@
+hal_client_domain(vendor_wfdservice, vendor_wifidisplayhalservice)
+type vendor_wfdservice, domain;

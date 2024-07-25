@@ -1,0 +1,1 @@
+neverallow { domain -appdomain -init -ueventd -vendor_init -hal_camera_default -mediacodec -factory_ssc -hal_frcmc_default -vendor_adsprpcd -vendor_audioadsprpcd -vendor_cdsprpcd -vendor_chre -vendor_dspservice -vendor_thermal-engine -vendor_qvrd_vndr -vendor_vppservice } vendor_qdsp_device:chr_file *;

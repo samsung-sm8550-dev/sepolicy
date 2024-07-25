@@ -1,1 +1,0 @@
-neverallow { domain -init_202404 -recovery_202404 -system_server_202404 -ueventd_202404 } frp_block_device_202404:blk_file no_rw_file_perms;

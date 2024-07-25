@@ -1,1 +1,1 @@
-neverallow { halserverdomain -hal_camera_server } camera_device_202404:chr_file *;
+neverallow { halserverdomain -hal_camera_server } camera_device:chr_file *;

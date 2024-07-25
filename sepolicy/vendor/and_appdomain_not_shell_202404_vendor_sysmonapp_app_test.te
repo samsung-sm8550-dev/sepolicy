@@ -1,1 +1,0 @@
-neverallow { appdomain -shell_202404 -vendor_sysmonapp_app_test } vendor_qdsp_device:chr_file { audit_access entrypoint execmod getattr lock map mounton no_w_file_perms no_x_file_perms open quotaon relabelto watch watch_mount watch_reads watch_sb watch_with_perm };

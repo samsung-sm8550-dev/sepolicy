@@ -1,3 +1,0 @@
-allow system_net_netd_service_202404 servicemanager_202404:binder { call transfer };
-allow system_net_netd_service_202404 servicemanager_202404:fd *;
-type system_net_netd_service_202404, service_manager_type;

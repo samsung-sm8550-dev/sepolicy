@@ -1,0 +1,1 @@
+type hal_MultiFrameProcessing20_hwservice, hwservice_manager_type;

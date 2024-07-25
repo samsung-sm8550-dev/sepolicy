@@ -1,0 +1,23 @@
+allow dhcp cgroup:dir { add_name create write };
+allow dhcp cgroup_v2:dir { add_name create write };
+allow dhcp self:capability { net_admin net_bind_service net_raw setgid setuid };
+allow dhcp self:cap_userns { net_admin net_bind_service net_raw setgid setuid };
+allow dhcp self:packet_socket create_socket_perms_no_ioctl;
+allow dhcp self:netlink_route_socket nlmsg_write;
+allow dhcp shell_exec:file rx_file_perms;
+allow dhcp system_file:file rx_file_perms;
+allow dhcp toolbox_exec:file rx_file_perms;
+allow dhcp proc_net_type:file write;
+allow dhcp dhcp_data_file:dir create_dir_perms;
+allow dhcp dhcp_data_file:file create_file_perms;
+allow dhcp netd:fd *;
+allow dhcp netd:fifo_file rw_file_perms;
+allow dhcp netd:udp_socket { read write };
+allow dhcp netd:unix_stream_socket { read write };
+allow dhcp netd:unix_dgram_socket { read write };
+allow dhcp netd:netlink_route_socket { read write };
+allow dhcp netd:netlink_nflog_socket { read write };
+allow dhcp netd:netlink_kobject_uevent_socket { read write };
+net_domain(dhcp)
+type dhcp, domain;
+type dhcp_exec, exec_type, file_type, system_file_type;

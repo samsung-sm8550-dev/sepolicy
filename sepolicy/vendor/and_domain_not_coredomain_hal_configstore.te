@@ -1,3 +1,1 @@
-allow { domain -coredomain -hal_configstore_default } vendor_gles_data_file:dir create_dir_perms;
-allow { domain -coredomain -hal_configstore_default } vendor_gles_data_file:file create_file_perms;
-r_dir_file({ domain -coredomain -hal_configstore_default }, vendor_gles_data_file)
+allow { domain -coredomain -hal_configstore_server } dumpstate:unix_stream_socket { read write };

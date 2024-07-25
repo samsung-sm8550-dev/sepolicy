@@ -1,2 +1,0 @@
-allow proc_net_202404 proc_202404:filesystem associate;
-type proc_net_202404, fs_type, proc_net_type, proc_type;

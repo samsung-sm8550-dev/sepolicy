@@ -1,1 +1,0 @@
-neverallow vendor_qms ~{ vendor_qms_0 vendor_qms_1 }:process dyntransition;

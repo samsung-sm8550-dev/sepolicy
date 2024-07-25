@@ -1,0 +1,1 @@
+neverallow { domain -init -shell -ueventd -vendor_init -hal_camera_default -hal_contexthub_default -hal_face_default -hal_sensors_default -mediacodec -factory_ssc -hal_frcmc_default -hal_mpp_default -vendor_adsprpcd -vendor_audioadsprpcd -vendor_cdsprpcd -vendor_chre -vendor_dspservice -vendor_sensors -vendor_lowirpcd_service } vendor_xdsp_device:chr_file *;

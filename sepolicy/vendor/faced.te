@@ -1,0 +1,40 @@
+allow faced biometirc_data_file:dir create_dir_perms;
+allow faced biometirc_data_file:file create_file_perms;
+allow faced users_system_data_file:dir create_dir_perms;
+allow faced users_system_data_file:file create_file_perms;
+allow faced mobicore_user_device:chr_file rw_file_perms;
+allow faced apc_service:service_manager find;
+allow faced keystore_service:service_manager find;
+allow faced legacykeystore_service:service_manager find;
+allow faced keystore:binder { call transfer };
+allow faced keystore:binder transfer;
+allow faced keystore:fd *;
+allow faced keystore:keystore_key add_auth;
+allow faced faced_service:service_manager add;
+allow faced permission_service:service_manager find;
+allow faced activity_service:service_manager find;
+allow faced ion_device:chr_file r_file_perms;
+allow faced sec_debugfs:dir r_dir_perms;
+allow faced gpu_device:chr_file rw_file_perms;
+allow faced system_data_file:dir r_dir_perms;
+allow faced tad_data_file:file r_file_perms;
+allow faced cameraserver:binder { call transfer };
+allow faced cameraserver:fd *;
+allow faced tee_file:dir r_dir_perms;
+allow faced tzdaemon:fd *;
+allow faced tz_user_device:chr_file rw_file_perms;
+allow faced tee_efs_file:dir search;
+r_dir_file(faced, system_file)
+r_dir_file(faced, cgroup)
+get_prop(faced, hwservicemanager_prop)
+get_prop(faced, vendor_fastrpc_prop)
+get_prop(faced, vendor_fr_dlymgr_prop)
+get_prop(faced, vendor_fr_wkrmgr_prop)
+get_prop(faced, tzdaemon_prop)
+get_prop(faced, vendor_teegris_prop)
+hwbinder_use(faced)
+hal_client_domain(faced, hal_allocator)
+hal_client_domain(faced, hal_graphics_allocator)
+hal_client_domain(faced, vendor_hal_qseecom)
+type faced, coredomain, domain;
+type faced_exec, exec_type, file_type, system_file_type;

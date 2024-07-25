@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_poweroptservice_client -vendor_hal_poweroptservice_server } vendor_hal_poweroptservice_hwservice:hwservice_manager find;

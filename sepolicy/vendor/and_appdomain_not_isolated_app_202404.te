@@ -1,6 +1,0 @@
-allow hal_drm_server { appdomain -isolated_app_202404 }:fd *;
-allow hal_camera { appdomain -isolated_app_202404 }:fd *;
-allow hal_omx_server { appdomain -isolated_app_202404 }:binder { call transfer };
-allow hal_omx_server { appdomain -isolated_app_202404 }:fd *;
-allow hal_sensors { appdomain -isolated_app_202404 }:fd *;
-allow { appdomain -isolated_app_202404 } hal_omx_server:binder transfer;

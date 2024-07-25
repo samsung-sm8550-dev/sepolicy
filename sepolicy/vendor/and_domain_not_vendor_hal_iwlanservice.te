@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_iwlanservice_qti_server } vendor_hal_iwlan_hwservice:hwservice_manager add;

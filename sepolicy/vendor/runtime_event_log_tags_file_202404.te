@@ -1,2 +1,0 @@
-allow runtime_event_log_tags_file_202404 tmpfs_202404:filesystem associate;
-type runtime_event_log_tags_file_202404, file_type;

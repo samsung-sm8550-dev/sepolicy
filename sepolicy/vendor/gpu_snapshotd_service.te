@@ -1,0 +1,1 @@
+type gpu_snapshotd_service, service_manager_type;

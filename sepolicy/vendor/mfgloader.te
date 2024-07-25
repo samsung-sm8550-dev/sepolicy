@@ -1,0 +1,22 @@
+allow mfgloader wifi_efs_file:dir rw_dir_perms;
+allow mfgloader wifi_efs_file:file rw_file_perms;
+allow mfgloader system_file:system module_load;
+allow mfgloader self:udp_socket { create ioctl };
+allow mfgloader self:udp_socket create_socket_perms;
+allow mfgloader self:capability { net_admin net_raw sys_module };
+allow mfgloader sysfs_ss_writable:file write;
+allow mfgloader sysfs_ss_writable:file r_file_perms;
+allow mfgloader sysfs:file rw_file_perms;
+allow mfgloader vendor_convergence_data_file:dir create_dir_perms;
+allow mfgloader vendor_convergence_data_file:file create_file_perms;
+allow mfgloader vendor_file:system module_load;
+allow mfgloader proc_modules:file r_file_perms;
+allow mfgloader sysfs_wlan_fwpath:file w_file_perms;
+allow mfgloader sysfs_wifi:file rw_file_perms;
+allow mfgloader sysfs_wifi:dir search;
+allowxperm mfgloader self:ioctl udp_socket 0x8914;
+init_daemon_domain(mfgloader)
+get_prop(mfgloader, exported_wifi_prop)
+set_prop(mfgloader, vendor_wlandriver_prop)
+type mfgloader, domain;
+type mfgloader_exec, exec_type, file_type, vendor_file_type;

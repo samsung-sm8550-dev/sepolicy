@@ -1,0 +1,4 @@
+allow time_client vendor_time_daemon:unix_stream_socket connectto;
+init_daemon_domain(time_client)
+type time_client, domain;
+type time_client_exec, exec_type, file_type, vendor_file_type;

@@ -1,0 +1,3 @@
+neverallow { domain -vold } fsck_untrusted:process transition;
+neverallow { domain -vold } sgdisk:process transition;
+neverallowxperm { domain -vold } data_file_type:ioctl dir { range 0x6617 0x6618 };

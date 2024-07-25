@@ -1,0 +1,3 @@
+typealias(sp_keymaster_device)
+typealiasactual(sp_keymaster_device)
+type vendor_sp_keymaster_device, dev_type;

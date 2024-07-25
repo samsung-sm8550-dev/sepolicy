@@ -1,7 +1,5 @@
-allow vendor_ims_service property_socket_202404:sock_file write;
-allow vendor_ims_service vendor_ims_prop:property_service set;
 allow vendor_ims_service vendor_sysfs_data:file r_file_perms;
-allow vendor_ims_service sysfs_wake_lock_202404:file rw_file_perms;
+allow vendor_ims_service sysfs_wake_lock:file rw_file_perms;
 allow vendor_ims_service self:capability2 block_suspend;
 allow vendor_ims_service self:capability2 wake_alarm;
 allow vendor_ims_service self:cap2_userns block_suspend;
@@ -11,40 +9,39 @@ allow vendor_ims_service self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow vendor_ims_service self:tipc_socket create_socket_perms_no_ioctl;
 allow vendor_ims_service system_suspend_server:binder { call transfer };
 allow vendor_ims_service system_suspend_server:fd *;
-allow vendor_ims_service system_suspend_hwservice_202404:hwservice_manager find;
-allow vendor_ims_service hwservicemanager_202404:binder { call transfer };
-allow vendor_ims_service hidl_manager_hwservice_202404:hwservice_manager find;
-allow vendor_ims_service hal_system_suspend_service_202404:service_manager find;
-allow vendor_ims_service servicemanager_202404:binder { call transfer };
-allow vendor_ims_service ion_device_202404:chr_file r_file_perms;
+allow vendor_ims_service system_suspend_hwservice:hwservice_manager find;
+allow vendor_ims_service hidl_manager_hwservice:hwservice_manager find;
+allow vendor_ims_service hal_system_suspend_service:service_manager find;
+allow vendor_ims_service ion_device:chr_file r_file_perms;
 allow vendor_ims_service vendor_netmgrd_socket:dir r_dir_perms;
 allow vendor_ims_service vendor_netmgrd_socket:sock_file { getattr read write };
-allow vendor_ims_service vendor_diag_device:chr_file rw_file_perms;
-allow vendor_ims_service radio_202404:binder { call transfer };
-allow vendor_ims_service radio_202404:fd *;
-allow vendor_ims_service vendor_ctl_vendor_imsrcsservice_prop:property_service set;
 allow vendor_ims_service vendor_hal_cne_hwservice:hwservice_manager find;
-allow vendor_ims_service system_file_202404:dir r_dir_perms;
-allow vendor_ims_service devpts_202404:chr_file rw_file_perms;
+allow vendor_ims_service system_file:dir r_dir_perms;
+allow vendor_ims_service devpts:chr_file rw_file_perms;
 allow vendor_ims_service vendor_imsd_data_file:dir rw_dir_perms;
 allow vendor_ims_service vendor_imsd_data_file:file create_file_perms;
 allowxperm vendor_ims_service self:ioctl udp_socket 0x89fd;
-r_dir_file(vendor_ims_service, vendor_sysfs_diag)
-unix_socket_connect(vendor_ims_service, vendor_cnd, init_202404)
+init_daemon_domain(vendor_ims_service)
+unix_socket_connect(vendor_ims_service, property, vendor_cnd)
+unix_socket_connect(vendor_ims_service, property, vendor_netmgrd)
+unix_socket_connect(vendor_ims_service, vendor_cnd, init)
 unix_socket_connect(vendor_ims_service, vendor_cnd, vendor_cnd)
 unix_socket_connect(vendor_ims_service, vendor_cnd, vendor_netmgrd)
-unix_socket_connect(vendor_ims_service, vendor_ims_service, init_202404)
+unix_socket_connect(vendor_ims_service, vendor_ims_service, init)
 unix_socket_connect(vendor_ims_service, vendor_ims_service, vendor_cnd)
 unix_socket_connect(vendor_ims_service, vendor_ims_service, vendor_netmgrd)
-unix_socket_connect(vendor_ims_service, vendor_netmgrd, init_202404)
+unix_socket_connect(vendor_ims_service, vendor_netmgrd, init)
 unix_socket_connect(vendor_ims_service, vendor_netmgrd, vendor_cnd)
 unix_socket_connect(vendor_ims_service, vendor_netmgrd, vendor_netmgrd)
-get_prop(vendor_ims_service, vendor_ims_prop)
 get_prop(vendor_ims_service, vendor_cnd_prop)
-get_prop(vendor_ims_service, vendor_persist_rcs_prop_202404)
-get_prop(vendor_ims_service, hwservicemanager_prop_202404)
-get_prop(vendor_ims_service, vendor_ctl_vendor_imsrcsservice_prop)
+get_prop(vendor_ims_service, vendor_persist_rcs_prop)
+get_prop(vendor_ims_service, hwservicemanager_prop)
+set_prop(vendor_ims_service, vendor_ims_prop)
+set_prop(vendor_ims_service, vendor_ctl_vendor_imsrcsservice_prop)
+binder_use(vendor_ims_service)
+hwbinder_use(vendor_ims_service)
 net_domain(vendor_ims_service)
 hal_client_domain(vendor_ims_service, vendor_hal_datafactory_qti)
 type vendor_ims_service, domain, vendor_hal_imsfactory, vendor_hal_imsfactory_server, vendor_halserverdomain;
 type vendor_ims_service_exec, exec_type, file_type, vendor_file_type;
+type ims_service, app_api_service, service_manager_type, system_app_service_type;

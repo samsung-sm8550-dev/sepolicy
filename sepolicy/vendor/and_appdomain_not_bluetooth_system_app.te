@@ -1,0 +1,4 @@
+neverallow { appdomain -bluetooth -system_app } bluetooth_a2dp_offload_prop:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
+neverallow { appdomain -bluetooth -system_app } bluetooth_audio_hal_prop:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
+neverallow { appdomain -bluetooth -system_app } bluetooth_prop:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };
+neverallow { appdomain -bluetooth -system_app } exported_bluetooth_prop:file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write };

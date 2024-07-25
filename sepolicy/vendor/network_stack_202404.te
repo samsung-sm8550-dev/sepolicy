@@ -1,4 +1,0 @@
-allow network_stack_202404 vendor_dpmd_202404:unix_stream_socket connectto;
-allow network_stack_202404 vendor_dpmtcm_socket_202404:sock_file write;
-hal_client_domain(network_stack_202404, vendor_hal_perf)
-type network_stack_202404, domain;

@@ -1,1 +1,0 @@
-neverallow { domain -hal_usb_client -hal_usb_server } hal_usb_hwservice_202404:hwservice_manager find;

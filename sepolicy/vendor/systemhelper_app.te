@@ -1,0 +1,9 @@
+allow vendor_systemhelper_app vendor_trusteduilistener:binder { call transfer };
+allow vendor_systemhelper_app vendor_trusteduilistener:binder transfer;
+allow vendor_systemhelper_app vendor_trusteduilistener:fd *;
+allow vendor_systemhelper_app tethering_service:service_manager find;
+allow vendor_systemhelper_app vendor_hal_trustedui_qti:binder transfer;
+allow vendor_systemhelper_app vendor_hal_trustedui_qti:binder { call transfer };
+allow vendor_systemhelper_app vendor_hal_trustedui_qti:fd *;
+hal_client_domain(vendor_systemhelper_app, vendor_hal_perf)
+type vendor_systemhelper_app, domain;

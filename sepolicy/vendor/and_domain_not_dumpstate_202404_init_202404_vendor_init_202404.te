@@ -1,4 +1,0 @@
-neverallow { domain -dumpstate_202404 -init_202404 -vendor_init_202404 } future_pm_prop_202404:property_service set;
-neverallow { domain -dumpstate_202404 -init_202404 -vendor_init_202404 } future_pm_prop_202404:file no_rw_file_perms;
-neverallow { domain -dumpstate_202404 -init_202404 -vendor_init_202404 } debugfs_202404:file no_rw_file_perms;
-neverallow { domain -dumpstate_202404 -init_202404 -vendor_init_202404 } debugfs_202404:lnk_file no_rw_file_perms;

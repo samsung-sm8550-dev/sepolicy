@@ -1,2 +1,0 @@
-neverallow { domain -vendor_cnd } vendor_hal_latency_hwservice:hwservice_manager add;
-neverallow { domain -vendor_cnd } vendor_hal_slmadapter_hwservice:hwservice_manager add;

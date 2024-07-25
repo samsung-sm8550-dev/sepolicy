@@ -1,9 +1,7 @@
 allow vendor_hal_mem_pasrmanager_client vendor_hal_mem_pasrmanager_server:binder { call transfer };
 allow vendor_hal_mem_pasrmanager_client vendor_hal_mem_pasrmanager_server:fd *;
-allow vendor_hal_mem_pasrmanager_client vendor_hal_pasrmanager_memory_hwservice:hwservice_manager find;
 allow vendor_hal_mem_pasrmanager_server vendor_hal_mem_pasrmanager_client:binder transfer;
-allow vendor_hal_mem_pasrmanager_server vendor_hal_pasrmanager_memory_hwservice:hwservice_manager { add find };
-allow vendor_hal_mem_pasrmanager_server hidl_base_hwservice_202404:hwservice_manager add;
 attribute vendor_hal_mem_pasrmanager;
 attribute vendor_hal_mem_pasrmanager_client;
 attribute vendor_hal_mem_pasrmanager_server;
+hal_attribute_hwservice(vendor_hal_mem_pasrmanager, vendor_hal_pasrmanager_memory_hwservice)

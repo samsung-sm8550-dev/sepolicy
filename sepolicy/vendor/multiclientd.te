@@ -1,0 +1,28 @@
+allow multiclientd dumplog_data_file:dir create_dir_perms;
+allow multiclientd dumplog_data_file:file create_file_perms;
+allow multiclientd storage_file:dir r_dir_perms;
+allow multiclientd storage_file:lnk_file r_file_perms;
+allow multiclientd mnt_user_file:dir r_dir_perms;
+allow multiclientd mnt_user_file:lnk_file r_file_perms;
+allow multiclientd media_rw_data_file:dir create_dir_perms;
+allow multiclientd media_rw_data_file:file create_file_perms;
+allow multiclientd sdcardfs:dir create_dir_perms;
+allow multiclientd sdcardfs:file create_file_perms;
+allow multiclientd fuse:dir create_dir_perms;
+allow multiclientd fuse:dir r_dir_perms;
+allow multiclientd fuse:file create_file_perms;
+allow multiclientd logcat_exec:file rx_file_perms;
+allow multiclientd radio_data_file:dir r_dir_perms;
+allow multiclientd radio_data_file:file r_file_perms;
+allow multiclientd domain:dir { getattr open read search };
+allow multiclientd domain:file { getattr open read };
+allow multiclientd domain:lnk_file { getattr open read };
+unix_socket_connect(multiclientd, logdr, logd)
+unix_socket_connect(multiclientd, logdr, init)
+unix_socket_connect(multiclientd, property, logd)
+set_prop(multiclientd, ctl_start_prop)
+set_prop(multiclientd, ctl_restart_prop)
+hwbinder_use(multiclientd)
+hal_client_domain(multiclientd, hal_telephony)
+type multiclientd, coredomain, domain, mlstrustedsubject;
+type multiclientd_exec, exec_type, file_type, system_file_type;

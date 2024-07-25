@@ -1,4 +1,0 @@
-allow vendor_fm_app_202404 vendor_sysfs_kgsl:file r_file_perms;
-get_prop(vendor_fm_app_202404, vendor_bluetooth_prop)
-get_prop(vendor_fm_app_202404, vendor_fm_radio_app_prop)
-type vendor_fm_app_202404, domain;

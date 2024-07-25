@@ -1,1 +1,0 @@
-neverallow { domain -bootstat_202404 -init_202404 } system_boot_reason_prop_202404:property_service set;

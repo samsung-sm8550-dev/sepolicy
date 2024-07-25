@@ -1,7 +1,0 @@
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:file write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:dir write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:lnk_file write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:chr_file write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:blk_file write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:sock_file write;
-neverallow { appdomain -bluetooth_202404 -nfc_202404 } sysfs_202404:fifo_file write;

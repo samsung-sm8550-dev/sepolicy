@@ -1,4 +1,4 @@
 expandtypeattribute(vendor_property_type)
-allow property_type tmpfs_202404:filesystem associate;
+allow property_type tmpfs:filesystem associate;
 attribute property_type;
 attribute vendor_property_type;

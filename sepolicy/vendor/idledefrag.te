@@ -1,0 +1,16 @@
+allow idledefrag apk_data_file:dir { getattr open read search };
+allow idledefrag apk_data_file:file getattr;
+allow idledefrag sysfs_ss_writable:file rw_file_perms;
+allow idledefrag configfs:dir r_dir_perms;
+allow idledefrag configfs:file getattr;
+allow idledefrag dalvikcache_data_file:dir r_dir_perms;
+allow idledefrag dalvikcache_data_file:file getattr;
+allow idledefrag shell_exec:file x_file_perms;
+allow idledefrag toolbox_exec:file x_file_perms;
+allow idledefrag apk_tmp_file:dir { getattr open read search };
+allow idledefrag apk_tmp_file:file getattr;
+allow idledefrag sysfs_fs_f2fs:dir r_dir_perms;
+allow idledefrag sysfs_fs_f2fs:file rw_file_perms;
+unix_socket_connect(idledefrag, property, init)
+type idledefrag, coredomain, domain;
+type idledefrag_exec, exec_type, file_type, system_file_type;

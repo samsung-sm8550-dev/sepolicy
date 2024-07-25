@@ -2,9 +2,10 @@ allow vendor_pasrmanager_memory_qti vendor_sysfs_system_memory:file rw_file_perm
 allow vendor_pasrmanager_memory_qti vendor_sysfs_system_memory:dir r_dir_perms;
 allow vendor_pasrmanager_memory_qti vendor_sysfs_mem_offline:file rw_file_perms;
 allow vendor_pasrmanager_memory_qti vendor_sysfs_mem_offline:dir r_dir_perms;
-allow vendor_pasrmanager_memory_qti proc_zoneinfo_202404:file r_file_perms;
-allow vendor_pasrmanager_memory_qti proc_meminfo_202404:file r_file_perms;
-allow vendor_pasrmanager_memory_qti sysfs_202404:dir r_dir_perms;
+allow vendor_pasrmanager_memory_qti proc_zoneinfo:file r_file_perms;
+allow vendor_pasrmanager_memory_qti proc_meminfo:file r_file_perms;
+allow vendor_pasrmanager_memory_qti sysfs:dir r_dir_perms;
+init_daemon_domain(vendor_pasrmanager_memory_qti)
 get_prop(vendor_pasrmanager_memory_qti, vendor_pasr_prop)
 hal_server_domain(vendor_pasrmanager_memory_qti, vendor_hal_mem_pasrmanager)
 hal_client_domain(vendor_pasrmanager_memory_qti, hal_allocator)

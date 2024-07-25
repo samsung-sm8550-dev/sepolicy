@@ -1,1 +1,0 @@
-neverallow { coredomain -system_executes_vendor_violators -init_202404 -shell_202404 -ueventd_202404 } { vendor_file_type -vendor_app_file_202404 -same_process_hal_file_202404 -vndk_sp_file_202404 -vendor_public_lib_file_202404 -vendor_public_framework_file_202404 }:file execute;

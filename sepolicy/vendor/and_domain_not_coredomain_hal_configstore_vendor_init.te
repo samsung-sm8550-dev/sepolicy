@@ -1,0 +1,1 @@
+allow { domain -coredomain -hal_configstore -vendor_init } vendor_diag-router:unix_stream_socket connectto;

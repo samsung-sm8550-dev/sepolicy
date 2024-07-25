@@ -1,5 +1,0 @@
-allow vendor_systemhelper_app_202404 vendor_hal_trustedui_qti:binder transfer;
-allow vendor_systemhelper_app_202404 vendor_hal_trustedui_qti:binder { call transfer };
-allow vendor_systemhelper_app_202404 vendor_hal_trustedui_qti:fd *;
-hal_client_domain(vendor_systemhelper_app_202404, vendor_hal_perf)
-type vendor_systemhelper_app_202404, domain;

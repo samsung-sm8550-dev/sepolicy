@@ -1,0 +1,4 @@
+allow secprov_nexti ion_device:chr_file rw_file_perms;
+init_daemon_domain(secprov_nexti)
+type secprov_nexti, coredomain, domain;
+type secprov_nexti_exec, exec_type, file_type, system_file_type;

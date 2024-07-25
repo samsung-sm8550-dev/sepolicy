@@ -3,10 +3,10 @@ expandtypeattribute(hal_input_classifier_client)
 expandtypeattribute(hal_input_classifier_server)
 allow hal_input_classifier_client hal_input_classifier_server:binder { call transfer };
 allow hal_input_classifier_client hal_input_classifier_server:fd *;
-allow hal_input_classifier_client hal_input_classifier_hwservice_202404:hwservice_manager find;
 allow hal_input_classifier_server hal_input_classifier_client:binder transfer;
-allow hal_input_classifier_server hal_input_classifier_hwservice_202404:hwservice_manager { add find };
-allow hal_input_classifier_server hidl_base_hwservice_202404:hwservice_manager add;
+init_daemon_domain(hal_input_classifier_default)
 hal_server_domain(hal_input_classifier_default, hal_input_classifier)
+hal_attribute_hwservice(hal_input_classifier, hal_input_classifier_hwservice)
 type hal_input_classifier_default, domain;
 type hal_input_classifier_default_exec, exec_type, file_type, vendor_file_type;
+type hal_input_classifier_hwservice, hwservice_manager_type, protected_hwservice;

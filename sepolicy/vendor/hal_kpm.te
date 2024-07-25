@@ -1,0 +1,18 @@
+allow hal_kpm_client hal_kpm_server:binder { call transfer };
+allow hal_kpm_client hal_kpm_server:binder transfer;
+allow hal_kpm_client hal_kpm_server:fd *;
+allow hal_kpm_client hal_kpm_hwservice:hwservice_manager find;
+allow hal_kpm_client hal_kpm_service:service_manager find;
+allow hal_kpm_client servicemanager:binder { call transfer };
+allow hal_kpm_client servicemanager:fd *;
+allow hal_kpm_server hal_kpm_client:binder transfer;
+allow hal_kpm_server hal_kpm_client:binder { call transfer };
+allow hal_kpm_server hal_kpm_client:fd *;
+allow hal_kpm_server servicemanager:binder { call transfer };
+allow hal_kpm_server servicemanager:fd *;
+init_daemon_domain(hal_kpm_default)
+add_service(hal_kpm_server, hal_kpm_service)
+add_hwservice(hal_kpm_server, hal_kpm_hwservice)
+type hal_kpm_default, domain;
+type hal_kpm_default_exec, exec_type, file_type, vendor_file_type;
+type hal_kpm_hwservice, hwservice_manager_type;
