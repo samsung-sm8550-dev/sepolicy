@@ -1,0 +1,50 @@
+allow ssud hal_system_suspend_service:service_manager find;
+allow ssud ion_device:chr_file rw_file_perms;
+allow ssud mb_po_efs_file:dir create_dir_perms;
+allow ssud mb_po_efs_file:file create_file_perms;
+allow ssud self:udp_socket create;
+allow ssud self:tcp_socket { connect create getattr getopt read setopt write };
+allow ssud self:capability2 block_suspend;
+allow ssud self:cap2_userns block_suspend;
+allow ssud port:tcp_socket name_connect;
+allow ssud dumplog_data_file:dir create_dir_perms;
+allow ssud dumplog_data_file:file create_file_perms;
+allow ssud tz_device:chr_file rw_file_perms;
+allow ssud tz_user_device:chr_file rw_file_perms;
+allow ssud sysfs_wake_lock:file rw_file_perms;
+allow ssud system_suspend_server:binder { call transfer };
+allow ssud system_suspend_server:fd *;
+allow ssud system_suspend_hwservice:hwservice_manager find;
+allow ssud hidl_manager_hwservice:hwservice_manager find;
+allow ssud hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow ssud vaultkeeperd:binder { call transfer };
+allow ssud vaultkeeperd:fd *;
+allow ssud tee_file:dir r_dir_perms;
+allow ssud sysfs_ski_hidden_writable:file rw_file_perms;
+allow ssud hal_vaultkeeper_service:service_manager find;
+allow ssud hal_vaultkeeperd_default:binder { call transfer };
+allow ssud hal_vaultkeeperd_default:fd *;
+allow ssud vendor_sysfs_scsi_host:dir r_dir_perms;
+allow ssud vendor_sysfs_scsi_host:file rw_file_perms;
+r_dir_file(ssud, sysfs_ski_ufs_writable)
+unix_socket_connect(ssud, property, multiclientd)
+unix_socket_connect(ssud, property, netd)
+unix_socket_connect(ssud, property, system_server)
+unix_socket_connect(ssud, dnsproxyd, init)
+unix_socket_connect(ssud, dnsproxyd, multiclientd)
+unix_socket_connect(ssud, dnsproxyd, netd)
+unix_socket_connect(ssud, dnsproxyd, system_server)
+unix_socket_connect(ssud, fwmarkd, init)
+unix_socket_connect(ssud, fwmarkd, multiclientd)
+unix_socket_connect(ssud, fwmarkd, netd)
+unix_socket_connect(ssud, fwmarkd, system_server)
+get_prop(ssud, hwservicemanager_prop)
+set_prop(ssud, exported_system_prop)
+set_prop(ssud, ctl_start_prop)
+binder_use(ssud)
+hwbinder_use(ssud)
+hal_client_domain(ssud, vendor_hal_qseecom)
+hal_client_domain(ssud, hal_drk)
+hal_client_domain(ssud, hal_ssu)
+type ssud, coredomain, domain;
+type ssud_exec, exec_type, file_type, system_file_type;

@@ -4,24 +4,17 @@ expandtypeattribute(hal_usb_gadget_server)
 allow hal_usb_gadget_client hal_usb_gadget_server:binder { call transfer };
 allow hal_usb_gadget_client hal_usb_gadget_server:binder transfer;
 allow hal_usb_gadget_client hal_usb_gadget_server:fd *;
-allow hal_usb_gadget_client hal_usb_gadget_service:service_manager find;
-allow hal_usb_gadget_client hal_usb_gadget_hwservice:hwservice_manager find;
 allow hal_usb_gadget_server hal_usb_gadget_client:binder transfer;
 allow hal_usb_gadget_server hal_usb_gadget_client:binder { call transfer };
 allow hal_usb_gadget_server hal_usb_gadget_client:fd *;
-allow hal_usb_gadget_server su:tcp_socket { accept getopt read write };
-allow hal_usb_gadget_server servicemanager:binder { call transfer };
-allow hal_usb_gadget_server servicemanager:fd *;
-allow hal_usb_gadget_server hal_usb_gadget_hwservice:hwservice_manager { add find };
-allow hal_usb_gadget_server hidl_base_hwservice:hwservice_manager add;
 allow hal_usb_gadget_server configfs:lnk_file { create read unlink };
 allow hal_usb_gadget_server configfs:dir rw_dir_perms;
 allow hal_usb_gadget_server configfs:file create_file_perms;
 allow hal_usb_gadget_server functionfs:dir { read search };
 allow hal_usb_gadget_server functionfs:file read;
-allow hal_usb_gadget_server proc_interrupts:file r_file_perms;
-get_prop(hal_usb_gadget_server, usb_uvc_enabled_prop)
+init_daemon_domain(hal_usb_gadget_default)
 hal_server_domain(hal_usb_gadget_default, hal_usb_gadget)
-add_service(hal_usb_gadget_server, hal_usb_gadget_service)
+hal_attribute_hwservice(hal_usb_gadget, hal_usb_gadget_hwservice)
 type hal_usb_gadget_default, domain;
 type hal_usb_gadget_default_exec, exec_type, file_type, vendor_file_type;
+type hal_usb_gadget_hwservice, hwservice_manager_type, protected_hwservice;

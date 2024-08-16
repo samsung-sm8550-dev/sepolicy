@@ -1,0 +1,12 @@
+allow remosaicd hal_camera_default:fd *;
+allow remosaicd remosaicd_vndservice:service_manager add;
+allow remosaicd ion_device:chr_file r_file_perms;
+allow remosaicd ion_device:chr_file w_file_perms;
+allow remosaicd cameraserver:binder { call transfer };
+allow remosaicd cameraserver:fd *;
+allow remosaicd gpu_device:chr_file rw_file_perms;
+allow remosaicd sec_debugfs:dir r_dir_perms;
+init_daemon_domain(remosaicd)
+vndbinder_use(remosaicd)
+type remosaicd, domain;
+type remosaicd_exec, exec_type, file_type, vendor_file_type;

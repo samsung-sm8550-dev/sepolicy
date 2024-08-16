@@ -1,0 +1,42 @@
+allow teed_app system_server:binder transfer;
+allow teed_app system_server:binder call;
+allow teed_app tee_service:service_manager add;
+allow teed_app activity_service:service_manager find;
+allow teed_app connectivity_service:service_manager find;
+allow teed_app display_service:service_manager find;
+allow teed_app network_management_service:service_manager find;
+allow teed_app notification_service:service_manager find;
+allow teed_app hidl_allocator_hwservice:hwservice_manager find;
+allow teed_app hidl_memory_hwservice:hwservice_manager find;
+allow teed_app self:process execmem;
+allow teed_app ashmem_device:chr_file execute;
+allow teed_app tmpfs:file { execute read };
+allow teed_app zygote:fd *;
+allow teed_app zygote:process sigchld;
+allow teed_app zygote:unix_dgram_socket write;
+allow teed_app edm_proxy_service:service_manager find;
+allow teed_app surfaceflinger_service:service_manager find;
+allow teed_app desktop_service:service_manager find;
+allow teed_app EDM_Policy_service:service_manager find;
+allow teed_app autofill_service:service_manager find;
+allow teed_app persona_service:service_manager find;
+allow teed_app semclipboard_service:service_manager find;
+allow teed_app system_app_data_file:dir { add_name getattr search write };
+allow teed_app system_app_data_file:file { create open read setattr write };
+allow teed_app dumplog_data_file:dir search;
+allow teed_app dumplog_data_file:dir create_dir_perms;
+allow teed_app dumplog_data_file:file create_file_perms;
+allow teed_app nfc_service:service_manager find;
+allow teed_app tsdaemon:fd *;
+allow teed_app tsdaemon:binder transfer;
+allow teed_app gpu_service:service_manager find;
+allow teed_app gpuservice:binder call;
+allow teed_app cgroup:file write;
+allow teed_app activity_task_service:service_manager find;
+allow teed_app media_session_service:service_manager find;
+allow teed_app thermal_service:service_manager find;
+allow teed_app CustomFrequencyManager_service:service_manager find;
+hal_client_domain(teed_app, hal_allocator)
+hal_client_domain(teed_app, hal_tee)
+add_service(teed_app, tee_service)
+type teed_app, coredomain, domain;

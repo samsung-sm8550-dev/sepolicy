@@ -1,10 +1,8 @@
-allow vendor_qlogd vendor_qlogd_exec:file rx_file_perms;
-allow vendor_qlogd vendor_diag_device:chr_file rw_file_perms;
-allow vendor_qlogd vendor_radio_vendor_data_file:file create_file_perms;
-allow vendor_qlogd vendor_radio_vendor_data_file:dir create_dir_perms;
-allow vendor_qlogd property_socket:sock_file write;
-allow vendor_qlogd init:unix_stream_socket connectto;
-allow vendor_qlogd vendor_modem_diag_prop:property_service set;
-get_prop(vendor_qlogd, vendor_modem_diag_prop)
+allow vendor_qlogd sysfs_sensor_writable:file rw_file_perms;
+allow vendor_qlogd diag_device:chr_file rw_file_perms;
+typealias(qlogd_exec)
+typealias(qlogd)
+typealiasactual(qlogd_exec)
+typealiasactual(qlogd)
 type vendor_qlogd, domain;
 type vendor_qlogd_exec, exec_type, file_type, vendor_file_type;

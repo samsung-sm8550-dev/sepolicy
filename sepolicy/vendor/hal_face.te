@@ -6,24 +6,50 @@ allow hal_face_server dumpstate:fd *;
 allow hal_face_server hal_face_client:binder transfer;
 allow hal_face_server hal_face_client:binder { call transfer };
 allow hal_face_server hal_face_client:fd *;
-allow hal_face_server hal_face_hwservice:hwservice_manager { add find };
-allow hal_face_server hidl_base_hwservice:hwservice_manager add;
-allow hal_face_server su:tcp_socket { accept getopt read write };
 allow hal_face_server servicemanager:binder { call transfer };
+allow hal_face_server servicemanager:fd *;
 allow hal_face_client hal_face_server:binder { call transfer };
 allow hal_face_client hal_face_server:binder transfer;
 allow hal_face_client hal_face_server:fd *;
-allow hal_face_client hal_face_hwservice:hwservice_manager find;
-allow hal_face_client hal_face_service:service_manager find;
 allow hal_face ion_device:chr_file r_file_perms;
 allow hal_face face_vendor_data_file:file create_file_perms;
 allow hal_face face_vendor_data_file:dir rw_dir_perms;
-allow hal_face_default fwk_sensor_service:service_manager find;
-allow hal_face_default property_socket:sock_file write;
-allow hal_face_default init:unix_stream_socket connectto;
-allow hal_face_default virtual_face_hal_prop:property_service set;
-get_prop(hal_face_default, virtual_face_hal_prop)
+allow hal_face_default cameraserver:binder transfer;
+allow hal_face_default cameraserver:binder { call transfer };
+allow hal_face_default cameraserver:fd *;
+allow hal_face_default fwk_camera_hwservice:hwservice_manager find;
+allow hal_face_default hidl_token_hwservice:hwservice_manager find;
+allow hal_face_default hal_graphics_mapper_hwservice:hwservice_manager find;
+allow hal_face_default hal_graphics_allocator_hwservice:hwservice_manager find;
+allow hal_face_default hal_graphics_allocator_default:binder { call transfer };
+allow hal_face_default hal_graphics_allocator_default:fd *;
+allow hal_face_default tee_device:chr_file rw_file_perms;
+allow hal_face_default face_vendor_data_file:dir create_dir_perms;
+allow hal_face_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_face_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_face_default tzdaemon:fd *;
+allow hal_face_default tz_user_device:chr_file rw_file_perms;
+allow hal_face_default tee_efs_file:dir search;
+allow hal_face_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_face_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_face_default vendor_dmabuf_secure_cdsp_heap_device:chr_file r_file_perms;
+allow hal_face_default vendor_xdsp_device:chr_file r_file_perms;
+allow hal_face_default vendor_dmabuf_cma_secure_cdsp_heap_device:chr_file r_file_perms;
+allow hal_face_default vendor_membuf_dev:chr_file r_file_perms;
+allow hal_face_default vendor_vm_cp_cdsp_device:chr_file r_file_perms;
+init_daemon_domain(hal_face_default)
+get_prop(hal_face_default, vendor_fr_dlymgr_prop)
+get_prop(hal_face_default, vendor_fr_wkrmgr_prop)
+get_prop(hal_face_default, exported_camera_prop)
+get_prop(hal_face_default, camera_config_prop)
+get_prop(hal_face_default, tzdaemon_prop)
+get_prop(hal_face_default, vendor_teegris_prop)
+get_prop(hal_face_default, vendor_adsprpc_prop)
 hal_server_domain(hal_face_default, hal_face)
-add_service(hal_face_server, hal_face_service)
+hal_client_domain(hal_face_default, hal_allocator)
+hal_client_domain(hal_face_default, hal_graphics_allocator)
+hal_attribute_service(hal_face, hal_face_service)
+hal_attribute_hwservice(hal_face, hal_face_hwservice)
 type hal_face_default, domain;
 type hal_face_default_exec, exec_type, file_type, vendor_file_type;
+type hal_face_hwservice, hwservice_manager_type, protected_hwservice;

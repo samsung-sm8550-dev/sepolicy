@@ -1,0 +1,15 @@
+allow bootstat runtime_event_log_tags_file:file r_file_perms;
+allow bootstat bootstat_data_file:dir rw_dir_perms;
+allow bootstat bootstat_data_file:file create_file_perms;
+allow bootstat metadata_file:dir search;
+allow bootstat metadata_bootstat_file:dir rw_dir_perms;
+allow bootstat metadata_bootstat_file:file create_file_perms;
+allow bootstat pstorefs:dir search;
+allow bootstat pstorefs:file r_file_perms;
+allow bootstat kernel:system syslog_read;
+allow bootstat logcat_exec:file rx_file_perms;
+allow bootstat statsd:unix_dgram_socket sendto;
+unix_socket_connect(bootstat, logdr, logd)
+unix_socket_connect(bootstat, statsdw, logd)
+type bootstat, domain;
+type bootstat_exec, exec_type, file_type, system_file_type;

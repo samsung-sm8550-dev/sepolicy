@@ -1,0 +1,43 @@
+allow hal_ucmtlc_client hal_ucmtlc_server:binder { call transfer };
+allow hal_ucmtlc_client hal_ucmtlc_server:binder transfer;
+allow hal_ucmtlc_client hal_ucmtlc_server:fd *;
+allow hal_ucmtlc_client hal_ucmtlc_hwservice:hwservice_manager find;
+allow hal_ucmtlc_server hal_ucmtlc_client:binder transfer;
+allow hal_ucmtlc_server hal_ucmtlc_client:binder { call transfer };
+allow hal_ucmtlc_server hal_ucmtlc_client:fd *;
+allow hal_ucmtlc_server servicemanager:binder { call transfer };
+allow hal_ucmtlc_server servicemanager:fd *;
+allow hal_ucmtlc_default tz_user_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default sem_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default tee_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default ion_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_ucmtlc_default sysfs_wake_lock:file rw_file_perms;
+allow hal_ucmtlc_default self:capability2 block_suspend;
+allow hal_ucmtlc_default self:cap2_userns block_suspend;
+allow hal_ucmtlc_default system_suspend_server:binder { call transfer };
+allow hal_ucmtlc_default system_suspend_server:fd *;
+allow hal_ucmtlc_default system_suspend_hwservice:hwservice_manager find;
+allow hal_ucmtlc_default hidl_manager_hwservice:hwservice_manager find;
+allow hal_ucmtlc_default hal_system_suspend_service:service_manager find;
+allow hal_ucmtlc_default tzdaemon:fd *;
+allow hal_ucmtlc_default tee_efs_file:dir search;
+allow hal_ucmtlc_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_ucmtlc_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_ucmtlc_default)
+unix_socket_connect(hal_ucmtlc_default, property, rild)
+get_prop(hal_ucmtlc_default, vendor_factory_prop)
+get_prop(hal_ucmtlc_default, hwservicemanager_prop)
+get_prop(hal_ucmtlc_default, tzdaemon_prop)
+get_prop(hal_ucmtlc_default, vendor_teegris_prop)
+set_prop(hal_ucmtlc_default, system_ucm_prop)
+binder_use(hal_ucmtlc_default)
+hwbinder_use(hal_ucmtlc_default)
+hal_server_domain(hal_ucmtlc_default, hal_ucmtlc)
+hal_client_domain(hal_ucmtlc_default, hal_nfc)
+add_hwservice(hal_ucmtlc_server, hal_ucmtlc_hwservice)
+hal_attribute_service(hal_ucmtlc, hal_ucmtlc_service)
+type hal_ucmtlc_default, domain;
+type hal_ucmtlc_default_exec, exec_type, file_type, vendor_file_type;
+type hal_ucmtlc_hwservice, hwservice_manager_type;

@@ -1,0 +1,23 @@
+allow eris tunneldomain:tun_socket relabelfrom;
+allow eris self:tun_socket { create_socket_perms_no_ioctl relabelto };
+allow eris self:capability { net_admin net_raw };
+allow eris tun_device:chr_file rw_file_perms;
+allow eris tun_device:chr_file ioctl;
+allow eris sysfs_wake_lock:file rw_file_perms;
+allow eris eris_data_file:file create_file_perms;
+allow eris eris_data_file:dir create_dir_perms;
+allow eris system_file:file ioctl;
+allow eris system_file:dir { open read };
+allow eris multiclientd:unix_stream_socket connectto;
+allow eris rild:tun_socket relabelfrom;
+allow eris proc_net:file rw_file_perms;
+allow eris hwservicemanager:binder { call transfer };
+allow eris hwservicemanager:fd *;
+allow eris system_suspend_server:binder { call transfer };
+allow eris system_suspend_server:fd *;
+allow eris system_suspend_hwservice:hwservice_manager find;
+allowxperm eris tun_device:ioctl chr_file 0x54ca;
+get_prop(eris, hwservicemanager_prop)
+binder_use(eris)
+type eris, coredomain, domain, mlstrustedsubject, tunneldomain;
+type eris_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,26 @@
+neverallow mediametrics fs_type:file execute_no_trans;
+neverallow mediametrics file_type:file execute_no_trans;
+neverallow mediametrics domain:udp_socket *;
+neverallow mediametrics domain:rawip_socket *;
+neverallow mediametrics domain:tcp_socket *;
+allow mediametrics drmserver:binder transfer;
+allow mediametrics binderservicedomain:binder { call transfer };
+allow mediametrics binderservicedomain:fd *;
+allow mediametrics system_server:fd *;
+allow mediametrics proc_meminfo:file r_file_perms;
+allow mediametrics app_data_file:file write;
+allow mediametrics privapp_data_file:file write;
+allow mediametrics package_native_service:service_manager find;
+allow mediametrics statsd:binder transfer;
+allow mediametrics vendor_configs_file:file map;
+allow mediametrics dumplog_data_file:dir rw_dir_perms;
+allow mediametrics dumplog_data_file:file rw_file_perms;
+allow mediametrics remotedisplay:binder transfer;
+r_dir_file(mediametrics, cgroup)
+r_dir_file(mediametrics, cgroup_v2)
+unix_socket_send(mediametrics, statsdw, statsd)
+binder_service(mediametrics)
+binder_use(mediametrics)
+add_service(mediametrics, mediametrics_service)
+type mediametrics, domain;
+type mediametrics_exec, exec_type, file_type, system_file_type;

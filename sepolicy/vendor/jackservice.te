@@ -1,0 +1,52 @@
+allow jackservice apaservice:binder transfer;
+allow jackservice apaservice:unix_dgram_socket sendto;
+allow jackservice apaservice:process signull;
+allow jackservice jack_socket:sock_file create_file_perms;
+allow jackservice jack_socket:dir rw_dir_perms;
+allow jackservice kernel:system module_request;
+allow jackservice self:capability { kill setgid setuid };
+allow jackservice proc_asound:file r_file_perms;
+allow jackservice sysfs_ss_writable:file rw_file_perms;
+allow jackservice storage_file:dir r_dir_perms;
+allow jackservice storage_file:lnk_file r_file_perms;
+allow jackservice mnt_user_file:dir r_dir_perms;
+allow jackservice mnt_user_file:lnk_file r_file_perms;
+allow jackservice media_rw_data_file:dir create_dir_perms;
+allow jackservice media_rw_data_file:file create_file_perms;
+allow jackservice sdcardfs:dir create_dir_perms;
+allow jackservice sdcardfs:file create_file_perms;
+allow jackservice fuse:dir create_dir_perms;
+allow jackservice fuse:file create_file_perms;
+allow jackservice audio_device:dir search;
+allow jackservice audio_device:chr_file rw_file_perms;
+allow jackservice jack_data_file:dir create_dir_perms;
+allow jackservice jack_data_file:file create_file_perms;
+allow jackservice androidshmservice_exec:file rx_file_perms;
+allow jackservice audio_data_file:dir rw_dir_perms;
+allow jackservice audio_data_file:file create_file_perms;
+allow jackservice efs_file:dir r_dir_perms;
+allow jackservice efs_file:file r_file_perms;
+allow jackservice system_file:file rx_file_perms;
+allow jackservice system_file:dir r_dir_perms;
+allow jackservice jackservice_service:service_manager { add find };
+allow jackservice mediaserver:binder { call transfer };
+allow jackservice mediaserver:fd *;
+allow jackservice mediaserver_service:service_manager find;
+allow jackservice audioserver:binder { call transfer };
+allow jackservice audioserver:fd *;
+allow jackservice audioserver_service:service_manager find;
+allow jackservice system_server:binder { call transfer };
+allow jackservice system_server:fd *;
+allow jackservice activity_service:service_manager find;
+allow jackservice hwservicemanager:binder { call transfer };
+allow jackservice hwservicemanager:fd *;
+allow jackservice vendor_hal_perf_hwservice:hwservice_manager find;
+allow jackservice hal_perf_default:binder { call transfer };
+allow jackservice hal_perf_default:fd *;
+unix_socket_connect(jackservice, jack, apaservice)
+unix_socket_connect(jackservice, jack, untrusteddomain)
+unix_socket_connect(jackservice, jack, platform_app)
+get_prop(jackservice, hwservicemanager_prop)
+binder_service(jackservice)
+type jackservice, coredomain, domain;
+type jackservice_exec, exec_type, file_type, system_file_type;

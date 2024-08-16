@@ -1,0 +1,13 @@
+allow sec_untrusted_app sem_wifi_service:service_manager find;
+allow sec_untrusted_app knox_clipboard_file:dir rw_dir_perms;
+allow sec_untrusted_app knox_clipboard_file:file rw_file_perms;
+allow sec_untrusted_app dumplog_data_file:dir create_dir_perms;
+allow sec_untrusted_app dumplog_data_file:file create_file_perms;
+allow sec_untrusted_app sysfs_mdnie_writable:file rw_file_perms;
+allow sec_untrusted_app proc_vmstat:file r_file_perms;
+allow sec_untrusted_app ursp_service:service_manager find;
+allow sec_untrusted_app sem_service:service_manager find;
+allow sec_untrusted_app privapp_data_file:file execute;
+allow sec_untrusted_app iccc_service:service_manager find;
+get_prop(sec_untrusted_app, ap_serial_prop)
+type sec_untrusted_app, coredomain, domain, sec_standard_app_type;

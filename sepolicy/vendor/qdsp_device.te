@@ -1,0 +1,3 @@
+typealias(qdsp_device)
+typealiasactual(qdsp_device)
+type vendor_qdsp_device, dev_type, mlstrustedobject;

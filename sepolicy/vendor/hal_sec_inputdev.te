@@ -1,0 +1,35 @@
+allow hal_sec_inputdev_default servicemanager:binder transfer;
+allow hal_sec_inputdev_default sysfs_ss_writable:dir r_dir_perms;
+allow hal_sec_inputdev_default sysfs_ss_writable:file rw_file_perms;
+allow hal_sec_inputdev_default sysfs_sec:dir r_dir_perms;
+allow hal_sec_inputdev_default sysfs_sec:file rw_file_perms;
+allow hal_sec_inputdev_default input_device:dir r_dir_perms;
+allow hal_sec_inputdev_default input_device:chr_file rw_file_perms;
+allow hal_sec_inputdev_default taas_efs_file:dir rw_dir_perms;
+allow hal_sec_inputdev_default taas_efs_file:file create_file_perms;
+allow hal_sec_inputdev_default tspio_device:chr_file rw_file_perms;
+allow hal_sec_inputdev_default system_server:binder transfer;
+allow hal_sec_inputdev_client hal_sec_inputdev_server:binder { call transfer };
+allow hal_sec_inputdev_client hal_sec_inputdev_server:binder transfer;
+allow hal_sec_inputdev_client hal_sec_inputdev_server:fd *;
+allow hal_sec_inputdev_client servicemanager:binder { call transfer };
+allow hal_sec_inputdev_client servicemanager:fd *;
+allow hal_sec_inputdev_client hal_sec_inputdev_hwservice:hwservice_manager find;
+allow hal_sec_inputdev_client hal_sec_inputdev_service:service_manager find;
+allow hal_sec_inputdev_server hal_sec_inputdev_client:binder transfer;
+allow hal_sec_inputdev_server hal_sec_inputdev_client:binder { call transfer };
+allow hal_sec_inputdev_server hal_sec_inputdev_client:fd *;
+allow hal_sec_inputdev_server servicemanager:binder { call transfer };
+allow hal_sec_inputdev_server servicemanager:fd *;
+init_daemon_domain(hal_sec_inputdev_default)
+r_dir_file(hal_sec_inputdev_default, app_efs_file)
+r_dir_file(hal_sec_inputdev_default, mnt_user_file)
+r_dir_file(hal_sec_inputdev_default, fuse)
+get_prop(hal_sec_inputdev_default, hwservicemanager_prop)
+set_prop(hal_sec_inputdev_default, vendor_input_state_prop)
+hal_server_domain(hal_sec_inputdev_default, hal_sec_inputdev)
+add_service(hal_sec_inputdev_server, hal_sec_inputdev_service)
+add_hwservice(hal_sec_inputdev_server, hal_sec_inputdev_hwservice)
+type hal_sec_inputdev_default, domain;
+type hal_sec_inputdev_default_exec, exec_type, file_type, vendor_file_type;
+type hal_sec_inputdev_hwservice, hwservice_manager_type;

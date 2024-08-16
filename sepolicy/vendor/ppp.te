@@ -1,0 +1,22 @@
+allow ppp mtp:socket rw_socket_perms;
+allow ppp mtp:pppox_socket rw_socket_perms;
+allow ppp mtp:pppox_socket create_socket_perms_no_ioctl;
+allow ppp mtp:pppox_socket ioctl;
+allow ppp mtp:unix_dgram_socket rw_socket_perms;
+allow ppp mtp:fd *;
+allow ppp ppp_device:chr_file rw_file_perms;
+allow ppp self:capability net_admin;
+allow ppp self:cap_userns net_admin;
+allow ppp system_file:file rx_file_perms;
+allow ppp vpn_data_file:dir w_dir_perms;
+allow ppp vpn_data_file:file create_file_perms;
+allowxperm ppp self:ioctl udp_socket { 0x6900 0x6902 };
+allowxperm ppp self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
+allowxperm ppp self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
+allowxperm ppp mtp:ioctl socket { range 0x7436 0x7441 range 0x7446 0x7447 range 0x744b 0x745a range 0x7480 0x7488 };
+allowxperm ppp mtp:ioctl pppox_socket { range 0x7436 0x7441 range 0x7446 0x7447 range 0x744b 0x745a range 0x7480 0x7488 };
+allowxperm ppp mtp:ioctl pppox_socket 0x7437;
+r_dir_file(ppp, proc_net_type)
+net_domain(ppp)
+type ppp, domain;
+type ppp_exec, exec_type, file_type, system_file_type;

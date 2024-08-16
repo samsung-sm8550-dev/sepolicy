@@ -1,0 +1,115 @@
+allow oneseg_mw mediaswcodec:binder transfer;
+allow oneseg_mw mediaswcodec:binder { call transfer };
+allow oneseg_mw mediaswcodec:fd *;
+allow oneseg_mw oneseg_apk:binder { call transfer };
+allow oneseg_mw oneseg_apk:fd *;
+allow oneseg_mw oneseg_apk:dir r_dir_perms;
+allow oneseg_mw oneseg_apk:file r_file_perms;
+allow oneseg_mw oneseg_mw:binder { call transfer };
+allow oneseg_mw oneseg_mw:binder transfer;
+allow oneseg_mw oneseg_mw:fd *;
+allow oneseg_mw surfaceflinger:binder { call transfer };
+allow oneseg_mw surfaceflinger:fd *;
+allow oneseg_mw system_app:binder { call transfer };
+allow oneseg_mw system_app:fd *;
+allow oneseg_mw system_server:binder { call transfer };
+allow oneseg_mw system_server:fd *;
+allow oneseg_mw dumplog_data_file:dir create_dir_perms;
+allow oneseg_mw dumplog_data_file:file create_file_perms;
+allow oneseg_mw mobicore_admin_device:chr_file rw_file_perms;
+allow oneseg_mw mobicore_user_device:chr_file rw_file_perms;
+allow oneseg_mw audioserver_service:service_manager find;
+allow oneseg_mw audioserver:binder { call transfer };
+allow oneseg_mw audioserver:fd *;
+allow oneseg_mw platform_app:binder { call transfer };
+allow oneseg_mw platform_app:fd *;
+allow oneseg_mw self:capability { net_admin net_raw };
+allow oneseg_mw self:udp_socket { bind create name_bind node_bind read setopt shutdown write };
+allow oneseg_mw self:tcp_socket { connect create read setopt write };
+allow oneseg_mw port:udp_socket name_bind;
+allow oneseg_mw port:tcp_socket name_connect;
+allow oneseg_mw node:udp_socket node_bind;
+allow oneseg_mw efs_file:dir search;
+allow oneseg_mw storage_file:dir r_dir_perms;
+allow oneseg_mw storage_file:lnk_file r_file_perms;
+allow oneseg_mw mnt_user_file:dir r_dir_perms;
+allow oneseg_mw mnt_user_file:lnk_file r_file_perms;
+allow oneseg_mw media_rw_data_file:dir create_dir_perms;
+allow oneseg_mw media_rw_data_file:file create_file_perms;
+allow oneseg_mw sdcardfs:dir create_dir_perms;
+allow oneseg_mw sdcardfs:file create_file_perms;
+allow oneseg_mw fuse:dir create_dir_perms;
+allow oneseg_mw fuse:file create_file_perms;
+allow oneseg_mw audio_device:dir r_dir_perms;
+allow oneseg_mw audio_device:lnk_file r_file_perms;
+allow oneseg_mw audio_device:chr_file rw_file_perms;
+allow oneseg_mw block_device:dir search;
+allow oneseg_mw dvb_device:chr_file rw_file_perms;
+allow oneseg_mw mmb_device:chr_file rw_file_perms;
+allow oneseg_mw mmb_device:sock_file create_file_perms;
+allow oneseg_mw m2m1shot_device:chr_file rw_file_perms;
+allow oneseg_mw random_device:chr_file r_file_perms;
+allow oneseg_mw video_device:dir r_dir_perms;
+allow oneseg_mw video_device:lnk_file r_file_perms;
+allow oneseg_mw video_device:chr_file rw_file_perms;
+allow oneseg_mw imei_efs_file:dir r_dir_perms;
+allow oneseg_mw imei_efs_file:file r_file_perms;
+allow oneseg_mw oneseg_data_file:dir create_dir_perms;
+allow oneseg_mw oneseg_data_file:file create_file_perms;
+allow oneseg_mw oneseg_data_file:lnk_file create_file_perms;
+allow oneseg_mw system_file:file x_file_perms;
+allow oneseg_mw oneseg_mw_exec:file rx_file_perms;
+allow oneseg_mw toolbox_exec:file rx_file_perms;
+allow oneseg_mw mediaserver_service:service_manager find;
+allow oneseg_mw surfaceflinger_service:service_manager find;
+allow oneseg_mw oneseg_mw_service:service_manager find;
+allow oneseg_mw oneseg_mw_service:service_manager add;
+allow oneseg_mw activity_service:service_manager find;
+allow oneseg_mw sysfs_sec:file rw_file_perms;
+allow oneseg_mw sdcard_type:dir create_dir_perms;
+allow oneseg_mw sdcard_type:file create_file_perms;
+allow oneseg_mw radio_data_file:dir search;
+allow oneseg_mw radio_data_file:file r_file_perms;
+allow oneseg_mw gpu_device:chr_file rw_file_perms;
+allow oneseg_mw ion_device:chr_file rw_file_perms;
+allow oneseg_mw hal_graphics_allocator_default:fd *;
+allow oneseg_mw hal_graphics_mapper_hwservice:hwservice_manager find;
+allow oneseg_mw hwservicemanager:binder call;
+allow oneseg_mw codecsolution_service:service_manager find;
+allow oneseg_mw mediacodec:binder { call transfer };
+allow oneseg_mw mediacodec:fd *;
+allow oneseg_mw remotedisplay:binder { call transfer };
+allow oneseg_mw remotedisplay:fd *;
+allow oneseg_mw mediametrics:binder call;
+allow oneseg_mw mediametrics_service:service_manager find;
+allow oneseg_mw remotedisplay_service:service_manager find;
+allow oneseg_mw hal_graphics_composer_default:fd *;
+allow oneseg_mw mediaserver:binder { call transfer };
+allow oneseg_mw mediaserver:fd *;
+allow oneseg_mw root_block_device:blk_file rw_file_perms;
+allow oneseg_mw batterystats_service:service_manager find;
+allow oneseg_mw hal_sbtvd_default:binder { call transfer };
+allow oneseg_mw hal_sbtvd_default:fd *;
+allow oneseg_mw hal_sbtvd_hwservice:hwservice_manager find;
+allow oneseg_mw mnt_media_rw_file:dir r_dir_perms;
+allow oneseg_mw priv_app:binder { call transfer };
+allow oneseg_mw priv_app:fd *;
+allow oneseg_mw shell_exec:file rx_file_perms;
+allow oneseg_mw mnt_sdcard_file:lnk_file r_file_perms;
+allow oneseg_mw aidl_codecsolution_service:service_manager find;
+allow oneseg_mw sysfs_socinfo:file rw_file_perms;
+r_dir_file(oneseg_mw, system_file)
+r_dir_file(oneseg_mw, ap_device)
+r_dir_file(oneseg_mw, vendor_sysfs_mmc_host)
+unix_socket_connect(oneseg_mw, property, multiclientd)
+get_prop(oneseg_mw, hwservicemanager_prop)
+set_prop(oneseg_mw, audio_prop)
+set_prop(oneseg_mw, oneseg_prop)
+binder_service(oneseg_mw)
+binder_use(oneseg_mw)
+net_domain(oneseg_mw)
+hal_client_domain(oneseg_mw, hal_allocator)
+hal_client_domain(oneseg_mw, hal_codec2)
+hal_client_domain(oneseg_mw, hal_omx)
+type oneseg_mw, coredomain, domain, mlstrustedsubject;
+type oneseg_mw_exec, exec_type, file_type, system_file_type;

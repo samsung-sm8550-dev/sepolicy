@@ -1,12 +1,10 @@
 allow vendor_hal_sxrservice_qti_client vendor_hal_sxrservice_qti_server:binder { call transfer };
 allow vendor_hal_sxrservice_qti_client vendor_hal_sxrservice_qti_server:binder transfer;
 allow vendor_hal_sxrservice_qti_client vendor_hal_sxrservice_qti_server:fd *;
-allow vendor_hal_sxrservice_qti_client vendor_hal_sxrd_service:service_manager find;
 allow vendor_hal_sxrservice_qti_server vendor_hal_sxrservice_qti_client:binder transfer;
 allow vendor_hal_sxrservice_qti_server vendor_hal_sxrservice_qti_client:binder { call transfer };
 allow vendor_hal_sxrservice_qti_server vendor_hal_sxrservice_qti_client:fd *;
-allow vendor_hal_sxrservice_qti_server su:tcp_socket { accept getopt read write };
 attribute vendor_hal_sxrservice_qti;
 attribute vendor_hal_sxrservice_qti_client;
 attribute vendor_hal_sxrservice_qti_server;
-add_service(vendor_hal_sxrservice_qti_server, vendor_hal_sxrd_service)
+hal_attribute_service(vendor_hal_sxrservice_qti, vendor_hal_sxrd_service)

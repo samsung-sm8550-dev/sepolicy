@@ -1,0 +1,2 @@
+allow hal_authfw_service servicemanager:binder transfer;
+type hal_authfw_service, service_manager_type, vendor_service;

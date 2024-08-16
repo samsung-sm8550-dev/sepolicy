@@ -1,0 +1,14 @@
+allow hal_tdmb_client hal_tdmb_server:binder { call transfer };
+allow hal_tdmb_client hal_tdmb_server:binder transfer;
+allow hal_tdmb_client hal_tdmb_server:fd *;
+allow hal_tdmb_client hal_tdmb_hwservice:hwservice_manager find;
+allow hal_tdmb_server hal_tdmb_client:binder transfer;
+allow hal_tdmb_server hal_tdmb_client:binder { call transfer };
+allow hal_tdmb_server hal_tdmb_client:fd *;
+allow hal_tdmb_default tdmb_device:chr_file rw_file_perms;
+init_daemon_domain(hal_tdmb_default)
+hal_server_domain(hal_tdmb_default, hal_tdmb)
+add_hwservice(hal_tdmb_server, hal_tdmb_hwservice)
+type hal_tdmb_default, domain;
+type hal_tdmb_default_exec, exec_type, file_type, vendor_file_type;
+type hal_tdmb_hwservice, hwservice_manager_type;

@@ -1,0 +1,2 @@
+type aidl_lazy_test_server, domain;
+type aidl_lazy_test_server_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,70 @@
+allow snap_hidl cameraserver:binder transfer;
+allow snap_hidl platform_app:binder transfer;
+allow snap_hidl platform_app:binder { call transfer };
+allow snap_hidl platform_app:process getpgid;
+allow snap_hidl platform_app:fd *;
+allow snap_hidl servicemanager:binder transfer;
+allow snap_hidl servicemanager:binder { call transfer };
+allow snap_hidl servicemanager:fd *;
+allow snap_hidl shell:binder transfer;
+allow snap_hidl hidl_base_hwservice:hwservice_manager add;
+allow snap_hidl snap_hwservice:hwservice_manager { add find };
+allow snap_hidl hidl_allocator_hwservice:hwservice_manager find;
+allow snap_hidl hidl_memory_hwservice:hwservice_manager find;
+allow snap_hidl gpu_device:chr_file rw_file_perms;
+allow snap_hidl gpu_device:chr_file { getattr ioctl map open read write };
+allow snap_hidl gpu_device:dir r_dir_perms;
+allow snap_hidl ion_device:chr_file r_file_perms;
+allow snap_hidl ion_device:chr_file { getattr ioctl map open read write };
+allow snap_hidl sec_debugfs:dir search;
+allow snap_hidl system_file:dir r_dir_perms;
+allow snap_hidl shell_data_file:file read;
+allow snap_hidl snap_data_vendor_file:dir create_dir_perms;
+allow snap_hidl snap_data_vendor_file:file create_file_perms;
+allow snap_hidl dumpstate:fd *;
+allow snap_hidl vendor_shell_exec:file rx_file_perms;
+allow snap_hidl sdcardfs:dir r_dir_perms;
+allow snap_hidl vendor_log_file:file create_file_perms;
+allow snap_hidl vendor_log_file:dir create_dir_perms;
+allow snap_hidl fuse:dir create_dir_perms;
+allow snap_hidl fuse:file create_file_perms;
+allow snap_hidl debugfs_tracing:file r_file_perms;
+allow snap_hidl dmabuf_system_heap_device:chr_file r_file_perms;
+allow snap_hidl vendor_npu_device:chr_file { ioctl open read write };
+allow snap_hidl vendor_npu_device:chr_file r_file_perms;
+allow snap_hidl system_app:binder { call transfer };
+allow snap_hidl system_app:binder transfer;
+allow snap_hidl system_app:fd *;
+allow snap_hidl untrusted_app_all:fd *;
+allow snap_hidl untrusted_app_all:binder transfer;
+allow snap_hidl dmabuf_heap_device:chr_file r_file_perms;
+allow snap_hidl snap_utility:binder transfer;
+allow snap_hidl untrusted_app:binder transfer;
+allow snap_hidl vendor_qdsp_device:chr_file r_file_perms;
+allow snap_hidl vendor_hal_perf_hwservice:hwservice_manager find;
+allow snap_hidl hal_perf_default:binder call;
+allowxperm snap_hidl dmabuf_system_heap_device:ioctl chr_file 0x4800;
+allowxperm snap_hidl dmabuf_heap_device:ioctl dir 0x4800;
+init_daemon_domain(snap_hidl)
+r_dir_file(snap_hidl, mnt_user_file)
+r_dir_file(snap_hidl, sysfs_exynos_drm)
+r_dir_file(snap_hidl, sysfs_sgpu)
+r_dir_file(snap_hidl, vendor_sysfs_kgsl)
+unix_socket_connect(snap_hidl, traced_producer, init)
+get_prop(snap_hidl, hwservicemanager_prop)
+get_prop(snap_hidl, sec_camera_prop)
+get_prop(snap_hidl, vendor_sec_camera_prop)
+get_prop(snap_hidl, chipname_prop)
+get_prop(snap_hidl, media_plat_prop)
+get_prop(snap_hidl, perf_prop)
+get_prop(snap_hidl, vendor_adsprpc_prop)
+set_prop(snap_hidl, cache_status_prop)
+set_prop(snap_hidl, vendor_debug_snap_prop)
+set_prop(snap_hidl, vendor_snap_debug_prop)
+hwbinder_use(snap_hidl)
+hal_client_domain(snap_hidl, hal_allocator)
+hal_client_domain(snap_hidl, hal_graphics_allocator)
+hal_client_domain(snap_hidl, hal_hyper)
+add_service(snap_hidl, hal_snap_service)
+type snap_hidl, domain, mlstrustedsubject;
+type snap_hidl_exec, exec_type, file_type, vendor_file_type;

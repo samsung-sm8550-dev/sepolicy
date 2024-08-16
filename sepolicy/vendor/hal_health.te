@@ -1,14 +1,12 @@
 expandtypeattribute(hal_health)
 expandtypeattribute(hal_health_client)
 expandtypeattribute(hal_health_server)
-allow hal_health_server dumpstate:fifo_file write;
-allow hal_health_server dumpstate:fd *;
+allow hal_health_client hal_health_server:binder { call transfer };
+allow hal_health_client hal_health_server:binder transfer;
+allow hal_health_client hal_health_server:fd *;
 allow hal_health_server hal_health_client:binder transfer;
 allow hal_health_server hal_health_client:binder { call transfer };
 allow hal_health_server hal_health_client:fd *;
-allow hal_health_server hal_health_hwservice:hwservice_manager { add find };
-allow hal_health_server hidl_base_hwservice:hwservice_manager add;
-allow hal_health_server su:tcp_socket { accept getopt read write };
 allow hal_health_server self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow hal_health_server self:capability2 block_suspend;
 allow hal_health_server self:capability2 wake_alarm;
@@ -18,27 +16,41 @@ allow hal_health_server sysfs_wake_lock:file rw_file_perms;
 allow hal_health_server system_suspend_server:binder { call transfer };
 allow hal_health_server system_suspend_server:fd *;
 allow hal_health_server system_suspend_hwservice:hwservice_manager find;
-allow hal_health_server hwservicemanager:binder { call transfer };
 allow hal_health_server hidl_manager_hwservice:hwservice_manager find;
 allow hal_health_server hal_system_suspend_service:service_manager find;
-allow hal_health_server servicemanager:binder { call transfer };
 allow hal_health_server kmsg_device:chr_file { getattr w_file_perms };
 allow hal_health_server fs_bpf_vendor:dir search;
 allow hal_health_server fs_bpf_vendor:file read;
 allow hal_health_server bpfloader:bpf prog_run;
-allow hal_health_client hal_health_server:binder { call transfer };
-allow hal_health_client hal_health_server:binder transfer;
-allow hal_health_client hal_health_server:fd *;
-allow hal_health_client hal_health_hwservice:hwservice_manager find;
-allow hal_health_client hal_health_service:service_manager find;
+allow hal_health_default app_efs_file:dir rw_dir_perms;
+allow hal_health_default app_efs_file:file create_file_perms;
+allow hal_health_default sysfs_battery:file w_file_perms;
+allow hal_health_default battery_efs_file:dir create_dir_perms;
+allow hal_health_default battery_efs_file:file create_file_perms;
+allow hal_health_default paramblk_device:blk_file rw_file_perms;
+allow hal_health_default sysfs_rtc:dir search;
+allow hal_health_default sysfs_wakeup:dir search;
+allow hal_health_default vendor_log_file:dir create_dir_perms;
+allow hal_health_default vendor_log_file:file create_file_perms;
 allow hal_health vendor_sysfs_battery_supply:file rw_file_perms;
 allow hal_health vendor_sysfs_usb_supply:file rw_file_perms;
 allow hal_health hal_health_default:dir search;
+init_daemon_domain(hal_health_default)
 r_dir_file(hal_health_server, sysfs_batteryinfo)
+r_dir_file(hal_health_default, sysfs_ss_writable)
+r_dir_file(hal_health_default, sysfs_battery)
+r_dir_file(hal_health_default, sysfs_ski_power_readable)
 r_dir_file(hal_health, vendor_sysfs_battery_supply)
 r_dir_file(hal_health, vendor_sysfs_usb_supply)
 get_prop(hal_health_server, hwservicemanager_prop)
+get_prop(hal_health_default, debug_level_prop)
+get_prop(hal_health_default, product_ship_prop)
+binder_use(hal_health_server)
+hwbinder_use(hal_health_server)
 hal_server_domain(hal_health_default, hal_health)
-add_service(hal_health_server, hal_health_service)
+hal_client_domain(hal_health_default, hal_thermal)
+hal_attribute_service(hal_health, hal_health_service)
+hal_attribute_hwservice(hal_health, hal_health_hwservice)
 type hal_health_default, bpfdomain, domain;
 type hal_health_default_exec, exec_type, file_type, vendor_file_type;
+type hal_health_hwservice, hwservice_manager_type, protected_hwservice;

@@ -1,0 +1,10 @@
+allow diced selinuxfs:file w_file_perms;
+allow diced kernel:security compute_av;
+allow diced self:netlink_selinux_socket { accept append bind connect create getattr getopt listen lock name_bind read recvfrom relabelfrom relabelto sendto setattr setopt shutdown write };
+r_dir_file(diced, selinuxfs)
+binder_service(diced)
+binder_use(diced)
+add_service(diced, dice_node_service)
+add_service(diced, dice_maintenance_service)
+type diced, domain;
+type diced_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,25 @@
+allow hal_arcounter_client hal_arcounter_server:binder { call transfer };
+allow hal_arcounter_client hal_arcounter_server:binder transfer;
+allow hal_arcounter_client hal_arcounter_server:fd *;
+allow hal_arcounter_client hal_arcounter_hwservice:hwservice_manager find;
+allow hal_arcounter_server hal_arcounter_client:binder transfer;
+allow hal_arcounter_server hal_arcounter_client:binder { call transfer };
+allow hal_arcounter_server hal_arcounter_client:fd *;
+allow hal_arcounter_default tz_user_device:chr_file rw_file_perms;
+allow hal_arcounter_default tee_device:chr_file rw_file_perms;
+allow hal_arcounter_default ion_device:chr_file rw_file_perms;
+allow hal_arcounter_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_arcounter_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_arcounter_default vendor_arcounter_data_file:dir create_dir_perms;
+allow hal_arcounter_default vendor_arcounter_data_file:file create_file_perms;
+allow hal_arcounter_default tzdaemon:fd *;
+allow hal_arcounter_default tee_efs_file:dir search;
+init_daemon_domain(hal_arcounter_default)
+r_dir_file(hal_arcounter_default, tee_vendor_data_file)
+get_prop(hal_arcounter_default, tzdaemon_prop)
+get_prop(hal_arcounter_default, vendor_teegris_prop)
+hal_server_domain(hal_arcounter_default, hal_arcounter)
+add_hwservice(hal_arcounter_server, hal_arcounter_hwservice)
+type hal_arcounter_default, domain;
+type hal_arcounter_default_exec, exec_type, file_type, vendor_file_type;
+type hal_arcounter_hwservice, hwservice_manager_type;

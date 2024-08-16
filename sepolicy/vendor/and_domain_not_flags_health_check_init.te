@@ -1,0 +1,1 @@
+neverallow { domain -flags_health_check -init } server_configurable_flags_data_file:file no_w_file_perms;

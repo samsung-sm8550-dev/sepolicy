@@ -1,0 +1,2 @@
+allow hal_rtss_service servicemanager:binder transfer;
+type hal_rtss_service, service_manager_type, vendor_service;

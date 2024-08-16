@@ -1,0 +1,3 @@
+typealias(npu_device)
+typealiasactual(npu_device)
+type vendor_npu_device, dev_type;

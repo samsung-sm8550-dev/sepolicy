@@ -1,0 +1,2 @@
+allow mobicore_user_device device:filesystem associate;
+type mobicore_user_device, dev_type, mlstrustedobject;

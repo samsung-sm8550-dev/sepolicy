@@ -1,0 +1,4 @@
+allow tzdatacheck zoneinfo_data_file:dir create_dir_perms;
+allow tzdatacheck zoneinfo_data_file:file unlink;
+type tzdatacheck, domain;
+type tzdatacheck_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,3 @@
+typealias(ipa_dev)
+typealiasactual(ipa_dev)
+type vendor_ipa_dev, dev_type;

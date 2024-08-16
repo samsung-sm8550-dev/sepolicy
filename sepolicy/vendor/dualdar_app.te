@@ -1,0 +1,15 @@
+allow dualdar_app knox_dar_device:chr_file rw_file_perms;
+allow dualdar_app zygote:unix_stream_socket rw_stream_socket_perms;
+allow dualdar_app zygote:unix_stream_socket accept;
+allow dualdar_app knoxcore_data_file:dir create_dir_perms;
+allow dualdar_app knoxcore_data_file:file create_file_perms;
+allow dualdar_app knoxcore_data_file:file x_file_perms;
+allow dualdar_app seapp_contexts_file:file r_file_perms;
+allow dualdar_app ddexe_socket:sock_file getattr;
+allow dualdar_app init:key write;
+allow dualdar_app edmnativehelper_service:service_manager find;
+allow dualdar_app dumplog_data_file:dir create_dir_perms;
+allow dualdar_app dumplog_data_file:file create_file_perms;
+allowxperm dualdar_app knoxcore_data_file:ioctl file 0x7704;
+allowxperm dualdar_app self:ioctl unix_dgram_socket 0x7704;
+type dualdar_app, coredomain, domain;

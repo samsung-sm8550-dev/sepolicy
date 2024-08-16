@@ -1,0 +1,3 @@
+typealias(smd_device)
+typealiasactual(smd_device)
+type vendor_smd_device, dev_type;

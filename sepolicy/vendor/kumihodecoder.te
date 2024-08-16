@@ -1,0 +1,3 @@
+allow kumihodecoder radio:binder transfer;
+type kumihodecoder, coredomain, domain;
+type kumihodecoder_exec, exec_type, file_type, system_file_type;

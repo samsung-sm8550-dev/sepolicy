@@ -1,0 +1,32 @@
+allow hal_payment_client hal_payment_server:binder { call transfer };
+allow hal_payment_client hal_payment_server:binder transfer;
+allow hal_payment_client hal_payment_server:fd *;
+allow hal_payment_client hal_payment_hwservice:hwservice_manager find;
+allow hal_payment_server hal_payment_client:binder transfer;
+allow hal_payment_server hal_payment_client:binder { call transfer };
+allow hal_payment_server hal_payment_client:fd *;
+allow hal_payment_default tee_device:chr_file rw_file_perms;
+allow hal_payment_default platform_app:fd *;
+allow hal_payment_default app_data_file:file read;
+allow hal_payment_default apk_data_file:file read;
+allow hal_payment_default ion_device:chr_file r_file_perms;
+allow hal_payment_default tz_user_device:chr_file rw_file_perms;
+allow hal_payment_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_payment_default hal_allocator:fd *;
+allow hal_payment_default tzdaemon:fd *;
+allow hal_payment_default tee_efs_file:dir search;
+allow hal_payment_default vendor_sysfs_sectouch:file rw_file_perms;
+allow hal_payment_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_payment_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_payment_default)
+r_dir_file(hal_payment_default, vendor_sysfs_sectouch)
+get_prop(hal_payment_default, hwservicemanager_prop)
+get_prop(hal_payment_default, tzdaemon_prop)
+get_prop(hal_payment_default, vendor_teegris_prop)
+hal_server_domain(hal_payment_default, hal_payment)
+hal_client_domain(hal_payment_default, vendor_hal_tui_comm)
+hal_client_domain(hal_payment_default, hal_tui_comm)
+add_hwservice(hal_payment_server, hal_payment_hwservice)
+type hal_payment_default, domain;
+type hal_payment_default_exec, exec_type, file_type, vendor_file_type;
+type hal_payment_hwservice, hwservice_manager_type;

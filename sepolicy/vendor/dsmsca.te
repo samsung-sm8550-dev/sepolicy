@@ -1,0 +1,18 @@
+allow dsmsca tzdaemon:binder { call transfer };
+allow dsmsca tzdaemon:fd *;
+allow dsmsca hal_dsms_server_hwservice:hwservice_manager find;
+allow dsmsca dsms_hidl:binder { call transfer };
+allow dsmsca dsms_hidl:fd *;
+allow dsmsca tz_user_device:chr_file rw_file_perms;
+allow dsmsca tee_efs_file:dir search;
+allow dsmsca ion_device:chr_file r_file_perms;
+allow dsmsca tee_device:chr_file rw_file_perms;
+init_daemon_domain(dsmsca)
+get_prop(dsmsca, hwservicemanager_prop)
+get_prop(dsmsca, tzdaemon_prop)
+get_prop(dsmsca, vendor_teegris_prop)
+get_prop(dsmsca, vendor_qseecomd_prop)
+hwbinder_use(dsmsca)
+hal_client_domain(dsmsca, vendor_hal_qseecom)
+type dsmsca, domain;
+type dsmsca_exec, exec_type, file_type, vendor_file_type;

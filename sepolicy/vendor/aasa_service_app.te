@@ -1,0 +1,26 @@
+allow aasa_service_app secure_storage:fd *;
+allow aasa_service_app secure_storage_device:sock_file write;
+allow aasa_service_app rootfs:dir r_dir_perms;
+allow aasa_service_app rootfs:file r_file_perms;
+allow aasa_service_app security_spota_file:dir create_dir_perms;
+allow aasa_service_app security_spota_file:file create_file_perms;
+allow aasa_service_app security_spota_file:lnk_file { create rename unlink };
+allow aasa_service_app system_app_data_file:dir r_dir_perms;
+allow aasa_service_app system_app_data_file:file r_file_perms;
+allow aasa_service_app aasa_data_file:dir create_dir_perms;
+allow aasa_service_app aasa_data_file:file create_file_perms;
+allow aasa_service_app app_api_service:service_manager find;
+allow aasa_service_app radio_service:service_manager find;
+allow aasa_service_app cgroup:file rw_file_perms;
+allow aasa_service_app dumplog_data_file:dir r_dir_perms;
+allow aasa_service_app dumplog_data_file:file r_file_perms;
+allow aasa_service_app asks_service:service_manager find;
+allow aasa_service_app vendor_hal_perf_hwservice:hwservice_manager find;
+allow aasa_service_app hal_perf_default:binder call;
+unix_socket_connect(aasa_service_app, property, secure_storage)
+unix_socket_connect(aasa_service_app, property, perfmond)
+unix_socket_connect(aasa_service_app, perfmond, secure_storage)
+unix_socket_connect(aasa_service_app, perfmond, init)
+unix_socket_connect(aasa_service_app, perfmond, perfmond)
+set_prop(aasa_service_app, system_prop)
+type aasa_service_app, coredomain, domain, mlstrustedsubject;

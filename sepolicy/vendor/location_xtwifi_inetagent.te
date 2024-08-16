@@ -1,0 +1,20 @@
+allow vendor_location_xtwifi_inetagent vendor_location:process sigchld;
+allow vendor_location_xtwifi_inetagent vendor_location:fd *;
+allow vendor_location_xtwifi_inetagent vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_xtwifi_inetagent vendor_location_data_file:dir create_dir_perms;
+allow vendor_location_xtwifi_inetagent vendor_location_data_file:file create_file_perms;
+allow vendor_location_xtwifi_inetagent vendor_location_socket:lnk_file { getattr open read };
+allow vendor_location_xtwifi_inetagent vendor_location_socket:sock_file create_file_perms;
+allow vendor_location_xtwifi_inetagent vendor_location_socket:dir rw_dir_perms;
+allow vendor_location_xtwifi_inetagent vendor_hal_gnss_qti:unix_dgram_socket sendto;
+allow vendor_location_xtwifi_inetagent system_server:binder { call transfer };
+allow vendor_location_xtwifi_inetagent system_server:binder transfer;
+allow vendor_location_xtwifi_inetagent system_server:fd *;
+allow vendor_location_xtwifi_inetagent vendor_location_lowi_server:unix_dgram_socket sendto;
+allow vendor_location_xtwifi_inetagent vendor_location_xtwifi_client:unix_dgram_socket sendto;
+allow vendor_location_xtwifi_inetagent vendor_location_slim_daemon:unix_dgram_socket sendto;
+get_prop(vendor_location_xtwifi_inetagent, hwservicemanager_prop)
+hwbinder_use(vendor_location_xtwifi_inetagent)
+net_domain(vendor_location_xtwifi_inetagent)
+type vendor_location_xtwifi_inetagent, domain;
+type vendor_location_xtwifi_inetagent_exec, exec_type, file_type, vendor_file_type;

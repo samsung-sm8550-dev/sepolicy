@@ -1,0 +1,1 @@
+neverallow { domain -bootstat -init } system_boot_reason_prop:property_service set;

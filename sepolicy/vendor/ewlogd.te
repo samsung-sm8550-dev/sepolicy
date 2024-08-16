@@ -1,0 +1,5 @@
+allow ewlogd dumplog_data_file:dir create_dir_perms;
+allow ewlogd dumplog_data_file:file create_file_perms;
+allow ewlogd ewlogd_socket:sock_file write;
+type ewlogd, coredomain, domain;
+type ewlogd_exec, exec_type, file_type, system_file_type;

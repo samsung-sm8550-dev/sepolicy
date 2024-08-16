@@ -1,0 +1,28 @@
+neverallow runas self:capability { audit_control audit_write chown dac_override dac_read_search fowner fsetid ipc_lock ipc_owner kill lease linux_immutable mknod net_admin net_bind_service net_broadcast net_raw setfcap setpcap sys_admin sys_boot sys_chroot sys_module sys_nice sys_pacct sys_ptrace sys_rawio sys_resource sys_time sys_tty_config };
+neverallow runas self:cap_userns { audit_control audit_write chown dac_override dac_read_search fowner fsetid ipc_lock ipc_owner kill lease linux_immutable mknod net_admin net_bind_service net_broadcast net_raw setfcap setpcap sys_admin sys_boot sys_chroot sys_module sys_nice sys_pacct sys_ptrace sys_rawio sys_resource sys_time sys_tty_config };
+neverallow runas self:capability2 *;
+neverallow runas self:cap2_userns *;
+allow runas adbd:fd *;
+allow runas adbd:process sigchld;
+allow runas adbd:unix_stream_socket { read write };
+allow runas shell:fd *;
+allow runas shell:fifo_file { read write };
+allow runas shell:unix_stream_socket { read write };
+allow runas devpts:chr_file { ioctl read write };
+allow runas shell_data_file:file { read write };
+allow runas system_data_file:file r_file_perms;
+allow runas system_data_file:lnk_file getattr;
+allow runas system_data_file:lnk_file read;
+allow runas packages_list_file:file r_file_perms;
+allow runas app_data_file:dir { getattr search };
+allow runas self:capability { setgid setuid };
+allow runas self:cap_userns { setgid setuid };
+allow runas self:process setcurrent;
+allow runas selinuxfs:file w_file_perms;
+allow runas kernel:security check_context;
+allow runas seapp_contexts_file:file r_file_perms;
+dontaudit runas self:capability { dac_override dac_read_search };
+dontaudit runas self:cap_userns { dac_override dac_read_search };
+r_dir_file(runas, selinuxfs)
+type runas, domain, mlstrustedsubject;
+type runas_exec, exec_type, file_type, system_file_type;

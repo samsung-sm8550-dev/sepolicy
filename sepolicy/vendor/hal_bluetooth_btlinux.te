@@ -1,5 +1,6 @@
 allow hal_bluetooth_btlinux self:socket { bind create read write };
 allow hal_bluetooth_btlinux self:bluetooth_socket { bind create read write };
+init_daemon_domain(hal_bluetooth_btlinux)
 hal_server_domain(hal_bluetooth_btlinux, hal_bluetooth)
 type hal_bluetooth_btlinux, domain;
 type hal_bluetooth_btlinux_exec, exec_type, file_type, vendor_file_type;

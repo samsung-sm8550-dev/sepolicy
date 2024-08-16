@@ -1,0 +1,8 @@
+allow apexd proc_extra:file r_file_perms;
+allow apexd proc_reset_reason:file r_file_perms;
+allow apexd vendor_sysfs_mmc_host:file rw_file_perms;
+get_prop(apexd, cold_boot_done_prop)
+binder_use(apexd)
+add_service(apexd, apex_service)
+type apexd, domain;
+type apexd_exec, exec_type, file_type, system_file_type;

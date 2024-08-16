@@ -1,0 +1,2 @@
+allow usb_configfs configfs:filesystem associate;
+type usb_configfs, fs_type;

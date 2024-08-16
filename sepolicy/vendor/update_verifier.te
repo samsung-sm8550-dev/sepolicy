@@ -1,0 +1,16 @@
+allow update_verifier block_device:dir search;
+allow update_verifier ota_package_file:dir r_dir_perms;
+allow update_verifier ota_package_file:file r_file_perms;
+allow update_verifier sysfs:dir r_dir_perms;
+allow update_verifier sysfs_dm:dir r_dir_perms;
+allow update_verifier sysfs_dm:file r_file_perms;
+allow update_verifier dm_device:blk_file r_file_perms;
+allow update_verifier kmsg_device:chr_file { getattr w_file_perms };
+allow update_verifier vold_service:service_manager find;
+allow update_verifier servicemanager:binder { call transfer };
+allow update_verifier servicemanager:fd *;
+allow update_verifier vold:binder { call transfer };
+allow update_verifier vold:fd *;
+hal_client_domain(update_verifier, hal_bootctl)
+type update_verifier, domain;
+type update_verifier_exec, exec_type, file_type, system_file_type;

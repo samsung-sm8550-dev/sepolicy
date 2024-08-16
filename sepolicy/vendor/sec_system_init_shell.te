@@ -1,0 +1,35 @@
+allow sec_system_init_shell adbd:fd *;
+allow sec_system_init_shell devpts:chr_file rw_file_perms;
+allow sec_system_init_shell shell:fd *;
+allow sec_system_init_shell sysfs_wake_lock:file rw_file_perms;
+allow sec_system_init_shell self:capability2 block_suspend;
+allow sec_system_init_shell self:cap2_userns block_suspend;
+allow sec_system_init_shell self:capability { chown fowner fsetid };
+allow sec_system_init_shell system_suspend_server:binder { call transfer };
+allow sec_system_init_shell system_suspend_server:fd *;
+allow sec_system_init_shell system_suspend_hwservice:hwservice_manager find;
+allow sec_system_init_shell hidl_manager_hwservice:hwservice_manager find;
+allow sec_system_init_shell hal_system_suspend_service:service_manager find;
+allow sec_system_init_shell toolbox_exec:file rx_file_perms;
+allow sec_system_init_shell shell_exec:file rx_file_perms;
+allow sec_system_init_shell system_file:file rx_file_perms;
+allow sec_system_init_shell system_file:dir r_dir_perms;
+allow sec_system_init_shell pdp_data_file:dir create_dir_perms;
+allow sec_system_init_shell pdp_data_file:file create_file_perms;
+allow sec_system_init_shell pdp_data_file:lnk_file create_file_perms;
+allow sec_system_init_shell apk_data_file:dir create_dir_perms;
+allow sec_system_init_shell apk_data_file:file create_file_perms;
+allow sec_system_init_shell cache_pdp_file:dir create_dir_perms;
+allow sec_system_init_shell cache_pdp_file:file create_file_perms;
+allow sec_system_init_shell cache_file:dir search;
+allow sec_system_init_shell kmsg_device:chr_file w_file_perms;
+allow sec_system_init_shell dumplog_data_file:dir create_dir_perms;
+allow sec_system_init_shell dumplog_data_file:file create_file_perms;
+allow sec_system_init_shell logcat_exec:file rx_file_perms;
+allow sec_system_init_shell rootfs:dir r_file_perms;
+unix_socket_connect(sec_system_init_shell, logdr, multiclientd)
+unix_socket_connect(sec_system_init_shell, logdr, logd)
+get_prop(sec_system_init_shell, hwservicemanager_prop)
+binder_use(sec_system_init_shell)
+hwbinder_use(sec_system_init_shell)
+type sec_system_init_shell, coredomain, domain;

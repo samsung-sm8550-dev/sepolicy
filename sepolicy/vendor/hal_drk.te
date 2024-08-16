@@ -1,0 +1,89 @@
+allow hal_drk_client hal_drk_server:binder { call transfer };
+allow hal_drk_client hal_drk_server:binder transfer;
+allow hal_drk_client hal_drk_server:fd *;
+allow hal_drk_client hal_drk_hwservice:hwservice_manager find;
+allow hal_drk_server hal_drk_client:binder transfer;
+allow hal_drk_server hal_drk_client:binder { call transfer };
+allow hal_drk_server hal_drk_client:fd *;
+allow hal_drk_default mnt_vendor_file:dir rw_dir_perms;
+allow hal_drk_default prov_efs_file:file create_file_perms;
+allow hal_drk_default prov_efs_file:dir create_dir_perms;
+allow hal_drk_default vendor_log_file:dir create_dir_perms;
+allow hal_drk_default vendor_log_file:file create_file_perms;
+allow hal_drk_default ion_device:chr_file rw_file_perms;
+allow hal_drk_default tee_device:chr_file rw_file_perms;
+allow hal_drk_default tz_user_device:chr_file rw_file_perms;
+allow hal_drk_default efs_file:dir rw_dir_perms;
+allow hal_drk_default sec_efs_file:dir rw_dir_perms;
+allow hal_drk_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_drk_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_drk_default hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow hal_drk_default vaultkeeperd:binder { call transfer };
+allow hal_drk_default vaultkeeperd:fd *;
+allow hal_drk_default socket_device:sock_file write;
+allow hal_drk_default vaultkeeper_socket:dir search;
+allow hal_drk_default dumpstate:fifo_file write;
+allow hal_drk_default wifi_efs_file:dir r_dir_perms;
+allow hal_drk_default wifi_efs_file:file r_file_perms;
+allow hal_drk_default vendor_sysfs_scsi_host:dir search;
+allow hal_drk_default vendor_sysfs_scsi_host:file getattr;
+allow hal_drk_default system_suspend_server:binder { call transfer };
+allow hal_drk_default system_suspend_server:fd *;
+allow hal_drk_default system_suspend_hwservice:hwservice_manager find;
+allow hal_drk_default proc_sysrq:file w_file_perms;
+allow hal_drk_default sysfs_battery:dir r_dir_perms;
+allow hal_drk_default sysfs_battery:file rw_file_perms;
+allow hal_drk_default sysfs_ski_ufs_writable:dir search;
+allow hal_drk_default servicemanager:binder { call transfer };
+allow hal_drk_default servicemanager:fd *;
+allow hal_drk_default dak_efs_file:dir create_dir_perms;
+allow hal_drk_default dak_efs_file:file create_file_perms;
+allow hal_drk_default hal_system_suspend_service:service_manager find;
+allow hal_drk_default keystore:binder transfer;
+allow hal_drk_default tzdaemon:fd *;
+allow hal_drk_default tee_efs_file:dir search;
+allow hal_drk_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_drk_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_drk_default vendor_skp_device:chr_file rw_file_perms;
+allow hal_drk_default vendor_spcom_device:chr_file rw_file_perms;
+allow hal_drk_default vendor_cryptoapp_device:chr_file rw_file_perms;
+allow hal_drk_default vendor_spss_utils_device:chr_file rw_file_perms;
+allowxperm hal_drk_default vendor_spss_utils_device:ioctl chr_file 0x5302;
+type_transition hal_drk_default sec_efs_file:dir prov_efs_file "prov";
+type_transition hal_drk_default sec_efs_file:dir prov_efs_file "DAK";
+type_transition hal_drk_default sec_efs_file:dir prov_efs_file "prov_data";
+type_transition hal_drk_default efs_file:dir prov_efs_file "prov";
+type_transition hal_drk_default efs_file:dir prov_efs_file "DAK";
+type_transition hal_drk_default efs_file:dir prov_efs_file "prov_data";
+type_transition hal_drk_default mnt_vendor_file:dir prov_efs_file "prov";
+type_transition hal_drk_default mnt_vendor_file:dir prov_efs_file "DAK";
+type_transition hal_drk_default mnt_vendor_file:dir prov_efs_file "prov_data";
+init_daemon_domain(hal_drk_default)
+r_dir_file(hal_drk_default, vendor_sysfs_scsi_host)
+r_dir_file(hal_drk_default, sysfs_ski_hidden_writable)
+r_dir_file(hal_drk_default, vendor_sysfs_mmc_host)
+r_dir_file(hal_drk_default, vendor_persist_secnvm_file)
+unix_socket_connect(hal_drk_default, property, vaultkeeperd)
+unix_socket_connect(hal_drk_default, property, hermesd)
+unix_socket_connect(hal_drk_default, property, rild)
+unix_socket_connect(hal_drk_default, vaultkeeper, vaultkeeperd)
+unix_socket_connect(hal_drk_default, vaultkeeper, init)
+unix_socket_connect(hal_drk_default, vaultkeeper, hermesd)
+unix_socket_connect(hal_drk_default, vaultkeeper, rild)
+unix_socket_connect(hal_drk_default, hermes, vaultkeeperd)
+unix_socket_connect(hal_drk_default, hermes, init)
+unix_socket_connect(hal_drk_default, hermes, hermesd)
+unix_socket_connect(hal_drk_default, hermes, rild)
+get_prop(hal_drk_default, vendor_security_patch_level_prop)
+get_prop(hal_drk_default, vendor_sec_vaultkeeper_prop)
+get_prop(hal_drk_default, tzdaemon_prop)
+get_prop(hal_drk_default, vendor_teegris_prop)
+get_prop(hal_drk_default, vendor_spcomlib_prop)
+set_prop(hal_drk_default, vendor_securehw_prop)
+hal_server_domain(hal_drk_default, hal_drk)
+hal_client_domain(hal_drk_default, hal_weaver)
+add_service(hal_drk_server, hal_drk_service)
+add_hwservice(hal_drk_server, hal_drk_hwservice)
+type hal_drk_default, domain;
+type hal_drk_default_exec, exec_type, file_type, vendor_file_type;
+type hal_drk_hwservice, hwservice_manager_type;

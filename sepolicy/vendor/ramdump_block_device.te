@@ -1,0 +1,2 @@
+type ramdump_block_device, dev_type;
+type vendor_ramdump_block_device, dev_type;

@@ -1,0 +1,16 @@
+allow otp_server mobicore_admin_device:chr_file rw_file_perms;
+allow otp_server mobicore_user_device:chr_file rw_file_perms;
+allow otp_server efs_file:dir search;
+allow otp_server app_efs_file:dir r_dir_perms;
+allow otp_server app_efs_file:file r_file_perms;
+allow otp_server wifi_efs_file:dir r_dir_perms;
+allow otp_server wifi_efs_file:file r_file_perms;
+allow otp_server system_file:file rx_file_perms;
+allow otp_server shell_exec:file rx_file_perms;
+allow otp_server radio_data_file:dir search;
+allow otp_server radio_data_file:file { open read };
+allow otp_server ion_device:chr_file r_file_perms;
+binder_service(otp_server)
+binder_use(otp_server)
+type otp_server, coredomain, domain;
+type otp_server_exec, exec_type, file_type, system_file_type;

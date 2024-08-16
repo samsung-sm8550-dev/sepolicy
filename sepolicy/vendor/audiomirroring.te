@@ -1,0 +1,19 @@
+allow audiomirroring mobicore_admin_device:chr_file rw_file_perms;
+allow audiomirroring mobicore_user_device:chr_file rw_file_perms;
+allow audiomirroring dumplog_data_file:dir create_dir_perms;
+allow audiomirroring dumplog_data_file:file create_file_perms;
+allow audiomirroring mediacodec:binder { call transfer };
+allow audiomirroring mediacodec:binder transfer;
+allow audiomirroring mediacodec:fd *;
+allow audiomirroring hal_graphics_composer_default:binder { call transfer };
+allow audiomirroring hal_graphics_composer_default:fd *;
+allow audiomirroring cpk_efs_file:file r_file_perms;
+allow audiomirroring cpk_efs_file:dir search;
+allow audiomirroring uibc_socket:dir rw_dir_perms;
+allow audiomirroring uibc_socket:sock_file create_file_perms;
+allow audiomirroring tsmux_device:chr_file rw_file_perms;
+allow audiomirroring repeater_device:chr_file rw_file_perms;
+allow audiomirroring sec_debugfs:dir search;
+hal_client_domain(audiomirroring, hal_hdcp)
+type audiomirroring, coredomain, domain;
+type audiomirroring_exec, exec_type, file_type, system_file_type;

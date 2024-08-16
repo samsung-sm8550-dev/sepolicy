@@ -9,6 +9,7 @@ allow vendor_vppservice dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_vppservice vendor_membuf_dev:chr_file r_file_perms;
 allow vendor_vppservice vendor_vm_cp_pixel_device:chr_file r_file_perms;
 dontaudit vendor_vppservice vendor_xdsp_device:chr_file { ioctl open read };
+init_daemon_domain(vendor_vppservice)
 r_dir_file(vendor_vppservice, adsprpcd_file)
 r_dir_file(vendor_vppservice, firmware_file)
 r_dir_file(vendor_vppservice, vendor_persist_vpp_file)

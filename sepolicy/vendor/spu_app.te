@@ -1,0 +1,21 @@
+allow spu_app spu_file:dir create_dir_perms;
+allow spu_app spu_file:file create_file_perms;
+allow spu_app sysfs_battery:file w_file_perms;
+allow spu_app sysfs_sec:file w_file_perms;
+allow spu_app sysfs_sensor_writable:file w_file_perms;
+allow spu_app sysfs_ss_writable:file w_file_perms;
+allow spu_app cgroup:file rw_file_perms;
+allow spu_app sysfs_ski_usb_writable:file w_file_perms;
+allow spu_app sysfs_ski_sensor_writable:file w_file_perms;
+allow spu_app sysfs_ski_system_writable:file w_file_perms;
+allowxperm spu_app spu_file:ioctl file 0x660b;
+r_dir_file(spu_app, sysfs_battery)
+r_dir_file(spu_app, sysfs_sec)
+r_dir_file(spu_app, sysfs_sensor_writable)
+r_dir_file(spu_app, sysfs_ss_writable)
+r_dir_file(spu_app, sysfs_ski_usb_readable)
+r_dir_file(spu_app, sysfs_ski_usb_writable)
+r_dir_file(spu_app, sysfs_ski_sensor_writable)
+r_dir_file(spu_app, sysfs_ski_system_writable)
+set_prop(spu_app, spud_prop)
+type spu_app, coredomain, domain, sec_standard_app_type;

@@ -1,0 +1,24 @@
+allow racoon tun_device:chr_file r_file_perms;
+allow racoon cgroup:dir { add_name create };
+allow racoon cgroup_v2:dir { add_name create };
+allow racoon kernel:system module_request;
+allow racoon self:key_socket create_socket_perms_no_ioctl;
+allow racoon self:tun_socket create_socket_perms_no_ioctl;
+allow racoon self:capability { net_admin net_bind_service net_raw };
+allow racoon self:cap_userns { net_admin net_bind_service net_raw };
+allow racoon system_file:file rx_file_perms;
+allow racoon vpn_data_file:file create_file_perms;
+allow racoon vpn_data_file:dir w_dir_perms;
+allow racoon apc_service:service_manager find;
+allow racoon keystore_service:service_manager find;
+allow racoon legacykeystore_service:service_manager find;
+allow racoon keystore:binder { call transfer };
+allow racoon keystore:binder transfer;
+allow racoon keystore:fd *;
+allow racoon keystore:keystore_key { get sign verify };
+allowxperm racoon self:ioctl udp_socket { 0x8914 0x8916 0x891c };
+allowxperm racoon tun_device:ioctl chr_file 0x54ca;
+binder_use(racoon)
+net_domain(racoon)
+type racoon, domain, mlstrustedsubject;
+type racoon_exec, exec_type, file_type, system_file_type;

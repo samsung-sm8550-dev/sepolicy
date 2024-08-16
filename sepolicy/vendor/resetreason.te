@@ -1,0 +1,30 @@
+allow resetreason resetreason:capability chown;
+allow resetreason resetreason:capability { fowner fsetid };
+allow resetreason users_system_data_file:dir create_dir_perms;
+allow resetreason users_system_data_file:file create_file_perms;
+allow resetreason proc_reset_reason:file r_file_perms;
+allow resetreason proc_pwrsrc:file { getattr lock map open read };
+allow resetreason proc_extra:file { getattr lock map open read };
+allow resetreason rtc_device:chr_file r_file_perms;
+allow resetreason dumplog_data_file:file w_file_perms;
+allow resetreason proc_store_lastkmsg:dir r_dir_perms;
+allow resetreason proc_store_lastkmsg:file { getattr lock map open read };
+allow resetreason proc_store_lastkmsg:lnk_file { getattr lock map open read };
+allow resetreason efs_file:dir rw_dir_perms;
+allow resetreason efs_file:file rw_file_perms;
+allow resetreason reboot_data_file:file r_file_perms;
+allow resetreason reboot_data_file:dir r_dir_perms;
+allow resetreason sysfs_wake_lock:file rw_file_perms;
+allow resetreason self:capability2 block_suspend;
+allow resetreason self:cap2_userns block_suspend;
+allow resetreason system_suspend_server:binder { call transfer };
+allow resetreason system_suspend_server:fd *;
+allow resetreason system_suspend_hwservice:hwservice_manager find;
+allow resetreason hidl_manager_hwservice:hwservice_manager find;
+allow resetreason hal_system_suspend_service:service_manager find;
+r_dir_file(resetreason, dumplog_data_file)
+get_prop(resetreason, hwservicemanager_prop)
+binder_use(resetreason)
+hwbinder_use(resetreason)
+type resetreason, coredomain, domain;
+type resetreason_exec, exec_type, file_type, system_file_type;

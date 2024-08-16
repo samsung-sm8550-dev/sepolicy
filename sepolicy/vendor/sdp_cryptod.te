@@ -1,0 +1,19 @@
+allow sdp_cryptod mobicore_admin_device:chr_file rw_file_perms;
+allow sdp_cryptod mobicore_user_device:chr_file rw_file_perms;
+allow sdp_cryptod users_system_data_file:dir rw_dir_perms;
+allow sdp_cryptod users_system_data_file:file create_file_perms;
+allow sdp_cryptod ion_device:chr_file r_file_perms;
+allow sdp_cryptod tzdaemon:binder { call transfer };
+allow sdp_cryptod tzdaemon:fd *;
+allow sdp_cryptod edmnativehelper_service:service_manager find;
+allow sdp_cryptod system_server:binder { call transfer };
+allow sdp_cryptod system_server:fd *;
+allow sdp_cryptod tz_user_device:chr_file rw_file_perms;
+allow sdp_cryptod tee_efs_file:dir search;
+r_dir_file(sdp_cryptod, proc_net)
+get_prop(sdp_cryptod, system_prop)
+get_prop(sdp_cryptod, tzdaemon_prop)
+get_prop(sdp_cryptod, vendor_teegris_prop)
+binder_use(sdp_cryptod)
+type sdp_cryptod, coredomain, domain;
+type sdp_cryptod_exec, exec_type, file_type, system_file_type;

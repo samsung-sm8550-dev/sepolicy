@@ -1,0 +1,90 @@
+allow remotedisplay radio:binder transfer;
+allow remotedisplay dmb:binder transfer;
+allow remotedisplay mediaswcodec:binder transfer;
+allow remotedisplay mediaswcodec:binder { call transfer };
+allow remotedisplay mediaswcodec:fd *;
+allow remotedisplay oneseg_mw:binder transfer;
+allow remotedisplay permission_service:service_manager find;
+allow remotedisplay surfaceflinger_service:service_manager find;
+allow remotedisplay batterystats_service:service_manager find;
+allow remotedisplay audioserver_service:service_manager find;
+allow remotedisplay activity_service:service_manager find;
+allow remotedisplay codecsolution_service:service_manager find;
+allow remotedisplay mediametrics_service:service_manager find;
+allow remotedisplay mediaserver_service:service_manager find;
+allow remotedisplay mediametrics:binder { call transfer };
+allow remotedisplay mediametrics:fd *;
+allow remotedisplay hidl_allocator_hwservice:hwservice_manager find;
+allow remotedisplay hidl_memory_hwservice:hwservice_manager find;
+allow remotedisplay hal_graphics_mapper_hwservice:hwservice_manager find;
+allow remotedisplay mediaserver:binder { call transfer };
+allow remotedisplay mediaserver:binder transfer;
+allow remotedisplay mediaserver:fd *;
+allow remotedisplay untrusteddomain:binder { call transfer };
+allow remotedisplay untrusteddomain:binder transfer;
+allow remotedisplay untrusteddomain:fd *;
+allow remotedisplay mediacodec:binder { call transfer };
+allow remotedisplay mediacodec:binder transfer;
+allow remotedisplay mediacodec:fd *;
+allow remotedisplay audioserver:binder { call transfer };
+allow remotedisplay audioserver:binder transfer;
+allow remotedisplay audioserver:fd *;
+allow remotedisplay self:tcp_socket { read write };
+allow remotedisplay self:udp_socket { read write };
+allow remotedisplay surfaceflinger:binder { call transfer };
+allow remotedisplay surfaceflinger:binder transfer;
+allow remotedisplay surfaceflinger:fd *;
+allow remotedisplay dumpstate:fd *;
+allow remotedisplay dumpstate:fifo_file write;
+allow remotedisplay ion_device:chr_file rw_file_perms;
+allow remotedisplay mobicore_admin_device:chr_file rw_file_perms;
+allow remotedisplay mobicore_user_device:chr_file rw_file_perms;
+allow remotedisplay cpk_efs_file:file r_file_perms;
+allow remotedisplay cpk_efs_file:dir search;
+allow remotedisplay media_rw_data_file:file create_file_perms;
+allow remotedisplay media_rw_data_file:dir rw_dir_perms;
+allow remotedisplay uibc_socket:dir rw_dir_perms;
+allow remotedisplay uibc_socket:sock_file create_file_perms;
+allow remotedisplay system_app:binder transfer;
+allow remotedisplay system_app:fd *;
+allow remotedisplay system_app:fifo_file write;
+allow remotedisplay platform_app:binder { call transfer };
+allow remotedisplay platform_app:fd *;
+allow remotedisplay uhid_device:chr_file { open read write };
+allow remotedisplay untrusted_app:binder { call transfer };
+allow remotedisplay hal_graphics_composer_default:fd *;
+allow remotedisplay hal_graphics_composer_default:binder { call transfer };
+allow remotedisplay tsmux_device:chr_file rw_file_perms;
+allow remotedisplay repeater_device:chr_file rw_file_perms;
+allow remotedisplay system_file:dir r_file_perms;
+allow remotedisplay sec_debugfs:dir search;
+allow remotedisplay dumplog_data_file:dir create_dir_perms;
+allow remotedisplay dumplog_data_file:file create_file_perms;
+allow remotedisplay audio_service:service_manager find;
+allow remotedisplay aidl_codecsolution_service:service_manager find;
+allow remotedisplay untrusted_app_29:binder { call transfer };
+allow remotedisplay untrusted_app_29:fd *;
+allow remotedisplay sec_standard_app_type:binder { call transfer };
+allow remotedisplay sec_standard_app_type:fd *;
+allow remotedisplay tzdaemon:fd *;
+allow remotedisplay tz_user_device:chr_file rw_file_perms;
+allow remotedisplay tee_efs_file:dir search;
+allow remotedisplay vendor_hal_display_config_hwservice:hwservice_manager find;
+get_prop(remotedisplay, hwservicemanager_prop)
+get_prop(remotedisplay, tzdaemon_prop)
+get_prop(remotedisplay, vendor_teegris_prop)
+set_prop(remotedisplay, system_prop)
+set_prop(remotedisplay, audio_prop)
+set_prop(remotedisplay, wifi_prop)
+binder_use(remotedisplay)
+hwbinder_use(remotedisplay)
+net_domain(remotedisplay)
+hal_client_domain(remotedisplay, hal_allocator)
+hal_client_domain(remotedisplay, hal_codec2)
+hal_client_domain(remotedisplay, hal_graphics_allocator)
+hal_client_domain(remotedisplay, hal_omx)
+hal_client_domain(remotedisplay, vendor_hal_qseecom)
+hal_client_domain(remotedisplay, hal_hdcp)
+add_service(remotedisplay, remotedisplay_service)
+type remotedisplay, coredomain, domain;
+type remotedisplay_exec, exec_type, file_type, system_file_type;

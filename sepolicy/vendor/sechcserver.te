@@ -1,0 +1,6 @@
+allow sechcserver vendor_sysfs_scsi_host:file rw_file_perms;
+allow sechcserver untrusted_app_27:process setsched;
+allow sechcserver untrusted_app_25:process setsched;
+allow sechcserver CustomFrequencyManager_service:service_manager find;
+type sechcserver, coredomain, domain, mlstrustedsubject;
+type sechcserver_exec, exec_type, file_type, system_file_type;

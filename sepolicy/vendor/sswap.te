@@ -1,0 +1,23 @@
+allow sswap proc_swappiness:file rw_file_perms;
+allow sswap vendor_sysfs_scsi_host:file rw_file_perms;
+allow sswap sysfs_vnswap:dir search;
+allow sswap sysfs_vnswap:file rw_file_perms;
+allow sswap sysfs_vnswap:lnk_file rw_file_perms;
+allow sswap block_device:dir r_dir_perms;
+allow sswap swap_device:blk_file rw_file_perms;
+allow sswap cache_file:dir r_dir_perms;
+allow sswap cache_file:file w_file_perms;
+allow sswap sysfs_zram:dir search;
+allow sswap sysfs_zram:file rw_file_perms;
+allow sswap sysfs_zram:lnk_file rw_file_perms;
+allow sswap swap_block_device:blk_file rw_file_perms;
+allow sswap zram_data_file:file create_file_perms;
+allow sswap zram_data_file:dir create_dir_perms;
+allow sswap loop_control_device:chr_file rw_file_perms;
+allow sswap unencrypted_data_file:file create_file_perms;
+allow sswap unencrypted_data_file:dir rw_dir_perms;
+allow sswap loop_device:blk_file rw_file_perms;
+allowxperm sswap loop_device:ioctl blk_file { 0x4c00 range 0x4c08 0x4c09 };
+set_prop(sswap, system_prop)
+type sswap, coredomain, domain;
+type sswap_exec, exec_type, file_type, system_file_type;

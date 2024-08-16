@@ -1,0 +1,21 @@
+allow hal_qchdcpkprov_default dhkprov:binder transfer;
+allow hal_qchdcpkprov_default tee_device:chr_file rw_file_perms;
+allow hal_qchdcpkprov_default ion_device:chr_file rw_file_perms;
+allow hal_qchdcpkprov_default cpk_efs_file:dir r_dir_perms;
+allow hal_qchdcpkprov_default cpk_efs_file:file r_file_perms;
+allow hal_qchdcpkprov_default sec_debugfs:dir search;
+allow hal_qchdcpkprov_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_qchdcpkprov_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_qchdcpkprov_client hal_qchdcpkprov_server:binder { call transfer };
+allow hal_qchdcpkprov_client hal_qchdcpkprov_server:binder transfer;
+allow hal_qchdcpkprov_client hal_qchdcpkprov_server:fd *;
+allow hal_qchdcpkprov_client hal_qchdcpkprov_hwservice:hwservice_manager find;
+allow hal_qchdcpkprov_server hal_qchdcpkprov_client:binder transfer;
+allow hal_qchdcpkprov_server hal_qchdcpkprov_client:binder { call transfer };
+allow hal_qchdcpkprov_server hal_qchdcpkprov_client:fd *;
+init_daemon_domain(hal_qchdcpkprov_default)
+hal_server_domain(hal_qchdcpkprov_default, hal_qchdcpkprov)
+add_hwservice(hal_qchdcpkprov_server, hal_qchdcpkprov_hwservice)
+type hal_qchdcpkprov_default, domain;
+type hal_qchdcpkprov_default_exec, exec_type, file_type, vendor_file_type;
+type hal_qchdcpkprov_hwservice, hwservice_manager_type;

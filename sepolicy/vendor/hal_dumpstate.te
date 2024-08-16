@@ -6,27 +6,78 @@ allow hal_dumpstate_server dumpstate:fd *;
 allow hal_dumpstate_server hal_dumpstate_client:binder transfer;
 allow hal_dumpstate_server hal_dumpstate_client:binder { call transfer };
 allow hal_dumpstate_server hal_dumpstate_client:fd *;
-allow hal_dumpstate_server property_socket:sock_file write;
-allow hal_dumpstate_server init:unix_stream_socket connectto;
-allow hal_dumpstate_server hal_dumpstate_config_prop:property_service set;
-allow hal_dumpstate_server hal_dumpstate_hwservice:hwservice_manager { add find };
-allow hal_dumpstate_server hidl_base_hwservice:hwservice_manager add;
-allow hal_dumpstate_server su:tcp_socket { accept getopt read write };
 allow hal_dumpstate_server servicemanager:binder { call transfer };
 allow hal_dumpstate_server servicemanager:fd *;
 allow hal_dumpstate_client hal_dumpstate_server:binder { call transfer };
 allow hal_dumpstate_client hal_dumpstate_server:binder transfer;
 allow hal_dumpstate_client hal_dumpstate_server:fd *;
-allow hal_dumpstate_client hal_dumpstate_hwservice:hwservice_manager find;
-allow hal_dumpstate_client hal_dumpstate_service:service_manager find;
 allow hal_dumpstate shell_data_file:file write;
 allow hal_dumpstate proc_interrupts:file r_file_perms;
-allow hal_dumpstate_default debugfs:dir { open read };
-allow hal_dumpstate_default servicemanager:binder { call transfer };
+allow hal_dumpstate_default sec_debugfs:dir r_dir_perms;
+allow hal_dumpstate_default proc_usblog:file r_file_perms;
+allow hal_dumpstate_default vendor_dma_buf_debugfs:file r_file_perms;
+allow hal_dumpstate_default proc_tsp:file r_file_perms;
+allow hal_dumpstate_default proc_sec_log:file r_file_perms;
+allow hal_dumpstate_default sysfs_ski_debug_writable:dir r_dir_perms;
+allow hal_dumpstate_default sysfs_ski_debug_writable:file rw_file_perms;
+allow hal_dumpstate_default sec_display_debug_device:chr_file r_file_perms;
+allow hal_dumpstate_default fsdbg_device:dir rw_dir_perms;
+allow hal_dumpstate_default fsdbg_device:file rw_file_perms;
+allow hal_dumpstate_default vendor_shell_exec:file execute_no_trans;
+allow hal_dumpstate_default fsdbg_vendor_exec:file execute_no_trans;
+allow hal_dumpstate_default dumpstate:unix_stream_socket getattr;
 allow hal_dumpstate_default dumpstate:binder transfer;
-r_dir_file(hal_dumpstate, fscklogs)
-get_prop(hal_dumpstate_server, hal_dumpstate_config_prop)
+allow hal_dumpstate_default shell_data_file:file getattr;
+allow hal_dumpstate_default sysfs:file r_file_perms;
+allow hal_dumpstate_default dumplog_data_file:file { getattr write };
+allow hal_dumpstate_default taas_efs_file:dir r_dir_perms;
+allow hal_dumpstate_default taas_efs_file:file r_file_perms;
+allow hal_dumpstate_default sysfs_ski_hal_readable:file r_file_perms;
+allow hal_dumpstate_default efs_type:file r_file_perms;
+allow hal_dumpstate_default efs_type:dir r_dir_perms;
+allow hal_dumpstate_default mnt_vendor_file:file r_file_perms;
+allow hal_dumpstate_default mnt_vendor_file:dir r_dir_perms;
+allow hal_dumpstate_default bluetooth_efs_file:file r_file_perms;
+allow hal_dumpstate_default bluetooth_efs_file:dir r_dir_perms;
+allow hal_dumpstate_default servicemanager:binder transfer;
+allow hal_dumpstate_default vendor_toolbox_exec:file execute_no_trans;
+allow hal_dumpstate_default vendor_log_file:dir create_dir_perms;
+allow hal_dumpstate_default vendor_log_file:file create_file_perms;
+init_daemon_domain(hal_dumpstate_default)
+r_dir_file(hal_dumpstate_default, domain)
+r_dir_file(hal_dumpstate_default, proc_boot_stat)
+r_dir_file(hal_dumpstate_default, proc_enhanced_boot_stat)
+r_dir_file(hal_dumpstate_default, proc_dplog)
+r_dir_file(hal_dumpstate_default, proc_meminfo)
+r_dir_file(hal_dumpstate_default, proc_lmkd_debug)
+r_dir_file(hal_dumpstate_default, sysfs_zram)
+r_dir_file(hal_dumpstate_default, proc_mmap_readaround_limit)
+r_dir_file(hal_dumpstate_default, vendor_sysfs_mmc_host)
+r_dir_file(hal_dumpstate_default, vendor_sysfs_scsi_host)
+r_dir_file(hal_dumpstate_default, sysfs_sec)
+r_dir_file(hal_dumpstate_default, sysfs_ss_writable)
+r_dir_file(hal_dumpstate_default, proc_fslog)
+r_dir_file(hal_dumpstate_default, proc_bluetooth)
+r_dir_file(hal_dumpstate_default, vendor_sysfs_debug)
+r_dir_file(hal_dumpstate_default, sysfs_ski_ufs_writable)
+r_dir_file(hal_dumpstate_default, sysfs_ski_power_readable)
+r_dir_file(hal_dumpstate_default, debugfs_tracing)
+r_dir_file(hal_dumpstate_default, proc_sec_pm_log)
+r_dir_file(hal_dumpstate_default, sysfs_gpu)
+r_dir_file(hal_dumpstate_default, proc_bt_uart)
+r_dir_file(hal_dumpstate_default, vendor_sysfs_freq_qos_tracer)
+r_dir_file(hal_dumpstate_default, proc_ap_klog)
+r_dir_file(hal_dumpstate_default, proc_ion_heaps)
+r_dir_file(hal_dumpstate_default, app_efs_file)
+r_dir_file(hal_dumpstate_default, sysfs_net)
+get_prop(hal_dumpstate_default, exported_bluetooth_prop)
+get_prop(hal_dumpstate_default, dumpstate_options_prop)
+set_prop(hal_dumpstate_server, hal_dumpstate_config_prop)
+set_prop(hal_dumpstate_default, vendor_dumpstate_config_prop)
+binder_use(hal_dumpstate_default)
 hal_server_domain(hal_dumpstate_default, hal_dumpstate)
-add_service(hal_dumpstate_server, hal_dumpstate_service)
+hal_attribute_service(hal_dumpstate, hal_dumpstate_service)
+hal_attribute_hwservice(hal_dumpstate, hal_dumpstate_hwservice)
 type hal_dumpstate_default, domain;
 type hal_dumpstate_default_exec, exec_type, file_type, vendor_file_type;
+type hal_dumpstate_hwservice, hwservice_manager_type, protected_hwservice;

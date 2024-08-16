@@ -1,0 +1,2 @@
+allow blkid vold:netlink_socket { read write };
+type blkid, domain;

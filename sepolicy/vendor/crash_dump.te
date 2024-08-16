@@ -1,0 +1,53 @@
+allow crash_dump domain:fd *;
+allow crash_dump domain:fifo_file { read write };
+allow crash_dump domain:fifo_file append;
+allow crash_dump domain:process getattr;
+allow crash_dump exec_type:file r_file_perms;
+allow crash_dump dalvikcache_data_file:dir { getattr search };
+allow crash_dump dalvikcache_data_file:file r_file_perms;
+allow crash_dump apex_module_data_file:dir { getattr search };
+allow crash_dump proc_uptime:file r_file_perms;
+allow crash_dump anr_data_file:file { append getattr };
+allow crash_dump tombstone_data_file:file { append getattr };
+allow crash_dump property_socket:sock_file rw_file_perms;
+allow crash_dump devpts:chr_file rw_file_perms;
+allow crash_dump vold:process ptrace;
+allow crash_dump knox_dar_device:chr_file rw_file_perms;
+allow crash_dump proc_sysrq:file rw_file_perms;
+dontaudit crash_dump self:capability sys_ptrace;
+dontaudit crash_dump self:cap_userns sys_ptrace;
+dontaudit crash_dump core_data_file_type:dir search;
+dontaudit crash_dump vendor_file_type:dir search;
+dontaudit crash_dump system_data_file:file read;
+dontaudit crash_dump system_data_file:lnk_file read;
+dontaudit crash_dump property_type:file read;
+r_dir_file(crash_dump, domain)
+r_dir_file(crash_dump, apk_data_file)
+r_dir_file(crash_dump, vendor_file)
+r_dir_file(crash_dump, same_process_hal_file)
+r_dir_file(crash_dump, shell_test_data_file)
+unix_socket_connect(crash_dump, tombstoned_crash, tombstoned)
+unix_socket_connect(crash_dump, tombstoned_crash, system_server)
+unix_socket_connect(crash_dump, tombstoned_crash, logd)
+unix_socket_connect(crash_dump, tombstoned_crash, init)
+unix_socket_connect(crash_dump, system_ndebug, tombstoned)
+unix_socket_connect(crash_dump, system_ndebug, system_server)
+unix_socket_connect(crash_dump, system_ndebug, logd)
+unix_socket_connect(crash_dump, system_ndebug, init)
+unix_socket_connect(crash_dump, logdr, tombstoned)
+unix_socket_connect(crash_dump, logdr, system_server)
+unix_socket_connect(crash_dump, logdr, logd)
+unix_socket_connect(crash_dump, logdr, init)
+unix_socket_connect(crash_dump, property, tombstoned)
+unix_socket_connect(crash_dump, property, system_server)
+unix_socket_connect(crash_dump, property, logd)
+get_prop(crash_dump, compact_dump_prop)
+get_prop(crash_dump, hwservicemanager_prop)
+get_prop(crash_dump, vendor_sec_nfc_prop)
+set_prop(crash_dump, ctl_default_prop)
+set_prop(crash_dump, dumpstate_options_prop)
+set_prop(crash_dump, ctl_bugreport_prop)
+set_prop(crash_dump, dumpstate_prop)
+set_prop(crash_dump, system_prop)
+type crash_dump, domain;
+type crash_dump_exec, exec_type, file_type, system_file_type;

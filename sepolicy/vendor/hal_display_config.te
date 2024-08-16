@@ -1,1 +1,3 @@
+typealias(hal_display_config_hwservice)
+typealiasactual(hal_display_config_hwservice)
 type vendor_hal_display_config_hwservice, hwservice_manager_type, protected_hwservice;

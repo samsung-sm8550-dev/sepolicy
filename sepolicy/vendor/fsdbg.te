@@ -1,0 +1,16 @@
+allow fsdbg devpts:chr_file rw_file_perms;
+allow fsdbg fsdbg_device:chr_file rw_file_perms;
+allow fsdbg fsdbg_device:dir create_dir_perms;
+allow fsdbg fsdbg_device:file create_file_perms;
+allow fsdbg proc_fslog:dir r_dir_perms;
+allow fsdbg proc_fslog:file r_file_perms;
+allow fsdbg dumplog_data_file:dir create_dir_perms;
+allow fsdbg dumplog_data_file:file create_file_perms;
+allow fsdbg self:capability setgid;
+allow fsdbg vendor_sysfs_scsi_host:dir r_dir_perms;
+allow fsdbg vendor_sysfs_scsi_host:file r_file_perms;
+r_dir_file(fsdbg, vendor_sysfs_mmc_host)
+r_dir_file(fsdbg, sysfs_fs_f2fs)
+r_dir_file(fsdbg, sysfs_ss_writable)
+type fsdbg, coredomain, domain;
+type fsdbg_exec, exec_type, file_type, system_file_type;

@@ -1,9 +1,19 @@
+allow vendor_sensors sysfs_sensor_writable:dir r_dir_perms;
+allow vendor_sensors sysfs_sensor_writable:file r_file_perms;
+allow vendor_sensors mnt_vendor_file:dir create_dir_perms;
+allow vendor_sensors mnt_vendor_file:dir r_dir_perms;
+allow vendor_sensors mnt_vendor_file:file create_file_perms;
+allow vendor_sensors app_efs_file:dir rw_dir_perms;
+allow vendor_sensors app_efs_file:file create_file_perms;
+allow vendor_sensors vendor_sysfs_ssr:dir r_dir_perms;
+allow vendor_sensors vendor_sysfs_ssr:file r_file_perms;
+allow vendor_sensors sysfs_wake_lock:file rw_file_perms;
+allow vendor_sensors vendor_sensors:capability2 block_suspend;
 allow vendor_sensors self:capability { net_bind_service setgid setuid };
 allow vendor_sensors self:socket create_socket_perms;
 allow vendor_sensors self:qipcrtr_socket create_socket_perms;
 allow vendor_sensors self:capability2 block_suspend;
 allow vendor_sensors self:cap2_userns block_suspend;
-allow vendor_sensors mnt_vendor_file:dir r_dir_perms;
 allow vendor_sensors system_file:dir r_dir_perms;
 allow vendor_sensors sensors_device:chr_file rw_file_perms;
 allow vendor_sensors vendor_sysfs_soc:file w_file_perms;
@@ -14,17 +24,11 @@ allow vendor_sensors vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_sensors vendor_xdsp_device:chr_file r_file_perms;
 allow vendor_sensors vendor_persist_sensors_file:dir create_dir_perms;
 allow vendor_sensors vendor_persist_sensors_file:file create_file_perms;
-allow vendor_sensors sysfs_wake_lock:file rw_file_perms;
 allow vendor_sensors system_suspend_server:binder { call transfer };
 allow vendor_sensors system_suspend_server:fd *;
 allow vendor_sensors system_suspend_hwservice:hwservice_manager find;
-allow vendor_sensors hwservicemanager:binder { call transfer };
 allow vendor_sensors hidl_manager_hwservice:hwservice_manager find;
 allow vendor_sensors hal_system_suspend_service:service_manager find;
-allow vendor_sensors servicemanager:binder { call transfer };
-allow vendor_sensors_qti vendor_diag_device:chr_file rw_file_perms;
-allow vendor_sensors_qti vendor_qlogd_exec:file rx_file_perms;
-allow vendor_sensors_qti vendor_shell_exec:file rx_file_perms;
 allow vendor_sensors_qti self:socket create_socket_perms;
 allow vendor_sensors_qti self:qipcrtr_socket create_socket_perms;
 allow vendor_sensors_qti mnt_vendor_file:dir r_dir_perms;
@@ -37,13 +41,20 @@ allowxperm vendor_sensors self:ioctl socket { range 0xc300 0xc305 };
 allowxperm vendor_sensors self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
 allowxperm vendor_sensors_qti self:ioctl socket { range 0xc300 0xc305 };
 allowxperm vendor_sensors_qti self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+typealias(sensors_exec)
+typealias(sensors)
+typealiasactual(sensors_exec)
+typealiasactual(sensors)
+init_daemon_domain(vendor_sensors)
+init_daemon_domain(vendor_sensors_qti)
+r_dir_file(vendor_sensors, sysfs_type)
 r_dir_file(vendor_sensors, adsprpcd_file)
-r_dir_file(vendor_sensors_qti, vendor_sysfs_diag)
 get_prop(vendor_sensors, vendor_sensors_prop)
 get_prop(vendor_sensors, vendor_adsprpc_prop)
 get_prop(vendor_sensors, hwservicemanager_prop)
 get_prop(vendor_sensors_qti, vendor_sensors_prop)
-get_prop(vendor_sensors_qti, vendor_sensors_dbg_prop)
+binder_use(vendor_sensors)
+hwbinder_use(vendor_sensors)
 hal_attribute(sensors)
 type vendor_sensors, domain;
 type vendor_sensors_qti, domain;

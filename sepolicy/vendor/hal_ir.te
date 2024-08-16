@@ -4,17 +4,15 @@ expandtypeattribute(hal_ir_server)
 allow hal_ir_client hal_ir_server:binder { call transfer };
 allow hal_ir_client hal_ir_server:binder transfer;
 allow hal_ir_client hal_ir_server:fd *;
-allow hal_ir_client hal_ir_service:service_manager find;
-allow hal_ir_client hal_ir_hwservice:hwservice_manager find;
 allow hal_ir_server hal_ir_client:binder transfer;
 allow hal_ir_server hal_ir_client:binder { call transfer };
 allow hal_ir_server hal_ir_client:fd *;
-allow hal_ir_server su:tcp_socket { accept getopt read write };
 allow hal_ir_server servicemanager:binder { call transfer };
 allow hal_ir_server servicemanager:fd *;
-allow hal_ir_server hal_ir_hwservice:hwservice_manager { add find };
-allow hal_ir_server hidl_base_hwservice:hwservice_manager add;
+init_daemon_domain(hal_ir_default)
 hal_server_domain(hal_ir_default, hal_ir)
-add_service(hal_ir_server, hal_ir_service)
+hal_attribute_service(hal_ir, hal_ir_service)
+hal_attribute_hwservice(hal_ir, hal_ir_hwservice)
 type hal_ir_default, domain;
 type hal_ir_default_exec, exec_type, file_type, vendor_file_type;
+type hal_ir_hwservice, hwservice_manager_type, protected_hwservice;

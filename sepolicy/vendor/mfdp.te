@@ -1,0 +1,2 @@
+type mfdp, coredomain, domain;
+type mfdp_exec, exec_type, file_type, system_file_type;

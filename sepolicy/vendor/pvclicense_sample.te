@@ -1,0 +1,4 @@
+allow pvclicense_sample vendor_smcinvoke_device:chr_file rw_file_perms;
+init_daemon_domain(pvclicense_sample)
+type pvclicense_sample, domain;
+type pvclicense_sample_exec, exec_type, file_type, vendor_file_type;

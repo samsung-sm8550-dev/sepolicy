@@ -1,0 +1,9 @@
+allow vendor_icd block_device:dir r_dir_perms;
+allow vendor_icd tz_device:chr_file rw_file_perms;
+allow vendor_icd paramblk_device:blk_file { getattr open write };
+allow vendor_icd frigate_socket:sock_file { append getattr ioctl read write };
+allow vendor_icd vendor_file:file read;
+allow vendor_icd vendor_framework_file:file read;
+init_daemon_domain(vendor_icd)
+type vendor_icd, domain;
+type vendor_icd_exec, exec_type, file_type, vendor_file_type;

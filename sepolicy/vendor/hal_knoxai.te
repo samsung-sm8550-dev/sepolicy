@@ -1,0 +1,27 @@
+allow hal_knoxai_client hal_knoxai_server:binder { call transfer };
+allow hal_knoxai_client hal_knoxai_server:binder transfer;
+allow hal_knoxai_client hal_knoxai_server:fd *;
+allow hal_knoxai_server hal_knoxai_client:binder transfer;
+allow hal_knoxai_server hal_knoxai_client:binder { call transfer };
+allow hal_knoxai_server hal_knoxai_client:fd *;
+allow hal_knoxai_default tz_user_device:chr_file rw_file_perms;
+allow hal_knoxai_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_knoxai_default tee_device:chr_file rw_file_perms;
+allow hal_knoxai_default ion_device:chr_file rw_file_perms;
+allow hal_knoxai_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_knoxai_default hal_allocator:fd *;
+allow hal_knoxai_default knoxai_efs_file:dir create_dir_perms;
+allow hal_knoxai_default knoxai_efs_file:file create_file_perms;
+allow hal_knoxai_default tzdaemon:fd *;
+allow hal_knoxai_default tee_efs_file:dir search;
+init_daemon_domain(hal_knoxai_default)
+r_dir_file(hal_knoxai_default, tee_vendor_data_file)
+get_prop(hal_knoxai_default, mobicore_prop)
+get_prop(hal_knoxai_default, vendor_tztsdaemon_prop)
+get_prop(hal_knoxai_default, tzdaemon_prop)
+get_prop(hal_knoxai_default, vendor_teegris_prop)
+hal_server_domain(hal_knoxai_default, hal_knoxai)
+hal_attribute_hwservice(hal_knoxai, hal_knoxai_hwservice)
+type hal_knoxai_default, domain;
+type hal_knoxai_default_exec, exec_type, file_type, vendor_file_type;
+type hal_knoxai_hwservice, hwservice_manager_type;

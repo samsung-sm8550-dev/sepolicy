@@ -1,0 +1,1 @@
+type hidl_memory_hwservice, coredomain_hwservice, hwservice_manager_type;

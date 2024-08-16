@@ -1,0 +1,11 @@
+allow wsmd tzdaemon:fd *;
+allow wsmd tz_user_device:chr_file rw_file_perms;
+allow wsmd tee_efs_file:dir search;
+allow wsmd ion_device:chr_file rw_file_perms;
+allow wsmd wsm_socket:dir rw_dir_perms;
+allow wsmd wsm_socket:sock_file { create setattr write };
+get_prop(wsmd, tzdaemon_prop)
+get_prop(wsmd, vendor_teegris_prop)
+get_prop(wsmd, mobicore_prop)
+type wsmd, coredomain, domain;
+type wsmd_exec, exec_type, file_type, system_file_type;

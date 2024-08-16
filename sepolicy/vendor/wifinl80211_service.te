@@ -1,0 +1,1 @@
+type wifinl80211_service, service_manager_type;

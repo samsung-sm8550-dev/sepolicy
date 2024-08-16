@@ -1,0 +1,32 @@
+allow apaservice jackservice:binder { call transfer };
+allow apaservice jackservice:fd *;
+allow apaservice audio_data_file:dir write;
+allow apaservice jack_socket:sock_file create_file_perms;
+allow apaservice jack_socket:dir rw_dir_perms;
+allow apaservice kernel:system module_request;
+allow apaservice storage_file:dir r_dir_perms;
+allow apaservice storage_file:lnk_file r_file_perms;
+allow apaservice mnt_user_file:dir r_dir_perms;
+allow apaservice mnt_user_file:lnk_file r_file_perms;
+allow apaservice media_rw_data_file:dir create_dir_perms;
+allow apaservice media_rw_data_file:file create_file_perms;
+allow apaservice sdcardfs:dir create_dir_perms;
+allow apaservice sdcardfs:file create_file_perms;
+allow apaservice fuse:dir create_dir_perms;
+allow apaservice fuse:file create_file_perms;
+allow apaservice efs_file:dir r_dir_perms;
+allow apaservice efs_file:file r_file_perms;
+allow apaservice jack_data_file:dir create_dir_perms;
+allow apaservice jack_data_file:file create_file_perms;
+allow apaservice system_data_file:dir r_dir_perms;
+allow apaservice system_data_file:file r_file_perms;
+allow apaservice system_file:file x_file_perms;
+allow apaservice jackservice_service:service_manager find;
+allow apaservice scheduling_policy_service:service_manager find;
+allow apaservice apaservice_service:service_manager add;
+allow apaservice sec_standard_app_type:binder { call transfer };
+allow apaservice sec_standard_app_type:fd *;
+unix_socket_connect(apaservice, jack, jackservice)
+binder_service(apaservice)
+type apaservice, coredomain, domain, mlstrustedsubject;
+type apaservice_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,17 @@
+allow digital_tv_fullseg tee_device:chr_file rw_file_perms;
+allow digital_tv_fullseg ion_device:chr_file r_file_perms;
+allow digital_tv_fullseg hidl_memory_hwservice:hwservice_manager find;
+allow digital_tv_fullseg hwservicemanager:binder call;
+allow digital_tv_fullseg vendor_dtv_data_file:file create_file_perms;
+allow digital_tv_fullseg vendor_dtv_data_file:dir rw_dir_perms;
+allow digital_tv_fullseg mmb_device:chr_file rw_file_perms;
+allow digital_tv_fullseg sec_debugfs:dir search;
+allow digital_tv_fullseg system_file:dir r_dir_perms;
+allow digital_tv_fullseg sysfs_battery:file rw_file_perms;
+allow digital_tv_fullseg firmware_file:file r_file_perms;
+init_daemon_domain(digital_tv_fullseg)
+vndbinder_use(digital_tv_fullseg)
+hal_client_domain(digital_tv_fullseg, hal_allocator)
+add_hwservice(digital_tv_fullseg, digitaltv_fullseg_hwservice)
+type digital_tv_fullseg, domain;
+type digital_tv_fullseg_exec, exec_type, file_type, vendor_file_type;

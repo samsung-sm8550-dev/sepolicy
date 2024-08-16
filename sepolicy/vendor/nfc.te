@@ -1,1 +1,35 @@
+allow nfc nfc_data_file:dir create_dir_perms;
+allow nfc nfc_data_file:file create_file_perms;
+allow nfc overlay_service:service_manager find;
+allow nfc sec_efs_file:dir search;
+allow nfc sec_efs_file:dir create_dir_perms;
+allow nfc sec_efs_file:file create_file_perms;
+allow nfc system_data_file:dir r_dir_perms;
+allow nfc sysfs_battery:dir r_dir_perms;
+allow nfc sysfs_battery:file rw_file_perms;
+allow nfc cameraserver_service:service_manager find;
+allow nfc system_suspend_server:binder { call transfer };
+allow nfc system_suspend_server:fd *;
+allow nfc system_suspend_hwservice:hwservice_manager find;
+allow nfc radio:binder transfer;
+allow nfc surfaceflinger:binder transfer;
+allow nfc at_distributor:binder transfer;
+allow nfc proc_nfclog:file { getattr lock map open read };
+allow nfc nfc_efs_file:file r_file_perms;
+allow nfc nfc_efs_file:dir r_dir_perms;
+allow nfc dumplog_data_file:dir create_dir_perms;
+allow nfc dumplog_data_file:file create_file_perms;
+allow nfc sem_service:service_manager find;
+allow nfc sem_wifi_service:service_manager find;
+allow nfc sysfs_batteryinfo:dir r_dir_perms;
+allow nfc vendor_sysfs_kgsl:dir search;
+allow nfc vendor_sysfs_kgsl:file r_file_perms;
+get_prop(nfc, nfc_ese_prop)
+get_prop(nfc, vendor_sec_nfc_prop)
+get_prop(nfc, vendor_nfc_nq_prop)
+set_prop(nfc, nfc_prop)
+set_prop(nfc, system_prop)
 hal_attribute(nfc)
+hal_client_domain(nfc, hal_memtrack)
+hal_client_domain(nfc, vendor_hal_perf)
+type nfc, domain;

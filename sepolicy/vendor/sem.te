@@ -1,0 +1,52 @@
+allow sem mobicore_admin_device:chr_file rw_file_perms;
+allow sem mobicore_user_device:chr_file rw_file_perms;
+allow sem nfc_device:chr_file rw_file_perms;
+allow sem sem_device:chr_file { ioctl open read write };
+allow sem ion_device:chr_file rw_file_perms;
+allow sem app_efs_file:dir r_dir_perms;
+allow sem app_efs_file:dir create_dir_perms;
+allow sem app_efs_file:file r_file_perms;
+allow sem app_efs_file:file create_file_perms;
+allow sem efs_file:dir r_dir_perms;
+allow sem efs_file:file r_file_perms;
+allow sem prov_efs_file:dir create_dir_perms;
+allow sem prov_efs_file:file create_file_perms;
+allow sem sec_efs_file:dir rw_dir_perms;
+allow sem sec_efs_file:file create_file_perms;
+allow sem system_data_file:dir rw_dir_perms;
+allow sem system_data_file:dir r_dir_perms;
+allow sem system_data_file:file r_file_perms;
+allow sem sem_data_file:file create_file_perms;
+allow sem sec_debugfs:dir search;
+allow sem sysfs_wake_lock:file rw_file_perms;
+allow sem self:capability2 block_suspend;
+allow sem self:cap2_userns block_suspend;
+allow sem system_suspend_server:binder { call transfer };
+allow sem system_suspend_server:fd *;
+allow sem system_suspend_hwservice:hwservice_manager find;
+allow sem hidl_manager_hwservice:hwservice_manager find;
+allow sem hal_system_suspend_service:service_manager find;
+allow sem dumplog_data_file:dir rw_dir_perms;
+allow sem dumplog_data_file:file create_file_perms;
+allow sem tzdaemon:fd *;
+allow sem tz_user_device:chr_file rw_file_perms;
+allow sem tee_efs_file:dir search;
+type_transition sem system_data_file:file sem_data_file "service_cert.der";
+type_transition sem system_data_file:file sem_data_file "drk_cert.der";
+type_transition sem system_data_file:file sem_data_file "root_cert.der";
+type_transition sem system_data_file:file sem_data_file "sse_initial_entry";
+unix_socket_connect(sem, property, multiclientd)
+get_prop(sem, hwservicemanager_prop)
+get_prop(sem, vendor_sec_nfc_prop)
+get_prop(sem, tzdaemon_prop)
+get_prop(sem, vendor_teegris_prop)
+set_prop(sem, system_prop)
+set_prop(sem, exported_system_prop)
+binder_use(sem)
+hwbinder_use(sem)
+hal_attribute(sem)
+hal_client_domain(sem, vendor_hal_qseecom)
+hal_client_domain(sem, hal_sem)
+hal_client_domain(sem, hal_drk)
+type sem, coredomain, domain;
+type sem_exec, exec_type, file_type, system_file_type;

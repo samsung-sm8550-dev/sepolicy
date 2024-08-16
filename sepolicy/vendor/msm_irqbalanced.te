@@ -5,5 +5,6 @@ allow vendor_msm_irqbalanced sysfs_devices_system_cpu:file w_file_perms;
 allow vendor_msm_irqbalanced proc_interrupts:file r_file_perms;
 allow vendor_msm_irqbalanced proc_stat:file r_file_perms;
 allow vendor_msm_irqbalanced vendor_sysfs_irqbalance:file r_file_perms;
+init_daemon_domain(vendor_msm_irqbalanced)
 type vendor_msm_irqbalanced, domain;
 type vendor_msm_irqbalanced_exec, exec_type, file_type, vendor_file_type;

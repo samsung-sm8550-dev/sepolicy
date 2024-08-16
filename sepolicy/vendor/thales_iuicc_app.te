@@ -1,0 +1,7 @@
+allow thales_iuicc_app thales_spu_service:binder { call transfer };
+allow thales_iuicc_app thales_spu_service:binder transfer;
+allow thales_iuicc_app thales_spu_service:fd *;
+allow thales_iuicc_app activity_service:service_manager find;
+allow thales_iuicc_app thales_spu_service_service:service_manager find;
+app_domain(thales_iuicc_app)
+type thales_iuicc_app, coredomain, domain;

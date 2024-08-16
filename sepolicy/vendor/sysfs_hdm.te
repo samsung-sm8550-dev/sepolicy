@@ -1,0 +1,2 @@
+type vendor_sysfs_hdm, fs_type, sysfs_type;
+type sysfs_hdm, fs_type, sysfs_type;

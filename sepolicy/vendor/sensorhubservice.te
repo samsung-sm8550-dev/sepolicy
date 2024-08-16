@@ -1,0 +1,16 @@
+allow sensorhubservice at_distributor:binder transfer;
+allow sensorhubservice at_distributor:fd *;
+allow sensorhubservice sysfs_sensor_writable:file rw_file_perms;
+allow sensorhubservice sysfs_ss_writable:file rw_file_perms;
+allow sensorhubservice ssp_device:chr_file rw_file_perms;
+allow sensorhubservice input_device:dir r_dir_perms;
+allow sensorhubservice input_device:chr_file rw_file_perms;
+allow sensorhubservice sensorhubservice_service:service_manager add;
+allow sensorhubservice dumplog_data_file:dir create_dir_perms;
+allow sensorhubservice dumplog_data_file:file create_file_perms;
+allow sensorhubservice radio:fd *;
+allow sensorhubservice system_app:fd *;
+allow sensorhubservice system_app:fifo_file w_file_perms;
+allow sensorhubservice sdcard_type:file w_file_perms;
+type sensorhubservice, coredomain, domain;
+type sensorhubservice_exec, exec_type, file_type, system_file_type;

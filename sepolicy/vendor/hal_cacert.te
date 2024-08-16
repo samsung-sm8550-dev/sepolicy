@@ -1,4 +1,1 @@
-attribute vendor_hal_cacert_qti;
-attribute vendor_hal_cacert_qti_client;
-attribute vendor_hal_cacert_qti_server;
 type vendor_hal_cacert_hwservice, hwservice_manager_type, protected_hwservice;

@@ -1,0 +1,25 @@
+neverallow profman app_data_file:file open;
+neverallow profman app_data_file:lnk_file open;
+neverallow profman app_data_file:sock_file open;
+neverallow profman app_data_file:fifo_file open;
+neverallow profman privapp_data_file:file open;
+neverallow profman privapp_data_file:lnk_file open;
+neverallow profman privapp_data_file:sock_file open;
+neverallow profman privapp_data_file:fifo_file open;
+allow profman user_profile_data_file:file { getattr lock map read write };
+allow profman asec_apk_file:file { map read };
+allow profman apk_data_file:file { getattr map read };
+allow profman apk_data_file:dir { getattr read search };
+allow profman oemfs:file { map read };
+allow profman tmpfs:file { map read };
+allow profman profman_dump_data_file:file { map write };
+allow profman installd:fd *;
+allow profman app_data_file:file { getattr lock map read write };
+allow profman app_data_file:dir { getattr read search };
+allow profman privapp_data_file:file { getattr lock map read write };
+allow profman privapp_data_file:dir { getattr read search };
+r_dir_file(profman, apk_data_file)
+get_prop(profman, device_config_runtime_native_prop)
+get_prop(profman, device_config_runtime_native_boot_prop)
+type profman, domain;
+type profman_exec, exec_type, file_type, system_file_type;

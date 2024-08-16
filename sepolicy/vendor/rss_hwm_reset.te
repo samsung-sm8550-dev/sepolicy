@@ -1,0 +1,2 @@
+allow rss_hwm_reset domain:file getattr;
+type rss_hwm_reset, coredomain, domain, mlstrustedsubject;

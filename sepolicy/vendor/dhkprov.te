@@ -1,0 +1,10 @@
+allow dhkprov cpk_efs_file:dir create_dir_perms;
+allow dhkprov cpk_efs_file:file create_file_perms;
+allow dhkprov ion_device:chr_file r_file_perms;
+allow dhkprov sec_debugfs:dir r_dir_perms;
+allow dhkprov hal_qchdcpkprov_default:binder { call transfer };
+allow dhkprov hal_qchdcpkprov_default:fd *;
+allow dhkprov hal_qchdcpkprov_hwservice:hwservice_manager find;
+hal_client_domain(dhkprov, hal_qchdcpkprov)
+type dhkprov, coredomain, domain;
+type dhkprov_exec, exec_type, file_type, system_file_type;

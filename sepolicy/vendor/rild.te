@@ -1,59 +1,157 @@
+allow rild dumpstate:fd *;
+allow rild dumpstate:fifo_file { append write };
+allow rild self:capability chown;
+allow rild self:capability sys_time;
+allow rild self:packet_socket { create getopt ioctl read setopt write };
+allow rild self:tun_socket { create relabelfrom relabelto };
+allow rild self:tun_socket relabelfrom;
+allow rild self:qipcrtr_socket ioctl;
+allow rild self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow rild self:tipc_socket create_socket_perms_no_ioctl;
+allow rild self:socket ioctl;
+allow rild proc_net:file rw_file_perms;
+allow rild sysfs_ss_writable:file rw_file_perms;
+allow rild knox_kap_device:chr_file r_file_perms;
+allow rild radio_block_device:blk_file rw_file_perms;
+allow rild ssipc_device:chr_file rw_file_perms;
+allow rild tun_device:chr_file rw_file_perms;
+allow rild uart_device:chr_file rw_file_perms;
+allow rild omr_file:dir r_dir_perms;
+allow rild omr_file:file r_file_perms;
+allow rild qosd_socket:sock_file { append getattr ioctl read write };
+allow rild app_efs_file:dir create_dir_perms;
+allow rild app_efs_file:file create_file_perms;
+allow rild efs_file:dir rw_dir_perms;
+allow rild nv_core_efs_file:file create_file_perms;
+allow rild bin_nv_data_efs_file:file create_file_perms;
+allow rild efs_gsm_file:dir create_dir_perms;
+allow rild efs_gsm_file:file create_file_perms;
+allow rild imei_efs_file:dir create_dir_perms;
+allow rild imei_efs_file:file create_file_perms;
+allow rild storage_file:dir r_dir_perms;
+allow rild storage_file:file rw_file_perms;
+allow rild storage_file:lnk_file rw_file_perms;
+allow rild storage_file:lnk_file r_file_perms;
+allow rild mnt_user_file:lnk_file r_file_perms;
+allow rild mnt_user_file:dir r_dir_perms;
+allow rild vendor_ramdump_device:chr_file r_file_perms;
+allow rild prov_efs_file:file r_file_perms;
+allow rild prov_efs_file:dir search;
+allow rild drb_device:chr_file rw_file_perms;
+allow rild vendor_radio_data_file:dir create_dir_perms;
+allow rild vendor_radio_data_file:file create_file_perms;
+allow rild sdcardfs:dir create_dir_perms;
+allow rild sdcardfs:file create_file_perms;
+allow rild system_data_file:dir { getattr search };
+allow rild dumplog_data_file:file { append getattr ioctl read write };
+allow rild mnt_vendor_file:dir r_dir_perms;
+allow rild rtc_device:chr_file rw_file_perms;
+allow rild proc_qtaguid_stat:file r_file_perms;
+allow rild radio_data_file:file { getattr ioctl read };
+allow rild hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow rild vaultkeeperd:binder call;
+allow rild media_rw_data_file:file { append getattr ioctl read write };
+allow rild vendor_log_file:dir create_dir_perms;
+allow rild vendor_log_file:file create_file_perms;
+allow rild hal_audio_default:dir search;
+allow rild hal_audio_default:file { getattr open read };
+allow rild sec_efs_file:dir create_dir_perms;
+allow rild sec_efs_file:file create_file_perms;
+allow rild domain:dir { getattr open read search };
+allow rild domain:file { getattr open read };
+allow rild domain:lnk_file { getattr open read };
+allow rild gpsd:dir search;
+allow rild gpsd:file { getattr open read };
+allow rild paramblk_device:blk_file rw_file_perms;
+allow rild kmsg_device:chr_file rw_file_perms;
+allow rild vaultkeeper_socket:dir r_dir_perms;
+allow rild vaultkeeper_socket:sock_file rw_file_perms;
+allow rild eris:tun_socket relabelfrom;
+allow rild sec_radio_device:chr_file rw_file_perms;
+allow rild EngineeringMode_vndservice:service_manager find;
+allow rild emservice:binder { call transfer };
+allow rild emservice:fd *;
+allow rild dak_efs_file:dir create_dir_perms;
+allow rild dak_efs_file:file create_file_perms;
+allow rild firmware_file:file r_file_perms;
+allow rild vendor_diag_device:chr_file rw_file_perms;
+allow rild vendor_esoc_device:chr_file rw_file_perms;
 allow rild vendor_per_mgr:binder transfer;
 allow rild vendor_per_mgr:binder { call transfer };
 allow rild vendor_per_mgr:fd *;
-allow rild vndbinder_device:chr_file rw_file_perms;
-allow rild vndservicemanager:binder { call transfer };
 allow rild vendor_netmgrd_socket:dir search;
 allow rild vendor_file:file { execute_no_trans ioctl lock };
-allow rild self:tipc_socket create_socket_perms_no_ioctl;
-allow rild self:socket ioctl;
-allow rild self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow rild vendor_per_mgr_service:service_manager find;
 allow rild vendor_radio_vendor_data_file:dir rw_dir_perms;
 allow rild vendor_radio_vendor_data_file:file create_file_perms;
-allow rild vendor_diag_device:chr_file rw_file_perms;
 allow rild vendor_qmuxd_socket:dir w_dir_perms;
 allow rild vendor_qmuxd_socket:sock_file create_file_perms;
 allow rild vendor_rild_socket:dir w_dir_perms;
 allow rild vendor_rild_socket:sock_file create_file_perms;
-allow rild su:fifo_file append;
 allow rild anr_data_file:file append;
-allow rild dumpstate:fd *;
-allow rild dumpstate:fifo_file { append write };
 allow rild incidentd:fd *;
 allow rild incidentd:fifo_file { append write };
 allow rild system_server:fifo_file { append write };
 allow rild tombstoned:fd *;
-allow rild tombstoned_crash_socket:sock_file write;
 allow rild tombstone_data_file:file append;
-allow rild property_socket:sock_file write;
-allow rild vendor_xlat_prop:property_service set;
-allow rild hal_lineage_backend_radio_hwservice:hwservice_manager { add find };
-allow rild hidl_base_hwservice:hwservice_manager add;
-allow rild hal_lineage_backend_radio_config_hwservice:hwservice_manager { add find };
+allowxperm rild self:ioctl packet_socket { 0x8906 0x8933 };
+allowxperm rild self:ioctl socket 0xc800;
 allowxperm rild self:ioctl socket { range 0xc300 0xc305 };
+allowxperm rild self:ioctl qipcrtr_socket 0xc800;
+allowxperm rild tun_device:ioctl chr_file 0x54ca;
+allowxperm rild tun_device:ioctl chr_file { range 0x54ca 0x54cb };
+allowxperm rild bin_nv_data_efs_file:ioctl file 0x6601;
+type_transition rild efs_file:file bin_nv_data_efs_file "nv_data.bin.md5";
+type_transition rild efs_file:file bin_nv_data_efs_file "nv_data.bin";
+type_transition rild efs_file:file nv_core_efs_file ".nv_core.bak.md5";
+type_transition rild efs_file:file nv_core_efs_file ".nv_core.bak";
+domain_auto_trans(rild, netutils_wrapper_exec, netutils_wrapper)
+init_daemon_domain(rild)
+r_dir_file(rild, vendor_sysfs_diag)
 r_dir_file(rild, vendor_mbn_data_file)
+unix_socket_connect(rild, property, vaultkeeperd)
+unix_socket_connect(rild, property, vendor_netmgrd)
+unix_socket_connect(rild, property, vendor_time_daemon)
+unix_socket_connect(rild, property, vendor_ssgtzd)
+unix_socket_connect(rild, property, tombstoned)
+unix_socket_connect(rild, vendor_netmgrd, init)
+unix_socket_connect(rild, vendor_netmgrd, vaultkeeperd)
 unix_socket_connect(rild, vendor_netmgrd, vendor_netmgrd)
 unix_socket_connect(rild, vendor_netmgrd, vendor_time_daemon)
 unix_socket_connect(rild, vendor_netmgrd, vendor_ssgtzd)
 unix_socket_connect(rild, vendor_netmgrd, tombstoned)
-unix_socket_connect(rild, vendor_netmgrd, init)
+unix_socket_connect(rild, vendor_ssgtzd, init)
+unix_socket_connect(rild, vendor_ssgtzd, vaultkeeperd)
 unix_socket_connect(rild, vendor_ssgtzd, vendor_netmgrd)
 unix_socket_connect(rild, vendor_ssgtzd, vendor_time_daemon)
 unix_socket_connect(rild, vendor_ssgtzd, vendor_ssgtzd)
 unix_socket_connect(rild, vendor_ssgtzd, tombstoned)
-unix_socket_connect(rild, vendor_ssgtzd, init)
-get_prop(rild, vendor_pd_locater_dbg_prop)
+unix_socket_connect(rild, tombstoned_crash, init)
+unix_socket_connect(rild, tombstoned_crash, vaultkeeperd)
+unix_socket_connect(rild, tombstoned_crash, vendor_netmgrd)
+unix_socket_connect(rild, tombstoned_crash, vendor_time_daemon)
+unix_socket_connect(rild, tombstoned_crash, vendor_ssgtzd)
+unix_socket_connect(rild, tombstoned_crash, tombstoned)
+get_prop(rild, sec_timed_prop)
+get_prop(rild, sec_ims_prop)
+get_prop(rild, vendor_model_suffix_prop)
+get_prop(rild, product_ship_prop)
 get_prop(rild, radio_control_prop)
 get_prop(rild, vendor_dataqdp_prop)
-get_prop(rild, vendor_xlat_prop)
-get_prop(rild, vendor_qc_aon_prop)
+set_prop(rild, powerctl_prop)
+set_prop(rild, exported_radio_prop)
+set_prop(rild, vendor_members_prop)
+set_prop(rild, vendor_data_ko_prop)
+set_prop(rild, vendor_data_shsusr_prop)
+set_prop(rild, vendor_xlat_prop)
 binder_service(rild)
+vndbinder_use(rild)
 net_domain(rild)
 hal_server_domain(rild, hal_secure_element)
 hal_server_domain(rild, hal_telephony)
 hal_server_domain(rild, vendor_hal_dataconnection_qti)
 hal_server_domain(rild, vendor_hal_iwlanservice_qti)
+hal_client_domain(rild, hal_audio)
 hal_client_domain(rild, vendor_hal_imsfactory)
 type rild, domain;
 type rild_exec, exec_type, file_type, vendor_file_type;

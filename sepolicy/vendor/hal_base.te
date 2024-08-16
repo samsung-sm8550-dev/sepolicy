@@ -1,0 +1,21 @@
+allow hal_base_client hal_base_server:binder { call transfer };
+allow hal_base_client hal_base_server:binder transfer;
+allow hal_base_client hal_base_server:fd *;
+allow hal_base_client hal_base_hwservice:hwservice_manager find;
+allow hal_base_client hal_base_service:service_manager find;
+allow hal_base_server hal_base_client:binder transfer;
+allow hal_base_server hal_base_client:binder { call transfer };
+allow hal_base_server hal_base_client:fd *;
+allow hal_base_server servicemanager:binder { call transfer };
+allow hal_base_server servicemanager:fd *;
+allow hal_base_default vendor_data_file:dir rw_dir_perms;
+allow hal_base_default vendor_data_file:file create_file_perms;
+allow hal_base_default dumpstate:fifo_file write;
+init_daemon_domain(hal_base_default)
+hwbinder_use(hal_base_default)
+hal_server_domain(hal_base_default, hal_base)
+add_service(hal_base_server, hal_base_service)
+add_hwservice(hal_base_server, hal_base_hwservice)
+type hal_base_default, domain;
+type hal_base_default_exec, exec_type, file_type, vendor_file_type;
+type hal_base_hwservice, hwservice_manager_type;

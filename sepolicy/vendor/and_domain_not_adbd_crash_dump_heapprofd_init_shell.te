@@ -1,0 +1,1 @@
+neverallow { domain -adbd -crash_dump -heapprofd -init -shell } shell_test_data_file:file *;

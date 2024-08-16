@@ -1,0 +1,10 @@
+allow wland dumplog_data_file:dir create_dir_perms;
+allow wland dumplog_data_file:file create_file_perms;
+allow wland system_file:file execute_no_trans;
+allow wland sec_wifi_device:chr_file rw_file_perms;
+allow wland proc_wifi:dir r_dir_perms;
+allow wland proc_wifi:file r_file_perms;
+r_dir_file(wland, sysfs_wifi)
+set_prop(wland, wlbtlog_prop)
+type wland, coredomain, domain;
+type wland_exec, exec_type, file_type, system_file_type;

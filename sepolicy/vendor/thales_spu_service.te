@@ -1,0 +1,13 @@
+allow thales_spu_service thales_iuicc_app:binder transfer;
+allow thales_spu_service thales_iuicc_app:binder { call transfer };
+allow thales_spu_service thales_iuicc_app:fd *;
+allow thales_spu_service thales_spu_service_service:service_manager add;
+allow thales_spu_service system_server:binder { call transfer };
+allow thales_spu_service system_server:fd *;
+binder_service(thales_spu_service)
+binder_use(thales_spu_service)
+hwbinder_use(thales_spu_service)
+hal_client_domain(thales_spu_service, hal_allocator)
+hal_client_domain(thales_spu_service, vendor_hal_spu)
+type thales_spu_service, coredomain, domain;
+type thales_spu_service_exec, exec_type, file_type, system_file_type;

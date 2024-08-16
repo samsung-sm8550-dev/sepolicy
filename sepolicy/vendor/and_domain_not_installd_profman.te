@@ -1,0 +1,1 @@
+neverallow { domain -installd -profman } profman_exec:file no_x_file_perms;

@@ -1,14 +1,8 @@
-allow vendor_hal_esepowermanager_qti hwservicemanager:binder { call transfer };
-allow vendor_hal_esepowermanager_qti vendor_hal_esepowermanager_hwservice:hwservice_manager { add find };
-allow vendor_hal_esepowermanager_qti hidl_base_hwservice:hwservice_manager add;
 allow vendor_hal_esepowermanager_qti nfc_device:chr_file rw_file_perms;
 allow vendor_hal_esepowermanager_qti tee_device:chr_file rw_file_perms;
 allow vendor_hal_esepowermanager_qti vendor_dmabuf_qseecom_ta_heap_device:chr_file rw_file_perms;
 allow vendor_hal_esepowermanager_qti vendor_dmabuf_qseecom_heap_device:chr_file rw_file_perms;
 allow vendor_hal_esepowermanager_qti vendor_ese_gpio_device:chr_file rw_file_perms;
-allow vendor_hal_esepowermanager_qti property_socket:sock_file write;
-allow vendor_hal_esepowermanager_qti init:unix_stream_socket connectto;
-allow vendor_hal_esepowermanager_qti vendor_ese_prop:property_service set;
 allow vendor_hal_esepowermanager_client vendor_hal_esepowermanager_server:binder { call transfer };
 allow vendor_hal_esepowermanager_client vendor_hal_esepowermanager_server:binder transfer;
 allow vendor_hal_esepowermanager_client vendor_hal_esepowermanager_server:fd *;
@@ -19,11 +13,14 @@ allow vendor_hal_esepowermanager_server vendor_hal_esepowermanager_client:fd *;
 attribute vendor_hal_esepowermanager;
 attribute vendor_hal_esepowermanager_client;
 attribute vendor_hal_esepowermanager_server;
+init_daemon_domain(vendor_hal_esepowermanager_qti)
 r_dir_file(vendor_hal_esepowermanager_qti, firmware_file)
-get_prop(vendor_hal_esepowermanager_qti, vendor_ese_prop)
+set_prop(vendor_hal_esepowermanager_qti, vendor_ese_prop)
+hwbinder_use(vendor_hal_esepowermanager_qti)
 hal_server_domain(vendor_hal_esepowermanager_qti, vendor_hal_esepowermanager)
 hal_client_domain(vendor_hal_esepowermanager_qti, hal_allocator)
 hal_client_domain(vendor_hal_esepowermanager_qti, hal_nfc)
+add_hwservice(vendor_hal_esepowermanager_qti, vendor_hal_esepowermanager_hwservice)
 type vendor_hal_esepowermanager_qti, domain;
 type vendor_hal_esepowermanager_qti_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_esepowermanager_hwservice, hwservice_manager_type, protected_hwservice;
