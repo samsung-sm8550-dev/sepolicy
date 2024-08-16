@@ -1,18 +1,12 @@
 expandtypeattribute(hal_sensors)
 expandtypeattribute(hal_sensors_client)
 expandtypeattribute(hal_sensors_server)
-allow hal_sensors_server dumpstate:fifo_file write;
-allow hal_sensors_server dumpstate:fd *;
-allow hal_sensors_server hal_sensors_client:binder transfer;
-allow hal_sensors_server hal_sensors_hwservice:hwservice_manager { add find };
-allow hal_sensors_server hidl_base_hwservice:hwservice_manager add;
-allow hal_sensors_server su:tcp_socket { accept getopt read write };
-allow hal_sensors_server servicemanager:binder { call transfer };
-allow hal_sensors_server servicemanager:fd *;
 allow hal_sensors_client hal_sensors_server:binder { call transfer };
 allow hal_sensors_client hal_sensors_server:fd *;
-allow hal_sensors_client hal_sensors_hwservice:hwservice_manager find;
 allow hal_sensors_client hal_sensors_service:service_manager find;
+allow hal_sensors_server hal_sensors_client:binder transfer;
+allow hal_sensors_server servicemanager:binder { call transfer };
+allow hal_sensors_server servicemanager:fd *;
 allow hal_sensors hal_allocator:fd *;
 allow hal_sensors self:capability sys_nice;
 allow hal_sensors self:cap_userns sys_nice;
@@ -29,24 +23,55 @@ allow hal_sensors_default dmabuf_system_heap_device:chr_file r_file_perms;
 allow hal_sensors_default sysfs_wake_lock:file rw_file_perms;
 allow hal_sensors_default self:capability2 block_suspend;
 allow hal_sensors_default self:cap2_userns block_suspend;
+allow hal_sensors_default self:capability { sys_admin sys_resource };
+allow hal_sensors_default self:cap_userns { sys_admin sys_resource };
 allow hal_sensors_default self:socket create_socket_perms;
 allow hal_sensors_default self:qipcrtr_socket create_socket_perms;
 allow hal_sensors_default system_suspend_server:binder { call transfer };
 allow hal_sensors_default system_suspend_server:fd *;
 allow hal_sensors_default system_suspend_hwservice:hwservice_manager find;
-allow hal_sensors_default hwservicemanager:binder { call transfer };
 allow hal_sensors_default hidl_manager_hwservice:hwservice_manager find;
 allow hal_sensors_default hal_system_suspend_service:service_manager find;
-allow hal_sensors_default servicemanager:binder { call transfer };
 allow hal_sensors_default system_server:fd *;
 allow hal_sensors_default system_server:binder { call transfer };
+allow hal_sensors_default sysfs:file rw_file_perms;
+allow hal_sensors_default sysfs:file r_file_perms;
+allow hal_sensors_default sysfs:dir r_dir_perms;
+allow hal_sensors_default efs_file:dir rw_dir_perms;
+allow hal_sensors_default efs_file:file create_file_perms;
+allow hal_sensors_default sysfs_ss_writable:dir r_dir_perms;
+allow hal_sensors_default sysfs_ss_writable:file r_file_perms;
+allow hal_sensors_default sysfs_sensor_writable:file rw_file_perms;
+allow hal_sensors_default sysfs_sensor_writable:dir r_dir_perms;
+allow hal_sensors_default sysfs_lcd_writable:file r_file_perms;
+allow hal_sensors_default sysfs_lcd_writable:dir r_dir_perms;
+allow hal_sensors_default iio_device:chr_file r_file_perms;
+allow hal_sensors_default app_efs_file:file create_file_perms;
+allow hal_sensors_default app_efs_file:dir rw_dir_perms;
+allow hal_sensors_default ssp_device:chr_file rw_file_perms;
+allow hal_sensors_default hrm_device:chr_file r_file_perms;
+allow hal_sensors_default io_device:chr_file r_file_perms;
+allow hal_sensors_default sec_efs_file:dir r_dir_perms;
+allow hal_sensors_default sysfs_sec:file rw_file_perms;
+allow hal_sensors_default sec_debugfs:dir r_dir_perms;
+allow hal_sensors_default mnt_vendor_file:dir create_dir_perms;
 allow hal_sensors_default mnt_vendor_file:dir search;
 allow hal_sensors_default mnt_vendor_file:dir rw_dir_perms;
 allow hal_sensors_default mnt_vendor_file:file create_file_perms;
+allow hal_sensors_default yas_lib_vendor_data_file:dir create_dir_perms;
+allow hal_sensors_default yas_lib_vendor_data_file:file create_file_perms;
+allow hal_sensors_default akmd_vendor_data_file:file create_file_perms;
+allow hal_sensors_default akmd_vendor_data_file:dir create_dir_perms;
+allow hal_sensors_default range_sensor_device:chr_file rw_file_perms;
+allow hal_sensors_default spu_file:file r_file_perms;
+allow hal_sensors_default sysfs_ski_sensor_writable:dir r_dir_perms;
+allow hal_sensors_default sysfs_ski_sensor_writable:file rw_file_perms;
+allow hal_sensors_default vendor_sensorhub_data_file:dir create_dir_perms;
+allow hal_sensors_default vendor_sensorhub_data_file:file create_file_perms;
+allow hal_sensors_default shub_device:chr_file rw_file_perms;
+allow hal_sensors_default diag_device:chr_file rw_file_perms;
 allow hal_sensors_default vendor_persist_sensors_file:dir rw_dir_perms;
 allow hal_sensors_default vendor_persist_sensors_file:file create_file_perms;
-allow hal_sensors_default vendor_diag_device:chr_file rw_file_perms;
-allow hal_sensors_default proc_sysrq:file rw_file_perms;
 allow hal_sensors_default vendor_xdsp_device:chr_file r_file_perms;
 allow hal_sensors_default vendor_sysfs_slpi:dir search;
 allow hal_sensors_default vendor_sysfs_slpi:file rw_file_perms;
@@ -57,15 +82,24 @@ allow hal_sensors_default vendor_hidraw_device:chr_file rw_file_perms;
 allow hal_sensors_default vendor_qvrd_vndr:fd *;
 allowxperm hal_sensors_default self:ioctl socket { range 0xc300 0xc305 };
 allowxperm hal_sensors_default self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
+init_daemon_domain(hal_sensors_default)
+r_dir_file(hal_sensors_default, sysfs_type)
 r_dir_file(hal_sensors_default, vendor_persist_sensors_file)
-r_dir_file(hal_sensors_default, vendor_sysfs_diag)
 get_prop(hal_sensors_default, hwservicemanager_prop)
+get_prop(hal_sensors_default, vendor_fastrpc_prop)
+get_prop(hal_sensors_default, system_sensordebug_prop)
+get_prop(hal_sensors_default, system_sensor_prop)
+get_prop(hal_sensors_default, build_bootimage_prop)
 get_prop(hal_sensors_default, vendor_sensors_prop)
-get_prop(hal_sensors_default, vendor_sensors_dbg_prop)
 get_prop(hal_sensors_default, vendor_adsprpc_prop)
 get_prop(hal_sensors_default, vendor_dynamic_sensor_prop)
+set_prop(hal_sensors_default, sns_camera_light_prop)
+binder_use(hal_sensors_default)
+hwbinder_use(hal_sensors_default)
 hal_server_domain(hal_sensors_default, hal_sensors)
 hal_client_domain(hal_sensors_default, hal_graphics_allocator)
 add_service(hal_sensors_server, hal_sensors_service)
+hal_attribute_hwservice(hal_sensors, hal_sensors_hwservice)
 type hal_sensors_default, domain;
 type hal_sensors_default_exec, exec_type, file_type, vendor_file_type;
+type hal_sensors_hwservice, hwservice_manager_type, protected_hwservice;

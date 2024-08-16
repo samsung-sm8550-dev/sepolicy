@@ -1,22 +1,18 @@
 expandtypeattribute(hal_audiocontrol)
 expandtypeattribute(hal_audiocontrol_client)
 expandtypeattribute(hal_audiocontrol_server)
-allow hal_audiocontrol_server dumpstate:fifo_file write;
-allow hal_audiocontrol_server dumpstate:fd *;
-allow hal_audiocontrol_server hal_audiocontrol_client:binder transfer;
-allow hal_audiocontrol_server hal_audiocontrol_client:binder { call transfer };
-allow hal_audiocontrol_server hal_audiocontrol_client:fd *;
-allow hal_audiocontrol_server hal_audiocontrol_hwservice:hwservice_manager { add find };
-allow hal_audiocontrol_server hidl_base_hwservice:hwservice_manager add;
-allow hal_audiocontrol_server su:tcp_socket { accept getopt read write };
-allow hal_audiocontrol_server servicemanager:binder { call transfer };
-allow hal_audiocontrol_server servicemanager:fd *;
 allow hal_audiocontrol_client hal_audiocontrol_server:binder { call transfer };
 allow hal_audiocontrol_client hal_audiocontrol_server:binder transfer;
 allow hal_audiocontrol_client hal_audiocontrol_server:fd *;
-allow hal_audiocontrol_client hal_audiocontrol_hwservice:hwservice_manager find;
-allow hal_audiocontrol_client hal_audiocontrol_service:service_manager find;
+allow hal_audiocontrol_server hal_audiocontrol_client:binder transfer;
+allow hal_audiocontrol_server hal_audiocontrol_client:binder { call transfer };
+allow hal_audiocontrol_server hal_audiocontrol_client:fd *;
+allow hal_audiocontrol_server servicemanager:binder { call transfer };
+allow hal_audiocontrol_server servicemanager:fd *;
+init_daemon_domain(hal_audiocontrol_default)
 hal_server_domain(hal_audiocontrol_default, hal_audiocontrol)
-add_service(hal_audiocontrol_server, hal_audiocontrol_service)
+hal_attribute_service(hal_audiocontrol, hal_audiocontrol_service)
+hal_attribute_hwservice(hal_audiocontrol, hal_audiocontrol_hwservice)
 type hal_audiocontrol_default, domain;
 type hal_audiocontrol_default_exec, exec_type, file_type, vendor_file_type;
+type hal_audiocontrol_hwservice, hwservice_manager_type, protected_hwservice;

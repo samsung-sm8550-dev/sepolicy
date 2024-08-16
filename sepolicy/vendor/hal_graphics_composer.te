@@ -1,31 +1,21 @@
 expandtypeattribute(hal_graphics_composer)
 expandtypeattribute(hal_graphics_composer_client)
 expandtypeattribute(hal_graphics_composer_server)
-allow hal_graphics_composer_server dumpstate:fifo_file write;
-allow hal_graphics_composer_server dumpstate:fd *;
+allow hal_graphics_composer_client hal_graphics_composer_server:binder { call transfer };
+allow hal_graphics_composer_client hal_graphics_composer_server:binder transfer;
+allow hal_graphics_composer_client hal_graphics_composer_server:fd *;
+allow hal_graphics_composer_client hal_graphics_composer_server_tmpfs:file { getattr map read write };
+allow hal_graphics_composer_client servicemanager:binder { call transfer };
+allow hal_graphics_composer_client servicemanager:fd *;
+allow hal_graphics_composer_client vendor_hal_display_config_hwservice:hwservice_manager find;
 allow hal_graphics_composer_server hal_graphics_composer_client:binder transfer;
 allow hal_graphics_composer_server hal_graphics_composer_client:binder { call transfer };
 allow hal_graphics_composer_server hal_graphics_composer_client:fd *;
 allow hal_graphics_composer_server hal_graphics_composer_client:fifo_file write;
 allow hal_graphics_composer_server hal_graphics_composer_client_tmpfs:file { getattr map read write };
-allow hal_graphics_composer_server hal_graphics_composer_hwservice:hwservice_manager { add find };
-allow hal_graphics_composer_server hidl_base_hwservice:hwservice_manager add;
 allow hal_graphics_composer_server hal_graphics_mapper_hwservice:hwservice_manager find;
 allow hal_graphics_composer_server servicemanager:binder { call transfer };
 allow hal_graphics_composer_server servicemanager:fd *;
-allow hal_graphics_composer_server su:tcp_socket { accept getopt read write };
-allow hal_graphics_composer_server vendor_hal_display_config_hwservice:hwservice_manager { add find };
-allow hal_graphics_composer_client hal_graphics_composer_server:binder { call transfer };
-allow hal_graphics_composer_client hal_graphics_composer_server:binder transfer;
-allow hal_graphics_composer_client hal_graphics_composer_server:fd *;
-allow hal_graphics_composer_client hal_graphics_composer_server_tmpfs:file { getattr map read write };
-allow hal_graphics_composer_client hal_graphics_composer_hwservice:hwservice_manager find;
-allow hal_graphics_composer_client servicemanager:binder { call transfer };
-allow hal_graphics_composer_client servicemanager:fd *;
-allow hal_graphics_composer_client hal_graphics_composer_service:service_manager find;
-allow hal_graphics_composer_client vendor_hal_display_config_hwservice:hwservice_manager find;
-allow hal_graphics_composer_client vendor_hal_vnddisplayconfig_service:service_manager find;
-allow hal_graphics_composer_client vendor_hal_displayconfig_service:service_manager find;
 allow hal_graphics_composer gpu_device:chr_file rw_file_perms;
 allow hal_graphics_composer gpu_device:dir r_dir_perms;
 allow hal_graphics_composer ion_device:chr_file r_file_perms;
@@ -48,11 +38,23 @@ allow hal_graphics_composer oemfs:dir r_dir_perms;
 allow hal_graphics_composer fwk_sensor_hwservice:hwservice_manager find;
 allow hal_graphics_composer servicemanager:binder { call transfer };
 allow hal_graphics_composer servicemanager:fd *;
-allow hal_graphics_composer vendor_sysfs_devcd:dir r_dir_perms;
-allow hal_graphics_composer vendor_sysfs_devcd:file rw_file_perms;
 allow hal_graphics_composer_default hal_graphics_composer_server_tmpfs:file { getattr map read write };
-allow hal_graphics_composer_default vndbinder_device:chr_file rw_file_perms;
-allow hal_graphics_composer_default vndservicemanager:binder { call transfer };
+allow hal_graphics_composer_default sysfs:file r_file_perms;
+allow hal_graphics_composer_default vendor_log_file:dir rw_dir_perms;
+allow hal_graphics_composer_default vendor_log_file:file rw_file_perms;
+allow hal_graphics_composer_default sec_debugfs:dir r_dir_perms;
+allow hal_graphics_composer_default self:capability { sys_admin sys_resource };
+allow hal_graphics_composer_default self:cap_userns { sys_admin sys_resource };
+allow hal_graphics_composer_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow hal_graphics_composer_default sysfs_switch:dir search;
+allow hal_graphics_composer_default sysfs_switch:file r_file_perms;
+allow hal_graphics_composer_default sysfs_lcd_writable:file rw_file_perms;
+allow hal_graphics_composer_default audiomirroring:binder transfer;
+allow hal_graphics_composer_default dmb:binder transfer;
+allow hal_graphics_composer_default remotedisplay:binder transfer;
+allow hal_graphics_composer_default diag_device:chr_file rw_file_perms;
+allow hal_graphics_composer_default firmware_file:file r_file_perms;
+allow hal_graphics_composer_default vendor_hal_perf_hwservice:hwservice_manager find;
 allow hal_graphics_composer_default vendor_qdisplay_service:service_manager { add find };
 allow hal_graphics_composer_default vendor_persist_display_file:dir search;
 allow hal_graphics_composer_default vendor_persist_display_file:dir rw_dir_perms;
@@ -64,7 +66,6 @@ allow hal_graphics_composer_default video_device:chr_file rw_file_perms;
 allow hal_graphics_composer_default graphics_device:chr_file rw_file_perms;
 allow hal_graphics_composer_default vendor_qmcs_file:dir create_dir_perms;
 allow hal_graphics_composer_default vendor_qmcs_file:file create_file_perms;
-allow hal_graphics_composer_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow hal_graphics_composer_default ion_device:chr_file rw_file_perms;
 allow hal_graphics_composer_default vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow hal_graphics_composer_default vendor_membuf_dev:chr_file r_file_perms;
@@ -74,32 +75,39 @@ allow hal_graphics_composer_default vendor_vm_hlos_device:chr_file r_file_perms;
 allow hal_graphics_composer_default vendor_display_vendor_data_file:dir create_dir_perms;
 allow hal_graphics_composer_default vendor_display_vendor_data_file:file create_file_perms;
 allow hal_graphics_composer_default vendor_sysfs_disp_boot_param:file r_file_perms;
-allow hal_graphics_composer_default vendor_persist_feature_enabler_file:dir search;
-allow hal_graphics_composer_default vendor_persist_feature_enabler_file:file r_file_perms;
 allow hal_graphics_composer_default hal_configstore_default:binder transfer;
 allow hal_graphics_composer_default mediacodec:binder transfer;
-allow hal_graphics_composer_default hal_lineage_livedisplay_qti:binder transfer;
 dontaudit hal_graphics_composer_default unlabeled:dir search;
 allowxperm hal_graphics_composer_default vendor_dmabuf_system_heap_device:ioctl chr_file 0x4800;
 type_transition hal_graphics_composer_default tmpfs:file hal_graphics_composer_server_tmpfs;
+init_daemon_domain(hal_graphics_composer_default)
+r_dir_file(hal_graphics_composer_default, sysfs_ss_writable)
+r_dir_file(hal_graphics_composer_default, sysfs_camera_writable)
+r_dir_file(hal_graphics_composer_default, sysfs_ski_display_writable)
 r_dir_file(hal_graphics_composer_default, sysfs_leds)
 r_dir_file(hal_graphics_composer_default, sysfs_type)
+unix_socket_connect(hal_graphics_composer_default, property, vendor_qdcm-ss)
+unix_socket_connect(hal_graphics_composer_default, vendor_pps, init)
 unix_socket_connect(hal_graphics_composer_default, vendor_pps, vendor_qdcm-ss)
-unix_socket_connect(hal_graphics_composer_default, vendor_pps, vendor_ssgtzd)
+unix_socket_connect(hal_graphics_composer_default, vendor_qdcmsocket, init)
 unix_socket_connect(hal_graphics_composer_default, vendor_qdcmsocket, vendor_qdcm-ss)
-unix_socket_connect(hal_graphics_composer_default, vendor_qdcmsocket, vendor_ssgtzd)
-unix_socket_connect(hal_graphics_composer_default, vendor_ssgtzd, vendor_qdcm-ss)
-unix_socket_connect(hal_graphics_composer_default, vendor_ssgtzd, vendor_ssgtzd)
 get_prop(hal_graphics_composer, vendor_display_prop)
+get_prop(hal_graphics_composer_default, sec_camera_prop)
+get_prop(hal_graphics_composer_default, vendor_debug_egl_prop)
+get_prop(hal_graphics_composer_default, sec_hdr_prop)
+set_prop(hal_graphics_composer_default, vendor_display_sf_prop)
 binder_service(hal_graphics_composer_default)
+vndbinder_use(hal_graphics_composer_default)
 hal_server_domain(hal_graphics_composer_default, hal_graphics_composer)
 hal_client_domain(hal_graphics_composer_default, hal_graphics_allocator)
 hal_client_domain(hal_graphics_composer_default, hal_thermal)
 hal_client_domain(hal_graphics_composer_default, vendor_hal_display_demura)
 hal_client_domain(hal_graphics_composer_default, vendor_hal_perf)
-hal_client_domain(hal_graphics_composer_default, vendor_hal_qspmhal)
-add_service(hal_graphics_composer_server, hal_graphics_composer_service)
-add_service(hal_graphics_composer_server, vendor_hal_displayconfig_service)
-add_service(hal_graphics_composer_server, vendor_hal_vnddisplayconfig_service)
+add_hwservice(hal_graphics_composer_server, vendor_hal_display_config_hwservice)
+hal_attribute_service(hal_graphics_composer, hal_graphics_composer_service)
+hal_attribute_service(hal_graphics_composer, vendor_hal_vnddisplayconfig_service)
+hal_attribute_service(hal_graphics_composer, vendor_hal_displayconfig_service)
+hal_attribute_hwservice(hal_graphics_composer, hal_graphics_composer_hwservice)
 type hal_graphics_composer_default, domain;
 type hal_graphics_composer_default_exec, exec_type, file_type, vendor_file_type;
+type hal_graphics_composer_hwservice, hwservice_manager_type, protected_hwservice;
