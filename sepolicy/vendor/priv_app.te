@@ -1,12 +1,104 @@
 allow priv_app update_engine:binder transfer;
+allow priv_app anr_data_file:dir r_dir_perms;
+allow priv_app anr_data_file:file r_file_perms;
+allow priv_app asec_apk_file:dir r_dir_perms;
+allow priv_app asec_apk_file:file r_file_perms;
+allow priv_app asec_public_file:dir r_dir_perms;
+allow priv_app asec_public_file:file r_file_perms;
+allow priv_app radio_data_file:dir r_dir_perms;
+allow priv_app radio_data_file:file r_file_perms;
+allow priv_app themecenter_data_file:file r_file_perms;
+allow priv_app dtvserver_service:service_manager find;
+allow priv_app retailmode_efs_file:dir search;
+allow priv_app retailmode_efs_file:file { getattr open read };
+allow priv_app wsm_socket:dir rw_dir_perms;
+allow priv_app wsm_socket:sock_file rw_file_perms;
+allow priv_app wsmd:unix_stream_socket connectto;
+allow priv_app dumplog_data_file:dir create_dir_perms;
+allow priv_app dumplog_data_file:file create_file_perms;
+allow priv_app system_file:file rx_file_perms;
+allow priv_app smartcard_data_file:file create_file_perms;
+allow priv_app smartcard_data_file:dir create_dir_perms;
+allow priv_app knox_clipboard_file:dir create_dir_perms;
+allow priv_app knox_clipboard_file:file create_file_perms;
+allow priv_app sysfs_battery:file rw_file_perms;
+allow priv_app efs_file:dir search;
+allow priv_app imei_efs_file:dir r_dir_perms;
+allow priv_app imei_efs_file:file r_file_perms;
+allow priv_app app_efs_file:dir r_dir_perms;
+allow priv_app app_efs_file:file r_file_perms;
+allow priv_app system_server:dir r_file_perms;
+allow priv_app system_server:unix_stream_socket connectto;
+allow priv_app carrier_file:dir r_dir_perms;
+allow priv_app carrier_file:file r_file_perms;
+allow priv_app sysfs_mdnie_writable:file rw_file_perms;
+allow priv_app vold:fd *;
+allow priv_app omr_file:dir r_dir_perms;
+allow priv_app omr_file:file r_file_perms;
+allow priv_app sysfs_lcd_writable:file r_file_perms;
+allow priv_app sysfs_lcd_writable:dir r_dir_perms;
+allow priv_app mtp_device:chr_file rw_file_perms;
+allow priv_app sysfs_zram:dir search;
+allow priv_app sysfs_zram:file { open read };
+allow priv_app platform_app_service:service_manager find;
+allow priv_app proc_interrupts:file rw_file_perms;
+allow priv_app overlay_service:service_manager find;
+allow priv_app proc_stat:file r_file_perms;
+allow priv_app tsdaemon:unix_stream_socket connectto;
+allow priv_app system_app_data_file:file read;
+allow priv_app proc_modules:file r_file_perms;
+allow priv_app remotedisplay_service:service_manager find;
+allow priv_app remotedisplay:binder { call transfer };
+allow priv_app self:icmp_socket create_socket_perms_no_ioctl;
+allow priv_app proc_vmallocinfo:file r_file_perms;
+allow priv_app hal_wsm_default:binder { call transfer };
+allow priv_app hal_wsm_default:binder transfer;
+allow priv_app hal_wsm_default:fd *;
+allow priv_app sec_data_file:file create_file_perms;
+allow priv_app sec_data_file:dir create_dir_perms;
+allow priv_app ursp_service:service_manager find;
+allow priv_app mnt_media_rw_file:dir getattr;
+allow priv_app mnt_media_rw_file:dir rw_dir_perms;
+allow priv_app mnt_media_rw_file:file rw_file_perms;
+allow priv_app storage_stub_file:dir r_dir_perms;
+allow priv_app storage_stub_file:file r_file_perms;
+allow priv_app tcpopd_socket:sock_file w_file_perms;
+allow priv_app oneseg_data_file:dir r_dir_perms;
+allow priv_app oneseg_data_file:file rw_file_perms;
+allow priv_app privapp_data_file:fifo_file create_file_perms;
+allow priv_app oneseg_mw_service:service_manager find;
+allow priv_app uwb_service:service_manager find;
+allow priv_app sepunion_service:service_manager find;
+allow priv_app tmpfs:file r_file_perms;
+allow priv_app soundtrigger_middleware_service:service_manager find;
+allow priv_app ssipc_device:chr_file rw_file_perms;
+allow priv_app attribution_data_file:file create_file_perms;
+allow priv_app attribution_data_file:dir create_dir_perms;
+allow priv_app hal_wsm_service:service_manager find;
+allow priv_app hal_wsm_hwservice:hwservice_manager find;
+allow priv_app hal_csip_default:binder transfer;
+allow priv_app hal_csip_default:binder { call transfer };
+allow priv_app hal_csip_default:fd *;
+allow priv_app oneseg_mw:binder transfer;
+allow priv_app rsudaemon:unix_stream_socket connectto;
+allow priv_app attiqi_service:service_manager find;
+allow priv_app mgr_service:service_manager find;
+allow priv_app dtvserver:binder call;
+allow priv_app vendor_dtv_data_file:dir rw_dir_perms;
+allow priv_app vendor_dtv_data_file:file rw_file_perms;
+allow priv_app dtv_data_file:dir rw_dir_perms;
+allow priv_app dtv_data_file:file rw_file_perms;
+allow priv_app vendor_sysfs_battery_supply:file rw_file_perms;
+allow priv_app vendor_smd_device:chr_file rw_file_perms;
 allow priv_app rs_exec:file rx_file_perms;
-allow priv_app vendor_sysfs_kgsl:dir search;
-allow priv_app vendor_gles_data_file:dir rw_dir_perms;
-allow priv_app vendor_gles_data_file:file rw_file_perms;
-auditallow priv_app update_engine:binder transfer;
-r_dir_file(priv_app, vendor_sysfs_kgsl_snapshot)
-r_dir_file(priv_app, vendor_gles_data_file)
+dontaudit priv_app serialno_prop:file { getattr ioctl lock map open read watch watch_reads };
+get_prop(priv_app, audio_prop)
+get_prop(priv_app, ffs_prop)
+get_prop(priv_app, sec_ims_prop)
+get_prop(priv_app, boot_dram_info_prop)
+hal_client_domain(priv_app, hal_telephony)
 hal_client_domain(priv_app, vendor_hal_perf)
 hal_client_domain(priv_app, vendor_hal_qspmhal)
 hal_client_domain(priv_app, vendor_hal_qesdhal)
+hal_client_domain(priv_app, hal_engmode)
 type priv_app, domain;

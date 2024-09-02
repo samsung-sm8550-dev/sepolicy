@@ -1,3 +1,4 @@
+neverallow netd { appdomain -network_stack }:binder call;
 neverallow { appdomain -network_stack } domain:netlink_tcpdiag_socket *;
 neverallow { appdomain -network_stack } domain:netlink_nflog_socket *;
 neverallow { appdomain -network_stack } domain:netlink_xfrm_socket *;

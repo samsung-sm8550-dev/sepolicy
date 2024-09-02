@@ -1,22 +1,15 @@
 expandtypeattribute(hal_broadcastradio)
 expandtypeattribute(hal_broadcastradio_client)
 expandtypeattribute(hal_broadcastradio_server)
-allow hal_broadcastradio_server dumpstate:fifo_file write;
-allow hal_broadcastradio_server dumpstate:fd *;
-allow hal_broadcastradio_server hal_broadcastradio_client:binder transfer;
-allow hal_broadcastradio_server hal_broadcastradio_client:binder { call transfer };
-allow hal_broadcastradio_server hal_broadcastradio_client:fd *;
-allow hal_broadcastradio_server hal_broadcastradio_hwservice:hwservice_manager { add find };
-allow hal_broadcastradio_server hidl_base_hwservice:hwservice_manager add;
-allow hal_broadcastradio_server su:tcp_socket { accept getopt read write };
-allow hal_broadcastradio_server servicemanager:binder { call transfer };
-allow hal_broadcastradio_server servicemanager:fd *;
 allow hal_broadcastradio_client hal_broadcastradio_server:binder { call transfer };
 allow hal_broadcastradio_client hal_broadcastradio_server:binder transfer;
 allow hal_broadcastradio_client hal_broadcastradio_server:fd *;
-allow hal_broadcastradio_client hal_broadcastradio_hwservice:hwservice_manager find;
-allow hal_broadcastradio_client hal_broadcastradio_service:service_manager find;
+allow hal_broadcastradio_server hal_broadcastradio_client:binder transfer;
+allow hal_broadcastradio_server hal_broadcastradio_client:binder { call transfer };
+allow hal_broadcastradio_server hal_broadcastradio_client:fd *;
+init_daemon_domain(hal_broadcastradio_default)
 hal_server_domain(hal_broadcastradio_default, hal_broadcastradio)
-add_service(hal_broadcastradio_server, hal_broadcastradio_service)
+hal_attribute_hwservice(hal_broadcastradio, hal_broadcastradio_hwservice)
 type hal_broadcastradio_default, domain;
 type hal_broadcastradio_default_exec, exec_type, file_type, vendor_file_type;
+type hal_broadcastradio_hwservice, hwservice_manager_type, protected_hwservice;

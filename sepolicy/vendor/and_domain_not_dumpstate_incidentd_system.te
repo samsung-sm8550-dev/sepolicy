@@ -1,0 +1,2 @@
+neverallow { domain -dumpstate -incidentd -system_server } tombstoned_intercept_socket:sock_file write;
+neverallow { domain -dumpstate -incidentd -system_server } tombstoned_intercept_socket:unix_stream_socket connectto;

@@ -1,1 +1,3 @@
+allow blkid_untrusted vold:netlink_socket { read write };
+allow blkid_untrusted knox_dar_device:chr_file r_file_perms;
 type blkid_untrusted, domain;

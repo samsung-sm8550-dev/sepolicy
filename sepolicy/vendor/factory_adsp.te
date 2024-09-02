@@ -1,0 +1,27 @@
+allow factory_adsp self:netlink_socket { bind create read write };
+allow factory_adsp self:tcp_socket create_stream_socket_perms;
+allow factory_adsp self:socket create_socket_perms;
+allow factory_adsp untrusted_app:dir search;
+allow factory_adsp untrusted_app:file read;
+allow factory_adsp vendor_shell_exec:file rx_file_perms;
+allow factory_adsp vendor_toolbox_exec:file rx_file_perms;
+allow factory_adsp node:tcp_socket node_bind;
+allow factory_adsp sysfs_sensor_writable:file rw_file_perms;
+allow factory_adsp sysfs_lcd_writable:file r_file_perms;
+allow factory_adsp sysfs_lcd_writable:dir r_dir_perms;
+allow factory_adsp efs_file:dir search;
+allow factory_adsp app_efs_file:dir create_dir_perms;
+allow factory_adsp app_efs_file:file create_file_perms;
+allow factory_adsp sdcardfs:dir rw_dir_perms;
+allow factory_adsp sec_standard_app_type:dir search;
+allow factory_adsp sec_standard_app_type:file read;
+allow factory_adsp vendor_qlogd_exec:file rx_file_perms;
+allow factory_adsp vendor_diag_device:chr_file rw_file_perms;
+allow factory_adsp storage_file:dir search;
+allow factory_adsp storage_file:lnk_file read;
+allowxperm factory_adsp self:ioctl socket { 0xc302 0xc304 };
+init_daemon_domain(factory_adsp)
+r_dir_file(factory_adsp, mnt_user_file)
+r_dir_file(factory_adsp, vendor_sysfs_diag)
+type factory_adsp, domain;
+type factory_adsp_exec, exec_type, file_type, vendor_file_type;

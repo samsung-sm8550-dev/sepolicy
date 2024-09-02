@@ -1,21 +1,15 @@
-allow statsd servicemanager:binder { call transfer };
 allow statsd devpts:chr_file { getattr ioctl read write };
 allow statsd shell_exec:file rx_file_perms;
 allow statsd system_file:file execute_no_trans;
 allow statsd toolbox_exec:file rx_file_perms;
-allow statsd su:fifo_file read;
 allow statsd stats_data_file:dir create_dir_perms;
 allow statsd stats_data_file:file create_file_perms;
-allow statsd stats_config_data_file:dir create_dir_perms;
-allow statsd stats_config_data_file:file create_file_perms;
 allow statsd appdomain:binder { call transfer };
 allow statsd appdomain:fd *;
 allow statsd incidentd:binder { call transfer };
 allow statsd incidentd:fd *;
 allow statsd system_server:binder { call transfer };
 allow statsd system_server:fd *;
-allow statsd traced_probes:binder { call transfer };
-allow statsd traced_probes:fd *;
 allow statsd gpu_service:service_manager find;
 allow statsd gpuservice:binder { call transfer };
 allow statsd gpuservice:fd *;
@@ -25,13 +19,7 @@ allow statsd keystore:fd *;
 allow statsd mediametrics_service:service_manager find;
 allow statsd mediametrics:binder { call transfer };
 allow statsd mediametrics:fd *;
-allow statsd mediaserver_service:service_manager find;
-allow statsd mediaserver:binder { call transfer };
-allow statsd mediaserver:fd *;
 allow statsd logcat_exec:file rx_file_perms;
-allow statsd logdr_socket:sock_file write;
-allow statsd logd:unix_stream_socket connectto;
-allow statsd logd_socket:sock_file write;
 allow statsd app_api_service:service_manager find;
 allow statsd system_api_service:service_manager find;
 allow statsd incident_service:service_manager find;
@@ -42,11 +30,15 @@ allow statsd proc_uid_cputime_showstat:file { getattr open read };
 allow statsd adbd:fd *;
 allow statsd adbd:unix_stream_socket { getattr read write };
 allow statsd shell:fifo_file { getattr read write };
-allow statsd statsdw_socket:sock_file write;
 allow statsd statsd:unix_dgram_socket sendto;
 r_dir_file(statsd, domain)
+unix_socket_connect(statsd, logdr, logd)
+unix_socket_connect(statsd, logd, logd)
+unix_socket_connect(statsd, statsdw, logd)
+binder_use(statsd)
 hal_client_domain(statsd, hal_health)
 hal_client_domain(statsd, hal_power)
 hal_client_domain(statsd, hal_power_stats)
 hal_client_domain(statsd, hal_thermal)
 type statsd, domain, mlstrustedsubject;
+type statsd_exec, exec_type, file_type, system_file_type;

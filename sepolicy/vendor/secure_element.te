@@ -1,4 +1,8 @@
+allow secure_element radio_service:service_manager find;
+allow secure_element nfc_service:service_manager find;
 allow secure_element vendor_hal_keymint_strongbox:binder transfer;
 allow secure_element vendor_hal_weaver_default:binder transfer;
+set_prop(secure_element, exported_system_prop)
+hal_attribute(secure_element)
 hal_client_domain(secure_element, vendor_hal_perf)
 type secure_element, domain;

@@ -1,0 +1,2 @@
+allow hal_ifaa_service servicemanager:binder transfer;
+type hal_ifaa_service, service_manager_type, vendor_service;

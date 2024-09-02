@@ -7,14 +7,7 @@ allow vendor_location vendor_location_socket:sock_file create_file_perms;
 allow vendor_location vendor_location_socket:dir rw_dir_perms;
 allow vendor_location vendor_hal_gnss_qti:unix_dgram_socket sendto;
 allow vendor_location vendor_location_lowi_server:unix_dgram_socket sendto;
-allow vendor_location vendor_location_lowi_server:process { sigkill signal sigstop };
-allow vendor_location vendor_location_xtra_daemon:process { sigkill signal sigstop };
 allow vendor_location system_server:binder transfer;
-allow vendor_location vendor_location_edgnss_daemon:process { sigkill signal sigstop };
-allow vendor_location vendor_location_engine_service:process { sigkill signal sigstop };
-allow vendor_location vendor_location_slim_daemon:process { sigkill signal sigstop };
-allow vendor_location vendor_location_xtwifi_client:process { sigkill signal sigstop };
-allow vendor_location vendor_qsap_location:process { sigkill signal sigstop };
 dontaudit vendor_location kernel:system module_request;
 domain_auto_trans(vendor_location, vendor_location_lowi_server_exec, vendor_location_lowi_server)
 domain_auto_trans(vendor_location, vendor_location_xtra_daemon_exec, vendor_location_xtra_daemon)
@@ -22,6 +15,7 @@ domain_auto_trans(vendor_location, vendor_location_edgnss_daemon_exec, vendor_lo
 domain_auto_trans(vendor_location, vendor_location_engine_service_exec, vendor_location_engine_service)
 domain_auto_trans(vendor_location, vendor_location_slim_daemon_exec, vendor_location_slim_daemon)
 domain_auto_trans(vendor_location, vendor_location_xtwifi_client_exec, vendor_location_xtwifi_client)
-get_prop(vendor_location, xtra_control_prop)
+domain_auto_trans(vendor_location, vendor_location_xtwifi_inetagent_exec, vendor_location_xtwifi_inetagent)
+init_daemon_domain(vendor_location)
 type vendor_location, domain;
 type vendor_location_exec, exec_type, file_type, vendor_file_type;

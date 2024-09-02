@@ -1,4 +1,4 @@
-allow network_stack vendor_dpmd:unix_stream_socket connectto;
-allow network_stack vendor_dpmtcm_socket:sock_file write;
+allow network_stack tcpopd_socket:sock_file w_file_perms;
+unix_socket_connect(network_stack, vendor_dpmtcm, vendor_dpmd)
 hal_client_domain(network_stack, vendor_hal_perf)
 type network_stack, domain;

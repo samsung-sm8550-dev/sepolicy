@@ -1,3 +1,4 @@
+allow firmware_file labeledfs:filesystem associate;
 allow firmware_file self:filesystem associate;
 type firmware_file, contextmount_type, file_type, vendor_file_type;
 type vendor_firmware_file, file_type, vendor_file_type;

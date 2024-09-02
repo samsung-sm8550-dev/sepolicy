@@ -1,3 +1,4 @@
 allow flags_health_check server_configurable_flags_data_file:dir rw_dir_perms;
 allow flags_health_check server_configurable_flags_data_file:file create_file_perms;
 type flags_health_check, coredomain, domain;
+type flags_health_check_exec, exec_type, file_type, system_file_type;

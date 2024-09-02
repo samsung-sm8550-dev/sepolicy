@@ -1,0 +1,23 @@
+allow mobicore mobicore_tui_device:chr_file rw_file_perms;
+allow mobicore appdomain:fd *;
+allow mobicore proc:file { open read };
+allow mobicore proc_sysrq:file w_file_perms;
+allow mobicore tee_device:chr_file rw_file_perms;
+allow mobicore mobicore_admin_device:chr_file rw_file_perms;
+allow mobicore mobicore_user_device:chr_file rw_file_perms;
+allow mobicore efs_file:dir create_dir_perms;
+allow mobicore efs_file:file create_file_perms;
+allow mobicore prov_efs_file:dir rw_dir_perms;
+allow mobicore prov_efs_file:file create_file_perms;
+allow mobicore mobicore_file:dir r_dir_perms;
+allow mobicore mobicore_file:file r_file_perms;
+allow mobicore vendor_data_file:dir { add_name create write };
+allow mobicore vendor_data_file:file { create getattr open read write };
+allow mobicore vendor_mobicore_data_file:dir create_dir_perms;
+allow mobicore vendor_mobicore_data_file:file create_file_perms;
+allow mobicore unlabeled:dir search;
+init_daemon_domain(mobicore)
+set_prop(mobicore, mobicore_prop)
+set_prop(mobicore, vendor_mobicore_prop)
+type mobicore, domain, mlstrustedsubject;
+type mobicore_exec, exec_type, file_type, vendor_file_type;

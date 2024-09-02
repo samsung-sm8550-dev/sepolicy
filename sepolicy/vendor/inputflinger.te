@@ -1,4 +1,3 @@
-allow inputflinger servicemanager:binder { call transfer };
 allow inputflinger system_server:binder { call transfer };
 allow inputflinger system_server:fd *;
 allow inputflinger sysfs_wake_lock:file rw_file_perms;
@@ -7,7 +6,6 @@ allow inputflinger self:cap2_userns block_suspend;
 allow inputflinger system_suspend_server:binder { call transfer };
 allow inputflinger system_suspend_server:fd *;
 allow inputflinger system_suspend_hwservice:hwservice_manager find;
-allow inputflinger hwservicemanager:binder { call transfer };
 allow inputflinger hidl_manager_hwservice:hwservice_manager find;
 allow inputflinger hal_system_suspend_service:service_manager find;
 allow inputflinger input_device:dir r_dir_perms;
@@ -16,4 +14,7 @@ r_dir_file(inputflinger, cgroup)
 r_dir_file(inputflinger, cgroup_v2)
 get_prop(inputflinger, hwservicemanager_prop)
 binder_service(inputflinger)
+binder_use(inputflinger)
+hwbinder_use(inputflinger)
 type inputflinger, domain;
+type inputflinger_exec, exec_type, file_type, system_file_type;

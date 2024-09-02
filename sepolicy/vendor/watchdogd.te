@@ -1,3 +1,5 @@
 allow watchdogd watchdog_device:chr_file rw_file_perms;
 allow watchdogd kmsg_device:chr_file rw_file_perms;
+allow watchdogd rootfs:dir r_file_perms;
 type watchdogd, domain;
+type watchdogd_exec, exec_type, file_type, system_file_type;

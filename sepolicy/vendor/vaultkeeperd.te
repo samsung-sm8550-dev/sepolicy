@@ -1,0 +1,67 @@
+allow vaultkeeperd bluetooth:binder transfer;
+allow vaultkeeperd hwservicemanager:binder transfer;
+allow vaultkeeperd servicemanager:binder transfer;
+allow vaultkeeperd servicemanager:binder { call transfer };
+allow vaultkeeperd servicemanager:fd *;
+allow vaultkeeperd emservice:binder transfer;
+allow vaultkeeperd emservice:binder { call transfer };
+allow vaultkeeperd emservice:fd *;
+allow vaultkeeperd hal_drk_default:binder transfer;
+allow vaultkeeperd scs:binder transfer;
+allow vaultkeeperd ssud:binder transfer;
+allow vaultkeeperd system_server:binder transfer;
+allow vaultkeeperd tzdaemon:fd *;
+allow vaultkeeperd tzdaemon:binder { call transfer };
+allow vaultkeeperd tz_user_device:chr_file rw_file_perms;
+allow vaultkeeperd tee_efs_file:dir search;
+allow vaultkeeperd self:capability { setgid setuid };
+allow vaultkeeperd efs_file:dir ra_dir_perms;
+allow vaultkeeperd vaultkeeper_efs_file:file create_file_perms;
+allow vaultkeeperd vaultkeeper_efs_file:dir create_dir_perms;
+allow vaultkeeperd vaultkeeper_socket:dir rw_dir_perms;
+allow vaultkeeperd vaultkeeper_socket:sock_file create_file_perms;
+allow vaultkeeperd kmsg_device:chr_file rw_file_perms;
+allow vaultkeeperd mobicore_admin_device:chr_file rw_file_perms;
+allow vaultkeeperd mobicore_user_device:chr_file rw_file_perms;
+allow vaultkeeperd steady_block_device:blk_file rw_file_perms;
+allow vaultkeeperd vendor_log_file:dir create_dir_perms;
+allow vaultkeeperd vendor_log_file:file create_file_perms;
+allow vaultkeeperd vendor_shell_exec:file rx_file_perms;
+allow vaultkeeperd vendor_toolbox_exec:file rx_file_perms;
+allow vaultkeeperd vendor_file:file rx_file_perms;
+allow vaultkeeperd proc_version:file r_file_perms;
+allow vaultkeeperd kernel:system syslog_read;
+allow vaultkeeperd hal_dsms_server_hwservice:hwservice_manager find;
+allow vaultkeeperd dsms_hidl:binder { call transfer };
+allow vaultkeeperd dsms_hidl:fd *;
+allow vaultkeeperd EngineeringMode_vndservice:service_manager find;
+allow vaultkeeperd input_device:chr_file rw_file_perms;
+allow vaultkeeperd hal_dsms_service:service_manager find;
+allow vaultkeeperd hal_vaultkeeper_service:service_manager find;
+allow vaultkeeperd ion_device:chr_file r_file_perms;
+allow vaultkeeperd tee_device:chr_file rw_file_perms;
+allow vaultkeeperd vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow vaultkeeperd vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allowxperm vaultkeeperd self:ioctl unix_stream_socket 0x6200;
+type_transition vaultkeeperd efs_file:dir vaultkeeper_efs_file "vk";
+init_daemon_domain(vaultkeeperd)
+r_dir_file(vaultkeeperd, tee_vendor_data_file)
+r_dir_file(vaultkeeperd, vendor_sysfs_scsi_host)
+r_dir_file(vaultkeeperd, sysfs_ski_ufs_writable)
+get_prop(vaultkeeperd, tzdaemon_prop)
+get_prop(vaultkeeperd, vendor_teegris_prop)
+get_prop(vaultkeeperd, hwservicemanager_prop)
+get_prop(vaultkeeperd, exported_system_prop)
+get_prop(vaultkeeperd, vendor_factory_prop)
+get_prop(vaultkeeperd, vendor_tztsdaemon_prop)
+get_prop(vaultkeeperd, mobicore_prop)
+get_prop(vaultkeeperd, boot_em_did_prop)
+get_prop(vaultkeeperd, vendor_mobicore_prop)
+get_prop(vaultkeeperd, vendor_qseecomd_prop)
+set_prop(vaultkeeperd, vendor_sec_vaultkeeper_prop)
+hwbinder_use(vaultkeeperd)
+vndbinder_use(vaultkeeperd)
+hal_client_domain(vaultkeeperd, vendor_hal_qseecom)
+add_hwservice(vaultkeeperd, hal_vaultkeeper_server_hwservice)
+type vaultkeeperd, domain;
+type vaultkeeperd_exec, exec_type, file_type, vendor_file_type;

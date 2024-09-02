@@ -1,0 +1,2 @@
+type dmabuf_system_heap_device, dev_type, dmabuf_heap_device_type, mlstrustedobject;
+type vendor_dmabuf_system_heap_device, dev_type, dmabuf_heap_device_type, mlstrustedobject;

@@ -1,6 +1,7 @@
 allow vendor_location_engine_service vendor_location:process sigchld;
 allow vendor_location_engine_service vendor_location:fd *;
 allow vendor_location_engine_service vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_engine_service tee_device:chr_file rw_file_perms;
 allow vendor_location_engine_service vendor_location_data_file:dir create_dir_perms;
 allow vendor_location_engine_service vendor_location_data_file:file create_file_perms;
 allow vendor_location_engine_service vendor_location_socket:lnk_file r_file_perms;

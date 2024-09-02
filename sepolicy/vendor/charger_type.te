@@ -9,10 +9,8 @@ allow charger_type sysfs_wake_lock:file rw_file_perms;
 allow charger_type system_suspend_server:binder { call transfer };
 allow charger_type system_suspend_server:fd *;
 allow charger_type system_suspend_hwservice:hwservice_manager find;
-allow charger_type hwservicemanager:binder { call transfer };
 allow charger_type hidl_manager_hwservice:hwservice_manager find;
 allow charger_type hal_system_suspend_service:service_manager find;
-allow charger_type servicemanager:binder { call transfer };
 allow charger_type sysfs_power:file rw_file_perms;
 allow charger_type pstorefs:dir r_dir_perms;
 allow charger_type pstorefs:file r_file_perms;
@@ -28,3 +26,5 @@ r_dir_file(charger_type, cgroup)
 r_dir_file(charger_type, cgroup_v2)
 r_dir_file(charger_type, sysfs_batteryinfo)
 get_prop(charger_type, hwservicemanager_prop)
+binder_use(charger_type)
+hwbinder_use(charger_type)

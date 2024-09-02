@@ -1,1 +1,15 @@
+allow webview_zygote security_spota_file:dir r_dir_perms;
+allow webview_zygote security_spota_file:file r_file_perms;
+allow webview_zygote rootfs:file r_file_perms;
+allow webview_zygote tombstoned:fd *;
+allow webview_zygote tombstone_data_file:dir rw_dir_perms;
+allow webview_zygote tombstone_data_file:file rw_file_perms;
+allow webview_zygote dumplog_data_file:dir create_dir_perms;
+allow webview_zygote dumplog_data_file:file create_file_perms;
+r_dir_file(webview_zygote, cgroup)
+r_dir_file(webview_zygote, zygote_exec)
+r_dir_file(webview_zygote, resourcecache_data_file)
+unix_socket_connect(webview_zygote, tombstoned_crash, tombstoned)
+get_prop(webview_zygote, graphics_vulkan_prop)
 type webview_zygote, domain;
+type webview_zygote_exec, exec_type, file_type;

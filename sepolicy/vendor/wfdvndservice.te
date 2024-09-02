@@ -1,10 +1,6 @@
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder transfer;
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder { call transfer };
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:fd *;
-allow vendor_wfdvndservice vndbinder_device:chr_file rw_file_perms;
-allow vendor_wfdvndservice vndservicemanager:binder { call transfer };
-allow vendor_wfdvndservice su:tcp_socket { accept getopt read write };
-allow vendor_wfdvndservice su:fifo_file append;
 allow vendor_wfdvndservice vendor_wfd_app:fd *;
 allow vendor_wfdvndservice mediacodec:fd *;
 allow vendor_wfdvndservice tee_device:chr_file rw_file_perms;
@@ -21,11 +17,12 @@ allow vendor_wfdvndservice dumpstate:fifo_file { append write };
 allow vendor_wfdvndservice incidentd:fd *;
 allow vendor_wfdvndservice incidentd:fifo_file { append write };
 allow vendor_wfdvndservice system_server:fifo_file { append write };
-allow vendor_wfdvndservice tombstoned:unix_stream_socket connectto;
 allow vendor_wfdvndservice tombstoned:fd *;
-allow vendor_wfdvndservice tombstoned_crash_socket:sock_file write;
 allow vendor_wfdvndservice tombstone_data_file:file append;
+init_daemon_domain(vendor_wfdvndservice)
 r_dir_file(vendor_wfdvndservice, firmware_file)
+unix_socket_connect(vendor_wfdvndservice, tombstoned_crash, tombstoned)
+vndbinder_use(vendor_wfdvndservice)
 net_domain(vendor_wfdvndservice)
 hal_client_domain(vendor_wfdvndservice, hal_graphics_composer)
 add_service(vendor_wfdvndservice, vendor_wfdhdcpvndservice_service)

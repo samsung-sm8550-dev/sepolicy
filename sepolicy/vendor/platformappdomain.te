@@ -1,0 +1,61 @@
+allow platformappdomain self:process ptrace;
+allow platformappdomain sysfs_android_usb:dir r_dir_perms;
+allow platformappdomain sysfs_android_usb:file r_file_perms;
+allow platformappdomain sysfs_app_writable:file rw_file_perms;
+allow platformappdomain sysfs_camera_writable:file rw_file_perms;
+allow platformappdomain knox_dar_device:chr_file rw_file_perms;
+allow platformappdomain knox_dar_shared_device:chr_file rw_file_perms;
+allow platformappdomain carrier_efs_file:dir r_dir_perms;
+allow platformappdomain carrier_efs_file:file r_file_perms;
+allow platformappdomain imei_efs_file:file r_file_perms;
+allow platformappdomain omr_file:dir r_dir_perms;
+allow platformappdomain omr_file:file rw_file_perms;
+allow platformappdomain sysfs_sec:file rw_file_perms;
+allow platformappdomain system_app_data_file:dir search;
+allow platformappdomain system_app_data_file:dir getattr;
+allow platformappdomain system_app_data_file:file { getattr open read };
+allow platformappdomain system_app_data_file:file write;
+allow platformappdomain oneseg_data_file:dir r_dir_perms;
+allow platformappdomain oneseg_data_file:file rw_file_perms;
+allow platformappdomain secure_storage:fd *;
+allow platformappdomain secure_storage_device:sock_file write;
+allow platformappdomain secure_storage_device:dir r_dir_perms;
+allow platformappdomain secure_storage_device:file r_file_perms;
+allow platformappdomain bluetooth:unix_stream_socket shutdown;
+allow platformappdomain smartcard_data_file:dir { r_dir_perms relabelto };
+allow platformappdomain smartcard_data_file:sock_file write;
+allow platformappdomain prov_efs_file:dir create_dir_perms;
+allow platformappdomain prov_efs_file:file create_file_perms;
+allow platformappdomain cpk_efs_file:dir create_dir_perms;
+allow platformappdomain cpk_efs_file:file create_file_perms;
+allow platformappdomain dcm_data_file:dir r_dir_perms;
+allow platformappdomain dcm_data_file:file r_file_perms;
+allow platformappdomain pfw_efs_file:dir create_dir_perms;
+allow platformappdomain pfw_efs_file:file create_file_perms;
+allow platformappdomain mst_ctrl_device:chr_file rw_file_perms;
+allow platformappdomain users_system_data_file:dir r_dir_perms;
+allow platformappdomain users_system_data_file:file r_file_perms;
+allow platformappdomain mobicore_admin_device:chr_file rw_file_perms;
+allow platformappdomain mobicore_user_device:chr_file rw_file_perms;
+allow platformappdomain downfilters_lib_file:dir r_dir_perms;
+allow platformappdomain downfilters_lib_file:file rx_file_perms;
+allow platformappdomain uhid_device:chr_file rw_file_perms;
+allow platformappdomain ovr_device:chr_file r_file_perms;
+allow platformappdomain uncrypt_exec:file getattr;
+allow platformappdomain cache_backup_file:file open;
+allowxperm platformappdomain self:ioctl udp_socket { 0x8927 0x8954 };
+allowxperm platformappdomain self:ioctl udp_socket 0x5502;
+attribute platformappdomain;
+unix_socket_connect(platformappdomain, ss_conn_daemon, secure_storage)
+unix_socket_connect(platformappdomain, ss_conn_daemon, mediaserver)
+unix_socket_connect(platformappdomain, ss_conn_daemon, ss_conn_daemon)
+unix_socket_connect(platformappdomain, ss_conn_daemon, untrusted_app)
+unix_socket_connect(platformappdomain, ss_conn_daemon, sec_standard_app_type)
+unix_socket_connect(platformappdomain, uibc, secure_storage)
+unix_socket_connect(platformappdomain, uibc, mediaserver)
+unix_socket_connect(platformappdomain, uibc, ss_conn_daemon)
+unix_socket_connect(platformappdomain, uibc, untrusted_app)
+unix_socket_connect(platformappdomain, uibc, sec_standard_app_type)
+get_prop(platformappdomain, audio_prop)
+get_prop(platformappdomain, sec_camera_prop)
+get_prop(platformappdomain, vendor_sec_camera_prop)

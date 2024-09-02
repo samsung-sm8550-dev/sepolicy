@@ -1,0 +1,17 @@
+allow wvkprov hal_wvkprov_default:fd *;
+allow wvkprov tee_device:chr_file rw_file_perms;
+allow wvkprov ion_device:chr_file rw_file_perms;
+allow wvkprov sec_debugfs:dir r_dir_perms;
+allow wvkprov system_file:dir r_dir_perms;
+allow wvkprov servicemanager:binder call;
+allow wvkprov efs_file:dir create_dir_perms;
+allow wvkprov efs_file:file create_file_perms;
+allow wvkprov vendor_hal_display_config_hwservice:hwservice_manager find;
+allow wvkprov vendor_qce_device:chr_file rw_file_perms;
+allow wvkprov vendor_smcinvoke_device:chr_file rw_file_perms;
+r_dir_file(wvkprov, vendor_sysfs_scsi_host)
+r_dir_file(wvkprov, cpk_efs_file)
+get_prop(wvkprov, servicemanager)
+hal_attribute(wvkprov)
+type wvkprov, domain;
+type wvkprov_exec, exec_type, file_type, vendor_file_type;

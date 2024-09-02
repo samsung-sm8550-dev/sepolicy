@@ -8,4 +8,6 @@ allow vendor_misc_writer proc_cmdline:file r_file_perms;
 dontaudit vendor_misc_writer proc_cmdline:file { getattr ioctl lock map open read watch watch_reads };
 dontaudit vendor_misc_writer sysfs_dt_firmware_android:dir search;
 dontaudit vendor_misc_writer proc_bootconfig:file { getattr ioctl lock map open read watch watch_reads };
+init_daemon_domain(vendor_misc_writer)
 type vendor_misc_writer, domain;
+type vendor_misc_writer_exec, exec_type, file_type, vendor_file_type;

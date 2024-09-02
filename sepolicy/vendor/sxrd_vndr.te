@@ -1,7 +1,5 @@
-allow vendor_sxrd_vndr hwservicemanager:binder { call transfer };
 allow vendor_sxrd_vndr system_file:dir r_dir_perms;
 allow vendor_sxrd_vndr vendor_hal_sxrservice_qti_socket_client:unix_stream_socket { getopt read setopt shutdown write };
-allow vendor_sxrd_vndr servicemanager:binder { call transfer };
 allow vendor_sxrd_vndr vendor_sxrd_vndr_socket:sock_file rw_file_perms;
 allow vendor_sxrd_vndr vendor_sxrd_vndr_data_file:dir create_dir_perms;
 allow vendor_sxrd_vndr vendor_sxrd_vndr_data_file:file create_file_perms;
@@ -19,24 +17,15 @@ allow vendor_sxrd_vndr vendor_qce_device:chr_file rw_file_perms;
 allow vendor_sxrd_vndr tee_device:chr_file rw_file_perms;
 allow vendor_sxrd_vndr self:udp_socket create_socket_perms_no_ioctl;
 allow vendor_sxrd_vndr self:netlink_route_socket create_socket_perms_no_ioctl;
-allow vendor_sxrd_vndr su:fifo_file append;
-allow vendor_sxrd_vndr anr_data_file:file append;
-allow vendor_sxrd_vndr dumpstate:fd *;
-allow vendor_sxrd_vndr dumpstate:fifo_file { append write };
-allow vendor_sxrd_vndr incidentd:fd *;
-allow vendor_sxrd_vndr incidentd:fifo_file { append write };
-allow vendor_sxrd_vndr system_server:fifo_file { append write };
-allow vendor_sxrd_vndr tombstoned:unix_stream_socket connectto;
-allow vendor_sxrd_vndr tombstoned:fd *;
-allow vendor_sxrd_vndr tombstoned_crash_socket:sock_file write;
-allow vendor_sxrd_vndr tombstone_data_file:file append;
+init_daemon_domain(vendor_sxrd_vndr)
 r_dir_file(vendor_sxrd_vndr, firmware_file)
 get_prop(vendor_sxrd_vndr, hwservicemanager_prop)
-get_prop(vendor_sxrd_vndr, vendor_sxr_prop)
 binder_service(vendor_sxrd_vndr)
+binder_use(vendor_sxrd_vndr)
+hwbinder_use(vendor_sxrd_vndr)
 net_domain(vendor_sxrd_vndr)
-hal_client_domain(vendor_sxrd_vndr, hal_audio)
 hal_client_domain(vendor_sxrd_vndr, hal_graphics_allocator)
+hal_client_domain(vendor_sxrd_vndr, hal_audio)
 hal_client_domain(vendor_sxrd_vndr, vendor_sys_sxrauxservice_qti_socket)
 type vendor_sxrd_vndr, domain, vendor_hal_sxrservice_qti, vendor_hal_sxrservice_qti_server, vendor_halserverdomain;
 type vendor_sxrd_vndr_exec, exec_type, file_type, vendor_file_type;

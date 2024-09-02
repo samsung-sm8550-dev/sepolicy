@@ -1,0 +1,1 @@
+neverallow { domain -adbd -dumpstate -init -platform_app -radio -shell -system_app -system_server -vendor_init -sec_untrusted_app } ap_serial_prop:file { getattr ioctl lock map open read watch watch_reads };

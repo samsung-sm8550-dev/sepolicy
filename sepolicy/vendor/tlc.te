@@ -1,0 +1,39 @@
+allow tlc_server appdomain:binder transfer;
+allow tlc_server hal_wifi_supplicant_default:binder transfer;
+allow tlc_server sysfs_ss_writable:dir r_dir_perms;
+allow tlc_server sysfs_ss_writable:file rw_file_perms;
+allow tlc_server sem_device:chr_file rw_file_perms;
+allow tlc_server efs_file:dir search;
+allow tlc_server prov_efs_file:dir r_dir_perms;
+allow tlc_server prov_efs_file:file r_file_perms;
+allow tlc_server wifi_efs_file:dir r_dir_perms;
+allow tlc_server wifi_efs_file:file r_file_perms;
+allow tlc_server system_data_file:dir rw_dir_perms;
+allow tlc_server dcm_data_file:file create_file_perms;
+allow tlc_server dcm_data_file:dir create_dir_perms;
+allow tlc_server radio_data_file:dir search;
+allow tlc_server radio_data_file:file r_file_perms;
+allow tlc_server system_file:file rx_file_perms;
+allow tlc_server shell_exec:file rx_file_perms;
+allow tlc_server toolbox_exec:file rx_file_perms;
+allow tlc_server tima_keystore_file:dir r_dir_perms;
+allow tlc_server tima_keystore_file:file r_file_perms;
+allow tlc_server SEAM_service:service_manager find;
+allow tlc_server tlc_server_service:service_manager add;
+allow tlc_server mobicore_admin_device:chr_file rw_file_perms;
+allow tlc_server mobicore_user_device:chr_file rw_file_perms;
+allow tlc_server app_efs_file:dir r_dir_perms;
+allow tlc_server app_efs_file:file r_file_perms;
+allow tlc_server ion_device:chr_file r_file_perms;
+allow tlc_server sec_debugfs:dir search;
+allow tlc_server same_process_hal_file:file r_file_perms;
+allow tlc_server tzdaemon:fd *;
+allow tlc_server tz_user_device:chr_file rw_file_perms;
+allow tlc_server tee_efs_file:dir search;
+type_transition tlc_server system_data_file:dir dcm_data_file "tz_dcm";
+get_prop(tlc_server, hwservicemanager_prop)
+get_prop(tlc_server, tzdaemon_prop)
+get_prop(tlc_server, vendor_teegris_prop)
+hal_client_domain(tlc_server, vendor_hal_qseecom)
+type tlc_server, coredomain, domain;
+type tlc_server_exec, exec_type, file_type, system_file_type;

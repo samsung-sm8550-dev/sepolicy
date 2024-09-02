@@ -1,0 +1,15 @@
+allow apk_signer hal_proca_hwservice:hwservice_manager find;
+allow apk_signer hal_proca_default:binder call;
+allow apk_signer apk_tmp_file:file { getattr open read };
+allow apk_signer apk_data_file:file { getattr open read };
+allow apk_signer themecenter_data_file:dir r_dir_perms;
+allow apk_signer themecenter_data_file:file r_file_perms;
+allow apk_signer knox_dar_device:chr_file rw_file_perms;
+allow apk_signer system_integrity_device:chr_file rw_file_perms;
+dontaudit apk_signer shell_data_file:dir search;
+dontaudit apk_signer vendor_overlay_file:dir search;
+r_dir_file(apk_signer, apk_tmp_file)
+r_dir_file(apk_signer, apk_data_file)
+r_dir_file(apk_signer, asec_apk_file)
+type apk_signer, coredomain, domain;
+type apk_signer_exec, exec_type, file_type, system_file_type;

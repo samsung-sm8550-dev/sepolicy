@@ -1,0 +1,27 @@
+allow perfmond proc_perf:file rw_file_perms;
+allow perfmond perfmond:capability ipc_lock;
+allow perfmond knox_dar_device:chr_file rw_file_perms;
+allow perfmond vendor_sysfs_scsi_host:dir r_dir_perms;
+allow perfmond vendor_sysfs_scsi_host:file rw_file_perms;
+allow perfmond vendor_sysfs_scsi_host:lnk_file r_file_perms;
+allow perfmond CustomFrequencyManager_service:service_manager find;
+allow perfmond servicemanager:binder { call transfer };
+allow perfmond servicemanager:fd *;
+allow perfmond system_server:binder { call transfer };
+allow perfmond system_server:binder transfer;
+allow perfmond system_server:fd *;
+allow perfmond activity_service:service_manager find;
+allow perfmond proc_pressure_mem:file rw_file_perms;
+allow perfmond proc_pressure_cpu:file rw_file_perms;
+allow perfmond proc_pressure_io:file rw_file_perms;
+allow perfmond shell_exec:file rx_file_perms;
+allow perfmond system_file:file execute_no_trans;
+allow perfmond proc_uptime:file r_file_perms;
+allow perfmond toolbox_exec:file rx_file_perms;
+allow perfmond trace_data_file:dir rw_dir_perms;
+allow perfmond trace_data_file:file create_file_perms;
+allow perfmond dumplog_data_file:dir create_dir_perms;
+allow perfmond dumplog_data_file:file create_file_perms;
+r_dir_file(perfmond, sysfs_devices_block)
+type perfmond, coredomain, domain;
+type perfmond_exec, exec_type, file_type, system_file_type;

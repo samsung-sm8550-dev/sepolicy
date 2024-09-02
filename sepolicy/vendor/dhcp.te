@@ -20,3 +20,4 @@ allow dhcp netd:netlink_nflog_socket { read write };
 allow dhcp netd:netlink_kobject_uevent_socket { read write };
 net_domain(dhcp)
 type dhcp, domain;
+type dhcp_exec, exec_type, file_type, system_file_type;

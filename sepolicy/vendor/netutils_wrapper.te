@@ -1,3 +1,12 @@
+allow netutils_wrapper rild:process sigchld;
+allow netutils_wrapper rild:fd *;
+allow netutils_wrapper rild:fifo_file { getattr read write };
+allow netutils_wrapper rild:netlink_route_socket { read write };
+allow netutils_wrapper rild:unix_stream_socket { read write };
+allow netutils_wrapper rild:netlink_generic_socket { read write };
+allow netutils_wrapper rild:netlink_xfrm_socket { read write };
+allow netutils_wrapper rild:udp_socket { read write };
+allow netutils_wrapper rild:tcp_socket { read write };
 allow netutils_wrapper vendor_netmgrd:process sigchld;
 allow netutils_wrapper vendor_netmgrd:fd *;
 allow netutils_wrapper vendor_netmgrd:fifo_file { getattr read write };
@@ -25,8 +34,7 @@ allow netutils_wrapper vendor_dpmd_vndr:netlink_generic_socket { read write };
 allow netutils_wrapper vendor_dpmd_vndr:netlink_xfrm_socket { read write };
 allow netutils_wrapper vendor_dpmd_vndr:udp_socket { read write };
 allow netutils_wrapper vendor_dpmd_vndr:tcp_socket { read write };
-allow netutils_wrapper vendor_diag_device:chr_file rw_file_perms;
 dontaudit netutils_wrapper self:capability sys_module;
 dontaudit netutils_wrapper system_file:dir write;
-r_dir_file(netutils_wrapper, vendor_sysfs_diag)
 type netutils_wrapper, domain;
+type netutils_wrapper_exec, exec_type, file_type, system_file_type;

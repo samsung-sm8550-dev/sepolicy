@@ -1,2 +1,1 @@
-allow traced_probes statsd:binder transfer;
 type traced_probes, coredomain, domain, mlstrustedsubject;

@@ -1,0 +1,12 @@
+allow cnss_dumpcollector self:netlink_kobject_uevent_socket { bind create read setopt };
+allow cnss_dumpcollector vendor_log_file:dir create_dir_perms;
+allow cnss_dumpcollector vendor_log_file:file create_file_perms;
+allow cnss_dumpcollector sysfs_ss_writable:file rw_file_perms;
+allow cnss_dumpcollector vendor_sysfs_devicetree_soc:dir r_dir_perms;
+allow cnss_dumpcollector vendor_sysfs_devicetree_soc:file r_file_perms;
+allow cnss_dumpcollector vendor_sysfs_devcd:file rw_file_perms;
+allow cnss_dumpcollector vendor_ramdump_vendor_data_file:file create_file_perms;
+allow cnss_dumpcollector vendor_ramdump_vendor_data_file:dir create_dir_perms;
+init_daemon_domain(cnss_dumpcollector)
+type cnss_dumpcollector, domain;
+type cnss_dumpcollector_exec, exec_type, file_type, vendor_file_type;

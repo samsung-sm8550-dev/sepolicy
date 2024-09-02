@@ -14,6 +14,7 @@ allow lmkd domain:file { open read };
 allow lmkd domain:process { setsched sigkill };
 allow lmkd sysfs_lowmemorykiller:file w_file_perms;
 allow lmkd kernel:process setsched;
+allow lmkd kernel:file getattr;
 allow lmkd cgroup:dir { remove_name rmdir };
 allow lmkd cgroup:file r_file_perms;
 allow lmkd cgroup_v2:dir { remove_name rmdir };
@@ -26,9 +27,24 @@ allow lmkd proc_meminfo:file r_file_perms;
 allow lmkd proc_pressure_cpu:file r_file_perms;
 allow lmkd proc_pressure_io:file r_file_perms;
 allow lmkd proc_pressure_mem:file rw_file_perms;
-allow lmkd lmkd_socket:sock_file write;
-allow lmkd statsdw_socket:sock_file write;
 allow lmkd statsd:unix_dgram_socket sendto;
+allow lmkd zygote:file { getattr open write };
+allow lmkd zygote:dir search;
+allow lmkd sysfs_ss_writable:dir r_dir_perms;
+allow lmkd sysfs_ss_writable:file rw_file_perms;
+allow lmkd system_server:process sigkill;
+allow lmkd perfmond_socket:sock_file rw_file_perms;
+allow lmkd proc_pressure_lmkd_count:file rw_file_perms;
+allow lmkd proc_pressure_lmkd_count:dir r_dir_perms;
+allow lmkd proc_pressure_lmkd_cricount:file rw_file_perms;
+allow lmkd proc_pressure_lmkd_cricount:dir r_dir_perms;
+allow lmkd hal_graphics_allocator_default:file getattr;
+allow lmkd hal_face_default:file getattr;
+allow lmkd ap_device:dir search;
+allow lmkd proc_lmkd_debug:dir r_dir_perms;
+allow lmkd proc_lmkd_debug:file rw_file_perms;
+allow lmkd sysfs_ski_memory_writable:dir r_dir_perms;
+allow lmkd sysfs_ski_memory_writable:file rw_file_perms;
 allow lmkd vendor_hal_perf_hwservice:hwservice_manager find;
 allow lmkd vendor_hal_perf_default:binder call;
 allow lmkd vendor_hal_iop_hwservice:hwservice_manager find;
@@ -36,5 +52,11 @@ allow lmkd vendor_hal_iop_default:binder call;
 allow lmkd hwservicemanager:binder call;
 r_dir_file(lmkd, domain)
 r_dir_file(lmkd, sysfs_lowmemorykiller)
+unix_socket_connect(lmkd, lmkd, system_server)
+unix_socket_connect(lmkd, lmkd, perfmond)
+unix_socket_connect(lmkd, statsdw, system_server)
+unix_socket_connect(lmkd, statsdw, perfmond)
+get_prop(lmkd, lmk_prop)
 get_prop(lmkd, hwservicemanager_prop)
 type lmkd, domain, mlstrustedsubject;
+type lmkd_exec, exec_type, file_type, system_file_type;

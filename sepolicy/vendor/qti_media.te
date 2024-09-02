@@ -1,9 +1,7 @@
 allow vendor_qti_media vendor_qti_media_exec:file rx_file_perms;
 allow vendor_qti_media vendor_toolbox_exec:file rx_file_perms;
-allow vendor_qti_media property_socket:sock_file write;
-allow vendor_qti_media init:unix_stream_socket connectto;
-allow vendor_qti_media vendor_video_prop:property_service set;
 allow vendor_qti_media vendor_sysfs_sku:file { open read };
-get_prop(vendor_qti_media, vendor_video_prop)
+init_daemon_domain(vendor_qti_media)
+set_prop(vendor_qti_media, vendor_video_prop)
 type vendor_qti_media, domain;
 type vendor_qti_media_exec, exec_type, file_type, vendor_file_type;

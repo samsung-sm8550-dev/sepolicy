@@ -1,0 +1,6 @@
+allow cdpredictor sysfs_battery:file rw_file_perms;
+allow cdpredictor sysfs_devices_system_cpu:file rw_file_perms;
+allow cdpredictor dumplog_data_file:dir rw_dir_perms;
+allow cdpredictor dumplog_data_file:file create_file_perms;
+type cdpredictor, coredomain, domain;
+type cdpredictor_exec, exec_type, file_type, system_file_type;

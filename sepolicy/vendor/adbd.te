@@ -1,5 +1,28 @@
 allow adbd shell_test_data_file:dir create_dir_perms;
 allow adbd shell_test_data_file:file create_file_perms;
 allow adbd shell_test_data_file:lnk_file create_file_perms;
+allow adbd surfaceflinger:binder transfer;
+allow adbd msockets_socket:dir r_dir_perms;
+allow adbd msockets_socket:sock_file rw_file_perms;
+allow adbd security_spota_file:dir r_dir_perms;
+allow adbd security_spota_file:file r_file_perms;
+allow adbd dumplog_data_file:dir create_dir_perms;
+allow adbd dumplog_data_file:file create_file_perms;
+allow adbd carrier_file:dir r_dir_perms;
+allow adbd carrier_file:file r_file_perms;
+allow adbd rootfs:file r_file_perms;
+allow adbd sec_debugfs:dir search;
+allow adbd vendor_configs_file:file map;
+allow adbd edmnativehelper_service:service_manager find;
+allow adbd system_server:binder call;
+allow adbd spqr_data_file:dir r_dir_perms;
+allow adbd spqr_data_file:file r_file_perms;
+allow adbd sysfs_socinfo:file r_file_perms;
+unix_socket_connect(adbd, property, vendor_qdcm-ss)
+unix_socket_connect(adbd, vendor_qdcmsocket, init)
 unix_socket_connect(adbd, vendor_qdcmsocket, vendor_qdcm-ss)
+get_prop(adbd, boot_em_did_prop)
+get_prop(adbd, ap_serial_prop)
+set_prop(adbd, system_prop)
 type adbd, domain;
+type adbd_exec, exec_type, file_type, system_file_type;

@@ -1,0 +1,2 @@
+type speg_helper_daemon, coredomain, domain;
+type speg_helper_daemon_exec, exec_type, file_type, system_file_type;

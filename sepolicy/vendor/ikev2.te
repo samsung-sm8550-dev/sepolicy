@@ -1,0 +1,9 @@
+allow ikev2_client mptcp_data_file:dir create_dir_perms;
+allow ikev2_client mptcp_data_file:file create_file_perms;
+allow ikev2_client wifi_efs_file:dir r_dir_perms;
+allow ikev2_client wifi_efs_file:file r_file_perms;
+allowxperm ikev2_client self:ioctl udp_socket 0x8927;
+set_prop(ikev2_client, ctl_start_prop)
+set_prop(ikev2_client, ctl_stop_prop)
+type ikev2_client, coredomain, domain;
+type ikev2_client_exec, exec_type, file_type, system_file_type;

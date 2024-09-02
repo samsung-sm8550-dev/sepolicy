@@ -1,0 +1,5 @@
+init_daemon_domain(tmf_daemon)
+r_dir_file(tmf_daemon, tee_vendor_data_file)
+set_prop(tmf_daemon, vendor_tmfd_prop)
+type tmf_daemon, domain;
+type tmf_daemon_exec, exec_type, file_type, vendor_file_type;

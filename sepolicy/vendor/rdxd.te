@@ -1,0 +1,32 @@
+allow rdxd paramblk_device:blk_file rw_file_perms;
+allow rdxd ramdump_block_device:blk_file rw_file_perms;
+allow rdxd storage_file:dir r_dir_perms;
+allow rdxd storage_file:lnk_file r_file_perms;
+allow rdxd mnt_user_file:lnk_file read;
+allow rdxd sdcardfs:dir create_dir_perms;
+allow rdxd sdcardfs:file create_file_perms;
+allow rdxd self:capability sys_resource;
+allow rdxd self:capability sys_admin;
+allow rdxd rdxdump_data_file:dir create_dir_perms;
+allow rdxd rdxdump_data_file:file create_file_perms;
+allow rdxd proc_store_lastkmsg:file r_file_perms;
+allow rdxd proc_reset_rwc:file r_file_perms;
+allow rdxd proc_rdx_bootdev:file rw_file_perms;
+allow rdxd sysfs_secdebug_writable:dir r_dir_perms;
+allow rdxd sysfs_secdebug_writable:file r_file_perms;
+allow rdxd sysfs_ss_writable:dir r_dir_perms;
+allow rdxd sysfs_ss_writable:file r_file_perms;
+allow rdxd userdata_block_device:blk_file rw_file_perms;
+allowxperm rdxd rdxdump_data_file:ioctl file 0x2;
+allowxperm rdxd rdxdump_data_file:ioctl file { 0x660b range 0x6615 0x6616 };
+allowxperm rdxd rdxdump_data_file:ioctl file 0xf50d;
+get_prop(rdxd, boot_dram_info_prop)
+get_prop(rdxd, boot_force_upload_prop)
+get_prop(rdxd, proc_upload_count)
+get_prop(rdxd, proc_reset_reason)
+get_prop(rdxd, hwservicemanager_prop)
+set_prop(rdxd, debug_prop)
+hwbinder_use(rdxd)
+hal_client_domain(rdxd, hal_engmode)
+type rdxd, coredomain, domain;
+type rdxd_exec, exec_type, file_type, system_file_type;

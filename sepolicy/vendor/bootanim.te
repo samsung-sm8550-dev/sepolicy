@@ -1,17 +1,16 @@
-allow bootanim servicemanager:binder { call transfer };
 allow bootanim surfaceflinger:binder { call transfer };
+allow bootanim surfaceflinger:binder transfer;
 allow bootanim surfaceflinger:fd *;
 allow bootanim surfaceflinger:unix_stream_socket { read write };
 allow bootanim audioserver:binder { call transfer };
 allow bootanim audioserver:binder transfer;
 allow bootanim audioserver:fd *;
-allow bootanim hwservicemanager:binder { call transfer };
 allow bootanim hwservicemanager:binder call;
 allow bootanim gpu_device:chr_file rw_file_perms;
 allow bootanim gpu_device:dir r_dir_perms;
 allow bootanim sysfs_gpu:file r_file_perms;
-allow bootanim oemfs:dir r_dir_perms;
-allow bootanim bootanim_oem_file:file r_file_perms;
+allow bootanim oemfs:dir search;
+allow bootanim oemfs:file r_file_perms;
 allow bootanim audio_device:dir r_dir_perms;
 allow bootanim audio_device:chr_file rw_file_perms;
 allow bootanim audioserver_service:service_manager find;
@@ -22,10 +21,42 @@ allow bootanim hal_graphics_allocator:fd *;
 allow bootanim hal_graphics_composer:fd *;
 allow bootanim proc_meminfo:file r_file_perms;
 allow bootanim system_file:dir r_dir_perms;
+allow bootanim sysfs_lcd_writable:file rw_file_perms;
+allow bootanim sysfs_lcd_writable:dir r_dir_perms;
+allow bootanim sysfs_sec:file rw_file_perms;
+allow bootanim sysfs_ss_writable:file rw_file_perms;
+allow bootanim graphics_device:chr_file rw_file_perms;
+allow bootanim efs_file:dir search;
+allow bootanim efs_file:file r_file_perms;
+allow bootanim carrier_efs_file:dir r_dir_perms;
+allow bootanim carrier_efs_file:file r_file_perms;
+allow bootanim imei_efs_file:dir r_dir_perms;
+allow bootanim imei_efs_file:file r_file_perms;
+allow bootanim system_data_file:file r_file_perms;
+allow bootanim omr_file:dir r_dir_perms;
+allow bootanim omr_file:file r_file_perms;
+allow bootanim mediaserver_service:service_manager find;
+allow bootanim sec_debugfs:dir search;
+allow bootanim carrier_file:dir r_dir_perms;
+allow bootanim carrier_file:file r_file_perms;
+allow bootanim dumplog_data_file:dir rw_dir_perms;
+allow bootanim dumplog_data_file:file create_file_perms;
+allow bootanim sec_efs_file:dir rw_dir_perms;
+allow bootanim sec_efs_file:file unlink;
+allow bootanim sysfs_ski_led_writable:file rw_file_perms;
+allow bootanim sysfs_ski_display_writable:file rw_file_perms;
 dontaudit bootanim system_data_file:dir read;
 dontaudit bootanim vendor_hal_qspmhal_hwservice:hwservice_manager find;
-get_prop(bootanim, vendor_display_prop)
+r_dir_file(bootanim, sysfs_ski_display_readable)
+r_dir_file(bootanim, vendor_sysfs_kgsl)
+set_prop(bootanim, audio_prop)
+set_prop(bootanim, system_prop)
+set_prop(bootanim, exported_system_prop)
+set_prop(bootanim, ctl_bootanim_prop)
+binder_use(bootanim)
+hwbinder_use(bootanim)
 hal_client_domain(bootanim, hal_configstore)
 hal_client_domain(bootanim, hal_graphics_allocator)
 hal_client_domain(bootanim, hal_graphics_composer)
 type bootanim, domain;
+type bootanim_exec, exec_type, file_type, system_file_type;

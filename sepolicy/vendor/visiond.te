@@ -1,0 +1,36 @@
+allow visiond servicemanager:binder { call transfer };
+allow visiond servicemanager:fd *;
+allow visiond cameraserver:binder { call transfer };
+allow visiond cameraserver:fd *;
+allow visiond surfaceflinger:binder { call transfer };
+allow visiond surfaceflinger:fd *;
+allow visiond appdomain:binder { call transfer };
+allow visiond appdomain:fd *;
+allow visiond system_server:binder { call transfer };
+allow visiond system_server:fd *;
+allow visiond system_server:unix_stream_socket { read write };
+allow visiond ion_device:chr_file rw_file_perms;
+allow visiond storage_file:dir r_dir_perms;
+allow visiond storage_file:lnk_file r_file_perms;
+allow visiond mnt_user_file:dir r_dir_perms;
+allow visiond mnt_user_file:lnk_file r_file_perms;
+allow visiond media_rw_data_file:dir create_dir_perms;
+allow visiond media_rw_data_file:file create_file_perms;
+allow visiond sdcardfs:dir create_dir_perms;
+allow visiond sdcardfs:file create_file_perms;
+allow visiond fuse:dir create_dir_perms;
+allow visiond fuse:file create_file_perms;
+allow visiond vfat:file read;
+allow visiond visiond_service:service_manager { add find };
+allow visiond surfaceflinger_service:service_manager find;
+allow visiond sensorservice_service:service_manager find;
+allow visiond hwservicemanager:binder { call transfer };
+allow visiond hwservicemanager:fd *;
+allow visiond hal_graphics_mapper_hwservice:hwservice_manager find;
+allow visiond hal_graphics_composer_default:fd *;
+init_daemon_domain(visiond)
+get_prop(visiond, hwservicemanager_prop)
+binder_service(visiond)
+hal_client_domain(visiond, hal_graphics_allocator)
+type visiond, coredomain, domain, mlstrustedsubject;
+type visiond_exec, exec_type, file_type, system_file_type;

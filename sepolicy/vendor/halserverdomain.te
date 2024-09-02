@@ -1,2 +1,4 @@
+allow halserverdomain dumpstate:binder transfer;
+allow halserverdomain dumpstate:fd *;
 attribute halserverdomain;
 attribute vendor_halserverdomain;

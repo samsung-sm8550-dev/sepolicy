@@ -4,12 +4,12 @@ expandtypeattribute(hal_tv_cec_server)
 allow hal_tv_cec_client hal_tv_cec_server:binder { call transfer };
 allow hal_tv_cec_client hal_tv_cec_server:binder transfer;
 allow hal_tv_cec_client hal_tv_cec_server:fd *;
-allow hal_tv_cec_client hal_tv_cec_hwservice:hwservice_manager find;
 allow hal_tv_cec_server hal_tv_cec_client:binder transfer;
 allow hal_tv_cec_server hal_tv_cec_client:binder { call transfer };
 allow hal_tv_cec_server hal_tv_cec_client:fd *;
-allow hal_tv_cec_server hal_tv_cec_hwservice:hwservice_manager { add find };
-allow hal_tv_cec_server hidl_base_hwservice:hwservice_manager add;
+init_daemon_domain(hal_tv_cec_default)
 hal_server_domain(hal_tv_cec_default, hal_tv_cec)
+hal_attribute_hwservice(hal_tv_cec, hal_tv_cec_hwservice)
 type hal_tv_cec_default, domain;
 type hal_tv_cec_default_exec, exec_type, file_type, vendor_file_type;
+type hal_tv_cec_hwservice, hwservice_manager_type, protected_hwservice;

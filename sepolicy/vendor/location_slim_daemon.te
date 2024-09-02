@@ -7,14 +7,15 @@ allow vendor_location_slim_daemon vendor_location_socket:lnk_file { getattr open
 allow vendor_location_slim_daemon vendor_location_socket:sock_file create_file_perms;
 allow vendor_location_slim_daemon vendor_location_socket:dir rw_dir_perms;
 allow vendor_location_slim_daemon vendor_hal_gnss_qti:unix_dgram_socket sendto;
-allow vendor_location_slim_daemon hwservicemanager:binder { call transfer };
 allow vendor_location_slim_daemon system_server:binder { call transfer };
 allow vendor_location_slim_daemon system_server:binder transfer;
 allow vendor_location_slim_daemon system_server:fd *;
 allow vendor_location_slim_daemon self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow vendor_location_slim_daemon fwk_sensor_hwservice:hwservice_manager find;
+allow vendor_location_slim_daemon vendor_location_xtwifi_inetagent:unix_dgram_socket sendto;
 allow vendor_location_slim_daemon vendor_location_xtwifi_client:unix_dgram_socket sendto;
 allow vendor_location_slim_daemon vendor_location_lowi_server:unix_dgram_socket sendto;
 get_prop(vendor_location_slim_daemon, hwservicemanager_prop)
+hwbinder_use(vendor_location_slim_daemon)
 type vendor_location_slim_daemon, domain;
 type vendor_location_slim_daemon_exec, exec_type, file_type, vendor_file_type;

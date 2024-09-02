@@ -8,6 +8,7 @@ allow vendor_diag-router self:capability kill;
 allow vendor_diag-router vendor_mhi_diag_device:chr_file rw_file_perms;
 allow vendor_diag-router su:process signal;
 allowxperm vendor_diag-router functionfs:ioctl file 0x6782;
+init_daemon_domain(vendor_diag-router)
 r_dir_file(vendor_diag-router, vendor_sysfs_soc)
 r_dir_file(vendor_diag-router, vendor_sysfs_qdss_dev)
 hal_server_domain(vendor_diag-router, vendor_hal_diaghal)

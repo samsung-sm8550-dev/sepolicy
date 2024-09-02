@@ -6,10 +6,10 @@ allow postinstall postinstall_file:dir r_dir_perms;
 allow postinstall shell_exec:file rx_file_perms;
 allow postinstall system_file:file rx_file_perms;
 allow postinstall toolbox_exec:file rx_file_perms;
-allow postinstall servicemanager:binder { call transfer };
 allow postinstall system_server:binder { call transfer };
 allow postinstall system_server:fd *;
 allow postinstall otadexopt_service:service_manager find;
 allow postinstall sysfs_fs_f2fs:file rw_file_perms;
 allow postinstall sysfs_fs_f2fs:dir r_dir_perms;
+binder_use(postinstall)
 type postinstall, domain;

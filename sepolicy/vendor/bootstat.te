@@ -8,8 +8,8 @@ allow bootstat pstorefs:dir search;
 allow bootstat pstorefs:file r_file_perms;
 allow bootstat kernel:system syslog_read;
 allow bootstat logcat_exec:file rx_file_perms;
-allow bootstat logdr_socket:sock_file write;
-allow bootstat logd:unix_stream_socket connectto;
-allow bootstat statsdw_socket:sock_file write;
 allow bootstat statsd:unix_dgram_socket sendto;
+unix_socket_connect(bootstat, logdr, logd)
+unix_socket_connect(bootstat, statsdw, logd)
 type bootstat, domain;
+type bootstat_exec, exec_type, file_type, system_file_type;

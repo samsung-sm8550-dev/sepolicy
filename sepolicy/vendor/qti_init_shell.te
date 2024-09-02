@@ -1,54 +1,75 @@
-allow vendor_qti_init_shell vendor_qti_init_shell_exec:file { entrypoint rx_file_perms };
+allow vendor_qti_init_shell vendor_shell_exec:file rx_file_perms;
 allow vendor_qti_init_shell vendor_shell_exec:file { entrypoint rx_file_perms };
 allow vendor_qti_init_shell vendor_shell_exec:file execute_no_trans;
 allow vendor_qti_init_shell vendor_toolbox_exec:file rx_file_perms;
-allow vendor_qti_init_shell vendor_sysfs_graphics:file { rw_file_perms setattr };
+allow vendor_qti_init_shell proc_sched:file rw_file_perms;
+allow vendor_qti_init_shell proc_sched:file w_file_perms;
+allow vendor_qti_init_shell kmsg_device:chr_file w_file_perms;
+allow vendor_qti_init_shell kmsg_device:file rw_file_perms;
+allow vendor_qti_init_shell proc_page_cluster:file rw_file_perms;
+allow vendor_qti_init_shell vendor_data_file:dir rw_dir_perms;
+allow vendor_qti_init_shell vendor_data_file:file create_file_perms;
+allow vendor_qti_init_shell efs_file:dir search;
+allow vendor_qti_init_shell efs_file:file r_file_perms;
+allow vendor_qti_init_shell proc_compaction:file rw_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_kgsl:dir search;
+allow vendor_qti_init_shell vendor_sysfs_kgsl:file create_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_kgsl:file { r_file_perms setattr };
+allow vendor_qti_init_shell proc_swappiness:file { open read write };
+allow vendor_qti_init_shell proc:file { open read write };
+allow vendor_qti_init_shell proc:file write;
+allow vendor_qti_init_shell proc:file r_file_perms;
+allow vendor_qti_init_shell sysfs:file { open read write };
+allow vendor_qti_init_shell sysfs:file setattr;
+allow vendor_qti_init_shell sysfs:file rw_file_perms;
+allow vendor_qti_init_shell sysfs:file relabelfrom;
+allow vendor_qti_init_shell sysfs:dir relabelfrom;
+allow vendor_qti_init_shell sysfs:lnk_file relabelfrom;
+allow vendor_qti_init_shell sysfs_android_usb:file { open read write };
+allow vendor_qti_init_shell sysfs_devices_system_cpu:file create_file_perms;
+allow vendor_qti_init_shell sysfs_devices_system_cpu:file w_file_perms;
+allow vendor_qti_init_shell sysfs_devices_system_cpu:file relabelto;
+allow vendor_qti_init_shell sysfs_devices_system_cpu:dir relabelto;
+allow vendor_qti_init_shell sysfs_devices_system_cpu:lnk_file relabelto;
+allow vendor_qti_init_shell sysfs_ss_writable:file setattr;
+allow vendor_qti_init_shell usb_configfs:dir rw_dir_perms;
+allow vendor_qti_init_shell usb_configfs:file rw_file_perms;
+allow vendor_qti_init_shell sysfs_socinfo:file { setattr w_file_perms };
+allow vendor_qti_init_shell gpu_device:chr_file r_file_perms;
+allow vendor_qti_init_shell gpu_device:chr_file getattr;
+allow vendor_qti_init_shell app_efs_file:dir { search setattr };
+allow vendor_qti_init_shell bluetooth_efs_file:dir r_dir_perms;
+allow vendor_qti_init_shell bluetooth_efs_file:file r_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_devfreq:file create_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_devfreq:file w_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_scsi_host:file create_file_perms;
+allow vendor_qti_init_shell proc_default_smp_affinity:file rw_file_perms;
+allow vendor_qti_init_shell sysfs_lowmemorykiller:file create_file_perms;
+allow vendor_qti_init_shell sysfs_lowmemorykiller:file w_file_perms;
+allow vendor_qti_init_shell mnt_vendor_file:dir create;
+allow vendor_qti_init_shell mnt_vendor_file:dir create_dir_perms;
 allow vendor_qti_init_shell mnt_vendor_file:dir w_dir_perms;
 allow vendor_qti_init_shell mnt_vendor_file:file create_file_perms;
+allow vendor_qti_init_shell debugfs_tracing:file rw_file_perms;
+allow vendor_qti_init_shell vendor_sysfs_qdss_dev:file create_file_perms;
+allow vendor_qti_init_shell proc_rq_stat:file r_file_perms;
+allow vendor_qti_init_shell sec_efs_file:file rw_file_perms;
+allow vendor_qti_init_shell tee_device:chr_file rw_file_perms;
+allow vendor_qti_init_shell vendor_qti_init_shell_exec:file { entrypoint rx_file_perms };
+allow vendor_qti_init_shell vendor_sysfs_graphics:file { rw_file_perms setattr };
 allow vendor_qti_init_shell vendor_smd_device:chr_file rw_file_perms;
 allow vendor_qti_init_shell rootfs:file execute_no_trans;
 allow vendor_qti_init_shell rootfs:file r_file_perms;
-allow vendor_qti_init_shell gpu_device:chr_file getattr;
 allow vendor_qti_init_shell vendor_sysfs_cpu_boost:dir r_dir_perms;
 allow vendor_qti_init_shell vendor_sysfs_cpu_boost:file rw_file_perms;
 allow vendor_qti_init_shell self:capability { chown fowner fsetid net_admin sys_admin sys_module };
 allow vendor_qti_init_shell self:capability2 block_suspend;
 allow vendor_qti_init_shell self:cap2_userns block_suspend;
-allow vendor_qti_init_shell property_socket:sock_file write;
-allow vendor_qti_init_shell init:unix_stream_socket connectto;
-allow vendor_qti_init_shell vendor_ctl_netmgrd_prop:property_service set;
-allow vendor_qti_init_shell vendor_ctl_port-bridge_prop:property_service set;
-allow vendor_qti_init_shell vendor_ctl_qcrild_prop:property_service set;
-allow vendor_qti_init_shell vendor_ipacm-diag_prop:property_service set;
-allow vendor_qti_init_shell vendor_ipacm_prop:property_service set;
-allow vendor_qti_init_shell vendor_msm_irqbalance_prop:property_service set;
-allow vendor_qti_init_shell vendor_dataqti_prop:property_service set;
-allow vendor_qti_init_shell vendor_display_prop:property_service set;
-allow vendor_qti_init_shell vendor_alarm_boot_prop:property_service set;
-allow vendor_qti_init_shell vendor_gralloc_prop:property_service set;
-allow vendor_qti_init_shell vendor_usb_prop:property_service set;
-allow vendor_qti_init_shell vendor_system_prop:property_service set;
-allow vendor_qti_init_shell vendor_mpctl_prop:property_service set;
-allow vendor_qti_init_shell vendor_radio_prop:property_service set;
-allow vendor_qti_init_shell vendor_audio_prop:property_service set;
-allow vendor_qti_init_shell vendor_gpu_prop:property_service set;
-allow vendor_qti_init_shell vendor_sensors_prop:property_service set;
-allow vendor_qti_init_shell vendor_adsprpc_prop:property_service set;
-allow vendor_qti_init_shell sysfs_devices_system_cpu:file w_file_perms;
-allow vendor_qti_init_shell sysfs_devices_system_cpu:file relabelto;
-allow vendor_qti_init_shell sysfs_devices_system_cpu:dir relabelto;
-allow vendor_qti_init_shell sysfs_devices_system_cpu:lnk_file relabelto;
-allow vendor_qti_init_shell sysfs_lowmemorykiller:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_mmc_host:file w_file_perms;
+allow vendor_qti_init_shell vendor_mem_dump_config:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_process_reclaim:file w_file_perms;
-allow vendor_qti_init_shell vendor_sysfs_devfreq:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_wdog_device:file { getattr write };
 allow vendor_qti_init_shell vendor_sysfs_soc:file write;
-allow vendor_qti_init_shell sysfs:file relabelfrom;
-allow vendor_qti_init_shell sysfs:dir relabelfrom;
-allow vendor_qti_init_shell sysfs:lnk_file relabelfrom;
-allow vendor_qti_init_shell proc:file write;
-allow vendor_qti_init_shell proc:file r_file_perms;
 allow vendor_qti_init_shell proc_net:file write;
 allow vendor_qti_init_shell proc_net:file r_file_perms;
 allow vendor_qti_init_shell graphics_device:dir create_dir_perms;
@@ -62,13 +83,10 @@ allow vendor_qti_init_shell configfs:dir r_dir_perms;
 allow vendor_qti_init_shell configfs:file rw_file_perms;
 allow vendor_qti_init_shell sysfs_zram:dir r_dir_perms;
 allow vendor_qti_init_shell sysfs_zram:file rw_file_perms;
-allow vendor_qti_init_shell vendor_sysfs_kgsl:file { r_file_perms setattr };
-allow vendor_qti_init_shell vendor_sysfs_kgsl:file w_file_perms;
 allow vendor_qti_init_shell vendor_radio_vendor_data_file:dir create_dir_perms;
 allow vendor_qti_init_shell vendor_radio_vendor_data_file:file create_file_perms;
 allow vendor_qti_init_shell vendor_mbn_data_file:dir create_dir_perms;
 allow vendor_qti_init_shell vendor_mbn_data_file:file create_file_perms;
-allow vendor_qti_init_shell vendor_ctl_vendor_hbtp_prop:property_service set;
 allow vendor_qti_init_shell vendor_sysfs_battery_supply:dir r_dir_perms;
 allow vendor_qti_init_shell vendor_sysfs_battery_supply:file rw_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_battery_supply:file setattr;
@@ -80,91 +98,76 @@ allow vendor_qti_init_shell vendor_sysfs_usbpd_device:file rw_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_usbpd_device:file setattr;
 allow vendor_qti_init_shell vendor_sysfs_msm_power:file rw_file_perms;
 allow vendor_qti_init_shell vendor_msm_irqbalanced_exec:file getattr;
-allow vendor_qti_init_shell vendor_wifi_prop:property_service set;
 allow vendor_qti_init_shell proc_meminfo:file r_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_suspend:file w_file_perms;
 allow vendor_qti_init_shell sysfs_wake_lock:file rw_file_perms;
 allow vendor_qti_init_shell system_suspend_server:binder { call transfer };
 allow vendor_qti_init_shell system_suspend_server:fd *;
 allow vendor_qti_init_shell system_suspend_hwservice:hwservice_manager find;
-allow vendor_qti_init_shell hwservicemanager:binder { call transfer };
 allow vendor_qti_init_shell hidl_manager_hwservice:hwservice_manager find;
 allow vendor_qti_init_shell hal_system_suspend_service:service_manager find;
-allow vendor_qti_init_shell servicemanager:binder { call transfer };
-allow vendor_qti_init_shell vendor_soc_id_prop:property_service set;
-allow vendor_qti_init_shell vendor_soc_name_prop:property_service set;
-allow vendor_qti_init_shell vendor_soc_model_prop:property_service set;
-allow vendor_qti_init_shell vendor_media_performance_class:property_service set;
-allow vendor_qti_init_shell vendor_dcvs_prop:property_service set;
-allow vendor_qti_init_shell proc_sched:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_npu:file rw_file_perms;
-allow vendor_qti_init_shell vendor_mdm_helper_prop:property_service set;
-allow vendor_qti_init_shell vendor_mmi_prop:property_service set;
-allow vendor_qti_init_shell vendor_video_prop:property_service set;
-allow vendor_qti_init_shell vendor_dataadpl_prop:property_service set;
-allow vendor_qti_init_shell vendor_hvdcp_opti_prop:property_service set;
 allow vendor_qti_init_shell vendor_mpctl_data_file:dir w_dir_perms;
 allow vendor_qti_init_shell vendor_mpctl_data_file:file { getattr unlink write };
 allow vendor_qti_init_shell vendor_sysfs_vmpressure:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_bootguestvm:file w_file_perms;
 allow vendor_qti_init_shell proc_watermark_scale_factor:file { append open write };
-allow vendor_qti_init_shell vendor_audio_debug_prop:property_service set;
 allow vendor_qti_init_shell vendor_sysfs_slab_zshandle_storeuser:file w_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_slab_zspage_storeuser:file w_file_perms;
 allow vendor_qti_init_shell sysfs_dm:file w_file_perms;
-allow vendor_qti_init_shell vendor_sysfs_sd:file w_file_perms;
-allow vendor_qti_init_shell vendor_pasr_prop:property_service set;
-allow vendor_qti_init_shell ctl_start_prop:property_service set;
-allow vendor_qti_init_shell nfc_device:chr_file getattr;
-allow vendor_qti_init_shell vendor_ese_strongbox_prop:property_service set;
-allow vendor_qti_init_shell fuse:dir create_dir_perms;
-allow vendor_qti_init_shell fuse:file create_file_perms;
-allow vendor_qti_init_shell vendor_ipa_lnx_agent_prop:property_service set;
 dontaudit vendor_qti_init_shell self:capability dac_override;
 dontaudit vendor_qti_init_shell self:capability dac_read_search;
-dontaudit vendor_qti_init_shell default_prop:file read;
+typealias(qti_init_shell)
+typealias(qti_init_shell_exec)
+typealiasactual(qti_init_shell)
+typealiasactual(qti_init_shell_exec)
+init_daemon_domain(vendor_qti_init_shell)
+r_dir_file(vendor_qti_init_shell, vendor_sysfs_devfreq)
 r_dir_file(vendor_qti_init_shell, mnt_vendor_file)
 r_dir_file(vendor_qti_init_shell, sysfs_type)
-r_dir_file(vendor_qti_init_shell, vendor_sysfs_devfreq)
 r_dir_file(vendor_qti_init_shell, vendor_persist_bluetooth_file)
 r_dir_file(vendor_qti_init_shell, firmware_file)
-get_prop(vendor_qti_init_shell, vendor_ctl_netmgrd_prop)
-get_prop(vendor_qti_init_shell, vendor_ctl_port-bridge_prop)
-get_prop(vendor_qti_init_shell, vendor_ctl_qcrild_prop)
-get_prop(vendor_qti_init_shell, vendor_ipacm-diag_prop)
-get_prop(vendor_qti_init_shell, vendor_ipacm_prop)
-get_prop(vendor_qti_init_shell, vendor_msm_irqbalance_prop)
-get_prop(vendor_qti_init_shell, vendor_dataqti_prop)
-get_prop(vendor_qti_init_shell, vendor_display_prop)
-get_prop(vendor_qti_init_shell, vendor_alarm_boot_prop)
-get_prop(vendor_qti_init_shell, vendor_gralloc_prop)
-get_prop(vendor_qti_init_shell, vendor_usb_prop)
-get_prop(vendor_qti_init_shell, vendor_system_prop)
-get_prop(vendor_qti_init_shell, vendor_mpctl_prop)
-get_prop(vendor_qti_init_shell, vendor_radio_prop)
-get_prop(vendor_qti_init_shell, vendor_audio_prop)
+get_prop(vendor_qti_init_shell, recovery_prop)
 get_prop(vendor_qti_init_shell, radio_control_prop)
-get_prop(vendor_qti_init_shell, vendor_gpu_prop)
-get_prop(vendor_qti_init_shell, vendor_sensors_prop)
-get_prop(vendor_qti_init_shell, vendor_adsprpc_prop)
-get_prop(vendor_qti_init_shell, vendor_ctl_vendor_hbtp_prop)
-get_prop(vendor_qti_init_shell, vendor_wifi_prop)
 get_prop(vendor_qti_init_shell, hwservicemanager_prop)
-get_prop(vendor_qti_init_shell, vendor_soc_id_prop)
-get_prop(vendor_qti_init_shell, vendor_soc_name_prop)
-get_prop(vendor_qti_init_shell, vendor_soc_model_prop)
-get_prop(vendor_qti_init_shell, vendor_media_performance_class)
 get_prop(vendor_qti_init_shell, vendor_console_log_level_prop)
-get_prop(vendor_qti_init_shell, vendor_dcvs_prop)
-get_prop(vendor_qti_init_shell, vendor_mdm_helper_prop)
-get_prop(vendor_qti_init_shell, vendor_mmi_prop)
-get_prop(vendor_qti_init_shell, vendor_video_prop)
-get_prop(vendor_qti_init_shell, vendor_dataadpl_prop)
-get_prop(vendor_qti_init_shell, vendor_hvdcp_opti_prop)
-get_prop(vendor_qti_init_shell, vendor_audio_debug_prop)
-get_prop(vendor_qti_init_shell, vendor_pasr_prop)
-get_prop(vendor_qti_init_shell, ctl_start_prop)
-get_prop(vendor_qti_init_shell, vendor_ese_strongbox_prop)
-get_prop(vendor_qti_init_shell, vendor_ipa_lnx_agent_prop)
+set_prop(vendor_qti_init_shell, multisim_prop)
+set_prop(vendor_qti_init_shell, vendor_radio_prop)
+set_prop(vendor_qti_init_shell, vendor_hdm_restricted_prop)
+set_prop(vendor_qti_init_shell, vendor_hdm_internal_prop)
+set_prop(vendor_qti_init_shell, ctl_default_prop)
+set_prop(vendor_qti_init_shell, ctl_factory_ssc_prop)
+set_prop(vendor_qti_init_shell, vendor_ctl_netmgrd_prop)
+set_prop(vendor_qti_init_shell, vendor_ctl_port-bridge_prop)
+set_prop(vendor_qti_init_shell, vendor_ctl_qcrild_prop)
+set_prop(vendor_qti_init_shell, vendor_ipacm-diag_prop)
+set_prop(vendor_qti_init_shell, vendor_ipacm_prop)
+set_prop(vendor_qti_init_shell, vendor_msm_irqbalance_prop)
+set_prop(vendor_qti_init_shell, vendor_dataqti_prop)
+set_prop(vendor_qti_init_shell, vendor_display_prop)
+set_prop(vendor_qti_init_shell, vendor_alarm_boot_prop)
+set_prop(vendor_qti_init_shell, vendor_gralloc_prop)
+set_prop(vendor_qti_init_shell, vendor_usb_prop)
+set_prop(vendor_qti_init_shell, vendor_system_prop)
+set_prop(vendor_qti_init_shell, vendor_mpctl_prop)
+set_prop(vendor_qti_init_shell, vendor_audio_prop)
+set_prop(vendor_qti_init_shell, vendor_gpu_prop)
+set_prop(vendor_qti_init_shell, vendor_sensors_prop)
+set_prop(vendor_qti_init_shell, vendor_adsprpc_prop)
+set_prop(vendor_qti_init_shell, vendor_ctl_vendor_hbtp_prop)
+set_prop(vendor_qti_init_shell, vendor_wifi_prop)
+set_prop(vendor_qti_init_shell, vendor_soc_id_prop)
+set_prop(vendor_qti_init_shell, vendor_soc_name_prop)
+set_prop(vendor_qti_init_shell, vendor_soc_model_prop)
+set_prop(vendor_qti_init_shell, vendor_media_performance_class)
+set_prop(vendor_qti_init_shell, vendor_dcvs_prop)
+set_prop(vendor_qti_init_shell, vendor_mdm_helper_prop)
+set_prop(vendor_qti_init_shell, vendor_mmi_prop)
+set_prop(vendor_qti_init_shell, vendor_video_prop)
+set_prop(vendor_qti_init_shell, vendor_dataadpl_prop)
+set_prop(vendor_qti_init_shell, vendor_hvdcp_opti_prop)
+set_prop(vendor_qti_init_shell, vendor_pasr_prop)
+binder_use(vendor_qti_init_shell)
+hwbinder_use(vendor_qti_init_shell)
 type vendor_qti_init_shell, domain;
 type vendor_qti_init_shell_exec, exec_type, file_type, vendor_file_type;

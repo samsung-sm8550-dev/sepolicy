@@ -25,3 +25,4 @@ dontaudit runas self:capability { dac_override dac_read_search };
 dontaudit runas self:cap_userns { dac_override dac_read_search };
 r_dir_file(runas, selinuxfs)
 type runas, domain, mlstrustedsubject;
+type runas_exec, exec_type, file_type, system_file_type;

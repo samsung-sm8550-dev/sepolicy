@@ -1,0 +1,3 @@
+typealias(sysfs_usbpd_device)
+typealiasactual(sysfs_usbpd_device)
+type vendor_sysfs_usbpd_device, fs_type, sysfs_type;

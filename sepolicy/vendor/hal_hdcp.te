@@ -1,0 +1,26 @@
+allow hal_hdcp_client hal_hdcp_server:binder { call transfer };
+allow hal_hdcp_client hal_hdcp_server:binder transfer;
+allow hal_hdcp_client hal_hdcp_server:fd *;
+allow hal_hdcp_client hal_hdcp_hwservice:hwservice_manager find;
+allow hal_hdcp_server hal_hdcp_client:binder transfer;
+allow hal_hdcp_server hal_hdcp_client:binder { call transfer };
+allow hal_hdcp_server hal_hdcp_client:fd *;
+allow hal_hdcp_default tz_user_device:chr_file rw_file_perms;
+allow hal_hdcp_default tee_device:chr_file rw_file_perms;
+allow hal_hdcp_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_hdcp_default insthk:binder transfer;
+allow hal_hdcp_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_hdcp_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_hdcp_default vendor_qce_device:chr_file rw_file_perms;
+allow hal_hdcp_default vendor_membuf_dev:chr_file r_file_perms;
+allow hal_hdcp_default mediacodec:fd *;
+allow hal_hdcp_default vendor_vm_cp_bitstream_device:chr_file r_file_perms;
+allowxperm hal_hdcp_default dmabuf_system_heap_device:ioctl chr_file 0x4800;
+init_daemon_domain(hal_hdcp_default)
+binder_use(hal_hdcp_default)
+hal_server_domain(hal_hdcp_default, hal_hdcp)
+add_hwservice(hal_hdcp_server, hal_hdcp_hwservice)
+hal_attribute_service(hal_hdcp, hal_hdcp_service)
+type hal_hdcp_default, domain;
+type hal_hdcp_default_exec, exec_type, file_type, vendor_file_type;
+type hal_hdcp_hwservice, hwservice_manager_type;

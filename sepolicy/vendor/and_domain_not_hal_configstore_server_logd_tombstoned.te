@@ -1,0 +1,2 @@
+neverallow hal_configstore_server { domain -hal_configstore_server -logd -tombstoned }:unix_stream_socket *;
+neverallow hal_configstore_server { domain -hal_configstore_server -logd -tombstoned }:unix_dgram_socket *;

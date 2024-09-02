@@ -1,0 +1,8 @@
+allow fabriccrypto hal_fkey_default:binder { call transfer };
+allow fabriccrypto hal_fkey_default:fd *;
+allow fabriccrypto hal_fkey_service:service_manager find;
+allow fabriccrypto permission_service:service_manager find;
+allow fabriccrypto system_server:binder { call transfer };
+allow fabriccrypto system_server:fd *;
+type fabriccrypto, coredomain, domain;
+type fabriccrypto_exec, exec_type, file_type, system_file_type;

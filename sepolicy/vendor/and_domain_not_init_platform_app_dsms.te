@@ -1,0 +1,1 @@
+neverallow { domain -init -platform_app -dsms } dsms_data_file:file create;

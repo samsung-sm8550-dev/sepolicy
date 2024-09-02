@@ -1,0 +1,30 @@
+allow hal_tima_client hal_tima_server:binder { call transfer };
+allow hal_tima_client hal_tima_server:binder transfer;
+allow hal_tima_client hal_tima_server:fd *;
+allow hal_tima_client hal_tima_hwservice:hwservice_manager find;
+allow hal_tima_server hal_tima_client:binder transfer;
+allow hal_tima_server hal_tima_client:binder { call transfer };
+allow hal_tima_server hal_tima_client:fd *;
+allow hal_tima tee_device:chr_file rw_file_perms;
+allow hal_tima ion_device:chr_file rw_file_perms;
+allow hal_tima_default tee_device:chr_file rw_file_perms;
+allow hal_tima_default ion_device:chr_file rw_file_perms;
+allow hal_tima_default platform_app:binder { call transfer };
+allow hal_tima_default platform_app:fd *;
+allow hal_tima_default hidl_memory_hwservice:hwservice_manager find;
+allow hal_tima_default app_data_file:file read;
+allow hal_tima_default tz_user_device:chr_file rw_file_perms;
+allow hal_tima_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_tima_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_tima_default hal_allocator:fd *;
+allow hal_tima_default tzdaemon:fd *;
+allow hal_tima_default tee_efs_file:dir search;
+init_daemon_domain(hal_tima_default)
+r_dir_file(hal_tima_default, tee_vendor_data_file)
+get_prop(hal_tima_default, tzdaemon_prop)
+get_prop(hal_tima_default, vendor_teegris_prop)
+hal_server_domain(hal_tima_default, hal_tima)
+add_hwservice(hal_tima_server, hal_tima_hwservice)
+type hal_tima_default, domain;
+type hal_tima_default_exec, exec_type, file_type, vendor_file_type;
+type hal_tima_hwservice, hwservice_manager_type;

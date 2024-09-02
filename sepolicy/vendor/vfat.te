@@ -1,0 +1,2 @@
+allow vfat labeledfs:filesystem associate;
+type vfat, fs_type, mlstrustedobject, sdcard_type;

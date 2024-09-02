@@ -1,0 +1,3 @@
+typealias(cryptoapp_device)
+typealiasactual(cryptoapp_device)
+type vendor_cryptoapp_device, dev_type;

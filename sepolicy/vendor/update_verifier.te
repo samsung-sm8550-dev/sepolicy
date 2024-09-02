@@ -13,3 +13,4 @@ allow update_verifier vold:binder { call transfer };
 allow update_verifier vold:fd *;
 hal_client_domain(update_verifier, hal_bootctl)
 type update_verifier, domain;
+type update_verifier_exec, exec_type, file_type, system_file_type;

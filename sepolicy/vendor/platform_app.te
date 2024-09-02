@@ -1,18 +1,268 @@
+allow platform_app sysfs_lowmemorykiller:file r_file_perms;
+allow platform_app sysfs_sensor_writable:file r_file_perms;
+allow platform_app themecenter_data_file:file r_file_perms;
+allow platform_app sec_wifi_data_file:file r_file_perms;
+allow platform_app sec_wifi_data_file:dir search;
+allow platform_app VaultKeeper_service:service_manager find;
+allow platform_app lock_settings_service:service_manager find;
+allow platform_app sdp_service:service_manager find;
+allow platform_app statusbar_service:service_manager find;
+allow platform_app telecom_service:service_manager find;
+allow platform_app oneseg_mw_service:service_manager find;
+allow platform_app wsm_socket:dir rw_dir_perms;
+allow platform_app wsm_socket:sock_file { append getattr ioctl read write };
+allow platform_app aod_manager_service:service_manager find;
+allow platform_app platform_app_service:service_manager { add find };
+allow platform_app dumpstate_socket:sock_file w_file_perms;
+allow platform_app vold:fd *;
+allow platform_app remotedisplay:binder call;
+allow platform_app remotedisplay:binder transfer;
+allow platform_app anr_data_file:file rw_file_perms;
+allow platform_app remotedisplay_service:service_manager find;
+allow platform_app system_prop:property_service set;
+allow platform_app fingerprint_app_service:service_manager find;
+allow platform_app apaservice_service:service_manager find;
+allow platform_app SemAuthnr_service:service_manager find;
+allow platform_app carrier_file:dir r_dir_perms;
+allow platform_app carrier_file:file r_file_perms;
+allow platform_app apexserver_service:service_manager find;
+allow platform_app overlay_service:service_manager find;
+allow platform_app proc_stat:file r_file_perms;
+allow platform_app app_data_file:file execute;
+allow platform_app app_data_file:fifo_file create_file_perms;
+allow platform_app app_data_file:dir map;
+allow platform_app rootfs:dir r_dir_perms;
+allow platform_app rootfs:file r_file_perms;
+allow platform_app sec_data_file:dir create_dir_perms;
+allow platform_app sec_data_file:file create_file_perms;
+allow platform_app hal_secure_storage_daemon_hwservice:hwservice_manager find;
+allow platform_app hal_secure_storage_daemon_default:binder { call transfer };
+allow platform_app hal_secure_storage_daemon_default:fd *;
+allow platform_app hal_wsm_default:binder { call transfer };
+allow platform_app hal_wsm_default:binder transfer;
+allow platform_app hal_wsm_default:fd *;
+allow platform_app sysfs_battery:dir r_dir_perms;
+allow platform_app sysfs_battery:file rw_file_perms;
+allow platform_app sysfs:dir r_dir_perms;
+allow platform_app kernel:system module_request;
+allow platform_app vendor_configs_file:file map;
+allow platform_app self:icmp_socket create_socket_perms_no_ioctl;
+allow platform_app self:netlink_kobject_uevent_socket { bind create read setopt };
+allow platform_app localtm_data_file:file create_file_perms;
+allow platform_app localtm_data_file:dir create_dir_perms;
+allow platform_app hal_camera_default:binder { call transfer };
+allow platform_app hal_camera_default:fd *;
+allow platform_app snap_hwservice:hwservice_manager find;
+allow platform_app snap_hidl:binder { call transfer };
+allow platform_app snap_hidl:binder transfer;
+allow platform_app snap_hidl:fd *;
+allow platform_app dumplog_data_file:dir rw_dir_perms;
+allow platform_app dumplog_data_file:dir create_dir_perms;
+allow platform_app dumplog_data_file:file rw_file_perms;
+allow platform_app dumplog_data_file:file create_file_perms;
+allow platform_app shell_data_file:dir getattr;
+allow platform_app shell_data_file:file { execute execute_no_trans };
+allow platform_app vendor_log_file:dir create_dir_perms;
+allow platform_app vendor_log_file:file create_file_perms;
+allow platform_app soundtrigger_middleware_service:service_manager find;
+allow platform_app cache_recovery_file:dir rw_dir_perms;
+allow platform_app cache_recovery_file:file create_file_perms;
+allow platform_app isrb_manager_service:service_manager find;
+allow platform_app heimdall:binder { call transfer };
+allow platform_app heimdall:fd *;
+allow platform_app proc_uwblog:file r_file_perms;
+allow platform_app uwb_vendor_data_file:dir create_dir_perms;
+allow platform_app uwb_vendor_data_file:file create_file_perms;
+allow platform_app hal_wsm_service:service_manager find;
+allow platform_app hal_wsm_hwservice:hwservice_manager find;
+allow platform_app apexserver:binder transfer;
+allow platform_app knoxcore_data_file:dir create_dir_perms;
+allow platform_app knoxcore_data_file:file create_file_perms;
+allow platform_app hal_tima_default:binder transfer;
+allow platform_app oneseg_mw:binder transfer;
+allow platform_app vendor_snap_file:dir r_dir_perms;
+allow platform_app vendor_snap_file:dir search;
+allow platform_app snap_data_vendor_file:dir rw_dir_perms;
+allow platform_app snap_data_vendor_file:file rw_file_perms;
+allow platform_app sepunion_service:service_manager find;
+allow platform_app mnodm_socket:dir search;
+allow platform_app system_app:unix_dgram_socket sendto;
+allow platform_app snap_efs_file:file create_file_perms;
+allow platform_app snap_efs_file:dir rw_dir_perms;
+allow platform_app snap_data_file:file create_file_perms;
+allow platform_app snap_data_file:dir rw_dir_perms;
+allow platform_app hal_MultiFrameProcessing20_hwservice:hwservice_manager find;
+allow platform_app sysfs_key_dump:file r_file_perms;
+allow platform_app tad_data_file:file r_file_perms;
+allow platform_app ucm_hwservice:hwservice_manager find;
+allow platform_app sysfs_sec:dir r_dir_perms;
+allow platform_app sysfs_sec:file rw_file_perms;
+allow platform_app sysfs_sec:lnk_file rw_file_perms;
+allow platform_app ursp_service:service_manager find;
+allow platform_app storage_stub_file:dir getattr;
+allow platform_app sysint_service:service_manager find;
+allow platform_app knox_securetimer_service:service_manager find;
+allow platform_app tz_user_device:chr_file rw_file_perms;
+allow platform_app sysfs_mst_writable:dir r_dir_perms;
+allow platform_app sysfs_mst_writable:file rw_file_perms;
+allow platform_app vendor_sysfs_mmc_host:dir r_dir_perms;
+allow platform_app vendor_sysfs_mmc_host:lnk_file r_file_perms;
+allow platform_app cgroup:file r_file_perms;
+allow platform_app media_rw_data_file:file link;
+allow platform_app tcpopd_socket:sock_file w_file_perms;
+allow platform_app nfc_service:service_manager find;
+allow platform_app tz_device:chr_file rw_file_perms;
+allow platform_app dmb_service:service_manager find;
+allow platform_app mnt_media_rw_stub_file:dir r_dir_perms;
+allow platform_app mnt_media_rw_stub_file:file r_file_perms;
+allow platform_app blockchain_service:service_manager find;
+allow platform_app privapp_data_file:file execute;
+allow platform_app battery_service:service_manager find;
+allow platform_app cgroup_desc_file:file getattr;
+allow platform_app radio_data_file:dir getattr;
+allow platform_app radio_data_file:file w_file_perms;
+allow platform_app knox_clipboard_file:dir r_dir_perms;
+allow platform_app knox_clipboard_file:file r_file_perms;
+allow platform_app tmpfs:file read;
+allow platform_app tmpfs:file write;
+allow platform_app sem_service:service_manager find;
+allow platform_app incidentd:fifo_file rw_file_perms;
+allow platform_app sem_wifi_service:service_manager find;
+allow platform_app tombstone_data_file:dir search;
+allow platform_app tombstone_data_file:file { getattr read };
+allow platform_app aidl_codecsolution_service:service_manager find;
+allow platform_app sysfs_batteryinfo:dir search;
+allow platform_app sysfs_ski_touch_writable:dir r_dir_perms;
+allow platform_app sysfs_ski_touch_writable:file rw_file_perms;
+allow platform_app uwb_data_file:dir create_dir_perms;
+allow platform_app uwb_data_file:file create_file_perms;
+allow platform_app sysfs_ski_usb_readable:file r_file_perms;
+allow platform_app SemContinuity_service:service_manager find;
+allow platform_app mnt_sdcard_file:lnk_file r_file_perms;
+allow platform_app sec_efs_file:dir create_dir_perms;
+allow platform_app sec_efs_file:file create_file_perms;
+allow platform_app semprivateshare_data_file:dir create_dir_perms;
+allow platform_app semprivateshare_data_file:file create_file_perms;
+allow platform_app kpm_efs_file:dir create_dir_perms;
+allow platform_app kpm_efs_file:file create_file_perms;
+allow platform_app kpm_data_file:dir create_dir_perms;
+allow platform_app kpm_data_file:file create_file_perms;
+allow platform_app system_suspend_server:binder { call transfer };
+allow platform_app system_suspend_server:fd *;
+allow platform_app system_suspend_hwservice:hwservice_manager find;
+allow platform_app usb_configfs:dir rw_dir_perms;
+allow platform_app usb_configfs:file rw_file_perms;
+allow platform_app rs_exec:file rx_file_perms;
+allow platform_app hal_ifaa_service:service_manager find;
+allow platform_app hal_ifaa_hwservice:hwservice_manager find;
+allow platform_app incremental_prop:file read;
+allow platform_app proc_filesystems:file r_file_perms;
+allow platform_app proc_filesystems:file read;
+allow platform_app dsms_efs_file:dir { open read search };
+allow platform_app dsms_efs_file:file { getattr open read };
+allow platform_app dsms_data_file:dir { open read remove_name search write };
+allow platform_app dsms_data_file:file { getattr open read unlink write };
+allow platform_app hal_snap_service:service_manager find;
+allow platform_app hal_securesnap_service:service_manager find;
+allow platform_app sysfs_camera_writable:dir r_dir_perms;
+allow platform_app hal_csip_service:service_manager find;
+allow platform_app hal_csip_default:binder { call transfer };
+allow platform_app hal_csip_default:fd *;
+allow platform_app hal_soter_service:service_manager find;
+allow platform_app vendor_postprocess_data_file:dir create_dir_perms;
+allow platform_app vendor_postprocess_data_file:file create_file_perms;
+allow platform_app vendor_sysfs_graphics:file rw_file_perms;
+allow platform_app vendor_sysfs_graphics:dir r_dir_perms;
+allow platform_app vendor_sysfs_devicetree_soc:dir r_dir_perms;
+allow platform_app vendor_sysfs_devicetree_soc:file r_file_perms;
+allow platform_app adsprpcd_file:dir r_dir_perms;
+allow platform_app vendor_file:dir watch;
+allow platform_app vendor_qccvendor:binder { call transfer };
+allow platform_app vendor_qccvendor:fd *;
+allow platform_app vendor_hal_dspmanager_hwservice:hwservice_manager find;
+allow platform_app sysfs_sdinfo:file r_file_perms;
 allow platform_app vendor_hal_display_color_server:binder { call transfer };
 allow platform_app vendor_hal_display_color_server:fd *;
 allow platform_app vendor_hal_display_color_hwservice:hwservice_manager find;
-allow platform_app nfc_service:service_manager find;
-allow platform_app vendor_fidotest:binder transfer;
-allow platform_app vendor_fidotest:binder { call transfer };
-allow platform_app vendor_fidotest:fd *;
-allow platform_app hal_lineage_fastcharge:binder transfer;
-allow platform_app hal_lineage_powershare:binder transfer;
+dontaudit platform_app serialno_prop:file { getattr ioctl lock map open read watch watch_reads };
+dontaudit platform_app exec_type:file getattr;
+dontaudit platform_app vendor_qdsp_device:chr_file open;
+allowxperm platform_app app_data_file:ioctl file { range 0x6601 0x6602 };
+allowxperm platform_app app_data_file:ioctl file { range 0x6c11 0x6c12 0x6c15 };
+allowxperm platform_app apk_data_file:ioctl file 0x6722;
+r_dir_file(platform_app, dhcp_data_file)
+r_dir_file(platform_app, anr_data_file)
+r_dir_file(platform_app, sysfs_switch)
+r_dir_file(platform_app, sysfs_ss_writable)
+r_dir_file(platform_app, sysfs_power)
+r_dir_file(platform_app, sysfs_thermal)
+r_dir_file(platform_app, vendor_log_file)
+r_dir_file(platform_app, sysfs_lcd_writable)
+r_dir_file(platform_app, sysfs_ski_key_readable)
+r_dir_file(platform_app, uwb_vendor_data_file)
+r_dir_file(platform_app, sysfs_svc)
+r_dir_file(platform_app, sysfs_net)
+r_dir_file(platform_app, sysfs_gpu)
+r_dir_file(platform_app, sysfs_ski_ufs_writable)
+r_dir_file(platform_app, sysfs_ski_storage_readable)
+r_dir_file(platform_app, vendor_sysfs_kgsl)
+r_dir_file(platform_app, vendor_sysfs_battery_supply)
+r_dir_file(platform_app, vendor_qms_main_data_file)
+r_dir_file(platform_app, vendor_qms_other_data_file)
+r_dir_file(platform_app, vendor_qms_config_data_file)
+r_dir_file(platform_app, vendor_sysfs_kgsl_gpuclk)
+r_dir_file(platform_app, vendor_sysfs_spss)
+unix_socket_connect(platform_app, property, wsmd)
+unix_socket_connect(platform_app, property, remotedisplay)
+unix_socket_connect(platform_app, property, dumpstate)
+unix_socket_connect(platform_app, property, ssud)
+unix_socket_connect(platform_app, property, multiclientd)
+unix_socket_connect(platform_app, mnodm, wsmd)
+unix_socket_connect(platform_app, mnodm, remotedisplay)
+unix_socket_connect(platform_app, mnodm, init)
+unix_socket_connect(platform_app, mnodm, dumpstate)
+unix_socket_connect(platform_app, mnodm, ssud)
+unix_socket_connect(platform_app, mnodm, multiclientd)
+get_prop(platform_app, ccm_prop)
+get_prop(platform_app, vendor_tztsdaemon_prop)
+get_prop(platform_app, sec_ims_prop)
+get_prop(platform_app, vendor_members_prop)
+get_prop(platform_app, vendor_fastrpc_prop)
+get_prop(platform_app, vendor_ofi_prop)
+get_prop(platform_app, vendor_bluetooth_prop)
+get_prop(platform_app, sec_audio_prop)
+get_prop(platform_app, dynamic_system_prop)
+get_prop(platform_app, vendor_sehal_init_prop)
+get_prop(platform_app, mobicore_prop)
+get_prop(platform_app, vendor_sec_vaultkeeper_prop)
+get_prop(platform_app, exported_wifi_prop)
+get_prop(platform_app, ap_serial_prop)
+get_prop(platform_app, vzw_os_prop)
+get_prop(platform_app, vendor_em_tstate_prop)
+get_prop(platform_app, vendor_mobicore_prop)
+get_prop(platform_app, chipname_prop)
+get_prop(platform_app, incremental_prop)
+get_prop(platform_app, vendor_uwb_feature_prop)
 get_prop(platform_app, vendor_display_notch_prop)
 get_prop(platform_app, vendor_mpctl_prop)
+set_prop(platform_app, dumpstate_options_prop)
+set_prop(platform_app, ctl_bugreport_prop)
+set_prop(platform_app, ctl_dumpstate_prop)
+set_prop(platform_app, exported_system_prop)
+set_prop(platform_app, nfc_prop)
 hal_client_domain(platform_app, hal_fingerprint)
+hal_client_domain(platform_app, hal_uwb)
+hal_client_domain(platform_app, vendor_hal_dspmanager)
 hal_client_domain(platform_app, vendor_hal_perf)
 hal_client_domain(platform_app, vendor_hal_qspmhal)
 hal_client_domain(platform_app, vendor_hal_scve)
 hal_client_domain(platform_app, vendor_hal_pasrmanager)
 hal_client_domain(platform_app, vendor_hal_cvp)
-type platform_app, domain;
+hal_client_domain(platform_app, hal_drk)
+hal_client_domain(platform_app, hal_converter)
+hal_client_domain(platform_app, hal_ucmtlc)
+hal_client_domain(platform_app, hal_authfw)
+hal_client_domain(platform_app, hal_engmode)
+hal_client_domain(platform_app, hal_mpp)
+hal_client_domain(platform_app, hal_softsimd)
+type platform_app, domain, platformappdomain;

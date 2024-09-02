@@ -1,0 +1,1 @@
+allowxperm { appdomain -ephemeral_app -isolated_app } sdcard_type:ioctl file { 0x6c11 0x6c15 };

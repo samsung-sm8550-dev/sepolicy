@@ -1,2 +1,2 @@
-neverallow { domain -init -statsd -system_server -vold } stats_config_data_file:file *;
-neverallow { domain -init -statsd -system_server -vold } stats_config_data_file:dir *;
+neverallow { domain -init -statsd -system_server -vold } stats_data_file:file *;
+neverallow { domain -init -statsd -system_server -vold } stats_data_file:dir *;

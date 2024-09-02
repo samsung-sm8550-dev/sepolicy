@@ -1,2 +1,11 @@
+allow mtp self:socket create_socket_perms_no_ioctl;
 allow mtp self:pppox_socket create_socket_perms_no_ioctl;
+allow mtp self:capability net_raw;
+allow mtp self:cap_userns net_raw;
+allow mtp ppp:process signal;
+allow mtp vpn_data_file:dir search;
+allow mtp mtp:pppox_socket create_socket_perms_no_ioctl;
+allow mtp kernel:system module_request;
+net_domain(mtp)
 type mtp, domain;
+type mtp_exec, exec_type, file_type, system_file_type;

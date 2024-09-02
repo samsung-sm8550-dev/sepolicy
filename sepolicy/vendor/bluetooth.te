@@ -1,10 +1,62 @@
+allow bluetooth dumplog_data_file:dir create_dir_perms;
+allow bluetooth dumplog_data_file:file create_file_perms;
+allow bluetooth sysfs_sec:file rw_file_perms;
+allow bluetooth hci_attach_dev:chr_file rw_file_perms;
+allow bluetooth serial_device:chr_file rw_file_perms;
+allow bluetooth tun_device:chr_file rw_file_perms;
+allow bluetooth uart_device:chr_file rw_file_perms;
+allow bluetooth app_efs_file:dir r_dir_perms;
+allow bluetooth app_efs_file:file r_file_perms;
+allow bluetooth proc_info_file:file { open read };
+allow bluetooth convergence_data_file:dir r_dir_perms;
+allow bluetooth convergence_data_file:file rw_file_perms;
+allow bluetooth sec_wifi_data_file:file r_file_perms;
+allow bluetooth persona_service:service_manager find;
+allow bluetooth secure_storage:fd *;
+allow bluetooth secure_storage_device:sock_file write;
+allow bluetooth self:process ptrace;
+allow bluetooth sysfs_ss_writable:file rw_file_perms;
+allow bluetooth sysfs_wake_lock:file rw_file_perms;
+allow bluetooth fwk_scheduler_hwservice:hwservice_manager find;
+allow bluetooth system_app_data_file:file { getattr read };
+allow bluetooth mediaextractor_service:service_manager find;
+allow bluetooth mediametrics_service:service_manager find;
+allow bluetooth hal_secure_storage_daemon_hwservice:hwservice_manager find;
+allow bluetooth hal_secure_storage_daemon_default:binder { call transfer };
+allow bluetooth hal_secure_storage_daemon_default:fd *;
+allow bluetooth hal_bluetooth_a2dp_hwservice:hwservice_manager find;
+allow bluetooth sec_data_file:dir r_dir_perms;
+allow bluetooth sec_data_file:file r_file_perms;
+allow bluetooth vaultkeeper_socket:dir search;
+allow bluetooth kmsg_device:chr_file r_file_perms;
+allow bluetooth hal_vaultkeeper_server_hwservice:hwservice_manager find;
+allow bluetooth vaultkeeperd:binder { call transfer };
+allow bluetooth vaultkeeperd:fd *;
+allow bluetooth tcpopd_socket:sock_file w_file_perms;
 allow bluetooth gpuservice:binder { call transfer };
 allow bluetooth gpuservice:fd *;
+allow bluetooth sem_wifi_service:service_manager find;
+allow bluetooth sepunion_service:service_manager find;
+allow bluetooth wbrc_dev:chr_file { open read write };
+allow bluetooth hal_audio_hwservice:hwservice_manager find;
+allow bluetooth surfaceflinger:binder transfer;
+allow bluetooth hal_rtss_default:binder { call transfer };
+allow bluetooth hal_rtss_default:fd *;
+allow bluetooth hal_vaultkeeper_service:service_manager find;
+allow bluetooth hal_vaultkeeperd_default:binder { call transfer };
+allow bluetooth hal_vaultkeeperd_default:fd *;
 allow bluetooth hal_audio:binder transfer;
 allowxperm bluetooth self:ioctl udp_socket { 0x6900 0x6902 };
 allowxperm bluetooth self:ioctl udp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 allowxperm bluetooth self:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
+r_dir_file(bluetooth, secure_storage_device)
+r_dir_file(bluetooth, sysfs_ss_writable)
+unix_socket_connect(bluetooth, property, secure_storage)
+get_prop(bluetooth, system_prop)
 get_prop(bluetooth, vendor_bluetooth_prop)
+get_prop(bluetooth, hwservicemanager_prop)
+set_prop(bluetooth, wifi_log_prop)
+hal_attribute(bluetooth)
 hal_client_domain(bluetooth, vendor_hal_perf)
 hal_client_domain(bluetooth, vendor_hal_qspmhal)
 hal_client_domain(bluetooth, vendor_hal_btconfigstore)

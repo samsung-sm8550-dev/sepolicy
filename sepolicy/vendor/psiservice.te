@@ -7,6 +7,7 @@ allow vendor_psiservice vendor_sysfs_mem_offline:file rw_file_perms;
 allow vendor_psiservice vendor_sysfs_mem_offline:dir r_dir_perms;
 allow vendor_psiservice self:capability sys_resource;
 allow vendor_psiservice self:cap_userns sys_resource;
+init_daemon_domain(vendor_psiservice)
 get_prop(vendor_psiservice, vendor_pasr_prop)
 get_prop(vendor_psiservice, boot_status_prop)
 hal_client_domain(vendor_psiservice, hal_allocator)

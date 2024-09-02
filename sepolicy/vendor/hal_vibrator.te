@@ -4,33 +4,36 @@ expandtypeattribute(hal_vibrator_server)
 allow hal_vibrator_client hal_vibrator_server:binder { call transfer };
 allow hal_vibrator_client hal_vibrator_server:binder transfer;
 allow hal_vibrator_client hal_vibrator_server:fd *;
-allow hal_vibrator_client hal_vibrator_hwservice:hwservice_manager find;
-allow hal_vibrator_client hal_vibrator_service:service_manager find;
 allow hal_vibrator_server hal_vibrator_client:binder transfer;
 allow hal_vibrator_server hal_vibrator_client:binder { call transfer };
 allow hal_vibrator_server hal_vibrator_client:fd *;
-allow hal_vibrator_server hal_vibrator_hwservice:hwservice_manager { add find };
-allow hal_vibrator_server hidl_base_hwservice:hwservice_manager add;
-allow hal_vibrator_server su:tcp_socket { accept getopt read write };
 allow hal_vibrator_server servicemanager:binder { call transfer };
 allow hal_vibrator_server servicemanager:fd *;
 allow hal_vibrator_server dumpstate:fifo_file write;
 allow hal_vibrator sysfs_vibrator:file rw_file_perms;
 allow hal_vibrator sysfs_vibrator:dir search;
-allow hal_vibrator fwk_vibrator_control_service:service_manager find;
 allow hal_vibrator input_device:dir r_dir_perms;
 allow hal_vibrator input_device:chr_file rw_file_perms;
+allow hal_vibrator_default sysfs:file rw_file_perms;
+allow hal_vibrator_default sysfs_ss_writable:file rw_file_perms;
+allow hal_vibrator_default input_device:dir r_dir_perms;
+allow hal_vibrator_default input_device:chr_file rw_file_perms;
 allow hal_vibrator_default sysfs_leds:file rw_file_perms;
+allow hal_vibrator_default app_efs_file:dir rw_dir_perms;
+allow hal_vibrator_default app_efs_file:file create_file_perms;
+allow hal_vibrator_default sysfs_ski_system_writable:file rw_file_perms;
+allow hal_vibrator_default system_app:binder transfer;
 allow hal_vibrator_default mnt_vendor_file:dir search;
-allow hal_vibrator_default vendor_sysfs_haptics:file rw_file_perms;
-allow hal_vibrator_default hwservicemanager:binder { call transfer };
+init_daemon_domain(hal_vibrator_default)
 r_dir_file(hal_vibrator, sysfs_leds)
+r_dir_file(hal_vibrator_default, proc_bus_input)
 r_dir_file(hal_vibrator_default, sysfs_leds)
+r_dir_file(hal_vibrator_default, sysfs_vib_support)
 r_dir_file(hal_vibrator_default, vendor_persist_haptics_file)
-r_dir_file(hal_vibrator_default, vendor_sysfs_haptics)
 get_prop(hal_vibrator, vendor_soc_id_prop)
-get_prop(hal_vibrator_default, vendor_qc_aon_prop)
 hal_server_domain(hal_vibrator_default, hal_vibrator)
-add_service(hal_vibrator_server, hal_vibrator_service)
+hal_attribute_service(hal_vibrator, hal_vibrator_service)
+hal_attribute_hwservice(hal_vibrator, hal_vibrator_hwservice)
 type hal_vibrator_default, domain;
 type hal_vibrator_default_exec, exec_type, file_type, vendor_file_type;
+type hal_vibrator_hwservice, hwservice_manager_type, protected_hwservice;

@@ -1,0 +1,6 @@
+allow prepare_param block_device:dir r_dir_perms;
+allow prepare_param block_device:dir { add_name write };
+allow prepare_param block_device:lnk_file r_file_perms;
+allow prepare_param block_device:lnk_file create;
+allow prepare_param paramblk_device:blk_file { rw_file_perms setattr };
+type prepare_param, coredomain, domain;

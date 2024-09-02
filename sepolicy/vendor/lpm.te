@@ -1,0 +1,65 @@
+allow lpm proc_sysrq:file rw_file_perms;
+allow lpm ashmem_device:chr_file execute;
+allow lpm graphics_device:dir search;
+allow lpm graphics_device:dir rw_dir_perms;
+allow lpm graphics_device:chr_file rw_file_perms;
+allow lpm input_device:dir r_dir_perms;
+allow lpm input_device:chr_file rw_file_perms;
+allow lpm block_device:dir r_dir_perms;
+allow lpm paramblk_device:blk_file rw_file_perms;
+allow lpm tty_device:chr_file rw_file_perms;
+allow lpm rtc_device:chr_file r_file_perms;
+allow lpm efs_file:dir rw_dir_perms;
+allow lpm sec_efs_file:file create_file_perms;
+allow lpm sec_efs_file:dir create_dir_perms;
+allow lpm app_efs_file:dir rw_dir_perms;
+allow lpm app_efs_file:file create_file_perms;
+allow lpm battery_efs_file:dir rw_dir_perms;
+allow lpm battery_efs_file:file create_file_perms;
+allow lpm imei_efs_file:dir search;
+allow lpm imei_efs_file:file r_file_perms;
+allow lpm system_file:file execute_no_trans;
+allow lpm toolbox_exec:file rx_file_perms;
+allow lpm powerctl_prop:property_service set;
+allow lpm sysfs_battery:file rw_file_perms;
+allow lpm sysfs_ss_writable:file rw_file_perms;
+allow lpm sysfs_sec:file rw_file_perms;
+allow lpm sysfs_lcd_writable:file rw_file_perms;
+allow lpm sysfs_lcd_writable:dir r_dir_perms;
+allow lpm sysfs_type:dir { open read search };
+allow lpm sysfs_type:lnk_file r_file_perms;
+allow lpm sysfs_vibrator:file rw_file_perms;
+allow lpm shell_exec:file rx_file_perms;
+allow lpm sec_debugfs:dir rw_dir_perms;
+allow lpm sysfs_android_usb:file rw_file_perms;
+allow lpm sysfs_rtc:file r_file_perms;
+allow lpm sysfs_led_writable:file rw_file_perms;
+allow lpm sysfs_usb:file rw_file_perms;
+allow lpm sysfs_power:file rw_file_perms;
+allow lpm proc_reset_reason:file rw_file_perms;
+allow lpm proc_pwrsrc:file rw_file_perms;
+allow lpm proc_extra:file rw_file_perms;
+allow lpm sysfs_ski_touch_writable:dir r_dir_perms;
+allow lpm sysfs_ski_touch_writable:file rw_file_perms;
+allow lpm sysfs_ski_display_writable:file rw_file_perms;
+allow lpm alarm_device:chr_file r_file_perms;
+allow lpm proc_bus_input:file r_file_perms;
+allow lpm cache_file:dir create_dir_perms;
+allow lpm cache_file:file create_file_perms;
+allow lpm kernel:system { syslog_mod syslog_read };
+allow lpm self:capability chown;
+allow lpm ccic_device:chr_file rw_file_perms;
+allow lpm vendor_sysfs_usb_supply:file rw_file_perms;
+allow lpm vendor_sysfs_graphics:file rw_file_perms;
+type_transition lpm efs_file:dir sec_efs_file "lpm";
+r_dir_file(lpm, sysfs_ski_power_readable)
+r_dir_file(lpm, sysfs_ski_hal_readable)
+r_dir_file(lpm, sysfs_ski_key_writable)
+r_dir_file(lpm, sysfs_ski_system_writable)
+r_dir_file(lpm, sysfs_vib_support)
+r_dir_file(lpm, vendor_sysfs_battery_supply)
+unix_socket_connect(lpm, property, init)
+get_prop(lpm, exported2_default_prop)
+hal_client_domain(lpm, hal_light)
+type lpm, coredomain, domain;
+type lpm_exec, exec_type, file_type, system_file_type;

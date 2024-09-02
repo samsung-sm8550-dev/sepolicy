@@ -1,0 +1,6 @@
+allow cp_vername vendor_toolbox_exec:file execute_no_trans;
+init_daemon_domain(cp_vername)
+r_dir_file(cp_vername, sysfs_type)
+set_prop(cp_vername, vendor_model_suffix_prop)
+type cp_vername, domain;
+type cp_vername_exec, exec_type, file_type, vendor_file_type;

@@ -7,13 +7,9 @@ allow vendor_location_xtwifi_client vendor_location_socket:lnk_file { getattr op
 allow vendor_location_xtwifi_client vendor_location_socket:sock_file create_file_perms;
 allow vendor_location_xtwifi_client vendor_location_socket:dir rw_dir_perms;
 allow vendor_location_xtwifi_client vendor_hal_gnss_qti:unix_dgram_socket sendto;
-allow vendor_location_xtwifi_client hwservicemanager:binder { call transfer };
 allow vendor_location_xtwifi_client system_server:binder { call transfer };
 allow vendor_location_xtwifi_client system_server:binder transfer;
 allow vendor_location_xtwifi_client system_server:fd *;
-allow vendor_location_xtwifi_client system_server:fifo_file { append write };
-allow vendor_location_xtwifi_client property_socket:sock_file write;
-allow vendor_location_xtwifi_client vendor_location_prop:property_service set;
 allow vendor_location_xtwifi_client sysfs_wake_lock:file rw_file_perms;
 allow vendor_location_xtwifi_client self:capability2 block_suspend;
 allow vendor_location_xtwifi_client self:capability2 wake_alarm;
@@ -24,27 +20,17 @@ allow vendor_location_xtwifi_client system_suspend_server:fd *;
 allow vendor_location_xtwifi_client system_suspend_hwservice:hwservice_manager find;
 allow vendor_location_xtwifi_client hidl_manager_hwservice:hwservice_manager find;
 allow vendor_location_xtwifi_client hal_system_suspend_service:service_manager find;
-allow vendor_location_xtwifi_client servicemanager:binder { call transfer };
 allow vendor_location_xtwifi_client mnt_vendor_file:dir search;
 allow vendor_location_xtwifi_client vendor_persist_rfs_shared_hlos_file:dir r_dir_perms;
 allow vendor_location_xtwifi_client vendor_persist_rfs_shared_hlos_file:file rw_file_perms;
 allow vendor_location_xtwifi_client vendor_location_lowi_server:unix_dgram_socket sendto;
+allow vendor_location_xtwifi_client vendor_location_xtwifi_inetagent:unix_dgram_socket sendto;
 allow vendor_location_xtwifi_client hal_wifi_default:unix_dgram_socket sendto;
 allow vendor_location_xtwifi_client vendor_location_slim_daemon:unix_dgram_socket sendto;
-allow vendor_location_xtwifi_client su:fifo_file append;
-allow vendor_location_xtwifi_client anr_data_file:file append;
-allow vendor_location_xtwifi_client dumpstate:fd *;
-allow vendor_location_xtwifi_client dumpstate:fifo_file { append write };
-allow vendor_location_xtwifi_client incidentd:fd *;
-allow vendor_location_xtwifi_client incidentd:fifo_file { append write };
-allow vendor_location_xtwifi_client tombstoned:fd *;
-allow vendor_location_xtwifi_client tombstoned_crash_socket:sock_file write;
-allow vendor_location_xtwifi_client tombstone_data_file:file append;
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, init)
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, tombstoned)
-unix_socket_connect(vendor_location_xtwifi_client, vendor_ssgtzd, vendor_ssgtzd)
 get_prop(vendor_location_xtwifi_client, hwservicemanager_prop)
-get_prop(vendor_location_xtwifi_client, vendor_location_prop)
+set_prop(vendor_location_xtwifi_client, vendor_location_prop)
+binder_use(vendor_location_xtwifi_client)
+hwbinder_use(vendor_location_xtwifi_client)
 net_domain(vendor_location_xtwifi_client)
 type vendor_location_xtwifi_client, domain;
 type vendor_location_xtwifi_client_exec, exec_type, file_type, vendor_file_type;

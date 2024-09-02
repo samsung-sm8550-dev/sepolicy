@@ -32,8 +32,6 @@ neverallow hal_configstore_server sdcard_type:dir { append audit_access execmod 
 neverallow hal_configstore_server sdcard_type:file *;
 neverallow hal_configstore_server fuse:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_configstore_server fuse:file *;
-neverallow hal_configstore_server fuseblk:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
-neverallow hal_configstore_server fuseblk:file *;
 neverallow hal_configstore_server sdcardfs:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_configstore_server sdcardfs:file *;
 neverallow hal_configstore_server vfat:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
@@ -46,24 +44,21 @@ neverallow hal_configstore_server self:cap_userns *;
 neverallow hal_configstore_server self:cap2_userns *;
 allow hal_configstore_client hal_configstore_server:binder { call transfer };
 allow hal_configstore_client hal_configstore_server:fd *;
-allow hal_configstore_client hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;
 allow hal_configstore_server hal_configstore_client:binder transfer;
-allow hal_configstore_server hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { add find };
-allow hal_configstore_server hidl_base_hwservice:hwservice_manager add;
-allow hal_configstore_server su:fifo_file append;
 allow hal_configstore_server anr_data_file:file append;
 allow hal_configstore_server dumpstate:fd *;
 allow hal_configstore_server dumpstate:fifo_file { append write };
 allow hal_configstore_server incidentd:fd *;
 allow hal_configstore_server incidentd:fifo_file { append write };
 allow hal_configstore_server system_server:fifo_file { append write };
-allow hal_configstore_server tombstoned:unix_stream_socket connectto;
 allow hal_configstore_server tombstoned:fd *;
-allow hal_configstore_server tombstoned_crash_socket:sock_file write;
 allow hal_configstore_server tombstone_data_file:file append;
 allow hal_configstore_default vendor_hal_display_config_hwservice:hwservice_manager find;
 allow hal_configstore_default hal_graphics_composer_default:binder { call transfer };
 allow hal_configstore_default hal_graphics_composer_default:fd *;
+init_daemon_domain(hal_configstore_default)
+unix_socket_connect(hal_configstore_server, tombstoned_crash, tombstoned)
 hal_server_domain(hal_configstore_default, hal_configstore)
+hal_attribute_hwservice(hal_configstore, hal_configstore_ISurfaceFlingerConfigs)
 type hal_configstore_default, domain;
 type hal_configstore_default_exec, exec_type, file_type, vendor_file_type;

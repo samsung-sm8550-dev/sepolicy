@@ -1,0 +1,3 @@
+typealias(qbt_device)
+typealiasactual(qbt_device)
+type vendor_qbt_device, dev_type;

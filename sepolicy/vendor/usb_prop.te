@@ -1,1 +1,2 @@
 type usb_prop, core_property_type, property_type, system_property_type, system_restricted_property_type;
+vendor_internal_prop(vendor_usb_prop)

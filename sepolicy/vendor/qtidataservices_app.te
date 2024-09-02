@@ -1,10 +1,4 @@
-allow vendor_qtidataservices_app vendor_qtidataservices_app_userfaultfd:anon_inode { create ioctl read };
-allow vendor_qtidataservices_app appdomain_tmpfs:file { execute getattr map read write };
-allow vendor_qtidataservices_app hwservicemanager:binder { call transfer };
 allow vendor_qtidataservices_app system_file:dir r_dir_perms;
-allow vendor_qtidataservices_app property_socket:sock_file write;
-allow vendor_qtidataservices_app init:unix_stream_socket connectto;
-allow vendor_qtidataservices_app telephony_status_prop:property_service set;
 allow vendor_qtidataservices_app app_api_service:service_manager find;
 allow vendor_qtidataservices_app activity_service:service_manager find;
 allow vendor_qtidataservices_app self:qipcrtr_socket create_socket_perms_no_ioctl;
@@ -13,13 +7,13 @@ allow vendor_qtidataservices_app radio_service:service_manager find;
 allow vendor_qtidataservices_app vendor_sysfs_data:file r_file_perms;
 allow vendor_qtidataservices_app vendor_netmgrd:fd *;
 allow vendor_qtidataservices_app vendor_netmgrd:udp_socket { getattr getopt read write };
-type_transition vendor_qtidataservices_app tmpfs:file appdomain_tmpfs;
-type_transition vendor_qtidataservices_app vendor_qtidataservices_app:anon_inode vendor_qtidataservices_app_userfaultfd "[userfaultfd]";
 get_prop(vendor_qtidataservices_app, hwservicemanager_prop)
 get_prop(vendor_qtidataservices_app, vendor_cnd_prop)
-get_prop(vendor_qtidataservices_app, telephony_status_prop)
+set_prop(vendor_qtidataservices_app, telephony_status_prop)
+hwbinder_use(vendor_qtidataservices_app)
+app_domain(vendor_qtidataservices_app)
 net_domain(vendor_qtidataservices_app)
 hal_client_domain(vendor_qtidataservices_app, vendor_hal_perf)
 hal_client_domain(vendor_qtidataservices_app, vendor_hal_datafactory_qti)
 hal_client_domain(vendor_qtidataservices_app, vendor_hal_iwlanservice_qti)
-type vendor_qtidataservices_app, appdomain, domain, vendor_hal_cacertservice_qti, vendor_hal_cacertservice_qti_server, vendor_halserverdomain;
+type vendor_qtidataservices_app, domain, vendor_hal_cacertservice_qti, vendor_hal_cacertservice_qti_server, vendor_halserverdomain;

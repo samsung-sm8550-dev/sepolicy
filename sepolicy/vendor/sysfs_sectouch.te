@@ -1,0 +1,3 @@
+typealias(sysfs_sectouch)
+typealiasactual(sysfs_sectouch)
+type vendor_sysfs_sectouch, fs_type, sysfs_type;

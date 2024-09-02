@@ -1,7 +1,3 @@
-allow vendor_mmi_sys vendor_diag_device:chr_file rw_file_perms;
 r_dir_file(vendor_mmi_sys, vendor_sysfs_graphics)
-r_dir_file(vendor_mmi_sys, vendor_sysfs_diag)
-hal_client_domain(vendor_mmi_sys, hal_allocator)
-hal_client_domain(vendor_mmi_sys, vendor_hal_diaghal)
 hal_client_domain(vendor_mmi_sys, vendor_hal_factory_qti)
 type vendor_mmi_sys, domain;

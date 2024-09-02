@@ -1,0 +1,34 @@
+allow hermesd hal_keymint_default:binder transfer;
+allow hermesd vendor_gatekeeper_data_file:dir create_dir_perms;
+allow hermesd vendor_gatekeeper_data_file:file create_file_perms;
+allow hermesd k250a_device:chr_file rw_file_perms;
+allow hermesd tz_user_device:chr_file rw_file_perms;
+allow hermesd ssp_device:chr_file rw_file_perms;
+allow hermesd dumpstate:fifo_file write;
+allow hermesd tee_device:chr_file rw_file_perms;
+allow hermesd ion_device:chr_file rw_file_perms;
+allow hermesd self:capability2 wake_alarm;
+allow hermesd hal_hermes_service:service_manager find;
+allow hermesd hal_drk_service:service_manager find;
+allow hermesd hal_hermes_default:binder { call transfer };
+allow hermesd hal_hermes_default:fd *;
+allow hermesd tzdaemon:fd *;
+allow hermesd tee_efs_file:dir search;
+allow hermesd vendor_spcom_device:chr_file rw_file_perms;
+allow hermesd vendor_spss_utils_device:chr_file rw_file_perms;
+allow hermesd vendor_skp_device:chr_file rw_file_perms;
+allow hermesd vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hermesd vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allowxperm hermesd vendor_spss_utils_device:ioctl chr_file 0x5302;
+allowxperm hermesd vendor_spcom_device:ioctl chr_file { 0x53e8 range 0x53ea 0x53ed 0x53f0 };
+init_daemon_domain(hermesd)
+get_prop(hermesd, vendor_tztsdaemon_prop)
+get_prop(hermesd, tzdaemon_prop)
+get_prop(hermesd, vendor_teegris_prop)
+set_prop(hermesd, vendor_securenvm_prop)
+set_prop(hermesd, vendor_securehw_prop)
+hal_server_domain(hermesd, hal_weaver)
+hal_client_domain(hermesd, hal_keymint)
+hal_client_domain(hermesd, hal_drk)
+type hermesd, domain;
+type hermesd_exec, exec_type, file_type, vendor_file_type;

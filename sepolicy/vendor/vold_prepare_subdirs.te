@@ -1,1 +1,14 @@
+allow vold_prepare_subdirs vendor_configs_file:file r_file_perms;
+allow vold_prepare_subdirs vold:netlink_socket { read write };
+allow vold_prepare_subdirs knox_system_misc_file:dir { create_dir_perms relabelfrom };
+allow vold_prepare_subdirs knox_system_misc_file:file { create_file_perms relabelfrom };
+allow vold_prepare_subdirs sec_efs_file:dir create_dir_perms;
+allow vold_prepare_subdirs sec_efs_file:file create_file_perms;
+allow vold_prepare_subdirs knox_dar_device:chr_file r_file_perms;
+allow vold_prepare_subdirs userdata_block_device:blk_file rw_file_perms;
+allow vold_prepare_subdirs system_data_file:dir setattr;
+allow vold_prepare_subdirs self:capability fsetid;
+allow vold_prepare_subdirs sec_data_file:dir create_dir_perms;
+allow vold_prepare_subdirs sec_data_file:file create_file_perms;
 type vold_prepare_subdirs, coredomain, domain;
+type vold_prepare_subdirs_exec, exec_type, file_type, system_file_type;

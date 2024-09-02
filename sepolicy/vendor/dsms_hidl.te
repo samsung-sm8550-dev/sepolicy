@@ -1,0 +1,13 @@
+allow dsms_hidl servicemanager:binder { call transfer };
+allow dsms_hidl servicemanager:fd *;
+allow dsms_hidl system_server:binder { call transfer };
+allow dsms_hidl system_server:fd *;
+allow dsms_hidl dsms_service:service_manager find;
+allow dsms_hidl dsms_data_file:dir search;
+allow dsms_hidl dsms_data_file:file { append getattr lock open };
+allow dsms_hidl dsmsca:binder transfer;
+allow dsms_hidl hal_wsm_default:binder transfer;
+allow dsms_hidl vaultkeeperd:binder transfer;
+add_hwservice(dsms_hidl, hal_dsms_server_hwservice)
+type dsms_hidl, coredomain, domain;
+type dsms_hidl_exec, exec_type, file_type, system_file_type;

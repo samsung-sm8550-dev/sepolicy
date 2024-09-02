@@ -1,0 +1,16 @@
+allow flash_recovery_sec cache_file:dir create_dir_perms;
+allow flash_recovery_sec cache_file:file create_file_perms;
+allow flash_recovery_sec cache_file:lnk_file r_file_perms;
+allow flash_recovery_sec cache_recovery_file:dir create_dir_perms;
+allow flash_recovery_sec cache_recovery_file:file create_file_perms;
+allow flash_recovery_sec fota_data_file:dir create_dir_perms;
+allow flash_recovery_sec fota_data_file:file create_file_perms;
+allow flash_recovery_sec flash_recovery_sec:capability chown;
+allow flash_recovery_sec system_file:file rx_file_perms;
+allow flash_recovery_sec block_device:dir search;
+allow flash_recovery_sec boot_block_device:blk_file r_file_perms;
+allow flash_recovery_sec recovery_block_device:blk_file rw_file_perms;
+allow flash_recovery_sec proc_drop_caches:file w_file_perms;
+set_prop(flash_recovery_sec, system_fota_prop)
+type flash_recovery_sec, coredomain, domain;
+type flash_recovery_sec_exec, exec_type, file_type, system_file_type;

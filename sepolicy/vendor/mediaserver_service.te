@@ -1,1 +1,1 @@
-type mediaserver_service, isolated_compute_allowed_service, service_manager_type;
+type mediaserver_service, ephemeral_app_api_service, service_manager_type;

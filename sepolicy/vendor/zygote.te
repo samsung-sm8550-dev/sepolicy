@@ -1,1 +1,69 @@
+allow zygote surfaceflinger:binder transfer;
+allow zygote kernel:system module_request;
+allow zygote users_system_data_file:dir r_dir_perms;
+allow zygote users_system_data_file:file r_file_perms;
+allow zygote audit_log:dir rw_dir_perms;
+allow zygote audit_log:file create_file_perms;
+allow zygote proc_avc_msg:file rw_file_perms;
+allow zygote dumplog_data_file:dir create_dir_perms;
+allow zygote dumplog_data_file:file create_file_perms;
+allow zygote anr_data_file:file rw_file_perms;
+allow zygote container_data_file:dir { create_dir_perms mounton };
+allow zygote graphics_device:chr_file rw_file_perms;
+allow zygote hci_attach_dev:chr_file rw_file_perms;
+allow zygote labeledfs:filesystem unmount;
+allow zygote sdcard_type:dir create_dir_perms;
+allow zygote sdcard_type:file create_file_perms;
+allow zygote sdcard_type:filesystem unmount;
+allow zygote self:capability { fsetid kill net_admin net_raw sys_nice sys_resource };
+allow zygote serial_device:chr_file rw_file_perms;
+allow zygote sysfs_battery:file rw_file_perms;
+allow zygote sysfs_devices_system_cpu:file rw_file_perms;
+allow zygote tmpfs:dir r_dir_perms;
+allow zygote tmpfs:filesystem unmount;
+allow zygote block_device:dir r_dir_perms;
+allow zygote vold_device:blk_file r_file_perms;
+allow zygote system_data_file:dir mounton;
+allow zygote fuse:dir mounton;
+allow zygote sdcardfs:dir mounton;
+allow zygote sdcardfs:filesystem unmount;
+allow zygote media_rw_data_file:filesystem unmount;
+allow zygote media_rw_data_file:dir mounton;
+allow zygote media_rw_data_file:dir { create_dir_perms mounton };
+allow zygote media_rw_data_file:file create_file_perms;
+allow zygote dalvikcache_data_file:lnk_file create_file_perms;
+allow zygote debugfs_tracing:file getattr;
+allow zygote system_server:binder { call transfer };
+allow zygote system_server:fd *;
+allow zygote cgroup:file rw_file_perms;
+allow zygote app_fonts_data_file:file create_file_perms;
+allow zygote app_fonts_data_file:dir rw_dir_perms;
+allow zygote themecenter_data_file:dir r_dir_perms;
+allow zygote themecenter_data_file:file r_file_perms;
+allow zygote storage_stub_file:dir r_dir_perms;
+allow zygote storage_stub_file:file r_file_perms;
+allow zygote ap_device:dir r_dir_perms;
+allow zygote security_spota_file:dir r_dir_perms;
+allow zygote security_spota_file:file r_file_perms;
+allow zygote sec_wifi_data_file:dir r_dir_perms;
+allow zygote vendor_configs_file:file map;
+allow zygote sysfs_ss_writable:file r_file_perms;
+allow zygote sysfs_time_in_state:file r_file_perms;
+allow zygote wifi_data_file:dir r_dir_perms;
+allow zygote asec_apk_file:dir r_dir_perms;
+allow zygote knox_dar_device:chr_file r_file_perms;
+allow zygote sec_efs_file:dir create_dir_perms;
+allow zygote sec_efs_file:file create_file_perms;
+allow zygote proc_sysrq:file rw_file_perms;
+dontaudit zygote blocked_app:process dyntransition;
+r_dir_file(zygote, bluetooth_efs_file)
+r_dir_file(zygote, mnt_media_rw_file)
+get_prop(zygote, device_logging_prop)
+get_prop(zygote, vendor_zygoteinit_prop)
+get_prop(zygote, storage_config_prop)
+get_prop(zygote, graphics_vulkan_prop)
+set_prop(zygote, system_prop)
+set_prop(zygote, csc_prop)
+set_prop(zygote, exported_system_prop)
 type zygote, domain;
+type zygote_exec, exec_type, file_type, system_file_type;

@@ -1,3 +1,4 @@
+allow idmap installd:fd *;
 allow idmap resourcecache_data_file:file create_file_perms;
 allow idmap resourcecache_data_file:dir rw_dir_perms;
 allow idmap apk_data_file:file r_file_perms;
@@ -6,10 +7,18 @@ allow idmap apk_tmp_file:file r_file_perms;
 allow idmap apk_tmp_file:dir search;
 allow idmap apk_private_tmp_file:file r_file_perms;
 allow idmap apk_private_tmp_file:dir search;
-allow idmap servicemanager:binder { call transfer };
-allow idmap su:tcp_socket { accept getopt read write };
+allow idmap themecenter_data_file:dir r_dir_perms;
+allow idmap themecenter_data_file:file r_file_perms;
+allow idmap system_app:fd *;
+allow idmap system_app:fifo_file write;
+allow idmap system_app:binder transfer;
+allow idmap dumpstate:fd *;
+allow idmap dumpstate:fifo_file write;
+dontaudit idmap installd:file read;
 r_dir_file(idmap, vendor_app_file)
 r_dir_file(idmap, vendor_overlay_file)
 binder_service(idmap)
+binder_use(idmap)
 add_service(idmap, idmap_service)
 type idmap, domain;
+type idmap_exec, exec_type, file_type, system_file_type;

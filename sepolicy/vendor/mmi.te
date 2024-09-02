@@ -13,10 +13,9 @@ allow vendor_mmi socket_device:dir w_dir_perms;
 allow vendor_mmi vendor_mmi_socket:sock_file create_file_perms;
 allow vendor_mmi mnt_vendor_file:dir r_dir_perms;
 allow vendor_mmi proc:file r_file_perms;
-allow vendor_mmi vendor_diag_device:chr_file rw_file_perms;
 type_transition vendor_mmi socket_device:sock_file vendor_mmi_socket;
 domain_auto_trans(vendor_mmi, vendor_audioftm_exec, vendor_audioftm)
-r_dir_file(vendor_mmi, vendor_sysfs_diag)
+init_daemon_domain(vendor_mmi)
 unix_socket_connect(vendor_mmi, vendor_cnd, vendor_cnd)
 unix_socket_connect(vendor_mmi, vendor_cnd, vendor_netmgrd)
 unix_socket_connect(vendor_mmi, vendor_netmgrd, vendor_cnd)

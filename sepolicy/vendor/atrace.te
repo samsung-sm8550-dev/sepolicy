@@ -1,1 +1,2 @@
+hal_attribute(atrace)
 type atrace, coredomain, domain;

@@ -1,0 +1,25 @@
+allow hal_kgta_client hal_kgta_server:binder { call transfer };
+allow hal_kgta_client hal_kgta_server:binder transfer;
+allow hal_kgta_client hal_kgta_server:fd *;
+allow hal_kgta_client hal_kgta_hwservice:hwservice_manager find;
+allow hal_kgta_server hal_kgta_client:binder transfer;
+allow hal_kgta_server hal_kgta_client:binder { call transfer };
+allow hal_kgta_server hal_kgta_client:fd *;
+allow hal_kgta_default tee_device:chr_file rw_file_perms;
+allow hal_kgta_default ion_device:chr_file rw_file_perms;
+allow hal_kgta_default mobicore_admin_device:chr_file rw_file_perms;
+allow hal_kgta_default mobicore_user_device:chr_file rw_file_perms;
+allow hal_kgta_default tzdaemon:fd *;
+allow hal_kgta_default tz_user_device:chr_file rw_file_perms;
+allow hal_kgta_default tee_efs_file:dir search;
+allow hal_kgta_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow hal_kgta_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(hal_kgta_default)
+r_dir_file(hal_kgta_default, tee_vendor_data_file)
+get_prop(hal_kgta_default, tzdaemon_prop)
+get_prop(hal_kgta_default, vendor_teegris_prop)
+hal_server_domain(hal_kgta_default, hal_kgta)
+add_hwservice(hal_kgta_server, hal_kgta_hwservice)
+type hal_kgta_default, domain;
+type hal_kgta_default_exec, exec_type, file_type, vendor_file_type;
+type hal_kgta_hwservice, hwservice_manager_type;

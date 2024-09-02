@@ -1,7 +1,6 @@
 neverallow { coredomain -dumpstate -init } rebootescrow_hal_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } virtual_face_hal_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } virtual_fingerprint_hal_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_default_prop:file no_rw_file_perms;
+neverallow { coredomain -dumpstate -init } vendor_hdm_internal_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_ctl_netmgrd_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_ctl_port-bridge_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_ctl_qcrild_prop:file no_rw_file_perms;
@@ -60,10 +59,4 @@ neverallow { coredomain -dumpstate -init } vendor_ctl_qmuxd_prop:file no_rw_file
 neverallow { coredomain -dumpstate -init } vendor_pasr_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_qesdk_ready_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_qms_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_nfc_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_qc_aon_prop:file no_rw_file_perms;
 neverallow { coredomain -dumpstate -init } vendor_face3d_producer_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_wfd_vendor_debug_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_ipa_lnx_agent_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_qesdk_one_prop:file no_rw_file_perms;
-neverallow { coredomain -dumpstate -init } vendor_episteme_prop:file no_rw_file_perms;

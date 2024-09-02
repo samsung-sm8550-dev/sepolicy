@@ -1,7 +1,4 @@
 neverallow shell graphics_device:chr_file { read write };
-neverallow shell hal_keymint_service:service_manager find;
-neverallow shell hal_secureclock_service:service_manager find;
-neverallow shell hal_sharedsecret_service:service_manager find;
 neverallow shell file_type:file link;
 neverallow shell hw_random_device:chr_file { audit_access entrypoint execmod map mounton no_rw_file_perms no_x_file_perms quotaon relabelto };
 neverallow shell port_device:chr_file { audit_access entrypoint execmod map mounton no_rw_file_perms no_x_file_perms quotaon relabelto };
@@ -9,12 +6,10 @@ neverallow shell fuse_device:chr_file { audit_access entrypoint execmod map moun
 neverallow shell dev_type:blk_file { audit_access execmod execute map mounton no_rw_file_perms quotaon relabelto };
 neverallow shell input_device:chr_file no_w_file_perms;
 allow shell logcat_exec:file rx_file_perms;
-allow shell logdr_socket:sock_file write;
-allow shell logd:unix_stream_socket connectto;
-allow shell logd_socket:sock_file write;
 allow shell pstorefs:dir search;
 allow shell pstorefs:file r_file_perms;
 allow shell rootfs:dir r_dir_perms;
+allow shell rootfs:file getattr;
 allow shell anr_data_file:dir r_dir_perms;
 allow shell anr_data_file:file r_file_perms;
 allow shell shell_data_file:dir create_dir_perms;
@@ -30,10 +25,6 @@ allow shell trace_data_file:file { r_file_perms unlink };
 allow shell trace_data_file:dir { r_dir_perms remove_name write };
 allow shell profman_dump_data_file:dir { r_dir_perms remove_name write };
 allow shell profman_dump_data_file:file { r_file_perms unlink };
-allow shell nativetest_data_file:dir r_dir_perms;
-allow shell nativetest_data_file:file rx_file_perms;
-allow shell dumpstate_socket:sock_file write;
-allow shell dumpstate:unix_stream_socket connectto;
 allow shell dumpstate:binder call;
 allow shell devpts:chr_file rw_file_perms;
 allow shell tty_device:chr_file rw_file_perms;
@@ -42,12 +33,10 @@ allow shell input_device:dir r_dir_perms;
 allow shell input_device:chr_file r_file_perms;
 allow shell system_file:file x_file_perms;
 allow shell toolbox_exec:file rx_file_perms;
+allow shell tzdatacheck_exec:file rx_file_perms;
 allow shell shell_exec:file rx_file_perms;
 allow shell zygote_exec:file rx_file_perms;
-allow shell boottrace_data_file:dir rw_dir_perms;
-allow shell boottrace_data_file:file create_file_perms;
 allow shell servicemanager:service_manager list;
-allow shell hwservicemanager:binder { call transfer };
 allow shell hwservicemanager:hwservice_manager list;
 allow shell proc_asound:file r_file_perms;
 allow shell proc_filesystems:file r_file_perms;
@@ -62,6 +51,7 @@ allow shell proc_timer:file r_file_perms;
 allow shell proc_uptime:file r_file_perms;
 allow shell proc_version:file r_file_perms;
 allow shell proc_vmstat:file r_file_perms;
+allow shell proc_vmstat:file { getattr lock map open read };
 allow shell proc_zoneinfo:file r_file_perms;
 allow shell sysfs_net:dir r_dir_perms;
 allow shell cgroup_desc_file:file r_file_perms;
@@ -81,6 +71,7 @@ allow shell bootchart_data_file:dir rw_dir_perms;
 allow shell bootchart_data_file:file create_file_perms;
 allow shell self:process ptrace;
 allow shell sysfs:dir r_dir_perms;
+allow shell sysfs:file getattr;
 allow shell sysfs_batteryinfo:dir r_dir_perms;
 allow shell sysfs_batteryinfo:file r_file_perms;
 allow shell ion_device:chr_file rw_file_perms;
@@ -93,19 +84,111 @@ allow shell seapp_contexts_file:file r_file_perms;
 allow shell service_contexts_file:file r_file_perms;
 allow shell sepolicy_file:file r_file_perms;
 allow shell vendor_shell_exec:file rx_file_perms;
-allow shell vendor_location_exec:file rx_file_perms;
-allow shell vendor_location_lowi_server_exec:file rx_file_perms;
-allow shell vendor_location_xtra_daemon_exec:file rx_file_perms;
-allow shell debugfs_tracing_instances:dir search;
-allow shell vendor_debugfs_kgsl_fence_tracing:file r_file_perms;
-allow shell vendor_debugfs_kgsl_fence_tracing:dir r_dir_perms;
+allow shell dumplog_data_file:file create_file_perms;
+allow shell dumplog_data_file:dir create_dir_perms;
+allow shell sysfs_zswap_writable:file r_file_perms;
+allow shell sysfs_vnswap:file r_file_perms;
+allow shell sysfs_time_in_state:file r_file_perms;
+allow shell dumpstate_exec:file x_file_perms;
+allow shell tima_dump_exec:file rx_file_perms;
+allow shell ctl_dumpstate_prop:property_service set;
+allow shell adbd:unix_stream_socket { getopt ioctl };
+allow shell sysfs_lowmemorykiller:file r_file_perms;
+allow shell sysfs_lowmemorykiller:dir r_dir_perms;
+allow shell sysfs_battery:file r_file_perms;
+allow shell sysfs_sec:file { open read };
+allow shell sysfs_sec:file r_file_perms;
+allow shell knox_kap_device:chr_file r_file_perms;
+allow shell debugfs_tracing:file write;
+allow shell audit_log:file r_file_perms;
+allow shell proc_net:file write;
+allow shell proc_boot_stat:file { getattr lock map open read };
+allow shell init_exec:file getattr;
+allow shell proc_uh_log:file { getattr lock map open read };
+allow shell proc_tima_log:file { getattr lock map open read };
+allow shell dqmdbgblk_file:dir getattr;
+allow shell dqmdbgblk_file:file getattr;
+allow shell omr_file:dir getattr;
+allow shell omr_file:file getattr;
+allow shell carrier_file:dir getattr;
+allow shell carrier_file:file getattr;
+allow shell mnt_media_rw_file:dir getattr;
+allow shell mnt_media_rw_file:file getattr;
+allow shell vendor_convergence_data_file:dir r_dir_perms;
+allow shell vendor_convergence_data_file:file r_file_perms;
+allow shell proc_perf:file r_file_perms;
+allow shell vendor_firmware_file:dir r_dir_perms;
+allow shell vendor_firmware_file:file r_file_perms;
+allow shell mobicore_file:dir { getattr open read search };
+allow shell mobicore_file:file getattr;
+allow shell vendor_file_type:file getattr;
+allow shell vendor_file:file getattr;
+allow shell vendor_configs_file:file map;
+allow shell sec_efs_file:dir r_dir_perms;
+allow shell sec_efs_file:file r_file_perms;
+allow shell keydata_data_file:dir r_dir_perms;
+allow shell keydata_data_file:file r_file_perms;
+allow shell keyrefuge_data_file:dir r_dir_perms;
+allow shell keyrefuge_data_file:file r_file_perms;
+allow shell tz_device:chr_file rw_file_perms;
+allow shell freecessmonitor:binder { call transfer };
+allow shell freecessmonitor:fd *;
+allow shell sec_data_file:dir r_dir_perms;
+allow shell sec_data_file:file r_file_perms;
+allow shell rkp_proc:file r_file_perms;
+allow shell kdp_proc:file r_file_perms;
+allow shell shell:icmp_socket create_socket_perms_no_ioctl;
+allow shell sysfs_svc:file r_file_perms;
+allow shell sysfs_svc:dir r_dir_perms;
+allow shell proc_dirty:file r_file_perms;
+allow shell proc_diskstats:file r_file_perms;
+allow shell proc_iostats:file r_file_perms;
+allow shell proc_rkp:file r_file_perms;
+allow shell proc_alta_bigdata:file r_file_perms;
+allow shell spqr_data_file:dir rw_dir_perms;
+allow shell spqr_data_file:file { r_file_perms unlink };
+allow shell tcpopd_socket:sock_file w_file_perms;
+allow shell snap_hwservice:hwservice_manager find;
+allow shell proc_pressure_lmkd_count:file r_file_perms;
+allow shell proc_pressure_lmkd_count:dir r_dir_perms;
+allow shell proc_pressure_lmkd_cricount:file r_file_perms;
+allow shell proc_pressure_lmkd_cricount:dir r_dir_perms;
+allow shell proc_pressure_cpu:file r_file_perms;
+allow shell proc_pressure_cpu:dir r_dir_perms;
+allow shell proc_pressure_io:file r_file_perms;
+allow shell proc_pressure_io:dir r_dir_perms;
+allow shell proc_pressure_mem:file r_file_perms;
+allow shell proc_pressure_mem:dir r_dir_perms;
+allow shell snap_hidl:binder { call transfer };
+allow shell snap_hidl:fd *;
+allow shell proc_enhanced_boot_stat:file r_file_perms;
+allow shell proc_enhanced_boot_stat:dir r_dir_perms;
+allow shell runtime_event_log_tags_file:file getattr;
+allow shell sysfs_sensor_writable:dir r_dir_perms;
+allow shell sysfs_sensor_writable:file rw_file_perms;
+allow shell mnt_sdcard_file:lnk_file r_file_perms;
+allow shell sysfs_ski_usb_readable:file r_file_perms;
+allow shell hal_neuralnetworks_shim_service_gpu_default:binder transfer;
+allow shell attribution_data_file:dir r_dir_perms;
+allow shell attribution_data_file:file r_file_perms;
+allow shell msockets_socket:dir r_dir_perms;
+allow shell msockets_socket:sock_file rw_file_perms;
+allow shell vendor_sysfs_kgsl:file r_file_perms;
+allow shell hal_perf_default:binder { call transfer };
+allow shell hal_perf_default:fd *;
+allow shell firmware_file:dir getattr;
+allow shell firmware_file:file getattr;
+allow shell firmware_file:filesystem getattr;
+allow shell bt_firmware_file:dir { getattr open read search };
+allow shell bt_firmware_file:file getattr;
+allow shell vendor_sdx50m_file:dir create_dir_perms;
+allow shell vendor_sdx50m_file:file create_file_perms;
+allow shell nativetest_data_file:dir r_dir_perms;
+allow shell nativetest_data_file:file r_file_perms;
+allow shell proc_partition:file r_file_perms;
+allow shell proc_graphics:file r_file_perms;
+allow shell vendor_qdsp_device:chr_file r_file_perms;
 allow shell vendor_sysfs_kgsl_shell:file rw_file_perms;
-allow shell vendor_location_edgnss_daemon_exec:file rx_file_perms;
-allow shell vendor_location_engine_service_exec:file rx_file_perms;
-allow shell vendor_location_slim_daemon_exec:file rx_file_perms;
-allow shell vendor_location_xtwifi_client_exec:file rx_file_perms;
-allow shell vendor_qsap_location_exec:file rx_file_perms;
-allow shell vendor_location_test_exec:file rx_file_perms;
 allow vendor_shell vendor_shell_exec:file rx_file_perms;
 allow vendor_shell vendor_toolbox_exec:file rx_file_perms;
 allow vendor_shell shell:fd *;
@@ -117,9 +200,32 @@ allow vendor_shell tty_device:chr_file rw_file_perms;
 allow vendor_shell console_device:chr_file rw_file_perms;
 allow vendor_shell input_device:dir r_dir_perms;
 allow vendor_shell input_device:chr_file rw_file_perms;
-allow vendor_shell property_socket:sock_file write;
-allow vendor_shell init:unix_stream_socket connectto;
-allow vendor_shell persist_vendor_debug_wifi_prop:property_service set;
+allow vendor_shell hal_wvkprov_default:process sigchld;
+allow vendor_shell hal_wvkprov_default:fd *;
+allow vendor_shell tzdaemon:fd *;
+allow vendor_shell tz_user_device:chr_file rw_file_perms;
+allow vendor_shell tee_efs_file:dir search;
+allow vendor_shell rootfs:dir r_dir_perms;
+allow vendor_shell tmpfs:dir r_dir_perms;
+allow vendor_shell mnt_vendor_file:dir r_dir_perms;
+allow vendor_shell wvkprov_exec:file rx_file_perms;
+allow vendor_shell ion_device:chr_file rw_file_perms;
+allow vendor_shell tee_device:chr_file rw_file_perms;
+allow vendor_shell efs_file:dir create_dir_perms;
+allow vendor_shell efs_file:file create_file_perms;
+allow vendor_shell sec_efs_file:dir create_dir_perms;
+allow vendor_shell sec_efs_file:file create_file_perms;
+allow vendor_shell mobicore_user_device:chr_file rw_file_perms;
+allow vendor_shell sec_debugfs:dir r_dir_perms;
+allow vendor_shell sysfs:file { getattr open read };
+allow vendor_shell hal_graphics_composer_default:binder call;
+allow vendor_shell cpk_efs_file:dir search;
+allow vendor_shell dmabuf_heap_device:chr_file r_file_perms;
+allow vendor_shell dmabuf_system_heap_device:chr_file r_file_perms;
+allow vendor_shell sysfs_ski_ufs_writable:dir r_dir_perms;
+allow vendor_shell vendor_qce_device:chr_file rw_file_perms;
+allow vendor_shell vendor_smcinvoke_device:chr_file rw_file_perms;
+allow vendor_shell vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 neverallowxperm shell domain:ioctl tcp_socket { 0x6900 0x6902 };
 neverallowxperm shell domain:ioctl tcp_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 neverallowxperm shell domain:ioctl tcp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
@@ -129,24 +235,53 @@ neverallowxperm shell domain:ioctl udp_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b
 neverallowxperm shell domain:ioctl rawip_socket { 0x6900 0x6902 };
 neverallowxperm shell domain:ioctl rawip_socket { range 0x890b 0x890d 0x8911 0x8914 0x8916 0x8918 0x891a range 0x891c 0x8920 range 0x8922 0x8927 0x8929 range 0x8930 0x8932 range 0x8934 0x8937 0x8939 range 0x8940 0x8941 0x8943 range 0x8946 0x894b range 0x8953 0x8955 range 0x8960 0x8962 range 0x8970 0x8971 range 0x8980 0x8983 range 0x8990 0x8995 range 0x89a0 0x89a3 0x89b0 range 0x89e0 0x89ff };
 neverallowxperm shell domain:ioctl rawip_socket { 0x8b00 0x8b02 0x8b04 0x8b06 0x8b08 0x8b0a 0x8b0c 0x8b0e 0x8b10 range 0x8b14 0x8b1d 0x8b20 0x8b22 0x8b24 0x8b26 0x8b28 range 0x8b2a 0x8b2c range 0x8b30 0x8b36 range 0x8be0 0x8bff };
-dontauditx(shell)
-domain_auto_trans(shell, vendor_diag_exec, vendor_diag)
-domain_auto_trans(shell, vendor_port-bridge_exec, vendor_netmgrd)
-domain_auto_trans(shell, vendor_location_garden_app_exec, vendor_location_garden_app)
-domain_auto_trans(shell, vendor_netmgrd_exec, vendor_netmgrd)
-domain_auto_trans(shell, vendor_diagdciclient_exec, vendor_diag_test)
-domain_auto_trans(shell, vendor_location_test_exec, vendor_location_test)
-domain_auto_trans(shell, vendor_qmi_ping_exec, vendor_qmi_ping)
-domain_auto_trans(shell, vendor_qmi_test_service_exec, vendor_qmi_test_service)
-domain_auto_trans(shell, vendor_sensors_test_exec, vendor_sensors_test)
-domain_auto_trans(shell, vendor_smd_test_exec, vendor_smd_test)
+domain_auto_trans(shell, sec_diag_exec, sec_diag)
 r_dir_file(shell, system_file)
+r_dir_file(shell, apk_data_file)
 r_dir_file(shell, proc_net_type)
 r_dir_file(shell, cgroup)
 r_dir_file(shell, cgroup_v2)
+r_dir_file(shell, sysfs_ss_writable)
+r_dir_file(shell, vendor_sysfs_devfreq)
+r_dir_file(shell, spu_file)
+r_dir_file(shell, vendor_log_file)
+r_dir_file(shell, proc_lmkd_debug)
+r_dir_file(shell, sysfs_gpu)
+r_dir_file(shell, sysfs_camera_writable)
+r_dir_file(shell, proc_ipc_logging)
+r_dir_file(shell, vendor_tombstone_data_file)
+r_dir_file(vendor_shell, vendor_sysfs_scsi_host)
+r_dir_file(vendor_shell, vendor_sysfs_mmc_host)
+r_dir_file(vendor_shell, sysfs_ski_hidden_writable)
+r_dir_file(vendor_shell, sysfs_devices_block)
+unix_socket_connect(shell, logdr, logd)
+unix_socket_connect(shell, logdr, dumpstate)
+unix_socket_connect(shell, logdr, init)
+unix_socket_connect(shell, logd, logd)
+unix_socket_connect(shell, logd, dumpstate)
+unix_socket_connect(shell, logd, init)
+unix_socket_connect(shell, dumpstate, logd)
+unix_socket_connect(shell, dumpstate, dumpstate)
+unix_socket_connect(shell, dumpstate, init)
+unix_socket_connect(shell, property, logd)
+unix_socket_connect(shell, property, dumpstate)
 get_prop(shell, logd_prop)
-get_prop(vendor_shell, persist_vendor_debug_wifi_prop)
+get_prop(shell, dumpstate_options_prop)
+get_prop(shell, vendor_bluetooth_prop)
+get_prop(shell, receiver_error_prop)
+get_prop(shell, device_config_runtime_native_boot_prop)
+get_prop(shell, vendor_zygoteinit_prop)
+get_prop(shell, boot_em_did_prop)
+get_prop(shell, ap_serial_prop)
+get_prop(shell, vendor_gnss_psds_prop)
+get_prop(vendor_shell, tzdaemon_prop)
+get_prop(vendor_shell, vendor_teegris_prop)
+get_prop(vendor_shell, hwservicemanager_prop)
+set_prop(shell, ctl_start_prop)
+hwbinder_use(shell)
 net_domain(shell)
 hal_client_domain(shell, vendor_hal_dspmanager)
 type shell, domain, mlstrustedsubject;
 type vendor_shell, domain;
+type shell_exec, exec_type, file_type, system_file_type;
+type vendor_shell_exec, exec_type, file_type, vendor_file_type;

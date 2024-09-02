@@ -14,3 +14,4 @@ neverallow { appdomain -shell } efs_file:sock_file read;
 neverallow { appdomain -shell } efs_file:fifo_file read;
 neverallow { appdomain -shell } input_device:chr_file { audit_access entrypoint execmod map mounton no_rw_file_perms no_x_file_perms quotaon relabelto };
 neverallow { appdomain -shell } proc_net_tcp_udp:file *;
+neverallow { appdomain -shell } vendor_qdsp_device:chr_file { audit_access entrypoint execmod getattr lock map mounton no_w_file_perms no_x_file_perms open quotaon relabelto watch watch_mount watch_reads watch_sb watch_with_perm };

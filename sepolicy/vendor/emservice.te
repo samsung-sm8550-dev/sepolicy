@@ -1,0 +1,53 @@
+allow emservice rild:binder transfer;
+allow emservice cassd:binder transfer;
+allow emservice vaultkeeperd:binder { call transfer };
+allow emservice vaultkeeperd:binder transfer;
+allow emservice vaultkeeperd:fd *;
+allow emservice ion_device:chr_file rw_file_perms;
+allow emservice tee_device:chr_file rw_file_perms;
+allow emservice vendor_stork_socket:dir r_dir_perms;
+allow emservice sysfs_wake_lock:file rw_file_perms;
+allow emservice self:capability2 block_suspend;
+allow emservice self:cap2_userns block_suspend;
+allow emservice system_suspend_server:binder { call transfer };
+allow emservice system_suspend_server:fd *;
+allow emservice system_suspend_hwservice:hwservice_manager find;
+allow emservice hidl_manager_hwservice:hwservice_manager find;
+allow emservice hal_system_suspend_service:service_manager find;
+allow emservice servicemanager:fd *;
+allow emservice mobicore_user_device:chr_file { getattr ioctl open read write };
+allow emservice sysfs_ski_hidden_writable:file r_file_perms;
+allow emservice sysfs_devices_block:dir r_dir_perms;
+allow emservice steady_block_device:blk_file rw_file_perms;
+allow emservice hal_rtss_service:service_manager find;
+allow emservice hal_rtss_default:binder { call transfer };
+allow emservice hal_rtss_default:fd *;
+allow emservice tzdaemon:fd *;
+allow emservice tz_user_device:chr_file rw_file_perms;
+allow emservice tee_efs_file:dir search;
+allow emservice vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
+allow emservice vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+init_daemon_domain(emservice)
+r_dir_file(emservice, vaultkeeperd)
+r_dir_file(emservice, hal_engmode_default)
+r_dir_file(emservice, vendor_sysfs_scsi_host)
+r_dir_file(emservice, app_efs_file)
+r_dir_file(emservice, vendor_sysfs_mmc_host)
+unix_socket_connect(emservice, vendor_stork, rild)
+unix_socket_connect(emservice, vendor_stork, vendor_storkd)
+unix_socket_connect(emservice, vendor_stork, init)
+unix_socket_connect(emservice, property, rild)
+unix_socket_connect(emservice, property, vendor_storkd)
+get_prop(emservice, hwservicemanager_prop)
+get_prop(emservice, boot_em_did_prop)
+get_prop(emservice, tzdaemon_prop)
+get_prop(emservice, vendor_teegris_prop)
+set_prop(emservice, vendor_em_tstate_prop)
+set_prop(emservice, em_version_prop)
+binder_use(emservice)
+hwbinder_use(emservice)
+vndbinder_use(emservice)
+hal_client_domain(emservice, hal_engmode)
+add_service(emservice, EngineeringMode_vndservice)
+type emservice, domain;
+type emservice_exec, exec_type, file_type, vendor_file_type;

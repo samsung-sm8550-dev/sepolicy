@@ -8,11 +8,10 @@ allow vendor_qfp-daemon vendor_qbt_device:chr_file rw_file_perms;
 allow vendor_qfp-daemon vendor_dmabuf_qseecom_heap_device:chr_file { ioctl open read write };
 allow vendor_qfp-daemon vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl open read write };
 allow vendor_qfp-daemon self:capability2 { block_suspend wake_alarm };
-allow vendor_qfp-daemon vendor_diag_device:chr_file rw_file_perms;
+init_daemon_domain(vendor_qfp-daemon)
 r_dir_file(vendor_qfp-daemon, firmware_file)
 r_dir_file(vendor_qfp-daemon, mnt_vendor_file)
 r_dir_file(vendor_qfp-daemon, vendor_persist_qti_fp_file)
-r_dir_file(vendor_qfp-daemon, vendor_sysfs_diag)
 hal_server_domain(vendor_qfp-daemon, hal_fingerprint)
 type vendor_qfp-daemon, domain;
 type vendor_qfp-daemon_exec, exec_type, file_type, vendor_file_type;

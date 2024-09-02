@@ -4,5 +4,6 @@ allow vendor_init-qti-dcvs-sh self:perf_event { cpu open };
 allow vendor_init-qti-dcvs-sh sysfs:dir { open read };
 allow vendor_init-qti-dcvs-sh vendor_sysfs_devfreq:dir r_dir_perms;
 allow vendor_init-qti-dcvs-sh vendor_sysfs_devfreq:file w_file_perms;
+init_daemon_domain(vendor_init-qti-dcvs-sh)
 type vendor_init-qti-dcvs-sh, domain;
 type vendor_init-qti-dcvs-sh_exec, exec_type, file_type, vendor_file_type;

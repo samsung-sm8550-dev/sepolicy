@@ -1,7 +1,2 @@
-allow vendor_location_garden_app shell:process sigchld;
-allow vendor_location_garden_app shell:fd *;
-allow vendor_location_garden_app devpts:chr_file rw_file_perms;
-allow vendor_location_garden_app adbd:fd *;
-allow vendor_location_garden_app selinuxfs:file { getattr open read };
 type vendor_location_garden_app, domain;
 type vendor_location_garden_app_exec, exec_type, file_type, vendor_file_type;

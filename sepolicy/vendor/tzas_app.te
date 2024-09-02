@@ -1,11 +1,8 @@
-allow vendor_tzas_app vendor_tzas_app_userfaultfd:anon_inode { create ioctl read };
-allow vendor_tzas_app appdomain_tmpfs:file { execute getattr map read write };
 allow vendor_tzas_app vendor_hal_perf_default:binder { call transfer };
 allow vendor_tzas_app vendor_hal_perf_default:fd *;
 allow vendor_tzas_app app_api_service:service_manager find;
 allow vendor_tzas_app vendor_hal_perf_hwservice:hwservice_manager find;
-type_transition vendor_tzas_app tmpfs:file appdomain_tmpfs;
-type_transition vendor_tzas_app vendor_tzas_app:anon_inode vendor_tzas_app_userfaultfd "[userfaultfd]";
 unix_socket_connect(vendor_tzas_app, vendor_ssgtzd, vendor_ssgtzd)
+app_domain(vendor_tzas_app)
 net_domain(vendor_tzas_app)
-type vendor_tzas_app, appdomain, domain;
+type vendor_tzas_app, domain;

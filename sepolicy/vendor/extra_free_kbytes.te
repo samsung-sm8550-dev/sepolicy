@@ -5,3 +5,4 @@ allow extra_free_kbytes proc_extra_free_kbytes:file rw_file_perms;
 allow extra_free_kbytes proc_watermark_scale_factor:file rw_file_perms;
 allow extra_free_kbytes proc_zoneinfo:file r_file_perms;
 type extra_free_kbytes, domain;
+type extra_free_kbytes_exec, exec_type, file_type, system_file_type;

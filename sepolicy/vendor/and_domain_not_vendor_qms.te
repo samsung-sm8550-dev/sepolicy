@@ -1,2 +1,3 @@
 neverallow { domain -vendor_qms } vendor_qms_0:process dyntransition;
 neverallow { domain -vendor_qms } vendor_qms_1:process dyntransition;
+neverallow { domain -vendor_qms } vendor_qms_2:process dyntransition;

@@ -1,0 +1,2 @@
+allow dqmdbgblk_device labeledfs:filesystem associate;
+type dqmdbgblk_device, dev_type;

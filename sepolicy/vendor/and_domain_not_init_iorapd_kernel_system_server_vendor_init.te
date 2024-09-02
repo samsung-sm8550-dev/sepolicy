@@ -1,0 +1,4 @@
+neverallow { domain -init -iorapd -kernel -system_server -vendor_init } iorapd_data_file:file *;
+neverallow { domain -init -iorapd -kernel -system_server -vendor_init } iorapd_data_file:lnk_file *;
+neverallow { domain -init -iorapd -kernel -system_server -vendor_init } iorapd_data_file:sock_file *;
+neverallow { domain -init -iorapd -kernel -system_server -vendor_init } iorapd_data_file:fifo_file *;

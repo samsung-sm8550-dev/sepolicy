@@ -1,0 +1,7 @@
+allow rsudaemon multiclientd:unix_stream_socket connectto;
+allow rsudaemon mobicore_user_device:chr_file rw_file_perms;
+allow rsudaemon sysfs_wake_lock:file rw_file_perms;
+allow rsudaemon tz_user_device:chr_file rw_file_perms;
+allow rsudaemon tee_file:dir r_dir_perms;
+type rsudaemon, coredomain, domain, mlstrustedsubject;
+type rsudaemon_exec, exec_type, file_type, system_file_type;

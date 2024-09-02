@@ -1,2 +1,3 @@
 neverallow fastbootd data_file_type:file no_x_file_perms;
+allow fastbootd tmpfs:lnk_file { getattr read };
 type fastbootd, domain;

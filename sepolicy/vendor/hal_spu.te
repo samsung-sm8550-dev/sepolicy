@@ -7,9 +7,6 @@ allow vendor_hal_spu_qti vendor_iuicc_device:chr_file rw_file_perms;
 allow vendor_hal_spu_qti vendor_spu_hal_ssr_device:chr_file rw_file_perms;
 allow vendor_hal_spu_qti vendor_sysfs_data:file r_file_perms;
 allow vendor_hal_spu_qti vendor_sysfs_spdaemon:file r_file_perms;
-allow vendor_hal_spu_qti property_socket:sock_file write;
-allow vendor_hal_spu_qti init:unix_stream_socket connectto;
-allow vendor_hal_spu_qti vendor_spcomlib_prop:property_service set;
 allow vendor_hal_spu_qti vendor_dmabuf_sp_hlos_heap_device:chr_file r_file_perms;
 allow vendor_hal_spu_qti vendor_dmabuf_system_heap_device:chr_file r_file_perms;
 allow vendor_hal_spu_qti vendor_vm_hlos_device:chr_file r_file_perms;
@@ -17,8 +14,6 @@ allow vendor_hal_spu_qti vendor_vm_cp_spss_sp_device:chr_file r_file_perms;
 allow vendor_hal_spu_qti vendor_vm_cp_spss_sp_shared_device:chr_file r_file_perms;
 allow vendor_hal_spu_qti vendor_vm_cp_spss_hlos_shared_device:chr_file r_file_perms;
 allow vendor_hal_spu_qti vendor_membuf_dev:chr_file r_file_perms;
-allow vendor_hal_spu_qti vndbinder_device:chr_file rw_file_perms;
-allow vendor_hal_spu_qti vndservicemanager:binder { call transfer };
 allow vendor_hal_spu_qti vendor_per_mgr:binder transfer;
 allow vendor_hal_spu_qti vendor_per_mgr:binder { call transfer };
 allow vendor_hal_spu_qti vendor_per_mgr:fd *;
@@ -26,20 +21,21 @@ allow vendor_hal_spu_qti vendor_per_mgr_service:service_manager find;
 allow vendor_hal_spu_client vendor_hal_spu_server:binder { call transfer };
 allow vendor_hal_spu_client vendor_hal_spu_server:binder transfer;
 allow vendor_hal_spu_client vendor_hal_spu_server:fd *;
-allow vendor_hal_spu_client vendor_hal_spu_hwservice:hwservice_manager find;
 allow vendor_hal_spu_server vendor_hal_spu_client:binder transfer;
 allow vendor_hal_spu_server vendor_hal_spu_client:binder { call transfer };
 allow vendor_hal_spu_server vendor_hal_spu_client:fd *;
-allow vendor_hal_spu_server vendor_hal_spu_hwservice:hwservice_manager { add find };
-allow vendor_hal_spu_server hidl_base_hwservice:hwservice_manager add;
+allowxperm vendor_hal_spu_qti vendor_spss_utils_device:ioctl chr_file 0x5302;
 attribute vendor_hal_spu;
 attribute vendor_hal_spu_client;
 attribute vendor_hal_spu_server;
+init_daemon_domain(vendor_hal_spu_qti)
 r_dir_file(vendor_hal_spu_qti, vendor_sysfs_spss)
-get_prop(vendor_hal_spu_qti, vendor_spcomlib_prop)
 get_prop(vendor_hal_spu_qti, vendor_per_mgr_state_prop)
+set_prop(vendor_hal_spu_qti, vendor_spcomlib_prop)
+vndbinder_use(vendor_hal_spu_qti)
 hal_server_domain(vendor_hal_spu_qti, vendor_hal_spu)
 hal_client_domain(vendor_hal_spu_qti, hal_allocator)
+hal_attribute_hwservice(vendor_hal_spu, vendor_hal_spu_hwservice)
 type vendor_hal_spu_qti, domain;
 type vendor_hal_spu_qti_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_spu_hwservice, hwservice_manager_type, protected_hwservice;

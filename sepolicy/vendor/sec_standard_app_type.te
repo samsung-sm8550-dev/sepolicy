@@ -1,0 +1,15 @@
+allow sec_standard_app_type sysfs_sensor_writable:file r_file_perms;
+allow sec_standard_app_type knox_dar_shared_device:chr_file write;
+allow sec_standard_app_type msockets_socket:sock_file rw_file_perms;
+allow sec_standard_app_type motion_recognition_service:service_manager find;
+allow sec_standard_app_type sec_efs_file:dir search;
+allow sec_standard_app_type retailmode_efs_file:dir search;
+allow sec_standard_app_type retailmode_efs_file:file { getattr open read };
+allow sec_standard_app_type fingerprint_app_service:service_manager find;
+allow sec_standard_app_type remotedisplay:binder transfer;
+allow sec_standard_app_type apaservice:binder transfer;
+allow sec_standard_app_type surfaceflinger_service:service_manager find;
+allow sec_standard_app_type edm_proxy_service:service_manager find;
+allow sec_standard_app_type tcpopd_socket:sock_file w_file_perms;
+allow sec_standard_app_type gpu_service:service_manager find;
+attribute sec_standard_app_type;

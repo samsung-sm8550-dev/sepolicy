@@ -7,10 +7,8 @@ allow slideshow self:cap_userns sys_tty_config;
 allow slideshow system_suspend_server:binder { call transfer };
 allow slideshow system_suspend_server:fd *;
 allow slideshow system_suspend_hwservice:hwservice_manager find;
-allow slideshow hwservicemanager:binder { call transfer };
 allow slideshow hidl_manager_hwservice:hwservice_manager find;
 allow slideshow hal_system_suspend_service:service_manager find;
-allow slideshow servicemanager:binder { call transfer };
 allow slideshow device:dir r_dir_perms;
 allow slideshow graphics_device:dir r_dir_perms;
 allow slideshow graphics_device:chr_file rw_file_perms;
@@ -18,4 +16,6 @@ allow slideshow input_device:dir r_dir_perms;
 allow slideshow input_device:chr_file r_file_perms;
 allow slideshow tty_device:chr_file rw_file_perms;
 get_prop(slideshow, hwservicemanager_prop)
+binder_use(slideshow)
+hwbinder_use(slideshow)
 type slideshow, domain;

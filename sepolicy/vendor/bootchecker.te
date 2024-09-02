@@ -1,0 +1,45 @@
+allow bootchecker dumplog_data_file:dir create_dir_perms;
+allow bootchecker dumplog_data_file:file create_file_perms;
+allow bootchecker kernel:system syslog_read;
+allow bootchecker shell_exec:file rx_file_perms;
+allow bootchecker logcat_exec:file rx_file_perms;
+allow bootchecker system_file:file execute_no_trans;
+allow bootchecker toolbox_exec:file r_file_perms;
+allow bootchecker toolbox_exec:file execute;
+allow bootchecker toolbox_exec:file rx_file_perms;
+allow bootchecker proc_sysrq:file rw_file_perms;
+allow bootchecker pstorefs:dir search;
+allow bootchecker proc_last_kmsg:file r_file_perms;
+allow bootchecker proc_store_lastkmsg:file r_file_perms;
+allow bootchecker proc_reset_klog:file r_file_perms;
+allow bootchecker watchdog_device:chr_file rw_file_perms;
+allow bootchecker proc_boot_stat:file r_file_perms;
+allow bootchecker sysfs_sec:file w_file_perms;
+allow bootchecker proc_enhanced_boot_stat:file r_file_perms;
+allow bootchecker sysfs_ski_testinfra_writable:dir r_dir_perms;
+allow bootchecker sysfs_ski_testinfra_writable:file rw_file_perms;
+allow bootchecker cache_file:dir search;
+allow bootchecker cache_recovery_file:dir rw_dir_perms;
+allow bootchecker cache_recovery_file:file create_file_perms;
+r_dir_file(bootchecker, sysfs_sec)
+unix_socket_connect(bootchecker, property, logd)
+unix_socket_connect(bootchecker, property, dumpstate)
+unix_socket_connect(bootchecker, logdr, init)
+unix_socket_connect(bootchecker, logdr, logd)
+unix_socket_connect(bootchecker, logdr, dumpstate)
+unix_socket_connect(bootchecker, dumpstate, init)
+unix_socket_connect(bootchecker, dumpstate, logd)
+unix_socket_connect(bootchecker, dumpstate, dumpstate)
+unix_socket_connect(bootchecker, logd, init)
+unix_socket_connect(bootchecker, logd, logd)
+unix_socket_connect(bootchecker, logd, dumpstate)
+get_prop(bootchecker, compact_dump_prop)
+set_prop(bootchecker, ctl_dumpstate_prop)
+set_prop(bootchecker, dumpstate_prop)
+set_prop(bootchecker, dumpstate_options_prop)
+set_prop(bootchecker, ctl_bugreport_prop)
+set_prop(bootchecker, powerctl_prop)
+set_prop(bootchecker, ctl_start_prop)
+set_prop(bootchecker, system_prop)
+type bootchecker, coredomain, domain;
+type bootchecker_exec, exec_type, file_type, system_file_type;

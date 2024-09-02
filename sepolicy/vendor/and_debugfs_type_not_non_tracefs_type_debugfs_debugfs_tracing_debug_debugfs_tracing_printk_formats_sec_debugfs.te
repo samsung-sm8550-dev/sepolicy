@@ -1,0 +1,2 @@
+r_dir_file(dumpstate, { debugfs_type -non_tracefs_type -debugfs -debugfs_tracing_debug -debugfs_tracing_printk_formats -sec_debugfs })
+r_dir_file(hal_dumpstate_default, { debugfs_type -non_tracefs_type -debugfs -debugfs_tracing_debug -debugfs_tracing_printk_formats -sec_debugfs })
