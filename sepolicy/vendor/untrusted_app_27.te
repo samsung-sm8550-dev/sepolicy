@@ -1,8 +1,0 @@
-allow untrusted_app_27 untrusted_app_27:icmp_socket create_socket_perms_no_ioctl;
-allow untrusted_app_27 HcmManager_service:service_manager find;
-allow untrusted_app_27 vendor_sysfs_graphics:file r_file_perms;
-dontaudit untrusted_app_27 exec_type:file getattr;
-r_dir_file(untrusted_app_27, sysfs_ss_writable)
-hal_client_domain(untrusted_app_27, vendor_hal_qspmhal)
-hal_client_domain(untrusted_app_27, hal_wsm)
-type untrusted_app_27, domain, untrusteddomain;

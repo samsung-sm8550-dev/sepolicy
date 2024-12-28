@@ -4,9 +4,14 @@ expandtypeattribute(hal_bluetooth_server)
 allow hal_bluetooth_client hal_bluetooth_server:binder { call transfer };
 allow hal_bluetooth_client hal_bluetooth_server:binder transfer;
 allow hal_bluetooth_client hal_bluetooth_server:fd *;
+allow hal_bluetooth_client hal_bluetooth_hwservice:hwservice_manager find;
+allow hal_bluetooth_client vendor_hal_bttpi_service:service_manager find;
 allow hal_bluetooth_server hal_bluetooth_client:binder transfer;
 allow hal_bluetooth_server hal_bluetooth_client:binder { call transfer };
 allow hal_bluetooth_server hal_bluetooth_client:fd *;
+allow hal_bluetooth_server hal_bluetooth_hwservice:hwservice_manager { add find };
+allow hal_bluetooth_server hidl_base_hwservice:hwservice_manager add;
+allow hal_bluetooth_server vendor_hal_bttpi_service:service_manager { add find };
 allow hal_bluetooth sysfs_wake_lock:file rw_file_perms;
 allow hal_bluetooth self:capability2 block_suspend;
 allow hal_bluetooth self:capability2 wake_alarm;
@@ -80,8 +85,9 @@ hwbinder_use(hal_bluetooth)
 hal_server_domain(hal_bluetooth_default, hal_bluetooth)
 hal_server_domain(hal_bluetooth_default, vendor_hal_btconfigstore)
 hal_server_domain(hal_bluetooth_default, vendor_hal_fm)
-hal_attribute_service(hal_bluetooth, vendor_hal_bttpi_service)
-hal_attribute_hwservice(hal_bluetooth, hal_bluetooth_hwservice)
 type hal_bluetooth_default, domain;
 type hal_bluetooth_default_exec, exec_type, file_type, vendor_file_type;
 type hal_bluetooth_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_bluetooth_server, base_typeattr;
+type hal_bluetooth_client, base_typeattr;
+type hal_bluetooth, base_typeattr;

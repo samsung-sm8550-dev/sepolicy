@@ -1,2 +1,3 @@
-attribute scheduler_service_server;
-add_hwservice(scheduler_service_server, fwk_scheduler_hwservice)
+allow scheduler_service_server fwk_scheduler_hwservice:hwservice_manager { add find };
+allow scheduler_service_server hidl_base_hwservice:hwservice_manager add;
+type scheduler_service_server, base_typeattr;

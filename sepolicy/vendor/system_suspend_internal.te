@@ -1,2 +1,2 @@
-attribute system_suspend_internal_server;
-add_service(system_suspend_internal_server, system_suspend_control_internal_service)
+allow system_suspend_internal_server system_suspend_control_internal_service:service_manager { add find };
+type system_suspend_internal_server, base_typeattr;

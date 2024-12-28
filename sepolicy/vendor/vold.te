@@ -1,3 +1,6 @@
+neverallow vold base_typeattr:binder call;
+neverallow vold base_typeattr:process ptrace;
+neverallow vold base_typeattr:rawip_socket *;
 neverallow vold fsck_exec:file execute_no_trans;
 allow vold update_verifier:binder transfer;
 allow vold vdc:binder transfer;
@@ -148,6 +151,7 @@ allow vold system_suspend_server:fd *;
 allow vold system_suspend_hwservice:hwservice_manager find;
 allow vold hidl_manager_hwservice:hwservice_manager find;
 allow vold hal_system_suspend_service:service_manager find;
+allow vold vold_service:service_manager { add find };
 allow vold system_server:binder { call transfer };
 allow vold system_server:fd *;
 allow vold permission_service:service_manager find;
@@ -356,6 +360,7 @@ allowxperm vold system_data_root_file:ioctl dir 0xf520;
 type_transition vold system_data_file:file checkEncryption_file "checkEncryption";
 type_transition vold system_data_file:dir fota_data_file "fota";
 domain_auto_trans(vold, dumpstate_exec, dumpstate)
+r_dir_file(vold, base_typeattr)
 r_dir_file(vold, rootfs)
 r_dir_file(vold, metadata_file)
 r_dir_file(vold, apk_tmp_file)
@@ -385,6 +390,5 @@ binder_use(vold)
 hwbinder_use(vold)
 hal_client_domain(vold, hal_bootctl)
 hal_client_domain(vold, hal_health_storage)
-add_service(vold, vold_service)
-type vold, domain, mlstrustedsubject;
+type vold, base_typeattr, domain, mlstrustedsubject;
 type vold_exec, exec_type, file_type, system_file_type;

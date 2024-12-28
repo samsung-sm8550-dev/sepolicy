@@ -1,1 +1,1 @@
-type apc_service, service_manager_type;
+type apc_service, base_typeattr, service_manager_type;

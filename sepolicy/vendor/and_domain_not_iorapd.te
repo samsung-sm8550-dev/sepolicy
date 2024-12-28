@@ -1,1 +1,0 @@
-neverallow { domain -iorapd } iorapd_data_file:dir { add_name append audit_access execmod execute link lock map mounton quotaon relabelfrom remove_name rename reparent rmdir unlink watch watch_mount watch_reads watch_sb watch_with_perm write };

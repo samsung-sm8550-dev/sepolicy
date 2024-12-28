@@ -10,5 +10,5 @@ allow vold_prepare_subdirs system_data_file:dir setattr;
 allow vold_prepare_subdirs self:capability fsetid;
 allow vold_prepare_subdirs sec_data_file:dir create_dir_perms;
 allow vold_prepare_subdirs sec_data_file:file create_file_perms;
-type vold_prepare_subdirs, coredomain, domain;
+type vold_prepare_subdirs, base_typeattr, coredomain, domain;
 type vold_prepare_subdirs_exec, exec_type, file_type, system_file_type;

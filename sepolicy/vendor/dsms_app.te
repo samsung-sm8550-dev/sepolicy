@@ -1,3 +1,6 @@
+neverallow dsms_app base_typeattr:anon_inode *;
+allow dsms_app dsms_app_userfaultfd:anon_inode { create ioctl read };
+allow dsms_app appdomain_tmpfs:file { execute getattr map read write };
 allow dsms_app EDM_Policy_service:service_manager find;
 allow dsms_app activity_service:service_manager find;
 allow dsms_app radio_service:service_manager find;
@@ -8,5 +11,6 @@ allow dsms_app dsms_data_file:file { getattr open read unlink };
 allow dsms_app dsms_efs_file:dir { remove_name search write };
 allow dsms_app dsms_efs_file:file { getattr open read unlink };
 allow dsms_app surfaceflinger_service:service_manager find;
-app_domain(dsms_app)
-type dsms_app, coredomain, domain;
+type_transition dsms_app tmpfs:file appdomain_tmpfs;
+type_transition dsms_app dsms_app:anon_inode dsms_app_userfaultfd "[userfaultfd]";
+type dsms_app, appdomain, base_typeattr, coredomain, domain;

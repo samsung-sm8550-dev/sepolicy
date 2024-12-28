@@ -1,2 +1,0 @@
-neverallow fsck { fs_type file_type -fsck_exec }:file entrypoint;
-neverallow fsck_untrusted { fs_type file_type -fsck_exec }:file entrypoint;

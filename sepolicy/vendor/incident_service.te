@@ -1,1 +1,1 @@
-type incident_service, service_manager_type;
+type incident_service, base_typeattr, service_manager_type;

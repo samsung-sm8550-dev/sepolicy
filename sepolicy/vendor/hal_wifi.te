@@ -6,11 +6,14 @@ allow hal_wifi_server dumpstate:fd *;
 allow hal_wifi_server hal_wifi_client:binder transfer;
 allow hal_wifi_server hal_wifi_client:binder { call transfer };
 allow hal_wifi_server hal_wifi_client:fd *;
+allow hal_wifi_server hal_wifi_hwservice:hwservice_manager { add find };
+allow hal_wifi_server hidl_base_hwservice:hwservice_manager add;
 allow hal_wifi_server tombstone_wifi_data_file:dir rw_dir_perms;
 allow hal_wifi_server tombstone_wifi_data_file:file create_file_perms;
 allow hal_wifi_client hal_wifi_server:binder { call transfer };
 allow hal_wifi_client hal_wifi_server:binder transfer;
 allow hal_wifi_client hal_wifi_server:fd *;
+allow hal_wifi_client hal_wifi_hwservice:hwservice_manager find;
 allow hal_wifi self:udp_socket create_socket_perms;
 allow hal_wifi self:capability { net_admin net_raw };
 allow hal_wifi self:cap_userns { net_admin net_raw };
@@ -38,6 +41,8 @@ allow hal_wifi_default sysfs_wifi:file rw_file_perms;
 allow hal_wifi_default proc_net:file write;
 allow hal_wifi_default vendor_file:system module_load;
 allow hal_wifi_default self:capability sys_module;
+allow hal_wifi_default hal_wifi_hwservice:hwservice_manager { add find };
+allow hal_wifi_default hidl_base_hwservice:hwservice_manager add;
 allow hal_wifi_default vendor_tombstone_data_file:dir create_dir_perms;
 allow hal_wifi_default vendor_tombstone_data_file:file create_file_perms;
 allow hal_wifi_default vendor_log_wifi_data_file:dir create_dir_perms;
@@ -68,8 +73,9 @@ set_prop(hal_wifi_default, vendor_wlandriver_prop)
 set_prop(hal_wifi_default, vendor_wifi_prop)
 set_prop(hal_wifi_default, vendor_wifi_version)
 hal_server_domain(hal_wifi_default, hal_wifi)
-add_hwservice(hal_wifi_default, hal_wifi_hwservice)
-hal_attribute_hwservice(hal_wifi, hal_wifi_hwservice)
-type hal_wifi_default, domain;
+type hal_wifi_default, base_typeattr, domain;
 type hal_wifi_default_exec, exec_type, file_type, vendor_file_type;
 type hal_wifi_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_wifi_client, base_typeattr;
+type hal_wifi_server, base_typeattr;
+type hal_wifi, base_typeattr;

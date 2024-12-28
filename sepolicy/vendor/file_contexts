@@ -110,6 +110,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.0-service u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.1-service u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service u:object_r:hal_nfc_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service\.sec u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.example u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power.stats-service\.example u:object_r:hal_power_stats_default_exec:s0
@@ -241,12 +242,15 @@
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.secinputdev@1\.0-service u:object_r:hal_sec_inputdev_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.drk@2\.0-service u:object_r:hal_drk_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.hdcp\.keyprovisioning@1\.0-service u:object_r:hal_qchdcpkprov_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.sem-service u:object_r:hal_sem_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.sem@1\.0-service u:object_r:hal_sem_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.skpm-service u:object_r:hal_skpm_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.skpm@1\.0-service u:object_r:hal_skpm_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.widevine\.keyprov-service u:object_r:hal_wvkprov_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.security\.wsm-service u:object_r:hal_wsm_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.softsimd@1\.0-service u:object_r:hal_softsimd_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.soter@3\.0-service u:object_r:hal_soter_sec_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.soter@3\.1-service u:object_r:hal_soter_sec_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.sysinput@[1-9]\.[0-9]-service u:object_r:hal_sec_inputdev_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.tdmb@2\.0-service u:object_r:hal_tdmb_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.samsung\.hardware\.thermal@1\.0-service u:object_r:hal_thermal_default_exec:s0
@@ -607,6 +611,7 @@
 /data/zram_unencrypted(/.*)? u:object_r:unencrypted_data_file:s0
 /dev/0:0:0:4 u:object_r:vendor_ufs_lun4_bsg_device:s0
 /dev/0:0:0:49476 u:object_r:vendor_bsg_device:s0
+/dev/AuthOn u:object_r:authon_device:s0
 /dev/act_clk u:object_r:aod_device:s0
 /dev/adsprpc-smd u:object_r:vendor_qdsp_device:s0
 /dev/adsprpc-smd-secure u:object_r:vendor_xdsp_device:s0
@@ -1212,6 +1217,7 @@
 /efs/recovery(/.*)? u:object_r:sec_efs_file:s0
 /efs/richtek(/.*)? u:object_r:sec_efs_file:s0
 /efs/root(/.*)? u:object_r:app_efs_file:s0
+/efs/rtts(/.*)? u:object_r:rtts_efs_file:s0
 /efs/sec_efs(/.*)? u:object_r:sec_efs_file:s0
 /efs/sec_efs/iss/.policy_config u:object_r:sec_efs_file:s0
 /efs/sec_efs/kpm(/.*)? u:object_r:kpm_efs_file:s0
@@ -1794,6 +1800,7 @@
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.hdm@1\.1-service u:object_r:hal_hdm_default_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.iccc-service u:object_r:hal_iccc_default_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.iccc@1\.0-service u:object_r:hal_iccc_default_exec:s0
+/vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.kg-service u:object_r:hal_kgta_default_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.kg@1\.0-service u:object_r:hal_kgta_default_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.kg@1\.1-service u:object_r:hal_kgta_default_exec:s0
 /vendor/bin/hw/vendor\.samsung\.hardware\.tlc\.mpos_tui@1\.0-service u:object_r:hal_mpostui_default_exec:s0
@@ -1856,6 +1863,7 @@
 /vendor/bin/vaultkeeperd u:object_r:vaultkeeperd_exec:s0
 /vendor/bin/vendor.dpmd u:object_r:vendor_dpmd_vndr_exec:s0
 /vendor/bin/vendor\.qti\.qspmhal@1\.0-service u:object_r:vendor_hal_qspmhal_default_exec:s0
+/vendor/bin/vendor\.samsung\.hardware\.prefetch-service u:object_r:hal_prefetch_hal_default_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.engmode-service u:object_r:hal_engmode_default_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.fkeymaster-service u:object_r:hal_fkey_default_exec:s0
 /vendor/bin/vendor\.samsung\.hardware\.security\.hdcp\.wifidisplay-service u:object_r:hal_hdcp_default_exec:s0

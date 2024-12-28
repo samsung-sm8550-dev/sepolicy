@@ -65,5 +65,5 @@ get_prop(zygote, graphics_vulkan_prop)
 set_prop(zygote, system_prop)
 set_prop(zygote, csc_prop)
 set_prop(zygote, exported_system_prop)
-type zygote, domain;
+type zygote, base_typeattr, domain;
 type zygote_exec, exec_type, file_type, system_file_type;

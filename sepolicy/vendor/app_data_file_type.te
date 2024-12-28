@@ -1,2 +1,2 @@
 expandtypeattribute(app_data_file_type)
-attribute app_data_file_type;
+type app_data_file_type, base_typeattr;

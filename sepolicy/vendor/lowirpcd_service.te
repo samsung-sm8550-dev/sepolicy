@@ -15,5 +15,5 @@ get_prop(vendor_lowirpcd_service, vendor_adsprpc_prop)
 get_prop(vendor_lowirpcd_service, hwservicemanager_prop)
 binder_use(vendor_lowirpcd_service)
 hwbinder_use(vendor_lowirpcd_service)
-type vendor_lowirpcd_service, domain;
+type vendor_lowirpcd_service, base_typeattr, domain;
 type vendor_lowirpcd_service_exec, exec_type, file_type, vendor_file_type;

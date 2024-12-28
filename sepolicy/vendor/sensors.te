@@ -56,7 +56,7 @@ get_prop(vendor_sensors_qti, vendor_sensors_prop)
 binder_use(vendor_sensors)
 hwbinder_use(vendor_sensors)
 hal_attribute(sensors)
-type vendor_sensors, domain;
+type vendor_sensors, base_typeattr, domain;
 type vendor_sensors_qti, domain;
 type vendor_sensors_exec, exec_type, file_type, vendor_file_type;
 type vendor_sensors_qti_exec, exec_type, file_type, vendor_file_type;

@@ -1,1 +1,0 @@
-neverallow { hal_cas_client -halclientdomain } domain:process fork;

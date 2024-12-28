@@ -6,6 +6,9 @@ allow hal_hdm_client hal_hdm_service:service_manager find;
 allow hal_hdm_server hal_hdm_client:binder transfer;
 allow hal_hdm_server hal_hdm_client:binder { call transfer };
 allow hal_hdm_server hal_hdm_client:fd *;
+allow hal_hdm_server hal_hdm_hwservice:hwservice_manager { add find };
+allow hal_hdm_server hidl_base_hwservice:hwservice_manager add;
+allow hal_hdm_server hal_hdm_service:service_manager { add find };
 allow hal_hdm_server servicemanager:binder { call transfer };
 allow hal_hdm_server servicemanager:fd *;
 allow hal_hdm_default hidl_memory_hwservice:hwservice_manager find;
@@ -37,8 +40,7 @@ set_prop(hal_hdm_default, vendor_hdm_internal_prop)
 set_prop(hal_hdm_default, vendor_hdm_restricted_prop)
 vndbinder_use(hal_hdm_default)
 hal_server_domain(hal_hdm_default, hal_hdm)
-add_service(hal_hdm_server, hal_hdm_service)
-add_hwservice(hal_hdm_server, hal_hdm_hwservice)
-type hal_hdm_default, domain;
+type hal_hdm_default, base_typeattr, domain;
 type hal_hdm_default_exec, exec_type, file_type, vendor_file_type;
 type hal_hdm_hwservice, hwservice_manager_type;
+type hal_hdm_server, base_typeattr;

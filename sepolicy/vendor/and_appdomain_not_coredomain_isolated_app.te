@@ -1,1 +1,0 @@
-allow { appdomain -coredomain -isolated_app } vendor_dmabuf_system_heap_device:chr_file r_file_perms;

@@ -2,9 +2,13 @@ allow hal_ddar_client hal_ddar_server:binder { call transfer };
 allow hal_ddar_client hal_ddar_server:binder transfer;
 allow hal_ddar_client hal_ddar_server:fd *;
 allow hal_ddar_client hal_ddar_hwservice:hwservice_manager find;
+allow hal_ddar_client hal_ddar_service:service_manager find;
 allow hal_ddar_server hal_ddar_client:binder transfer;
 allow hal_ddar_server hal_ddar_client:binder { call transfer };
 allow hal_ddar_server hal_ddar_client:fd *;
+allow hal_ddar_server hal_ddar_hwservice:hwservice_manager { add find };
+allow hal_ddar_server hidl_base_hwservice:hwservice_manager add;
+allow hal_ddar_server hal_ddar_service:service_manager { add find };
 allow hal_ddar_server servicemanager:binder { call transfer };
 allow hal_ddar_server servicemanager:fd *;
 allow hal_ddar_default tz_user_device:chr_file rw_file_perms;
@@ -20,8 +24,8 @@ init_daemon_domain(hal_ddar_default)
 get_prop(hal_ddar_default, tzdaemon_prop)
 get_prop(hal_ddar_default, vendor_teegris_prop)
 hal_server_domain(hal_ddar_default, hal_ddar)
-add_hwservice(hal_ddar_server, hal_ddar_hwservice)
-hal_attribute_service(hal_ddar, hal_ddar_service)
 type hal_ddar_default, domain;
 type hal_ddar_default_exec, exec_type, file_type, vendor_file_type;
 type hal_ddar_hwservice, hwservice_manager_type;
+type hal_ddar_client, base_typeattr;
+type hal_ddar_server, base_typeattr;

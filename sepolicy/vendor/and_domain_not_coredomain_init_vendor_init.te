@@ -1,1 +1,0 @@
-allow vndservicemanager { domain -coredomain -init -vendor_init }:binder transfer;

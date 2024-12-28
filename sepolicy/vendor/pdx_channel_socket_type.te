@@ -1,2 +1,2 @@
 expandtypeattribute(pdx_channel_socket_type)
-attribute pdx_channel_socket_type;
+type pdx_channel_socket_type, base_typeattr;

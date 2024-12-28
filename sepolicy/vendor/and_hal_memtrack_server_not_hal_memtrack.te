@@ -1,1 +1,0 @@
-neverallow { hal_memtrack_server -hal_memtrack } domain:process fork;

@@ -1,3 +1,4 @@
-attribute display_service_server;
-add_hwservice(display_service_server, fwk_display_hwservice)
+allow display_service_server fwk_display_hwservice:hwservice_manager { add find };
+allow display_service_server hidl_base_hwservice:hwservice_manager add;
 type display_service, app_api_service, ephemeral_app_api_service, service_manager_type, system_server_service;
+type display_service_server, base_typeattr;

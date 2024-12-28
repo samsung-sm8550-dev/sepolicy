@@ -1,0 +1,16 @@
+allow hal_prefetch_hal_server hal_prefetch_hal_client:binder { call transfer };
+allow hal_prefetch_hal_server hal_prefetch_hal_client:binder transfer;
+allow hal_prefetch_hal_server hal_prefetch_hal_client:fd *;
+allow hal_prefetch_hal_server hal_prefetch_hal_service:service_manager { add find };
+allow hal_prefetch_hal_client hal_prefetch_hal_server:binder transfer;
+allow hal_prefetch_hal_client hal_prefetch_hal_server:binder { call transfer };
+allow hal_prefetch_hal_client hal_prefetch_hal_server:fd *;
+allow hal_prefetch_hal_client hal_prefetch_hal_service:service_manager find;
+allow hal_prefetch_hal_default servicemanager:binder { call transfer };
+allow hal_prefetch_hal_default servicemanager:fd *;
+allow hal_prefetch_hal_default pageboostd:binder transfer;
+init_daemon_domain(hal_prefetch_hal_default)
+hal_server_domain(hal_prefetch_hal_default, hal_prefetch_hal)
+type hal_prefetch_hal_default, domain;
+type hal_prefetch_hal_default_exec, exec_type, file_type, vendor_file_type;
+type hal_prefetch_hal_server, base_typeattr;

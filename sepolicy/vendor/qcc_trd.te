@@ -1,1 +1,38 @@
+allow vendor_qcc_trd vendor_qcc_trd_data_file:file create_file_perms;
+allow vendor_qcc_trd vendor_qcc_trd_data_file:dir create_dir_perms;
+allow vendor_qcc_trd vendor_sysfs_devicetree_soc:dir search;
+allow vendor_qcc_trd vendor_sysfs_devicetree_soc:file { getattr open read };
+allow vendor_qcc_trd self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow vendor_qcc_trd self:netlink_generic_socket create_socket_perms_no_ioctl;
+allow vendor_qcc_trd self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow vendor_qcc_trd vendor_sysfs_devcd:file rw_file_perms;
+allow vendor_qcc_trd sysfs:file getattr;
+allow vendor_qcc_trd vendor_sysfs_microdump:file rw_file_perms;
+allow vendor_qcc_trd proc_stat:file r_file_perms;
+allow vendor_qcc_trd proc_stat:dir r_dir_perms;
+allow vendor_qcc_trd mnt_vendor_file:dir r_dir_perms;
+allow vendor_qcc_trd vendor_persist_rfs_shared_hlos_file:dir rw_dir_perms;
+allow vendor_qcc_trd vendor_persist_rfs_shared_hlos_file:file create_file_perms;
+allow vendor_qcc_trd vendor_qmuxd_socket:dir create_dir_perms;
+allow vendor_qcc_trd vendor_qmuxd_socket:sock_file { create getattr read setattr unlink write };
+allow vendor_qcc_trd vendor_firmware_file:dir r_dir_perms;
+allow vendor_qcc_trd vendor_firmware_file:file r_file_perms;
+allow vendor_qcc_trd vendor_qtrsdkservice_service:service_manager find;
+allow vendor_qcc_trd vendor_qccvendor:binder { call transfer };
+allow vendor_qcc_trd vendor_qccvendor:binder transfer;
+allow vendor_qcc_trd vendor_qccvendor:fd *;
+dontaudit vendor_qcc_trd sysfs:file { append getattr ioctl lock map open read watch watch_reads write };
+init_daemon_domain(vendor_qcc_trd)
+r_dir_file(vendor_qcc_trd, vendor_sysfs_battery_supply)
+r_dir_file(vendor_qcc_trd, vendor_sysfs_kgsl)
+r_dir_file(vendor_qcc_trd, vendor_sysfs_kgsl_gpuclk)
+r_dir_file(vendor_qcc_trd, sysfs_leds)
+r_dir_file(vendor_qcc_trd, vendor_sysfs_graphics)
+r_dir_file(vendor_qcc_trd, sysfs_thermal)
+unix_socket_connect(vendor_qcc_trd, logdr, logd)
+unix_socket_connect(vendor_qcc_trd, logdr, vendor_qmuxd)
+unix_socket_connect(vendor_qcc_trd, vendor_qmuxd, logd)
+unix_socket_connect(vendor_qcc_trd, vendor_qmuxd, vendor_qmuxd)
+vndbinder_use(vendor_qcc_trd)
+hal_client_domain(vendor_qcc_trd, vendor_qccsyshal)
 type vendor_qcc_trd, domain;

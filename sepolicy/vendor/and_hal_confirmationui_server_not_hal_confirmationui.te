@@ -1,1 +1,0 @@
-neverallow { hal_confirmationui_server -hal_confirmationui } domain:process fork;

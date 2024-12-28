@@ -1,2 +1,0 @@
-neverallow { coredomain -init -ueventd -vold } vendor_persist_type:file *;
-neverallow { coredomain -init -ueventd -vold } vendor_persist_type:dir *;

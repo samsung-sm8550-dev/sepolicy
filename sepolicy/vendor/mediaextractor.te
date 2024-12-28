@@ -3,10 +3,12 @@ neverallow mediaextractor file_type:file execute_no_trans;
 neverallow mediaextractor domain:udp_socket *;
 neverallow mediaextractor domain:rawip_socket *;
 neverallow mediaextractor domain:tcp_socket *;
+neverallow mediaextractor base_typeattr:file open;
 allow mediaextractor binderservicedomain:binder { call transfer };
 allow mediaextractor binderservicedomain:fd *;
 allow mediaextractor appdomain:binder { call transfer };
 allow mediaextractor appdomain:fd *;
+allow mediaextractor mediaextractor_service:service_manager { add find };
 allow mediaextractor mediametrics_service:service_manager find;
 allow mediaextractor hidl_token_hwservice:hwservice_manager find;
 allow mediaextractor system_server:fd *;
@@ -51,6 +53,5 @@ binder_service(mediaextractor)
 binder_use(mediaextractor)
 hal_client_domain(mediaextractor, hal_allocator)
 hal_client_domain(mediaextractor, hal_cas)
-add_service(mediaextractor, mediaextractor_service)
-type mediaextractor, domain, mlstrustedsubject;
+type mediaextractor, base_typeattr, domain, mlstrustedsubject;
 type mediaextractor_exec, exec_type, file_type, system_file_type;

@@ -6,4 +6,4 @@ allow incidentd proc_meminfo:file r_file_perms;
 allow incidentd pstorefs:dir search;
 r_dir_file(incidentd, sysfs_battery)
 r_dir_file(incidentd, vendor_sysfs_battery_supply)
-type incidentd, domain;
+type incidentd, base_typeattr, domain;

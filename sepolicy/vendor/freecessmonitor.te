@@ -2,10 +2,10 @@ allow freecessmonitor shell:binder transfer;
 allow freecessmonitor dumpstate:binder transfer;
 allow freecessmonitor dumpstate:fifo_file write;
 allow freecessmonitor dumpstate:fd *;
+allow freecessmonitor IFreecess_service:service_manager { add find };
 allow freecessmonitor system_app:fd *;
 allow freecessmonitor system_app:fifo_file write;
 allow freecessmonitor system_app:binder transfer;
 allow freecessmonitor kernel:system module_request;
-add_service(freecessmonitor, IFreecess_service)
-type freecessmonitor, coredomain, domain;
+type freecessmonitor, base_typeattr, coredomain, domain;
 type freecessmonitor_exec, exec_type, file_type, system_file_type;

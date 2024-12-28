@@ -1,6 +1,9 @@
+neverallow attiqi_app base_typeattr:anon_inode *;
 allow attiqi_app attiqi_app_data_file:dir create_dir_perms;
 allow attiqi_app attiqi_app_data_file:file create_file_perms;
 allow attiqi_app attiqi_app_data_file:lnk_file create_file_perms;
+allow attiqi_app attiqi_app_userfaultfd:anon_inode { create ioctl read };
+allow attiqi_app appdomain_tmpfs:file { execute getattr map read write };
 allow attiqi_app activity_service:service_manager find;
 allow attiqi_app app_api_service:service_manager find;
 allow attiqi_app audioserver_service:service_manager find;
@@ -26,9 +29,10 @@ allow attiqi_app vendor_smd_device:chr_file rw_file_perms;
 allow attiqi_app tcpopd_socket:sock_file write;
 allowxperm attiqi_app attiqi_app_devpts:ioctl chr_file { range 0x5401 0x5404 0x540b range 0x540e 0x5411 range 0x5413 0x5414 range 0x5450 0x5451 };
 allowxperm attiqi_app self:ioctl udp_socket 0x8927;
+type_transition attiqi_app tmpfs:file appdomain_tmpfs;
+type_transition attiqi_app attiqi_app:anon_inode attiqi_app_userfaultfd "[userfaultfd]";
 r_dir_file(attiqi_app, proc_net)
 r_dir_file(attiqi_app, proc_qtaguid_stat)
 get_prop(attiqi_app, system_sensor_prop)
-app_domain(attiqi_app)
 net_domain(attiqi_app)
-type attiqi_app, bluetoothdomain, coredomain, domain, mlstrustedsubject;
+type attiqi_app, appdomain, base_typeattr, bluetoothdomain, coredomain, domain, mlstrustedsubject;

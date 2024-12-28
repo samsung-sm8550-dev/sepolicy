@@ -7,10 +7,11 @@ allow hal_spqckeymaster_client servicemanager:fd *;
 allow hal_spqckeymaster_server hal_spqckeymaster_client:binder transfer;
 allow hal_spqckeymaster_server hal_spqckeymaster_client:binder { call transfer };
 allow hal_spqckeymaster_server hal_spqckeymaster_client:fd *;
+allow hal_spqckeymaster_server hal_spqckeymaster_service:service_manager { add find };
 allow hal_spqckeymaster_server servicemanager:binder { call transfer };
 allow hal_spqckeymaster_server servicemanager:fd *;
 init_daemon_domain(hal_spqckeymaster_default)
 hal_server_domain(hal_spqckeymaster_default, hal_spqckeymaster)
-add_service(hal_spqckeymaster_server, hal_spqckeymaster_service)
 type hal_spqckeymaster_default, domain;
 type hal_spqckeymaster_default_exec, exec_type, file_type, vendor_file_type;
+type hal_spqckeymaster_server, base_typeattr;

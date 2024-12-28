@@ -9,5 +9,5 @@ init_daemon_domain(vendor_cdsprpcd)
 r_dir_file(vendor_cdsprpcd, adsprpcd_file)
 r_dir_file(vendor_cdsprpcd, vendor_sysfs_devfreq)
 get_prop(vendor_cdsprpcd, vendor_adsprpc_prop)
-type vendor_cdsprpcd, domain;
+type vendor_cdsprpcd, base_typeattr, domain;
 type vendor_cdsprpcd_exec, exec_type, file_type, vendor_file_type;

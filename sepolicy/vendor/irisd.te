@@ -1,6 +1,7 @@
 allow irisd users_system_data_file:dir create_dir_perms;
 allow irisd users_system_data_file:file create_file_perms;
 allow irisd activity_service:service_manager find;
+allow irisd irisd_service:service_manager { add find };
 allow irisd permission_service:service_manager find;
 allow irisd system_data_file:dir search;
 allow irisd iris_data_file:dir create_dir_perms;
@@ -27,6 +28,5 @@ binder_use(irisd)
 hwbinder_use(irisd)
 hal_client_domain(irisd, hal_graphics_allocator)
 hal_client_domain(irisd, vendor_hal_qseecom)
-add_service(irisd, irisd_service)
-type irisd, coredomain, domain;
+type irisd, base_typeattr, coredomain, domain;
 type irisd_exec, exec_type, file_type, system_file_type;

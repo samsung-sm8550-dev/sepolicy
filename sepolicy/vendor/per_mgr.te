@@ -4,6 +4,7 @@ allow vendor_per_mgr vendor_hal_gnss_qti:fd *;
 allow vendor_per_mgr vendor_per_proxy:binder transfer;
 allow vendor_per_mgr vendor_per_proxy:binder { call transfer };
 allow vendor_per_mgr vendor_per_proxy:fd *;
+allow vendor_per_mgr vendor_per_mgr_service:service_manager { add find };
 allow vendor_per_mgr hal_gnss:binder { call transfer };
 allow vendor_per_mgr hal_gnss:fd *;
 allow vendor_per_mgr vendor_wcnss_service:binder { call transfer };
@@ -33,6 +34,5 @@ allowxperm vendor_per_mgr self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
 init_daemon_domain(vendor_per_mgr)
 set_prop(vendor_per_mgr, vendor_per_mgr_state_prop)
 vndbinder_use(vendor_per_mgr)
-add_service(vendor_per_mgr, vendor_per_mgr_service)
-type vendor_per_mgr, domain;
+type vendor_per_mgr, base_typeattr, domain;
 type vendor_per_mgr_exec, exec_type, file_type, vendor_file_type;

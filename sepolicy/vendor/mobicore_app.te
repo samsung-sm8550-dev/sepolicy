@@ -1,3 +1,4 @@
+neverallow mobicore_app base_typeattr:anon_inode *;
 allow mobicore_app mobicore_data_file:dir { getattr open read search };
 allow mobicore_app mobicore_data_file:file { getattr open read };
 allow mobicore_app mobicore_file:dir { getattr open read search };
@@ -10,6 +11,9 @@ allow mobicore_app EDM_Policy_service:service_manager find;
 allow mobicore_app activity_service:service_manager find;
 allow mobicore_app display_service:service_manager find;
 allow mobicore_app connectivity_service:service_manager find;
-app_domain(mobicore_app)
+allow mobicore_app mobicore_app_userfaultfd:anon_inode { create ioctl read };
+allow mobicore_app appdomain_tmpfs:file { execute getattr map read write };
+type_transition mobicore_app tmpfs:file appdomain_tmpfs;
+type_transition mobicore_app mobicore_app:anon_inode mobicore_app_userfaultfd "[userfaultfd]";
 net_domain(mobicore_app)
-type mobicore_app, domain;
+type mobicore_app, appdomain, base_typeattr, domain;

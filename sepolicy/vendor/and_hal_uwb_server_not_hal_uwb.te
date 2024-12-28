@@ -1,1 +1,0 @@
-neverallow { hal_uwb_server -hal_uwb } domain:process fork;

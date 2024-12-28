@@ -3,11 +3,15 @@ expandtypeattribute(hal_nlinterceptor_client)
 expandtypeattribute(hal_nlinterceptor_server)
 allow hal_nlinterceptor_client hal_nlinterceptor_server:binder { call transfer };
 allow hal_nlinterceptor_client hal_nlinterceptor_server:fd *;
+allow hal_nlinterceptor_client hal_nlinterceptor_service:service_manager find;
 allow hal_nlinterceptor_server hal_nlinterceptor_client:binder transfer;
+allow hal_nlinterceptor_server hal_nlinterceptor_service:service_manager { add find };
 allow hal_nlinterceptor servicemanager:binder { call transfer };
 allow hal_nlinterceptor servicemanager:fd *;
 allow hal_nlinterceptor self:capability net_admin;
 allow hal_nlinterceptor self:cap_userns net_admin;
 allow hal_nlinterceptor self:netlink_generic_socket create_socket_perms_no_ioctl;
 allow hal_nlinterceptor self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_readpriv nlmsg_write };
-hal_attribute_service(hal_nlinterceptor, hal_nlinterceptor_service)
+type hal_nlinterceptor_client, base_typeattr;
+type hal_nlinterceptor_server, base_typeattr;
+type hal_nlinterceptor, base_typeattr;

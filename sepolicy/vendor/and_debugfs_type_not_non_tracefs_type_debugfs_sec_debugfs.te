@@ -1,3 +1,0 @@
-allow init { debugfs_type -non_tracefs_type -debugfs -sec_debugfs }:file relabelfrom;
-allow init { debugfs_type -non_tracefs_type -debugfs -sec_debugfs }:dir relabelfrom;
-allow init { debugfs_type -non_tracefs_type -debugfs -sec_debugfs }:lnk_file relabelfrom;

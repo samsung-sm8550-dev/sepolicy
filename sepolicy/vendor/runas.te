@@ -20,9 +20,10 @@ allow runas self:cap_userns { setgid setuid };
 allow runas self:process setcurrent;
 allow runas selinuxfs:file w_file_perms;
 allow runas kernel:security check_context;
+allow runas base_typeattr:process dyntransition;
 allow runas seapp_contexts_file:file r_file_perms;
 dontaudit runas self:capability { dac_override dac_read_search };
 dontaudit runas self:cap_userns { dac_override dac_read_search };
 r_dir_file(runas, selinuxfs)
-type runas, domain, mlstrustedsubject;
+type runas, base_typeattr, domain, mlstrustedsubject;
 type runas_exec, exec_type, file_type, system_file_type;

@@ -1,1 +1,0 @@
-neverallow { hal_evs_server -hal_evs } domain:process fork;

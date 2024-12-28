@@ -80,4 +80,4 @@ allow trustonicpartner_app ashmem_device:chr_file { append getattr ioctl lock ma
 dontaudit trustonicpartner_app exec_type:file getattr;
 allowxperm trustonicpartner_app trustonicpartner_app_devpts:ioctl chr_file { range 0x5401 0x5404 0x540b range 0x540e 0x5411 range 0x5413 0x5414 range 0x5450 0x5451 };
 unix_socket_connect(trustonicpartner_app, fwmarkd, runas_app)
-type trustonicpartner_app, coredomain, domain, sec_standard_app_type;
+type trustonicpartner_app, base_typeattr, coredomain, domain, sec_standard_app_type;

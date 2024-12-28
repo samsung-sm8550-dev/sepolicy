@@ -9,6 +9,9 @@ neverallow appdomain rpmsg_device:chr_file { read write };
 neverallow appdomain tee_device:chr_file { read write };
 neverallow appdomain socket_device:sock_file write;
 neverallow appdomain adbd_socket:sock_file write;
+neverallow appdomain base_typeattr:process ptrace;
+neverallow appdomain base_typeattr:process { sigkill signal sigstop };
+neverallow appdomain base_typeattr:file no_w_file_perms;
 neverallow appdomain rootfs:file { no_w_file_perms relabelto };
 neverallow appdomain rootfs:dir { no_w_file_perms relabelto };
 neverallow appdomain rootfs:lnk_file { no_w_file_perms relabelto };
@@ -140,7 +143,6 @@ allow appdomain visiond:binder transfer;
 allow appdomain vendor_npu_device:chr_file r_file_perms;
 allow appdomain vendor_qdsp_device:chr_file { ioctl read };
 dontaudit appdomain vendor_hal_qspmhal_hwservice:hwservice_manager find;
-attribute appdomain;
 r_dir_file(appdomain, kisekae_data_file)
 unix_socket_connect(appdomain, jack, jackservice)
 unix_socket_connect(appdomain, dualdard, jackservice)
@@ -153,3 +155,4 @@ get_prop(appdomain, sec_bluetooth_prop)
 get_prop(appdomain, vendor_camera_prop)
 get_prop(appdomain, vendor_adsprpc_prop)
 get_prop(appdomain, vendor_iop_prop)
+type appdomain, base_typeattr;

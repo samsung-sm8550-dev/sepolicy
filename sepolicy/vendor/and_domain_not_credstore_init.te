@@ -1,7 +1,0 @@
-neverallow { domain -credstore -init } credstore_data_file:file *;
-neverallow { domain -credstore -init } credstore_data_file:dir *;
-neverallow { domain -credstore -init } credstore_data_file:lnk_file *;
-neverallow { domain -credstore -init } credstore_data_file:chr_file *;
-neverallow { domain -credstore -init } credstore_data_file:blk_file *;
-neverallow { domain -credstore -init } credstore_data_file:sock_file *;
-neverallow { domain -credstore -init } credstore_data_file:fifo_file *;

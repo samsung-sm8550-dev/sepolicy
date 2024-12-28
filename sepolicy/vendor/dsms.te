@@ -1,5 +1,5 @@
 allow dsms dsms_data_file:dir create_dir_perms;
 allow dsms dsms_data_file:file create_file_perms;
 allow dsms pmsg_device:chr_file { getattr ioctl };
-type dsms, coredomain, domain;
+type dsms, base_typeattr, coredomain, domain;
 type dsms_exec, exec_type, file_type, system_file_type;

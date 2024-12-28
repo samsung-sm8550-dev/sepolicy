@@ -4,12 +4,17 @@ expandtypeattribute(hal_graphics_allocator_server)
 allow hal_graphics_allocator_server dumpstate:fifo_file write;
 allow hal_graphics_allocator_server dumpstate:fd *;
 allow hal_graphics_allocator_server hal_graphics_allocator_client:binder transfer;
+allow hal_graphics_allocator_server hal_graphics_allocator_hwservice:hwservice_manager { add find };
+allow hal_graphics_allocator_server hidl_base_hwservice:hwservice_manager add;
+allow hal_graphics_allocator_server hal_graphics_allocator_service:service_manager { add find };
 allow hal_graphics_allocator_server servicemanager:binder { call transfer };
 allow hal_graphics_allocator_server servicemanager:fd *;
 allow hal_graphics_allocator_client hal_graphics_allocator_server:binder { call transfer };
 allow hal_graphics_allocator_client hal_graphics_allocator_server:fd *;
+allow hal_graphics_allocator_client hal_graphics_allocator_hwservice:hwservice_manager find;
 allow hal_graphics_allocator_client hal_graphics_mapper_hwservice:hwservice_manager find;
 allow hal_graphics_allocator_client same_process_hal_file:file { execute getattr map open read };
+allow hal_graphics_allocator_client hal_graphics_allocator_service:service_manager find;
 allow hal_graphics_allocator_client servicemanager:binder { call transfer };
 allow hal_graphics_allocator_client servicemanager:fd *;
 allow hal_graphics_allocator gpu_device:chr_file rw_file_perms;
@@ -39,8 +44,9 @@ type_transition hal_graphics_allocator_default tmpfs:file hal_graphics_allocator
 init_daemon_domain(hal_graphics_allocator_default)
 get_prop(hal_graphics_allocator_default, vendor_debug_egl_prop)
 hal_server_domain(hal_graphics_allocator_default, hal_graphics_allocator)
-hal_attribute_service(hal_graphics_allocator, hal_graphics_allocator_service)
-hal_attribute_hwservice(hal_graphics_allocator, hal_graphics_allocator_hwservice)
 type hal_graphics_allocator_default, domain;
 type hal_graphics_allocator_default_exec, exec_type, file_type, vendor_file_type;
 type hal_graphics_allocator_hwservice, hwservice_manager_type;
+type hal_graphics_allocator_client, base_typeattr;
+type hal_graphics_allocator_server, base_typeattr;
+type hal_graphics_allocator, base_typeattr;

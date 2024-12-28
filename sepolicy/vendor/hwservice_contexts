@@ -84,6 +84,7 @@ vendor.samsung.hardware.softsimd::ISehSoftsimd											u:object_r:hal_softsimd
 vendor.samsung.hardware.security.wsm::ISehWsm                       u:object_r:hal_wsm_hwservice:s0
 vendor.samsung.hardware.wifi.nan::IWifiVendorNan						u:object_r:hal_wifi_hwservice:s0			
 vendor.samsung.hardware.wifi.nan@1.0::IWifiVendorNan						u:object_r:hal_wifi_hwservice:s0
+vendor.samsung.hardware.nfc@2.0::ISehNfc                                u:object_r:hal_nfc_hwservice:s0
 vendor.samsung.hardware.digitaltv.fullseg::IFullseg      u:object_r:digitaltv_fullseg_hwservice:s0
 vendor.samsung.hardware.dtvtuner::IDtvTuner               u:object_r:digitaltv_fullseg_hwservice:s0
 vendor.trustonic.tee::ITee                        u:object_r:hal_tee_hwservice:s0

@@ -1,4 +1,5 @@
 neverallow installd system_data_file:file { append audit_access create entrypoint execmod link mounton no_x_file_perms quotaon relabelto rename setattr watch_mount watch_sb watch_with_perm write };
+neverallow installd base_typeattr:binder call;
 allow installd dumpstate:binder transfer;
 allow installd dumpstate:fifo_file { getattr write };
 allow installd dumpstate:fifo_file r_file_perms;
@@ -100,6 +101,7 @@ allow installd profman_dump_data_file:dir { add_name search write };
 allow installd profman_dump_data_file:file { create open setattr write };
 allow installd devpts:chr_file rw_file_perms;
 allow installd toolbox_exec:file rx_file_perms;
+allow installd installd_service:service_manager { add find };
 allow installd system_server:binder { call transfer };
 allow installd system_server:fd *;
 allow installd permission_service:service_manager find;
@@ -217,6 +219,5 @@ get_prop(installd, storage_config_prop)
 set_prop(installd, powerctl_prop)
 set_prop(installd, system_prop)
 binder_use(installd)
-add_service(installd, installd_service)
-type installd, domain, mlstrustedsubject;
+type installd, base_typeattr, domain, mlstrustedsubject;
 type installd_exec, exec_type, file_type, system_file_type;

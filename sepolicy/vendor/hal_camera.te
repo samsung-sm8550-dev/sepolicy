@@ -9,17 +9,27 @@ neverallow hal_camera_server domain:rawip_socket *;
 allow hal_camera_client hal_camera_server:binder { call transfer };
 allow hal_camera_client hal_camera_server:binder transfer;
 allow hal_camera_client hal_camera_server:fd *;
+allow hal_camera_client hal_camera_hwservice:hwservice_manager find;
+allow hal_camera_client hal_camera_service:service_manager find;
 allow hal_camera_client hal_graphics_allocator:fd *;
+allow hal_camera_client vendor_hal_camera_postproc_hwservice:hwservice_manager find;
+allow hal_camera_client vendor_hal_camera_aon_hwservice:hwservice_manager find;
 allow hal_camera_server hal_camera_client:binder transfer;
 allow hal_camera_server hal_camera_client:binder { call transfer };
 allow hal_camera_server hal_camera_client:fd *;
+allow hal_camera_server hal_camera_hwservice:hwservice_manager { add find };
+allow hal_camera_server hidl_base_hwservice:hwservice_manager add;
+allow hal_camera_server hal_camera_service:service_manager { add find };
 allow hal_camera_server hal_graphics_allocator:fd *;
+allow hal_camera_server vendor_hal_camera_postproc_hwservice:hwservice_manager { add find };
+allow hal_camera_server vendor_hal_camera_aon_hwservice:hwservice_manager { add find };
 allow hal_camera device:dir r_dir_perms;
 allow hal_camera video_device:dir r_dir_perms;
 allow hal_camera video_device:chr_file rw_file_perms;
 allow hal_camera camera_device:chr_file rw_file_perms;
 allow hal_camera ion_device:chr_file rw_file_perms;
 allow hal_camera dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_camera base_typeattr:fd *;
 allow hal_camera surfaceflinger:fd *;
 allow hal_camera hal_allocator_server:fd *;
 allow hal_camera shell:fd *;
@@ -63,6 +73,8 @@ allow hal_camera_default proc_meminfo:file r_file_perms;
 allow hal_camera_default platform_app:binder transfer;
 allow hal_camera_default stitch_device:chr_file rw_file_perms;
 allow hal_camera_default sysfs:file rw_file_perms;
+allow hal_camera_default hal_MultiFrameProcessing20_hwservice:hwservice_manager { add find };
+allow hal_camera_default hidl_base_hwservice:hwservice_manager add;
 allow hal_camera_default jsqz_device:chr_file rw_file_perms;
 allow hal_camera_default system_app:fifo_file write;
 allow hal_camera_default system_app:binder transfer;
@@ -178,11 +190,9 @@ hal_client_domain(hal_camera_default, vendor_hal_perf)
 hal_client_domain(hal_camera_default, vendor_hal_vpp)
 hal_client_domain(hal_camera_default, hal_hyper)
 hal_client_domain(hal_camera_default, hal_csip)
-add_hwservice(hal_camera_default, hal_MultiFrameProcessing20_hwservice)
-hal_attribute_service(hal_camera, hal_camera_service)
-hal_attribute_hwservice(hal_camera, hal_camera_hwservice)
-hal_attribute_hwservice(hal_camera, vendor_hal_camera_postproc_hwservice)
-hal_attribute_hwservice(hal_camera, vendor_hal_camera_aon_hwservice)
-type hal_camera_default, domain;
+type hal_camera_default, base_typeattr, domain;
 type hal_camera_default_exec, exec_type, file_type, vendor_file_type;
 type hal_camera_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_camera_server, base_typeattr;
+type hal_camera_client, base_typeattr;
+type hal_camera, base_typeattr;

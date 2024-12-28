@@ -8,9 +8,14 @@ neverallow hal_wifi_hostapd_server fuse:file *;
 allow hal_wifi_hostapd_client hal_wifi_hostapd_server:binder { call transfer };
 allow hal_wifi_hostapd_client hal_wifi_hostapd_server:binder transfer;
 allow hal_wifi_hostapd_client hal_wifi_hostapd_server:fd *;
+allow hal_wifi_hostapd_client hal_wifi_hostapd_hwservice:hwservice_manager find;
+allow hal_wifi_hostapd_client hal_wifi_hostapd_service:service_manager find;
 allow hal_wifi_hostapd_server hal_wifi_hostapd_client:binder transfer;
 allow hal_wifi_hostapd_server hal_wifi_hostapd_client:binder { call transfer };
 allow hal_wifi_hostapd_server hal_wifi_hostapd_client:fd *;
+allow hal_wifi_hostapd_server hal_wifi_hostapd_hwservice:hwservice_manager { add find };
+allow hal_wifi_hostapd_server hidl_base_hwservice:hwservice_manager add;
+allow hal_wifi_hostapd_server hal_wifi_hostapd_service:service_manager { add find };
 allow hal_wifi_hostapd_server dumpstate:fifo_file write;
 allow hal_wifi_hostapd_server self:capability { net_admin net_raw };
 allow hal_wifi_hostapd_server self:cap_userns { net_admin net_raw };
@@ -24,6 +29,8 @@ allow hal_wifi_hostapd_default hostapd_data_file:dir create_dir_perms;
 allow hal_wifi_hostapd_default hostapd_data_file:dir rw_dir_perms;
 allow hal_wifi_hostapd_default hostapd_data_file:file create_file_perms;
 allow hal_wifi_hostapd_default hostapd_data_file:sock_file create_file_perms;
+allow hal_wifi_hostapd_default hal_wifi_sec_hostapd_hwservice:hwservice_manager { add find };
+allow hal_wifi_hostapd_default hidl_base_hwservice:hwservice_manager add;
 allow hal_wifi_hostapd_default sysfs_net:lnk_file r_file_perms;
 allow hal_wifi_hostapd_default vendor_log_file:dir search;
 allow hal_wifi_hostapd_default vendor_convergence_data_file:dir rw_dir_perms;
@@ -52,9 +59,9 @@ get_prop(hal_wifi_hostapd_default, wifi_log_prop)
 binder_use(hal_wifi_hostapd_server)
 net_domain(hal_wifi_hostapd_default)
 hal_server_domain(hal_wifi_hostapd_default, hal_wifi_hostapd)
-add_hwservice(hal_wifi_hostapd_default, hal_wifi_sec_hostapd_hwservice)
-hal_attribute_service(hal_wifi_hostapd, hal_wifi_hostapd_service)
-hal_attribute_hwservice(hal_wifi_hostapd, hal_wifi_hostapd_hwservice)
-type hal_wifi_hostapd_default, domain;
+type hal_wifi_hostapd_default, base_typeattr, domain;
 type hal_wifi_hostapd_default_exec, exec_type, file_type, vendor_file_type;
 type hal_wifi_hostapd_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_wifi_hostapd_client, base_typeattr;
+type hal_wifi_hostapd_server, base_typeattr;
+type hal_wifi_hostapd, base_typeattr;

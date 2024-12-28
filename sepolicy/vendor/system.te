@@ -159,6 +159,7 @@ allow system_server mobicore_data_file:file r_file_perms;
 allow system_server directpeninputmanager_service:service_manager { add find };
 allow system_server charon_exec:file r_file_perms;
 allow system_server secdp_aux_device:chr_file rw_file_perms;
+allow system_server Ifaa_service:service_manager { add find };
 allow system_server OcfKeyService_service:service_manager { add find };
 allow system_server TigerSskdsService_service:service_manager { add find };
 allow system_server iris_service:service_manager find;
@@ -327,6 +328,7 @@ allow system_server knox_clipboard_file:lnk_file { relabelfrom relabelto };
 allow system_server pageboostd_data_file:dir create_dir_perms;
 allow system_server pageboostd_data_file:file create_file_perms;
 allow system_server sysint_service:service_manager add;
+allow system_server knox_securetimer_service:service_manager { add find };
 allow system_server faced_service:service_manager find;
 allow system_server proc_vmstat:file r_file_perms;
 allow system_server vramdiskd:fifo_file write;
@@ -351,6 +353,7 @@ allow system_server mcps_service:service_manager add;
 allow system_server proc_diskstats:file r_file_perms;
 allow system_server tcpopd_socket:sock_file w_file_perms;
 allow system_server proc_history:file r_file_perms;
+allow system_server blockchain_service:service_manager { add find };
 allow system_server proc_swappiness:file r_file_perms;
 allow system_server alarm_device:chr_file rw_file_perms;
 allow system_server sysfs_fs_f2fs:file rw_file_perms;
@@ -373,7 +376,7 @@ allow system_server proc_pressure_lmkd_count:file r_file_perms;
 allow system_server sysfs_req_mode:dir r_dir_perms;
 allow system_server sysfs_req_mode:file rw_file_perms;
 allow system_server accounts_data_file:file rw_file_perms;
-allow system_server accounts_data_file:file unlink;
+allow system_server accounts_data_file:file { setattr unlink };
 allow system_server blockchain_data_file:dir create_dir_perms;
 allow system_server blockchain_data_file:file create_file_perms;
 allow system_server sysfs_ski_usb_readable:file r_file_perms;
@@ -531,6 +534,7 @@ r_dir_file(system_server, proc_lmkd_debug)
 r_dir_file(system_server, sysfs_ski_power_readable)
 r_dir_file(system_server, sysfs_ski_sensor_readable)
 r_dir_file(system_server, sysfs_ski_display_readable)
+r_dir_file(system_server, vendor_sysfs_hdm)
 r_dir_file(system_server, vendor_sysfs_sectouch)
 r_dir_file(system_server, vendor_sysfs_kgsl_gpuclk)
 unix_socket_connect(system_server, property, vold)
@@ -678,6 +682,7 @@ set_prop(system_server, wifi_log_prop)
 set_prop(system_server, radio_prop)
 set_prop(system_server, exported_bluetooth_prop)
 set_prop(system_server, dynamic_system_prop)
+set_prop(system_server, uwb_regulation_skip_prop)
 set_prop(system_server, logd_prop)
 set_prop(system_server, wifi_prop)
 set_prop(system_server, nfc_prop)
@@ -732,7 +737,4 @@ hal_client_domain(system_server, hal_ifaa)
 hal_client_domain(system_server, hal_softsimd)
 hal_client_domain(system_server, hal_tui_comm)
 hal_client_domain(system_server, hal_fm)
-add_service(system_server, Ifaa_service)
-add_service(system_server, knox_securetimer_service)
-add_service(system_server, blockchain_service)
-type system_server, domain;
+type system_server, base_typeattr, domain;

@@ -237,6 +237,8 @@ allow system_app adservices_manager_service:service_manager find;
 allow system_app update_engine:binder { call transfer };
 allow system_app update_engine:binder transfer;
 allow system_app update_engine:fd *;
+allow system_app hal_converter_default:binder { call transfer };
+allow system_app hal_converter_default:fd *;
 allow system_app security_spota_file:dir r_dir_perms;
 allow system_app security_spota_file:file r_file_perms;
 allow system_app hal_soter_sec:binder { call transfer };
@@ -715,6 +717,7 @@ get_prop(system_app, vendor_mobicore_prop)
 get_prop(system_app, vendor_sec_nfc_prop)
 get_prop(system_app, chipname_prop)
 get_prop(system_app, vendor_teegris_prop)
+get_prop(system_app, vendor_uwb_feature_prop)
 get_prop(system_app, vendor_qseecomd_prop)
 get_prop(system_app, vendor_iop_prop)
 get_prop(system_app, vendor_radio_prop)
@@ -727,6 +730,7 @@ set_prop(system_app, radio_prop)
 set_prop(system_app, audio_prop)
 set_prop(system_app, ctl_start_prop)
 set_prop(system_app, traced_enabled_prop)
+set_prop(system_app, uwb_regulation_skip_prop)
 set_prop(system_app, vold_prop)
 set_prop(system_app, csc_prop)
 set_prop(system_app, exported_radio_prop)
@@ -758,4 +762,4 @@ hal_client_domain(system_app, hal_ifaa)
 hal_client_domain(system_app, hal_frcmc)
 hal_client_domain(system_app, hal_csip)
 hal_client_domain(system_app, hal_vaultkeeper)
-type system_app, domain;
+type system_app, base_typeattr, domain;

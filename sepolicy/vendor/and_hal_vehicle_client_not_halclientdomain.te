@@ -1,1 +1,0 @@
-neverallow { hal_vehicle_client -halclientdomain } domain:process fork;

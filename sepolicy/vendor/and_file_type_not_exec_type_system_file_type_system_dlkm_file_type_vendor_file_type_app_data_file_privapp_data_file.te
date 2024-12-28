@@ -1,7 +1,0 @@
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:file relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:dir relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:lnk_file relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:chr_file relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:blk_file relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:sock_file relabelto;
-allow init { file_type -exec_type -system_file_type -system_dlkm_file_type -vendor_file_type -app_data_file -privapp_data_file }:fifo_file relabelto;

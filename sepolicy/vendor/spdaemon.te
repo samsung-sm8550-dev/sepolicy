@@ -46,5 +46,5 @@ set_prop(vendor_spdaemon, vendor_spcomlib_prop)
 hwbinder_use(vendor_spdaemon)
 vndbinder_use(vendor_spdaemon)
 hal_client_domain(vendor_spdaemon, hal_telephony)
-type vendor_spdaemon, domain;
+type vendor_spdaemon, base_typeattr, domain;
 type vendor_spdaemon_exec, exec_type, file_type, vendor_file_type;

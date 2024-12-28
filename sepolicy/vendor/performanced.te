@@ -18,5 +18,5 @@ r_dir_file(performanced, surfaceflinger)
 r_dir_file(performanced, cgroup)
 r_dir_file(performanced, cgroup_v2)
 binder_use(performanced)
-type performanced, domain, mlstrustedsubject, pdx_performance_client_server_type;
+type performanced, base_typeattr, domain, mlstrustedsubject, pdx_performance_client_server_type;
 type performanced_exec, exec_type, file_type, system_file_type;

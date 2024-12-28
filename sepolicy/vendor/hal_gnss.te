@@ -6,11 +6,16 @@ allow hal_gnss_server dumpstate:fd *;
 allow hal_gnss_server hal_gnss_client:binder transfer;
 allow hal_gnss_server hal_gnss_client:binder { call transfer };
 allow hal_gnss_server hal_gnss_client:fd *;
+allow hal_gnss_server hal_gnss_hwservice:hwservice_manager { add find };
+allow hal_gnss_server hidl_base_hwservice:hwservice_manager add;
+allow hal_gnss_server hal_gnss_service:service_manager { add find };
 allow hal_gnss_server servicemanager:binder { call transfer };
 allow hal_gnss_server servicemanager:fd *;
 allow hal_gnss_client hal_gnss_server:binder { call transfer };
 allow hal_gnss_client hal_gnss_server:binder transfer;
 allow hal_gnss_client hal_gnss_server:fd *;
+allow hal_gnss_client hal_gnss_hwservice:hwservice_manager find;
+allow hal_gnss_client hal_gnss_service:service_manager find;
 allow hal_gnss_client servicemanager:binder { call transfer };
 allow hal_gnss_client servicemanager:fd *;
 allow hal_gnss_default gnss_device:chr_file rw_file_perms;
@@ -87,10 +92,11 @@ vndbinder_use(vendor_hal_gnss_qti)
 hal_server_domain(hal_gnss_default, hal_gnss)
 hal_server_domain(vendor_hal_gnss_qti, hal_gnss)
 hal_client_domain(vendor_hal_gnss_qti, hal_health)
-hal_attribute_service(hal_gnss, hal_gnss_service)
-hal_attribute_hwservice(hal_gnss, hal_gnss_hwservice)
 type hal_gnss_default, domain;
 type vendor_hal_gnss_qti, domain;
 type hal_gnss_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_gnss_qti_exec, exec_type, file_type, vendor_file_type;
 type hal_gnss_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_gnss_client, base_typeattr;
+type hal_gnss_server, base_typeattr;
+type hal_gnss, base_typeattr;

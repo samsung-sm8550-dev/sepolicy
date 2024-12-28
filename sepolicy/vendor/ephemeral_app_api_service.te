@@ -1,1 +1,1 @@
-attribute ephemeral_app_api_service;
+type ephemeral_app_api_service, base_typeattr;

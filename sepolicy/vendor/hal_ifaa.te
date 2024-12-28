@@ -8,6 +8,9 @@ allow hal_ifaa_client servicemanager:fd *;
 allow hal_ifaa_server hal_ifaa_client:binder transfer;
 allow hal_ifaa_server hal_ifaa_client:binder { call transfer };
 allow hal_ifaa_server hal_ifaa_client:fd *;
+allow hal_ifaa_server hal_ifaa_hwservice:hwservice_manager { add find };
+allow hal_ifaa_server hidl_base_hwservice:hwservice_manager add;
+allow hal_ifaa_server hal_ifaa_service:service_manager { add find };
 allow hal_ifaa_server servicemanager:binder { call transfer };
 allow hal_ifaa_server servicemanager:fd *;
 allow hal_ifaa_default tz_user_device:chr_file rw_file_perms;
@@ -23,8 +26,7 @@ allowxperm hal_ifaa_default vendor_dmabuf_qseecom_heap_device:ioctl chr_file 0x4
 allowxperm hal_ifaa_default vendor_dmabuf_qseecom_ta_heap_device:ioctl chr_file 0x4800;
 init_daemon_domain(hal_ifaa_default)
 hal_server_domain(hal_ifaa_default, hal_ifaa)
-add_service(hal_ifaa_server, hal_ifaa_service)
-add_hwservice(hal_ifaa_server, hal_ifaa_hwservice)
 type hal_ifaa_default, domain;
 type hal_ifaa_default_exec, exec_type, file_type, vendor_file_type;
 type hal_ifaa_hwservice, hwservice_manager_type;
+type hal_ifaa_server, base_typeattr;

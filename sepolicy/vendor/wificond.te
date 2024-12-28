@@ -7,12 +7,15 @@ allow wificond keystore:fd *;
 allow wificond keystore:keystore_key get;
 allow wificond system_server:binder { call transfer };
 allow wificond system_server:fd *;
+allow wificond wifinl80211_service:service_manager { add find };
 allow wificond self:udp_socket create_socket_perms;
 allow wificond self:capability { net_admin net_raw };
 allow wificond self:cap_userns { net_admin net_raw };
 allow wificond self:netlink_socket create_socket_perms_no_ioctl;
 allow wificond self:netlink_generic_socket create_socket_perms_no_ioctl;
 allow wificond permission_service:service_manager find;
+allow wificond system_wifi_keystore_hwservice:hwservice_manager { add find };
+allow wificond hidl_base_hwservice:hwservice_manager add;
 allow wificond keystore_service:service_manager find;
 allow wificond wifi_key:keystore2_key { get_info use };
 allow wificond system_app:binder transfer;
@@ -24,7 +27,5 @@ r_dir_file(wificond, proc_net_type)
 binder_use(wificond)
 hwbinder_use(wificond)
 hal_client_domain(wificond, hal_nlinterceptor)
-add_service(wificond, wifinl80211_service)
-add_hwservice(wificond, system_wifi_keystore_hwservice)
-type wificond, domain, wifi_keystore_service_server;
+type wificond, base_typeattr, domain, wifi_keystore_service_server;
 type wificond_exec, exec_type, file_type, system_file_type;

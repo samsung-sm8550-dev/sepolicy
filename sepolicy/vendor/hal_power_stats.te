@@ -6,17 +6,23 @@ allow hal_power_stats_server dumpstate:fd *;
 allow hal_power_stats_server hal_power_stats_client:binder transfer;
 allow hal_power_stats_server hal_power_stats_client:binder { call transfer };
 allow hal_power_stats_server hal_power_stats_client:fd *;
+allow hal_power_stats_server hal_power_stats_hwservice:hwservice_manager { add find };
+allow hal_power_stats_server hidl_base_hwservice:hwservice_manager add;
+allow hal_power_stats_server hal_power_stats_service:service_manager { add find };
 allow hal_power_stats_server servicemanager:binder { call transfer };
 allow hal_power_stats_server servicemanager:fd *;
 allow hal_power_stats_client hal_power_stats_server:binder { call transfer };
 allow hal_power_stats_client hal_power_stats_server:binder transfer;
 allow hal_power_stats_client hal_power_stats_server:fd *;
+allow hal_power_stats_client hal_power_stats_hwservice:hwservice_manager find;
+allow hal_power_stats_client hal_power_stats_service:service_manager find;
 allow hal_power_stats_client servicemanager:binder { call transfer };
 allow hal_power_stats_client servicemanager:fd *;
 init_daemon_domain(hal_power_stats_default)
 hal_server_domain(hal_power_stats_default, hal_power_stats)
-hal_attribute_service(hal_power_stats, hal_power_stats_service)
-hal_attribute_hwservice(hal_power_stats, hal_power_stats_hwservice)
 type hal_power_stats_default, domain;
 type hal_power_stats_default_exec, exec_type, file_type, vendor_file_type;
 type hal_power_stats_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_power_stats_client, base_typeattr;
+type hal_power_stats_server, base_typeattr;
+type hal_power_stats, base_typeattr;

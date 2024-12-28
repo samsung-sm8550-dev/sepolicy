@@ -32,14 +32,18 @@ allow snap_hidl debugfs_tracing:file r_file_perms;
 allow snap_hidl dmabuf_system_heap_device:chr_file r_file_perms;
 allow snap_hidl vendor_npu_device:chr_file { ioctl open read write };
 allow snap_hidl vendor_npu_device:chr_file r_file_perms;
+allow snap_hidl hal_snap_service:service_manager { add find };
 allow snap_hidl system_app:binder { call transfer };
 allow snap_hidl system_app:binder transfer;
 allow snap_hidl system_app:fd *;
+allow snap_hidl system_app:process getpgid;
 allow snap_hidl untrusted_app_all:fd *;
+allow snap_hidl untrusted_app_all:process getpgid;
 allow snap_hidl untrusted_app_all:binder transfer;
 allow snap_hidl dmabuf_heap_device:chr_file r_file_perms;
-allow snap_hidl snap_utility:binder transfer;
+allow snap_hidl untrusted_app:process getpgid;
 allow snap_hidl untrusted_app:binder transfer;
+allow snap_hidl snap_utility:binder transfer;
 allow snap_hidl vendor_qdsp_device:chr_file r_file_perms;
 allow snap_hidl vendor_hal_perf_hwservice:hwservice_manager find;
 allow snap_hidl hal_perf_default:binder call;
@@ -65,6 +69,5 @@ hwbinder_use(snap_hidl)
 hal_client_domain(snap_hidl, hal_allocator)
 hal_client_domain(snap_hidl, hal_graphics_allocator)
 hal_client_domain(snap_hidl, hal_hyper)
-add_service(snap_hidl, hal_snap_service)
-type snap_hidl, domain, mlstrustedsubject;
+type snap_hidl, base_typeattr, domain, mlstrustedsubject;
 type snap_hidl_exec, exec_type, file_type, vendor_file_type;

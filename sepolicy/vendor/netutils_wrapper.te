@@ -36,5 +36,5 @@ allow netutils_wrapper vendor_dpmd_vndr:udp_socket { read write };
 allow netutils_wrapper vendor_dpmd_vndr:tcp_socket { read write };
 dontaudit netutils_wrapper self:capability sys_module;
 dontaudit netutils_wrapper system_file:dir write;
-type netutils_wrapper, domain;
-type netutils_wrapper_exec, exec_type, file_type, system_file_type;
+type netutils_wrapper, base_typeattr, domain;
+type netutils_wrapper_exec, base_typeattr, exec_type, file_type, system_file_type;

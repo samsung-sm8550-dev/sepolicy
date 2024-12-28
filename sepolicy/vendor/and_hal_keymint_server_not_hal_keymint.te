@@ -1,1 +1,0 @@
-neverallow { hal_keymint_server -hal_keymint } domain:process fork;

@@ -8,9 +8,14 @@ allow hal_nfc_server hal_nfc_client:binder { call transfer };
 allow hal_nfc_server hal_nfc_client:fd *;
 allow hal_nfc_server servicemanager:binder { call transfer };
 allow hal_nfc_server servicemanager:fd *;
+allow hal_nfc_server hal_nfc_hwservice:hwservice_manager { add find };
+allow hal_nfc_server hidl_base_hwservice:hwservice_manager add;
+allow hal_nfc_server hal_nfc_service:service_manager { add find };
 allow hal_nfc_client hal_nfc_server:binder { call transfer };
 allow hal_nfc_client hal_nfc_server:binder transfer;
 allow hal_nfc_client hal_nfc_server:fd *;
+allow hal_nfc_client hal_nfc_hwservice:hwservice_manager find;
+allow hal_nfc_client hal_nfc_service:service_manager find;
 allow hal_nfc nfc_device:chr_file rw_file_perms;
 allow hal_nfc nfc_vendor_data_file:dir rw_dir_perms;
 allow hal_nfc nfc_vendor_data_file:file create_file_perms;
@@ -18,6 +23,8 @@ allow hal_nfc_default tz_device:chr_file rw_file_perms;
 allow hal_nfc_default sec_efs_file:dir search;
 allow hal_nfc_default vendor_data_file:file rw_file_perms;
 allow hal_nfc_default nfc_device:chr_file rw_file_perms;
+allow hal_nfc_default hal_nfc_hwservice:hwservice_manager { add find };
+allow hal_nfc_default hidl_base_hwservice:hwservice_manager add;
 allow hal_nfc_default nfc_vendor_data_file:dir rw_dir_perms;
 allow hal_nfc_default nfc_vendor_data_file:file create_file_perms;
 init_daemon_domain(hal_nfc_default)
@@ -32,9 +39,9 @@ get_prop(hal_nfc_default, vendor_nfc_nq_prop)
 set_prop(hal_nfc, nfc_prop)
 set_prop(hal_nfc_default, vendor_nfc_prop)
 hal_server_domain(hal_nfc_default, hal_nfc)
-add_hwservice(hal_nfc_default, hal_nfc_hwservice)
-hal_attribute_service(hal_nfc, hal_nfc_service)
-hal_attribute_hwservice(hal_nfc, hal_nfc_hwservice)
-type hal_nfc_default, domain;
+type hal_nfc_default, base_typeattr, domain;
 type hal_nfc_default_exec, exec_type, file_type, vendor_file_type;
 type hal_nfc_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_nfc_client, base_typeattr;
+type hal_nfc_server, base_typeattr;
+type hal_nfc, base_typeattr;

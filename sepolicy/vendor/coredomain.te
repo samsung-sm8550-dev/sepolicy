@@ -1,11 +1,12 @@
 neverallow coredomain vendor_service:service_manager add;
+neverallow coredomain base_typeattr:file entrypoint;
 allow coredomain system_file:file { execute getattr map open read };
 allow coredomain system_data_file:dir getattr;
 allow coredomain tmpfs:lnk_file r_file_perms;
 dontaudit coredomain mnt_vendor_file:dir search;
 attribute coredomain_hwservice;
-attribute coredomain;
 get_prop(coredomain, product_ship_prop)
 get_prop(coredomain, vendor_debug_egl_prop)
 get_prop(coredomain, rfkilldisabled_prop)
 get_prop(coredomain, em_version_prop)
+type coredomain, base_typeattr;

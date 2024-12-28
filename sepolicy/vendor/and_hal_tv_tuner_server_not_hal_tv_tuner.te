@@ -1,1 +1,0 @@
-neverallow { hal_tv_tuner_server -hal_tv_tuner } domain:process fork;

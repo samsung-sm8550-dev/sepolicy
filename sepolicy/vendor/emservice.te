@@ -3,6 +3,7 @@ allow emservice cassd:binder transfer;
 allow emservice vaultkeeperd:binder { call transfer };
 allow emservice vaultkeeperd:binder transfer;
 allow emservice vaultkeeperd:fd *;
+allow emservice EngineeringMode_vndservice:service_manager { add find };
 allow emservice ion_device:chr_file rw_file_perms;
 allow emservice tee_device:chr_file rw_file_perms;
 allow emservice vendor_stork_socket:dir r_dir_perms;
@@ -48,6 +49,5 @@ binder_use(emservice)
 hwbinder_use(emservice)
 vndbinder_use(emservice)
 hal_client_domain(emservice, hal_engmode)
-add_service(emservice, EngineeringMode_vndservice)
-type emservice, domain;
+type emservice, base_typeattr, domain;
 type emservice_exec, exec_type, file_type, vendor_file_type;

@@ -1,1 +1,1 @@
-attribute system_dlkm_file_type;
+type system_dlkm_file_type, base_typeattr;

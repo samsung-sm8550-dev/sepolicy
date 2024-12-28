@@ -1,1 +1,1 @@
-attribute non_tracefs_type;
+type non_tracefs_type, base_typeattr;

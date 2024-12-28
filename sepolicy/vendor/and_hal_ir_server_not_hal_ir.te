@@ -1,1 +1,0 @@
-neverallow { hal_ir_server -hal_ir } domain:process fork;

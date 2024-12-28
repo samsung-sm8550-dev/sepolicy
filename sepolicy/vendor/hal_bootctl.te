@@ -4,9 +4,12 @@ expandtypeattribute(hal_bootctl_server)
 allow hal_bootctl_client hal_bootctl_server:binder { call transfer };
 allow hal_bootctl_client hal_bootctl_server:binder transfer;
 allow hal_bootctl_client hal_bootctl_server:fd *;
+allow hal_bootctl_client hal_bootctl_hwservice:hwservice_manager find;
 allow hal_bootctl_server hal_bootctl_client:binder transfer;
 allow hal_bootctl_server hal_bootctl_client:binder { call transfer };
 allow hal_bootctl_server hal_bootctl_client:fd *;
+allow hal_bootctl_server hal_bootctl_hwservice:hwservice_manager { add find };
+allow hal_bootctl_server hidl_base_hwservice:hwservice_manager add;
 allow hal_bootctl_server proc_bootconfig:file r_file_perms;
 allow hal_bootctl_server misc_block_device:blk_file rw_file_perms;
 allow hal_bootctl_server self:capability sys_rawio;
@@ -42,7 +45,9 @@ allow hal_bootctl sysfs_dt_firmware_android:dir r_dir_perms;
 dontaudit hal_bootctl self:capability sys_rawio;
 init_daemon_domain(hal_bootctl_default)
 hal_server_domain(hal_bootctl_default, hal_bootctl)
-hal_attribute_hwservice(hal_bootctl, hal_bootctl_hwservice)
 type hal_bootctl_default, domain;
 type hal_bootctl_default_exec, exec_type, file_type, vendor_file_type;
 type hal_bootctl_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_bootctl_server, base_typeattr;
+type hal_bootctl_client, base_typeattr;
+type hal_bootctl, base_typeattr;

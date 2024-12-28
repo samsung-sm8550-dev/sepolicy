@@ -1,4 +1,0 @@
-neverallow { appdomain -bluetooth -network_stack } self:capability *;
-neverallow { appdomain -bluetooth -network_stack } self:capability2 *;
-neverallow { appdomain -bluetooth -network_stack } self:cap_userns *;
-neverallow { appdomain -bluetooth -network_stack } self:cap2_userns *;

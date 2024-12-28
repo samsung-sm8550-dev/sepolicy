@@ -1,16 +1,18 @@
+allow vendor_hal_mstatservice_qti_client vendor_hal_mstatservice_hwservice:hwservice_manager find;
 allow vendor_hal_mstatservice_qti_client vendor_hal_mstatservice_qti_server:binder { call transfer };
 allow vendor_hal_mstatservice_qti_client vendor_hal_mstatservice_qti_server:binder transfer;
 allow vendor_hal_mstatservice_qti_client vendor_hal_mstatservice_qti_server:fd *;
+allow vendor_hal_mstatservice_qti_server vendor_hal_mstatservice_hwservice:hwservice_manager { add find };
+allow vendor_hal_mstatservice_qti_server hidl_base_hwservice:hwservice_manager add;
 allow vendor_hal_mstatservice_qti_server vendor_hal_mstatservice_qti_client:binder transfer;
 allow vendor_hal_mstatservice_qti_server vendor_hal_mstatservice_qti_client:binder { call transfer };
 allow vendor_hal_mstatservice_qti_server vendor_hal_mstatservice_qti_client:fd *;
 attribute vendor_hal_mstatservice_qti;
-attribute vendor_hal_mstatservice_qti_client;
-attribute vendor_hal_mstatservice_qti_server;
 init_daemon_domain(vendor_hal_mstatservice)
 r_dir_file(vendor_hal_mstatservice, proc_net_tcp_udp)
 hal_server_domain(vendor_hal_mstatservice, vendor_hal_mstatservice_qti)
-hal_attribute_hwservice(vendor_hal_mstatservice_qti, vendor_hal_mstatservice_hwservice)
 type vendor_hal_mstatservice, domain;
 type vendor_hal_mstatservice_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_mstatservice_hwservice, hwservice_manager_type, protected_hwservice;
+type vendor_hal_mstatservice_qti_client, base_typeattr;
+type vendor_hal_mstatservice_qti_server, base_typeattr;

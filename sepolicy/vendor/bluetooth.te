@@ -61,4 +61,4 @@ hal_client_domain(bluetooth, vendor_hal_perf)
 hal_client_domain(bluetooth, vendor_hal_qspmhal)
 hal_client_domain(bluetooth, vendor_hal_btconfigstore)
 hal_client_domain(bluetooth, vendor_hal_bluetooth_dun)
-type bluetooth, domain;
+type bluetooth, base_typeattr, domain;

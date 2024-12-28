@@ -1,7 +1,11 @@
+neverallow thales_iuicc_app base_typeattr:anon_inode *;
+allow thales_iuicc_app thales_iuicc_app_userfaultfd:anon_inode { create ioctl read };
+allow thales_iuicc_app appdomain_tmpfs:file { execute getattr map read write };
 allow thales_iuicc_app thales_spu_service:binder { call transfer };
 allow thales_iuicc_app thales_spu_service:binder transfer;
 allow thales_iuicc_app thales_spu_service:fd *;
 allow thales_iuicc_app activity_service:service_manager find;
 allow thales_iuicc_app thales_spu_service_service:service_manager find;
-app_domain(thales_iuicc_app)
-type thales_iuicc_app, coredomain, domain;
+type_transition thales_iuicc_app tmpfs:file appdomain_tmpfs;
+type_transition thales_iuicc_app thales_iuicc_app:anon_inode thales_iuicc_app_userfaultfd "[userfaultfd]";
+type thales_iuicc_app, appdomain, base_typeattr, coredomain, domain;

@@ -1,3 +1,6 @@
+neverallow policyloader_app base_typeattr:anon_inode *;
+allow policyloader_app policyloader_app_userfaultfd:anon_inode { create ioctl read };
+allow policyloader_app appdomain_tmpfs:file { execute getattr map read write };
 allow policyloader_app security_file:dir r_dir_perms;
 allow policyloader_app security_file:file r_file_perms;
 allow policyloader_app secure_storage:unix_stream_socket connectto;
@@ -24,8 +27,9 @@ allow policyloader_app shell_data_file:file r_file_perms;
 allow policyloader_app shell_data_file:dir r_dir_perms;
 allow policyloader_app vendor_hal_perf_hwservice:hwservice_manager find;
 allow policyloader_app hal_perf_default:binder call;
+type_transition policyloader_app tmpfs:file appdomain_tmpfs;
+type_transition policyloader_app policyloader_app:anon_inode policyloader_app_userfaultfd "[userfaultfd]";
 get_prop(policyloader_app, system_prop)
 get_prop(policyloader_app, security_prop)
-app_domain(policyloader_app)
 net_domain(policyloader_app)
-type policyloader_app, bluetoothdomain, coredomain, domain, platformappdomain;
+type policyloader_app, appdomain, base_typeattr, bluetoothdomain, coredomain, domain, platformappdomain;

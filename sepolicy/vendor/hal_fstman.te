@@ -1,11 +1,13 @@
 allow vendor_hal_fstman_client vendor_hal_fstman_server:binder { call transfer };
 allow vendor_hal_fstman_client vendor_hal_fstman_server:binder transfer;
 allow vendor_hal_fstman_client vendor_hal_fstman_server:fd *;
+allow vendor_hal_fstman_client vendor_hal_fstman_hwservice:hwservice_manager find;
 allow vendor_hal_fstman_server vendor_hal_fstman_client:binder transfer;
 allow vendor_hal_fstman_server vendor_hal_fstman_client:binder { call transfer };
 allow vendor_hal_fstman_server vendor_hal_fstman_client:fd *;
-attribute vendor_hal_fstman;
-attribute vendor_hal_fstman_client;
-attribute vendor_hal_fstman_server;
-hal_attribute_hwservice(vendor_hal_fstman, vendor_hal_fstman_hwservice)
+allow vendor_hal_fstman_server vendor_hal_fstman_hwservice:hwservice_manager { add find };
+allow vendor_hal_fstman_server hidl_base_hwservice:hwservice_manager add;
 type vendor_hal_fstman_hwservice, hwservice_manager_type, protected_hwservice;
+type vendor_hal_fstman_client, base_typeattr;
+type vendor_hal_fstman_server, base_typeattr;
+type vendor_hal_fstman, base_typeattr;

@@ -1,5 +1,6 @@
 allow teed_app system_server:binder transfer;
 allow teed_app system_server:binder call;
+allow teed_app tee_service:service_manager { add find };
 allow teed_app tee_service:service_manager add;
 allow teed_app activity_service:service_manager find;
 allow teed_app connectivity_service:service_manager find;
@@ -38,5 +39,4 @@ allow teed_app thermal_service:service_manager find;
 allow teed_app CustomFrequencyManager_service:service_manager find;
 hal_client_domain(teed_app, hal_allocator)
 hal_client_domain(teed_app, hal_tee)
-add_service(teed_app, tee_service)
-type teed_app, coredomain, domain;
+type teed_app, base_typeattr, coredomain, domain;

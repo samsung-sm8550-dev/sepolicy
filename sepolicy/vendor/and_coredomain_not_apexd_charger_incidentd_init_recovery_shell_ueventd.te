@@ -1,1 +1,0 @@
-neverallow { coredomain -apexd -charger -incidentd -init -recovery -shell -ueventd } sysfs_batteryinfo:file { open read };

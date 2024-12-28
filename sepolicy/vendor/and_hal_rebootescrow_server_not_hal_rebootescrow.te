@@ -1,1 +1,0 @@
-neverallow { hal_rebootescrow_server -hal_rebootescrow } domain:process fork;

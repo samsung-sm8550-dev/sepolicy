@@ -5,6 +5,8 @@ allow vendor_hal_sensorscalibrate_qti_client vendor_hal_sensorscalibrate_qti_hws
 allow vendor_hal_sensorscalibrate_qti_server vendor_hal_sensorscalibrate_qti_client:binder transfer;
 allow vendor_hal_sensorscalibrate_qti_server vendor_hal_sensorscalibrate_qti_client:binder { call transfer };
 allow vendor_hal_sensorscalibrate_qti_server vendor_hal_sensorscalibrate_qti_client:fd *;
+allow vendor_hal_sensorscalibrate_qti_server vendor_hal_sensorscalibrate_qti_hwservice:hwservice_manager { add find };
+allow vendor_hal_sensorscalibrate_qti_server hidl_base_hwservice:hwservice_manager add;
 allow vendor_hal_sensorscalibrate_qti vendor_sysfs_data:file r_file_perms;
 allow vendor_hal_sensorscalibrate_qti self:socket create_socket_perms;
 allow vendor_hal_sensorscalibrate_qti self:qipcrtr_socket create_socket_perms;
@@ -12,11 +14,10 @@ allowxperm vendor_hal_sensorscalibrate_qti self:ioctl socket { range 0xc300 0xc3
 allowxperm vendor_hal_sensorscalibrate_qti self:ioctl qipcrtr_socket { range 0xc300 0xc305 };
 attribute vendor_hal_sensorscalibrate_qti;
 attribute vendor_hal_sensorscalibrate_qti_client;
-attribute vendor_hal_sensorscalibrate_qti_server;
 init_daemon_domain(vendor_hal_sensorscalibrate_qti_default)
 r_dir_file(vendor_hal_sensorscalibrate_qti_default, mnt_vendor_file)
 hal_server_domain(vendor_hal_sensorscalibrate_qti_default, vendor_hal_sensorscalibrate_qti)
-add_hwservice(vendor_hal_sensorscalibrate_qti_server, vendor_hal_sensorscalibrate_qti_hwservice)
 type vendor_hal_sensorscalibrate_qti_default, domain;
 type vendor_hal_sensorscalibrate_qti_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_sensorscalibrate_qti_hwservice, hwservice_manager_type, protected_hwservice;
+type vendor_hal_sensorscalibrate_qti_server, base_typeattr;

@@ -1,1 +1,0 @@
-allow traceur_app { service_manager_type -apex_service -default_android_service -dnsresolver_service -gatekeeper_service -iorapd_service -incident_service -installd_service -lpdump_service -mdns_service -netd_service -virtual_touchpad_service -vold_service }:service_manager find;

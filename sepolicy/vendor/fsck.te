@@ -5,6 +5,7 @@ neverallow fsck system_block_device:blk_file no_rw_file_perms;
 neverallow fsck recovery_block_device:blk_file no_rw_file_perms;
 neverallow fsck boot_block_device:blk_file no_rw_file_perms;
 neverallow fsck swap_block_device:blk_file no_rw_file_perms;
+neverallow fsck base_typeattr:file entrypoint;
 allow fsck tmpfs:chr_file { ioctl read write };
 allow fsck devpts:chr_file { getattr ioctl read write };
 allow fsck vold:fd *;
@@ -43,5 +44,5 @@ allowxperm fsck dev_type:ioctl blk_file { 0x125e 0x127c };
 allowxperm fsck dm_device:ioctl blk_file { 0x1260 0x1271 };
 allowxperm fsck vendor_qmcs_block_device:ioctl blk_file 0x1260;
 r_dir_file(fsck, omr_file)
-type fsck, domain;
-type fsck_exec, exec_type, file_type, system_file_type;
+type fsck, base_typeattr, domain;
+type fsck_exec, base_typeattr, exec_type, file_type, system_file_type;

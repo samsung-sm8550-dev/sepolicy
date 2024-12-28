@@ -1,1 +1,1 @@
-attribute sdcard_type;
+type sdcard_type, base_typeattr;

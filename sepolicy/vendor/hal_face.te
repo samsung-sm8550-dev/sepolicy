@@ -6,11 +6,16 @@ allow hal_face_server dumpstate:fd *;
 allow hal_face_server hal_face_client:binder transfer;
 allow hal_face_server hal_face_client:binder { call transfer };
 allow hal_face_server hal_face_client:fd *;
+allow hal_face_server hal_face_hwservice:hwservice_manager { add find };
+allow hal_face_server hidl_base_hwservice:hwservice_manager add;
+allow hal_face_server hal_face_service:service_manager { add find };
 allow hal_face_server servicemanager:binder { call transfer };
 allow hal_face_server servicemanager:fd *;
 allow hal_face_client hal_face_server:binder { call transfer };
 allow hal_face_client hal_face_server:binder transfer;
 allow hal_face_client hal_face_server:fd *;
+allow hal_face_client hal_face_hwservice:hwservice_manager find;
+allow hal_face_client hal_face_service:service_manager find;
 allow hal_face ion_device:chr_file r_file_perms;
 allow hal_face face_vendor_data_file:file create_file_perms;
 allow hal_face face_vendor_data_file:dir rw_dir_perms;
@@ -48,8 +53,9 @@ get_prop(hal_face_default, vendor_adsprpc_prop)
 hal_server_domain(hal_face_default, hal_face)
 hal_client_domain(hal_face_default, hal_allocator)
 hal_client_domain(hal_face_default, hal_graphics_allocator)
-hal_attribute_service(hal_face, hal_face_service)
-hal_attribute_hwservice(hal_face, hal_face_hwservice)
-type hal_face_default, domain;
+type hal_face_default, base_typeattr, domain;
 type hal_face_default_exec, exec_type, file_type, vendor_file_type;
 type hal_face_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_face_client, base_typeattr;
+type hal_face_server, base_typeattr;
+type hal_face, base_typeattr;

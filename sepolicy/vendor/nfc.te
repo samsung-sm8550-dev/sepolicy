@@ -32,4 +32,4 @@ set_prop(nfc, system_prop)
 hal_attribute(nfc)
 hal_client_domain(nfc, hal_memtrack)
 hal_client_domain(nfc, vendor_hal_perf)
-type nfc, domain;
+type nfc, base_typeattr, domain;

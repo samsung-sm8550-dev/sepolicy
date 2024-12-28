@@ -20,6 +20,8 @@ allow vaultkeeperd vaultkeeper_efs_file:file create_file_perms;
 allow vaultkeeperd vaultkeeper_efs_file:dir create_dir_perms;
 allow vaultkeeperd vaultkeeper_socket:dir rw_dir_perms;
 allow vaultkeeperd vaultkeeper_socket:sock_file create_file_perms;
+allow vaultkeeperd hal_vaultkeeper_server_hwservice:hwservice_manager { add find };
+allow vaultkeeperd hidl_base_hwservice:hwservice_manager add;
 allow vaultkeeperd kmsg_device:chr_file rw_file_perms;
 allow vaultkeeperd mobicore_admin_device:chr_file rw_file_perms;
 allow vaultkeeperd mobicore_user_device:chr_file rw_file_perms;
@@ -62,6 +64,5 @@ set_prop(vaultkeeperd, vendor_sec_vaultkeeper_prop)
 hwbinder_use(vaultkeeperd)
 vndbinder_use(vaultkeeperd)
 hal_client_domain(vaultkeeperd, vendor_hal_qseecom)
-add_hwservice(vaultkeeperd, hal_vaultkeeper_server_hwservice)
-type vaultkeeperd, domain;
+type vaultkeeperd, base_typeattr, domain;
 type vaultkeeperd_exec, exec_type, file_type, vendor_file_type;

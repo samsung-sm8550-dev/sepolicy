@@ -13,9 +13,11 @@ allow hal_qchdcpkprov_client hal_qchdcpkprov_hwservice:hwservice_manager find;
 allow hal_qchdcpkprov_server hal_qchdcpkprov_client:binder transfer;
 allow hal_qchdcpkprov_server hal_qchdcpkprov_client:binder { call transfer };
 allow hal_qchdcpkprov_server hal_qchdcpkprov_client:fd *;
+allow hal_qchdcpkprov_server hal_qchdcpkprov_hwservice:hwservice_manager { add find };
+allow hal_qchdcpkprov_server hidl_base_hwservice:hwservice_manager add;
 init_daemon_domain(hal_qchdcpkprov_default)
 hal_server_domain(hal_qchdcpkprov_default, hal_qchdcpkprov)
-add_hwservice(hal_qchdcpkprov_server, hal_qchdcpkprov_hwservice)
 type hal_qchdcpkprov_default, domain;
 type hal_qchdcpkprov_default_exec, exec_type, file_type, vendor_file_type;
 type hal_qchdcpkprov_hwservice, hwservice_manager_type;
+type hal_qchdcpkprov_server, base_typeattr;

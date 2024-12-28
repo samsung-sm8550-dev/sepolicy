@@ -1,6 +1,7 @@
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder transfer;
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:binder { call transfer };
 allow vendor_wfdvndservice vendor_wfdhdcphalservice_qti:fd *;
+allow vendor_wfdvndservice vendor_wfdhdcpvndservice_service:service_manager { add find };
 allow vendor_wfdvndservice vendor_wfd_app:fd *;
 allow vendor_wfdvndservice mediacodec:fd *;
 allow vendor_wfdvndservice tee_device:chr_file rw_file_perms;
@@ -25,6 +26,5 @@ unix_socket_connect(vendor_wfdvndservice, tombstoned_crash, tombstoned)
 vndbinder_use(vendor_wfdvndservice)
 net_domain(vendor_wfdvndservice)
 hal_client_domain(vendor_wfdvndservice, hal_graphics_composer)
-add_service(vendor_wfdvndservice, vendor_wfdhdcpvndservice_service)
-type vendor_wfdvndservice, domain;
+type vendor_wfdvndservice, base_typeattr, domain;
 type vendor_wfdvndservice_exec, exec_type, file_type, vendor_file_type;

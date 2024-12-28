@@ -29,5 +29,5 @@ allow untrusteddomain input_service:service_manager find;
 allow untrusteddomain usb_service:service_manager find;
 allow untrusteddomain multiwindow_service:service_manager find;
 allow untrusteddomain batterystats_service:service_manager find;
-attribute untrusteddomain;
 r_dir_file(untrusteddomain, sysfs_switch)
+type untrusteddomain, base_typeattr;

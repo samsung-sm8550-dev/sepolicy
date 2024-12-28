@@ -4,11 +4,13 @@ expandtypeattribute(hal_uwb_server)
 allow hal_uwb_client hal_uwb_server:binder { call transfer };
 allow hal_uwb_client hal_uwb_server:binder transfer;
 allow hal_uwb_client hal_uwb_server:fd *;
+allow hal_uwb_client hal_uwb_service:service_manager find;
 allow hal_uwb_client servicemanager:binder { call transfer };
 allow hal_uwb_client servicemanager:fd *;
 allow hal_uwb_server hal_uwb_client:binder transfer;
 allow hal_uwb_server hal_uwb_client:binder { call transfer };
 allow hal_uwb_server hal_uwb_client:fd *;
+allow hal_uwb_server hal_uwb_service:service_manager { add find };
 allow hal_uwb_server servicemanager:binder { call transfer };
 allow hal_uwb_server servicemanager:fd *;
 allow hal_uwb_default servicemanager:binder transfer;
@@ -24,6 +26,8 @@ r_dir_file(hal_uwb_default, proc_uwblog)
 get_prop(hal_uwb_default, uwb_regulation_skip_prop)
 set_prop(hal_uwb_default, vendor_uwb_prop)
 hal_server_domain(hal_uwb_default, hal_uwb)
-hal_attribute_service(hal_uwb, hal_uwb_service)
 type hal_uwb_default, domain;
 type hal_uwb_default_exec, exec_type, file_type, vendor_file_type;
+type hal_uwb_client, base_typeattr;
+type hal_uwb_server, base_typeattr;
+type hal_uwb, base_typeattr;

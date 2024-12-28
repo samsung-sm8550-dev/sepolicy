@@ -5,6 +5,9 @@ allow hal_drk_client hal_drk_hwservice:hwservice_manager find;
 allow hal_drk_server hal_drk_client:binder transfer;
 allow hal_drk_server hal_drk_client:binder { call transfer };
 allow hal_drk_server hal_drk_client:fd *;
+allow hal_drk_server hal_drk_hwservice:hwservice_manager { add find };
+allow hal_drk_server hidl_base_hwservice:hwservice_manager add;
+allow hal_drk_server hal_drk_service:service_manager { add find };
 allow hal_drk_default mnt_vendor_file:dir rw_dir_perms;
 allow hal_drk_default prov_efs_file:file create_file_perms;
 allow hal_drk_default prov_efs_file:dir create_dir_perms;
@@ -82,8 +85,7 @@ get_prop(hal_drk_default, vendor_spcomlib_prop)
 set_prop(hal_drk_default, vendor_securehw_prop)
 hal_server_domain(hal_drk_default, hal_drk)
 hal_client_domain(hal_drk_default, hal_weaver)
-add_service(hal_drk_server, hal_drk_service)
-add_hwservice(hal_drk_server, hal_drk_hwservice)
 type hal_drk_default, domain;
 type hal_drk_default_exec, exec_type, file_type, vendor_file_type;
 type hal_drk_hwservice, hwservice_manager_type;
+type hal_drk_server, base_typeattr;

@@ -6,14 +6,15 @@ allow vendor_hal_qdutils_disp_client vendor_hal_qdutils_disp_hwservice:hwservice
 allow vendor_hal_qdutils_disp_server vendor_hal_qdutils_disp_client:binder transfer;
 allow vendor_hal_qdutils_disp_server vendor_hal_qdutils_disp_client:binder { call transfer };
 allow vendor_hal_qdutils_disp_server vendor_hal_qdutils_disp_client:fd *;
+allow vendor_hal_qdutils_disp_server vendor_hal_qdutils_disp_hwservice:hwservice_manager { add find };
+allow vendor_hal_qdutils_disp_server hidl_base_hwservice:hwservice_manager add;
 attribute vendor_hal_qdutils_disp;
 attribute vendor_hal_qdutils_disp_client;
-attribute vendor_hal_qdutils_disp_server;
 init_daemon_domain(vendor_hal_qdutils_disp_qti)
 vndbinder_use(vendor_hal_qdutils_disp_qti)
 hal_server_domain(vendor_hal_qdutils_disp_qti, vendor_hal_qdutils_disp)
 hal_client_domain(vendor_hal_qdutils_disp_qti, hal_graphics_composer)
-add_hwservice(vendor_hal_qdutils_disp_server, vendor_hal_qdutils_disp_hwservice)
 type vendor_hal_qdutils_disp_qti, domain;
 type vendor_hal_qdutils_disp_qti_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_qdutils_disp_hwservice, hwservice_manager_type, protected_hwservice;
+type vendor_hal_qdutils_disp_server, base_typeattr;

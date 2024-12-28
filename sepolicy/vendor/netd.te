@@ -21,6 +21,7 @@ neverallow netd system_data_file:chr_file write;
 neverallow netd system_data_file:blk_file write;
 neverallow netd system_data_file:sock_file write;
 neverallow netd system_data_file:fifo_file write;
+neverallow netd base_typeattr:binder call;
 neverallow netd proc_net:dir no_w_dir_perms;
 neverallow netd sysfs_net:dir no_w_dir_perms;
 neverallow netd self:capability sys_admin;
@@ -60,6 +61,9 @@ allow netd net_data_file:file create_file_perms;
 allow netd net_data_file:dir rw_dir_perms;
 allow netd dnsmasq:process signal;
 allow netd dnsmasq:process sigkill;
+allow netd netd_service:service_manager { add find };
+allow netd dnsresolver_service:service_manager { add find };
+allow netd mdns_service:service_manager { add find };
 allow netd permission_service:service_manager find;
 allow netd netd_listener_service:service_manager find;
 allow netd netdomain:tcp_socket { getattr getopt read setattr setopt write };
@@ -69,6 +73,8 @@ allow netd netdomain:tun_socket { getattr getopt read setattr setopt write };
 allow netd netdomain:icmp_socket { getattr getopt read setattr setopt write };
 allow netd netdomain:fd *;
 allow netd netdomain:unix_stream_socket { getattr getopt read setattr setopt write };
+allow netd system_net_netd_hwservice:hwservice_manager { add find };
+allow netd hidl_base_hwservice:hwservice_manager add;
 allow netd sysfs_ss_writable:file { open read write };
 allow netd proc_info_file:file { open read };
 allow netd convergence_data_file:dir rw_dir_perms;
@@ -126,9 +132,5 @@ binder_use(netd)
 hwbinder_use(netd)
 net_domain(netd)
 hal_client_domain(netd, hal_graphics_allocator)
-add_service(netd, netd_service)
-add_service(netd, dnsresolver_service)
-add_service(netd, mdns_service)
-add_hwservice(netd, system_net_netd_hwservice)
-type netd, domain, mlstrustedsubject;
+type netd, base_typeattr, domain, mlstrustedsubject;
 type netd_exec, exec_type, file_type, system_file_type;

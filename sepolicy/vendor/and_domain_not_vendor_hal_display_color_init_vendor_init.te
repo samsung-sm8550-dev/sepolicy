@@ -1,1 +1,0 @@
-neverallow { domain -vendor_hal_display_color -init -vendor_init } vendor_qdcmss_prop:property_service set;

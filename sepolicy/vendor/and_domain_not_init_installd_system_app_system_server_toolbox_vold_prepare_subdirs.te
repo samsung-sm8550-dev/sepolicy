@@ -1,1 +1,0 @@
-neverallow { domain -init -installd -system_app -system_server -toolbox -vold_prepare_subdirs } system_data_file:file no_w_file_perms;

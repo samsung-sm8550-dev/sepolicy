@@ -1,4 +1,5 @@
-attribute stats_service_server;
+allow stats_service_server fwk_stats_hwservice:hwservice_manager { add find };
+allow stats_service_server hidl_base_hwservice:hwservice_manager add;
+allow stats_service_server fwk_stats_service:service_manager { add find };
 binder_use(stats_service_server)
-add_service(stats_service_server, fwk_stats_service)
-add_hwservice(stats_service_server, fwk_stats_hwservice)
+type stats_service_server, base_typeattr;

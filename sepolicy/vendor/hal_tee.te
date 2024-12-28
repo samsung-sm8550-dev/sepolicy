@@ -5,6 +5,8 @@ allow hal_tee_client hal_tee_hwservice:hwservice_manager find;
 allow hal_tee_server hal_tee_client:binder transfer;
 allow hal_tee_server hal_tee_client:binder { call transfer };
 allow hal_tee_server hal_tee_client:fd *;
+allow hal_tee_server hal_tee_hwservice:hwservice_manager { add find };
+allow hal_tee_server hidl_base_hwservice:hwservice_manager add;
 allow hal_tee_default hidl_memory_hwservice:hwservice_manager find;
 allow hal_tee_default mobicore_user_device:chr_file rw_file_perms;
 allow hal_tee_default untrusted_app_all:fd *;
@@ -20,7 +22,7 @@ allow hal_tee_default sec_debugfs:dir search;
 init_daemon_domain(hal_tee_default)
 hal_server_domain(hal_tee_default, hal_tee)
 hal_client_domain(hal_tee_default, hal_allocator)
-add_hwservice(hal_tee_server, hal_tee_hwservice)
 type hal_tee_default, domain;
 type hal_tee_default_exec, exec_type, file_type, vendor_file_type;
 type hal_tee_hwservice, hwservice_manager_type;
+type hal_tee_server, base_typeattr;

@@ -1,1 +1,0 @@
-neverallow { hal_dice_server -hal_dice } domain:process fork;

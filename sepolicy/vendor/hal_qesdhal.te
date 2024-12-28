@@ -12,12 +12,13 @@ allow vendor_hal_qesdhal_default tombstone_data_file:file append;
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder { call transfer };
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:binder transfer;
 allow vendor_hal_qesdhal_client vendor_hal_qesdhal_server:fd *;
+allow vendor_hal_qesdhal_client vendor_hal_qesdhal_hwservice:hwservice_manager find;
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder transfer;
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:binder { call transfer };
 allow vendor_hal_qesdhal_server vendor_hal_qesdhal_client:fd *;
+allow vendor_hal_qesdhal_server vendor_hal_qesdhal_hwservice:hwservice_manager { add find };
+allow vendor_hal_qesdhal_server hidl_base_hwservice:hwservice_manager add;
 attribute vendor_hal_qesdhal;
-attribute vendor_hal_qesdhal_client;
-attribute vendor_hal_qesdhal_server;
 init_daemon_domain(vendor_hal_qesdhal_default)
 unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, tombstoned)
 unix_socket_connect(vendor_hal_qesdhal_default, tombstoned_crash, init)
@@ -27,7 +28,8 @@ set_prop(vendor_hal_qesdhal_default, vendor_qesdk_ready_prop)
 binder_use(vendor_hal_qesdhal_default)
 hal_server_domain(vendor_hal_qesdhal_default, vendor_hal_qesdhal)
 hal_client_domain(vendor_hal_qesdhal_default, hal_allocator)
-hal_attribute_hwservice(vendor_hal_qesdhal, vendor_hal_qesdhal_hwservice)
 type vendor_hal_qesdhal_default, domain;
 type vendor_hal_qesdhal_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_qesdhal_hwservice, hwservice_manager_type;
+type vendor_hal_qesdhal_client, base_typeattr;
+type vendor_hal_qesdhal_server, base_typeattr;

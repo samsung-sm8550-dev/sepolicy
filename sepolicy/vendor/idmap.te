@@ -7,6 +7,7 @@ allow idmap apk_tmp_file:file r_file_perms;
 allow idmap apk_tmp_file:dir search;
 allow idmap apk_private_tmp_file:file r_file_perms;
 allow idmap apk_private_tmp_file:dir search;
+allow idmap idmap_service:service_manager { add find };
 allow idmap themecenter_data_file:dir r_dir_perms;
 allow idmap themecenter_data_file:file r_file_perms;
 allow idmap system_app:fd *;
@@ -19,6 +20,5 @@ r_dir_file(idmap, vendor_app_file)
 r_dir_file(idmap, vendor_overlay_file)
 binder_service(idmap)
 binder_use(idmap)
-add_service(idmap, idmap_service)
-type idmap, domain;
+type idmap, base_typeattr, domain;
 type idmap_exec, exec_type, file_type, system_file_type;

@@ -1,1 +1,0 @@
-allow runas { appdomain -system_app }:process dyntransition;

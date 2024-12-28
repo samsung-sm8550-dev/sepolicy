@@ -1,1 +1,0 @@
-neverallow { hal_nfc_server -hal_nfc } domain:process fork;

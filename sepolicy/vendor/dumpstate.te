@@ -1,3 +1,4 @@
+neverallow dumpstate base_typeattr:process ptrace;
 allow dumpstate servicemanager:service_manager list;
 allow dumpstate sysfs_wake_lock:file rw_file_perms;
 allow dumpstate self:capability2 block_suspend;
@@ -211,12 +212,16 @@ allow dumpstate prereboot_data_file:dir r_dir_perms;
 allow dumpstate prereboot_data_file:file r_file_perms;
 allow dumpstate app_fuse_file:dir r_dir_perms;
 allow dumpstate overlayfs_file:dir r_dir_perms;
+allow dumpstate base_typeattr:service_manager find;
+allow dumpstate base_typeattr:file { getattr lock map open read };
+allow dumpstate base_typeattr:binder call;
 allow dumpstate devpts:chr_file rw_file_perms;
 allow dumpstate media_rw_data_file:dir getattr;
 allow dumpstate media_rw_data_file:dir r_dir_perms;
 allow dumpstate media_rw_data_file:file r_file_perms;
 allow dumpstate proc_interrupts:file r_file_perms;
 allow dumpstate proc_zoneinfo:file r_file_perms;
+allow dumpstate dumpstate_service:service_manager { add find };
 allow dumpstate ion_device:chr_file r_file_perms;
 allow dumpstate proc_stat:file r_file_perms;
 allow dumpstate proc_pressure_cpu:file r_file_perms;
@@ -464,6 +469,7 @@ allow dumpstate hal_mpp_default:process signal;
 allow dumpstate proc_sched_debug:file r_file_perms;
 allow dumpstate sysfs_ski_ufs_writable:file r_file_perms;
 allow dumpstate sec_display_debug_device:chr_file r_file_perms;
+allow dumpstate proc_boot_reset:file r_file_perms;
 allow dumpstate dtvserver:binder call;
 allow dumpstate vendor_sysfs_graphics:file r_file_perms;
 allow dumpstate adsprpcd_file:dir r_dir_perms;
@@ -507,6 +513,7 @@ allowxperm dumpstate dumplog_data_file:ioctl dir 0x5401;
 r_dir_file(dumpstate, domain)
 r_dir_file(dumpstate, cgroup)
 r_dir_file(dumpstate, cgroup_v2)
+r_dir_file(dumpstate, base_typeattr)
 r_dir_file(dumpstate, sdcardfs)
 r_dir_file(dumpstate, proc_fslog)
 r_dir_file(dumpstate, sysfs_net)
@@ -534,6 +541,7 @@ r_dir_file(dumpstate, proc_lmkd_debug)
 r_dir_file(dumpstate, sysfs_battery)
 r_dir_file(dumpstate, app_efs_file)
 r_dir_file(dumpstate, rdxdump_data_file)
+r_dir_file(dumpstate, rtts_efs_file)
 unix_socket_connect(dumpstate, tombstoned_intercept, tombstoned)
 unix_socket_connect(dumpstate, tombstoned_intercept, logd)
 unix_socket_connect(dumpstate, logdr, tombstoned)
@@ -572,6 +580,5 @@ hal_client_domain(dumpstate, hal_wifi_supplicant)
 hal_client_domain(dumpstate, hal_drk)
 hal_client_domain(dumpstate, hal_ddar)
 hal_client_domain(dumpstate, hal_ucmtlc)
-add_service(dumpstate, dumpstate_service)
-type dumpstate, domain, mlstrustedsubject;
+type dumpstate, base_typeattr, domain, mlstrustedsubject;
 type dumpstate_exec, exec_type, file_type, system_file_type;

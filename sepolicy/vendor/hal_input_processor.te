@@ -3,11 +3,15 @@ expandtypeattribute(hal_input_processor_client)
 expandtypeattribute(hal_input_processor_server)
 allow hal_input_processor_client hal_input_processor_server:binder { call transfer };
 allow hal_input_processor_client hal_input_processor_server:fd *;
+allow hal_input_processor_client hal_input_processor_service:service_manager find;
 allow hal_input_processor_server hal_input_processor_client:binder transfer;
 allow hal_input_processor_server servicemanager:binder { call transfer };
 allow hal_input_processor_server servicemanager:fd *;
+allow hal_input_processor_server hal_input_processor_service:service_manager { add find };
 init_daemon_domain(hal_input_processor_default)
 hal_server_domain(hal_input_processor_default, hal_input_processor)
-hal_attribute_service(hal_input_processor, hal_input_processor_service)
 type hal_input_processor_default, domain;
 type hal_input_processor_default_exec, exec_type, file_type, vendor_file_type;
+type hal_input_processor_client, base_typeattr;
+type hal_input_processor_server, base_typeattr;
+type hal_input_processor, base_typeattr;

@@ -265,4 +265,4 @@ hal_client_domain(platform_app, hal_authfw)
 hal_client_domain(platform_app, hal_engmode)
 hal_client_domain(platform_app, hal_mpp)
 hal_client_domain(platform_app, hal_softsimd)
-type platform_app, domain, platformappdomain;
+type platform_app, base_typeattr, domain, platformappdomain;

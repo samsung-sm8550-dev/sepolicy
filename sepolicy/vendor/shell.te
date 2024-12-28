@@ -37,6 +37,8 @@ allow shell tzdatacheck_exec:file rx_file_perms;
 allow shell shell_exec:file rx_file_perms;
 allow shell zygote_exec:file rx_file_perms;
 allow shell servicemanager:service_manager list;
+allow shell base_typeattr:service_manager find;
+allow shell base_typeattr:binder call;
 allow shell hwservicemanager:hwservice_manager list;
 allow shell proc_asound:file r_file_perms;
 allow shell proc_filesystems:file r_file_perms;
@@ -281,7 +283,7 @@ set_prop(shell, ctl_start_prop)
 hwbinder_use(shell)
 net_domain(shell)
 hal_client_domain(shell, vendor_hal_dspmanager)
-type shell, domain, mlstrustedsubject;
+type shell, base_typeattr, domain, mlstrustedsubject;
 type vendor_shell, domain;
 type shell_exec, exec_type, file_type, system_file_type;
 type vendor_shell_exec, exec_type, file_type, vendor_file_type;

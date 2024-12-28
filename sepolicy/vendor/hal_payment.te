@@ -5,6 +5,8 @@ allow hal_payment_client hal_payment_hwservice:hwservice_manager find;
 allow hal_payment_server hal_payment_client:binder transfer;
 allow hal_payment_server hal_payment_client:binder { call transfer };
 allow hal_payment_server hal_payment_client:fd *;
+allow hal_payment_server hal_payment_hwservice:hwservice_manager { add find };
+allow hal_payment_server hidl_base_hwservice:hwservice_manager add;
 allow hal_payment_default tee_device:chr_file rw_file_perms;
 allow hal_payment_default platform_app:fd *;
 allow hal_payment_default app_data_file:file read;
@@ -26,7 +28,7 @@ get_prop(hal_payment_default, vendor_teegris_prop)
 hal_server_domain(hal_payment_default, hal_payment)
 hal_client_domain(hal_payment_default, vendor_hal_tui_comm)
 hal_client_domain(hal_payment_default, hal_tui_comm)
-add_hwservice(hal_payment_server, hal_payment_hwservice)
 type hal_payment_default, domain;
 type hal_payment_default_exec, exec_type, file_type, vendor_file_type;
 type hal_payment_hwservice, hwservice_manager_type;
+type hal_payment_server, base_typeattr;

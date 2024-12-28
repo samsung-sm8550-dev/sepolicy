@@ -1,2 +1,0 @@
-neverallow { domain -init -system_server -tzdatacheck } zoneinfo_data_file:file no_w_file_perms;
-neverallow { domain -init -system_server -tzdatacheck } zoneinfo_data_file:dir no_w_dir_perms;

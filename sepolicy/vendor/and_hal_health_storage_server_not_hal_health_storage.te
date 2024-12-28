@@ -1,1 +1,0 @@
-neverallow { hal_health_storage_server -hal_health_storage } domain:process fork;

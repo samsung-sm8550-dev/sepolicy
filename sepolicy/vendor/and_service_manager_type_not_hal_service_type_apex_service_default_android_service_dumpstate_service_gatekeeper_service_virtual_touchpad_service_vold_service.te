@@ -1,1 +1,0 @@
-allow dumpstate { service_manager_type -hal_service_type -apex_service -default_android_service -dumpstate_service -gatekeeper_service -virtual_touchpad_service -vold_service }:service_manager find;

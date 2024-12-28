@@ -5,17 +5,27 @@ allow hal_graphics_composer_client hal_graphics_composer_server:binder { call tr
 allow hal_graphics_composer_client hal_graphics_composer_server:binder transfer;
 allow hal_graphics_composer_client hal_graphics_composer_server:fd *;
 allow hal_graphics_composer_client hal_graphics_composer_server_tmpfs:file { getattr map read write };
+allow hal_graphics_composer_client hal_graphics_composer_hwservice:hwservice_manager find;
 allow hal_graphics_composer_client servicemanager:binder { call transfer };
 allow hal_graphics_composer_client servicemanager:fd *;
+allow hal_graphics_composer_client hal_graphics_composer_service:service_manager find;
 allow hal_graphics_composer_client vendor_hal_display_config_hwservice:hwservice_manager find;
+allow hal_graphics_composer_client vendor_hal_vnddisplayconfig_service:service_manager find;
+allow hal_graphics_composer_client vendor_hal_displayconfig_service:service_manager find;
 allow hal_graphics_composer_server hal_graphics_composer_client:binder transfer;
 allow hal_graphics_composer_server hal_graphics_composer_client:binder { call transfer };
 allow hal_graphics_composer_server hal_graphics_composer_client:fd *;
 allow hal_graphics_composer_server hal_graphics_composer_client:fifo_file write;
 allow hal_graphics_composer_server hal_graphics_composer_client_tmpfs:file { getattr map read write };
+allow hal_graphics_composer_server hal_graphics_composer_hwservice:hwservice_manager { add find };
+allow hal_graphics_composer_server hidl_base_hwservice:hwservice_manager add;
 allow hal_graphics_composer_server hal_graphics_mapper_hwservice:hwservice_manager find;
 allow hal_graphics_composer_server servicemanager:binder { call transfer };
 allow hal_graphics_composer_server servicemanager:fd *;
+allow hal_graphics_composer_server hal_graphics_composer_service:service_manager { add find };
+allow hal_graphics_composer_server vendor_hal_display_config_hwservice:hwservice_manager { add find };
+allow hal_graphics_composer_server vendor_hal_displayconfig_service:service_manager { add find };
+allow hal_graphics_composer_server vendor_hal_vnddisplayconfig_service:service_manager { add find };
 allow hal_graphics_composer gpu_device:chr_file rw_file_perms;
 allow hal_graphics_composer gpu_device:dir r_dir_perms;
 allow hal_graphics_composer ion_device:chr_file r_file_perms;
@@ -103,11 +113,9 @@ hal_client_domain(hal_graphics_composer_default, hal_graphics_allocator)
 hal_client_domain(hal_graphics_composer_default, hal_thermal)
 hal_client_domain(hal_graphics_composer_default, vendor_hal_display_demura)
 hal_client_domain(hal_graphics_composer_default, vendor_hal_perf)
-add_hwservice(hal_graphics_composer_server, vendor_hal_display_config_hwservice)
-hal_attribute_service(hal_graphics_composer, hal_graphics_composer_service)
-hal_attribute_service(hal_graphics_composer, vendor_hal_vnddisplayconfig_service)
-hal_attribute_service(hal_graphics_composer, vendor_hal_displayconfig_service)
-hal_attribute_hwservice(hal_graphics_composer, hal_graphics_composer_hwservice)
-type hal_graphics_composer_default, domain;
+type hal_graphics_composer_default, base_typeattr, domain;
 type hal_graphics_composer_default_exec, exec_type, file_type, vendor_file_type;
 type hal_graphics_composer_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_graphics_composer_client, base_typeattr;
+type hal_graphics_composer_server, base_typeattr;
+type hal_graphics_composer, base_typeattr;

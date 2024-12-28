@@ -1,1 +1,1 @@
-type installd_service, service_manager_type;
+type installd_service, base_typeattr, service_manager_type;

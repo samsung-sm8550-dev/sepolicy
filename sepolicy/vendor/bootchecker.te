@@ -21,6 +21,7 @@ allow bootchecker sysfs_ski_testinfra_writable:file rw_file_perms;
 allow bootchecker cache_file:dir search;
 allow bootchecker cache_recovery_file:dir rw_dir_perms;
 allow bootchecker cache_recovery_file:file create_file_perms;
+allow bootchecker paramblk_device:blk_file rw_file_perms;
 r_dir_file(bootchecker, sysfs_sec)
 unix_socket_connect(bootchecker, property, logd)
 unix_socket_connect(bootchecker, property, dumpstate)

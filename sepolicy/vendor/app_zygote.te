@@ -1,2 +1,2 @@
 allow app_zygote app_data_file:dir getattr;
-type app_zygote, domain;
+type app_zygote, base_typeattr, domain;

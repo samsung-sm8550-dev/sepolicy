@@ -1,1 +1,0 @@
-neverallow { domain -apexd -init -system_server -update_engine } apex_service:service_manager find;

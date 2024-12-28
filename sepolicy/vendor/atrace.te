@@ -1,2 +1,2 @@
 hal_attribute(atrace)
-type atrace, coredomain, domain;
+type atrace, base_typeattr, coredomain, domain;

@@ -1,1 +1,1 @@
-attribute gsi_metadata_file_type;
+type gsi_metadata_file_type, base_typeattr;

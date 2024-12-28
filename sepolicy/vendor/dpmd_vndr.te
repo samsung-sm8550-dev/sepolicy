@@ -15,6 +15,7 @@ allow vendor_dpmd_vndr system_file:dir r_dir_perms;
 allow vendor_dpmd_vndr vendor_dpm_vndr_data_file:file create_file_perms;
 allow vendor_dpmd_vndr vendor_dpm_vndr_data_file:dir create_dir_perms;
 allow vendor_dpmd_vndr proc_net:file write;
+allow vendor_dpmd_vndr vendor_nwmgr_service:service_manager { add find };
 dontaudit vendor_dpmd_vndr self:capability sys_module;
 domain_auto_trans(vendor_dpmd_vndr, netutils_wrapper_exec, netutils_wrapper)
 init_daemon_domain(vendor_dpmd_vndr)
@@ -30,6 +31,5 @@ vndbinder_use(vendor_dpmd_vndr)
 net_domain(vendor_dpmd_vndr)
 hal_client_domain(vendor_dpmd_vndr, vendor_hal_dpmqmiservice_qti)
 hal_client_domain(vendor_dpmd_vndr, vendor_hal_mwqemadapter_qti)
-add_service(vendor_dpmd_vndr, vendor_nwmgr_service)
-type vendor_dpmd_vndr, domain, vendor_hal_dpmapiservice_qti, vendor_hal_dpmapiservice_qti_server, vendor_halserverdomain;
+type vendor_dpmd_vndr, base_typeattr, domain, vendor_hal_dpmapiservice_qti, vendor_hal_dpmapiservice_qti_server, vendor_halserverdomain;
 type vendor_dpmd_vndr_exec, exec_type, file_type, vendor_file_type;

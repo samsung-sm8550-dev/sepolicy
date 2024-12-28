@@ -4,11 +4,16 @@ expandtypeattribute(hal_usb_server)
 allow hal_usb_client hal_usb_server:binder { call transfer };
 allow hal_usb_client hal_usb_server:binder transfer;
 allow hal_usb_client hal_usb_server:fd *;
+allow hal_usb_client hal_usb_service:service_manager find;
+allow hal_usb_client hal_usb_hwservice:hwservice_manager find;
 allow hal_usb_server hal_usb_client:binder transfer;
 allow hal_usb_server hal_usb_client:binder { call transfer };
 allow hal_usb_server hal_usb_client:fd *;
+allow hal_usb_server hal_usb_service:service_manager { add find };
 allow hal_usb_server servicemanager:binder { call transfer };
 allow hal_usb_server servicemanager:fd *;
+allow hal_usb_server hal_usb_hwservice:hwservice_manager { add find };
+allow hal_usb_server hidl_base_hwservice:hwservice_manager add;
 allow hal_usb self:netlink_kobject_uevent_socket create;
 allow hal_usb self:netlink_kobject_uevent_socket setopt;
 allow hal_usb self:netlink_kobject_uevent_socket getopt;
@@ -50,10 +55,11 @@ hal_server_domain(hal_usb_default, hal_usb)
 hal_server_domain(hal_usb_default, hal_usb_gadget)
 hal_server_domain(vendor_hal_usb_qti, hal_usb)
 hal_server_domain(vendor_hal_usb_qti, hal_usb_gadget)
-hal_attribute_service(hal_usb, hal_usb_service)
-hal_attribute_hwservice(hal_usb, hal_usb_hwservice)
 type hal_usb_default, domain;
 type vendor_hal_usb_qti, domain;
 type hal_usb_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_usb_qti_exec, exec_type, file_type, vendor_file_type;
 type hal_usb_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_usb_client, base_typeattr;
+type hal_usb_server, base_typeattr;
+type hal_usb, base_typeattr;

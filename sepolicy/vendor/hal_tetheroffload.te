@@ -4,10 +4,13 @@ expandtypeattribute(hal_tetheroffload_server)
 allow hal_tetheroffload_client hal_tetheroffload_server:binder { call transfer };
 allow hal_tetheroffload_client hal_tetheroffload_server:binder transfer;
 allow hal_tetheroffload_client hal_tetheroffload_server:fd *;
+allow hal_tetheroffload_client hal_tetheroffload_hwservice:hwservice_manager find;
 allow hal_tetheroffload_server hal_tetheroffload_client:binder transfer;
 allow hal_tetheroffload_server hal_tetheroffload_client:binder { call transfer };
 allow hal_tetheroffload_server hal_tetheroffload_client:fd *;
 allow hal_tetheroffload_server hal_tetheroffload_client:netlink_netfilter_socket { getattr read setopt write };
+allow hal_tetheroffload_server hal_tetheroffload_hwservice:hwservice_manager { add find };
+allow hal_tetheroffload_server hidl_base_hwservice:hwservice_manager add;
 allow hal_tetheroffload_default diag_device:chr_file rw_file_perms;
 allow hal_tetheroffload_default vendor_diag_device:chr_file rw_file_perms;
 allow hal_tetheroffload_default vendor_ipa_dev:chr_file rw_file_perms;
@@ -23,7 +26,9 @@ allow hal_tetheroffload vendor_ipa_vendor_data_file:dir rw_dir_perms;
 allow hal_tetheroffload vendor_ipa_vendor_data_file:file create_file_perms;
 init_daemon_domain(hal_tetheroffload_default)
 hal_server_domain(hal_tetheroffload_default, hal_tetheroffload)
-hal_attribute_hwservice(hal_tetheroffload, hal_tetheroffload_hwservice)
 type hal_tetheroffload_default, domain;
 type hal_tetheroffload_default_exec, exec_type, file_type, vendor_file_type;
 type hal_tetheroffload_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_tetheroffload_client, base_typeattr;
+type hal_tetheroffload_server, base_typeattr;
+type hal_tetheroffload, base_typeattr;

@@ -1,2 +1,0 @@
-neverallow { halserverdomain -hal_dumpstate_server -hal_telephony_server } fs_type:file execute_no_trans;
-neverallow { halserverdomain -hal_dumpstate_server -hal_telephony_server } file_type:file execute_no_trans;

@@ -1,1 +1,1 @@
-attribute contextmount_type;
+type contextmount_type, base_typeattr;

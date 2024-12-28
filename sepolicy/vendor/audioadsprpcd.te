@@ -10,5 +10,5 @@ allow vendor_audioadsprpcd vendor_audio_dsp_data_file:file r_file_perms;
 init_daemon_domain(vendor_audioadsprpcd)
 r_dir_file(vendor_audioadsprpcd, adsprpcd_file)
 get_prop(vendor_audioadsprpcd, vendor_adsprpc_prop)
-type vendor_audioadsprpcd, domain;
+type vendor_audioadsprpcd, base_typeattr, domain;
 type vendor_audioadsprpcd_exec, exec_type, file_type, vendor_file_type;

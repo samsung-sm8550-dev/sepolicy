@@ -1,3 +1,0 @@
-neverallow { domain -init -vold } fsck:process transition;
-neverallow { domain -init -vold } vold_metadata_file:dir *;
-neverallow { domain -init -vold } restorecon_prop:property_service set;

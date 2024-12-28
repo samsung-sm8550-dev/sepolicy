@@ -1,2 +1,2 @@
 allow postinstall_file self:filesystem associate;
-type postinstall_file, file_type;
+type postinstall_file, base_typeattr, file_type;

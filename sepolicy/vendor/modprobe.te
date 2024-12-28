@@ -20,5 +20,5 @@ dontaudit vendor_modprobe proc_cmdline:file read;
 r_dir_file(vendor_modprobe, vendor_file)
 r_dir_file(vendor_modprobe, system_dlkm_file)
 set_prop(vendor_modprobe, vendor_modprobe_prop)
-type modprobe, domain;
+type modprobe, base_typeattr, domain;
 type vendor_modprobe, domain;

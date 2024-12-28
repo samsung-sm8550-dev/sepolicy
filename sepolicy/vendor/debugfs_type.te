@@ -1,4 +1,4 @@
 allow debugfs_type debugfs:filesystem associate;
 allow debugfs_type debugfs_tracing:filesystem associate;
 allow debugfs_type debugfs_tracing_debug:filesystem associate;
-attribute debugfs_type;
+type debugfs_type, base_typeattr;

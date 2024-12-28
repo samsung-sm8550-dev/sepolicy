@@ -7,7 +7,8 @@ allow hal_sec_soter_client servicemanager:fd *;
 allow hal_sec_soter_server hal_sec_soter_client:binder transfer;
 allow hal_sec_soter_server hal_sec_soter_client:binder { call transfer };
 allow hal_sec_soter_server hal_sec_soter_client:fd *;
+allow hal_sec_soter_server hal_soter_service:service_manager { add find };
 allow hal_sec_soter_server servicemanager:binder { call transfer };
 allow hal_sec_soter_server servicemanager:fd *;
-add_service(hal_sec_soter_server, hal_soter_service)
 type hal_sec_soter_hwservice, hwservice_manager_type;
+type hal_sec_soter_server, base_typeattr;

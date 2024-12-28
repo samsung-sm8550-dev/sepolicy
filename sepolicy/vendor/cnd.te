@@ -38,6 +38,9 @@ allow vendor_cnd vendor_wifi_vendor_data_file:dir r_dir_perms;
 allow vendor_cnd vendor_hostapd:unix_dgram_socket sendto;
 allow vendor_cnd vendor_hostapd:binder transfer;
 allow vendor_cnd vendor_hostapd_socket:dir r_dir_perms;
+allow vendor_cnd vendor_hal_latency_hwservice:hwservice_manager { add find };
+allow vendor_cnd hidl_base_hwservice:hwservice_manager add;
+allow vendor_cnd vendor_hal_slmadapter_hwservice:hwservice_manager { add find };
 allow vendor_cnd vendor_shsusrd_socket:dir r_dir_perms;
 allow vendor_cnd vendor_shsusrd_socket:sock_file { read write };
 allow vendor_cnd hostapd_data_file:dir rw_dir_perms;
@@ -89,8 +92,6 @@ vndbinder_use(vendor_cnd)
 net_domain(vendor_cnd)
 hal_client_domain(vendor_cnd, hal_wifi_hostapd)
 hal_client_domain(vendor_cnd, hal_wifi_supplicant)
-add_hwservice(vendor_cnd, vendor_hal_latency_hwservice)
-add_hwservice(vendor_cnd, vendor_hal_slmadapter_hwservice)
 type cnd, domain, mlstrustedsubject;
-type vendor_cnd, domain, vendor_hal_datafactory_qti, vendor_hal_datafactory_qti_server, vendor_hal_mwqemadapter_qti, vendor_hal_mwqemadapter_qti_server, vendor_halserverdomain;
+type vendor_cnd, base_typeattr, domain, vendor_hal_datafactory_qti, vendor_hal_datafactory_qti_server, vendor_hal_mwqemadapter_qti, vendor_hal_mwqemadapter_qti_server, vendor_halserverdomain;
 type vendor_cnd_exec, exec_type, file_type, vendor_file_type;

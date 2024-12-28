@@ -1,9 +1,12 @@
 allow hal_mpostui_client hal_mpostui_server:binder { call transfer };
 allow hal_mpostui_client hal_mpostui_server:binder transfer;
 allow hal_mpostui_client hal_mpostui_server:fd *;
+allow hal_mpostui_client hal_mpostui_hwservice:hwservice_manager find;
 allow hal_mpostui_server hal_mpostui_client:binder transfer;
 allow hal_mpostui_server hal_mpostui_client:binder { call transfer };
 allow hal_mpostui_server hal_mpostui_client:fd *;
+allow hal_mpostui_server hal_mpostui_hwservice:hwservice_manager { add find };
+allow hal_mpostui_server hidl_base_hwservice:hwservice_manager add;
 allow hal_mpostui_default mpos_service:service_manager find;
 allow hal_mpostui_default system_app_data_file:file { getattr read };
 allow hal_mpostui_default tee_device:chr_file rw_file_perms;
@@ -21,7 +24,8 @@ get_prop(hal_mpostui_default, vendor_tztsdaemon_prop)
 get_prop(hal_mpostui_default, vendor_teegris_prop)
 hal_server_domain(hal_mpostui_default, hal_mpostui)
 hal_client_domain(hal_mpostui_default, hal_allocator)
-hal_attribute_hwservice(hal_mpostui, hal_mpostui_hwservice)
 type hal_mpostui_default, domain;
 type hal_mpostui_default_exec, exec_type, file_type, vendor_file_type;
 type hal_mpostui_hwservice, hwservice_manager_type;
+type hal_mpostui_client, base_typeattr;
+type hal_mpostui_server, base_typeattr;

@@ -1,1 +1,1 @@
-type traced_probes, coredomain, domain, mlstrustedsubject;
+type traced_probes, base_typeattr, coredomain, domain, mlstrustedsubject;

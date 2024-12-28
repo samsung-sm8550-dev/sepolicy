@@ -1,1 +1,0 @@
-neverallow { hal_face_client -halclientdomain } domain:process fork;

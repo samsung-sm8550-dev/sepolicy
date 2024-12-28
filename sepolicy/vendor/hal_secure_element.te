@@ -4,9 +4,12 @@ expandtypeattribute(hal_secure_element_server)
 allow hal_secure_element_client hal_secure_element_server:binder { call transfer };
 allow hal_secure_element_client hal_secure_element_server:binder transfer;
 allow hal_secure_element_client hal_secure_element_server:fd *;
+allow hal_secure_element_client hal_secure_element_hwservice:hwservice_manager find;
 allow hal_secure_element_server hal_secure_element_client:binder transfer;
 allow hal_secure_element_server hal_secure_element_client:binder { call transfer };
 allow hal_secure_element_server hal_secure_element_client:fd *;
+allow hal_secure_element_server hal_secure_element_hwservice:hwservice_manager { add find };
+allow hal_secure_element_server hidl_base_hwservice:hwservice_manager add;
 allow hal_secure_element_default secure_element_device:chr_file rw_file_perms;
 allow hal_secure_element_default sem_device:chr_file rw_file_perms;
 allow hal_secure_element_default system_suspend_server:binder { call transfer };
@@ -22,7 +25,9 @@ set_prop(hal_secure_element_default, vendor_sehal_init_prop)
 hal_server_domain(hal_secure_element_default, hal_secure_element)
 hal_client_domain(hal_secure_element_default, vendor_hal_qteeconnector)
 hal_client_domain(hal_secure_element_default, vendor_hal_esepowermanager)
-hal_attribute_hwservice(hal_secure_element, hal_secure_element_hwservice)
 type hal_secure_element_default, domain;
 type hal_secure_element_default_exec, exec_type, file_type, vendor_file_type;
 type hal_secure_element_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_secure_element_client, base_typeattr;
+type hal_secure_element_server, base_typeattr;
+type hal_secure_element, base_typeattr;

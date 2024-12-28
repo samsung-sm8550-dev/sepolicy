@@ -6,11 +6,16 @@ allow hal_dumpstate_server dumpstate:fd *;
 allow hal_dumpstate_server hal_dumpstate_client:binder transfer;
 allow hal_dumpstate_server hal_dumpstate_client:binder { call transfer };
 allow hal_dumpstate_server hal_dumpstate_client:fd *;
+allow hal_dumpstate_server hal_dumpstate_hwservice:hwservice_manager { add find };
+allow hal_dumpstate_server hidl_base_hwservice:hwservice_manager add;
+allow hal_dumpstate_server hal_dumpstate_service:service_manager { add find };
 allow hal_dumpstate_server servicemanager:binder { call transfer };
 allow hal_dumpstate_server servicemanager:fd *;
 allow hal_dumpstate_client hal_dumpstate_server:binder { call transfer };
 allow hal_dumpstate_client hal_dumpstate_server:binder transfer;
 allow hal_dumpstate_client hal_dumpstate_server:fd *;
+allow hal_dumpstate_client hal_dumpstate_hwservice:hwservice_manager find;
+allow hal_dumpstate_client hal_dumpstate_service:service_manager find;
 allow hal_dumpstate shell_data_file:file write;
 allow hal_dumpstate proc_interrupts:file r_file_perms;
 allow hal_dumpstate_default sec_debugfs:dir r_dir_perms;
@@ -66,6 +71,7 @@ r_dir_file(hal_dumpstate_default, proc_sec_pm_log)
 r_dir_file(hal_dumpstate_default, sysfs_gpu)
 r_dir_file(hal_dumpstate_default, proc_bt_uart)
 r_dir_file(hal_dumpstate_default, vendor_sysfs_freq_qos_tracer)
+r_dir_file(hal_dumpstate_default, base_typeattr)
 r_dir_file(hal_dumpstate_default, proc_ap_klog)
 r_dir_file(hal_dumpstate_default, proc_ion_heaps)
 r_dir_file(hal_dumpstate_default, app_efs_file)
@@ -76,8 +82,9 @@ set_prop(hal_dumpstate_server, hal_dumpstate_config_prop)
 set_prop(hal_dumpstate_default, vendor_dumpstate_config_prop)
 binder_use(hal_dumpstate_default)
 hal_server_domain(hal_dumpstate_default, hal_dumpstate)
-hal_attribute_service(hal_dumpstate, hal_dumpstate_service)
-hal_attribute_hwservice(hal_dumpstate, hal_dumpstate_hwservice)
 type hal_dumpstate_default, domain;
 type hal_dumpstate_default_exec, exec_type, file_type, vendor_file_type;
 type hal_dumpstate_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_dumpstate_server, base_typeattr;
+type hal_dumpstate_client, base_typeattr;
+type hal_dumpstate, base_typeattr;

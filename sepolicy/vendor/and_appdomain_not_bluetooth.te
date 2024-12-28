@@ -1,8 +1,0 @@
-neverallow { appdomain -bluetooth } hci_attach_dev:chr_file { read write };
-neverallow { appdomain -bluetooth } bluetooth_data_file:file { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:dir { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:lnk_file { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:chr_file { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:blk_file { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:sock_file { no_w_file_perms relabelto };
-neverallow { appdomain -bluetooth } bluetooth_data_file:fifo_file { no_w_file_perms relabelto };

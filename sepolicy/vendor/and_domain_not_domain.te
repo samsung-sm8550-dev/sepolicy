@@ -1,2 +1,0 @@
-allow { domain -domain } hwservice_manager_type:hwservice_manager { add find };
-allow { domain -domain } vndservice_manager_type:service_manager { add find };

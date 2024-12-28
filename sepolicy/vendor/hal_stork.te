@@ -5,11 +5,13 @@ allow hal_stork_client hal_stork_hwservice:hwservice_manager find;
 allow hal_stork_server hal_stork_client:binder transfer;
 allow hal_stork_server hal_stork_client:binder { call transfer };
 allow hal_stork_server hal_stork_client:fd *;
+allow hal_stork_server hal_stork_hwservice:hwservice_manager { add find };
+allow hal_stork_server hidl_base_hwservice:hwservice_manager add;
 allow hal_stork_default vendor_stork_socket:dir r_dir_perms;
 init_daemon_domain(hal_stork_default)
 unix_socket_connect(hal_stork_default, vendor_stork, vendor_storkd)
 hal_server_domain(hal_stork_default, hal_stork)
-add_hwservice(hal_stork_server, hal_stork_hwservice)
 type hal_stork_default, domain;
 type hal_stork_default_exec, exec_type, file_type, vendor_file_type;
 type hal_stork_hwservice, hwservice_manager_type;
+type hal_stork_server, base_typeattr;

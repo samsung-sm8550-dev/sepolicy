@@ -1,0 +1,8 @@
+allow sbauth authon_device:chr_file r_file_perms;
+allow sbauth sysfs_battery:file rw_file_perms;
+allow sbauth sysfs_battery:dir r_dir_perms;
+allow sbauth hal_vaultkeeper_service:service_manager find;
+allow sbauth hal_vaultkeeperd_default:binder { call transfer };
+get_prop(sbauth, vendor_sec_vaultkeeper_prop)
+type sbauth, coredomain, domain;
+type sbauth_exec, exec_type, file_type, system_file_type;

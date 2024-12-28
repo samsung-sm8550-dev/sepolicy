@@ -1,11 +1,13 @@
 allow vendor_hal_limits_client vendor_hal_limits_server:binder { call transfer };
 allow vendor_hal_limits_client vendor_hal_limits_server:binder transfer;
 allow vendor_hal_limits_client vendor_hal_limits_server:fd *;
+allow vendor_hal_limits_client vendor_hal_limits_hwservice:hwservice_manager find;
 allow vendor_hal_limits_server vendor_hal_limits_client:binder transfer;
 allow vendor_hal_limits_server vendor_hal_limits_client:binder { call transfer };
 allow vendor_hal_limits_server vendor_hal_limits_client:fd *;
+allow vendor_hal_limits_server vendor_hal_limits_hwservice:hwservice_manager { add find };
+allow vendor_hal_limits_server hidl_base_hwservice:hwservice_manager add;
 attribute vendor_hal_limits;
-attribute vendor_hal_limits_client;
-attribute vendor_hal_limits_server;
-hal_attribute_hwservice(vendor_hal_limits, vendor_hal_limits_hwservice)
 type vendor_hal_limits_hwservice, hwservice_manager_type, protected_hwservice;
+type vendor_hal_limits_client, base_typeattr;
+type vendor_hal_limits_server, base_typeattr;

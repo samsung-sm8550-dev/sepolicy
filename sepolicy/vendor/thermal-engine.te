@@ -44,5 +44,5 @@ unix_socket_connect(vendor_thermal-engine, vendor_qmuxd, vendor_qmuxd)
 unix_socket_connect(vendor_thermal-engine, vendor_qmuxd, init)
 unix_socket_connect(vendor_thermal-engine, property, vendor_qmuxd)
 set_prop(vendor_thermal-engine, powerctl_prop)
-type vendor_thermal-engine, domain;
+type vendor_thermal-engine, base_typeattr, domain;
 type vendor_thermal-engine_exec, exec_type, file_type, vendor_file_type;

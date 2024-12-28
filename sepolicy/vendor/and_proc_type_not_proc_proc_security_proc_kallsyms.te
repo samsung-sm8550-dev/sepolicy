@@ -1,1 +1,0 @@
-allow dumpstate { proc_type -proc -proc_security -proc_kallsyms }:file { getattr lock map open read };

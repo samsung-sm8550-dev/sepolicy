@@ -49,5 +49,5 @@ set_prop(crash_dump, dumpstate_options_prop)
 set_prop(crash_dump, ctl_bugreport_prop)
 set_prop(crash_dump, dumpstate_prop)
 set_prop(crash_dump, system_prop)
-type crash_dump, domain;
-type crash_dump_exec, exec_type, file_type, system_file_type;
+type crash_dump, base_typeattr, domain;
+type crash_dump_exec, base_typeattr, exec_type, file_type, system_file_type;

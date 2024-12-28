@@ -16,5 +16,5 @@ allowxperm e2fs dm_device:ioctl blk_file { 0x125e 0x1277 range 0x127b 0x127d };
 allowxperm e2fs userdata_block_device:ioctl blk_file { 0x125e 0x1277 range 0x127b 0x127d };
 allowxperm e2fs metadata_block_device:ioctl blk_file { 0x125e 0x1277 range 0x127b 0x127d };
 allowxperm e2fs keyrefuge_block_device:ioctl blk_file { 0x1277 0x127d };
-type e2fs, coredomain, domain;
+type e2fs, base_typeattr, coredomain, domain;
 type e2fs_exec, exec_type, file_type, system_file_type;

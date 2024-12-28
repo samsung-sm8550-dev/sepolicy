@@ -1,1 +1,0 @@
-neverallow { hal_drm_client -halclientdomain } domain:process fork;

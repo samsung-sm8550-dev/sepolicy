@@ -8,6 +8,9 @@ allow hal_hyper_client servicemanager:fd *;
 allow hal_hyper_server hal_hyper_client:binder transfer;
 allow hal_hyper_server hal_hyper_client:binder { call transfer };
 allow hal_hyper_server hal_hyper_client:fd *;
+allow hal_hyper_server hal_hyper_hwservice:hwservice_manager { add find };
+allow hal_hyper_server hidl_base_hwservice:hwservice_manager add;
+allow hal_hyper_server hal_hyper_service:service_manager { add find };
 allow hal_hyper_server servicemanager:binder { call transfer };
 allow hal_hyper_server servicemanager:fd *;
 allow hal_hyper_default vendor_sysfs_devfreq:dir r_dir_perms;
@@ -44,8 +47,7 @@ init_daemon_domain(hal_hyper_default)
 get_prop(hal_hyper_default, product_ship_prop)
 hal_server_domain(hal_hyper_default, hal_hyper)
 hal_client_domain(hal_hyper_default, hal_power)
-add_service(hal_hyper_server, hal_hyper_service)
-add_hwservice(hal_hyper_server, hal_hyper_hwservice)
 type hal_hyper_default, domain;
 type hal_hyper_default_exec, exec_type, file_type, vendor_file_type;
 type hal_hyper_hwservice, hwservice_manager_type;
+type hal_hyper_server, base_typeattr;

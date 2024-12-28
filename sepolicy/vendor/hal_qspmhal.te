@@ -3,16 +3,18 @@ allow vendor_hal_qspmhal_default vendor_qspmhal_data_file:dir rw_dir_perms;
 allow vendor_hal_qspmhal_client vendor_hal_qspmhal_server:binder { call transfer };
 allow vendor_hal_qspmhal_client vendor_hal_qspmhal_server:binder transfer;
 allow vendor_hal_qspmhal_client vendor_hal_qspmhal_server:fd *;
+allow vendor_hal_qspmhal_client vendor_hal_qspmhal_hwservice:hwservice_manager find;
 allow vendor_hal_qspmhal_server vendor_hal_qspmhal_client:binder transfer;
 allow vendor_hal_qspmhal_server vendor_hal_qspmhal_client:binder { call transfer };
 allow vendor_hal_qspmhal_server vendor_hal_qspmhal_client:fd *;
+allow vendor_hal_qspmhal_server vendor_hal_qspmhal_hwservice:hwservice_manager { add find };
+allow vendor_hal_qspmhal_server hidl_base_hwservice:hwservice_manager add;
 attribute vendor_hal_qspmhal;
-attribute vendor_hal_qspmhal_client;
-attribute vendor_hal_qspmhal_server;
 init_daemon_domain(vendor_hal_qspmhal_default)
 hal_server_domain(vendor_hal_qspmhal_default, vendor_hal_qspmhal)
 hal_client_domain(vendor_hal_qspmhal_default, hal_allocator)
-hal_attribute_hwservice(vendor_hal_qspmhal, vendor_hal_qspmhal_hwservice)
 type vendor_hal_qspmhal_default, domain, untrusted_app_visible_halserver_violators;
 type vendor_hal_qspmhal_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_qspmhal_hwservice, hwservice_manager_type;
+type vendor_hal_qspmhal_client, base_typeattr;
+type vendor_hal_qspmhal_server, base_typeattr;

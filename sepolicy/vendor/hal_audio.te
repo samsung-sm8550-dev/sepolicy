@@ -6,9 +6,14 @@ neverallow hal_audio_server file_type:file execute_no_trans;
 allow hal_audio_client hal_audio_server:binder { call transfer };
 allow hal_audio_client hal_audio_server:binder transfer;
 allow hal_audio_client hal_audio_server:fd *;
+allow hal_audio_client hal_audio_hwservice:hwservice_manager find;
+allow hal_audio_client hal_audio_service:service_manager find;
 allow hal_audio_server hal_audio_client:binder transfer;
 allow hal_audio_server hal_audio_client:binder { call transfer };
 allow hal_audio_server hal_audio_client:fd *;
+allow hal_audio_server hal_audio_hwservice:hwservice_manager { add find };
+allow hal_audio_server hidl_base_hwservice:hwservice_manager add;
+allow hal_audio_server hal_audio_service:service_manager { add find };
 allow hal_audio_server servicemanager:binder { call transfer };
 allow hal_audio_server servicemanager:fd *;
 allow hal_audio_server audio_device:dir r_dir_perms;
@@ -119,8 +124,9 @@ hal_client_domain(hal_audio_default, hal_codec2)
 hal_client_domain(hal_audio_default, hal_health)
 hal_client_domain(hal_audio_default, hal_power)
 hal_client_domain(hal_audio_default, vendor_hal_perf)
-hal_attribute_service(hal_audio, hal_audio_service)
-hal_attribute_hwservice(hal_audio, hal_audio_hwservice)
 type hal_audio_default, domain, mlstrustedsubject;
 type hal_audio_default_exec, exec_type, file_type, vendor_file_type;
 type hal_audio_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_audio_server, base_typeattr;
+type hal_audio_client, base_typeattr;
+type hal_audio, base_typeattr;

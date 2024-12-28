@@ -16,5 +16,5 @@ get_prop(vendor_dspservice, hwservicemanager_prop)
 binder_use(vendor_dspservice)
 hwbinder_use(vendor_dspservice)
 hal_server_domain(vendor_dspservice, vendor_hal_dspmanager)
-type vendor_dspservice, domain;
+type vendor_dspservice, base_typeattr, domain;
 type vendor_dspservice_exec, exec_type, file_type, vendor_file_type;

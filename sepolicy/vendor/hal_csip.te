@@ -7,6 +7,7 @@ allow hal_csip_client servicemanager:fd *;
 allow hal_csip_server hal_csip_client:binder transfer;
 allow hal_csip_server hal_csip_client:binder { call transfer };
 allow hal_csip_server hal_csip_client:fd *;
+allow hal_csip_server hal_csip_service:service_manager { add find };
 allow hal_csip_server servicemanager:binder { call transfer };
 allow hal_csip_server servicemanager:fd *;
 allow hal_csip_default servicemanager:binder { call transfer };
@@ -25,6 +26,6 @@ r_dir_file(hal_csip_default, sysfs_gpu)
 get_prop(hal_csip_default, product_ship_prop)
 get_prop(hal_csip_default, exported2_default_prop)
 hal_server_domain(hal_csip_default, hal_csip)
-add_service(hal_csip_server, hal_csip_service)
 type hal_csip_default, domain;
 type hal_csip_default_exec, exec_type, file_type, vendor_file_type;
+type hal_csip_server, base_typeattr;

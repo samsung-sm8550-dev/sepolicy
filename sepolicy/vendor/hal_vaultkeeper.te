@@ -7,6 +7,7 @@ allow hal_vaultkeeper_client servicemanager:fd *;
 allow hal_vaultkeeper_server hal_vaultkeeper_client:binder transfer;
 allow hal_vaultkeeper_server hal_vaultkeeper_client:binder { call transfer };
 allow hal_vaultkeeper_server hal_vaultkeeper_client:fd *;
+allow hal_vaultkeeper_server hal_vaultkeeper_service:service_manager { add find };
 allow hal_vaultkeeper_server servicemanager:binder { call transfer };
 allow hal_vaultkeeper_server servicemanager:fd *;
-add_service(hal_vaultkeeper_server, hal_vaultkeeper_service)
+type hal_vaultkeeper_server, base_typeattr;

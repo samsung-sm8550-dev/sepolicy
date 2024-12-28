@@ -1,3 +1,4 @@
+neverallow kernel base_typeattr:file { entrypoint execute_no_trans };
 neverallow kernel self:capability { dac_override dac_read_search };
 neverallow kernel self:cap_userns { dac_override dac_read_search };
 allow kernel self:capability sys_nice;
@@ -128,4 +129,4 @@ r_dir_file(kernel, spu_file)
 r_dir_file(kernel, sysfs_ski_hal_readable)
 r_dir_file(kernel, firmware_file)
 r_dir_file(kernel, vendor_firmware_file)
-type kernel, domain, mlstrustedsubject;
+type kernel, base_typeattr, domain, mlstrustedsubject;

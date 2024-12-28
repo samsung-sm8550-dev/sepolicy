@@ -21,5 +21,5 @@ get_prop(vendor_hal_dpmQmiMgr, hwservicemanager_prop)
 get_prop(vendor_hal_dpmQmiMgr, vendor_persist_dpm_prop)
 hwbinder_use(vendor_hal_dpmQmiMgr)
 net_domain(vendor_hal_dpmQmiMgr)
-type vendor_hal_dpmQmiMgr, domain, vendor_hal_dpmqmiservice_qti, vendor_hal_dpmqmiservice_qti_server, vendor_halserverdomain;
+type vendor_hal_dpmQmiMgr, base_typeattr, domain, vendor_hal_dpmqmiservice_qti, vendor_hal_dpmqmiservice_qti_server, vendor_halserverdomain;
 type vendor_hal_dpmQmiMgr_exec, exec_type, file_type, vendor_file_type;

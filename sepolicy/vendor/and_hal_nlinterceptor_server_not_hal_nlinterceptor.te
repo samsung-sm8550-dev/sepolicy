@@ -1,1 +1,0 @@
-neverallow { hal_nlinterceptor_server -hal_nlinterceptor } domain:process fork;

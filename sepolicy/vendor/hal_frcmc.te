@@ -11,6 +11,7 @@ allow hal_frcmc_client servicemanager:fd *;
 allow hal_frcmc_server hal_frcmc_client:binder transfer;
 allow hal_frcmc_server hal_frcmc_client:binder { call transfer };
 allow hal_frcmc_server hal_frcmc_client:fd *;
+allow hal_frcmc_server hal_frcmc_service:service_manager { add find };
 allow hal_frcmc_server servicemanager:binder { call transfer };
 allow hal_frcmc_server servicemanager:fd *;
 allowxperm hal_frcmc_default dmabuf_system_heap_device:ioctl chr_file 0x4800;
@@ -18,6 +19,6 @@ allowxperm hal_frcmc_default dmabuf_system_heap_device:ioctl chr_file 0x5208;
 init_daemon_domain(hal_frcmc_default)
 get_prop(hal_frcmc_default, vendor_adsprpc_prop)
 hal_server_domain(hal_frcmc_default, hal_frcmc)
-add_service(hal_frcmc_server, hal_frcmc_service)
-type hal_frcmc_default, domain;
+type hal_frcmc_default, base_typeattr, domain;
 type hal_frcmc_default_exec, exec_type, file_type, vendor_file_type;
+type hal_frcmc_server, base_typeattr;

@@ -9,6 +9,7 @@ allow hal_display_server hal_display_client:binder { call transfer };
 allow hal_display_server hal_display_client:fd *;
 allow hal_display_server servicemanager:binder { call transfer };
 allow hal_display_server servicemanager:fd *;
+allow hal_display_server hal_display_service:service_manager { add find };
 allow hal_display_default servicemanager:binder { call transfer };
 allow hal_display_default servicemanager:fd *;
 allow hal_display_default hal_graphics_composer_default:unix_stream_socket connectto;
@@ -16,6 +17,6 @@ allow hal_display_default system_server:binder transfer;
 allow hal_display_default vendor_pps_socket:sock_file rw_file_perms;
 init_daemon_domain(hal_display_default)
 hal_server_domain(hal_display_default, hal_display)
-add_service(hal_display_server, hal_display_service)
 type hal_display_default, domain;
 type hal_display_default_exec, exec_type, file_type, vendor_file_type;
+type hal_display_server, base_typeattr;

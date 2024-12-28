@@ -35,8 +35,11 @@ allow hal_wsm_client hal_wsm_hwservice:hwservice_manager find;
 allow hal_wsm_server hal_wsm_client:binder transfer;
 allow hal_wsm_server hal_wsm_client:binder { call transfer };
 allow hal_wsm_server hal_wsm_client:fd *;
+allow hal_wsm_server hal_wsm_service:service_manager { add find };
 allow hal_wsm_server servicemanager:binder { call transfer };
 allow hal_wsm_server servicemanager:fd *;
+allow hal_wsm_server hal_wsm_hwservice:hwservice_manager { add find };
+allow hal_wsm_server hidl_base_hwservice:hwservice_manager add;
 init_daemon_domain(hal_wsm_default)
 get_prop(hal_wsm_default, mobicore_prop)
 get_prop(hal_wsm_default, vendor_tztsdaemon_prop)
@@ -46,8 +49,7 @@ get_prop(hal_wsm_default, vendor_teegris_prop)
 get_prop(hal_wsm_default, vendor_qseecomd_prop)
 vndbinder_use(hal_wsm_default)
 hal_server_domain(hal_wsm_default, hal_wsm)
-add_service(hal_wsm_server, hal_wsm_service)
-add_hwservice(hal_wsm_server, hal_wsm_hwservice)
 type hal_wsm_default, domain, mlstrustedsubject;
 type hal_wsm_default_exec, exec_type, file_type, vendor_file_type;
 type hal_wsm_hwservice, hwservice_manager_type;
+type hal_wsm_server, base_typeattr;

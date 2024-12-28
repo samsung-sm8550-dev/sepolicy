@@ -7,6 +7,7 @@ allow radio radio_core_data_file:dir r_dir_perms;
 allow radio radio_core_data_file:file r_file_perms;
 allow radio net_data_file:dir search;
 allow radio net_data_file:file r_file_perms;
+allow radio radio_service:service_manager { add find };
 allow radio radio_service:service_manager find;
 allow radio audioserver_service:service_manager find;
 allow radio cameraserver_service:service_manager find;
@@ -167,5 +168,4 @@ hal_client_domain(radio, vendor_hal_perf)
 hal_client_domain(radio, vendor_hal_qspmhal)
 hal_client_domain(radio, hal_converter)
 hal_client_domain(radio, hal_engmode)
-add_service(radio, radio_service)
-type radio, bluetoothdomain, domain, mlstrustedsubject;
+type radio, base_typeattr, bluetoothdomain, domain, mlstrustedsubject;

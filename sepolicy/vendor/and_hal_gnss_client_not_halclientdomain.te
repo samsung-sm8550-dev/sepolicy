@@ -1,1 +1,0 @@
-neverallow { hal_gnss_client -halclientdomain } domain:process fork;

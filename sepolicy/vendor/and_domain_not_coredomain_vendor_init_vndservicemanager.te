@@ -1,2 +1,0 @@
-allow dumpstate { domain -coredomain -vendor_init -vndservicemanager }:binder call;
-allow shell { domain -coredomain -vendor_init -vndservicemanager }:binder call;

@@ -1,2 +1,0 @@
-allow init { fs_type -contextmount_type -sdcard_type -non_tracefs_type -rootfs -proc -sysfs_devices_cs_etm -debugfs -sec_debugfs }:file setattr;
-allow init { fs_type -contextmount_type -sdcard_type -non_tracefs_type -rootfs -proc -sysfs_devices_cs_etm -debugfs -sec_debugfs }:lnk_file setattr;

@@ -5,10 +5,18 @@ allow hal_keymint_server dumpstate:binder transfer;
 allow hal_keymint_server dumpstate:fifo_file write;
 allow hal_keymint_server dumpstate:fd *;
 allow hal_keymint_server hal_keymint_client:binder transfer;
+allow hal_keymint_server hal_keymint_service:service_manager { add find };
+allow hal_keymint_server hal_remotelyprovisionedcomponent_service:service_manager { add find };
 allow hal_keymint_server servicemanager:binder { call transfer };
 allow hal_keymint_server servicemanager:fd *;
+allow hal_keymint_server hal_secureclock_service:service_manager { add find };
+allow hal_keymint_server hal_sharedsecret_service:service_manager { add find };
 allow hal_keymint_client hal_keymint_server:binder { call transfer };
 allow hal_keymint_client hal_keymint_server:fd *;
+allow hal_keymint_client hal_keymint_service:service_manager find;
+allow hal_keymint_client hal_remotelyprovisionedcomponent_service:service_manager find;
+allow hal_keymint_client hal_secureclock_service:service_manager find;
+allow hal_keymint_client hal_sharedsecret_service:service_manager find;
 allow hal_keymint tee_device:chr_file rw_file_perms;
 allow hal_keymint ion_device:chr_file r_file_perms;
 allow hal_keymint_default system_server:binder transfer;
@@ -25,6 +33,8 @@ allow hal_keymint_default dak_efs_file:dir create_dir_perms;
 allow hal_keymint_default dak_efs_file:file create_file_perms;
 allow hal_keymint_default sec_efs_file:dir create_dir_perms;
 allow hal_keymint_default sec_efs_file:file create_file_perms;
+allow hal_keymint_default sysfs_ski_hidden_writable:file rw_file_perms;
+allow hal_keymint_default hal_system_suspend_service:service_manager find;
 allow hal_keymint_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
 allow hal_keymint_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 allow hal_keymint_default vendor_dmabuf_secure_sp_tz_heap_device:chr_file r_file_perms;
@@ -34,14 +44,17 @@ allow hal_keymint_default vendor_spcom_device:chr_file rw_file_perms;
 allow hal_keymint_default vendor_sp_keymaster_device:chr_file rw_file_perms;
 allow hal_keymint_default vendor_hal_keymaster_qti:binder { call transfer };
 allow hal_keymint_default vendor_hal_keymaster_qti:fd *;
+allow hal_keymint_default vendor_sysfs_scsi_host:dir search;
 allow vendor_hal_keymint_qti tee_device:chr_file rw_file_perms;
 allow vendor_hal_keymint_qti vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 dontaudit vendor_hal_keymint_qti firmware_file:dir search;
 init_daemon_domain(hal_keymint_default)
 init_daemon_domain(vendor_hal_keymint_qti)
 unix_socket_connect(hal_keymint_default, property, hermesd)
+unix_socket_connect(hal_keymint_default, property, rild)
 unix_socket_connect(hal_keymint_default, hermes, hermesd)
 unix_socket_connect(hal_keymint_default, hermes, init)
+unix_socket_connect(hal_keymint_default, hermes, rild)
 get_prop(hal_keymint_default, vendor_security_patch_level_prop)
 get_prop(hal_keymint_default, vendor_tztsdaemon_prop)
 get_prop(hal_keymint_default, vendor_tee_listener_prop)
@@ -53,11 +66,10 @@ hal_server_domain(hal_keymint_default, hal_keymint)
 hal_server_domain(vendor_hal_keymint_qti, hal_keymint)
 hal_client_domain(hal_keymint_default, hal_keymaster)
 hal_client_domain(hal_keymint_default, hal_weaver)
-hal_attribute_service(hal_keymint, hal_keymint_service)
-hal_attribute_service(hal_keymint, hal_remotelyprovisionedcomponent_service)
-hal_attribute_service(hal_keymint, hal_secureclock_service)
-hal_attribute_service(hal_keymint, hal_sharedsecret_service)
 type hal_keymint_default, domain;
 type vendor_hal_keymint_qti, domain;
 type hal_keymint_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_keymint_qti_exec, exec_type, file_type, vendor_file_type;
+type hal_keymint_client, base_typeattr;
+type hal_keymint_server, base_typeattr;
+type hal_keymint, base_typeattr;

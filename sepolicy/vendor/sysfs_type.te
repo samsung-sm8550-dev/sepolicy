@@ -1,2 +1,2 @@
 allow sysfs_type sysfs:filesystem associate;
-attribute sysfs_type;
+type sysfs_type, base_typeattr;

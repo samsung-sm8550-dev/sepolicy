@@ -1,3 +1,5 @@
+allow digital_tv_fullseg digitaltv_fullseg_hwservice:hwservice_manager { add find };
+allow digital_tv_fullseg hidl_base_hwservice:hwservice_manager add;
 allow digital_tv_fullseg tee_device:chr_file rw_file_perms;
 allow digital_tv_fullseg ion_device:chr_file r_file_perms;
 allow digital_tv_fullseg hidl_memory_hwservice:hwservice_manager find;
@@ -12,6 +14,5 @@ allow digital_tv_fullseg firmware_file:file r_file_perms;
 init_daemon_domain(digital_tv_fullseg)
 vndbinder_use(digital_tv_fullseg)
 hal_client_domain(digital_tv_fullseg, hal_allocator)
-add_hwservice(digital_tv_fullseg, digitaltv_fullseg_hwservice)
-type digital_tv_fullseg, domain;
+type digital_tv_fullseg, base_typeattr, domain;
 type digital_tv_fullseg_exec, exec_type, file_type, vendor_file_type;

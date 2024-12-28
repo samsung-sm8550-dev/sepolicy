@@ -1,1 +1,0 @@
-r_dir_file(ueventd, { vendor_file_type -vendor_app_file -vendor_overlay_file })

@@ -1,1 +1,0 @@
-neverallow { hal_lowpan_client -halclientdomain } domain:process fork;

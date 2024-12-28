@@ -3,4 +3,4 @@ allow ephemeral_app samsunguwb_service:service_manager find;
 allow ephemeral_app ethernet_service:service_manager find;
 allow ephemeral_app toolbox_exec:file rx_file_perms;
 allow ephemeral_app CustomFrequencyManager_service:service_manager find;
-type ephemeral_app, domain;
+type ephemeral_app, base_typeattr, domain;

@@ -1,3 +1,0 @@
-neverallow { domain -system_server } zygote_socket:sock_file write;
-neverallow { domain -system_server } webview_zygote:sock_file write;
-neverallow { domain -system_server } app_zygote:sock_file write;

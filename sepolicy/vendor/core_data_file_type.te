@@ -1,2 +1,2 @@
 expandtypeattribute(core_data_file_type)
-attribute core_data_file_type;
+type core_data_file_type, base_typeattr;

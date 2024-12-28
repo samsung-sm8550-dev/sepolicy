@@ -74,8 +74,8 @@ dontaudit untrusted_app_all proc_vmstat:file open;
 dontaudit untrusted_app_all proc_uptime:file open;
 dontaudit untrusted_app_all proc_type:file getattr;
 dontaudit untrusted_app_all coredomain_socket:file getattr;
-attribute untrusted_app_all;
 r_dir_file(untrusted_app_all, vendor_sysfs_mmc_host)
 r_dir_file(untrusted_app_all, sysfs_ss_writable)
 r_dir_file(untrusted_app_all, sysfs_sdinfo)
 r_dir_file(untrusted_app_all, vendor_sysfs_graphics)
+type untrusted_app_all, base_typeattr;

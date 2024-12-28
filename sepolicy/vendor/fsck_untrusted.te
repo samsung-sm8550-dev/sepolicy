@@ -8,6 +8,7 @@ neverallow fsck_untrusted userdata_block_device:blk_file no_rw_file_perms;
 neverallow fsck_untrusted cache_block_device:blk_file no_rw_file_perms;
 neverallow fsck_untrusted swap_block_device:blk_file no_rw_file_perms;
 neverallow fsck_untrusted metadata_block_device:blk_file no_rw_file_perms;
+neverallow fsck_untrusted base_typeattr:file entrypoint;
 allow fsck_untrusted devpts:chr_file { getattr ioctl read write };
 allow fsck_untrusted vold:fd *;
 allow fsck_untrusted vold:fifo_file { getattr read write };

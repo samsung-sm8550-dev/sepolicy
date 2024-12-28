@@ -1,2 +1,2 @@
 expandtypeattribute(coredomain_socket)
-attribute coredomain_socket;
+type coredomain_socket, base_typeattr;

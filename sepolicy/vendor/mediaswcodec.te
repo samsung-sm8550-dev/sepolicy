@@ -28,6 +28,8 @@ allow mediaswcodec oneseg_mw:binder transfer;
 allow mediaswcodec oneseg_mw:fd *;
 allow mediaswcodec dtvserver:binder { call transfer };
 allow mediaswcodec dtvserver:fd *;
+allow mediaswcodec hal_mpp_default:binder { call transfer };
+allow mediaswcodec hal_mpp_default:fd *;
 unix_socket_connect(mediaswcodec, tombstoned_crash, tombstoned)
 hal_server_domain(mediaswcodec, hal_codec2)
 hal_client_domain(mediaswcodec, hal_allocator)

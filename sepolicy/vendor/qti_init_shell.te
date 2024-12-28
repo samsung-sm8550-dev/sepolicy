@@ -11,7 +11,7 @@ allow vendor_qti_init_shell vendor_data_file:dir rw_dir_perms;
 allow vendor_qti_init_shell vendor_data_file:file create_file_perms;
 allow vendor_qti_init_shell efs_file:dir search;
 allow vendor_qti_init_shell efs_file:file r_file_perms;
-allow vendor_qti_init_shell proc_compaction:file rw_file_perms;
+allow vendor_qti_init_shell proc_compaction_proactiveness:file rw_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_kgsl:dir search;
 allow vendor_qti_init_shell vendor_sysfs_kgsl:file create_file_perms;
 allow vendor_qti_init_shell vendor_sysfs_kgsl:file { r_file_perms setattr };
@@ -122,6 +122,7 @@ typealias(qti_init_shell_exec)
 typealiasactual(qti_init_shell)
 typealiasactual(qti_init_shell_exec)
 init_daemon_domain(vendor_qti_init_shell)
+r_dir_file(vendor_qti_init_shell, vendor_sysfs_hdm)
 r_dir_file(vendor_qti_init_shell, vendor_sysfs_devfreq)
 r_dir_file(vendor_qti_init_shell, mnt_vendor_file)
 r_dir_file(vendor_qti_init_shell, sysfs_type)
@@ -169,5 +170,5 @@ set_prop(vendor_qti_init_shell, vendor_hvdcp_opti_prop)
 set_prop(vendor_qti_init_shell, vendor_pasr_prop)
 binder_use(vendor_qti_init_shell)
 hwbinder_use(vendor_qti_init_shell)
-type vendor_qti_init_shell, domain;
+type vendor_qti_init_shell, base_typeattr, domain;
 type vendor_qti_init_shell_exec, exec_type, file_type, vendor_file_type;

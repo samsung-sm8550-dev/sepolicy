@@ -1,3 +1,5 @@
+neverallow recovery base_typeattr:file { no_w_file_perms no_x_file_perms };
+neverallow recovery base_typeattr:dir no_w_dir_perms;
 allow recovery security_spota_file:dir r_dir_perms;
 allow recovery security_spota_file:file r_file_perms;
 allow recovery sysfs_power:file { rw_file_perms setattr };
@@ -12,4 +14,4 @@ r_dir_file(recovery, nativetest_data_file)
 r_dir_file(recovery, pdp_data_file)
 get_prop(recovery, tzdaemon_prop)
 get_prop(recovery, vendor_teegris_prop)
-type recovery, domain;
+type recovery, base_typeattr, domain;

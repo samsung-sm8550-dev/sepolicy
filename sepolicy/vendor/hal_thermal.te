@@ -6,9 +6,12 @@ allow hal_thermal_server dumpstate:fd *;
 allow hal_thermal_server hal_thermal_client:binder transfer;
 allow hal_thermal_server hal_thermal_client:binder { call transfer };
 allow hal_thermal_server hal_thermal_client:fd *;
+allow hal_thermal_server hal_thermal_hwservice:hwservice_manager { add find };
+allow hal_thermal_server hidl_base_hwservice:hwservice_manager add;
 allow hal_thermal_client hal_thermal_server:binder { call transfer };
 allow hal_thermal_client hal_thermal_server:binder transfer;
 allow hal_thermal_client hal_thermal_server:fd *;
+allow hal_thermal_client hal_thermal_hwservice:hwservice_manager find;
 allow hal_thermal_default cameraserver:binder transfer;
 allow hal_thermal_default cameraserver:binder { call transfer };
 allow hal_thermal_default cameraserver:fd *;
@@ -44,7 +47,9 @@ hwbinder_use(hal_thermal_default)
 hal_server_domain(hal_thermal_default, hal_thermal)
 hal_client_domain(hal_thermal_default, hal_audio)
 hal_client_domain(hal_thermal_default, hal_hyper)
-hal_attribute_hwservice(hal_thermal, hal_thermal_hwservice)
 type hal_thermal_default, domain;
 type hal_thermal_default_exec, exec_type, file_type, vendor_file_type;
 type hal_thermal_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_thermal_client, base_typeattr;
+type hal_thermal_server, base_typeattr;
+type hal_thermal, base_typeattr;

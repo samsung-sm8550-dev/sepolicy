@@ -1,1 +1,1 @@
-type vr_manager_service, service_manager_type, system_server_service;
+type vr_manager_service, base_typeattr, service_manager_type, system_server_service;

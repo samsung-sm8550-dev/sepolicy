@@ -6,5 +6,5 @@ allow tombstoned tombstone_data_file:dir rw_dir_perms;
 allow tombstoned tombstone_data_file:file { create_file_perms link };
 allow tombstoned anr_data_file:dir rw_dir_perms;
 allow tombstoned anr_data_file:file { append create getattr link open unlink };
-type tombstoned, domain, mlstrustedsubject;
+type tombstoned, base_typeattr, domain, mlstrustedsubject;
 type tombstoned_exec, exec_type, file_type, system_file_type;

@@ -10,7 +10,10 @@ allow cameraserver appdomain:fd *;
 allow cameraserver ion_device:chr_file rw_file_perms;
 allow cameraserver dmabuf_system_heap_device:chr_file r_file_perms;
 allow cameraserver hal_graphics_composer:fd *;
+allow cameraserver cameraserver_service:service_manager { add find };
 allow cameraserver cameraserver_service:service_manager find;
+allow cameraserver fwk_camera_hwservice:hwservice_manager { add find };
+allow cameraserver hidl_base_hwservice:hwservice_manager add;
 allow cameraserver activity_service:service_manager find;
 allow cameraserver appops_service:service_manager find;
 allow cameraserver audioserver_service:service_manager find;
@@ -125,7 +128,5 @@ hal_client_domain(cameraserver, hal_face)
 hal_client_domain(cameraserver, hal_graphics_allocator)
 hal_client_domain(cameraserver, hal_omx)
 hal_client_domain(cameraserver, hal_perf)
-add_service(cameraserver, cameraserver_service)
-add_hwservice(cameraserver, fwk_camera_hwservice)
-type cameraserver, domain;
+type cameraserver, base_typeattr, domain;
 type cameraserver_exec, exec_type, file_type, system_file_type;

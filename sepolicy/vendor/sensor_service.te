@@ -1,3 +1,4 @@
-attribute sensor_service_server;
-add_hwservice(sensor_service_server, fwk_sensor_hwservice)
+allow sensor_service_server fwk_sensor_hwservice:hwservice_manager { add find };
+allow sensor_service_server hidl_base_hwservice:hwservice_manager add;
 type sensor_service, service_manager_type, system_api_service, system_server_service;
+type sensor_service_server, base_typeattr;

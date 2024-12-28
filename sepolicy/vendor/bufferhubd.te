@@ -12,5 +12,5 @@ allow bufferhubd hal_omx_server:fd *;
 allow bufferhubd hal_codec2_server:fd *;
 allow bufferhubd dumpstate:binder transfer;
 hal_client_domain(bufferhubd, hal_graphics_allocator)
-type bufferhubd, domain, mlstrustedsubject, pdx_bufferhub_client_server_type;
+type bufferhubd, base_typeattr, domain, mlstrustedsubject, pdx_bufferhub_client_server_type;
 type bufferhubd_exec, exec_type, file_type, system_file_type;

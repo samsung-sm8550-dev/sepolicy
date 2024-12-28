@@ -28,6 +28,20 @@ neverallow hal_configstore_server domain:netlink_generic_socket *;
 neverallow hal_configstore_server domain:netlink_scsitransport_socket *;
 neverallow hal_configstore_server domain:netlink_rdma_socket *;
 neverallow hal_configstore_server domain:netlink_crypto_socket *;
+neverallow hal_configstore_server base_typeattr:unix_stream_socket *;
+neverallow hal_configstore_server base_typeattr:unix_dgram_socket *;
+neverallow hal_configstore_server base_typeattr:file *;
+neverallow hal_configstore_server base_typeattr:file { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:sock_file *;
+neverallow hal_configstore_server base_typeattr:sock_file { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:fifo_file *;
+neverallow hal_configstore_server base_typeattr:fifo_file { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:service_manager *;
+neverallow hal_configstore_server base_typeattr:process ptrace;
+neverallow hal_configstore_server base_typeattr:dir { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:lnk_file { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:chr_file { relabelfrom relabelto };
+neverallow hal_configstore_server base_typeattr:blk_file { relabelfrom relabelto };
 neverallow hal_configstore_server sdcard_type:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
 neverallow hal_configstore_server sdcard_type:file *;
 neverallow hal_configstore_server fuse:dir { append audit_access execmod execute ioctl lock map mounton no_w_dir_perms open quotaon read relabelto search unlink watch watch_mount watch_reads watch_sb watch_with_perm };
@@ -44,7 +58,10 @@ neverallow hal_configstore_server self:cap_userns *;
 neverallow hal_configstore_server self:cap2_userns *;
 allow hal_configstore_client hal_configstore_server:binder { call transfer };
 allow hal_configstore_client hal_configstore_server:fd *;
+allow hal_configstore_client hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;
 allow hal_configstore_server hal_configstore_client:binder transfer;
+allow hal_configstore_server hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { add find };
+allow hal_configstore_server hidl_base_hwservice:hwservice_manager add;
 allow hal_configstore_server anr_data_file:file append;
 allow hal_configstore_server dumpstate:fd *;
 allow hal_configstore_server dumpstate:fifo_file { append write };
@@ -59,6 +76,8 @@ allow hal_configstore_default hal_graphics_composer_default:fd *;
 init_daemon_domain(hal_configstore_default)
 unix_socket_connect(hal_configstore_server, tombstoned_crash, tombstoned)
 hal_server_domain(hal_configstore_default, hal_configstore)
-hal_attribute_hwservice(hal_configstore, hal_configstore_ISurfaceFlingerConfigs)
 type hal_configstore_default, domain;
 type hal_configstore_default_exec, exec_type, file_type, vendor_file_type;
+type hal_configstore_server, base_typeattr;
+type hal_configstore_client, base_typeattr;
+type hal_configstore, base_typeattr;

@@ -24,6 +24,7 @@ allow ueventd dev_type:chr_file { create getattr setattr unlink };
 allow ueventd dev_type:blk_file { create getattr relabelfrom relabelto setattr unlink };
 allow ueventd efs_file:dir search;
 allow ueventd efs_file:file r_file_perms;
+allow ueventd base_typeattr:file w_file_perms;
 allow ueventd apex_mnt_dir:dir r_dir_perms;
 allow ueventd file_contexts_file:file r_file_perms;
 allow ueventd proc_cmdline:file r_file_perms;
@@ -55,6 +56,7 @@ domain_auto_trans(ueventd, vendor_vm_mgr_exec, vendor_vm_mgr)
 r_dir_file(ueventd, rootfs)
 r_dir_file(ueventd, sysfs_type)
 r_dir_file(ueventd, selinuxfs)
+r_dir_file(ueventd, base_typeattr)
 r_dir_file(ueventd, spu_file)
 r_dir_file(ueventd, mnt_vendor_file)
-type ueventd, domain;
+type ueventd, base_typeattr, domain;

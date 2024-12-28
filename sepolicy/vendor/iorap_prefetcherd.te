@@ -39,4 +39,4 @@ allow iorap_prefetcherd system_app_data_file:dir search;
 allow iorap_prefetcherd system_app_data_file:file read;
 r_dir_file(iorap_prefetcherd, rootfs)
 type iorap_prefetcherd, domain, mlstrustedsubject;
-type iorap_prefetcherd_exec, exec_type, file_type, system_file_type;
+type iorap_prefetcherd_exec, base_typeattr, exec_type, file_type, system_file_type;

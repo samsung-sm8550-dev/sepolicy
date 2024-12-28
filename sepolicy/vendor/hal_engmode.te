@@ -6,6 +6,9 @@ allow hal_engmode_client hal_engmode_service:service_manager find;
 allow hal_engmode_server hal_engmode_client:binder transfer;
 allow hal_engmode_server hal_engmode_client:binder { call transfer };
 allow hal_engmode_server hal_engmode_client:fd *;
+allow hal_engmode_server hal_engmode_hwservice:hwservice_manager { add find };
+allow hal_engmode_server hidl_base_hwservice:hwservice_manager add;
+allow hal_engmode_server hal_engmode_service:service_manager { add find };
 allow hal_engmode_default EngineeringMode_vndservice:service_manager find;
 allow hal_engmode_default servicemanager:binder { call transfer };
 allow hal_engmode_default servicemanager:fd *;
@@ -14,8 +17,7 @@ init_daemon_domain(hal_engmode_default)
 get_prop(hal_engmode_default, boot_em_did_prop)
 vndbinder_use(hal_engmode_default)
 hal_server_domain(hal_engmode_default, hal_engmode)
-add_service(hal_engmode_server, hal_engmode_service)
-add_hwservice(hal_engmode_server, hal_engmode_hwservice)
-type hal_engmode_default, domain;
+type hal_engmode_default, base_typeattr, domain;
 type hal_engmode_default_exec, exec_type, file_type, vendor_file_type;
 type hal_engmode_hwservice, hwservice_manager_type;
+type hal_engmode_server, base_typeattr;

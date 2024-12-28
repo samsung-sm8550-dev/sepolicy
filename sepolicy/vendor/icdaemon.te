@@ -2,6 +2,7 @@ allow icdaemon block_device:dir r_dir_perms;
 allow icdaemon tz_device:chr_file rw_file_perms;
 allow icdaemon paramblk_device:blk_file { getattr open write };
 allow icdaemon frigate_socket:sock_file { append getattr ioctl read write };
+allow icdaemon base_typeattr:file r_file_perms;
 allow icdaemon vendor_framework_file:file read;
 type icdaemon, coredomain, domain;
 type icdaemon_exec, exec_type, file_type, system_file_type;

@@ -1,6 +1,7 @@
 allow vendor_location_xtra_daemon vendor_location:process sigchld;
 allow vendor_location_xtra_daemon vendor_location:fd *;
 allow vendor_location_xtra_daemon vendor_location:unix_dgram_socket { read sendto write };
+allow vendor_location_xtra_daemon vendor_xtra_service:service_manager { add find };
 allow vendor_location_xtra_daemon vendor_location_data_file:dir create_dir_perms;
 allow vendor_location_xtra_daemon vendor_location_data_file:file create_file_perms;
 allow vendor_location_xtra_daemon vendor_location_socket:lnk_file { getattr open read };
@@ -33,6 +34,5 @@ net_domain(vendor_location_xtra_daemon)
 hal_client_domain(vendor_location_xtra_daemon, vendor_qccsyshal)
 hal_client_domain(vendor_location_xtra_daemon, vendor_hal_datafactory_qti)
 hal_client_domain(vendor_location_xtra_daemon, vendor_hal_cacertservice_qti)
-add_service(vendor_location_xtra_daemon, vendor_xtra_service)
-type vendor_location_xtra_daemon, domain;
+type vendor_location_xtra_daemon, base_typeattr, domain;
 type vendor_location_xtra_daemon_exec, exec_type, file_type, vendor_file_type;

@@ -1,2 +1,0 @@
-neverallow { domain -init -iorapd } iorap_inode2filename:process { dyntransition transition };
-neverallow { domain -init -iorapd } iorap_prefetcherd:process { dyntransition transition };

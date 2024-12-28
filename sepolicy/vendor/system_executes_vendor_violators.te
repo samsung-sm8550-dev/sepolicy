@@ -1,2 +1,2 @@
 expandtypeattribute(system_executes_vendor_violators)
-attribute system_executes_vendor_violators;
+type system_executes_vendor_violators, base_typeattr;

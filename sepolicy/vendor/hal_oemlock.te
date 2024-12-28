@@ -5,14 +5,20 @@ allow hal_oemlock_server dumpstate:binder transfer;
 allow hal_oemlock_server dumpstate:fifo_file write;
 allow hal_oemlock_server dumpstate:fd *;
 allow hal_oemlock_server hal_oemlock_client:binder transfer;
+allow hal_oemlock_server hal_oemlock_hwservice:hwservice_manager { add find };
+allow hal_oemlock_server hidl_base_hwservice:hwservice_manager add;
+allow hal_oemlock_server hal_oemlock_service:service_manager { add find };
 allow hal_oemlock_server servicemanager:binder { call transfer };
 allow hal_oemlock_server servicemanager:fd *;
 allow hal_oemlock_client hal_oemlock_server:binder { call transfer };
 allow hal_oemlock_client hal_oemlock_server:fd *;
+allow hal_oemlock_client hal_oemlock_hwservice:hwservice_manager find;
+allow hal_oemlock_client hal_oemlock_service:service_manager find;
 init_daemon_domain(hal_oemlock_default)
 hal_server_domain(hal_oemlock_default, hal_oemlock)
-hal_attribute_service(hal_oemlock, hal_oemlock_service)
-hal_attribute_hwservice(hal_oemlock, hal_oemlock_hwservice)
 type hal_oemlock_default, domain;
 type hal_oemlock_default_exec, exec_type, file_type, vendor_file_type;
 type hal_oemlock_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_oemlock_client, base_typeattr;
+type hal_oemlock_server, base_typeattr;
+type hal_oemlock, base_typeattr;

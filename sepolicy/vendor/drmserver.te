@@ -31,6 +31,7 @@ allow drmserver radio_data_file:dir r_dir_perms;
 allow drmserver oemfs:dir search;
 allow drmserver oemfs:file r_file_perms;
 allow drmserver vendor_overlay_file:file { map read };
+allow drmserver drmserver_service:service_manager { add find };
 allow drmserver permission_service:service_manager find;
 allow drmserver mediametrics_service:service_manager find;
 allow drmserver selinuxfs:file w_file_perms;
@@ -70,6 +71,5 @@ get_prop(drmserver, vendor_teegris_prop)
 binder_service(drmserver)
 binder_use(drmserver)
 net_domain(drmserver)
-add_service(drmserver, drmserver_service)
-type drmserver, domain, mlstrustedsubject;
+type drmserver, base_typeattr, domain, mlstrustedsubject;
 type drmserver_exec, exec_type, file_type, system_file_type;

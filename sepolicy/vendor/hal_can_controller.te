@@ -4,8 +4,13 @@ expandtypeattribute(hal_can_controller_server)
 allow hal_can_controller_client hal_can_controller_server:binder { call transfer };
 allow hal_can_controller_client hal_can_controller_server:binder transfer;
 allow hal_can_controller_client hal_can_controller_server:fd *;
+allow hal_can_controller_client hal_can_controller_hwservice:hwservice_manager find;
 allow hal_can_controller_server hal_can_controller_client:binder transfer;
 allow hal_can_controller_server hal_can_controller_client:binder { call transfer };
 allow hal_can_controller_server hal_can_controller_client:fd *;
-hal_attribute_hwservice(hal_can_controller, hal_can_controller_hwservice)
+allow hal_can_controller_server hal_can_controller_hwservice:hwservice_manager { add find };
+allow hal_can_controller_server hidl_base_hwservice:hwservice_manager add;
 type hal_can_controller_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_can_controller_server, base_typeattr;
+type hal_can_controller_client, base_typeattr;
+type hal_can_controller, base_typeattr;

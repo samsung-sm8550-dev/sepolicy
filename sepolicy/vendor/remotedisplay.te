@@ -4,6 +4,7 @@ allow remotedisplay mediaswcodec:binder transfer;
 allow remotedisplay mediaswcodec:binder { call transfer };
 allow remotedisplay mediaswcodec:fd *;
 allow remotedisplay oneseg_mw:binder transfer;
+allow remotedisplay remotedisplay_service:service_manager { add find };
 allow remotedisplay permission_service:service_manager find;
 allow remotedisplay surfaceflinger_service:service_manager find;
 allow remotedisplay batterystats_service:service_manager find;
@@ -52,6 +53,7 @@ allow remotedisplay platform_app:binder { call transfer };
 allow remotedisplay platform_app:fd *;
 allow remotedisplay uhid_device:chr_file { open read write };
 allow remotedisplay untrusted_app:binder { call transfer };
+allow remotedisplay untrusted_app:fd *;
 allow remotedisplay hal_graphics_composer_default:fd *;
 allow remotedisplay hal_graphics_composer_default:binder { call transfer };
 allow remotedisplay tsmux_device:chr_file rw_file_perms;
@@ -62,8 +64,6 @@ allow remotedisplay dumplog_data_file:dir create_dir_perms;
 allow remotedisplay dumplog_data_file:file create_file_perms;
 allow remotedisplay audio_service:service_manager find;
 allow remotedisplay aidl_codecsolution_service:service_manager find;
-allow remotedisplay untrusted_app_29:binder { call transfer };
-allow remotedisplay untrusted_app_29:fd *;
 allow remotedisplay sec_standard_app_type:binder { call transfer };
 allow remotedisplay sec_standard_app_type:fd *;
 allow remotedisplay tzdaemon:fd *;
@@ -85,6 +85,5 @@ hal_client_domain(remotedisplay, hal_graphics_allocator)
 hal_client_domain(remotedisplay, hal_omx)
 hal_client_domain(remotedisplay, vendor_hal_qseecom)
 hal_client_domain(remotedisplay, hal_hdcp)
-add_service(remotedisplay, remotedisplay_service)
-type remotedisplay, coredomain, domain;
+type remotedisplay, base_typeattr, coredomain, domain;
 type remotedisplay_exec, exec_type, file_type, system_file_type;

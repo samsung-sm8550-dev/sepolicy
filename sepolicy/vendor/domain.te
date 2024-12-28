@@ -50,6 +50,8 @@ neverallow domain sysfs_type:dir { add_name create link remove_name rename repar
 neverallow domain cgroup:file create;
 neverallow domain cgroup_v2:file create;
 neverallow domain self:lockdown integrity;
+neverallow domain base_typeattr:hwservice_manager { add find };
+neverallow domain base_typeattr:service_manager { add find };
 neverallow domain init:process dyntransition;
 neverallow domain keystore:process ptrace;
 neverallow domain logd:process ptrace;
@@ -205,6 +207,7 @@ allowxperm domain file_type:ioctl file { range 0x5450 0x5451 };
 allowxperm domain file_type:ioctl file 0x5401;
 allowxperm domain file_type:ioctl file { range 0xf501 0xf502 0xf505 range 0xf50c 0xf50e };
 allowxperm domain file_type:ioctl file 0xf522;
+allowxperm domain file_type:ioctl file 0xf514;
 allowxperm domain file_type:ioctl dir { range 0x5450 0x5451 };
 allowxperm domain file_type:ioctl lnk_file { range 0x5450 0x5451 };
 allowxperm domain file_type:ioctl blk_file { range 0x5450 0x5451 };
@@ -213,6 +216,7 @@ allowxperm domain file_type:ioctl fifo_file { range 0x5450 0x5451 };
 allowxperm domain tun_device:ioctl chr_file { range 0x5450 0x5451 };
 allowxperm domain sdcard_type:ioctl file { range 0xf501 0xf502 0xf505 range 0xf50c 0xf50e };
 allowxperm domain sdcard_type:ioctl file 0xf522;
+allowxperm domain sdcard_type:ioctl file 0xf514;
 neverallowxperm domain domain:ioctl socket 0x8905;
 neverallowxperm domain domain:ioctl tcp_socket 0x8905;
 neverallowxperm domain domain:ioctl udp_socket 0x8905;
@@ -270,7 +274,6 @@ neverallowxperm domain domain:ioctl kcm_socket 0x8905;
 neverallowxperm domain domain:ioctl qipcrtr_socket 0x8905;
 neverallowxperm domain domain:ioctl smc_socket 0x8905;
 neverallowxperm domain domain:ioctl xdp_socket 0x8905;
-attribute domain;
 r_dir_file(domain, self)
 r_dir_file(domain, sysfs_devices_system_cpu)
 r_dir_file(domain, sysfs_usb)
@@ -326,3 +329,4 @@ get_prop(domain, vendor_hdm_restricted_prop)
 get_prop(domain, vendor_gralloc_prop)
 get_prop(domain, vendor_public_vendor_default_prop)
 get_prop(domain, vendor_security_patch_level_prop)
+type domain, base_typeattr;

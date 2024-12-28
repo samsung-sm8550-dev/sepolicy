@@ -65,5 +65,5 @@ unix_socket_connect(logd, ewlogd, init)
 get_prop(logd, boot_dram_info_prop)
 set_prop(logd, logd_prop)
 set_prop(logd, log_ewlogd_prop)
-type logd, domain, mlstrustedsubject;
+type logd, base_typeattr, domain, mlstrustedsubject;
 type logd_exec, exec_type, file_type, system_file_type;

@@ -1,1 +1,1 @@
-attribute vendor_service;
+type vendor_service, base_typeattr;

@@ -1,4 +1,5 @@
 allow teeregistryd_app system_server:binder transfer;
+allow teeregistryd_app teeregistry_service:service_manager { add find };
 allow teeregistryd_app teeregistry_service:service_manager add;
 allow teeregistryd_app connectivity_service:service_manager find;
 allow teeregistryd_app display_service:service_manager find;
@@ -17,5 +18,4 @@ unix_socket_connect(teeregistryd_app, dnsproxyd, netd)
 unix_socket_connect(teeregistryd_app, fwmarkd, netd)
 hal_client_domain(teeregistryd_app, hal_allocator)
 hal_client_domain(teeregistryd_app, hal_teeregistry)
-add_service(teeregistryd_app, teeregistry_service)
-type teeregistryd_app, coredomain, domain;
+type teeregistryd_app, base_typeattr, coredomain, domain;

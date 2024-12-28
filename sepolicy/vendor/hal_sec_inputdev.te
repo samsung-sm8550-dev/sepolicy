@@ -21,6 +21,9 @@ allow hal_sec_inputdev_server hal_sec_inputdev_client:binder { call transfer };
 allow hal_sec_inputdev_server hal_sec_inputdev_client:fd *;
 allow hal_sec_inputdev_server servicemanager:binder { call transfer };
 allow hal_sec_inputdev_server servicemanager:fd *;
+allow hal_sec_inputdev_server hal_sec_inputdev_hwservice:hwservice_manager { add find };
+allow hal_sec_inputdev_server hidl_base_hwservice:hwservice_manager add;
+allow hal_sec_inputdev_server hal_sec_inputdev_service:service_manager { add find };
 init_daemon_domain(hal_sec_inputdev_default)
 r_dir_file(hal_sec_inputdev_default, app_efs_file)
 r_dir_file(hal_sec_inputdev_default, mnt_user_file)
@@ -28,8 +31,7 @@ r_dir_file(hal_sec_inputdev_default, fuse)
 get_prop(hal_sec_inputdev_default, hwservicemanager_prop)
 set_prop(hal_sec_inputdev_default, vendor_input_state_prop)
 hal_server_domain(hal_sec_inputdev_default, hal_sec_inputdev)
-add_service(hal_sec_inputdev_server, hal_sec_inputdev_service)
-add_hwservice(hal_sec_inputdev_server, hal_sec_inputdev_hwservice)
 type hal_sec_inputdev_default, domain;
 type hal_sec_inputdev_default_exec, exec_type, file_type, vendor_file_type;
 type hal_sec_inputdev_hwservice, hwservice_manager_type;
+type hal_sec_inputdev_server, base_typeattr;

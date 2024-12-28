@@ -3,10 +3,15 @@ expandtypeattribute(hal_confirmationui_client)
 expandtypeattribute(hal_confirmationui_server)
 allow hal_confirmationui_client hal_confirmationui_server:binder { call transfer };
 allow hal_confirmationui_client hal_confirmationui_server:fd *;
+allow hal_confirmationui_client hal_confirmationui_hwservice:hwservice_manager find;
 allow hal_confirmationui_server hal_confirmationui_client:binder transfer;
+allow hal_confirmationui_server hal_confirmationui_hwservice:hwservice_manager { add find };
+allow hal_confirmationui_server hidl_base_hwservice:hwservice_manager add;
 init_daemon_domain(hal_confirmationui_default)
 hal_server_domain(hal_confirmationui_default, hal_confirmationui)
-hal_attribute_hwservice(hal_confirmationui, hal_confirmationui_hwservice)
 type hal_confirmationui_default, domain;
 type hal_confirmationui_default_exec, exec_type, file_type, vendor_file_type;
 type hal_confirmationui_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_confirmationui_client, base_typeattr;
+type hal_confirmationui_server, base_typeattr;
+type hal_confirmationui, base_typeattr;

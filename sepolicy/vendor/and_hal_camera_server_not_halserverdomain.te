@@ -1,1 +1,0 @@
-neverallow { hal_camera_server -halserverdomain } domain:process fork;

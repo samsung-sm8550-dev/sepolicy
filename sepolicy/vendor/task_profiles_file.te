@@ -1,2 +1,2 @@
-type task_profiles_file, file_type, system_file_type;
+type task_profiles_file, base_typeattr, file_type, system_file_type;
 type vendor_task_profiles_file, file_type, vendor_file_type;

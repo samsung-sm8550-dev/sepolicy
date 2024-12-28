@@ -1,1 +1,0 @@
-neverallow { hal_power_stats_server -hal_power_stats } domain:process fork;

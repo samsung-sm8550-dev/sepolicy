@@ -72,5 +72,5 @@ allow iorap_inode2filename dsms_exec:file { getattr open read };
 allow iorap_inode2filename cache_file:dir { open read };
 allow iorap_inode2filename media_rw_data_file:dir { open read };
 r_dir_file(iorap_inode2filename, rootfs)
-type iorap_inode2filename, domain, mlstrustedsubject;
-type iorap_inode2filename_exec, exec_type, file_type, system_file_type;
+type iorap_inode2filename, base_typeattr, domain, mlstrustedsubject;
+type iorap_inode2filename_exec, base_typeattr, exec_type, file_type, system_file_type;

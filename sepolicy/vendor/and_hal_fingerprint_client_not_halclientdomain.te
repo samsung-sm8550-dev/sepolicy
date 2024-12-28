@@ -1,1 +1,0 @@
-neverallow { hal_fingerprint_client -halclientdomain } domain:process fork;

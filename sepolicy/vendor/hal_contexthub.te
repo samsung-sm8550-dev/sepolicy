@@ -6,12 +6,16 @@ allow hal_contexthub_server dumpstate:fd *;
 allow hal_contexthub_server hal_contexthub_client:binder transfer;
 allow hal_contexthub_server hal_contexthub_client:binder { call transfer };
 allow hal_contexthub_server hal_contexthub_client:fd *;
+allow hal_contexthub_server hal_contexthub_service:service_manager { add find };
 allow hal_contexthub_server servicemanager:binder { call transfer };
 allow hal_contexthub_server servicemanager:fd *;
+allow hal_contexthub_server hal_contexthub_hwservice:hwservice_manager { add find };
+allow hal_contexthub_server hidl_base_hwservice:hwservice_manager add;
 allow hal_contexthub_client hal_contexthub_server:binder { call transfer };
 allow hal_contexthub_client hal_contexthub_server:binder transfer;
 allow hal_contexthub_client hal_contexthub_server:fd *;
 allow hal_contexthub_client hal_contexthub_service:service_manager find;
+allow hal_contexthub_client hal_contexthub_hwservice:hwservice_manager find;
 allow hal_contexthub_default self:qipcrtr_socket { create getattr read setopt write };
 allow hal_contexthub_default self:capability2 block_suspend;
 allow hal_contexthub_default self:cap2_userns block_suspend;
@@ -33,8 +37,9 @@ get_prop(hal_contexthub_default, hwservicemanager_prop)
 binder_use(hal_contexthub_default)
 hwbinder_use(hal_contexthub_default)
 hal_server_domain(hal_contexthub_default, hal_contexthub)
-add_service(hal_contexthub_server, hal_contexthub_service)
-hal_attribute_hwservice(hal_contexthub, hal_contexthub_hwservice)
-type hal_contexthub_default, domain;
+type hal_contexthub_default, base_typeattr, domain;
 type hal_contexthub_default_exec, exec_type, file_type, vendor_file_type;
 type hal_contexthub_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_contexthub_client, base_typeattr;
+type hal_contexthub_server, base_typeattr;
+type hal_contexthub, base_typeattr;

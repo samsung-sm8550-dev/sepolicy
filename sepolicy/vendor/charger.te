@@ -8,5 +8,5 @@ r_dir_file(charger, sysfs_battery)
 r_dir_file(charger, vendor_sysfs_battery_supply)
 r_dir_file(charger, vendor_sysfs_usb_supply)
 hal_client_domain(charger, hal_health)
-type charger, charger_type, domain;
+type charger, base_typeattr, charger_type, domain;
 type charger_exec, exec_type, file_type, system_file_type;

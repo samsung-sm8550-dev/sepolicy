@@ -1,10 +1,4 @@
-allow hal_sem_client hal_sem_server:binder { call transfer };
-allow hal_sem_client hal_sem_server:binder transfer;
-allow hal_sem_client hal_sem_server:fd *;
-allow hal_sem_client hal_sem_hwservice:hwservice_manager find;
-allow hal_sem_server hal_sem_client:binder transfer;
-allow hal_sem_server hal_sem_client:binder { call transfer };
-allow hal_sem_server hal_sem_client:fd *;
+allow hal_sem_default servicemanager:binder transfer;
 allow hal_sem_default mnt_vendor_file:dir r_dir_perms;
 allow hal_sem_default sec_efs_file:dir create_dir_perms;
 allow hal_sem_default sec_efs_file:file create_file_perms;
@@ -14,11 +8,26 @@ allow hal_sem_default ion_device:chr_file r_file_perms;
 allow hal_sem_default mobicore_user_device:chr_file rw_file_perms;
 allow hal_sem_default vendor_dmabuf_qseecom_heap_device:chr_file r_file_perms;
 allow hal_sem_default vendor_dmabuf_qseecom_ta_heap_device:chr_file r_file_perms;
+allow hal_sem_client hal_sem_server:binder { call transfer };
+allow hal_sem_client hal_sem_server:binder transfer;
+allow hal_sem_client hal_sem_server:fd *;
+allow hal_sem_client hal_sem_hwservice:hwservice_manager find;
+allow hal_sem_client hal_sem_service:service_manager find;
+allow hal_sem_client servicemanager:binder { call transfer };
+allow hal_sem_client servicemanager:fd *;
+allow hal_sem_server hal_sem_client:binder transfer;
+allow hal_sem_server hal_sem_client:binder { call transfer };
+allow hal_sem_server hal_sem_client:fd *;
+allow hal_sem_server hal_sem_hwservice:hwservice_manager { add find };
+allow hal_sem_server hidl_base_hwservice:hwservice_manager add;
+allow hal_sem_server hal_sem_service:service_manager { add find };
+allow hal_sem_server servicemanager:binder { call transfer };
+allow hal_sem_server servicemanager:fd *;
 init_daemon_domain(hal_sem_default)
 get_prop(hal_sem_default, hwservicemanager_prop)
 get_prop(hal_sem_default, vendor_teegris_prop)
 hal_server_domain(hal_sem_default, hal_sem)
-add_hwservice(hal_sem_server, hal_sem_hwservice)
 type hal_sem_default, domain;
 type hal_sem_default_exec, exec_type, file_type, vendor_file_type;
 type hal_sem_hwservice, hwservice_manager_type;
+type hal_sem_server, base_typeattr;

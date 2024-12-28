@@ -1,1 +1,1 @@
-attribute hal_automotive_socket_exemption;
+type hal_automotive_socket_exemption, base_typeattr;

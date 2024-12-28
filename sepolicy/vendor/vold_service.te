@@ -1,1 +1,1 @@
-type vold_service, service_manager_type;
+type vold_service, base_typeattr, service_manager_type;

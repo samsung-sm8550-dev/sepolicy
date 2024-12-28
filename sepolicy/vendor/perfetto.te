@@ -1,1 +1,1 @@
-type perfetto, coredomain, domain;
+type perfetto, base_typeattr, coredomain, domain;

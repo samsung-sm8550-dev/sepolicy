@@ -1,2 +1,2 @@
 allow runtime_event_log_tags_file tmpfs:filesystem associate;
-type runtime_event_log_tags_file, file_type;
+type runtime_event_log_tags_file, base_typeattr, file_type;

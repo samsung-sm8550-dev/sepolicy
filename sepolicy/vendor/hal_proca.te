@@ -1,4 +1,6 @@
 allow hal_proca_default dumpstate:fd *;
+allow hal_proca_default hal_proca_hwservice:hwservice_manager { add find };
+allow hal_proca_default hidl_base_hwservice:hwservice_manager add;
 allow hal_proca_default mobicore_admin_device:chr_file rw_file_perms;
 allow hal_proca_default mobicore_user_device:chr_file rw_file_perms;
 allow hal_proca_default ion_device:chr_file r_file_perms;
@@ -19,7 +21,6 @@ get_prop(hal_proca_default, hwservicemanager_prop)
 get_prop(hal_proca_default, debug_level_prop)
 get_prop(hal_proca_default, product_ship_prop)
 hwbinder_use(hal_proca_default)
-add_hwservice(hal_proca_default, hal_proca_hwservice)
-type hal_proca_default, dex2oat_binder_domain, domain;
+type hal_proca_default, base_typeattr, dex2oat_binder_domain, domain;
 type hal_proca_default_exec, exec_type, file_type, vendor_file_type;
 type hal_proca_hwservice, dex2oat_find_hwservice, hwservice_manager_type;

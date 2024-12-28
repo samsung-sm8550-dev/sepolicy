@@ -42,6 +42,6 @@ binder_use(vendor_ims_service)
 hwbinder_use(vendor_ims_service)
 net_domain(vendor_ims_service)
 hal_client_domain(vendor_ims_service, vendor_hal_datafactory_qti)
-type vendor_ims_service, domain, vendor_hal_imsfactory, vendor_hal_imsfactory_server, vendor_halserverdomain;
+type vendor_ims_service, base_typeattr, domain, vendor_hal_imsfactory, vendor_hal_imsfactory_server, vendor_halserverdomain;
 type vendor_ims_service_exec, exec_type, file_type, vendor_file_type;
 type ims_service, app_api_service, service_manager_type, system_app_service_type;

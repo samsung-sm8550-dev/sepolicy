@@ -1,1 +1,1 @@
-type evsmanagerd, domain;
+type evsmanagerd, base_typeattr, domain;

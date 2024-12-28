@@ -1,2 +1,2 @@
-type tombstone_data_file, core_data_file_type, data_file_type, file_type, mlstrustedobject;
+type tombstone_data_file, base_typeattr, core_data_file_type, data_file_type, file_type, mlstrustedobject;
 type vendor_tombstone_data_file, data_file_type, file_type;

@@ -10,4 +10,4 @@ allow sec_untrusted_app sem_service:service_manager find;
 allow sec_untrusted_app privapp_data_file:file execute;
 allow sec_untrusted_app iccc_service:service_manager find;
 get_prop(sec_untrusted_app, ap_serial_prop)
-type sec_untrusted_app, coredomain, domain, sec_standard_app_type;
+type sec_untrusted_app, base_typeattr, coredomain, domain, sec_standard_app_type;

@@ -7,14 +7,19 @@ allow hal_wvkprov_client servicemanager:fd *;
 allow hal_wvkprov_server hal_wvkprov_client:binder transfer;
 allow hal_wvkprov_server hal_wvkprov_client:binder { call transfer };
 allow hal_wvkprov_server hal_wvkprov_client:fd *;
+allow hal_wvkprov_server hal_wvkprov_service:service_manager { add find };
 allow hal_wvkprov_server servicemanager:binder { call transfer };
 allow hal_wvkprov_server servicemanager:fd *;
 allow hal_wvkprov_default tee_device:chr_file rw_file_perms;
 allow hal_wvkprov_default ion_device:chr_file rw_file_perms;
+allow hal_wvkprov_default efs_file:file create_file_perms;
 domain_auto_trans(hal_wvkprov_default, vendor_shell_exec, vendor_shell)
 init_daemon_domain(hal_wvkprov_default)
+r_dir_file(hal_wvkprov_default, sysfs_ski_ufs_writable)
+r_dir_file(hal_wvkprov_default, vendor_sysfs_scsi_host)
+r_dir_file(hal_wvkprov_default, sysfs_ski_hidden_writable)
 binder_use(hal_wvkprov_default)
 hal_server_domain(hal_wvkprov_default, hal_wvkprov)
-add_service(hal_wvkprov_server, hal_wvkprov_service)
 type hal_wvkprov_default, domain;
 type hal_wvkprov_default_exec, exec_type, file_type, vendor_file_type;
+type hal_wvkprov_server, base_typeattr;

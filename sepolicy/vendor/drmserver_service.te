@@ -1,1 +1,1 @@
-type drmserver_service, service_manager_type;
+type drmserver_service, base_typeattr, service_manager_type;

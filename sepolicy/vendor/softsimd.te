@@ -1,4 +1,5 @@
 allow softsimd softsimd_service:service_manager add;
+allow softsimd softsimd_service:service_manager { add find };
 allow softsimd mobicore_admin_device:chr_file rw_file_perms;
 allow softsimd mobicore_user_device:chr_file rw_file_perms;
 allow softsimd permission_service:service_manager find;
@@ -16,6 +17,5 @@ binder_service(softsimd)
 hal_attribute(softsimd)
 hal_client_domain(softsimd, vendor_hal_qseecom)
 hal_client_domain(softsimd, hal_softsimd)
-add_service(softsimd, softsimd_service)
-type softsimd, coredomain, domain;
+type softsimd, base_typeattr, coredomain, domain;
 type softsimd_exec, exec_type, file_type, system_file_type;

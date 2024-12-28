@@ -1,4 +1,5 @@
 allow fingerprintd system_file:dir r_dir_perms;
+allow fingerprintd fingerprintd_service:service_manager { add find };
 allow fingerprintd fingerprintd_data_file:file create_file_perms;
 allow fingerprintd fingerprintd_data_file:dir rw_dir_perms;
 allow fingerprintd apc_service:service_manager find;
@@ -20,6 +21,5 @@ allow fingerprintd tee_efs_file:dir search;
 get_prop(fingerprintd, tzdaemon_prop)
 get_prop(fingerprintd, vendor_teegris_prop)
 binder_use(fingerprintd)
-add_service(fingerprintd, fingerprintd_service)
-type fingerprintd, domain;
+type fingerprintd, base_typeattr, domain;
 type fingerprintd_exec, exec_type, file_type, system_file_type;

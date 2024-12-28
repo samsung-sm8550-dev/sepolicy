@@ -1,1 +1,1 @@
-type dnsresolver_service, service_manager_type;
+type dnsresolver_service, base_typeattr, service_manager_type;

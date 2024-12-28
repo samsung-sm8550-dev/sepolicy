@@ -4,10 +4,13 @@ expandtypeattribute(hal_codec2_server)
 allow hal_codec2_client hal_codec2_server:binder { call transfer };
 allow hal_codec2_client hal_codec2_server:binder transfer;
 allow hal_codec2_client hal_codec2_server:fd *;
+allow hal_codec2_client hal_codec2_hwservice:hwservice_manager find;
 allow hal_codec2_client ion_device:chr_file r_file_perms;
 allow hal_codec2_server hal_codec2_client:binder transfer;
 allow hal_codec2_server hal_codec2_client:binder { call transfer };
 allow hal_codec2_server hal_codec2_client:fd *;
+allow hal_codec2_server hal_codec2_hwservice:hwservice_manager { add find };
+allow hal_codec2_server hidl_base_hwservice:hwservice_manager add;
 allow hal_codec2_server hal_graphics_composer:fd *;
 allow hal_codec2_server ion_device:chr_file r_file_perms;
 allow hal_codec2_server hal_camera:fd *;
@@ -16,5 +19,7 @@ get_prop(hal_codec2_client, media_variant_prop)
 get_prop(hal_codec2_client, codec2_config_prop)
 get_prop(hal_codec2_server, media_variant_prop)
 get_prop(hal_codec2_server, codec2_config_prop)
-hal_attribute_hwservice(hal_codec2, hal_codec2_hwservice)
 type hal_codec2_hwservice, hwservice_manager_type;
+type hal_codec2_client, base_typeattr;
+type hal_codec2_server, base_typeattr;
+type hal_codec2, base_typeattr;

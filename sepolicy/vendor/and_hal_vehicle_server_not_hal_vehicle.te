@@ -1,1 +1,0 @@
-neverallow { hal_vehicle_server -hal_vehicle } domain:process fork;

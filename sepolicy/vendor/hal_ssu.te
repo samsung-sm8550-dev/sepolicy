@@ -7,6 +7,7 @@ allow hal_ssu_client servicemanager:fd *;
 allow hal_ssu_server hal_ssu_client:binder transfer;
 allow hal_ssu_server hal_ssu_client:binder { call transfer };
 allow hal_ssu_server hal_ssu_client:fd *;
+allow hal_ssu_server hal_ssu_service:service_manager { add find };
 allow hal_ssu_server servicemanager:binder { call transfer };
 allow hal_ssu_server servicemanager:fd *;
 allow hal_ssu_default ssud:dir rw_dir_perms;
@@ -17,6 +18,6 @@ allowxperm hal_ssu_default tz_user_device:ioctl chr_file { 0x6378 0x637c range 0
 init_daemon_domain(hal_ssu_default)
 get_prop(hal_ssu_default, vendor_teegris_prop)
 hal_server_domain(hal_ssu_default, hal_ssu)
-add_service(hal_ssu_server, hal_ssu_service)
 type hal_ssu_default, domain;
 type hal_ssu_default_exec, exec_type, file_type, vendor_file_type;
+type hal_ssu_server, base_typeattr;

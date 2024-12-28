@@ -4,9 +4,14 @@ expandtypeattribute(hal_vibrator_server)
 allow hal_vibrator_client hal_vibrator_server:binder { call transfer };
 allow hal_vibrator_client hal_vibrator_server:binder transfer;
 allow hal_vibrator_client hal_vibrator_server:fd *;
+allow hal_vibrator_client hal_vibrator_hwservice:hwservice_manager find;
+allow hal_vibrator_client hal_vibrator_service:service_manager find;
 allow hal_vibrator_server hal_vibrator_client:binder transfer;
 allow hal_vibrator_server hal_vibrator_client:binder { call transfer };
 allow hal_vibrator_server hal_vibrator_client:fd *;
+allow hal_vibrator_server hal_vibrator_hwservice:hwservice_manager { add find };
+allow hal_vibrator_server hidl_base_hwservice:hwservice_manager add;
+allow hal_vibrator_server hal_vibrator_service:service_manager { add find };
 allow hal_vibrator_server servicemanager:binder { call transfer };
 allow hal_vibrator_server servicemanager:fd *;
 allow hal_vibrator_server dumpstate:fifo_file write;
@@ -32,8 +37,9 @@ r_dir_file(hal_vibrator_default, sysfs_vib_support)
 r_dir_file(hal_vibrator_default, vendor_persist_haptics_file)
 get_prop(hal_vibrator, vendor_soc_id_prop)
 hal_server_domain(hal_vibrator_default, hal_vibrator)
-hal_attribute_service(hal_vibrator, hal_vibrator_service)
-hal_attribute_hwservice(hal_vibrator, hal_vibrator_hwservice)
 type hal_vibrator_default, domain;
 type hal_vibrator_default_exec, exec_type, file_type, vendor_file_type;
 type hal_vibrator_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_vibrator_client, base_typeattr;
+type hal_vibrator_server, base_typeattr;
+type hal_vibrator, base_typeattr;

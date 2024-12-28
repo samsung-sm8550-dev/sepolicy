@@ -5,6 +5,8 @@ allow system_suspend_server hal_health_server:binder transfer;
 allow system_suspend_server hal_telephony_server:binder transfer;
 allow system_suspend_server inputflinger:binder transfer;
 allow system_suspend_server slideshow:binder transfer;
+allow system_suspend_server system_suspend_hwservice:hwservice_manager { add find };
+allow system_suspend_server hidl_base_hwservice:hwservice_manager add;
 allow system_suspend_server update_engine:binder transfer;
 allow system_suspend_server vold:binder transfer;
 allow system_suspend_server hal_sensors_default:binder transfer;
@@ -48,9 +50,8 @@ allow system_suspend_server vendor_location_xtwifi_client:binder transfer;
 allow system_suspend_server vendor_qms:binder transfer;
 allow system_suspend_server tee:binder transfer;
 allow system_suspend_server hal_contexthub_default:binder transfer;
-attribute system_suspend_server;
 r_dir_file(system_suspend_server, vendor_sysfs_usb_node)
 get_prop(system_suspend_server, hwservicemanager_prop)
 hwbinder_use(system_suspend_server)
-add_hwservice(system_suspend_server, system_suspend_hwservice)
 type system_suspend_hwservice, coredomain_hwservice, hwservice_manager_type, protected_hwservice;
+type system_suspend_server, base_typeattr;

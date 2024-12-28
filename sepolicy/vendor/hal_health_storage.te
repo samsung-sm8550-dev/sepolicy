@@ -4,9 +4,14 @@ expandtypeattribute(hal_health_storage_server)
 allow hal_health_storage_client hal_health_storage_server:binder { call transfer };
 allow hal_health_storage_client hal_health_storage_server:binder transfer;
 allow hal_health_storage_client hal_health_storage_server:fd *;
+allow hal_health_storage_client hal_health_storage_hwservice:hwservice_manager find;
+allow hal_health_storage_client hal_health_storage_service:service_manager find;
 allow hal_health_storage_server hal_health_storage_client:binder transfer;
 allow hal_health_storage_server hal_health_storage_client:binder { call transfer };
 allow hal_health_storage_server hal_health_storage_client:fd *;
+allow hal_health_storage_server hal_health_storage_hwservice:hwservice_manager { add find };
+allow hal_health_storage_server hidl_base_hwservice:hwservice_manager add;
+allow hal_health_storage_server hal_health_storage_service:service_manager { add find };
 allow hal_health_storage_server gsi_metadata_file_type:dir search;
 allow hal_health_storage_server metadata_file:dir search;
 allow hal_health_storage_server gsi_public_metadata_file:file r_file_perms;
@@ -15,8 +20,9 @@ allow hal_health_storage_server proc_cmdline:file r_file_perms;
 init_daemon_domain(hal_health_storage_default)
 binder_use(hal_health_storage_server)
 hal_server_domain(hal_health_storage_default, hal_health_storage)
-hal_attribute_service(hal_health_storage, hal_health_storage_service)
-hal_attribute_hwservice(hal_health_storage, hal_health_storage_hwservice)
 type hal_health_storage_default, domain;
 type hal_health_storage_default_exec, exec_type, file_type, vendor_file_type;
 type hal_health_storage_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_health_storage_server, base_typeattr;
+type hal_health_storage_client, base_typeattr;
+type hal_health_storage, base_typeattr;

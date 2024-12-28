@@ -1,1 +1,0 @@
-neverallow { hal_atrace_server -halserverdomain } domain:process fork;

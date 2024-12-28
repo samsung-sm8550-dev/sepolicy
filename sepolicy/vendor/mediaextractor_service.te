@@ -1,1 +1,1 @@
-type mediaextractor_service, service_manager_type;
+type mediaextractor_service, base_typeattr, service_manager_type;

@@ -37,5 +37,5 @@ get_prop(factory_ssc, vendor_fastrpc_prop)
 get_prop(factory_ssc, vendor_adsprpc_prop)
 set_prop(factory_ssc, vendor_sensor_prop)
 hal_client_domain(factory_ssc, vendor_hal_dspmanager)
-type factory_ssc, domain;
+type factory_ssc, base_typeattr, domain;
 type factory_ssc_exec, exec_type, file_type, vendor_file_type;

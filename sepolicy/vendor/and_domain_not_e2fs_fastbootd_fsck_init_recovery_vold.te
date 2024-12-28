@@ -1,1 +1,0 @@
-neverallow { domain -e2fs -fastbootd -fsck -init -recovery -vold } metadata_block_device:blk_file { append ioctl link lock open read rename write };

@@ -1,1 +1,1 @@
-attribute hwservice_manager_type;
+type hwservice_manager_type, base_typeattr;

@@ -4,9 +4,14 @@ expandtypeattribute(hal_health_server)
 allow hal_health_client hal_health_server:binder { call transfer };
 allow hal_health_client hal_health_server:binder transfer;
 allow hal_health_client hal_health_server:fd *;
+allow hal_health_client hal_health_hwservice:hwservice_manager find;
+allow hal_health_client hal_health_service:service_manager find;
 allow hal_health_server hal_health_client:binder transfer;
 allow hal_health_server hal_health_client:binder { call transfer };
 allow hal_health_server hal_health_client:fd *;
+allow hal_health_server hal_health_hwservice:hwservice_manager { add find };
+allow hal_health_server hidl_base_hwservice:hwservice_manager add;
+allow hal_health_server hal_health_service:service_manager { add find };
 allow hal_health_server self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow hal_health_server self:capability2 block_suspend;
 allow hal_health_server self:capability2 wake_alarm;
@@ -49,8 +54,9 @@ binder_use(hal_health_server)
 hwbinder_use(hal_health_server)
 hal_server_domain(hal_health_default, hal_health)
 hal_client_domain(hal_health_default, hal_thermal)
-hal_attribute_service(hal_health, hal_health_service)
-hal_attribute_hwservice(hal_health, hal_health_hwservice)
 type hal_health_default, bpfdomain, domain;
 type hal_health_default_exec, exec_type, file_type, vendor_file_type;
 type hal_health_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_health_client, base_typeattr;
+type hal_health_server, base_typeattr;
+type hal_health, base_typeattr;

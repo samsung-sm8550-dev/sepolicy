@@ -1,1 +1,1 @@
-attribute exec_type;
+type exec_type, base_typeattr;

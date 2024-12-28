@@ -1,3 +1,5 @@
+allow vendor_hal_imsrtp vendor_hal_imsrtp_hwservice:hwservice_manager { add find };
+allow vendor_hal_imsrtp hidl_base_hwservice:hwservice_manager add;
 allow vendor_hal_imsrtp self:qipcrtr_socket create_socket_perms_no_ioctl;
 allow vendor_hal_imsrtp self:capability net_bind_service;
 allow vendor_hal_imsrtp ion_device:chr_file r_file_perms;
@@ -25,7 +27,6 @@ get_prop(vendor_hal_imsrtp, hwservicemanager_prop)
 get_prop(vendor_hal_imsrtp, vendor_ims_prop)
 hwbinder_use(vendor_hal_imsrtp)
 net_domain(vendor_hal_imsrtp)
-add_hwservice(vendor_hal_imsrtp, vendor_hal_imsrtp_hwservice)
-type vendor_hal_imsrtp, domain;
+type vendor_hal_imsrtp, base_typeattr, domain;
 type vendor_hal_imsrtp_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_imsrtp_hwservice, hwservice_manager_type, protected_hwservice;

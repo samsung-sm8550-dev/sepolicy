@@ -1,2 +1,3 @@
+allow iofdaemon base_typeattr:file r_file_perms;
 type iofdaemon, coredomain, domain;
 type iofdaemon_exec, exec_type, file_type, system_file_type;

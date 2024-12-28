@@ -26,3 +26,6 @@ neverallow hal_uwb_vendor_server domain:netlink_rdma_socket *;
 neverallow hal_uwb_vendor_server domain:netlink_crypto_socket *;
 neverallow hal_uwb_vendor_server domain:qipcrtr_socket *;
 neverallow hal_uwb_vendor_server domain:xdp_socket *;
+type hal_uwb_vendor_server, base_typeattr;
+type hal_uwb_vendor_client, base_typeattr;
+type hal_uwb_vendor, base_typeattr;

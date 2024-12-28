@@ -1,2 +1,2 @@
 expandtypeattribute(halclientdomain)
-attribute halclientdomain;
+type halclientdomain, base_typeattr;

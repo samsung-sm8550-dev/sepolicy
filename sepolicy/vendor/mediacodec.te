@@ -109,5 +109,5 @@ hal_client_domain(mediacodec, vendor_hal_dspmanager)
 hal_client_domain(mediacodec, vendor_hal_perf)
 hal_client_domain(mediacodec, vendor_hal_vpp)
 hal_client_domain(mediacodec, vendor_hal_qconfig)
-type mediacodec, domain, mlstrustedsubject;
+type mediacodec, base_typeattr, domain, mlstrustedsubject;
 type mediacodec_exec, exec_type, file_type, vendor_file_type;

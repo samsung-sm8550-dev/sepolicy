@@ -4,12 +4,17 @@ expandtypeattribute(hal_broadcastradio_server)
 allow hal_broadcastradio_client hal_broadcastradio_server:binder { call transfer };
 allow hal_broadcastradio_client hal_broadcastradio_server:binder transfer;
 allow hal_broadcastradio_client hal_broadcastradio_server:fd *;
+allow hal_broadcastradio_client hal_broadcastradio_hwservice:hwservice_manager find;
 allow hal_broadcastradio_server hal_broadcastradio_client:binder transfer;
 allow hal_broadcastradio_server hal_broadcastradio_client:binder { call transfer };
 allow hal_broadcastradio_server hal_broadcastradio_client:fd *;
+allow hal_broadcastradio_server hal_broadcastradio_hwservice:hwservice_manager { add find };
+allow hal_broadcastradio_server hidl_base_hwservice:hwservice_manager add;
 init_daemon_domain(hal_broadcastradio_default)
 hal_server_domain(hal_broadcastradio_default, hal_broadcastradio)
-hal_attribute_hwservice(hal_broadcastradio, hal_broadcastradio_hwservice)
 type hal_broadcastradio_default, domain;
 type hal_broadcastradio_default_exec, exec_type, file_type, vendor_file_type;
 type hal_broadcastradio_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_broadcastradio_client, base_typeattr;
+type hal_broadcastradio_server, base_typeattr;
+type hal_broadcastradio, base_typeattr;

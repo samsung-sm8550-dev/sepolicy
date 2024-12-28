@@ -2,5 +2,5 @@ allow file_type labeledfs:filesystem associate;
 allow file_type tmpfs:filesystem associate;
 allow file_type rootfs:filesystem associate;
 allow file_type ecryptfs:filesystem associate;
-attribute file_type;
-attribute vendor_file_type;
+type file_type, base_typeattr;
+type vendor_file_type, base_typeattr;

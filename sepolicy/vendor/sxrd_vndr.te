@@ -27,5 +27,5 @@ net_domain(vendor_sxrd_vndr)
 hal_client_domain(vendor_sxrd_vndr, hal_graphics_allocator)
 hal_client_domain(vendor_sxrd_vndr, hal_audio)
 hal_client_domain(vendor_sxrd_vndr, vendor_sys_sxrauxservice_qti_socket)
-type vendor_sxrd_vndr, domain, vendor_hal_sxrservice_qti, vendor_hal_sxrservice_qti_server, vendor_halserverdomain;
+type vendor_sxrd_vndr, base_typeattr, domain, vendor_hal_sxrservice_qti, vendor_hal_sxrservice_qti_server, vendor_halserverdomain;
 type vendor_sxrd_vndr_exec, exec_type, file_type, vendor_file_type;

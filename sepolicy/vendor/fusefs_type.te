@@ -1,1 +1,1 @@
-attribute fusefs_type;
+type fusefs_type, base_typeattr;

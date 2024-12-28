@@ -16,5 +16,5 @@ dontaudit su vendor_powerservice_app_userfaultfd:anon_inode *;
 dontaudit su vendor_qms_app_userfaultfd:anon_inode *;
 dontaudit su vendor_powermodule_app_userfaultfd:anon_inode *;
 dontaudit su vendor_trustedui_app_userfaultfd:anon_inode *;
-type su, domain;
+type su, base_typeattr, domain;
 type su_exec, exec_type, file_type, system_file_type;

@@ -8,9 +8,14 @@ neverallow hal_wifi_supplicant_server fuse:file *;
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:binder { call transfer };
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:binder transfer;
 allow hal_wifi_supplicant_client hal_wifi_supplicant_server:fd *;
+allow hal_wifi_supplicant_client hal_wifi_supplicant_hwservice:hwservice_manager find;
+allow hal_wifi_supplicant_client hal_wifi_supplicant_service:service_manager find;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder transfer;
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:binder { call transfer };
 allow hal_wifi_supplicant_server hal_wifi_supplicant_client:fd *;
+allow hal_wifi_supplicant_server hal_wifi_supplicant_hwservice:hwservice_manager { add find };
+allow hal_wifi_supplicant_server hidl_base_hwservice:hwservice_manager add;
+allow hal_wifi_supplicant_server hal_wifi_supplicant_service:service_manager { add find };
 allow hal_wifi_supplicant kernel:system module_request;
 allow hal_wifi_supplicant self:capability { net_admin net_raw setgid setuid };
 allow hal_wifi_supplicant self:cap_userns { net_admin net_raw setgid setuid };
@@ -98,8 +103,9 @@ net_domain(hal_wifi_supplicant_default)
 hal_server_domain(hal_wifi_supplicant_default, hal_wifi_supplicant)
 hal_client_domain(hal_wifi_supplicant_default, hal_nlinterceptor)
 hal_client_domain(hal_wifi_supplicant_default, hal_wifi)
-hal_attribute_service(hal_wifi_supplicant, hal_wifi_supplicant_service)
-hal_attribute_hwservice(hal_wifi_supplicant, hal_wifi_supplicant_hwservice)
 type hal_wifi_supplicant_default, domain;
 type hal_wifi_supplicant_default_exec, exec_type, file_type, vendor_file_type;
 type hal_wifi_supplicant_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_wifi_supplicant_client, base_typeattr;
+type hal_wifi_supplicant_server, base_typeattr;
+type hal_wifi_supplicant, base_typeattr;

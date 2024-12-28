@@ -2,8 +2,10 @@ neverallow vndservicemanager binder_device:chr_file no_rw_file_perms;
 neverallow vndservicemanager hwbinder_device:chr_file no_rw_file_perms;
 allow vndservicemanager self:binder set_context_mgr;
 allow vndservicemanager self:netlink_selinux_socket { accept append bind connect create getattr getopt listen lock name_bind read recvfrom relabelfrom relabelto sendto setattr setopt shutdown write };
+allow vndservicemanager base_typeattr:binder transfer;
 allow vndservicemanager vndbinder_device:chr_file rw_file_perms;
 allow vndservicemanager vndservice_contexts_file:file r_file_perms;
+allow vndservicemanager service_manager_vndservice:service_manager { add find };
 allow vndservicemanager selinuxfs:file w_file_perms;
 allow vndservicemanager kernel:security compute_av;
 allow vndservicemanager proc_avc_msg:file w_file_perms;
@@ -14,6 +16,5 @@ init_daemon_domain(vndservicemanager)
 r_dir_file(vndservicemanager, selinuxfs)
 set_prop(vndservicemanager, ctl_interface_start_prop)
 set_prop(vndservicemanager, vendor_bssl_post_prop)
-add_service(vndservicemanager, service_manager_vndservice)
-type vndservicemanager, domain;
+type vndservicemanager, base_typeattr, domain;
 type vndservicemanager_exec, exec_type, file_type, vendor_file_type;

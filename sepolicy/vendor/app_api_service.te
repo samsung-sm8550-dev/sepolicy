@@ -1,1 +1,1 @@
-attribute app_api_service;
+type app_api_service, base_typeattr;

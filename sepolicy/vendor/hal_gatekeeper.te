@@ -3,7 +3,10 @@ expandtypeattribute(hal_gatekeeper_client)
 expandtypeattribute(hal_gatekeeper_server)
 allow hal_gatekeeper_client hal_gatekeeper_server:binder { call transfer };
 allow hal_gatekeeper_client hal_gatekeeper_server:fd *;
+allow hal_gatekeeper_client hal_gatekeeper_hwservice:hwservice_manager find;
 allow hal_gatekeeper_server hal_gatekeeper_client:binder transfer;
+allow hal_gatekeeper_server hal_gatekeeper_hwservice:hwservice_manager { add find };
+allow hal_gatekeeper_server hidl_base_hwservice:hwservice_manager add;
 allow hal_gatekeeper tee_device:chr_file rw_file_perms;
 allow hal_gatekeeper ion_device:chr_file r_file_perms;
 allow hal_gatekeeper_default efs_file:dir search;
@@ -47,9 +50,11 @@ get_prop(vendor_hal_gatekeeper_qti, vendor_disable_spu_prop)
 set_prop(hal_gatekeeper_default, dumpstate_options_prop)
 hal_server_domain(hal_gatekeeper_default, hal_gatekeeper)
 hal_server_domain(vendor_hal_gatekeeper_qti, hal_gatekeeper)
-hal_attribute_hwservice(hal_gatekeeper, hal_gatekeeper_hwservice)
 type hal_gatekeeper_default, domain;
 type vendor_hal_gatekeeper_qti, domain;
 type hal_gatekeeper_default_exec, exec_type, file_type, vendor_file_type;
 type vendor_hal_gatekeeper_qti_exec, exec_type, file_type, vendor_file_type;
 type hal_gatekeeper_hwservice, hwservice_manager_type, protected_hwservice;
+type hal_gatekeeper_client, base_typeattr;
+type hal_gatekeeper_server, base_typeattr;
+type hal_gatekeeper, base_typeattr;

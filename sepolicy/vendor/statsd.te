@@ -40,5 +40,5 @@ hal_client_domain(statsd, hal_health)
 hal_client_domain(statsd, hal_power)
 hal_client_domain(statsd, hal_power_stats)
 hal_client_domain(statsd, hal_thermal)
-type statsd, domain, mlstrustedsubject;
+type statsd, base_typeattr, domain, mlstrustedsubject;
 type statsd_exec, exec_type, file_type, system_file_type;

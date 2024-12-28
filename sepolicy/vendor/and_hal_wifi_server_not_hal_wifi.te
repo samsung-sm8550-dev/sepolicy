@@ -1,1 +1,0 @@
-neverallow { hal_wifi_server -hal_wifi } domain:process fork;

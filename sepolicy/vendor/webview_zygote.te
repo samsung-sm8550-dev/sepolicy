@@ -11,5 +11,5 @@ r_dir_file(webview_zygote, zygote_exec)
 r_dir_file(webview_zygote, resourcecache_data_file)
 unix_socket_connect(webview_zygote, tombstoned_crash, tombstoned)
 get_prop(webview_zygote, graphics_vulkan_prop)
-type webview_zygote, domain;
+type webview_zygote, base_typeattr, domain;
 type webview_zygote_exec, exec_type, file_type;

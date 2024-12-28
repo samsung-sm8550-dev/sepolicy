@@ -1,2 +1,0 @@
-neverallow { domain -init -statsd -system_server -vold } stats_data_file:file *;
-neverallow { domain -init -statsd -system_server -vold } stats_data_file:dir *;

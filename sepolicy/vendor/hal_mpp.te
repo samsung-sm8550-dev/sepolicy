@@ -8,8 +8,10 @@ allow hal_mpp_default mpp_vendor_data_file:file create_file_perms;
 allow hal_mpp_default mpp_vendor_data_file:dir create_dir_perms;
 allow hal_mpp_default hidl_token_hwservice:hwservice_manager find;
 allow hal_mpp_default mediacodec:binder transfer;
+allow hal_mpp_default mediaswcodec:binder transfer;
 allow hal_mpp_default vendor_xdsp_device:chr_file r_file_perms;
 allow hal_mpp_default dmabuf_system_heap_device:chr_file r_file_perms;
+allow hal_mpp_server hal_mpp_service:service_manager { add find };
 allow hal_mpp_server servicemanager:binder { call transfer };
 allow hal_mpp_server servicemanager:fd *;
 allow hal_mpp_server hal_mpp_client:binder transfer;
@@ -24,6 +26,6 @@ get_prop(hal_mpp_default, vendor_adsprpc_prop)
 hal_server_domain(hal_mpp_default, hal_mpp)
 hal_client_domain(hal_mpp_default, hal_allocator)
 hal_client_domain(hal_mpp_default, hal_graphics_allocator)
-add_service(hal_mpp_server, hal_mpp_service)
-type hal_mpp_default, domain;
+type hal_mpp_default, base_typeattr, domain;
 type hal_mpp_default_exec, exec_type, file_type, vendor_file_type;
+type hal_mpp_server, base_typeattr;

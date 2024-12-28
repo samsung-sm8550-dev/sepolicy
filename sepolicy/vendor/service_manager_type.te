@@ -1,1 +1,1 @@
-attribute service_manager_type;
+type service_manager_type, base_typeattr;

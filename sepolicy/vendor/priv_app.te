@@ -101,4 +101,4 @@ hal_client_domain(priv_app, vendor_hal_perf)
 hal_client_domain(priv_app, vendor_hal_qspmhal)
 hal_client_domain(priv_app, vendor_hal_qesdhal)
 hal_client_domain(priv_app, hal_engmode)
-type priv_app, domain;
+type priv_app, base_typeattr, domain;

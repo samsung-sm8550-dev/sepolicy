@@ -5,5 +5,5 @@ allow vendor_chre vendor_dsp_device:chr_file r_file_perms;
 init_daemon_domain(vendor_chre)
 r_dir_file(vendor_chre, adsprpcd_file)
 get_prop(vendor_chre, vendor_adsprpc_prop)
-type vendor_chre, domain;
+type vendor_chre, base_typeattr, domain;
 type vendor_chre_exec, exec_type, file_type, vendor_file_type;
